@@ -16,6 +16,7 @@
 @synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
+NSString * kConkyConfigLocation = @"/Users/develnpyl/.conky";
 NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
 
 - (IBAction)activatePreferencesSheet:(id)sender
@@ -41,10 +42,12 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
      */
     res = access( [kManageConkyPrefsPath UTF8String], R_OK);
     if (res < 0) {
+        id objects[] = { kConkyConfigLocation };
+        id keys[] = { @"configLocation" };
+        NSUInteger count = sizeof(objects) / sizeof(id);
         
-        // TODO: Create preferences file
-        
-        return;
+        manageConkyPreferences = [[NSDictionary alloc] initWithObjects:objects forKeys:keys count:count];
+        [manageConkyPreferences writeToFile:kManageConkyPrefsPath atomically:YES];
     }
     
     manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
