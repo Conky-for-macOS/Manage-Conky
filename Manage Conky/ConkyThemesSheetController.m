@@ -10,4 +10,9 @@
 
 @implementation ConkyThemesSheetController
 
+- (IBAction)activateThemesSheet:(id)sender
+{
+    [super activateSheet:@"ConkyThemes"];
+}
+
 @end

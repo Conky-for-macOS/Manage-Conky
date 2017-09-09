@@ -6,6 +6,8 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
+// TODO: fix dealloc... problems.
+
 #import "GeneralSheetController.h"
 
 @implementation GeneralSheetController
@@ -18,15 +20,6 @@
         [[NSBundle mainBundle] loadNibNamed:nibName owner:self topLevelObjects:nil];
     
     [[NSApp mainWindow] beginSheet:self.sheet completionHandler:^(NSModalResponse returnCode) {}];
-}
-
-- (IBAction)activatePreferencesSheet:(id)sender
-{
-    [self activateSheet:@"ConkyPreferences"];
-}
-- (IBAction)activateThemesSheet:(id)sender
-{
-    [self activateSheet:@"ConkyThemes"];
 }
 
 - (IBAction)closeSheet:(id)sender

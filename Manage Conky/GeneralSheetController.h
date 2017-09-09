@@ -14,8 +14,6 @@
 @property (assign) IBOutlet NSWindow * sheet;
 
 - (void)activateSheet:(NSString*)nibName;
-- (IBAction)activatePreferencesSheet:(id)sender;
-- (IBAction)activateThemesSheet:(id)sender;
 
 - (IBAction)closeSheet:(id)sender;
 

@@ -10,4 +10,9 @@
 
 @implementation ConkyPreferencesSheetController
 
+- (IBAction)activatePreferencesSheet:(id)sender
+{
+    [super activateSheet:@"ConkyPreferences"];
+}
+
 @end

@@ -694,7 +694,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="activatePreferencesSheet:" target="dEB-zH-v7c" id="7Mz-Rl-oGU"/>
+                                    <action selector="activatePreferencesSheet:" target="dEB-zH-v7c" id="Deh-Sh-Vsm"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHV-tV-Ubb">
@@ -705,7 +705,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="activateThemesSheet:" target="nOr-EW-XZ9" id="Ozn-dQ-AZn"/>
+                                    <action selector="activateThemesSheet:" target="nOr-EW-XZ9" id="x9S-3d-wc0"/>
                                 </connections>
                             </button>
                         </subviews>
