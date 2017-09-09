@@ -12,6 +12,11 @@
 		77B847401F62C2B600AF8BCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473F1F62C2B600AF8BCA /* ViewController.m */; };
 		77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B847411F62C2B600AF8BCA /* Assets.xcassets */; };
 		77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B847431F62C2B600AF8BCA /* Main.storyboard */; };
+		77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFEE1F641AB800C375FE /* GeneralSheetController.m */; };
+		77B9EFF31F64208E00C375FE /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B9EFF21F64208E00C375FE /* ConkyPreferences.xib */; };
+		77B9EFF51F64209D00C375FE /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B9EFF41F64209D00C375FE /* ConkyThemes.xib */; };
+		77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */; };
+		77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,14 @@
 		77B847411F62C2B600AF8BCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77B847441F62C2B600AF8BCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77B847461F62C2B600AF8BCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77B9EFED1F641AB800C375FE /* GeneralSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralSheetController.h; sourceTree = "<group>"; };
+		77B9EFEE1F641AB800C375FE /* GeneralSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralSheetController.m; sourceTree = "<group>"; };
+		77B9EFF21F64208E00C375FE /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConkyPreferences.xib; sourceTree = "<group>"; };
+		77B9EFF41F64209D00C375FE /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConkyThemes.xib; sourceTree = "<group>"; };
+		77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConkyPreferencesSheetController.h; sourceTree = "<group>"; };
+		77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConkyPreferencesSheetController.m; sourceTree = "<group>"; };
+		77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConkyThemesSheetController.h; sourceTree = "<group>"; };
+		77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConkyThemesSheetController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +53,8 @@
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
+				77B9EFF21F64208E00C375FE /* ConkyPreferences.xib */,
+				77B9EFF41F64209D00C375FE /* ConkyThemes.xib */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 			);
@@ -62,6 +77,12 @@
 				77B8473F1F62C2B600AF8BCA /* ViewController.m */,
 				77B847411F62C2B600AF8BCA /* Assets.xcassets */,
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
+				77B9EFED1F641AB800C375FE /* GeneralSheetController.h */,
+				77B9EFEE1F641AB800C375FE /* GeneralSheetController.m */,
+				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
+				77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */,
+				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
+				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
 				77B847461F62C2B600AF8BCA /* Info.plist */,
 				77B8473B1F62C2B600AF8BCA /* Supporting Files */,
 			);
@@ -137,6 +158,8 @@
 			files = (
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
+				77B9EFF51F64209D00C375FE /* ConkyThemes.xib in Resources */,
+				77B9EFF31F64208E00C375FE /* ConkyPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +172,10 @@
 			files = (
 				77B847401F62C2B600AF8BCA /* ViewController.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
+				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
+				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
+				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +327,7 @@
 				77B8474B1F62C2B600AF8BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
