@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ConkyPreferencesSheetController">
             <connections>
+                <outlet property="conkyConfigLocationTextfield" destination="ZCd-BW-TZI" id="C6A-vu-6V1"/>
+                <outlet property="runConkyAtStartupCheckbox" destination="G7a-wy-yQX" id="OZy-7O-XHD"/>
                 <outlet property="sheet" destination="QvC-M9-y7g" id="4EO-4t-vy1"/>
             </connections>
         </customObject>
@@ -17,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -37,9 +39,9 @@ DQ
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7a-wy-yQX">
-                        <rect key="frame" x="18" y="234" width="148" height="18"/>
+                        <rect key="frame" x="18" y="235" width="148" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Run conky at startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IJC-9X-9Gr">
+                        <buttonCell key="cell" type="check" title="Run conky at startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="IJC-9X-9Gr">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

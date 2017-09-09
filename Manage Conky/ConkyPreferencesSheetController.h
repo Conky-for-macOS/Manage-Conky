@@ -10,4 +10,9 @@
 
 @interface ConkyPreferencesSheetController : GeneralSheetController
 
+@property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;
+@property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
+
+- (IBAction)activatePreferencesSheet:(id)sender;
+
 @end

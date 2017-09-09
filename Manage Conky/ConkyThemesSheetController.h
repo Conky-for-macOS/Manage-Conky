@@ -10,4 +10,6 @@
 
 @interface ConkyThemesSheetController : GeneralSheetController
 
+- (IBAction)activateThemesSheet:(id)sender;
+
 @end
