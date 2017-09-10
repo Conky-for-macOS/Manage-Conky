@@ -8,6 +8,7 @@
 
 #import "ConkyPreferencesSheetController.h"
 
+#include "AHLaunchCtl/AHLaunchCtl/AHLaunchJob.h"
 #include <unistd.h>
 
 
@@ -16,26 +17,34 @@
 @synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
+
+NSString * kConkyAgentPlistLocation = @"/Library/LaunchAgents/org.npyl.conky.plist";
+
+NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
 NSString * kConkyConfigLocation = @"/Users/develnpyl/.conky";
 NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
 
+
 - (IBAction)activatePreferencesSheet:(id)sender
 {
+    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
+    
     NSDictionary * manageConkyPreferences = nil;
     NSString * conkyConfigLocation = @"";
     
- 
     [super activateSheet:@"ConkyPreferences"];
+    
     
     /*
      *  Conky agent present?
      */
-    int res = access("/Library/LaunchAgents/org.npyl.conky.plist", R_OK);
+    int res = access( [conkyAgentPlistPath UTF8String], R_OK);
     if (res < 0) {
         NSLog( @"Agent plist doesnt exist or not accessible!" );
     } else {
         [_runConkyAtStartupCheckbox setState:1];
     }
+    
     
     /*
      *  Conky configuration file location?
@@ -73,6 +82,31 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
         NSDictionary * manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
         [manageConkyPreferences setValue:[_conkyConfigLocationTextfield stringValue] forKey:@"configLocation"];
         [manageConkyPreferences writeToFile:kManageConkyPrefsPath atomically:YES];
+    }
+}
+
+- (IBAction)runConkyAtStartupCheckboxAction:(id)sender
+{
+    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
+    
+    switch ([sender state]) {
+        case 0:
+            NSLog( @"Request to remove the Agent!" );
+            
+            unlink( [conkyAgentPlistPath UTF8String] );
+            
+            break;
+        case 1:
+            NSLog( @"Request to add the Agent!" );
+            
+            AHLaunchJob* job = [AHLaunchJob new];
+            job.Program = @"/usr/bin/conky";
+            job.Label = @"org.npyl.conky";
+            job.ProgramArguments = @[ @"-c", @"" ];
+            job.RunAtLoad = YES;
+            
+            break;
+        default:
     }
 }
 

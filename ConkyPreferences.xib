@@ -42,6 +42,9 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="runConkyAtStartupCheckboxAction:" target="-2" id="fCA-ar-xJC"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-LW-qHw">
                         <rect key="frame" x="18" y="211" width="165" height="17"/>
