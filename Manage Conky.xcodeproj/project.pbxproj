@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77282BE01F65DF9600629227 /* AHAuthorizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BD01F65DF9600629227 /* AHAuthorizer.m */; };
-		77282BE11F65DF9600629227 /* AHLaunchCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BD31F65DF9600629227 /* AHLaunchCtl.m */; };
-		77282BE21F65DF9600629227 /* AHLaunchJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BD51F65DF9600629227 /* AHLaunchJob.m */; };
-		77282BE31F65DF9600629227 /* AHLaunchJobSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BD71F65DF9600629227 /* AHLaunchJobSchedule.m */; };
-		77282BE41F65DF9600629227 /* AHServiceManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BDA1F65DF9600629227 /* AHServiceManagement.m */; };
-		77282BE51F65DF9600629227 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 77282BDB1F65DF9600629227 /* LICENSE */; };
-		77282BE61F65DF9600629227 /* NSFileManger+Privileged.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BDD1F65DF9600629227 /* NSFileManger+Privileged.m */; };
-		77282BE71F65DF9600629227 /* NSString+ah_versionCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 77282BDF1F65DF9600629227 /* NSString+ah_versionCompare.m */; };
 		778CA46B1F6536C2007FC965 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = 778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
@@ -28,26 +20,10 @@
 		77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */; };
 		77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6DBC71F648ACB001DEBB1 /* About.xib */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
+		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77282BCF1F65DF9600629227 /* AHAuthorizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHAuthorizer.h; path = AHLaunchCtl/AHAuthorizer.h; sourceTree = "<group>"; };
-		77282BD01F65DF9600629227 /* AHAuthorizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHAuthorizer.m; path = AHLaunchCtl/AHAuthorizer.m; sourceTree = "<group>"; };
-		77282BD11F65DF9600629227 /* AHLaunchCtl-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AHLaunchCtl-Prefix.pch"; path = "AHLaunchCtl/AHLaunchCtl-Prefix.pch"; sourceTree = "<group>"; };
-		77282BD21F65DF9600629227 /* AHLaunchCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHLaunchCtl.h; path = AHLaunchCtl/AHLaunchCtl.h; sourceTree = "<group>"; };
-		77282BD31F65DF9600629227 /* AHLaunchCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHLaunchCtl.m; path = AHLaunchCtl/AHLaunchCtl.m; sourceTree = "<group>"; };
-		77282BD41F65DF9600629227 /* AHLaunchJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHLaunchJob.h; path = AHLaunchCtl/AHLaunchJob.h; sourceTree = "<group>"; };
-		77282BD51F65DF9600629227 /* AHLaunchJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHLaunchJob.m; path = AHLaunchCtl/AHLaunchJob.m; sourceTree = "<group>"; };
-		77282BD61F65DF9600629227 /* AHLaunchJobSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHLaunchJobSchedule.h; path = AHLaunchCtl/AHLaunchJobSchedule.h; sourceTree = "<group>"; };
-		77282BD71F65DF9600629227 /* AHLaunchJobSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHLaunchJobSchedule.m; path = AHLaunchCtl/AHLaunchJobSchedule.m; sourceTree = "<group>"; };
-		77282BD81F65DF9600629227 /* AHServiceManagement_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHServiceManagement_Private.h; path = AHLaunchCtl/AHServiceManagement_Private.h; sourceTree = "<group>"; };
-		77282BD91F65DF9600629227 /* AHServiceManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHServiceManagement.h; path = AHLaunchCtl/AHServiceManagement.h; sourceTree = "<group>"; };
-		77282BDA1F65DF9600629227 /* AHServiceManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHServiceManagement.m; path = AHLaunchCtl/AHServiceManagement.m; sourceTree = "<group>"; };
-		77282BDB1F65DF9600629227 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = AHLaunchCtl/LICENSE; sourceTree = "<group>"; };
-		77282BDC1F65DF9600629227 /* NSFileManger+Privileged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManger+Privileged.h"; path = "AHLaunchCtl/NSFileManger+Privileged.h"; sourceTree = "<group>"; };
-		77282BDD1F65DF9600629227 /* NSFileManger+Privileged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManger+Privileged.m"; path = "AHLaunchCtl/NSFileManger+Privileged.m"; sourceTree = "<group>"; };
-		77282BDE1F65DF9600629227 /* NSString+ah_versionCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ah_versionCompare.h"; path = "AHLaunchCtl/NSString+ah_versionCompare.h"; sourceTree = "<group>"; };
-		77282BDF1F65DF9600629227 /* NSString+ah_versionCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ah_versionCompare.m"; path = "AHLaunchCtl/NSString+ah_versionCompare.m"; sourceTree = "<group>"; };
 		778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847381F62C2B600AF8BCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +45,7 @@
 		77E6DBC71F648ACB001DEBB1 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
+		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,36 +53,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		77282BCE1F65DF7400629227 /* AHLaunchCtl */ = {
-			isa = PBXGroup;
-			children = (
-				77282BCF1F65DF9600629227 /* AHAuthorizer.h */,
-				77282BD01F65DF9600629227 /* AHAuthorizer.m */,
-				77282BD11F65DF9600629227 /* AHLaunchCtl-Prefix.pch */,
-				77282BD21F65DF9600629227 /* AHLaunchCtl.h */,
-				77282BD31F65DF9600629227 /* AHLaunchCtl.m */,
-				77282BD41F65DF9600629227 /* AHLaunchJob.h */,
-				77282BD51F65DF9600629227 /* AHLaunchJob.m */,
-				77282BD61F65DF9600629227 /* AHLaunchJobSchedule.h */,
-				77282BD71F65DF9600629227 /* AHLaunchJobSchedule.m */,
-				77282BD81F65DF9600629227 /* AHServiceManagement_Private.h */,
-				77282BD91F65DF9600629227 /* AHServiceManagement.h */,
-				77282BDA1F65DF9600629227 /* AHServiceManagement.m */,
-				77282BDB1F65DF9600629227 /* LICENSE */,
-				77282BDC1F65DF9600629227 /* NSFileManger+Privileged.h */,
-				77282BDD1F65DF9600629227 /* NSFileManger+Privileged.m */,
-				77282BDE1F65DF9600629227 /* NSString+ah_versionCompare.h */,
-				77282BDF1F65DF9600629227 /* NSString+ah_versionCompare.m */,
-			);
-			name = AHLaunchCtl;
-			sourceTree = "<group>";
-		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +69,7 @@
 				77B9EFF41F64209D00C375FE /* ConkyThemes.xib */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
+				77F6D6D31F65EB2E00A61645 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,7 +84,6 @@
 		77B847371F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXGroup;
 			children = (
-				77282BCE1F65DF7400629227 /* AHLaunchCtl */,
 				77B847381F62C2B600AF8BCA /* AppDelegate.h */,
 				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
 				77B8473E1F62C2B600AF8BCA /* ViewController.h */,
@@ -156,6 +110,14 @@
 				77B8473C1F62C2B600AF8BCA /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +182,6 @@
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				778CA46B1F6536C2007FC965 /* default-themes-2.1.cmtp.7z in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
-				77282BE51F65DF9600629227 /* LICENSE in Resources */,
 				77B9EFF51F64209D00C375FE /* ConkyThemes.xib in Resources */,
 				77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */,
 				77B9EFF31F64208E00C375FE /* ConkyPreferences.xib in Resources */,
@@ -237,17 +198,10 @@
 				77B847401F62C2B600AF8BCA /* ViewController.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
-				77282BE41F65DF9600629227 /* AHServiceManagement.m in Sources */,
-				77282BE11F65DF9600629227 /* AHLaunchCtl.m in Sources */,
-				77282BE71F65DF9600629227 /* NSString+ah_versionCompare.m in Sources */,
-				77282BE61F65DF9600629227 /* NSFileManger+Privileged.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,
-				77282BE21F65DF9600629227 /* AHLaunchJob.m in Sources */,
-				77282BE31F65DF9600629227 /* AHLaunchJobSchedule.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
-				77282BE01F65DF9600629227 /* AHAuthorizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
