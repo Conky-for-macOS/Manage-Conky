@@ -33,6 +33,17 @@
                             <action selector="closeSheet:" target="-2" id="UFz-6w-ibk"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-mv-6MM">
+                        <rect key="frame" x="14" y="222" width="236" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Import Theme Pack ( *.cmtp.7z )" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XNx-hM-uTL">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="importThemePack:" target="-2" id="ESy-Bf-ny6"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>

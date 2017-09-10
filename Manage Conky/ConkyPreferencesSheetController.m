@@ -8,8 +8,8 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#include <ServiceManagement/ServiceManagement.h>
 #include <unistd.h>
+#include <ServiceManagement/ServiceManagement.h>
 
 
 @implementation ConkyPreferencesSheetController

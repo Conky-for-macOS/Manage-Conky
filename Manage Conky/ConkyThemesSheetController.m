@@ -15,4 +15,24 @@
     [super activateSheet:@"ConkyThemes"];
 }
 
+- (IBAction)importThemePack:(id)sender
+{
+    // create an open documet panel
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    panel.canChooseDirectories = NO;
+    panel.allowsMultipleSelection = NO;
+    
+    // display the panel
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            
+            NSURL *theDocument = [[panel URLs]objectAtIndex:0];
+            NSString *theString = [NSString stringWithFormat:@"%@", theDocument];
+            
+            NSLog(@"%@", theString);
+        }
+    }];
+}
+
 @end
