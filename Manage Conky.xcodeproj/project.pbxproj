@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		778CA46B1F6536C2007FC965 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = 778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
 		77B847401F62C2B600AF8BCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473F1F62C2B600AF8BCA /* ViewController.m */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847381F62C2B600AF8BCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		77B847391F62C2B600AF8BCA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
+				778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */,
 				77E6DBC71F648ACB001DEBB1 /* About.xib */,
 				77B9EFF21F64208E00C375FE /* ConkyPreferences.xib */,
 				77B9EFF41F64209D00C375FE /* ConkyThemes.xib */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
+				778CA46B1F6536C2007FC965 /* default-themes-2.1.cmtp.7z in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				77B9EFF51F64209D00C375FE /* ConkyThemes.xib in Resources */,
 				77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */,
