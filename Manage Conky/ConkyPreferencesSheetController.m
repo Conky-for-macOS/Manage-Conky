@@ -52,8 +52,10 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
     
     manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
     
-    if (!manageConkyPreferences)
+    if (!manageConkyPreferences) {
+        [_conkyConfigLocationTextfield setStringValue:@"Could not open conky preferences file!"];
         return;
+    }
     
     conkyConfigLocation = [manageConkyPreferences objectForKey:@"configLocation"];
     [_conkyConfigLocationTextfield setStringValue:conkyConfigLocation];
