@@ -8,7 +8,7 @@
 
 #import "GeneralSheetController.h"
 
-@interface ConkyPreferencesSheetController : GeneralSheetController
+@interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>    // ##: Check me
 
 @property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;
 @property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
