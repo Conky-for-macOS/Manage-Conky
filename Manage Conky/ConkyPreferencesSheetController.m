@@ -59,6 +59,21 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
     
     conkyConfigLocation = [manageConkyPreferences objectForKey:@"configLocation"];
     [_conkyConfigLocationTextfield setStringValue:conkyConfigLocation];
+    
+    
+    [_conkyConfigLocationTextfield setDelegate:self];   /* Do that to allow, getting the Enter-Key notification */
+}
+
+-(void)controlTextDidEndEditing:(NSNotification *)notification
+{
+    // See if it was due to a return
+    
+    if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
+    {
+        NSDictionary * manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
+        [manageConkyPreferences setValue:[_conkyConfigLocationTextfield stringValue] forKey:@"configLocation"];
+        [manageConkyPreferences writeToFile:kManageConkyPrefsPath atomically:YES];
+    }
 }
 
 @end
