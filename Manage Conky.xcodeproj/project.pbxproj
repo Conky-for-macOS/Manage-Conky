@@ -24,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34FA55786B54F021BABA9FEC /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847381F62C2B600AF8BCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		529E1B846113E49AAD42EC1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */,
+				37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
+				529E1B846113E49AAD42EC1D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
+				34FA55786B54F021BABA9FEC /* libPods-Manage Conky.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,6 +324,7 @@
 		};
 		77B8474A1F62C2B600AF8BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -323,6 +338,7 @@
 		};
 		77B8474B1F62C2B600AF8BCA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

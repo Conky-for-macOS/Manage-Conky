@@ -10,6 +10,8 @@
 
 @interface ConkyThemesSheetController : GeneralSheetController
 
+@property (weak) IBOutlet NSBrowser *themesBrowser;
+
 - (IBAction)activateThemesSheet:(id)sender;
 
 @end

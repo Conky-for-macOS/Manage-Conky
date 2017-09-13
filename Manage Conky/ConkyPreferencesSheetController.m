@@ -19,19 +19,19 @@
 
 
 NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
-NSString * kConkyConfigLocation = @"/Users/develnpyl/.conky";
-NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
+NSString * kConkyConfigsDefaultPath = @"/Users/develnpyl/.conky";
 
 
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
+
     
-    NSDictionary * manageConkyPreferences = nil;
-    NSString * conkyConfigLocation = @"";
+//    NSDictionary * defaults = [NSDictionary dictionaryWithObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
+//    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+
     
     [super activateSheet:@"ConkyPreferences"];
-    
     
     /*
      *  Conky agent present?
@@ -39,6 +39,8 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
     int res = access( [conkyAgentPlistPath UTF8String], R_OK);
     if (res < 0) {
         NSLog( @"Agent plist doesnt exist or not accessible!" );
+        
+        // NOTE: by default the checkbox is unchecked
     } else {
         [_runConkyAtStartupCheckbox setState:1];
     }
@@ -47,27 +49,15 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
     /*
      *  Conky configuration file location?
      */
-    res = access( [kManageConkyPrefsPath UTF8String], R_OK);
-    if (res < 0) {
-        id objects[] = { kConkyConfigLocation };
-        id keys[] = { @"configLocation" };
-        NSUInteger count = sizeof(objects) / sizeof(id);
-        
-        manageConkyPreferences = [[NSDictionary alloc] initWithObjects:objects forKeys:keys count:count];
-        [manageConkyPreferences writeToFile:kManageConkyPrefsPath atomically:YES];
+    NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    
+    if (!conkyConfigsPath)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
+        conkyConfigsPath = kConkyConfigsDefaultPath;
     }
     
-    manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
-    
-    if (!manageConkyPreferences) {
-        [_conkyConfigLocationTextfield setStringValue:@"Could not open conky preferences file!"];
-        return;
-    }
-    
-    conkyConfigLocation = [manageConkyPreferences objectForKey:@"configLocation"];
-    [_conkyConfigLocationTextfield setStringValue:conkyConfigLocation];
-    
-    
+    [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
     [_conkyConfigLocationTextfield setDelegate:self];   /* Do that to allow, getting the Enter-Key notification */
 }
 
@@ -77,9 +67,7 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
     
     if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
     {
-        NSDictionary * manageConkyPreferences = [[NSDictionary alloc] initWithContentsOfFile:kManageConkyPrefsPath];
-        [manageConkyPreferences setValue:[_conkyConfigLocationTextfield stringValue] forKey:@"configLocation"];
-        [manageConkyPreferences writeToFile:kManageConkyPrefsPath atomically:YES];
+        [[NSUserDefaults standardUserDefaults] setObject:[_conkyConfigLocationTextfield stringValue] forKey:@"configsLocation"];
     }
 }
 
@@ -87,9 +75,12 @@ NSString * kManageConkyPrefsPath = @"/Users/develnpyl/prefs.plist";
 {
     NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
     
+    NSString * kConkyLaunchAgentLabel = @"org.npyl.conky";
+    NSString * kConkyExecutablePath = @"/usr/local/bin/conky";
+    
     // TODO: add support for theme
     
-    id objects[] = { @"org.npyl.conky", @[ @"/usr/local/bin/conky" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
+    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
     id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive"  };
     NSUInteger count = sizeof(objects) / sizeof(id);
     
