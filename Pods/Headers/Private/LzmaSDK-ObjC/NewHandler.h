@@ -1,0 +1,1 @@
+../../../LzmaSDK-ObjC/lzma/CPP/Common/NewHandler.h

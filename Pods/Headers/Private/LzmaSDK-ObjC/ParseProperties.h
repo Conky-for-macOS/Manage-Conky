@@ -1,0 +1,1 @@
+../../../LzmaSDK-ObjC/lzma/CPP/7zip/Archive/Common/ParseProperties.h

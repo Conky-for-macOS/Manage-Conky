@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CD20F3A440DF215F8759BDE5007390D0A6E9A12C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C22EFAAA4E3DD4094B2F843137D4BFE57940D54C" : 9223372036854775807,
+    "CD20F3A440DF215F8759BDE5007390D0A6E9A12C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C7305407-02D0-4B25-B0D6-CC6E5CDF58F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C22EFAAA4E3DD4094B2F843137D4BFE57940D54C" : "Manage%20Conky\/LzmaSDKObjC\/",
+    "CD20F3A440DF215F8759BDE5007390D0A6E9A12C" : "Manage%20Conky\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Manage Conky",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Manage Conky.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/OlehKulykov\/LzmaSDKObjC",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C22EFAAA4E3DD4094B2F843137D4BFE57940D54C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/npyl\/Manage-Conky.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CD20F3A440DF215F8759BDE5007390D0A6E9A12C"
+    }
+  ]
+}

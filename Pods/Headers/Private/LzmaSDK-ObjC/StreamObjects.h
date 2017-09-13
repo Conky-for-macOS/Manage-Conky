@@ -1,0 +1,1 @@
+../../../LzmaSDK-ObjC/lzma/CPP/7zip/Common/StreamObjects.h
