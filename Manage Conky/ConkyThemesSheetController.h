@@ -7,8 +7,9 @@
 //
 
 #import "GeneralSheetController.h"
+#import <LzmaSDKObjCReader.h>
 
-@interface ConkyThemesSheetController : GeneralSheetController
+@interface ConkyThemesSheetController : GeneralSheetController <LzmaSDKObjCReaderDelegate>
 
 @property (weak) IBOutlet NSBrowser *themesBrowser;
 

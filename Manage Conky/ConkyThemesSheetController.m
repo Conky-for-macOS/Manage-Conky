@@ -6,7 +6,14 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
+//
+// TODO:  For Lzma Library to work we need to change the type of the library to dynamic link library instead of static
+//
+
 #import "ConkyThemesSheetController.h"
+
+#import <LzmaSDKObjC.h>
+#import <LzmaSDKObjCReader.h>
 
 @implementation ConkyThemesSheetController
 
@@ -28,9 +35,39 @@
         if (result == NSFileHandlingPanelOKButton) {
             
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
-            NSString *theString = [NSString stringWithFormat:@"%@", theDocument];
+            NSString *archivePath = [NSString stringWithFormat:@"%@", theDocument];
             
-            NSLog(@"%@", theString);
+            NSLog(@"%@", archivePath);
+        
+        
+            // 1.2 Or create with predefined archive type if path doesn't containes suitable extension
+            LzmaSDKObjCReader * themePackReader = [[LzmaSDKObjCReader alloc] initWithFileURL:theDocument
+                                                                                     andType:LzmaSDKObjCFileType7z];
+            
+            if (!themePackReader)
+            {
+                NSLog( @"Failed creating Lzma Reader." );
+                return;
+            }
+            
+            // Optionaly: assign weak delegate for tracking extract progress.
+            themePackReader.delegate = self;
+            
+            // Open archive, with or without error. Error can be nil.
+            NSError * error = nil;
+            if (![themePackReader open:&error]) {
+                NSLog(@"Open error: %@", error);
+            }
+//            NSLog(@"Open error: %@", themePackReader.lastError);
+            
+            NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
+            // Iterate all archive items, track what items do you need & hold them in array.
+            [themePackReader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
+                NSLog(@"\n%@", item);
+                if (item) [items addObject:item]; // if needs this item - store to array.
+                return YES; // YES - continue iterate, NO - stop iteration
+            }];
+            NSLog(@"Iteration error: %@", themePackReader.lastError);
         }
     }];
 }

@@ -21,11 +21,12 @@
 		77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6DBC71F648ACB001DEBB1 /* About.xib */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
+		FCA3BA7FAA9574B4BD1433C5 /* libPods-Manage Conky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		34FA55786B54F021BABA9FEC /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
+		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
+		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		778CA46A1F6536C2007FC965 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847381F62C2B600AF8BCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,7 +49,7 @@
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
+		8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,21 +58,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
+				FCA3BA7FAA9574B4BD1433C5 /* libPods-Manage Conky.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		529E1B846113E49AAD42EC1D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */,
-				37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +75,7 @@
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
-				529E1B846113E49AAD42EC1D /* Pods */,
+				84D8AFEE31EBA1C4C04E918A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,9 +122,18 @@
 			isa = PBXGroup;
 			children = (
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
-				34FA55786B54F021BABA9FEC /* libPods-Manage Conky.a */,
+				8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84D8AFEE31EBA1C4C04E918A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */,
+				4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +143,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B847491F62C2B600AF8BCA /* Build configuration list for PBXNativeTarget "Manage Conky" */;
 			buildPhases = (
+				06021C38407670CBC4B11E84 /* [CP] Check Pods Manifest.lock */,
 				77B847311F62C2B600AF8BCA /* Sources */,
 				77B847321F62C2B600AF8BCA /* Frameworks */,
 				77B847331F62C2B600AF8BCA /* Resources */,
+				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
+				F7274ACE208100D26DB22441 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,6 +208,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		06021C38407670CBC4B11E84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Manage Conky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7274ACE208100D26DB22441 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		77B847311F62C2B600AF8BCA /* Sources */ = {
@@ -324,7 +380,7 @@
 		};
 		77B8474A1F62C2B600AF8BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C5915E83B20ABF1D5615379 /* Pods-Manage Conky.debug.xcconfig */;
+			baseConfigurationReference = 340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -338,7 +394,7 @@
 		};
 		77B8474B1F62C2B600AF8BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37A7F8721A12624EA0B45897 /* Pods-Manage Conky.release.xcconfig */;
+			baseConfigurationReference = 4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

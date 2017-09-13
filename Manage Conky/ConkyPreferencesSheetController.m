@@ -25,11 +25,7 @@ NSString * kConkyConfigsDefaultPath = @"/Users/develnpyl/.conky";
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
-
     
-//    NSDictionary * defaults = [NSDictionary dictionaryWithObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
-//    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-
     
     [super activateSheet:@"ConkyPreferences"];
     
