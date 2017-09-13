@@ -1378,7 +1378,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -1404,7 +1404,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
