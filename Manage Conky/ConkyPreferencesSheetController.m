@@ -19,7 +19,6 @@
 
 
 NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
-NSString * kConkyConfigsDefaultPath = @"/Users/develnpyl/.conky";
 
 
 - (IBAction)activatePreferencesSheet:(id)sender
@@ -49,6 +48,11 @@ NSString * kConkyConfigsDefaultPath = @"/Users/develnpyl/.conky";
     
     if (!conkyConfigsPath)
     {
+        NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"/Users/%@/.conky", NSUserName()];
+        
+        if (!kConkyConfigsDefaultPath)
+            return;
+        
         [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
         conkyConfigsPath = kConkyConfigsDefaultPath;
     }

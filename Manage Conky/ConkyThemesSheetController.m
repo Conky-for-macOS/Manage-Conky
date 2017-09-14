@@ -49,6 +49,7 @@
     [themePackReader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
         NSLog(@"\n%@", item);
         if (item) [items addObject:item]; // if needs this item - store to array.
+        
         return YES; // YES - continue iterate, NO - stop iteration
     }];
     NSLog(@"Iteration error: %@", themePackReader.lastError);
