@@ -24,9 +24,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-bz-o3c">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-bz-o3c">
                         <rect key="frame" x="407" y="13" width="59" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dCi-mZ-bUL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -35,9 +34,8 @@
                             <action selector="closeSheet:" target="-2" id="5sv-gv-mEe"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7a-wy-yQX">
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="G7a-wy-yQX">
                         <rect key="frame" x="18" y="235" width="148" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Run conky at startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="IJC-9X-9Gr">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -46,18 +44,16 @@
                             <action selector="runConkyAtStartupCheckboxAction:" target="-2" id="fCA-ar-xJC"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-LW-qHw">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sG-LW-qHw">
                         <rect key="frame" x="18" y="211" width="165" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Conky config files location" id="J9I-2d-pze">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCd-BW-TZI">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCd-BW-TZI">
                         <rect key="frame" x="192" y="209" width="268" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OCs-lf-sof">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -65,6 +61,18 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ecK-bz-o3c" secondAttribute="bottom" constant="20" symbolic="YES" id="5t9-yi-IOS"/>
+                    <constraint firstAttribute="trailing" secondItem="ZCd-BW-TZI" secondAttribute="trailing" constant="20" symbolic="YES" id="JkE-NU-SGS"/>
+                    <constraint firstItem="ZCd-BW-TZI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="39" id="O9B-Mq-7QM"/>
+                    <constraint firstItem="G7a-wy-yQX" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="5" id="OSC-s8-kCa"/>
+                    <constraint firstItem="G7a-wy-yQX" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="iDM-ho-9zC"/>
+                    <constraint firstItem="ZCd-BW-TZI" firstAttribute="leading" secondItem="5sG-LW-qHw" secondAttribute="trailing" constant="11" id="lnZ-O7-Plt"/>
+                    <constraint firstItem="5sG-LW-qHw" firstAttribute="centerY" secondItem="ZCd-BW-TZI" secondAttribute="centerY" id="oXC-Bl-cyU"/>
+                    <constraint firstItem="G7a-wy-yQX" firstAttribute="leading" secondItem="5sG-LW-qHw" secondAttribute="leading" id="uc3-mV-8fu"/>
+                    <constraint firstItem="5sG-LW-qHw" firstAttribute="top" secondItem="G7a-wy-yQX" secondAttribute="bottom" constant="9" id="w50-gJ-ywZ"/>
+                    <constraint firstItem="ZCd-BW-TZI" firstAttribute="trailing" secondItem="ecK-bz-o3c" secondAttribute="trailing" id="zrc-zR-9YK"/>
+                </constraints>
             </view>
         </window>
     </objects>

@@ -22,9 +22,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="376"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-mv-6MM">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-mv-6MM">
                         <rect key="frame" x="14" y="295" width="318" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Import from Custom Theme Pack ( *.cmtp.7z )" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XNx-hM-uTL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -33,18 +32,16 @@
                             <action selector="importFromCustomThemePack:" target="-2" id="Tn3-7o-z7n"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-n1-htZ">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-n1-htZ">
                         <rect key="frame" x="18" y="277" width="130" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Choose your themes" id="Wfm-xw-7gq">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-rp-Enh">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-rp-Enh">
                         <rect key="frame" x="14" y="328" width="238" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Import from Default Theme Pack" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QqY-PO-MIL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -53,9 +50,8 @@
                             <action selector="importFromDefaultThemePack:" target="-2" id="Eis-aj-HdV"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EsE-TR-tlW">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EsE-TR-tlW">
                         <rect key="frame" x="427" y="18" width="33" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q3L-Pn-qMq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -65,6 +61,16 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="EsE-TR-tlW" secondAttribute="bottom" constant="20" symbolic="YES" id="8ar-HX-qUa"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="93f-SS-YQm"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="cXa-mv-6MM" secondAttribute="leading" id="EFd-1z-axg"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="apd-Bq-tI9"/>
+                    <constraint firstItem="Zk3-n1-htZ" firstAttribute="top" secondItem="cXa-mv-6MM" secondAttribute="bottom" constant="8" symbolic="YES" id="poS-La-cka"/>
+                    <constraint firstItem="cXa-mv-6MM" firstAttribute="leading" secondItem="Zk3-n1-htZ" secondAttribute="leading" id="sG3-5t-d11"/>
+                    <constraint firstAttribute="trailing" secondItem="EsE-TR-tlW" secondAttribute="trailing" constant="20" symbolic="YES" id="uda-L3-4ZA"/>
+                    <constraint firstItem="cXa-mv-6MM" firstAttribute="top" secondItem="Nsd-rp-Enh" secondAttribute="bottom" constant="12" symbolic="YES" id="x10-9L-lSe"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="140" y="215"/>
         </window>
