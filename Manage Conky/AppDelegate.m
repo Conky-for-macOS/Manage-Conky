@@ -8,11 +8,17 @@
 
 #import "AppDelegate.h"
 
+#import "PFMoveApplication.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    CXForciblyMoveToApplicationsFolder();
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 }

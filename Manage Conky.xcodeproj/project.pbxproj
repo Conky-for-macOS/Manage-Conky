@@ -21,6 +21,7 @@
 		77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6DBC71F648ACB001DEBB1 /* About.xib */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
+		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA3BA7FAA9574B4BD1433C5 /* libPods-Manage Conky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,8 @@
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		ECAF6F642024ADC900715D72 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 				77E6DBC71F648ACB001DEBB1 /* About.xib */,
 				77B9EFF21F64208E00C375FE /* ConkyPreferences.xib */,
 				77B9EFF41F64209D00C375FE /* ConkyThemes.xib */,
+				ECAF6F622024ADC900715D72 /* LetsMove */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
@@ -136,6 +140,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		ECAF6F622024ADC900715D72 /* LetsMove */ = {
+			isa = PBXGroup;
+			children = (
+				ECAF6F632024ADC900715D72 /* PFMoveApplication.h */,
+				ECAF6F642024ADC900715D72 /* PFMoveApplication.m */,
+			);
+			path = LetsMove;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,7 +178,7 @@
 		77B8472D1F62C2B600AF8BCA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Nickolas Pylarinos";
 				TargetAttributes = {
 					77B847341F62C2B600AF8BCA = {
@@ -272,6 +285,7 @@
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
+				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +313,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -307,7 +323,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -347,7 +367,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -355,7 +377,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
