@@ -10,6 +10,12 @@
 #import <LzmaSDKObjCReader.h>
 
 @interface ConkyThemesSheetController : GeneralSheetController <LzmaSDKObjCReaderDelegate>
+{
+    /**
+     The theme-pack items
+     */
+    NSMutableArray * items;
+}
 
 @property (weak) IBOutlet NSBrowser *themesBrowser;
 

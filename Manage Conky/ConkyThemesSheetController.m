@@ -22,62 +22,101 @@
     [super activateSheet:@"ConkyThemes"];
 }
 
-- (void)openThemePackWithURL:(NSURL*)url
+/**
+ Here happens all the graphicall stuff for showing the list of themes in the theme-pack file
+ and giving the option to select and and install any number of themes...
+ */
+- (void)showThemesList
 {
-    //    themePackReader.delegate = self;          --- Extract progress
-    
-    
-    LzmaSDKObjCReader * themePackReader = [[LzmaSDKObjCReader alloc] initWithFileURL:url
-                                                                             andType:LzmaSDKObjCFileType7z];
-    
-    if (!themePackReader) {
-        NSLog( @"Failed creating Lzma Reader." );
-        return;
-    }
-    
-    NSError * error = nil;
-    if (![themePackReader open:&error]) {
-        NSLog(@"Open error: %@", error);
-        return;
-    }
-    
-    NSMutableArray * items = [NSMutableArray array];
-    
-    [themePackReader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error) {
-        NSLog(@"\n%@", item);
-        
-        if (item) [items addObject:item];                                                       /* if needs this item - store to array */
-        
-        return YES;                                                                             /* YES - continue iterate, NO - stop iteration */
-    }];
+    /* HI! */
+    NSLog(@"Omaewa mo sindeiru");
+}
 
+- (BOOL)openThemePackWithURL:(NSURL*)url
+{
+    /*
+     * Open theme-pack
+     */
+    NSError * error = nil;
+    LzmaSDKObjCReader * themePackReader = [[LzmaSDKObjCReader alloc] initWithFileURL:url andType:LzmaSDKObjCFileType7z];
+    
+    if (!themePackReader)
+    {
+        NSLog(@"Failed creating Lzma Reader.");
+        return NO;
+    }
+    
+    if (![themePackReader open:&error])
+    {
+        NSLog(@"Open error: %@", error);
+        return NO;
+    }
+    
+    /*
+     *  fill the array with the zip-file items
+     */
+    items = [NSMutableArray array];
+    
+    [themePackReader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error)
+    {
+        if (item)
+        {
+            [items addObject:item];
+            return YES;
+        }
+        else
+        {
+            NSLog(@"Error %@ iterating for item: %@", error, item);
+            return NO;
+        }
+    }];
+    
+    /*
+     * check if succeeded
+     */
+    return ([items count] == [themePackReader itemsCount]) ? YES : NO;
 }
 
 - (IBAction)importFromDefaultThemePack:(id)sender
 {
-    NSString *defaultThemePackPath = [NSString stringWithFormat:@"%@/default-themes-2.1.cmtp.7z", [[NSBundle mainBundle] resourcePath]];
-    [self openThemePackWithURL:[NSURL fileURLWithPath:defaultThemePackPath]];
+    BOOL res = NO;
+    
+    NSURL *defaultThemePackPath = [[NSBundle mainBundle] URLForResource:@"default-themes-2.1.cmtp" withExtension:@"7z"];
+    res = [self openThemePackWithURL:defaultThemePackPath];
+    
+    if (res)
+        [self showThemesList];
 }
 
 - (IBAction)importFromCustomThemePack:(id)sender
 {
-    // create an open documet panel
+    /*
+     * create an open documet panel
+     */
+    __block BOOL res = NO;
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
     panel.canChooseDirectories = NO;
     panel.allowsMultipleSelection = NO;
+    panel.allowedFileTypes = @[@"7z"];
     
-    // display the panel
-    [panel beginWithCompletionHandler:^(NSInteger result) {
-        if (result == NSFileHandlingPanelOKButton) {
-            
+    /*
+     * display the panel
+     */
+    [panel beginWithCompletionHandler:^(NSInteger result)
+    {
+        if (result == NSFileHandlingPanelOKButton)
+        {
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
-            NSString *archivePath = [NSString stringWithFormat:@"%@", theDocument];
-            
-            NSLog(@"%@", archivePath);
-            
-            [self openThemePackWithURL:theDocument];
+            res = [self openThemePackWithURL:theDocument];
         }
+        else return;
+        
+        /*
+         * show the list
+         */
+        if (res)
+            [self showThemesList];
     }];
 }
 
