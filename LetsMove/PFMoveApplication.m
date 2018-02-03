@@ -301,7 +301,7 @@ void CXForciblyMoveToApplicationsFolder(void) {
             informativeText = [informativeText stringByAppendingString:kStrMoveApplicationQuestionInfoInDownloadsFolder];
         }
         
-        informativeText = [informativeText stringByAppendingString:@"\n\nConkyX MUST be installed in /Applications to work properly"];
+        informativeText = [informativeText stringByAppendingString:@"\n\nManage Conky MUST be installed in /Applications to work properly"];
         
         [alert setInformativeText:informativeText];
         
@@ -405,7 +405,7 @@ fail:
 }
 
 void CXRelaunch(void) {
-    Relaunch(@"/Applications/ConkyX.app");
+    Relaunch(@"/Applications/Manage Conky.app");
     [NSApp terminate:nil];
 }
 
