@@ -76,11 +76,11 @@ NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
     NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
     
     NSString * kConkyLaunchAgentLabel = @"org.npyl.conky";
-    NSString * kConkyExecutablePath = @"/usr/local/bin/conky";
+    NSString * kConkyExecutablePath = @"/Applications/ConkyX.app/Contents/Resources/conky";
     
     // TODO: add support for theme
     
-    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
+    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO] };
     id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive"  };
     NSUInteger count = sizeof(objects) / sizeof(id);
     
