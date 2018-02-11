@@ -21,4 +21,7 @@
 
 - (IBAction)activateThemesSheet:(id)sender;
 
+@property (weak) IBOutlet NSScrollView *importedThemesView;
+@property (weak) IBOutlet NSTableColumn *themesColumn;
+@property (weak) IBOutlet NSTableColumn *isInstalledColumn;
 @end
