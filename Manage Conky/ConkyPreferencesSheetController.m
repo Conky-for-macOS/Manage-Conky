@@ -8,30 +8,30 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#include <unistd.h>
 #include <ServiceManagement/ServiceManagement.h>
+#include <unistd.h>
+
+/* defines */
+#define kConkyAgentPlistName @"org.npyl.conky.plist"
+
 
 @implementation ConkyPreferencesSheetController
 
 @synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
-
-NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
-
-
 - (IBAction)activatePreferencesSheet:(id)sender
 {
-    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
+    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
     
     [super activateSheet:@"ConkyPreferences"];
     
     /*
      *  Is conky agent present?
      */
-    int res = access( [conkyAgentPlistPath UTF8String], R_OK);
+    int res = access([conkyAgentPlistPath UTF8String], R_OK);
     if (res < 0)
-        NSLog( @"Agent plist doesnt exist or not accessible!" );
+        NSLog(@"Agent plist doesnt exist or not accessible!");
     else
         [_runConkyAtStartupCheckbox setState:1];
     
@@ -57,7 +57,9 @@ NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
 
 -(void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    // See if it was due to a return
+    /*
+     * See if it was due to key ENTER
+     */
     
     if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
     {
@@ -65,27 +67,28 @@ NSString * kConkyAgentPlistName = @"org.npyl.conky.plist";
     }
 }
 
+// XXX add support for themes
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
-    // XXX add support for themes
+#define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
     
-    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"%@%@%@%@", @"/Users/", NSUserName(), @"/Library/LaunchAgents/", kConkyAgentPlistName ];
-    
+    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+
     if ([sender state] == 0)
     {
         NSLog( @"Request to remove the Agent!" );
         
-        // SMJobRemove() deprecated but suggested by Apple, see https://lists.macosforge.org/pipermail/launchd-dev/2016-October/001229.html
-        SMJobRemove(kSMDomainUserLaunchd, CFSTR("org.npyl.conky"), nil, YES, nil);
+        /* SMJobRemove() deprecated but suggested by Apple, see https://lists.macosforge.org/pipermail/launchd-dev/2016-October/001229.html */
+        SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
         
         unlink( [conkyAgentPlistPath UTF8String] );
     }
     else if ([sender state] == 1)
     {
-        NSLog( @"Request to add the Agent!" );
+#define kConkyLaunchAgentLabel  @"org.npyl.conky"
+#define kConkyExecutablePath    @"/Applications/ConkyX.app/Contents/Resources/conky"
         
-        NSString * kConkyLaunchAgentLabel = @"org.npyl.conky";
-        NSString * kConkyExecutablePath = @"/Applications/ConkyX.app/Contents/Resources/conky";
+        NSLog( @"Request to add the Agent!" );
         
         id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
         id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive" };
