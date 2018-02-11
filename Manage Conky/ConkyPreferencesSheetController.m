@@ -115,4 +115,32 @@
     }
 }
 
+- (IBAction)un_in_stallConky:(id)sender
+{
+    NSError *error = nil;
+    
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    
+    [fm removeItemAtPath:@"/Applications/ConkyX.app" error:&error];
+    if (error)
+    {
+        NSLog(@"Error uninstalling conky from computer: %@", error);
+        return;
+    }
+    
+    [fm removeItemAtPath:@"/Applications/Manage Conky.app" error:&error];
+    if (error)
+    {
+        NSLog(@"Error unistalling Manage Conky.app from your computer: %@", error);
+        return;
+    }
+    
+    NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
+    [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
+    [successfullyUninstalled setInformativeText:@"conky (ConkyX and ManageConky) was successfully uninstalled from your computer. Manage Conky will now quit"];
+    [successfullyUninstalled runModal];
+    
+    exit(0);
+}
+
 @end
