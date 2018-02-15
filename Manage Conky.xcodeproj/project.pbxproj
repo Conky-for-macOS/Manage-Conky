@@ -96,6 +96,7 @@
 		77B847371F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXGroup;
 			children = (
+				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
 				77B847381F62C2B600AF8BCA /* AppDelegate.h */,
 				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
 				77B8473E1F62C2B600AF8BCA /* ViewController.h */,
@@ -104,8 +105,6 @@
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */,
 				77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */,
-				77B9EFED1F641AB800C375FE /* GeneralSheetController.h */,
-				77B9EFEE1F641AB800C375FE /* GeneralSheetController.m */,
 				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
 				77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */,
 				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
@@ -150,6 +149,15 @@
 				ECAF6F642024ADC900715D72 /* PFMoveApplication.m */,
 			);
 			path = LetsMove;
+			sourceTree = "<group>";
+		};
+		ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */ = {
+			isa = PBXGroup;
+			children = (
+				77B9EFED1F641AB800C375FE /* GeneralSheetController.h */,
+				77B9EFEE1F641AB800C375FE /* GeneralSheetController.m */,
+			);
+			name = GeneralSheetController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -6,8 +6,6 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
-// TODO: fix dealloc... problems.
-
 #import "GeneralSheetController.h"
 
 @implementation GeneralSheetController

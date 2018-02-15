@@ -118,29 +118,48 @@
 - (IBAction)un_in_stallConky:(id)sender
 {
     NSError *error = nil;
-    
     NSFileManager *fm = [[NSFileManager alloc] init];
     
-    [fm removeItemAtPath:@"/Applications/ConkyX.app" error:&error];
-    if (error)
+    if (access("/Applications/ConkyX.app", F_OK) == 0)
     {
-        NSLog(@"Error uninstalling conky from computer: %@", error);
-        return;
+        /*
+         * Uninstall conky
+         */
+        
+        [fm removeItemAtPath:@"/Applications/ConkyX.app" error:&error];
+        if (error)
+        {
+            NSLog(@"Error uninstalling conky from computer: %@", error);
+            return;
+        }
+        
+        [fm removeItemAtPath:@"/Applications/Manage Conky.app" error:&error];
+        if (error)
+        {
+            NSLog(@"Error unistalling Manage Conky.app from your computer: %@", error);
+            return;
+        }
+        
+        NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
+        [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
+        [successfullyUninstalled setInformativeText:@"conky (ConkyX and ManageConky) was successfully uninstalled from your computer. Manage Conky will now quit"];
+        [successfullyUninstalled runModal];
+        
+        exit(0);
     }
-    
-    [fm removeItemAtPath:@"/Applications/Manage Conky.app" error:&error];
-    if (error)
+    else
     {
-        NSLog(@"Error unistalling Manage Conky.app from your computer: %@", error);
-        return;
+        /*
+         * Install Conky
+         */
+        
+        [fm copyItemAtPath:@"ConkyX.app" toPath:@"/Applications" error:&error];
+        if (error)
+        {
+            NSLog(@"error: %@", error);
+            return;
+        }
     }
-    
-    NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
-    [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
-    [successfullyUninstalled setInformativeText:@"conky (ConkyX and ManageConky) was successfully uninstalled from your computer. Manage Conky will now quit"];
-    [successfullyUninstalled runModal];
-    
-    exit(0);
 }
 
 @end
