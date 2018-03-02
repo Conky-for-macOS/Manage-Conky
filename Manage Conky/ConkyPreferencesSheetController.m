@@ -7,6 +7,7 @@
 //
 
 #import "ConkyPreferencesSheetController.h"
+#import "ConkyInstallerSheetController.h"
 
 #include <ServiceManagement/ServiceManagement.h>
 #include <unistd.h>
@@ -168,7 +169,7 @@
         if (error)
         {
             NSLog(@"error: %@", error);
-            return;
+            //return; //
         }
         
         [self installConky];
@@ -183,7 +184,10 @@
      *
      *====================================================================================*/
 
+    ConkyInstallerSheetController *ctl = [[ConkyInstallerSheetController alloc] init];
     
+    [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
+    [ctl beginInstalling];
 }
 
 @end

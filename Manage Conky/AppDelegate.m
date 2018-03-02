@@ -17,21 +17,21 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    CXForciblyMoveToApplicationsFolder();
+    //CXForciblyMoveToApplicationsFolder();
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     /*
      * Check if conky/ConkyX is installed actually
      */
-    if (access("/Applications/ConkyX", F_OK) != 0)
-    {
+    //if (access("/Applications/ConkyX.app", F_OK) != 0)
+    //{
         /*
          * Download latest release from GitHub
          * Place into /Applications
          * Install conky from /Applications/ConkyX/Resources/conky
          */
-    }
+    //}
 }
 
 
