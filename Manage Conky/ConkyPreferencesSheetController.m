@@ -165,29 +165,25 @@
          * Install Conky
          */
         
+        /*
+         * Copy ConkyX.app to /Applications
+         */
         [fm copyItemAtPath:@"ConkyX.app" toPath:@"/Applications" error:&error];
         if (error)
         {
             NSLog(@"error: %@", error);
-            //return; //
         }
+
+        /*====================================================================================
+         *
+         * Conky Installer Sheet
+         *
+         *====================================================================================*/
         
-        [self installConky];
+        ConkyInstallerSheetController *ctl = [[ConkyInstallerSheetController alloc] init];
+        [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
+        [ctl beginInstalling];
     }
-}
-
-- (void)installConky
-{
-    /*====================================================================================
-     *
-     * ConkyX Installer algorithm
-     *
-     *====================================================================================*/
-
-    ConkyInstallerSheetController *ctl = [[ConkyInstallerSheetController alloc] init];
-    
-    [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
-    [ctl beginInstalling];
 }
 
 @end

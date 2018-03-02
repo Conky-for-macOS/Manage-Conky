@@ -95,53 +95,53 @@
         [conkyDefaults setValue:@"1" forKey:@"isInstalled"];
         
         dispatch_async(dispatch_get_main_queue(),
-                       ^{
-                           [_progressIndicator stopAnimation:nil];
-                           
-                           NSAlert *alert = [[NSAlert alloc] init];
-                           [alert setMessageText:@"ConkyX Finished Installing"];
-                           [alert setInformativeText:@"Press OK to restart conky"];
-                           [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
-                            {
-                                NSError *error = nil;
-                                NSFileManager *fm = [[NSFileManager alloc] init];
-                                
-                                NSString *ConkyXInstalledLock = [NSString stringWithFormat:CONKYX_INSTALLED_LOCK_FMT, NSUserName()];
-                                
-                                [fm createDirectoryAtPath:ConkyXInstalledLock withIntermediateDirectories:NO attributes:nil error:&error];
-                                if (error)
-                                {
-                                    NSLog(@"Error creating lock directory: %@", error);
-                                }
-                                
-                                if (![fm createFileAtPath:[ConkyXInstalledLock stringByAppendingString:@"/.installed.lck"] contents:nil attributes:nil])
-                                {
-                                    NSLog(@"Error creating lock.");
-                                }
-                                
-                                if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
-                                {
-                                    NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
-                                }
-                                
-                                /*
-                                 * start the ManageConky.app if it exists to allow configuring conky
-                                 */
-                                if (access(MANAGE_CONKY_PATH, F_OK) == 0)
-                                {
-                                    [[NSWorkspace sharedWorkspace] launchApplication:[NSString stringWithUTF8String:MANAGE_CONKY_PATH]];
-                                }
-                                
-                                /*
-                                 * restart ConkyX using LetsMove code (serves us well, doesn't it?)
-                                 */
-                                NSString *path = [[NSBundle mainBundle] bundlePath];
-                                NSLog(@"%@", path);
-                                
-                                // XXX
-                                CXRelaunch();
-                            }];
-                       });
+        ^{
+           [_progressIndicator stopAnimation:nil];
+           
+           NSAlert *alert = [[NSAlert alloc] init];
+           [alert setMessageText:@"ConkyX Finished Installing"];
+           [alert setInformativeText:@"Press OK to restart conky"];
+           [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
+            {
+                NSError *error = nil;
+                NSFileManager *fm = [[NSFileManager alloc] init];
+                
+                NSString *ConkyXInstalledLock = [NSString stringWithFormat:CONKYX_INSTALLED_LOCK_FMT, NSUserName()];
+                
+                [fm createDirectoryAtPath:ConkyXInstalledLock withIntermediateDirectories:NO attributes:nil error:&error];
+                if (error)
+                {
+                    NSLog(@"Error creating lock directory: %@", error);
+                }
+                
+                if (![fm createFileAtPath:[ConkyXInstalledLock stringByAppendingString:@"/.installed.lck"] contents:nil attributes:nil])
+                {
+                    NSLog(@"Error creating lock.");
+                }
+                
+                if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+                {
+                    NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+                }
+                
+                /*
+                 * start the ManageConky.app if it exists to allow configuring conky
+                 */
+                if (access(MANAGE_CONKY_PATH, F_OK) == 0)
+                {
+                    [[NSWorkspace sharedWorkspace] launchApplication:[NSString stringWithUTF8String:MANAGE_CONKY_PATH]];
+                }
+                
+                /*
+                 * restart ConkyX using LetsMove code (serves us well, doesn't it?)
+                 */
+                NSString *path = [[NSBundle mainBundle] bundlePath];
+                NSLog(@"%@", path);
+    
+                // XXX
+                // Must end sheet here.
+            }];
+        });
     }];
     
     /*
