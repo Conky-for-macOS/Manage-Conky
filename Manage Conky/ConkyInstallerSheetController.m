@@ -123,15 +123,6 @@
                 {
                     NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
                 }
-                
-                /*
-                 * restart ConkyX using LetsMove code (serves us well, doesn't it?)
-                 */
-                NSString *path = [[NSBundle mainBundle] bundlePath];
-                NSLog(@"%@", path);
-    
-                // XXX
-                // Must end sheet here.
             }];
         });
     }];
