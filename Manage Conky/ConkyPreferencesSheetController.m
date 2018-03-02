@@ -18,11 +18,12 @@
 @implementation ConkyPreferencesSheetController
 
 @synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
+@synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
 - (IBAction)activatePreferencesSheet:(id)sender
 {
-    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+    NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
     
     [super activateSheet:@"ConkyPreferences"];
     
@@ -53,6 +54,18 @@
     [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
     /* Do that to allow, getting the Enter-Key notification */
     [_conkyConfigLocationTextfield setDelegate:self];
+    
+    /*
+     * Is ConkyX already installed?
+     */
+    if (access("/Applications/ConkyX.app", F_OK) == 0)
+    {
+        [_un_in_stallConkyButton setTitle:@"Uninstall Conky"];
+    }
+    else
+    {
+        [_un_in_stallConkyButton setTitle:@"Install Conky"];
+    }
 }
 
 -(void)controlTextDidEndEditing:(NSNotification *)notification
@@ -72,7 +85,7 @@
 {
 #define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
     
-    NSString * conkyAgentPlistPath = [[NSString alloc] initWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+    NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
 
     if ([sender state] == 0)
     {

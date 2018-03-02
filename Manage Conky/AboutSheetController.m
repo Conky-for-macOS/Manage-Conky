@@ -12,12 +12,12 @@
 
 - (IBAction)openGitHubRepo:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:@"https://github.com/npyl/Manage-Conky"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/npyl/Manage-Conky"]];
 }
 
 - (IBAction)openConkyManagersGitHubRepo:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:@"https://github.com/teejee2008/conky-manager"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/teejee2008/conky-manager"]];
 }
 
 - (IBAction)activateAboutSheet:(id)sender

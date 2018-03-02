@@ -11,6 +11,7 @@
 @interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>    // ##: Check me
 
 @property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;
+@property (weak) IBOutlet NSButton *un_in_stallConkyButton;
 @property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
 
 - (IBAction)activatePreferencesSheet:(id)sender;
