@@ -59,13 +59,11 @@
      * Is ConkyX already installed?
      */
     if (access("/Applications/ConkyX.app", F_OK) == 0)
-    {
         [_un_in_stallConkyButton setTitle:@"Uninstall Conky"];
-    }
     else
-    {
         [_un_in_stallConkyButton setTitle:@"Install Conky"];
-    }
+    
+    [_un_in_stallConkyButton setEnabled:YES];
 }
 
 -(void)controlTextDidEndEditing:(NSNotification *)notification
@@ -172,7 +170,20 @@
             NSLog(@"error: %@", error);
             return;
         }
+        
+        [self installConky];
     }
+}
+
+- (void)installConky
+{
+    /*====================================================================================
+     *
+     * ConkyX Installer algorithm
+     *
+     *====================================================================================*/
+
+    
 }
 
 @end
