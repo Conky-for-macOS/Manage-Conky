@@ -125,14 +125,6 @@
                 }
                 
                 /*
-                 * start the ManageConky.app if it exists to allow configuring conky
-                 */
-                if (access(MANAGE_CONKY_PATH, F_OK) == 0)
-                {
-                    [[NSWorkspace sharedWorkspace] launchApplication:[NSString stringWithUTF8String:MANAGE_CONKY_PATH]];
-                }
-                
-                /*
                  * restart ConkyX using LetsMove code (serves us well, doesn't it?)
                  */
                 NSString *path = [[NSBundle mainBundle] bundlePath];
