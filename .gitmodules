@@ -1,0 +1,3 @@
+[submodule "ConkyX"]
+	path = ConkyX
+	url = https://github.com/Conky-for-macOS/ConkyX
