@@ -14,6 +14,7 @@
 @property (assign) IBOutlet NSWindow * sheet;
 
 - (void)activateSheet:(NSString*)nibName;
+- (void)activateSheet:(NSString*)nibName withOwner:(id)owner;
 - (IBAction)closeSheet:(id)sender;
 
 @end

@@ -21,6 +21,7 @@
 
 @synthesize window = _window;
 @synthesize logField = _logField;
+@synthesize doneButton = _doneButton;
 @synthesize progressIndicator = _progressIndicator;
 
 - (void)receivedData:(NSNotification*)notif
@@ -123,6 +124,8 @@
                 {
                     NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
                 }
+                
+                [_doneButton setEnabled:YES];
             }];
         });
     }];
@@ -131,6 +134,12 @@
      * run the installer script
      */
     [script launch];
+}
+
+- (IBAction)doneButtonPressed:(id)sender
+{
+    NSLog(@"Here!");
+    [[self window] close];
 }
 
 @end

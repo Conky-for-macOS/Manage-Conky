@@ -12,12 +12,17 @@
 
 @synthesize sheet = _sheet;
 
-- (void)activateSheet:(NSString*)nibName
+- (void)activateSheet:(NSString*)nibName withOwner:(id)owner
 {
     if (!_sheet)
-        [[NSBundle mainBundle] loadNibNamed:nibName owner:self topLevelObjects:nil];
+        [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:nil];
     
     [[NSApp mainWindow] beginSheet:self.sheet completionHandler:^(NSModalResponse returnCode) {}];
+}
+
+- (void)activateSheet:(NSString*)nibName
+{
+    [self activateSheet:nibName withOwner:self];
 }
 
 - (IBAction)closeSheet:(id)sender

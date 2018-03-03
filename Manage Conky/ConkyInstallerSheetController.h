@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-@interface ConkyInstallerSheetController : NSObject
+#import "GeneralSheetController.h"
 
-@property (strong) IBOutlet NSPanel *window;
+@interface ConkyInstallerSheetController : NSViewController
+
+@property (strong) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *logField;
+@property (weak) IBOutlet NSButton *doneButton;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 - (void)beginInstalling;

@@ -18,10 +18,10 @@
 }
 
 @property (weak) IBOutlet NSBrowser *themesBrowser;
-
-- (IBAction)activateThemesSheet:(id)sender;
-
 @property (weak) IBOutlet NSScrollView *importedThemesView;
 @property (weak) IBOutlet NSTableColumn *themesColumn;
 @property (weak) IBOutlet NSTableColumn *isInstalledColumn;
+
+- (IBAction)activateThemesSheet:(id)sender;
+
 @end
