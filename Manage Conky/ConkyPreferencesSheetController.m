@@ -22,6 +22,8 @@
 @synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
+ConkyInstallerSheetController *ctl = nil;   // XXX move me
+
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
@@ -180,8 +182,9 @@
          *
          *====================================================================================*/
         
-        ConkyInstallerSheetController *ctl = [[ConkyInstallerSheetController alloc] init];
+        ctl = [[ConkyInstallerSheetController alloc] init];
         [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
+//        [super activateSheet:@"ConkyInstaller" withOwner:ctl];
         [ctl beginInstalling];
     }
 }

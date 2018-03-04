@@ -138,7 +138,6 @@
 
 - (IBAction)doneButtonPressed:(id)sender
 {
-    NSLog(@"Here!");
     [[self window] close];
 }
 
