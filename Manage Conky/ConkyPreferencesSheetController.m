@@ -8,8 +8,8 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#include <ServiceManagement/ServiceManagement.h>
-#include <unistd.h>
+#import <ServiceManagement/ServiceManagement.h>
+#import <unistd.h>
 
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
@@ -32,8 +32,6 @@
 
 - (IBAction)activatePreferencesSheet:(id)sender
 {
-    NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
-    
     [super activateSheet:@"ConkyPreferences"];
     
     /* Is ConkyX already installed? */
@@ -45,22 +43,21 @@
     if (conkyXInstalled)
     {
         /* Is conky agent present? */
+        NSString* conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+        
         conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
         
         if (conkyAgentPresent)
-            NSLog(@"Agent plist doesnt exist or not accessible!");
-        else
             [_runConkyAtStartupCheckbox setState:1];
+        else
+            NSLog(@"Agent plist doesnt exist or not accessible!");
         
         /* Conky configuration file location? */
         NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
         
         if (!conkyConfigsPath)
         {
-            NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"/Users/%@/.conky", NSUserName()];
-            
-            if (!kConkyConfigsDefaultPath)
-                return;
+            NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"%@/.conky", NSHomeDirectory()];
             
             [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
             conkyConfigsPath = kConkyConfigsDefaultPath;
