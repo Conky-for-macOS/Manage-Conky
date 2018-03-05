@@ -7,7 +7,6 @@
 //
 
 #import "ConkyPreferencesSheetController.h"
-#import "ConkyInstallerSheetController.h"
 
 #include <ServiceManagement/ServiceManagement.h>
 #include <unistd.h>
@@ -22,19 +21,16 @@
 @synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
-ConkyInstallerSheetController *ctl = nil;   // XXX move me
-
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
     
     [super activateSheet:@"ConkyPreferences"];
     
-    /*
-     *  Is conky agent present?
-     */
-    int res = access([conkyAgentPlistPath UTF8String], R_OK);
-    if (res < 0)
+    /* Is conky agent present? */
+    bool conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
+
+    if (conkyAgentPresent)
         NSLog(@"Agent plist doesnt exist or not accessible!");
     else
         [_runConkyAtStartupCheckbox setState:1];
@@ -55,21 +51,16 @@ ConkyInstallerSheetController *ctl = nil;   // XXX move me
     }
     
     [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
-    /* Do that to allow, getting the Enter-Key notification */
-    [_conkyConfigLocationTextfield setDelegate:self];
+    [_conkyConfigLocationTextfield setDelegate:self];       /* Catch Enter-Key notification */
     
-    /*
-     * Is ConkyX already installed?
-     */
-    if (access("/Applications/ConkyX.app", F_OK) == 0)
-        [_un_in_stallConkyButton setTitle:@"Uninstall Conky"];
-    else
-        [_un_in_stallConkyButton setTitle:@"Install Conky"];
+    /* Is ConkyX already installed? */
+    bool conkyXinstalled = (access("/Applications/ConkyX.app", F_OK) == 0);
     
+    [_un_in_stallConkyButton setTitle:conkyXinstalled ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
 }
 
--(void)controlTextDidEndEditing:(NSNotification *)notification
+- (void)controlTextDidEndEditing:(NSNotification *)notification
 {
     /*
      * See if it was due to key ENTER
@@ -81,7 +72,6 @@ ConkyInstallerSheetController *ctl = nil;   // XXX move me
     }
 }
 
-// XXX add support for themes
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
 #define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
@@ -167,13 +157,11 @@ ConkyInstallerSheetController *ctl = nil;   // XXX move me
          * Install Conky
          */
         
-        /*
-         * Copy ConkyX.app to /Applications
-         */
+        /* Copy ConkyX.app to /Applications */
         [fm copyItemAtPath:@"ConkyX.app" toPath:@"/Applications" error:&error];
         if (error)
         {
-            NSLog(@"error: %@", error);
+            NSLog(@"Error: %@", error);
         }
 
         /*====================================================================================
@@ -182,9 +170,10 @@ ConkyInstallerSheetController *ctl = nil;   // XXX move me
          *
          *====================================================================================*/
         
+        [_un_in_stallConkyButton setEnabled:NO];
+        
         ctl = [[ConkyInstallerSheetController alloc] init];
         [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
-//        [super activateSheet:@"ConkyInstaller" withOwner:ctl];
         [ctl beginInstalling];
     }
 }
