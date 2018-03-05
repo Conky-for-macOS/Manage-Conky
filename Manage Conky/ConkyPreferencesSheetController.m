@@ -27,6 +27,7 @@
 
 @synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
 @synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
+@synthesize conkyConfigFilesLocationLabel = _conkyConfigFilesLocationLabel;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
 - (IBAction)activatePreferencesSheet:(id)sender
@@ -35,36 +36,45 @@
     
     [super activateSheet:@"ConkyPreferences"];
     
-    /* Is conky agent present? */
-    conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
-    
-    if (conkyAgentPresent)
-        NSLog(@"Agent plist doesnt exist or not accessible!");
-    else
-        [_runConkyAtStartupCheckbox setState:1];
-    
-    /* Conky configuration file location? */
-    NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-    
-    if (!conkyConfigsPath)
-    {
-        NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"/Users/%@/.conky", NSUserName()];
-        
-        if (!kConkyConfigsDefaultPath)
-            return;
-        
-        [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
-        conkyConfigsPath = kConkyConfigsDefaultPath;
-    }
-    
-    [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
-    [_conkyConfigLocationTextfield setDelegate:self];       /* Catch Enter-Key notification */
-    
     /* Is ConkyX already installed? */
     conkyXInstalled = (access("/Applications/ConkyX.app", F_OK) == 0);
     
     [_un_in_stallConkyButton setTitle:conkyXInstalled ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
+    
+    if (conkyXInstalled)
+    {
+        /* Is conky agent present? */
+        conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
+        
+        if (conkyAgentPresent)
+            NSLog(@"Agent plist doesnt exist or not accessible!");
+        else
+            [_runConkyAtStartupCheckbox setState:1];
+        
+        /* Conky configuration file location? */
+        NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+        
+        if (!conkyConfigsPath)
+        {
+            NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"/Users/%@/.conky", NSUserName()];
+            
+            if (!kConkyConfigsDefaultPath)
+                return;
+            
+            [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
+            conkyConfigsPath = kConkyConfigsDefaultPath;
+        }
+        
+        [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
+        [_conkyConfigLocationTextfield setDelegate:self];       /* Catch Enter-Key notification */
+    }
+    else
+    {
+        [_conkyConfigLocationTextfield setEnabled:NO];
+        [_runConkyAtStartupCheckbox setEnabled:NO];
+        [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+    }
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
@@ -106,8 +116,8 @@
         [keepAlivePrompt setMessageText:@"Select your preference"];
         [keepAlivePrompt setInformativeText:@"Always restart conky when for some reason it quits?"];
         [keepAlivePrompt setAlertStyle:NSAlertStyleInformational];
-        [keepAlivePrompt addButtonWithTitle:@"YES"];
-        [keepAlivePrompt addButtonWithTitle:@"NO"];
+        [keepAlivePrompt addButtonWithTitle:@"Yes"];
+        [keepAlivePrompt addButtonWithTitle:@"No"];
         
         NSModalResponse response = [keepAlivePrompt runModal];
         switch (response)

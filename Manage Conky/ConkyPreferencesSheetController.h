@@ -9,7 +9,7 @@
 #import "GeneralSheetController.h"
 #import "ConkyInstallerSheetController.h"
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>    // ##: Check me
+@interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
@@ -18,6 +18,7 @@
 
 @property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;
 @property (weak) IBOutlet NSButton *un_in_stallConkyButton;
+@property (weak) IBOutlet NSTextField *conkyConfigFilesLocationLabel;
 @property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
 
 - (IBAction)activatePreferencesSheet:(id)sender;

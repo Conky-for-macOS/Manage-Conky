@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ConkyPreferencesSheetController">
             <connections>
+                <outlet property="conkyConfigFilesLocationLabel" destination="5sG-LW-qHw" id="fEM-3F-75S"/>
                 <outlet property="conkyConfigLocationTextfield" destination="ZCd-BW-TZI" id="C6A-vu-6V1"/>
                 <outlet property="runConkyAtStartupCheckbox" destination="G7a-wy-yQX" id="OZy-7O-XHD"/>
                 <outlet property="sheet" destination="QvC-M9-y7g" id="4EO-4t-vy1"/>
