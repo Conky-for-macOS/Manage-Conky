@@ -119,6 +119,7 @@
 				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
 				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
 				77B847461F62C2B600AF8BCA /* Info.plist */,
+				77B8473C1F62C2B600AF8BCA /* main.m */,
 				77B8473B1F62C2B600AF8BCA /* Supporting Files */,
 			);
 			path = "Manage Conky";
@@ -129,7 +130,6 @@
 			children = (
 				EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */,
 				ECEEE89B2049A4E5008C6D54 /* InstallLibraries.sh */,
-				77B8473C1F62C2B600AF8BCA /* main.m */,
 				ECAF6F662024AF6800715D72 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
