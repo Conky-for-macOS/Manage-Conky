@@ -12,6 +12,8 @@
 @interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>    // ##: Check me
 {
     ConkyInstallerSheetController *ctl;
+    BOOL conkyXInstalled;
+    BOOL conkyAgentPresent;
 }
 
 @property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;

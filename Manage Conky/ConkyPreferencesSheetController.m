@@ -14,6 +14,14 @@
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
 
+#define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
+
+#define kConkyLaunchAgentLabel  @"org.npyl.conky"
+#define kConkyExecutablePath    @"/Applications/ConkyX.app/Contents/Resources/conky"
+
+#define CONKYX          @"/Applications/ConkyX.app"
+#define MANAGE_CONKY    @"/Applications/Manage Conky.app"
+
 
 @implementation ConkyPreferencesSheetController
 
@@ -28,17 +36,16 @@
     [super activateSheet:@"ConkyPreferences"];
     
     /* Is conky agent present? */
-    bool conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
-
+    conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
+    
     if (conkyAgentPresent)
         NSLog(@"Agent plist doesnt exist or not accessible!");
     else
         [_runConkyAtStartupCheckbox setState:1];
     
-    /*
-     *  Conky configuration file location?
-     */
+    /* Conky configuration file location? */
     NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    
     if (!conkyConfigsPath)
     {
         NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"/Users/%@/.conky", NSUserName()];
@@ -54,9 +61,9 @@
     [_conkyConfigLocationTextfield setDelegate:self];       /* Catch Enter-Key notification */
     
     /* Is ConkyX already installed? */
-    bool conkyXinstalled = (access("/Applications/ConkyX.app", F_OK) == 0);
+    conkyXInstalled = (access("/Applications/ConkyX.app", F_OK) == 0);
     
-    [_un_in_stallConkyButton setTitle:conkyXinstalled ? @"Uninstall Conky" : @"Install Conky"];
+    [_un_in_stallConkyButton setTitle:conkyXInstalled ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
 }
 
@@ -74,31 +81,26 @@
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
-#define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
-    
     NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
-
-    if ([sender state] == 0)
+    
+    if ([sender state] == NSOffState)
     {
-        NSLog( @"Request to remove the Agent!" );
+        NSLog(@"Request to remove the Agent!");
         
         /* SMJobRemove() deprecated but suggested by Apple, see https://lists.macosforge.org/pipermail/launchd-dev/2016-October/001229.html */
         SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
         
         unlink( [conkyAgentPlistPath UTF8String] );
     }
-    else if ([sender state] == 1)
+    else
     {
-#define kConkyLaunchAgentLabel  @"org.npyl.conky"
-#define kConkyExecutablePath    @"/Applications/ConkyX.app/Contents/Resources/conky"
-        
-        NSLog( @"Request to add the Agent!" );
+        NSLog(@"Request to add the Agent!");
         
         id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
         id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive" };
         NSUInteger count = sizeof(objects) / sizeof(id);
         
-        NSDictionary * conkyAgentPlist = [[NSDictionary alloc] initWithObjects:objects forKeys:keys count:count];
+        NSDictionary * conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         
         NSAlert *keepAlivePrompt = [[NSAlert alloc] init];
         [keepAlivePrompt setMessageText:@"Select your preference"];
@@ -122,33 +124,35 @@
 - (IBAction)un_in_stallConky:(id)sender
 {
     NSError *error = nil;
-    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSFileManager *fm = [NSFileManager defaultManager];
     
-    if (access("/Applications/ConkyX.app", F_OK) == 0)
+    if (conkyXInstalled)
     {
         /*
          * Uninstall conky
          */
         
-        [fm removeItemAtPath:@"/Applications/ConkyX.app" error:&error];
+        [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
-            NSLog(@"Error uninstalling conky from computer: %@", error);
+            NSLog(@"Error uninstalling conky from computer: \n\n%@", error);
             return;
         }
         
-        [fm removeItemAtPath:@"/Applications/Manage Conky.app" error:&error];
+        [fm removeItemAtPath:MANAGE_CONKY error:&error];
         if (error)
         {
-            NSLog(@"Error unistalling Manage Conky.app from your computer: %@", error);
+            NSLog(@"Error unistalling Manage Conky.app from your computer: \n\n%@", error);
             return;
         }
         
+        /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
         [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
         [successfullyUninstalled setInformativeText:@"conky (ConkyX and ManageConky) was successfully uninstalled from your computer. Manage Conky will now quit"];
         [successfullyUninstalled runModal];
         
+        /* exit */
         exit(0);
     }
     else
@@ -161,17 +165,13 @@
         [fm copyItemAtPath:@"ConkyX.app" toPath:@"/Applications" error:&error];
         if (error)
         {
-            NSLog(@"Error: %@", error);
+            NSLog(@"Error copying ConkyX to /Applications: \n\n%@", error);
         }
-
-        /*====================================================================================
-         *
-         * Conky Installer Sheet
-         *
-         *====================================================================================*/
         
+        /* disable the Install/Uninstall button */
         [_un_in_stallConkyButton setEnabled:NO];
         
+        /* create ConkyInstaller sheet */
         ctl = [[ConkyInstallerSheetController alloc] init];
         [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
         [ctl beginInstalling];
