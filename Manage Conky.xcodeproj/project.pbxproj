@@ -21,9 +21,9 @@
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
 		EC3EB7E6204B58D90015DBF0 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */; };
-		EC9691F3204DD4FC00B99EB5 /* ConkyX.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC9691EF204DD4BF00B99EB5 /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ECAF6F672024AF6800715D72 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECAF6F662024AF6800715D72 /* Credits.rtf */; };
+		ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ECEEE89C2049A4E5008C6D54 /* InstallLibraries.sh in Resources */ = {isa = PBXBuildFile; fileRef = ECEEE89B2049A4E5008C6D54 /* InstallLibraries.sh */; };
 		ECEEE8A02049A5B8008C6D54 /* ConkyInstaller.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEEE89F2049A5B8008C6D54 /* ConkyInstaller.xib */; };
 		ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */; };
@@ -31,16 +31,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EC9691EE204DD4BF00B99EB5 /* PBXContainerItemProxy */ = {
+		ECD50213204F210600B9D76C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC9691E9204DD4BE00B99EB5 /* ConkyX.xcodeproj */;
+			containerPortal = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = EC923C2320169A230019C772;
 			remoteInfo = ConkyX;
 		};
-		EC9691F0204DD4D200B99EB5 /* PBXContainerItemProxy */ = {
+		ECD50215204F219E00B9D76C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC9691E9204DD4BE00B99EB5 /* ConkyX.xcodeproj */;
+			containerPortal = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = EC923C2220169A230019C772;
 			remoteInfo = ConkyX;
@@ -54,7 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				EC9691F3204DD4FC00B99EB5 /* ConkyX.app in CopyFiles */,
+				ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,10 +86,10 @@
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = SOURCE_ROOT; };
-		EC9691E9204DD4BE00B99EB5 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		ECAF6F642024ADC900715D72 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		ECAF6F662024AF6800715D72 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		ECEEE89B2049A4E5008C6D54 /* InstallLibraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallLibraries.sh; path = Resources/InstallLibraries.sh; sourceTree = SOURCE_ROOT; };
 		ECEEE89F2049A5B8008C6D54 /* ConkyInstaller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyInstaller.xib; path = ../ConkyInstaller.xib; sourceTree = "<group>"; };
 		ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConkyInstallerSheetController.h; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
-				EC9691E9204DD4BE00B99EB5 /* ConkyX.xcodeproj */,
+				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
@@ -183,14 +183,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EC9691EA204DD4BE00B99EB5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EC9691EF204DD4BF00B99EB5 /* ConkyX.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EC9691F4204DD59E00B99EB5 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +201,14 @@
 				ECAF6F642024ADC900715D72 /* PFMoveApplication.m */,
 			);
 			path = LetsMove;
+			sourceTree = "<group>";
+		};
+		ECD5020F204F210500B9D76C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECD50214204F210600B9D76C /* ConkyX.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */ = {
@@ -238,7 +238,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EC9691F1204DD4D200B99EB5 /* PBXTargetDependency */,
+				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
 			name = "Manage Conky";
 			productName = "Manage Conky";
@@ -256,8 +256,7 @@
 				TargetAttributes = {
 					77B847341F62C2B600AF8BCA = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = CC63MSFH9N;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -274,8 +273,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EC9691EA204DD4BE00B99EB5 /* Products */;
-					ProjectRef = EC9691E9204DD4BE00B99EB5 /* ConkyX.xcodeproj */;
+					ProductGroup = ECD5020F204F210500B9D76C /* Products */;
+					ProjectRef = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -286,11 +285,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EC9691EF204DD4BF00B99EB5 /* ConkyX.app */ = {
+		ECD50214204F210600B9D76C /* ConkyX.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = ConkyX.app;
-			remoteRef = EC9691EE204DD4BF00B99EB5 /* PBXContainerItemProxy */;
+			remoteRef = ECD50213204F210600B9D76C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -385,10 +384,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EC9691F1204DD4D200B99EB5 /* PBXTargetDependency */ = {
+		ECD50216204F219E00B9D76C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ConkyX;
-			targetProxy = EC9691F0204DD4D200B99EB5 /* PBXContainerItemProxy */;
+			targetProxy = ECD50215204F219E00B9D76C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -510,12 +509,15 @@
 			baseConfigurationReference = 340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -525,12 +527,14 @@
 			baseConfigurationReference = 4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
