@@ -31,6 +31,7 @@ BOOL PFMoveIsInProgress(void);
 /**
  Function based off of PFMoveToApplicationsFolderIfNecessary() to forcibly move the ConkyX to /Applications
  because it is heavily tied to /Applications */
+void CXForciblyMoveToApplicationsFolderConkyX(void);
 void CXForciblyMoveToApplicationsFolder(void);
 
 /**
