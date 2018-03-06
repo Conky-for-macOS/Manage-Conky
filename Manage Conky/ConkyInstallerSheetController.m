@@ -11,7 +11,6 @@
 #import "PFMoveApplication.h"
 #import <Foundation/NSFileManager.h>
 
-#define CONKYX_INSTALLED_LOCK_FMT @"/Users/%@/Library/ConkyX"
 #define MANAGE_CONKY_PATH "/Applications/Manage Conky.app"
 #define HOMEBREW_PATH "/usr/local/bin/brew"
 #define XQUARTZ_PATH  "/usr/X11"
@@ -106,19 +105,6 @@
             {
                 NSError *error = nil;
                 NSFileManager *fm = [[NSFileManager alloc] init];
-                
-                NSString *ConkyXInstalledLock = [NSString stringWithFormat:CONKYX_INSTALLED_LOCK_FMT, NSUserName()];
-                
-                [fm createDirectoryAtPath:ConkyXInstalledLock withIntermediateDirectories:NO attributes:nil error:&error];
-                if (error)
-                {
-                    NSLog(@"Error creating lock directory: %@", error);
-                }
-                
-                if (![fm createFileAtPath:[ConkyXInstalledLock stringByAppendingString:@"/.installed.lck"] contents:nil attributes:nil])
-                {
-                    NSLog(@"Error creating lock.");
-                }
                 
                 if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
                 {
