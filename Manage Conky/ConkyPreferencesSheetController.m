@@ -9,6 +9,7 @@
 #import "ConkyPreferencesSheetController.h"
 
 #import <ServiceManagement/ServiceManagement.h>
+#import "PFMoveApplication.h"
 #import <unistd.h>
 
 /* defines */
@@ -168,12 +169,12 @@
          * Install Conky
          */
         
-        /* Copy ConkyX.app to /Applications */
-        [fm copyItemAtPath:@"ConkyX.app" toPath:@"/Applications" error:&error];
-        if (error)
-        {
-            NSLog(@"Error copying ConkyX to /Applications: \n\n%@", error);
-        }
+        /*
+         * Copy ConkyX.app to /Applications
+         * using code from LetsMove to handle many cases
+         * such as dmg, authentication etc.
+         */
+        CXForciblyMoveToApplicationsFolderConkyX();
         
         /* disable the Install/Uninstall button */
         [_un_in_stallConkyButton setEnabled:NO];
