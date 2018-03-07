@@ -48,13 +48,13 @@
     
     if (!themePackReader)
     {
-        NSLog(@"Failed creating Lzma Reader.");
+        NSLog(@"Error: Failed creating Lzma Reader.");
         return NO;
     }
     
     if (![themePackReader open:&error])
     {
-        NSLog(@"Open error: %@", error);
+        NSLog(@"Error: Failed to open themepack with error: \n\n%@", error);
         return NO;
     }
     
@@ -109,8 +109,7 @@
     /*
      * display the panel
      */
-    [panel beginWithCompletionHandler:^(NSInteger result)
-    {
+    [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
         if (result == NSFileHandlingPanelOKButton)
         {
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
