@@ -130,6 +130,15 @@
     }
 }
 
+- (void)show_error_alert:(NSString*)withErrorMsg
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Error"];
+    [alert setInformativeText:withErrorMsg];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse returnCode) {}];
+}
+
 - (IBAction)un_in_stallConky:(id)sender
 {
     NSError *error = nil;
@@ -144,6 +153,7 @@
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
+            [self show_error_alert:@"Error removing ConkyX"];
             NSLog(@"Error removing ConkyX: \n\n%@", error);
             return;
         }
@@ -151,6 +161,7 @@
         [fm removeItemAtPath:MANAGE_CONKY error:&error];
         if (error)
         {
+            [self show_error_alert:@"Error removing Manage Conky.app"];
             NSLog(@"Error removing Manage Conky: \n\n%@", error);
             return;
         }
