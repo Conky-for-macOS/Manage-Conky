@@ -22,6 +22,7 @@
 
 #define CONKYX          @"/Applications/ConkyX.app"
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
+#define CONKY_SYMLINK   @"/usr/local/bin/conky"
 
 
 @implementation ConkyPreferencesSheetController
@@ -143,15 +144,21 @@
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
-            NSLog(@"Error uninstalling conky from computer: \n\n%@", error);
+            NSLog(@"Error removing ConkyX: \n\n%@", error);
             return;
         }
         
         [fm removeItemAtPath:MANAGE_CONKY error:&error];
         if (error)
         {
-            NSLog(@"Error unistalling Manage Conky.app from your computer: \n\n%@", error);
+            NSLog(@"Error removing Manage Conky: \n\n%@", error);
             return;
+        }
+        
+        [fm removeItemAtPath:CONKY_SYMLINK error:&error];
+        if (error)
+        {
+            NSLog(@"Error removing symlink: \n\n%@", error);
         }
         
         /* create Successfully Installed message */
