@@ -32,6 +32,22 @@
 @synthesize conkyConfigFilesLocationLabel = _conkyConfigFilesLocationLabel;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
 
+/* helper functions */
+- (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:msg];
+    [alert setInformativeText:info];
+    [alert setAlertStyle:style];
+    [alert beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse returnCode) {}];
+}
+
+- (void)show_error_alert:(NSString*)withErrorMsg
+{
+    [self showAlertWithMessageText:@"Error" informativeText:withErrorMsg andAlertStyle:NSAlertStyleCritical];
+}
+/* end of helper functions */
+
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     [super activateSheet:@"ConkyPreferences"];
@@ -128,15 +144,6 @@
         
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     }
-}
-
-- (void)show_error_alert:(NSString*)withErrorMsg
-{
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Error"];
-    [alert setInformativeText:withErrorMsg];
-    [alert setAlertStyle:NSAlertStyleCritical];
-    [alert beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse returnCode) {}];
 }
 
 - (IBAction)un_in_stallConky:(id)sender
