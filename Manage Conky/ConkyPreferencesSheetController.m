@@ -36,6 +36,7 @@
 // Startup Delay
 @synthesize startupDelayField = _startupDelayField;
 @synthesize startupDelayStepper = _startupDelayStepper;
+@synthesize startupDelayLabel = _startupDelayLabel;
 
 
 /* helper functions */
@@ -101,8 +102,9 @@
         [_conkyConfigLocationTextfield setEnabled:NO];
         [_runConkyAtStartupCheckbox setEnabled:NO];
         [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
-        
-        // XXX add more items
+        [_startupDelayStepper setEnabled:NO];
+        [_startupDelayField setEnabled:NO];
+        [_startupDelayLabel setTextColor:[NSColor grayColor]];
     }
 }
 
@@ -160,9 +162,11 @@
     }
 }
 
-- (IBAction)incrementOrDecrementStartupDelay:(id)sender
+// XXX must fix the text field
+- (IBAction)modifyStartupDelay:(id)sender
 {
-    // do some increment stuff
+    _startupDelayField.integerValue = [sender integerValue];
+    startupDelay = [sender intValue];
 }
 
 - (IBAction)un_in_stallConky:(id)sender
@@ -236,6 +240,7 @@
     // Write Startup Delay
     // ...
     // ...
+    NSLog(@"startupDelay: %li", (long)startupDelay);
     
     [super closeSheet:[super sheet]];
 }

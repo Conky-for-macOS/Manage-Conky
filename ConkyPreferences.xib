@@ -13,6 +13,7 @@
                 <outlet property="runConkyAtStartupCheckbox" destination="G7a-wy-yQX" id="OZy-7O-XHD"/>
                 <outlet property="sheet" destination="QvC-M9-y7g" id="4EO-4t-vy1"/>
                 <outlet property="startupDelayField" destination="s4D-Qa-Enu" id="KTl-X7-bZc"/>
+                <outlet property="startupDelayLabel" destination="EBF-DW-nTS" id="qgZ-DP-jUP"/>
                 <outlet property="startupDelayStepper" destination="AfW-LH-30Q" id="iDD-H3-aeY"/>
                 <outlet property="un_in_stallConkyButton" destination="qOz-o9-e08" id="xU5-hj-Ydt"/>
             </connections>
@@ -23,7 +24,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="343"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="343"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -233,7 +234,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="20" id="v03-GV-LvK"/>
                         <connections>
-                            <action selector="incrementOrDecrementStartupDelay:" target="-2" id="rCV-F8-eND"/>
+                            <action selector="modifyStartupDelay:" target="-2" id="sRD-0n-1RT"/>
                         </connections>
                     </stepper>
                 </subviews>

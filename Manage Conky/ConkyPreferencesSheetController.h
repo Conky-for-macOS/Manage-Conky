@@ -31,6 +31,7 @@
 // Startup Delay
 @property (weak) IBOutlet NSTextField *startupDelayField;
 @property (weak) IBOutlet NSStepper *startupDelayStepper;
+@property (weak) IBOutlet NSTextField *startupDelayLabel;
 
 
 - (IBAction)activatePreferencesSheet:(id)sender;
