@@ -24,7 +24,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="343"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="343"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -228,6 +228,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <outlet property="formatter" destination="BLp-7I-hEK" id="6x4-p3-wc7"/>
+                        </connections>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfW-LH-30Q">
                         <rect key="frame" x="444" y="307" width="19" height="27"/>
@@ -265,6 +268,7 @@
             </view>
             <point key="canvasLocation" x="139" y="197.5"/>
         </window>
+        <customObject id="BLp-7I-hEK" customClass="OnlyIntegerValueFormatter"/>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

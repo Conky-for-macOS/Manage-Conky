@@ -25,20 +25,37 @@
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
 #define CONKY_SYMLINK   @"/usr/local/bin/conky"
 
+@interface OnlyIntegerValueFormatter : NSNumberFormatter
+@end
+
+@implementation OnlyIntegerValueFormatter
+
+- (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
+{
+    if([partialString length] == 0)
+    {
+        return NO;
+    }
+    
+    /* accept until 3 digits */
+    if ([partialString length] > 3)
+    {
+        return NO;
+    }
+    
+    NSScanner* scanner = [NSScanner scannerWithString:partialString];
+    
+    if(!([scanner scanInt:0] && [scanner isAtEnd])) {
+        NSBeep();
+        return NO;
+    }
+    
+    return YES;
+}
+
+@end
 
 @implementation ConkyPreferencesSheetController
-
-@synthesize runConkyAtStartupCheckbox = _runConkyAtStartupCheckbox;
-@synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
-@synthesize conkyConfigFilesLocationLabel = _conkyConfigFilesLocationLabel;
-@synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
-
-// Startup Delay
-@synthesize startupDelayField = _startupDelayField;
-@synthesize startupDelayStepper = _startupDelayStepper;
-@synthesize startupDelayLabel = _startupDelayLabel;
-
-
 /* helper functions */
 - (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
 {
@@ -88,7 +105,7 @@
         
         if (!conkyConfigsPath)
         {
-            NSString * kConkyConfigsDefaultPath = [NSString stringWithFormat:@"%@/.conky", NSHomeDirectory()];
+            NSString *kConkyConfigsDefaultPath = [NSString stringWithFormat:@"%@/.conky", NSHomeDirectory()];
             
             [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
             conkyConfigsPath = kConkyConfigsDefaultPath;
@@ -122,7 +139,7 @@
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
-    NSString * conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
     
     if ([sender state] == NSOffState)
     {
@@ -131,7 +148,7 @@
         /* SMJobRemove() deprecated but suggested by Apple, see https://lists.macosforge.org/pipermail/launchd-dev/2016-October/001229.html */
         SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
         
-        unlink( [conkyAgentPlistPath UTF8String] );
+        unlink([conkyAgentPlistPath UTF8String]);
     }
     else
     {
@@ -141,7 +158,7 @@
         id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive" };
         NSUInteger count = sizeof(objects) / sizeof(id);
         
-        NSDictionary * conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         
         NSAlert *keepAlivePrompt = [[NSAlert alloc] init];
         [keepAlivePrompt setMessageText:@"Select your preference"];
