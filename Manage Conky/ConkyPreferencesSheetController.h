@@ -14,12 +14,24 @@
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
     BOOL conkyAgentPresent;
+    
+    NSInteger startupDelay;
 }
 
+// Run Conky At Startup
 @property (weak) IBOutlet NSButton *runConkyAtStartupCheckbox;
+
+// Install/Uninstall Button
 @property (weak) IBOutlet NSButton *un_in_stallConkyButton;
+
+// Conky Config Files Location
 @property (weak) IBOutlet NSTextField *conkyConfigFilesLocationLabel;
 @property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
+
+// Startup Delay
+@property (weak) IBOutlet NSTextField *startupDelayField;
+@property (weak) IBOutlet NSStepper *startupDelayStepper;
+
 
 - (IBAction)activatePreferencesSheet:(id)sender;
 

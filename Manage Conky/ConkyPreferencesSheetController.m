@@ -16,6 +16,7 @@
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
 
 #define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
+#define CONKYX_PATH             "/Applications/ConkyX.app"
 
 #define kConkyLaunchAgentLabel  @"org.npyl.conky"
 #define kConkyExecutablePath    @"/Applications/ConkyX.app/Contents/Resources/conky"
@@ -31,6 +32,11 @@
 @synthesize un_in_stallConkyButton = _un_in_stallConkyButton;
 @synthesize conkyConfigFilesLocationLabel = _conkyConfigFilesLocationLabel;
 @synthesize conkyConfigLocationTextfield = _conkyConfigLocationTextfield;
+
+// Startup Delay
+@synthesize startupDelayField = _startupDelayField;
+@synthesize startupDelayStepper = _startupDelayStepper;
+
 
 /* helper functions */
 - (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
@@ -48,15 +54,21 @@
 }
 /* end of helper functions */
 
+
+
 - (IBAction)activatePreferencesSheet:(id)sender
 {
     [super activateSheet:@"ConkyPreferences"];
     
     /* Is ConkyX already installed? */
-    conkyXInstalled = (access("/Applications/ConkyX.app", F_OK) == 0);
+    conkyXInstalled = (access(CONKYX_PATH, F_OK) == 0);
     
+    // Install / Uninstall Button
     [_un_in_stallConkyButton setTitle:conkyXInstalled ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
+    
+    // Startup Delay
+    startupDelay = 20;  /* default value */
     
     if (conkyXInstalled)
     {
@@ -89,6 +101,8 @@
         [_conkyConfigLocationTextfield setEnabled:NO];
         [_runConkyAtStartupCheckbox setEnabled:NO];
         [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+        
+        // XXX add more items
     }
 }
 
@@ -144,6 +158,11 @@
         
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     }
+}
+
+- (IBAction)incrementOrDecrementStartupDelay:(id)sender
+{
+    // do some increment stuff
 }
 
 - (IBAction)un_in_stallConky:(id)sender
@@ -209,6 +228,16 @@
         [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
         [ctl beginInstalling];
     }
+}
+
+- (IBAction)okButtonPressed:(id)sender
+{
+    // Save whatever info we got from the sheet
+    // Write Startup Delay
+    // ...
+    // ...
+    
+    [super closeSheet:[super sheet]];
 }
 
 @end
