@@ -134,10 +134,10 @@
 		77B847371F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXGroup;
 			children = (
-				EC9EFB8E2055554800C6BAAF /* Extensions */,
 				ECAF6F622024ADC900715D72 /* LetsMove */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
 				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
+				EC9EFB8E2055554800C6BAAF /* Extensions */,
 				77B847381F62C2B600AF8BCA /* AppDelegate.h */,
 				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
 				77B8473E1F62C2B600AF8BCA /* ViewController.h */,

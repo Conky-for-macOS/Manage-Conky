@@ -9,13 +9,13 @@
 #import "NSAlert+runModalSheet.h"
 
 @implementation NSAlertExtension
-- (NSInteger)runModalSheetForWindow:(NSWindow *)aWindow
+- (NSModalResponse)runModalSheetForWindow:(NSWindow *)window
 {
-    [self beginSheetModalForWindow:aWindow completionHandler:^(NSModalResponse returnCode)
+    [self beginSheetModalForWindow:window completionHandler:^(NSModalResponse returnCode)
      {
          [NSApp stopModalWithCode:returnCode];
      }];
-    NSInteger modalCode = [NSApp runModalForWindow:[self window]];
+    NSModalResponse modalCode = [NSApp runModalForWindow:[self window]];
     return modalCode;
 }
 @end

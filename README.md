@@ -1,14 +1,16 @@
 # ***Manage Conky***
 
-Manage Conky is the implementation of [conky manager](https://github.com/teejee2008/conky-manager) for macOS.  
+![icon](Resources/AppIcons/conkylogosmall4_128.png)
 
-( Yes, there is a port of [conky for macOS](https://github.com/npyl/conky) )
+Manage Conky is the implementation of [conky manager](https://github.com/teejee2008/conky-manager) for macOS.
 
-# ***Features***
+![preview](preview)
 
-***Manage Conky*** will support all the features that ***conky-manager*** supports.
+# THANKS TO
 
-Currently its a work in progress!
+[conky](https://github.com/Conky-for-macOS/conky-for-macOS)
+[conky-manager](https://github.com/teejee2008/conky-manager)
+[LetsMove](https://github.com/potionfactory/LetsMove)
 
 # License
 

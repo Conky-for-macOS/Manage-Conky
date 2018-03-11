@@ -12,11 +12,18 @@
 #import <Cocoa/Cocoa.h>
 
 /**
- * WOW! Taken from https://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
+ * Provide extensions such as present a sheet with the ability to wait until completed.
  */
 @interface NSAlertExtension : NSAlert
 
-- (NSInteger)runModalSheetForWindow:(NSWindow *)aWindow;
+/**
+ * Show an alert-sheet with the ability to wait until its completion.
+ *  Remember, the normal alert-sheet apple provides, shows up but doesn't wait until finished.
+ *  Instead, application code executes normally even with the sheet waiting for buttons to be clicked.
+ *
+ * Taken from https://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
+ */
+- (NSModalResponse)runModalSheetForWindow:(NSWindow *)window;
 
 @end
 
