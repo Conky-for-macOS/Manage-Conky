@@ -25,6 +25,13 @@
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
 #define CONKY_SYMLINK   @"/usr/local/bin/conky"
 
+#define STARTUP_DELAY_MAX 100
+#define STARTUP_DELAY_MIN 0
+
+/**
+ * Formatter for allowing only integer values and more...
+ *  for startupDelay text field.
+ */
 @interface OnlyIntegerValueFormatter : NSNumberFormatter
 @end
 
@@ -32,20 +39,12 @@
 
 - (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
 {
-    if([partialString length] == 0)
-    {
-        return NO;
-    }
-    
-    /* accept until 3 digits */
-    if ([partialString length] > 3)
-    {
-        return NO;
-    }
+    if ([partialString length] == 0) return NO;
+    if ([partialString intValue] > STARTUP_DELAY_MAX) return NO;
     
     NSScanner* scanner = [NSScanner scannerWithString:partialString];
     
-    if(!([scanner scanInt:0] && [scanner isAtEnd])) {
+    if (!([scanner scanInt:0] && [scanner isAtEnd])) {
         NSBeep();
         return NO;
     }
@@ -53,6 +52,46 @@
     return YES;
 }
 
+@end
+
+@implementation ConkyConfigLocationFieldDelegate
+- (void)controlTextDidEndEditing:(NSNotification *)notification
+{
+    /*
+     * See if it was due to key ENTER
+     */
+    
+    NSLog(@"HERE!!!");
+    
+    if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[[notification object] stringValue] forKey:@"configsLocation"];
+    }
+}
+@end
+
+@implementation startupDelayFieldDelegate
+- (void)controlTextDidEndEditing:(NSNotification *)notification
+{
+    /*
+     * See if it was due to key ENTER
+     */
+    
+    static BOOL shownX11TakesAlotTimeWarning = NO;
+    
+    if (shownX11TakesAlotTimeWarning)
+    {
+        NSWindow *win = [[notification object] sheet];  // take sheet from GeneralSheetController
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Warning"];
+        [alert setInformativeText:@"Keep in mind that X11 takes aloootttt time to open. You may want to recalculate your delay"];
+        [alert setAlertStyle:NSAlertStyleWarning];
+        [alert beginSheetModalForWindow:win completionHandler:^(NSModalResponse returnCode) {}];
+        
+        shownX11TakesAlotTimeWarning = YES;
+    }
+}
 @end
 
 @implementation ConkyPreferencesSheetController
@@ -112,7 +151,11 @@
         }
         
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
-        [_conkyConfigLocationTextfield setDelegate:self];       /* Catch Enter-Key notification */
+        ConkyConfigLocationFieldDelegate *cclfd = [[ConkyConfigLocationFieldDelegate alloc] init];
+        [_conkyConfigLocationTextfield setDelegate:cclfd];       /* Catch Enter-Key notification */
+
+        startupDelayFieldDelegate *sdfd = [[startupDelayFieldDelegate alloc] init];
+        [_startupDelayField setDelegate:sdfd];  /* Catch Enter-Key notification */
     }
     else
     {
@@ -122,18 +165,6 @@
         [_startupDelayStepper setEnabled:NO];
         [_startupDelayField setEnabled:NO];
         [_startupDelayLabel setTextColor:[NSColor grayColor]];
-    }
-}
-
-- (void)controlTextDidEndEditing:(NSNotification *)notification
-{
-    /*
-     * See if it was due to key ENTER
-     */
-    
-    if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[_conkyConfigLocationTextfield stringValue] forKey:@"configsLocation"];
     }
 }
 
@@ -254,10 +285,14 @@
 - (IBAction)okButtonPressed:(id)sender
 {
     // Save whatever info we got from the sheet
-    // Write Startup Delay
+    //  and close the sheet.
     // ...
     // ...
     NSLog(@"startupDelay: %li", (long)startupDelay);
+    
+    //NSString* conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+    //NSDictionary *agent = [NSDictionary dictionaryWithContentsOfFile:conkyAgentPlistPath];
+    //[agent insertValue: inPropertyWithKey:]
     
     [super closeSheet:[super sheet]];
 }

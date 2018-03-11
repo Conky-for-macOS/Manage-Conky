@@ -17,10 +17,6 @@
 
 @implementation ConkyThemesSheetController
 
-@synthesize importedThemesView = _importedThemesView;
-@synthesize isInstalledColumn = _isInstalledColumn;
-@synthesize themesColumn = _themesColumn;
-
 - (IBAction)activateThemesSheet:(id)sender
 {
     [super activateSheet:@"ConkyThemes"];

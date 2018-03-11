@@ -21,25 +21,18 @@
 @interface NSAlertExtension : NSAlert
 @end
 @implementation NSAlertExtension
--(NSInteger) runModalSheetForWindow:(NSWindow *)aWindow
+- (NSInteger)runModalSheetForWindow:(NSWindow *)aWindow
 {
     [self beginSheetModalForWindow:aWindow completionHandler:^(NSModalResponse returnCode)
-     { [NSApp stopModalWithCode:returnCode]; } ];
+     {
+         [NSApp stopModalWithCode:returnCode];
+     }];
     NSInteger modalCode = [NSApp runModalForWindow:[self window]];
     return modalCode;
 }
-
-//-(NSInteger) runModalSheet {
-//    return [self runModalSheetForWindow:[NSApp mainWindow]];
-//}
 @end
 
 @implementation ConkyInstallerSheetController
-
-@synthesize window = _window;
-@synthesize logField = _logField;
-@synthesize doneButton = _doneButton;
-@synthesize progressIndicator = _progressIndicator;
 
 - (void)receivedData:(NSNotification*)notif
 {

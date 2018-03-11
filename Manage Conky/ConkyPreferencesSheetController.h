@@ -9,7 +9,20 @@
 #import "GeneralSheetController.h"
 #import "ConkyInstallerSheetController.h"
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>
+
+/**
+ * Implement an Enter-Key-Pressed controller for the ConkyConfigLocation text field
+ */
+@interface ConkyConfigLocationFieldDelegate : NSTextField
+@end
+/**
+ * Implement an Enter-Key-Pressed controller for the startupDelayField
+ */
+@interface startupDelayFieldDelegate : NSTextField
+@end
+
+
+@interface ConkyPreferencesSheetController : GeneralSheetController
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
