@@ -15,6 +15,24 @@
 #define HOMEBREW_PATH "/usr/local/bin/brew"
 #define XQUARTZ_PATH  "/usr/X11"
 
+/**
+ * WOW! Taken from https://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
+ */
+@interface NSAlertExtension : NSAlert
+@end
+@implementation NSAlertExtension
+-(NSInteger) runModalSheetForWindow:(NSWindow *)aWindow
+{
+    [self beginSheetModalForWindow:aWindow completionHandler:^(NSModalResponse returnCode)
+     { [NSApp stopModalWithCode:returnCode]; } ];
+    NSInteger modalCode = [NSApp runModalForWindow:[self window]];
+    return modalCode;
+}
+
+//-(NSInteger) runModalSheet {
+//    return [self runModalSheetForWindow:[NSApp mainWindow]];
+//}
+@end
 
 @implementation ConkyInstallerSheetController
 
@@ -47,10 +65,13 @@
      */
     if (access(HOMEBREW_PATH, F_OK) != 0)
     {
-        NSAlert *hbalert = [[NSAlert alloc] init];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
+        
+        NSAlertExtension *hbalert = [[NSAlertExtension alloc] init];
         [hbalert setMessageText:@"Homebrew missing"];
-        [hbalert setInformativeText:@"Install Homebrew first using this link: https://brew.sh/\nOnce you install click OK to continue"];
-        [hbalert runModal];
+        [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
+        [hbalert setAlertStyle:NSAlertStyleCritical];
+        [hbalert runModalSheetForWindow:_window];
     }
     
     /*
@@ -58,10 +79,13 @@
      */
     if (access(XQUARTZ_PATH, F_OK) != 0)
     {
-        NSAlert *xqalert = [[NSAlert alloc] init];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.xquartz.org"]];
+        
+        NSAlertExtension *xqalert = [[NSAlertExtension alloc] init];
         [xqalert setMessageText:@"XQuartz is missing"];
-        [xqalert setInformativeText:@"Install XQuartz first using this link: https://www.xquartz.org/\nOnce you install click OK to continue"];
-        [xqalert runModal];
+        [xqalert setInformativeText:@"Install XQuartz first using the link I opened in the browser.\nOnce you install click OK to continue"];
+        [xqalert setAlertStyle:NSAlertStyleCritical];
+        [xqalert runModalSheetForWindow:_window];
     }
     
     /*
