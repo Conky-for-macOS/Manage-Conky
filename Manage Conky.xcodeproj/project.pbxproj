@@ -21,6 +21,7 @@
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
 		EC3EB7E6204B58D90015DBF0 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */; };
+		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ECAF6F672024AF6800715D72 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECAF6F662024AF6800715D72 /* Credits.rtf */; };
 		ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -86,6 +87,8 @@
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = SOURCE_ROOT; };
+		EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAlert+runModalSheet.h"; path = "Extensions/NSAlert+runModalSheet.h"; sourceTree = "<group>"; };
+		EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+runModalSheet.m"; path = "Extensions/NSAlert+runModalSheet.m"; sourceTree = "<group>"; };
 		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		ECAF6F642024ADC900715D72 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		ECAF6F662024AF6800715D72 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 		77B847371F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXGroup;
 			children = (
+				EC9EFB8E2055554800C6BAAF /* Extensions */,
 				ECAF6F622024ADC900715D72 /* LetsMove */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
 				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
@@ -192,6 +196,15 @@
 				77B9EFF41F64209D00C375FE /* ConkyThemes.xib */,
 			);
 			name = Sheets;
+			sourceTree = "<group>";
+		};
+		EC9EFB8E2055554800C6BAAF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
+				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		ECAF6F622024ADC900715D72 /* LetsMove */ = {
@@ -370,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B847401F62C2B600AF8BCA /* ViewController.m in Sources */,
+				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,

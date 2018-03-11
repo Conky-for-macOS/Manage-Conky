@@ -9,28 +9,13 @@
 #import "ConkyInstallerSheetController.h"
 
 #import "PFMoveApplication.h"
+#import "NSAlert+runModalSheet.h"
 #import <Foundation/NSFileManager.h>
 
 #define MANAGE_CONKY_PATH "/Applications/Manage Conky.app"
 #define HOMEBREW_PATH "/usr/local/bin/brew"
 #define XQUARTZ_PATH  "/usr/X11"
 
-/**
- * WOW! Taken from https://stackoverflow.com/questions/604768/wait-for-nsalert-beginsheetmodalforwindow
- */
-@interface NSAlertExtension : NSAlert
-@end
-@implementation NSAlertExtension
-- (NSInteger)runModalSheetForWindow:(NSWindow *)aWindow
-{
-    [self beginSheetModalForWindow:aWindow completionHandler:^(NSModalResponse returnCode)
-     {
-         [NSApp stopModalWithCode:returnCode];
-     }];
-    NSInteger modalCode = [NSApp runModalForWindow:[self window]];
-    return modalCode;
-}
-@end
 
 @implementation ConkyInstallerSheetController
 
