@@ -85,7 +85,7 @@
         
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Warning"];
-        [alert setInformativeText:@"Keep in mind that X11 takes aloootttt time to open. You may want to recalculate your delay"];
+        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
         [alert setAlertStyle:NSAlertStyleWarning];
         [alert beginSheetModalForWindow:win completionHandler:^(NSModalResponse returnCode) {}];
         
@@ -95,7 +95,7 @@
 @end
 
 @implementation ConkyPreferencesSheetController
-/* helper functions */
+
 - (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
 {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -109,7 +109,16 @@
 {
     [self showAlertWithMessageText:@"Error" informativeText:withErrorMsg andAlertStyle:NSAlertStyleCritical];
 }
-/* end of helper functions */
+
+- (void)disableControls
+{
+    [_conkyConfigLocationTextfield setEnabled:NO];
+    [_runConkyAtStartupCheckbox setEnabled:NO];
+    [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+    [_startupDelayStepper setEnabled:NO];
+    [_startupDelayField setEnabled:NO];
+    [_startupDelayLabel setTextColor:[NSColor grayColor]];
+}
 
 
 
@@ -159,12 +168,7 @@
     }
     else
     {
-        [_conkyConfigLocationTextfield setEnabled:NO];
-        [_runConkyAtStartupCheckbox setEnabled:NO];
-        [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
-        [_startupDelayStepper setEnabled:NO];
-        [_startupDelayField setEnabled:NO];
-        [_startupDelayLabel setTextColor:[NSColor grayColor]];
+        [self disableControls];
     }
 }
 
@@ -222,11 +226,16 @@
     NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
     
+    /* disable the Install/Uninstall button */
+    [_un_in_stallConkyButton setEnabled:NO];
+    
     if (conkyXInstalled)
     {
         /*
          * Uninstall conky
          */
+        
+        [self disableControls];
         
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
@@ -271,9 +280,6 @@
          * such as dmg, authentication etc.
          */
         CXForciblyMoveToApplicationsFolderConkyX();
-        
-        /* disable the Install/Uninstall button */
-        [_un_in_stallConkyButton setEnabled:NO];
         
         /* create ConkyInstaller sheet */
         ctl = [[ConkyInstallerSheetController alloc] init];
