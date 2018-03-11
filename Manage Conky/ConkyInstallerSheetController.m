@@ -90,19 +90,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:errorHandle];
     
     [script setTerminationHandler:^(NSTask *task) {
-        /*
-         * update conky defaults file
-         */
-        NSUserDefaults *conkyDefaults = [[NSUserDefaults alloc] init];
-        [conkyDefaults setValue:@"1" forKey:@"isInstalled"];
         
         dispatch_async(dispatch_get_main_queue(),
         ^{
            [_progressIndicator stopAnimation:nil];
            
            NSAlert *alert = [[NSAlert alloc] init];
-           [alert setMessageText:@"ConkyX Finished Installing"];
-           [alert setInformativeText:@"Press OK to restart conky"];
+           [alert setMessageText:@"Conky Finished Installing"];
            [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
             {
                 NSError *error = nil;
