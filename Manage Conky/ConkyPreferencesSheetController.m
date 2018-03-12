@@ -54,46 +54,6 @@
 
 @end
 
-@implementation ConkyConfigLocationFieldDelegate
-- (void)controlTextDidEndEditing:(NSNotification *)notification
-{
-    /*
-     * See if it was due to key ENTER
-     */
-    
-    NSLog(@"HERE!!!");
-    
-    if ( [[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement )
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[[notification object] stringValue] forKey:@"configsLocation"];
-    }
-}
-@end
-
-@implementation startupDelayFieldDelegate
-- (void)controlTextDidEndEditing:(NSNotification *)notification
-{
-    /*
-     * See if it was due to key ENTER
-     */
-    
-    static BOOL shownX11TakesAlotTimeWarning = NO;
-    
-    if (shownX11TakesAlotTimeWarning)
-    {
-        NSWindow *win = [[notification object] sheet];  // take sheet from GeneralSheetController
-        
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Warning"];
-        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
-        [alert setAlertStyle:NSAlertStyleWarning];
-        [alert beginSheetModalForWindow:win completionHandler:^(NSModalResponse returnCode) {}];
-        
-        shownX11TakesAlotTimeWarning = YES;
-    }
-}
-@end
-
 @implementation ConkyPreferencesSheetController
 
 - (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
@@ -119,8 +79,6 @@
     [_startupDelayField setEnabled:NO];
     [_startupDelayLabel setTextColor:[NSColor grayColor]];
 }
-
-
 
 - (IBAction)activatePreferencesSheet:(id)sender
 {
@@ -160,11 +118,11 @@
         }
         
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
-        ConkyConfigLocationFieldDelegate *cclfd = [[ConkyConfigLocationFieldDelegate alloc] init];
-        [_conkyConfigLocationTextfield setDelegate:cclfd];       /* Catch Enter-Key notification */
+//        ConkyConfigLocationFieldDelegate *cclfd = [[ConkyConfigLocationFieldDelegate alloc] init];
+//        [_conkyConfigLocationTextfield setDelegate:cclfd];       /* Catch Enter-Key notification */
 
-        startupDelayFieldDelegate *sdfd = [[startupDelayFieldDelegate alloc] init];
-        [_startupDelayField setDelegate:sdfd];  /* Catch Enter-Key notification */
+//        startupDelayFieldDelegate *sdfd = [[startupDelayFieldDelegate alloc] init];
+//        [_startupDelayField setDelegate:sdfd];  /* Catch Enter-Key notification */
     }
     else
     {
@@ -219,6 +177,29 @@
 {
     _startupDelayField.integerValue = [sender integerValue];
     startupDelay = [sender intValue];
+}
+
+- (IBAction)startupDelayFieldEnterPressed:(id)sender
+{
+    static BOOL shownX11TakesAlotTimeWarning = NO;
+    
+    if (!shownX11TakesAlotTimeWarning)
+    {
+        NSWindow *win = [super sheet];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Warning"];
+        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
+        [alert setAlertStyle:NSAlertStyleWarning];
+        [alert beginSheetModalForWindow:win completionHandler:^(NSModalResponse returnCode) {}];
+        
+        shownX11TakesAlotTimeWarning = YES;
+    }
+}
+
+- (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
 }
 
 - (IBAction)un_in_stallConky:(id)sender
