@@ -9,6 +9,7 @@
 #import "ConkyPreferencesSheetController.h"
 
 #import <ServiceManagement/ServiceManagement.h>
+#import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
 #import <unistd.h>
 
@@ -94,6 +95,9 @@
     // Startup Delay
     startupDelay = 20;  /* default value */
     
+    // keepAlive
+    keepAlive = YES;
+    
     if (conkyXInstalled)
     {
         /* Is conky agent present? */
@@ -101,14 +105,11 @@
         
         conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
         
-        if (conkyAgentPresent)
-            [_runConkyAtStartupCheckbox setState:1];
-        else
-            NSLog(@"Agent plist doesnt exist or not accessible!");
+        if (conkyAgentPresent)  [_runConkyAtStartupCheckbox setState:1];
+        else                    NSLog(@"Agent plist doesnt exist or not accessible!");
         
         /* Conky configuration file location? */
         NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-        
         if (!conkyConfigsPath)
         {
             NSString *kConkyConfigsDefaultPath = [NSString stringWithFormat:@"%@/.conky", NSHomeDirectory()];
@@ -118,11 +119,6 @@
         }
         
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
-//        ConkyConfigLocationFieldDelegate *cclfd = [[ConkyConfigLocationFieldDelegate alloc] init];
-//        [_conkyConfigLocationTextfield setDelegate:cclfd];       /* Catch Enter-Key notification */
-
-//        startupDelayFieldDelegate *sdfd = [[startupDelayFieldDelegate alloc] init];
-//        [_startupDelayField setDelegate:sdfd];  /* Catch Enter-Key notification */
     }
     else
     {
@@ -147,32 +143,23 @@
     {
         NSLog(@"Request to add the Agent!");
         
-        id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES] };
-        id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive" };
-        NSUInteger count = sizeof(objects) / sizeof(id);
-        
-        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-        
-        NSAlert *keepAlivePrompt = [[NSAlert alloc] init];
+        NSAlertExtension *keepAlivePrompt = [[NSAlertExtension alloc] init];
         [keepAlivePrompt setMessageText:@"Select your preference"];
         [keepAlivePrompt setInformativeText:@"Always restart conky when for some reason it quits?"];
         [keepAlivePrompt setAlertStyle:NSAlertStyleInformational];
         [keepAlivePrompt addButtonWithTitle:@"Yes"];
         [keepAlivePrompt addButtonWithTitle:@"No"];
         
-        NSModalResponse response = [keepAlivePrompt runModal];
+        NSModalResponse response = [keepAlivePrompt runModalSheetForWindow:[super sheet]];
         switch (response)
         {
             case NSAlertSecondButtonReturn:
-                objects[3] = [NSNumber numberWithBool:NO];
+                keepAlive = YES;
                 break;
         }
-        
-        [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     }
 }
 
-// XXX must fix the text field
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
@@ -195,6 +182,9 @@
         
         shownX11TakesAlotTimeWarning = YES;
     }
+    
+    /* update startupDelay */
+    startupDelay = [sender intValue];
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
@@ -271,16 +261,23 @@
 
 - (IBAction)okButtonPressed:(id)sender
 {
-    // Save whatever info we got from the sheet
-    //  and close the sheet.
-    // ...
-    // ...
-    NSLog(@"startupDelay: %li", (long)startupDelay);
+    /*
+     * Here we save things to disk before we close the sheet
+     */
     
-    //NSString* conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
-    //NSDictionary *agent = [NSDictionary dictionaryWithContentsOfFile:conkyAgentPlistPath];
-    //[agent insertValue: inPropertyWithKey:]
+    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
     
+    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
+    id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval" };
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    
+    /* write the Agent plist */
+    NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+    [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
+    
+    NSLog(@"\n\n%@", conkyAgentPlist);
+    
+    /* close the sheet */
     [super closeSheet:[super sheet]];
 }
 

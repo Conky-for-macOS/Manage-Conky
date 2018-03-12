@@ -16,6 +16,8 @@
     BOOL conkyAgentPresent;
     
     NSInteger startupDelay;
+    
+    BOOL keepAlive;
 }
 
 // Run Conky At Startup
