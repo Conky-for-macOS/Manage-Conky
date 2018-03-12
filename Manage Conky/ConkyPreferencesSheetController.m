@@ -29,13 +29,6 @@
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
-/**
- * Formatter for allowing only integer values and more...
- *  for startupDelay text field.
- */
-@interface OnlyIntegerValueFormatter : NSNumberFormatter
-@end
-
 @implementation OnlyIntegerValueFormatter
 
 - (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
@@ -96,7 +89,7 @@
     startupDelay = 20;  /* default value */
     
     // keepAlive
-    keepAlive = YES;
+    keepAlive = YES;    /* default value */
     
     if (conkyXInstalled)
     {
@@ -265,9 +258,12 @@
      * Here we save things to disk before we close the sheet
      */
     
+    /*
+     * We must create and save the Conky Agent Property List File
+     */
     NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
     
-    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
+    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
     id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval" };
     NSUInteger count = sizeof(objects) / sizeof(id);
     
@@ -275,9 +271,13 @@
     NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
     [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     
+    /* debug */
     NSLog(@"\n\n%@", conkyAgentPlist);
     
-    /* close the sheet */
+
+    /*
+     * Close the sheet
+     */
     [super closeSheet:[super sheet]];
 }
 

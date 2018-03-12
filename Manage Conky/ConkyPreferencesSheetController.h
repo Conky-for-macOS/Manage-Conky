@@ -9,14 +9,21 @@
 #import "GeneralSheetController.h"
 #import "ConkyInstallerSheetController.h"
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<NSTextFieldDelegate>
+/**
+ * Formatter for allowing only integer values and more...
+ *  for startupDelay text field.
+ */
+@interface OnlyIntegerValueFormatter : NSNumberFormatter
+@end
+
+
+@interface ConkyPreferencesSheetController : GeneralSheetController
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
     BOOL conkyAgentPresent;
     
     NSInteger startupDelay;
-    
     BOOL keepAlive;
 }
 
