@@ -91,6 +91,9 @@
     // keepAlive
     keepAlive = YES;    /* default value */
     
+    // mustInstallAgent
+    mustInstallAgent = NO;   /* default value */
+    
     if (conkyXInstalled)
     {
         /* Is conky agent present? */
@@ -150,6 +153,8 @@
                 keepAlive = YES;
                 break;
         }
+        
+        mustInstallAgent = YES;  /* set to install Agent later */
     }
 }
 
@@ -258,22 +263,24 @@
      * Here we save things to disk before we close the sheet
      */
     
-    /*
-     * We must create and save the Conky Agent Property List File
-     */
-    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+    if (mustInstallAgent)
+    {
+        /*
+         * We must create and save the Conky Agent Property List File
+         */
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+        
+        id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
+        id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval" };
+        NSUInteger count = sizeof(objects) / sizeof(id);
+        
+        /* write the Agent plist */
+        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+        [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     
-    id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
-    id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval" };
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    
-    /* write the Agent plist */
-    NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-    [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
-    
-    /* debug */
-    NSLog(@"\n\n%@", conkyAgentPlist);
-    
+        /* debug */
+        NSLog(@"\n\n%@", conkyAgentPlist);
+    }
 
     /*
      * Close the sheet

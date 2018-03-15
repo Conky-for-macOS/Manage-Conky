@@ -25,6 +25,8 @@
     
     NSInteger startupDelay;
     BOOL keepAlive;
+    
+    BOOL mustInstallAgent;
 }
 
 // Run Conky At Startup

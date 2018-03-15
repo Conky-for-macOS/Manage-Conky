@@ -80,8 +80,8 @@
     [script setStandardOutput:outputPipe];
     [script setStandardError:errorPipe];
     
-    NSFileHandle *outputHandle = [outputPipe fileHandleForReading],
-    *errorHandle = [errorPipe fileHandleForReading];
+    NSFileHandle *outputHandle = [outputPipe fileHandleForReading];
+    NSFileHandle *errorHandle = [errorPipe fileHandleForReading];
     
     [outputHandle waitForDataInBackgroundAndNotify];
     [errorHandle waitForDataInBackgroundAndNotify];
