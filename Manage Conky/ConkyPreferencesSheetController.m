@@ -76,7 +76,7 @@
     [_un_in_stallConkyButton setEnabled:YES];
     
     // Startup Delay
-    startupDelay = 20;  /* default value */
+    _startupDelayField.intValue = 20;   /* default value */
     
     // keepAlive
     keepAlive = YES;    /* default value */
@@ -163,7 +163,6 @@
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
-    startupDelay = [sender intValue];
 }
 
 - (IBAction)startupDelayFieldEnterPressed:(id)sender
@@ -182,9 +181,6 @@
         
         shownX11TakesAlotTimeWarning = YES;
     }
-    
-    /* update startupDelay */
-    startupDelay = [sender intValue];
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
@@ -275,23 +271,26 @@
     
     if (mustInstallAgent)
     {
+        NSInteger startupDelay_ = [_startupDelayField integerValue];    /* deprecate the use/manipulation of startupDelay variable */
+        
         /*
          * We must create and save the Conky Agent Property List File
          */
         NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
-        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay]};
+        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
         id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
         NSUInteger count = sizeof(objects) / sizeof(id);
         
         /* write the Agent plist */
         NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
-    
+        
         mustInstallAgent = NO;
         [[NSApp mainWindow] setDocumentEdited:NO];
         
         /* debug */
+        NSLog(@"%ld", (long)startupDelay_);
         NSLog(@"\n\n%@", conkyAgentPlist);
     }
 

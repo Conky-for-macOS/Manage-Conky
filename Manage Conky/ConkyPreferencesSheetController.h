@@ -23,7 +23,6 @@
     BOOL conkyXInstalled;
     BOOL conkyAgentPresent;
     
-    NSInteger startupDelay;
     BOOL keepAlive;
     BOOL mustInstallAgent;
 }
