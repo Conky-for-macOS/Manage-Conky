@@ -12,6 +12,8 @@
 /**
  * Formatter for allowing only integer values and more...
  *  for startupDelay text field.
+ *
+ * Help from: https://stackoverflow.com/questions/12161654/restrict-nstextfield-to-only-allow-numbers
  */
 @interface OnlyIntegerValueFormatter : NSNumberFormatter
 @end
