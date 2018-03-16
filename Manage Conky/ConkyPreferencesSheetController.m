@@ -29,8 +29,6 @@
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
-#define DEBUG_MODE
-
 @implementation OnlyIntegerValueFormatter
 
 - (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
@@ -64,16 +62,6 @@
 - (void)show_error_alert:(NSString*)withErrorMsg
 {
     [self showAlertWithMessageText:@"Error" informativeText:withErrorMsg andAlertStyle:NSAlertStyleCritical];
-}
-
-- (void)disableControls
-{
-    [_conkyConfigLocationTextfield setEnabled:NO];
-    [_runConkyAtStartupCheckbox setEnabled:NO];
-    [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
-    [_startupDelayStepper setEnabled:NO];
-    [_startupDelayField setEnabled:NO];
-    [_startupDelayLabel setTextColor:[NSColor grayColor]];
 }
 
 - (IBAction)activatePreferencesSheet:(id)sender
@@ -124,6 +112,16 @@
     }
 }
 
+- (void)disableControls
+{
+    [_conkyConfigLocationTextfield setEnabled:NO];
+    [_runConkyAtStartupCheckbox setEnabled:NO];
+    [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+    [_startupDelayStepper setEnabled:NO];
+    [_startupDelayField setEnabled:NO];
+    [_startupDelayLabel setTextColor:[NSColor grayColor]];
+}
+
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
     NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
@@ -157,6 +155,8 @@
         }
         
         mustInstallAgent = YES;  /* set to install Agent later */
+        [_doneButton setTitle:@"Save changes"];
+        [[NSApp mainWindow] setDocumentEdited:YES];
     }
 }
 
@@ -211,7 +211,7 @@
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
-            [self show_error_alert:@"Error removing ConkyX"];
+            [self show_error_alert:@"Failed to remove ConkyX."];
             NSLog(@"Error removing ConkyX: \n\n%@", error);
             return;
         }
@@ -219,7 +219,7 @@
         [fm removeItemAtPath:MANAGE_CONKY error:&error];
         if (error)
         {
-            [self show_error_alert:@"Error removing Manage Conky.app"];
+            [self show_error_alert:@"Failed to remove Manage Conky."];
             NSLog(@"Error removing Manage Conky: \n\n%@", error);
             return;
         }
@@ -234,7 +234,7 @@
         [fm removeItemAtPath:conkyAgentPlistPath error:&error];
         if (error)
         {
-            [self show_error_alert:@"Error removing conky startup item."];
+            [self show_error_alert:@"Failed to remove conky startup item."];
             NSLog(@"Error removing agent plist: \n\n%@", error);
         }
         
@@ -289,17 +289,10 @@
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     
         mustInstallAgent = NO;
+        [[NSApp mainWindow] setDocumentEdited:NO];
         
         /* debug */
         NSLog(@"\n\n%@", conkyAgentPlist);
-        
-#ifdef DEBUG_MODE
-        NSAlertExtension *dbg = [[NSAlertExtension alloc] init];
-        [dbg setMessageText:@"Agent Plist"];
-        [dbg setInformativeText:[conkyAgentPlist descriptionInStringsFileFormat]];
-        [dbg setAlertStyle:NSAlertStyleInformational];
-        [dbg runModalSheetForWindow:[super sheet]];
-#endif
     }
 
     /*

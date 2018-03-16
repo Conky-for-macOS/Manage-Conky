@@ -43,6 +43,8 @@
 @property (weak) IBOutlet NSStepper *startupDelayStepper;
 @property (weak) IBOutlet NSTextField *startupDelayLabel;
 
+@property (weak) IBOutlet NSButton *doneButton;
+
 
 - (IBAction)activatePreferencesSheet:(id)sender;
 
