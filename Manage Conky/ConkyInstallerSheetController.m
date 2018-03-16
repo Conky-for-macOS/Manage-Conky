@@ -45,7 +45,7 @@
     {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
         
-        NSAlertExtension *hbalert = [[NSAlertExtension alloc] init];
+        NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
         [hbalert setMessageText:@"Homebrew missing"];
         [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
         [hbalert setAlertStyle:NSAlertStyleCritical];
@@ -59,7 +59,7 @@
     {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.xquartz.org"]];
         
-        NSAlertExtension *xqalert = [[NSAlertExtension alloc] init];
+        NSExtendedAlert *xqalert = [[NSExtendedAlert alloc] init];
         [xqalert setMessageText:@"XQuartz is missing"];
         [xqalert setInformativeText:@"Install XQuartz first using the link I opened in the browser.\nOnce you install click OK to continue"];
         [xqalert setAlertStyle:NSAlertStyleCritical];

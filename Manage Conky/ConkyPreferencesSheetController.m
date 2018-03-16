@@ -139,7 +139,7 @@
     {
         NSLog(@"Request to add the Agent!");
         
-        NSAlertExtension *keepAlivePrompt = [[NSAlertExtension alloc] init];
+        NSExtendedAlert *keepAlivePrompt = [[NSExtendedAlert alloc] init];
         [keepAlivePrompt setMessageText:@"Select your preference"];
         [keepAlivePrompt setInformativeText:@"Always restart conky when for some reason it quits?"];
         [keepAlivePrompt setAlertStyle:NSAlertStyleInformational];
