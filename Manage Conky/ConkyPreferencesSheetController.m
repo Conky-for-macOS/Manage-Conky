@@ -29,6 +29,8 @@
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
+#define DEBUG_MODE
+
 @implementation OnlyIntegerValueFormatter
 
 - (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
@@ -228,6 +230,14 @@
             NSLog(@"Error removing symlink: \n\n%@", error);
         }
         
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+        [fm removeItemAtPath:conkyAgentPlistPath error:&error];
+        if (error)
+        {
+            [self show_error_alert:@"Error removing conky startup item."];
+            NSLog(@"Error removing agent plist: \n\n%@", error);
+        }
+        
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
         [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
@@ -270,16 +280,26 @@
          */
         NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
-        id objects[] = { kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay] };
-        id keys[] = { @"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval" };
+        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay]};
+        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
         NSUInteger count = sizeof(objects) / sizeof(id);
         
         /* write the Agent plist */
         NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
     
+        mustInstallAgent = NO;
+        
         /* debug */
         NSLog(@"\n\n%@", conkyAgentPlist);
+        
+#ifdef DEBUG_MODE
+        NSAlertExtension *dbg = [[NSAlertExtension alloc] init];
+        [dbg setMessageText:@"Agent Plist"];
+        [dbg setInformativeText:[conkyAgentPlist descriptionInStringsFileFormat]];
+        [dbg setAlertStyle:NSAlertStyleInformational];
+        [dbg runModalSheetForWindow:[super sheet]];
+#endif
     }
 
     /*

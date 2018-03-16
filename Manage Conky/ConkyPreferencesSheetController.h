@@ -25,7 +25,6 @@
     
     NSInteger startupDelay;
     BOOL keepAlive;
-    
     BOOL mustInstallAgent;
 }
 
