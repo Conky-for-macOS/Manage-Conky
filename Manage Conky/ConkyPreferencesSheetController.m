@@ -150,7 +150,7 @@
         switch (response)
         {
             case NSAlertSecondButtonReturn:
-                keepAlive = YES;
+                keepAlive = NO;
                 break;
         }
         
@@ -280,7 +280,7 @@
          */
         NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
-        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithBool:YES], [NSNumber numberWithInteger:startupDelay]};
+        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay]};
         id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
         NSUInteger count = sizeof(objects) / sizeof(id);
         
