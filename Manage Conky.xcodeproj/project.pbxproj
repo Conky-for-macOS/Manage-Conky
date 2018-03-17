@@ -20,7 +20,6 @@
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
 		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		ECAF6F672024AF6800715D72 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECAF6F662024AF6800715D72 /* Credits.rtf */; };
 		ECB76D56205D713900A3BB22 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D52205D713900A3BB22 /* ConkyThemes.xib */; };
 		ECB76D57205D713900A3BB22 /* ConkyInstaller.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D53205D713900A3BB22 /* ConkyInstaller.xib */; };
 		ECB76D58205D713900A3BB22 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D54205D713900A3BB22 /* About.xib */; };
@@ -28,6 +27,7 @@
 		ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */; };
 		ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */; };
 		ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */; };
+		ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D60205D725100A3BB22 /* Credits.rtf */; };
 		ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */; };
 /* End PBXBuildFile section */
@@ -88,7 +88,6 @@
 		EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+runModalSheet.m"; path = "Extensions/NSAlert+runModalSheet.m"; sourceTree = "<group>"; };
 		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		ECAF6F642024ADC900715D72 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
-		ECAF6F662024AF6800715D72 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		ECB76D52205D713900A3BB22 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
 		ECB76D53205D713900A3BB22 /* ConkyInstaller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyInstaller.xib; path = Sheets/ConkyInstaller.xib; sourceTree = "<group>"; };
 		ECB76D54205D713900A3BB22 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
 		ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallLibraries.sh; path = Resources/InstallLibraries.sh; sourceTree = "<group>"; };
+		ECB76D60205D725100A3BB22 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConkyInstallerSheetController.h; sourceTree = "<group>"; };
 		ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConkyInstallerSheetController.m; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		77B8473B1F62C2B600AF8BCA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ECAF6F662024AF6800715D72 /* Credits.rtf */,
+				ECB76D60205D725100A3BB22 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -329,11 +329,11 @@
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D59205D713900A3BB22 /* ConkyPreferences.xib in Resources */,
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
+				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				ECB76D56205D713900A3BB22 /* ConkyThemes.xib in Resources */,
 				ECB76D57205D713900A3BB22 /* ConkyInstaller.xib in Resources */,
 				ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */,
-				ECAF6F672024AF6800715D72 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
