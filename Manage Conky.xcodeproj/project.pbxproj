@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
 		77B847401F62C2B600AF8BCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473F1F62C2B600AF8BCA /* ViewController.m */; };
@@ -20,6 +21,7 @@
 		77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6DBC71F648ACB001DEBB1 /* About.xib */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
+		EC3DF95E205D6046000ACB95 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = EC3DF95D205D6045000ACB95 /* dsa_pub.pem */; };
 		EC3EB7E6204B58D90015DBF0 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */; };
 		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -28,7 +30,6 @@
 		ECEEE89C2049A4E5008C6D54 /* InstallLibraries.sh in Resources */ = {isa = PBXBuildFile; fileRef = ECEEE89B2049A4E5008C6D54 /* InstallLibraries.sh */; };
 		ECEEE8A02049A5B8008C6D54 /* ConkyInstaller.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEEE89F2049A5B8008C6D54 /* ConkyInstaller.xib */; };
 		ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */; };
-		FCA3BA7FAA9574B4BD1433C5 /* libPods-Manage Conky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,8 @@
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Manage Conky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manage_Conky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC3DF95D205D6045000ACB95 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = SOURCE_ROOT; };
 		EC3EB7E5204B58D80015DBF0 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = SOURCE_ROOT; };
 		EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAlert+runModalSheet.h"; path = "Extensions/NSAlert+runModalSheet.h"; sourceTree = "<group>"; };
 		EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+runModalSheet.m"; path = "Extensions/NSAlert+runModalSheet.m"; sourceTree = "<group>"; };
@@ -105,7 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
-				FCA3BA7FAA9574B4BD1433C5 /* libPods-Manage Conky.a in Frameworks */,
+				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,7 @@
 				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
 				77B847461F62C2B600AF8BCA /* Info.plist */,
 				77B8473C1F62C2B600AF8BCA /* main.m */,
+				EC3DF95C205D6035000ACB95 /* Resources */,
 				77B8473B1F62C2B600AF8BCA /* Supporting Files */,
 			);
 			path = "Manage Conky";
@@ -173,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
-				8EE3501339E60DD60D921DA8 /* libPods-Manage Conky.a */,
+				EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,6 +188,14 @@
 				4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC3DF95C205D6035000ACB95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC3DF95D205D6045000ACB95 /* dsa_pub.pem */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		EC9691F4204DD59E00B99EB5 /* Sheets */ = {
@@ -269,6 +280,7 @@
 				TargetAttributes = {
 					77B847341F62C2B600AF8BCA = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = CC63MSFH9N;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -317,6 +329,7 @@
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				77B9EFF51F64209D00C375FE /* ConkyThemes.xib in Resources */,
 				77E6DBC81F648ACB001DEBB1 /* About.xib in Resources */,
+				EC3DF95E205D6046000ACB95 /* dsa_pub.pem in Resources */,
 				ECAF6F672024AF6800715D72 /* Credits.rtf in Resources */,
 				77B9EFF31F64208E00C375FE /* ConkyPreferences.xib in Resources */,
 				EC3EB7E6204B58D90015DBF0 /* default-themes-2.1.cmtp.7z in Resources */,
@@ -333,9 +346,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LzmaSDK-ObjC/LzmaSDK_ObjC.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LzmaSDK_ObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -523,10 +543,10 @@
 			baseConfigurationReference = 340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC63MSFH9N;
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
@@ -541,9 +561,10 @@
 			baseConfigurationReference = 4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC63MSFH9N;
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";

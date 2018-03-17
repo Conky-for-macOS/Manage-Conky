@@ -7,7 +7,7 @@
 //
 
 #import "GeneralSheetController.h"
-#import <LzmaSDKObjCReader.h>
+#import "LzmaSDKObjCReader.h"
 
 @interface ConkyThemesSheetController : GeneralSheetController <LzmaSDKObjCReaderDelegate>
 {

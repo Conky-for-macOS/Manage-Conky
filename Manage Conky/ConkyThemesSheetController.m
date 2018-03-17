@@ -12,8 +12,8 @@
 
 #import "ConkyThemesSheetController.h"
 
-#import <LzmaSDKObjC.h>
-#import <LzmaSDKObjCReader.h>
+#import "LzmaSDKObjC.h"
+#import "LzmaSDKObjCReader.h"
 
 @implementation ConkyThemesSheetController
 

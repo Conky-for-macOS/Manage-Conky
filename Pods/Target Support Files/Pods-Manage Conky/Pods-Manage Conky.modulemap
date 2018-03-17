@@ -1,0 +1,6 @@
+framework module Pods_Manage_Conky {
+  umbrella header "Pods-Manage Conky-umbrella.h"
+
+  export *
+  module * { export * }
+}

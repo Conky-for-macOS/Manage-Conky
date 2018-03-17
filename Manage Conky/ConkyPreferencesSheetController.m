@@ -290,7 +290,6 @@
         [[NSApp mainWindow] setDocumentEdited:NO];
         
         /* debug */
-        NSLog(@"%ld", (long)startupDelay_);
         NSLog(@"\n\n%@", conkyAgentPlist);
     }
 

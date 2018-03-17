@@ -3,10 +3,10 @@
 
 target 'Manage Conky' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+  use_frameworks!
 
   # Pods for Manage Conky
 
-    pod 'LzmaSDK-ObjC', :inhibit_warnings => true
-
+  pod 'LzmaSDK-ObjC', :inhibit_warnings => true
+  pod 'Sparkle'
 end

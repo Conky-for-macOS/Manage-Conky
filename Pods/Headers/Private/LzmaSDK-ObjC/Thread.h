@@ -1,1 +1,0 @@
-../../../LzmaSDK-ObjC/lzma/CPP/Windows/Thread.h

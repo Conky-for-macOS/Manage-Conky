@@ -1,1 +1,0 @@
-../../../LzmaSDK-ObjC/lzma/CPP/7zip/Compress/LzmaEncoder.h
