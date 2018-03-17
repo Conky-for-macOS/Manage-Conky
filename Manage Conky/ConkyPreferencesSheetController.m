@@ -188,6 +188,21 @@
     [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
 }
 
+- (void)helper_installConkyX
+{
+    /*
+     * Copy ConkyX.app to /Applications
+     * using code from LetsMove to handle many cases
+     * such as dmg, authentication etc.
+     */
+    CXForciblyMoveToApplicationsFolderConkyX();
+    
+    /* create ConkyInstaller sheet */
+    ctl = [[ConkyInstallerSheetController alloc] init];
+    [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
+    [ctl beginInstalling];
+}
+
 - (IBAction)un_in_stallConky:(id)sender
 {
     NSError *error = nil;
@@ -249,17 +264,7 @@
          * Install Conky
          */
         
-        /*
-         * Copy ConkyX.app to /Applications
-         * using code from LetsMove to handle many cases
-         * such as dmg, authentication etc.
-         */
-        CXForciblyMoveToApplicationsFolderConkyX();
-        
-        /* create ConkyInstaller sheet */
-        ctl = [[ConkyInstallerSheetController alloc] init];
-        [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
-        [ctl beginInstalling];
+        [self helper_installConkyX];
     }
 }
 
@@ -297,6 +302,17 @@
      * Close the sheet
      */
     [super closeSheet:[super sheet]];
+}
+
+// Called if the application has been relaunched from an update
+- (void)updaterDidRelaunchApplication:(SUUpdater *)updater
+{
+    /*
+     * Install the newest version of ConkyX/conky
+     *  brought by the updated ManageConky
+     */
+    NSLog(@"Must install ConkyX after update...");
+    [self helper_installConkyX];
 }
 
 @end

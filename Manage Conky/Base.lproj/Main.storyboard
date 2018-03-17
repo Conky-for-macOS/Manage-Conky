@@ -663,7 +663,12 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
-                <customObject id="bel-iu-7u1" customClass="SUUpdater"/>
+                <customObject id="lwL-qZ-nEk" customClass="ConkyPreferencesSheetController"/>
+                <customObject id="bel-iu-7u1" customClass="SUUpdater">
+                    <connections>
+                        <outlet property="delegate" destination="lwL-qZ-nEk" id="5jo-N3-d6L"/>
+                    </connections>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>

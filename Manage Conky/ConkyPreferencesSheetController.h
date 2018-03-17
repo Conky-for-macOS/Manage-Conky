@@ -8,6 +8,7 @@
 
 #import "GeneralSheetController.h"
 #import "ConkyInstallerSheetController.h"
+#import <Sparkle/Sparkle.h>
 
 /**
  * Formatter for allowing only integer values and more...
@@ -19,7 +20,7 @@
 @end
 
 
-@interface ConkyPreferencesSheetController : GeneralSheetController
+@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate>
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
