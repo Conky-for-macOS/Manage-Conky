@@ -14,6 +14,8 @@ Manage Conky is the implementation of [conky manager](https://github.com/teejee2
 
 [LetsMove](https://github.com/potionfactory/LetsMove)
 
+[Sparkle Framework](https://sparkle-project.org)
+
 # License
 
 MIT License
