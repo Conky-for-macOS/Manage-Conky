@@ -49,6 +49,9 @@
 @end
 
 @implementation ConkyPreferencesSheetController
+{
+    NSMutableArray *_searchLocationsTableContents;
+}
 
 - (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
 {
@@ -83,6 +86,9 @@
     
     // mustInstallAgent
     mustInstallAgent = NO;   /* default value */
+    
+    _searchLocationsTableContents = [[NSMutableArray alloc] init];
+    NSString * path = @"/User/np/Pictures";
     
     if (conkyXInstalled)
     {
@@ -313,6 +319,58 @@
      */
     NSLog(@"Must install ConkyX after update...");
     [self helper_installConkyX];
+}
+
+//
+//
+// SEARCH LOCATIONS
+//
+//
+
+- (IBAction)addSearchLocation:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    panel.canChooseDirectories = NO;
+    panel.allowsMultipleSelection = NO;
+    
+    /*
+     * display the panel
+     */
+    [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
+            NSString *theDocumentInString = [theDocument path];
+            
+            /* add to table contents array */
+            [_searchLocationsTableContents addObject:theDocumentInString];
+            NSLog(@"Path = %@", theDocumentInString);
+        }
+    }];
+}
+
+- (IBAction)removeSearchLocation:(id)sender
+{
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return [_searchLocationsTableContents count];
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    NSString *searchLocation = _searchLocationsTableContents[row];
+    
+#define IDENTIFIER_SET_IN_INTERFACE_BUILDER @"MainCell"
+    
+    NSTableCellView *cellView = [tableView makeViewWithIdentifier:IDENTIFIER_SET_IN_INTERFACE_BUILDER owner:self];
+    
+    cellView.textField.stringValue = searchLocation;
+    cellView.imageView.image = [NSImage imageNamed:@"Maintain"];
+    
+    return cellView;
 }
 
 @end

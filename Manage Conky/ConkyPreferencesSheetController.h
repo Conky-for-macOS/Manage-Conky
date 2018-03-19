@@ -20,7 +20,7 @@
 @end
 
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate>
+@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
@@ -44,6 +44,12 @@
 @property (weak) IBOutlet NSTextField *startupDelayField;
 @property (weak) IBOutlet NSStepper *startupDelayStepper;
 @property (weak) IBOutlet NSTextField *startupDelayLabel;
+
+
+@property (weak) IBOutlet NSTableView *searchLocationsTable;
+@property (weak) IBOutlet NSButton *addSearchLocationButton;
+@property (weak) IBOutlet NSButton *removeSearchLocationButton;
+
 
 @property (weak) IBOutlet NSButton *doneButton;
 

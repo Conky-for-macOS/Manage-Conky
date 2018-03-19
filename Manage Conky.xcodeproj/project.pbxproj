@@ -18,6 +18,7 @@
 		77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
 		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
+		EC89E7F52060503900152AB3 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC89E7F42060503900152AB3 /* SaveTheme.xib */; };
 		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ECB76D56205D713900A3BB22 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D52205D713900A3BB22 /* ConkyThemes.xib */; };
@@ -84,6 +85,7 @@
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manage_Conky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC89E7F42060503900152AB3 /* SaveTheme.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveTheme.xib; sourceTree = "<group>"; };
 		EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAlert+runModalSheet.h"; path = "Extensions/NSAlert+runModalSheet.h"; sourceTree = "<group>"; };
 		EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+runModalSheet.m"; path = "Extensions/NSAlert+runModalSheet.m"; sourceTree = "<group>"; };
 		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				ECB76D53205D713900A3BB22 /* ConkyInstaller.xib */,
 				ECB76D55205D713900A3BB22 /* ConkyPreferences.xib */,
 				ECB76D52205D713900A3BB22 /* ConkyThemes.xib */,
+				EC89E7F42060503900152AB3 /* SaveTheme.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
+				EC89E7F52060503900152AB3 /* SaveTheme.xib in Resources */,
 				ECB76D56205D713900A3BB22 /* ConkyThemes.xib in Resources */,
 				ECB76D57205D713900A3BB22 /* ConkyInstaller.xib in Resources */,
 				ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */,
