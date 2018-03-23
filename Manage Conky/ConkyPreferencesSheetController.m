@@ -287,12 +287,22 @@
         /*
          * We must create and save the Conky Agent Property List File
          */
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+        NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
         
         id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
         id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
         NSUInteger count = sizeof(objects) / sizeof(id);
         
+        /* create LaunchAgents directory at User's Home */
+        NSError *error;
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
+        if (error)
+        {
+            NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
+        }
+
         /* write the Agent plist */
         NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
