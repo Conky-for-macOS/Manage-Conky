@@ -88,7 +88,6 @@
     mustInstallAgent = NO;   /* default value */
     
     _searchLocationsTableContents = [[NSMutableArray alloc] init];
-    NSString * path = @"/User/np/Pictures";
     
     if (conkyXInstalled)
     {
@@ -225,6 +224,18 @@
         
         [self disableControls];
         
+        /* unload agent */
+        SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
+        
+        /* remove agent plist */
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+        [fm removeItemAtPath:conkyAgentPlistPath error:&error];
+        if (error)
+        {
+            [self show_error_alert:@"Failed to remove conky startup item."];
+            NSLog(@"Error removing agent plist: \n\n%@", error);
+        }
+        
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
@@ -245,14 +256,6 @@
         if (error)
         {
             NSLog(@"Error removing symlink: \n\n%@", error);
-        }
-        
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
-        [fm removeItemAtPath:conkyAgentPlistPath error:&error];
-        if (error)
-        {
-            [self show_error_alert:@"Failed to remove conky startup item."];
-            NSLog(@"Error removing agent plist: \n\n%@", error);
         }
         
         /* create Successfully Installed message */
