@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
+		09CBFEB22066A5B900EB8A1A /* ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
@@ -34,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		09CBFEB02066A5B200EB8A1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09CBFEA62066A55500EB8A1A;
+			remoteInfo = ManageConkySMJobBlessHelper;
+		};
 		ECD50213204F210600B9D76C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
@@ -51,6 +60,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		09CBFEA22066A4FB00EB8A1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				09CBFEB22066A5B900EB8A1A /* ManageConkySMJobBlessHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CBFEA52066A55500EB8A1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		EC9691F2204DD4F600B99EB5 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +92,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CBFEA92066A55500EB8A1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09CBFEAE2066A57600EB8A1A /* SMJobBlessHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Info.plist"; sourceTree = "<group>"; };
+		09CBFEAF2066A57600EB8A1A /* SMJobBlessHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Launchd.plist"; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
 		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +136,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		09CBFEA42066A55500EB8A1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B847321F62C2B600AF8BCA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,10 +155,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
+			isa = PBXGroup;
+			children = (
+				09CBFEAE2066A57600EB8A1A /* SMJobBlessHelper-Info.plist */,
+				09CBFEAF2066A57600EB8A1A /* SMJobBlessHelper-Launchd.plist */,
+				09CBFEA92066A55500EB8A1A /* main.m */,
+			);
+			path = ManageConkySMJobBlessHelper;
+			sourceTree = "<group>";
+		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
 				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
+				09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
@@ -131,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				77B847351F62C2B600AF8BCA /* Manage Conky.app */,
+				09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +301,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		09CBFEA62066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09CBFEAB2066A55500EB8A1A /* Build configuration list for PBXNativeTarget "ManageConkySMJobBlessHelper" */;
+			buildPhases = (
+				09CBFEA32066A55500EB8A1A /* Sources */,
+				09CBFEA42066A55500EB8A1A /* Frameworks */,
+				09CBFEA52066A55500EB8A1A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ManageConkySMJobBlessHelper;
+			productName = ManageConkySMJobBlessHelper;
+			productReference = 09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 		77B847341F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B847491F62C2B600AF8BCA /* Build configuration list for PBXNativeTarget "Manage Conky" */;
@@ -261,10 +329,12 @@
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
 				F7274ACE208100D26DB22441 /* [CP] Copy Pods Resources */,
 				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
+				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */,
 				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
 			name = "Manage Conky";
@@ -281,10 +351,15 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Nickolas Pylarinos";
 				TargetAttributes = {
+					09CBFEA62066A55500EB8A1A = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = CC63MSFH9N;
+						ProvisioningStyle = Automatic;
+					};
 					77B847341F62C2B600AF8BCA = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = CC63MSFH9N;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -307,6 +382,7 @@
 			);
 			projectRoot = "";
 			targets = (
+				09CBFEA62066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
 				77B847341F62C2B600AF8BCA /* Manage Conky */,
 			);
 		};
@@ -402,6 +478,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		09CBFEA32066A55500EB8A1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CBFEAA2066A55500EB8A1A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B847311F62C2B600AF8BCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,6 +506,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09CBFEA62066A55500EB8A1A /* ManageConkySMJobBlessHelper */;
+			targetProxy = 09CBFEB02066A5B200EB8A1A /* PBXContainerItemProxy */;
+		};
 		ECD50216204F219E00B9D76C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ConkyX;
@@ -441,6 +530,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		09CBFEAC2066A55500EB8A1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		09CBFEAD2066A55500EB8A1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
 		77B847471F62C2B600AF8BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -548,9 +669,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
@@ -566,9 +687,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
@@ -581,6 +702,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		09CBFEAB2066A55500EB8A1A /* Build configuration list for PBXNativeTarget "ManageConkySMJobBlessHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09CBFEAC2066A55500EB8A1A /* Debug */,
+				09CBFEAD2066A55500EB8A1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		77B847301F62C2B600AF8BCA /* Build configuration list for PBXProject "Manage Conky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
