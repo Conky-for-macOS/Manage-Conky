@@ -16,8 +16,12 @@
 #define HOMEBREW_PATH "/usr/local/bin/brew"
 #define XQUARTZ_PATH  "/usr/X11"
 
-
 @implementation ConkyInstallerSheetController
+
+- (void)writeToLog:(NSString *)str
+{
+    _logField.stringValue = [_logField.stringValue stringByAppendingString:str];
+}
 
 - (void)receivedData:(NSNotification*)notif
 {
@@ -29,10 +33,11 @@
         [fh waitForDataInBackgroundAndNotify];
         NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         dispatch_async(dispatch_get_main_queue(), ^{
-            _logField.stringValue = [_logField.stringValue stringByAppendingString:str];
+            [self writeToLog:str];
         });
     }
 };
+
 
 - (void)beginInstalling
 {
@@ -55,15 +60,11 @@
     /*
      * detect if XQuartz is installed
      */
-    if (access(XQUARTZ_PATH, F_OK) != 0)
+    if (access(XQUARTZ_PATH, F_OK) == 0)
     {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.xquartz.org"]];
-        
-        NSExtendedAlert *xqalert = [[NSExtendedAlert alloc] init];
-        [xqalert setMessageText:@"XQuartz is missing"];
-        [xqalert setInformativeText:@"Install XQuartz first using the link I opened in the browser.\nOnce you install click OK to continue"];
-        [xqalert setAlertStyle:NSAlertStyleCritical];
-        [xqalert runModalSheetForWindow:_window];
+        //
+        // Must start the Helper
+        //
     }
     
     /*
