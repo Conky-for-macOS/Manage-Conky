@@ -92,7 +92,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if XQuartz is installed
      */
-    if (access(XQUARTZ_PATH, F_OK) == 0)
+    if (access(XQUARTZ_PATH, F_OK) != 0)
     {
         //
         // Must start the Helper
