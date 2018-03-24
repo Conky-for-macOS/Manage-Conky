@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
-		09CBFEB22066A5B900EB8A1A /* ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
@@ -63,10 +64,10 @@
 		09CBFEA22066A4FB00EB8A1A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = Library/LaunchServices;
+			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				09CBFEB22066A5B900EB8A1A /* ManageConkySMJobBlessHelper in CopyFiles */,
+				09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +93,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
+		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CBFEA92066A55500EB8A1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09CBFEAE2066A57600EB8A1A /* SMJobBlessHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Info.plist"; sourceTree = "<group>"; };
 		09CBFEAF2066A57600EB8A1A /* SMJobBlessHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Launchd.plist"; sourceTree = "<group>"; };
@@ -181,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				77B847351F62C2B600AF8BCA /* Manage Conky.app */,
-				09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
+				09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
 				ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */,
+				099F773B2066BEAD0093F828 /* InstallXQuartz.sh */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -315,7 +318,7 @@
 			);
 			name = ManageConkySMJobBlessHelper;
 			productName = ManageConkySMJobBlessHelper;
-			productReference = 09CBFEA72066A55500EB8A1A /* ManageConkySMJobBlessHelper */;
+			productReference = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */;
 			productType = "com.apple.product-type.tool";
 		};
 		77B847341F62C2B600AF8BCA /* Manage Conky */ = {
@@ -407,6 +410,7 @@
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D59205D713900A3BB22 /* ConkyPreferences.xib in Resources */,
+				099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */,
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
@@ -541,7 +545,19 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"ManageConkySMJobBlessHelper/SMJobBlessHelper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.ManageConkySMJobBlessHelper;
+				PRODUCT_MODULE_NAME = org_npyl_ManageConkySMJobBlessHelper;
+				PRODUCT_NAME = org.npyl.ManageConkySMJobBlessHelper;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -557,7 +573,19 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"ManageConkySMJobBlessHelper/SMJobBlessHelper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"ManageConkySMJobBlessHelper/SMJobBlessHelper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.ManageConkySMJobBlessHelper;
+				PRODUCT_MODULE_NAME = org_npyl_ManageConkySMJobBlessHelper;
+				PRODUCT_NAME = org.npyl.ManageConkySMJobBlessHelper;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
@@ -671,7 +699,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC63MSFH9N;
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
@@ -689,7 +717,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CC63MSFH9N;
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky";
