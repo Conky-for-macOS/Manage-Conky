@@ -122,7 +122,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
      * run the installer script
      */
     [script launch];
-    [script waitUntilExit];
 }
 
 - (void)beginInstalling
@@ -190,7 +189,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                 
                 /* get the message */
                 const char* response = xpc_dictionary_get_string(event, "msg");
-                [self writeToLog:[NSString stringWithFormat:@"Received response: %s.", response]];
                 
 #define HELPER_FINISHED_MESSAGE "I am done here..."
                 if (strcmp(response, HELPER_FINISHED_MESSAGE) == 0)
@@ -199,7 +197,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                 }
                 else
                 {
-                    [self writeToLog:[NSString stringWithUTF8String:response]];
+                    [self writeToLog:[[NSString stringWithUTF8String:response] stringByAppendingString:@"\n"]];
                 }
             }
             
@@ -211,9 +209,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         /* send a dummy message to trigger HELPER's event handler */
         xpc_object_t dummyMessage = xpc_dictionary_create(NULL, NULL, 0);
         xpc_dictionary_set_string(dummyMessage, "start", "start");
-        xpc_connection_send_message_with_reply(connection, dummyMessage, dispatch_get_main_queue(), ^(xpc_object_t  _Nonnull object) {
-            
-        });
+        xpc_connection_send_message(connection, dummyMessage);
     }
     else
     {
