@@ -10,4 +10,17 @@
 # this script must be run with sudo
 #
 
-/usr/local/bin/brew cask install xquartz
+# download XQuartz
+curl -L -s -o /tmp/XQuartz.dmg https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
+
+# mount dmg
+hdiutil attach /tmp/XQuartz.dmg -mountpoint /Volumes/XQuartz
+
+# run the intstaller
+installer -pkg /Volumes/XQuartz/XQuartz.pkg -target /
+
+# umnount
+hdiutil detach /Volumes/XQuartz
+
+# cleanup
+rm -f /tmp/XQuartz.dmg
