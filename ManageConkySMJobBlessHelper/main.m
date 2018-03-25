@@ -6,10 +6,9 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#include <syslog.h>
-#include <xpc/xpc.h>
-
 #import <Foundation/Foundation.h>
+#import <syslog.h>
+#import <xpc/xpc.h>
 
 #define DEBUG_MODE
 
@@ -19,11 +18,47 @@
 #define DBG_LOG(str)
 #endif
 
-static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t event) {
-    
-    NSTask * task = nil;        /* the utility */
-    
-    
+@interface SMJobBlessHelper : NSObject
+{
+    xpc_connection_t connection_handle;
+}
+@end
+@implementation SMJobBlessHelper
+
+- (void)receivedData:(NSNotification*)notif
+{
+    NSFileHandle *fh = [notif object];
+    NSData *data = [fh availableData];
+    if (data.length > 0)
+    {
+        /* if data is found, re-register for more data (and print) */
+        [fh waitForDataInBackgroundAndNotify];
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        xpc_object_t msg = xpc_dictionary_create(NULL, NULL, 0);
+        xpc_dictionary_set_string(msg, "msg", [str UTF8String]);
+        xpc_connection_send_message(connection_handle, msg);
+    }
+};
+
+- (void)SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:(xpc_object_t)event
+{
+    xpc_connection_t remote = xpc_dictionary_get_remote_connection(event);
+
+    xpc_object_t finishMessage = xpc_dictionary_create(NULL, NULL, 0);
+    xpc_dictionary_set_string(finishMessage, "msg", "I am done here...");
+    xpc_connection_send_message_with_reply(remote, finishMessage, dispatch_get_main_queue(), ^(xpc_object_t  _Nonnull object)
+                                           {
+                                               /*
+                                                * DO-NOTHING, being here means ManageConky got our message
+                                                *   that we are quiting so we are now free to invalidate connection!
+                                                */
+                                               NSLog(@"I am finished here... Quitting...");
+                                           });
+}
+
+- (void) __XPC_Peer_Event_Handler:(xpc_connection_t)connection withEvent:(xpc_object_t)event
+{
     xpc_type_t type = xpc_get_type(event);
     
     if (type == XPC_TYPE_ERROR) {
@@ -41,117 +76,89 @@ static void __XPC_Peer_Event_Handler(xpc_connection_t connection, xpc_object_t e
             syslog(LOG_NOTICE, "Got unexpected (and unsupported) XPC ERROR");
         }
         
-        if ( task && [task isRunning] )     // TODO: this doesnt work???
-            [task terminate];
+        xpc_connection_cancel(connection);  // i think this is not required...
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        NSLog(@"HERE! eventually...");
         
-        exit( EXIT_FAILURE );
-    } else {
-        //
-        //  Read EnhanceDiskUtility's given |mode| |mountPoint| and |RepairPermissionsUtilityPath|
-        //
+        connection_handle = connection;
         
-        DBG_LOG("got START event");
+        NSPipe *outputPipe = [[NSPipe alloc] init];
+        NSPipe *errorPipe = [[NSPipe alloc] init];
         
-        xpc_connection_t connection = xpc_dictionary_get_remote_connection(event);
+        NSTask *script = [[NSTask alloc] init];
+        [script setLaunchPath:@"/bin/sh"];
+        [script setArguments:@[@"/Applications/Manage Conky.app/Contents/Resources/InstallXQuartz.sh"]];
+        [script setStandardOutput:outputPipe];
+        [script setStandardError:errorPipe];
         
-        const char * mode = xpc_dictionary_get_string( event, "mode" );
-        const char * mountPoint = xpc_dictionary_get_string( event, "mountPoint" );
-        const char * repairPermissionsUtilityPath = xpc_dictionary_get_string( event, "RepairPermissionsUtilityPath" );
+        NSFileHandle *outputHandle = [outputPipe fileHandleForReading];
+        NSFileHandle *errorHandle = [errorPipe fileHandleForReading];
         
-        if (!mode || !mountPoint || !repairPermissionsUtilityPath )
-            return;
+        [outputHandle waitForDataInBackgroundAndNotify];
+        [errorHandle waitForDataInBackgroundAndNotify];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:outputHandle];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:errorHandle];
         
-        NSLog( @"mode = %s\nmntPoint = %s\nRepairPermissionsUtilityPath = %s", mode, mountPoint, repairPermissionsUtilityPath );
-        
-        //
-        //  Inform client we got the information needed
-        //
-        xpc_object_t reply = xpc_dictionary_create_reply(event);
-        
-        if (!reply) return;
-        
-        xpc_dictionary_set_string( reply, "mode", "GOT_MODE" );
-        xpc_dictionary_set_string( reply, "mountPoint", "GOT_MNTPOINT" );
-        xpc_connection_send_message( connection, reply );
-        
-        
-        //
-        //  Start the Operation
-        //
-        xpc_object_t utilityData = xpc_dictionary_create(NULL, NULL, 0);
-        
-        task = [[NSTask alloc] init];
-        [task setLaunchPath:[NSString stringWithUTF8String:repairPermissionsUtilityPath]];
-        [task setArguments:@[ @"--output", @"/tmp/RepairPermissionsUtility.log", [NSString stringWithUTF8String:mode], [NSString stringWithUTF8String:mountPoint]  ]];
+        [script launch];
+        [script waitUntilExit];
         
         /*
-         *
-         *  Disabled the StandardOutput support because passing the --output parameter disables loging percentage, so pipe is pointless
-         *
-         *
-         
-         task.standardOutput = [NSPipe pipe];
-         
-         [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
-         NSData *data = [file availableData];                                                                // this will read to EOF, so call only once
-         NSString * stringData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-         
-         xpc_dictionary_set_string( utilityData, "utilityData", [stringData UTF8String] );
-         xpc_connection_send_message( connection, utilityData );
-         }];
+         * Tell ManageConky that we are done here... and wait for his reply
+         *  before invalidating the connection and causing false positives for him...
          */
-        
-        [task setTerminationHandler:^(NSTask *task) {
-         //  NOTE: enable when using pipe
-         // [task.standardOutput fileHandleForReading].readabilityHandler = nil;
-         
-         //
-         //  Notify EnhandeDiskUtility RepairPermissionsUtility finished
-         //
-         
-         
-         xpc_dictionary_set_string( utilityData, "utilityData", "FINISHED!" );
-         xpc_dictionary_set_int64( utilityData, "terminationStatus", [task terminationStatus] );
-         xpc_connection_send_message( connection, utilityData );
-         
-         xpc_connection_cancel(connection);
-         exit(EXIT_SUCCESS);
-         }];
-        
-        [task launch];
+        [self SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:event];
+        xpc_connection_cancel(connection);
+        exit([script terminationStatus]);
     }
 }
 
-static void __XPC_Connection_Handler(xpc_connection_t connection)  {
+- (void) __XPC_Connection_Handler:(xpc_connection_t)connection
+{
     syslog(LOG_NOTICE, "Configuring message event handler for helper.");
-    
-    xpc_connection_set_event_handler(connection, ^(xpc_object_t event) {
-        __XPC_Peer_Event_Handler(connection, event);
-    });
+    xpc_connection_set_event_handler(connection, ^(xpc_object_t event)
+                                     {
+                                         [self __XPC_Peer_Event_Handler:connection withEvent:event];
+                                     });
     
     xpc_connection_resume(connection);
 }
 
-int main(int argc, const char *argv[]) {
-    
-    xpc_connection_t service = xpc_connection_create_mach_service("org.npyl.ManageConkySMJobBlessHelper",
-                                                                  dispatch_get_main_queue(),
-                                                                  XPC_CONNECTION_MACH_SERVICE_LISTENER);
-    
-    if (!service) {
-        syslog(LOG_NOTICE, "Failed to create service.");
-        exit(EXIT_FAILURE);
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+#define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
+        xpc_connection_t service = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER,
+                                                                      dispatch_get_main_queue(),
+                                                                      XPC_CONNECTION_MACH_SERVICE_LISTENER);
+        if (!service)
+        {
+            syslog(LOG_NOTICE, "Failed to create service.");
+            exit(EXIT_FAILURE);
+        }
+        
+        syslog(LOG_NOTICE, "Configuring connection event handler for helper");
+        xpc_connection_set_event_handler(service, ^(xpc_object_t connection)
+                                         {
+                                             [self __XPC_Connection_Handler:connection];
+                                         });
+        xpc_connection_resume(service);
+        dispatch_main();
     }
-    
-    syslog(LOG_NOTICE, "Configuring connection event handler for helper");
-    xpc_connection_set_event_handler(service, ^(xpc_object_t connection) {
-        __XPC_Connection_Handler(connection);
-    });
-    
-    xpc_connection_resume(service);
-    
-    dispatch_main();
-    
+    return self;
+}
+
+@end
+
+int main(int argc, const char *argv[])
+{
+    SMJobBlessHelper *helper = [[SMJobBlessHelper alloc] init];
+    if (!helper)
+        return EXIT_FAILURE;
     return EXIT_SUCCESS;
 }

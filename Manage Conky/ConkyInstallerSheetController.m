@@ -71,81 +71,8 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     }
 };
 
-- (void)beginInstalling
+- (void)installMissingLibraries
 {
-    [_progressIndicator startAnimation:nil];
-    
-    /*
-     * detect if Homebrew is installed
-     */
-    if (access(HOMEBREW_PATH, F_OK) != 0)
-    {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
-        
-        NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
-        [hbalert setMessageText:@"Homebrew missing"];
-        [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
-        [hbalert setAlertStyle:NSAlertStyleCritical];
-        [hbalert runModalSheetForWindow:_window];
-    }
-    
-    /*
-     * detect if XQuartz is installed
-     */
-    if (access(XQUARTZ_PATH, F_OK) != 0)
-    {
-        //
-        // Must start the Helper
-        //
-#define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
-#define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
-        
-        CFErrorRef error = nil;
-        if (!blessHelperWithLabel(kSMJOBBLESSHELPER_IDENTIFIER, &error))
-        {
-            NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
-            //CFRelease(error);
-            return;
-        }
-        
-        // XXX watch for memory leaks
-        //CFRelease(error);
-        
-        xpc_connection_t connection = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER, NULL, XPC_CONNECTION_MACH_SERVICE_PRIVILEGED);
-        if (!connection)
-        {
-            NSLog(@"Failed to create XPC connection.");
-            return;
-        }
-
-        xpc_connection_set_event_handler(connection, ^(xpc_object_t event) {
-            xpc_type_t type = xpc_get_type(event);
-            
-            if (type == XPC_TYPE_ERROR) {
-                
-                if (event == XPC_ERROR_CONNECTION_INTERRUPTED) {
-                    NSLog(@"XPC connection interupted.");
-                } else if (event == XPC_ERROR_CONNECTION_INVALID) {
-                    NSLog(@"XPC connection invalid, releasing.");
-                } else {
-                    NSLog(@"Unexpected XPC connection error.");
-                }
-            }
-        });
-        
-        xpc_connection_resume(connection);
-        
-        //
-        //  Construct a dictionary of the arguments
-        //
-        xpc_object_t initialMessage = xpc_dictionary_create(NULL, NULL, 0);
-        xpc_dictionary_set_string(initialMessage, "mode", "test");
-        xpc_connection_send_message_with_reply(connection, initialMessage, dispatch_get_main_queue(), ^(xpc_object_t event)
-        {
-//            const char* response = xpc_dictionary_get_string(event, "mode");
-        });
-    }
-    
     /*
      * setup the installer script task
      */
@@ -170,32 +97,132 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:errorHandle];
     
     [script setTerminationHandler:^(NSTask *task) {
-        
         dispatch_async(dispatch_get_main_queue(),
-        ^{
-           [_progressIndicator stopAnimation:nil];
-           
-           NSAlert *alert = [[NSAlert alloc] init];
-           [alert setMessageText:@"Conky Finished Installing"];
-           [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
-            {
-                NSError *error = nil;
-                NSFileManager *fm = [[NSFileManager alloc] init];
-                
-                if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
-                {
-                    NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
-                }
-                
-                [_doneButton setEnabled:YES];
-            }];
-        });
+                       ^{
+                           [_progressIndicator stopAnimation:nil];
+                           
+                           NSAlert *alert = [[NSAlert alloc] init];
+                           [alert setMessageText:@"Conky Finished Installing"];
+                           [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
+                            {
+                                NSError *error = nil;
+                                NSFileManager *fm = [[NSFileManager alloc] init];
+                                
+                                if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+                                {
+                                    NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+                                }
+                                
+                                [_doneButton setEnabled:YES];
+                            }];
+                       });
     }];
     
     /*
      * run the installer script
      */
     [script launch];
+    [script waitUntilExit];
+}
+
+- (void)beginInstalling
+{
+    [_progressIndicator startAnimation:nil];
+    
+    /*
+     * detect if Homebrew is installed
+     */
+    if (access(HOMEBREW_PATH, F_OK) != 0)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
+        
+        NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
+        [hbalert setMessageText:@"Homebrew missing"];
+        [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
+        [hbalert setAlertStyle:NSAlertStyleCritical];
+        [hbalert runModalSheetForWindow:_window];
+    }
+    
+    /*
+     * detect if XQuartz is installed
+     */
+    if (access(XQUARTZ_PATH, F_OK) == 0)
+    {
+        //
+        // Must start the Helper
+        //
+#define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
+#define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
+        
+        CFErrorRef error = nil;
+        if (!blessHelperWithLabel(kSMJOBBLESSHELPER_IDENTIFIER, &error))
+        {
+            NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
+            return;
+        }
+        
+        xpc_connection_t connection = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER, NULL, XPC_CONNECTION_MACH_SERVICE_PRIVILEGED);
+        if (!connection)
+        {
+            NSLog(@"Failed to create XPC connection.");
+            return;
+        }
+        
+        /* set the event handler */
+        xpc_connection_set_event_handler(connection, ^(xpc_object_t event) {
+            xpc_type_t type = xpc_get_type(event);
+            
+            if (type == XPC_TYPE_ERROR)
+            {
+                /*
+                 * We don't care what error it is,
+                 * Cancel the connection!
+                 */
+                xpc_connection_cancel(connection);
+            }
+            else
+            {
+                /*
+                 * We either got data from the Helper (stdout)
+                 *  or we got the "I am done here..." message which
+                 *  means we can continue with the rest here.
+                 */
+                
+                /* get the message */
+                const char* response = xpc_dictionary_get_string(event, "msg");
+                [self writeToLog:[NSString stringWithFormat:@"Received response: %s.", response]];
+                
+#define HELPER_FINISHED_MESSAGE "I am done here..."
+                if (strcmp(response, HELPER_FINISHED_MESSAGE) == 0)
+                {
+                    [self installMissingLibraries];
+                }
+                else
+                {
+                    [self writeToLog:[NSString stringWithUTF8String:response]];
+                }
+            }
+            
+        });
+        
+        /* resume/start communication */
+        xpc_connection_resume(connection);
+        
+        /* send a dummy message to trigger HELPER's event handler */
+        xpc_object_t dummyMessage = xpc_dictionary_create(NULL, NULL, 0);
+        xpc_dictionary_set_string(dummyMessage, "start", "start");
+        xpc_connection_send_message_with_reply(connection, dummyMessage, dispatch_get_main_queue(), ^(xpc_object_t  _Nonnull object) {
+            
+        });
+    }
+    else
+    {
+        /*
+         *  XQuartz is already installed so we can
+         *  start installing missing libraries right away.
+         */
+        [self installMissingLibraries];
+    }
 }
 
 - (IBAction)doneButtonPressed:(id)sender

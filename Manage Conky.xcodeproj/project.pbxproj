@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
 		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -61,6 +62,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0984A9262067F06600BDE1B9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09CBFEA22066A4FB00EB8A1A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -74,7 +85,7 @@
 		09CBFEA52066A55500EB8A1A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
@@ -311,6 +322,7 @@
 				09CBFEA32066A55500EB8A1A /* Sources */,
 				09CBFEA42066A55500EB8A1A /* Frameworks */,
 				09CBFEA52066A55500EB8A1A /* CopyFiles */,
+				0984A9262067F06600BDE1B9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
