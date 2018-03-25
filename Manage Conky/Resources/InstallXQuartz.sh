@@ -14,13 +14,14 @@
 curl -L -s -o /tmp/XQuartz.dmg https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
 
 # mount dmg
-hdiutil attach /tmp/XQuartz.dmg -mountpoint /Volumes/XQuartz
+# (make it invisible to Finder)
+hdiutil attach /tmp/XQuartz.dmg -mountpoint /Volumes/XQuartz -nobrowse
 
 # run the intstaller
 installer -pkg /Volumes/XQuartz/XQuartz.pkg -target /
 
 # umnount
-hdiutil detach /Volumes/XQuartz
+hdiutil detach /Volumes/XQuartz -force
 
 # cleanup
 rm -f /tmp/XQuartz.dmg
