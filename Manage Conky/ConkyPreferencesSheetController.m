@@ -234,6 +234,8 @@
         {
             [self show_error_alert:@"Failed to remove conky startup item."];
             NSLog(@"Error removing agent plist: \n\n%@", error);
+        
+            error = nil;
         }
         
         [fm removeItemAtPath:CONKYX error:&error];

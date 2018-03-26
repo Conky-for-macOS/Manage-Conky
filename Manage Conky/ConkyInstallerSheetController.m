@@ -44,7 +44,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
          * is extracted and placed in /Library/LaunchDaemons and then loaded. The
          * executable is placed in /Library/PrivilegedHelperTools.
          */
-        NSLog(@"%@", label);
         result = SMJobBless(kSMDomainSystemLaunchd, (__bridge CFStringRef)label, authRef, error);
     }
     

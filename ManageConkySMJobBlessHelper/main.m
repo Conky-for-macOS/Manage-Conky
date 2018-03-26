@@ -41,6 +41,13 @@
     }
 };
 
+- (void)CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM
+{
+    ///
+    /// Must cleanup generated files...
+    ///
+}
+
 - (void)SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:(xpc_object_t)event
 {
     xpc_connection_t remote = xpc_dictionary_get_remote_connection(event);
@@ -81,7 +88,7 @@
     }
     else
     {
-        NSLog(@"HERE! eventually...");
+        syslog(LOG_NOTICE, "HERE! Eventually...");
         
         connection_handle = connection;
         
@@ -111,6 +118,7 @@
          *  before invalidating the connection and causing false positives for him...
          */
         [self SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:event];
+        [self CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM];
         xpc_connection_cancel(connection);
         exit([script terminationStatus]);
     }
@@ -118,7 +126,6 @@
 
 - (void) __XPC_Connection_Handler:(xpc_connection_t)connection
 {
-    syslog(LOG_NOTICE, "Configuring message event handler for helper.");
     xpc_connection_set_event_handler(connection, ^(xpc_object_t event)
                                      {
                                          [self __XPC_Peer_Event_Handler:connection withEvent:event];
@@ -142,7 +149,6 @@
             exit(EXIT_FAILURE);
         }
         
-        syslog(LOG_NOTICE, "Configuring connection event handler for helper");
         xpc_connection_set_event_handler(service, ^(xpc_object_t connection)
                                          {
                                              [self __XPC_Connection_Handler:connection];
