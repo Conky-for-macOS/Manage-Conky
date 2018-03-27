@@ -149,6 +149,16 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [self writeToLog:@"XQuartz is missing, downloading...\n\n"];
         
         //
+        // Publish some info for the Helper to know.
+        //
+        /*
+#define SHARED_DEFAULTS_DATABASE_NAME       @"ManageConky-Helper"
+#define XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE   @"CONKYX_XQUARTZ_DOWNLOAD_URL"
+        NSUserDefaults *helperAndMeSharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SHARED_DEFAULTS_DATABASE_NAME];
+        [helperAndMeSharedDefaults setObject:@"https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg" forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
+        [helperAndMeSharedDefaults synchronize]; */
+
+        //
         // Must start the Helper
         //
 #define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
@@ -179,6 +189,12 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                  * Cancel the connection!
                  */
                 xpc_connection_cancel(connection);
+                
+                /*
+                 * Show the user we failed!
+                 */
+                //[self writeToLog:@"Something failed!\n"];
+                //[_doneButton setEnabled:YES];
             }
             else
             {
@@ -207,10 +223,10 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         /* resume/start communication */
         xpc_connection_resume(connection);
         
-        /* send a dummy message to trigger HELPER's event handler */
-        xpc_object_t dummyMessage = xpc_dictionary_create(NULL, NULL, 0);
-        xpc_dictionary_set_string(dummyMessage, "start", "start");
-        xpc_connection_send_message(connection, dummyMessage);
+        /* send a initial message to trigger HELPER's event handler */
+        xpc_object_t downloadURL = xpc_dictionary_create(NULL, NULL, 0);
+        xpc_dictionary_set_string(downloadURL, "url", "https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg");
+        xpc_connection_send_message(connection, downloadURL);
     }
     else
     {

@@ -11,7 +11,8 @@
 #
 
 # download XQuartz
-curl -L -s -o /tmp/XQuartz.dmg https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
+# (CONKYX_XQUARTZ_DOWNLOAD_URL is an environment variable set by ManageConky internally.)
+curl -L -s -o /tmp/XQuartz.dmg $CONKYX_XQUARTZ_DOWNLOAD_URL
 
 # mount dmg
 # (make it invisible to Finder)

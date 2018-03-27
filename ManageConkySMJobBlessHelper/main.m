@@ -92,6 +92,16 @@
         
         connection_handle = connection;
         
+        /*
+         * Get the initial message from Manage Conky
+         * which is the url to download XQuartz
+         */
+        const char *xquartz_download_url = xpc_dictionary_get_string(event, "url");
+        if (!xquartz_download_url)
+            exit(EXIT_FAILURE);
+        
+        NSString *url = [NSString stringWithUTF8String:xquartz_download_url];
+        
         NSPipe *outputPipe = [[NSPipe alloc] init];
         NSPipe *errorPipe = [[NSPipe alloc] init];
         
@@ -100,6 +110,15 @@
         [script setArguments:@[@"/Applications/Manage Conky.app/Contents/Resources/InstallXQuartz.sh"]];
         [script setStandardOutput:outputPipe];
         [script setStandardError:errorPipe];
+    
+        /*
+         * Append the download url to the app's environment
+         * variables to be used by script.
+         */
+#define XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE   @"CONKYX_XQUARTZ_DOWNLOAD_URL"
+        NSMutableDictionary *env = [NSMutableDictionary dictionaryWithDictionary:[script environment]];
+        [env setObject:url forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
+        [script setEnvironment:env];
         
         NSFileHandle *outputHandle = [outputPipe fileHandleForReading];
         NSFileHandle *errorHandle = [errorPipe fileHandleForReading];
