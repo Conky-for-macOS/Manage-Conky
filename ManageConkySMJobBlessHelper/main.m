@@ -9,14 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <syslog.h>
 #import <xpc/xpc.h>
-
-#define DEBUG_MODE
-
-#ifdef DEBUG_MODE
-#define DBG_LOG(str) syslog(LOG_NOTICE, str)
-#else
-#define DBG_LOG(str)
-#endif
+#import "Shared.h"
 
 @interface SMJobBlessHelper : NSObject
 {
@@ -24,22 +17,6 @@
 }
 @end
 @implementation SMJobBlessHelper
-
-- (void)receivedData:(NSNotification*)notif
-{
-    NSFileHandle *fh = [notif object];
-    NSData *data = [fh availableData];
-    if (data.length > 0)
-    {
-        /* if data is found, re-register for more data (and print) */
-        [fh waitForDataInBackgroundAndNotify];
-        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
-        xpc_object_t msg = xpc_dictionary_create(NULL, NULL, 0);
-        xpc_dictionary_set_string(msg, "msg", [str UTF8String]);
-        xpc_connection_send_message(connection_handle, msg);
-    }
-};
 
 - (void)CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM
 {
@@ -64,6 +41,22 @@
                                            });
 }
 
+- (void)receivedData:(NSNotification*)notif
+{
+    NSFileHandle *fh = [notif object];
+    NSData *data = [fh availableData];
+    if (data.length > 0)
+    {
+        /* if data is found, re-register for more data (and print) */
+        [fh waitForDataInBackgroundAndNotify];
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        xpc_object_t msg = xpc_dictionary_create(NULL, NULL, 0);
+        xpc_dictionary_set_string(msg, "msg", [str UTF8String]);
+        xpc_connection_send_message(connection_handle, msg);
+    }
+};
+
 - (void) __XPC_Peer_Event_Handler:(xpc_connection_t)connection withEvent:(xpc_object_t)event
 {
     xpc_type_t type = xpc_get_type(event);
@@ -83,7 +76,7 @@
             syslog(LOG_NOTICE, "Got unexpected (and unsupported) XPC ERROR");
         }
         
-        xpc_connection_cancel(connection);  // i think this is not required...
+        xpc_connection_cancel(connection);
         exit(EXIT_FAILURE);
     }
     else
@@ -97,17 +90,24 @@
          * which is the url to download XQuartz
          */
         const char *xquartz_download_url = xpc_dictionary_get_string(event, "url");
-        if (!xquartz_download_url)
+        NSString *xquartzDownloadUrl = [NSString stringWithUTF8String:xquartz_download_url];
+        if (!xquartzDownloadUrl)
             exit(EXIT_FAILURE);
         
-        NSString *url = [NSString stringWithUTF8String:xquartz_download_url];
+        const char *script_path = xpc_dictionary_get_string(event, "scriptPath");
+        NSString *scriptPath = [NSString stringWithUTF8String:script_path];
+        if (!scriptPath)
+            exit(EXIT_FAILURE);
+        
+        NSLog(@"GOT MESSAGE = %s", xquartz_download_url);
+        NSLog(@"GOT SCRIPT LOCATION = %@", scriptPath);
         
         NSPipe *outputPipe = [[NSPipe alloc] init];
         NSPipe *errorPipe = [[NSPipe alloc] init];
         
         NSTask *script = [[NSTask alloc] init];
         [script setLaunchPath:@"/bin/sh"];
-        [script setArguments:@[@"/Applications/Manage Conky.app/Contents/Resources/InstallXQuartz.sh"]];
+        [script setArguments:@[scriptPath]];
         [script setStandardOutput:outputPipe];
         [script setStandardError:errorPipe];
     
@@ -117,8 +117,10 @@
          */
 #define XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE   @"CONKYX_XQUARTZ_DOWNLOAD_URL"
         NSMutableDictionary *env = [NSMutableDictionary dictionaryWithDictionary:[script environment]];
-        [env setObject:url forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
+        [env setValue:xquartzDownloadUrl forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
         [script setEnvironment:env];
+        
+        NSLog(@"Environment dictionary: %@", env);
         
         NSFileHandle *outputHandle = [outputPipe fileHandleForReading];
         NSFileHandle *errorHandle = [errorPipe fileHandleForReading];
@@ -129,17 +131,19 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:outputHandle];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:errorHandle];
         
-        [script launch];
-        [script waitUntilExit];
+        [script setTerminationHandler:^(NSTask * _Nonnull script) {
+            /*
+             * Tell ManageConky that we are done here... and wait for his reply
+             *  before invalidating the connection and causing false positives for him...
+             */
+            [self SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:event];
+            [self CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM];
+            xpc_connection_cancel(connection);
+            exit([script terminationStatus]);
+        }];
         
-        /*
-         * Tell ManageConky that we are done here... and wait for his reply
-         *  before invalidating the connection and causing false positives for him...
-         */
-        [self SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:event];
-        [self CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM];
-        xpc_connection_cancel(connection);
-        exit([script terminationStatus]);
+        [script launch];
+        [script waitUntilExit]; // XXX make this go away
     }
 }
 
@@ -158,7 +162,6 @@
     self = [super init];
     if (self)
     {
-#define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
         xpc_connection_t service = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER,
                                                                       dispatch_get_main_queue(),
                                                                       XPC_CONNECTION_MACH_SERVICE_LISTENER);
