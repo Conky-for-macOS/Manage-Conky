@@ -10,19 +10,27 @@
 # this script must be run with sudo
 #
 
+echo "Downloading XQuartz..."
+
 # download XQuartz
 # (CONKYX_XQUARTZ_DOWNLOAD_URL is an environment variable set by ManageConky internally.)
-curl -L -s -o /tmp/XQuartz.dmg $CONKYX_XQUARTZ_DOWNLOAD_URL
+/usr/bin/curl -L -s -o /tmp/XQuartz.dmg $CONKYX_XQUARTZ_DOWNLOAD_URL
+
+echo "Mounting XQuartz.dmg"
 
 # mount dmg
 # (make it invisible to Finder)
-hdiutil attach /tmp/XQuartz.dmg -mountpoint /Volumes/XQuartz -nobrowse
+/usr/bin/hdiutil attach /tmp/XQuartz.dmg -mountpoint /Volumes/XQuartz -nobrowse
+
+echo "Running Installer"
 
 # run the intstaller
-installer -pkg /Volumes/XQuartz/XQuartz.pkg -target /
+/usr/sbin/installer -pkg /Volumes/XQuartz/XQuartz.pkg -target /
 
 # umnount
-hdiutil detach /Volumes/XQuartz -force
+/usr/bin/hdiutil detach /Volumes/XQuartz -force
+
+echo "Cleaning up"
 
 # cleanup
 rm -f /tmp/XQuartz.dmg
