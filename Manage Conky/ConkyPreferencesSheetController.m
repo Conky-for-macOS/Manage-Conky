@@ -193,15 +193,8 @@
     [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
 }
 
-- (void)helper_installConkyX
+- (void)installConkyX
 {
-    /*
-     * Copy ConkyX.app to /Applications
-     * using code from LetsMove to handle many cases
-     * such as dmg, authentication etc.
-     */
-    CXForciblyMoveToApplicationsFolderConkyX();
-    
     /* create ConkyInstaller sheet */
     ctl = [[ConkyInstallerSheetController alloc] init];
     [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
@@ -275,7 +268,7 @@
          * Install Conky
          */
         
-        [self helper_installConkyX];
+        [self installConkyX];
     }
 }
 
@@ -333,7 +326,7 @@
      *  brought by the updated ManageConky
      */
     NSLog(@"Must install ConkyX after update...");
-    [self helper_installConkyX];
+    [self installConkyX];
 }
 
 //

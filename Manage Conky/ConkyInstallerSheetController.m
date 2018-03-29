@@ -8,6 +8,7 @@
 
 #import "ConkyInstallerSheetController.h"
 
+#import "Shared.h"
 #import "PFMoveApplication.h"
 #import "NSAlert+runModalSheet.h"
 #import <Foundation/NSFileManager.h>
@@ -52,7 +53,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
 
 - (void)writeToLog:(NSString *)str
 {
-    _logField.stringValue = [_logField.stringValue stringByAppendingString:str];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _logField.stringValue = [_logField.stringValue stringByAppendingString:str];
+    });
 }
 
 - (void)receivedData:(NSNotification*)notif
@@ -64,9 +67,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         /* if data is found, re-register for more data (and print) */
         [fh waitForDataInBackgroundAndNotify];
         NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self writeToLog:str];
-        });
+        [self writeToLog:str];
     }
 };
 
@@ -98,22 +99,12 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [script setTerminationHandler:^(NSTask *task) {
         dispatch_async(dispatch_get_main_queue(),
                        ^{
-                           [_progressIndicator stopAnimation:nil];
-                           
-                           NSAlert *alert = [[NSAlert alloc] init];
+                           NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
                            [alert setMessageText:@"Conky Finished Installing"];
-                           [alert beginSheetModalForWindow:_window completionHandler:^(NSModalResponse returnCode)
-                            {
-                                NSError *error = nil;
-                                NSFileManager *fm = [[NSFileManager alloc] init];
-                                
-                                if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
-                                {
-                                    NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
-                                }
-                                
-                                [_doneButton setEnabled:YES];
-                            }];
+                           [alert runModalSheetForWindow:_window];
+                           
+                           [_progressIndicator stopAnimation:nil];
+                           [_doneButton setEnabled:YES];
                        });
     }];
     
@@ -123,9 +114,39 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [script launch];
 }
 
+- (void)showErrorAlertWithMessage:(NSString*)msg
+{
+    dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       NSExtendedAlert *failed = [[NSExtendedAlert alloc] init];
+                       [failed setMessageText:@"Error!"];
+                       [failed setInformativeText:msg];
+                       [failed setAlertStyle:NSAlertStyleCritical];
+                       [failed runModalSheetForWindow:_window];
+                   });
+}
+
 - (void)beginInstalling
 {
     [_progressIndicator startAnimation:nil];
+    
+    /*
+     * Copy ConkyX.app to /Applications
+     * using code from LetsMove to handle many cases
+     * such as dmg, authentication etc.
+     */
+    CXForciblyMoveToApplicationsFolderConkyX();
+    
+    /*
+     * Create symbolic link to allow using from terminal
+     */
+    NSError *error = nil;
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    
+    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+    {
+        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+    }
     
     /*
      * detect if Homebrew is installed
@@ -146,28 +167,24 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
      */
     if (access(XQUARTZ_PATH, F_OK) != 0)
     {
-        [self writeToLog:@"XQuartz is missing, downloading...\n\n"];
+        // XXX Fetch beta.xml from xquartz's site
+        // XXX Read the XML file and get xquartz_download_url
         
-        //
-        // Publish some info for the Helper to know.
-        //
-        /*
-#define SHARED_DEFAULTS_DATABASE_NAME       @"ManageConky-Helper"
-#define XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE   @"CONKYX_XQUARTZ_DOWNLOAD_URL"
-        NSUserDefaults *helperAndMeSharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:SHARED_DEFAULTS_DATABASE_NAME];
-        [helperAndMeSharedDefaults setObject:@"https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg" forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
-        [helperAndMeSharedDefaults synchronize]; */
-
+        const char *xquartz_download_url = "https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg";
+        
+        __block
+        BOOL installationSucceeded = false;
+        
         //
         // Must start the Helper
         //
-#define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
-#define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
-        
         CFErrorRef error = nil;
         if (!blessHelperWithLabel(kSMJOBBLESSHELPER_IDENTIFIER, &error))
         {
             NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
+            [self showErrorAlertWithMessage:@"Failed to launch helper."];
+            [_progressIndicator stopAnimation:nil];
+            [_doneButton setEnabled:YES];
             return;
         }
         
@@ -175,6 +192,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         if (!connection)
         {
             NSLog(@"Failed to create XPC connection.");
+            [self showErrorAlertWithMessage:@"Failed to create connection to helper."];
+            [_progressIndicator stopAnimation:nil];
+            [_doneButton setEnabled:YES];
             return;
         }
         
@@ -184,17 +204,39 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
             
             if (type == XPC_TYPE_ERROR)
             {
-                /*
-                 * We don't care what error it is,
-                 * Cancel the connection!
-                 */
-                xpc_connection_cancel(connection);
+                if (event == XPC_ERROR_CONNECTION_INVALID) {
+                    // The client process on the other end of the connection has either
+                    // crashed or cancelled the connection. After receiving this error,
+                    // the connection is in an invalid state, and you do not need to
+                    // call xpc_connection_cancel(). Just tear down any associated state
+                    // here.
+                    NSLog(@"CONNECTION_INVALID");
+                } else if (event == XPC_ERROR_TERMINATION_IMMINENT) {
+                    // Handle per-connection termination cleanup.
+                     NSLog(@"CONNECTION_IMMINENT");
+                } else {
+                     NSLog(@"Got unexpected (and unsupported) XPC ERROR");
+                }
                 
-                /*
-                 * Show the user we failed!
-                 */
-                //[self writeToLog:@"Something failed!\n"];
-                //[_doneButton setEnabled:YES];
+                if (!installationSucceeded)
+                {
+                    /*
+                     * Show the user we failed!
+                     */
+                    xpc_connection_cancel(connection);
+                    [self showErrorAlertWithMessage:@"Something went wrong during XQuartz installation."];
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       [_doneButton setEnabled:YES];
+                                   });
+                }
+                else
+                {
+                    //
+                    // Otherwise the errors are normal, and indicate termination of helper.
+                    //
+                }
+
             }
             else
             {
@@ -205,16 +247,16 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                  */
                 
                 /* get the message */
-                const char* response = xpc_dictionary_get_string(event, "msg");
+                const char* message = xpc_dictionary_get_string(event, "msg");
                 
-#define HELPER_FINISHED_MESSAGE "I am done here..."
-                if (strcmp(response, HELPER_FINISHED_MESSAGE) == 0)
+                if (strcmp(message, HELPER_FINISHED_MESSAGE) == 0)
                 {
                     [self installMissingLibraries];
+                    installationSucceeded = true;
                 }
                 else
                 {
-                    [self writeToLog:[[NSString stringWithUTF8String:response] stringByAppendingString:@"\n"]];
+                    [self writeToLog:[NSString stringWithFormat:@"%s\n", message]];
                 }
             }
             
@@ -223,10 +265,17 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         /* resume/start communication */
         xpc_connection_resume(connection);
         
-        /* send a initial message to trigger HELPER's event handler */
-        xpc_object_t downloadURL = xpc_dictionary_create(NULL, NULL, 0);
-        xpc_dictionary_set_string(downloadURL, "url", "https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg");
-        xpc_connection_send_message(connection, downloadURL);
+        NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"InstallXQuartz" ofType:@"sh"];
+        
+        /*
+         * send a initial message to trigger HELPER's event handler.
+         * This is the one and only time we should send a message to the Helper
+         *  for the sake of keeping the event handler simple.
+         */
+        xpc_object_t startupDictionary = xpc_dictionary_create(NULL, NULL, 0);
+        xpc_dictionary_set_string(startupDictionary, "url", xquartz_download_url);
+        xpc_dictionary_set_string(startupDictionary, "scriptPath", [scriptPath UTF8String]);
+        xpc_connection_send_message(connection, startupDictionary);
     }
     else
     {
