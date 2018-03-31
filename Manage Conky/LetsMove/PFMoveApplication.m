@@ -280,8 +280,6 @@ void CXForciblyMoveToApplicationsFolderConkyX(void) {
         [NSApp activateIgnoringOtherApps:YES];
     }
     
-    NSLog(@"INFO -- Moving myself to the Applications folder");
-    
     // Move
     if (needAuthorization) {
         BOOL authorizationCanceled;
@@ -349,9 +347,7 @@ void CXForciblyMoveToApplicationsFolderConkyX(void) {
 fail:
     {
         // Show failure message
-        NSAlert*
-        
-        alert = [[[NSAlert alloc] init] autorelease];
+        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
         [alert setMessageText:kStrMoveApplicationCouldNotMove];
         [alert runModal];
         
@@ -397,7 +393,7 @@ void CXForciblyMoveToApplicationsFolder(void) {
     NSString *diskImageDevice = ContainingDiskImageDevice(bundlePath);
     
     // Since we are good to go, get the preferred installation directory.
-    BOOL installToUserApplications = NO;
+    //BOOL installToUserApplications = NO;
     NSString *applicationsDirectory = @"/Applications";
     NSString *bundleName = [bundlePath lastPathComponent];
     NSString *destinationPath = [applicationsDirectory stringByAppendingPathComponent:bundleName];
@@ -414,10 +410,10 @@ void CXForciblyMoveToApplicationsFolder(void) {
         NSString *informativeText = nil;
         
         // XXX this will never happen for ConkyX
-        [alert setMessageText:(installToUserApplications ? kStrMoveApplicationQuestionTitleHome : kStrMoveApplicationQuestionTitle)];
+        //[alert setMessageText:(installToUserApplications ? kStrMoveApplicationQuestionTitleHome : kStrMoveApplicationQuestionTitle)];
         
-        informativeText = kStrMoveApplicationQuestionMessage;
-        
+        informativeText = @"Manage Conky needs be installed in Applications to work properly.";
+
         if (needAuthorization) {
             informativeText = [informativeText stringByAppendingString:@" "];
             informativeText = [informativeText stringByAppendingString:kStrMoveApplicationQuestionInfoWillRequirePasswd];
@@ -427,8 +423,6 @@ void CXForciblyMoveToApplicationsFolder(void) {
             informativeText = [informativeText stringByAppendingString:@" "];
             informativeText = [informativeText stringByAppendingString:kStrMoveApplicationQuestionInfoInDownloadsFolder];
         }
-        
-        informativeText = [informativeText stringByAppendingString:@"\n\nManage Conky MUST be installed in /Applications to work properly"];
         
         [alert setInformativeText:informativeText];
         
