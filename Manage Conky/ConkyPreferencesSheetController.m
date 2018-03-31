@@ -172,20 +172,7 @@
 
 - (IBAction)startupDelayFieldEnterPressed:(id)sender
 {
-    static BOOL shownX11TakesAlotTimeWarning = NO;
-    
-    if (!shownX11TakesAlotTimeWarning && ([_startupDelayField intValue] != 0))
-    {
-        NSWindow *win = [super sheet];
-        
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Warning"];
-        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
-        [alert setAlertStyle:NSAlertStyleWarning];
-        [alert beginSheetModalForWindow:win completionHandler:^(NSModalResponse returnCode) {}];
-        
-        shownX11TakesAlotTimeWarning = YES;
-    }
+    // do nothing
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
@@ -275,10 +262,27 @@
     /*
      * Here we save things to disk before we close the sheet
      */
+    NSWindow *sheet = [super sheet];
     
     if (mustInstallAgent)
     {
         NSInteger startupDelay_ = [_startupDelayField integerValue];    /* deprecate the use/manipulation of startupDelay variable */
+        static
+        BOOL shownX11TakesAlotTimeWarning = NO;
+        
+        /*
+         * show X11 warning
+         */
+        if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
+        {
+            NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+            [alert setMessageText:@"Warning"];
+            [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
+            [alert setAlertStyle:NSAlertStyleWarning];
+            [alert runModalSheetForWindow:sheet];
+            
+            shownX11TakesAlotTimeWarning = YES;
+        }
         
         /*
          * We must create and save the Conky Agent Property List File
@@ -303,20 +307,27 @@
         NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
         [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
         
+        /* revert _doneButton's functionality to original */
         mustInstallAgent = NO;
+        [_doneButton setTitle:@"OK"];
+        
         [[NSApp mainWindow] setDocumentEdited:NO];
         
         /* debug */
         NSLog(@"\n\n%@", conkyAgentPlist);
     }
-
-    /*
-     * Close the sheet
-     */
-    [super closeSheet:[super sheet]];
+    else
+    {
+        /*
+         * Close the sheet
+         */
+        [super closeSheet:sheet];
+    }
 }
 
-// Called if the application has been relaunched from an update
+/*
+ * Called if the application has been relaunched from an update
+ */
 - (void)updaterDidRelaunchApplication:(SUUpdater *)updater
 {
     /*
