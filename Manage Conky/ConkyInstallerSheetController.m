@@ -37,8 +37,8 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /* Obtain the right to install privileged helper tools (kSMRightBlessPrivilegedHelper). */
     OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
     if (status != errAuthorizationSuccess) {
-        NSLog( @"Failed to create AuthorizationRef. Error code: %d", (int)status );
-        
+        NSLog(@"Failed to create AuthorizationRef. Error code: %d", (int)status);
+
     } else {
         /* This does all the work of verifying the helper tool against the application
          * and vice-versa. Once verification has passed, the embedded launchd.plist
@@ -246,7 +246,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                     [self writeToLog:[NSString stringWithFormat:@"%s\n", message]];
                 }
             }
-            
         });
         
         /* resume/start communication */
