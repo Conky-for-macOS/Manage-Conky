@@ -174,7 +174,7 @@
 {
     static BOOL shownX11TakesAlotTimeWarning = NO;
     
-    if (!shownX11TakesAlotTimeWarning)
+    if (!shownX11TakesAlotTimeWarning && ([_startupDelayField intValue] != 0))
     {
         NSWindow *win = [super sheet];
         
@@ -225,9 +225,7 @@
         [fm removeItemAtPath:conkyAgentPlistPath error:&error];
         if (error)
         {
-            [self show_error_alert:@"Failed to remove conky startup item."];
             NSLog(@"Error removing agent plist: \n\n%@", error);
-        
             error = nil;
         }
         
