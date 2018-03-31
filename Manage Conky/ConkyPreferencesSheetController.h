@@ -20,7 +20,7 @@
 @end
 
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate, NSTableViewDataSource, NSTableViewDelegate> 
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
@@ -28,6 +28,8 @@
     
     BOOL keepAlive;
     BOOL mustInstallAgent;
+    
+    NSMutableArray *_searchLocationsTableContents;
 }
 
 // Run Conky At Startup

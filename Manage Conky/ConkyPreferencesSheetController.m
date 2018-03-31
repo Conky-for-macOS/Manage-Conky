@@ -12,6 +12,7 @@
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
 #import <unistd.h>
+#import "Shared.h"
 
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
@@ -49,23 +50,6 @@
 @end
 
 @implementation ConkyPreferencesSheetController
-{
-    NSMutableArray *_searchLocationsTableContents;
-}
-
-- (void)showAlertWithMessageText:(NSString*)msg informativeText:(NSString*)info andAlertStyle:(NSAlertStyle)style
-{
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:msg];
-    [alert setInformativeText:info];
-    [alert setAlertStyle:style];
-    [alert beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse returnCode) {}];
-}
-
-- (void)show_error_alert:(NSString*)withErrorMsg
-{
-    [self showAlertWithMessageText:@"Error" informativeText:withErrorMsg andAlertStyle:NSAlertStyleCritical];
-}
 
 - (IBAction)activatePreferencesSheet:(id)sender
 {
@@ -170,11 +154,6 @@
     _startupDelayField.integerValue = [sender integerValue];
 }
 
-- (IBAction)startupDelayFieldEnterPressed:(id)sender
-{
-    // do nothing
-}
-
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
@@ -192,6 +171,7 @@
 {
     NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
+    NSWindow *_window = [super sheet];
     
     /* disable the Install/Uninstall button */
     [_un_in_stallConkyButton setEnabled:NO];
@@ -219,7 +199,7 @@
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
-            [self show_error_alert:@"Failed to remove ConkyX."];
+            showErrorAlertWithMessageForWindow(@"Failed to remove ConkyX.", _window);
             NSLog(@"Error removing ConkyX: \n\n%@", error);
             return;
         }
@@ -227,7 +207,7 @@
         [fm removeItemAtPath:MANAGE_CONKY error:&error];
         if (error)
         {
-            [self show_error_alert:@"Failed to remove Manage Conky."];
+            showErrorAlertWithMessageForWindow(@"Failed to remove Manage Conky.", _window);
             NSLog(@"Error removing Manage Conky: \n\n%@", error);
             return;
         }

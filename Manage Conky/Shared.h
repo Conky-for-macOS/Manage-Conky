@@ -9,6 +9,9 @@
 #ifndef Shared_h
 #define Shared_h
 
+#import <Cocoa/Cocoa.h>
+#import "Extensions/NSAlert+runModalSheet.h"
+
 //
 // Contains stuff used by more than one subprojects or files
 //
@@ -17,5 +20,7 @@
 
 #define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
 #define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
+
+void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
 
 #endif /* Shared_h */

@@ -96,34 +96,11 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:outputHandle];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedData:) name:NSFileHandleDataAvailableNotification object:errorHandle];
     
-    [script setTerminationHandler:^(NSTask *task) {
-        dispatch_async(dispatch_get_main_queue(),
-                       ^{
-                           NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
-                           [alert setMessageText:@"Conky Finished Installing"];
-                           [alert runModalSheetForWindow:_window];
-                           
-                           [_progressIndicator stopAnimation:nil];
-                           [_doneButton setEnabled:YES];
-                       });
-    }];
-    
     /*
      * run the installer script
      */
     [script launch];
-}
-
-- (void)showErrorAlertWithMessage:(NSString*)msg
-{
-    dispatch_async(dispatch_get_main_queue(),
-                   ^{
-                       NSExtendedAlert *failed = [[NSExtendedAlert alloc] init];
-                       [failed setMessageText:@"Error!"];
-                       [failed setInformativeText:msg];
-                       [failed setAlertStyle:NSAlertStyleCritical];
-                       [failed runModalSheetForWindow:_window];
-                   });
+    [script waitUntilExit];
 }
 
 - (void)beginInstalling
@@ -162,6 +139,8 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [hbalert runModalSheetForWindow:_window];
     }
     
+    [self installMissingLibraries];
+    
     /*
      * detect if XQuartz is installed
      */
@@ -182,7 +161,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         if (!blessHelperWithLabel(kSMJOBBLESSHELPER_IDENTIFIER, &error))
         {
             NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
-            [self showErrorAlertWithMessage:@"Failed to launch helper."];
+            showErrorAlertWithMessageForWindow(@"Failed to launch helper.", _window);
             [_progressIndicator stopAnimation:nil];
             [_doneButton setEnabled:YES];
             return;
@@ -192,7 +171,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         if (!connection)
         {
             NSLog(@"Failed to create XPC connection.");
-            [self showErrorAlertWithMessage:@"Failed to create connection to helper."];
+            showErrorAlertWithMessageForWindow(@"Failed to create connection to helper.", _window);
             [_progressIndicator stopAnimation:nil];
             [_doneButton setEnabled:YES];
             return;
@@ -224,7 +203,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                      * Show the user we failed!
                      */
                     xpc_connection_cancel(connection);
-                    [self showErrorAlertWithMessage:@"Something went wrong during XQuartz installation."];
+                    showErrorAlertWithMessageForWindow(@"Something went wrong during XQuartz installation.", _window);
                     dispatch_async(dispatch_get_main_queue(),
                                    ^{
                                        [_doneButton setEnabled:YES];
@@ -251,8 +230,16 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                 
                 if (strcmp(message, HELPER_FINISHED_MESSAGE) == 0)
                 {
-                    [self installMissingLibraries];
                     installationSucceeded = true;
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+                                       [alert setMessageText:@"Conky Finished Installing"];
+                                       [alert runModalSheetForWindow:_window];
+                                   
+                                       [_progressIndicator stopAnimation:nil];
+                                       [_doneButton setEnabled:YES];
+                                   });
                 }
                 else
                 {
@@ -279,11 +266,8 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     }
     else
     {
-        /*
-         *  XQuartz is already installed so we can
-         *  start installing missing libraries right away.
-         */
-        [self installMissingLibraries];
+        [_progressIndicator stopAnimation:nil];
+        [_doneButton setEnabled:YES];
     }
 }
 
