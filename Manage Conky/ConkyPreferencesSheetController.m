@@ -149,9 +149,22 @@
     }
 }
 
+/*
+ * catch changes to _startupDelayField
+ */
+- (void)controlTextDidChange:(NSNotification *)obj
+{
+    [_applyChangesButton setHidden:NO];
+    [_doneButton setTitle:@"Cancel"];
+    mustInstallAgent = YES;
+}
+
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
+    [_applyChangesButton setHidden:NO];
+    [_doneButton setTitle:@"Cancel"];
+    mustInstallAgent = YES;
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
@@ -237,64 +250,74 @@
     }
 }
 
-- (IBAction)okButtonPressed:(id)sender
+- (IBAction)applyChanges:(id)sender
 {
-    /*
-     * Here we save things to disk before we close the sheet
-     */
     NSWindow *sheet = [super sheet];
     
+    NSInteger startupDelay_ = [_startupDelayField integerValue];    /* deprecate the use/manipulation of startupDelay variable */
+    static
+    BOOL shownX11TakesAlotTimeWarning = NO;
+    
+    /*
+     * show X11 warning
+     */
+    if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
+    {
+        NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+        [alert setMessageText:@"Warning"];
+        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
+        [alert setAlertStyle:NSAlertStyleWarning];
+        [alert runModalSheetForWindow:sheet];
+        
+        shownX11TakesAlotTimeWarning = YES;
+    }
+    
+    /*
+     * We must create and save the Conky Agent Property List File
+     */
+    NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
+    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
+    
+    id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
+    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    
+    /* create LaunchAgents directory at User's Home */
+    NSError *error;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
+    if (error)
+    {
+        NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
+    }
+    
+    /* write the Agent plist */
+    NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+    BOOL agentSaved = [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
+    
+    [_changesSavedLabel setStringValue:agentSaved ? @"Changes saved successfully." : @"Failed to apply changes!"];
+    [_changesSavedLabel setHidden:NO];
+    
+    /* revert _doneButton's functionality to original */
+    mustInstallAgent = NO;
+    [_doneButton setTitle:@"OK"];
+    
+    [[NSApp mainWindow] setDocumentEdited:NO];
+    
+    /* debug */
+    NSLog(@"\n\n%@", conkyAgentPlist);
+}
+
+- (IBAction)okButtonPressed:(id)sender
+{
+    NSWindow *sheet = [super sheet];
+
     if (mustInstallAgent)
     {
-        NSInteger startupDelay_ = [_startupDelayField integerValue];    /* deprecate the use/manipulation of startupDelay variable */
-        static
-        BOOL shownX11TakesAlotTimeWarning = NO;
-        
-        /*
-         * show X11 warning
-         */
-        if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
-        {
-            NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
-            [alert setMessageText:@"Warning"];
-            [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
-            [alert setAlertStyle:NSAlertStyleWarning];
-            [alert runModalSheetForWindow:sheet];
-            
-            shownX11TakesAlotTimeWarning = YES;
-        }
-        
-        /*
-         * We must create and save the Conky Agent Property List File
-         */
-        NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
-        
-        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
-        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-        NSUInteger count = sizeof(objects) / sizeof(id);
-        
-        /* create LaunchAgents directory at User's Home */
-        NSError *error;
-        NSFileManager *fm = [NSFileManager defaultManager];
-        [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
-        if (error)
-        {
-            NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
-        }
-
-        /* write the Agent plist */
-        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-        [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
-        
-        /* revert _doneButton's functionality to original */
         mustInstallAgent = NO;
         [_doneButton setTitle:@"OK"];
-        
-        [[NSApp mainWindow] setDocumentEdited:NO];
-        
-        /* debug */
-        NSLog(@"\n\n%@", conkyAgentPlist);
+        [_applyChangesButton setHidden:YES];
+        [_changesSavedLabel setHidden:YES];
     }
     else
     {
