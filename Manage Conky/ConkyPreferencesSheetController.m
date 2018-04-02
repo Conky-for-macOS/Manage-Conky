@@ -113,6 +113,10 @@
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
+    //
+    //  XXX should triiger the _applyChanges-button mechanism
+    //
+    
     NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
     
     if ([sender state] == NSOffState)
@@ -301,6 +305,7 @@
     /* revert _doneButton's functionality to original */
     mustInstallAgent = NO;
     [_doneButton setTitle:@"OK"];
+    [_applyChangesButton setHidden:YES];
     
     [[NSApp mainWindow] setDocumentEdited:NO];
     
