@@ -424,17 +424,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB76D58205D713900A3BB22 /* About.xib in Resources */,
-				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
-				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D59205D713900A3BB22 /* ConkyPreferences.xib in Resources */,
-				099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */,
-				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
-				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
-				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				EC89E7F52060503900152AB3 /* SaveTheme.xib in Resources */,
 				ECB76D56205D713900A3BB22 /* ConkyThemes.xib in Resources */,
 				ECB76D57205D713900A3BB22 /* ConkyInstaller.xib in Resources */,
+				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
+				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
+				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
 				ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */,
+				099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */,
+				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
+				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
