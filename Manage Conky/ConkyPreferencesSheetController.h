@@ -27,6 +27,8 @@
     BOOL conkyAgentPresent;
     
     BOOL keepAlive;
+    
+    BOOL mustRemoveAgent;
     BOOL mustInstallAgent;
     
     NSMutableArray *_searchLocationsTableContents;

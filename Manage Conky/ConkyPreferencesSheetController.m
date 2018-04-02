@@ -68,8 +68,9 @@
     // keepAlive
     keepAlive = YES;    /* default value */
     
-    // mustInstallAgent
+    // mustInstall/RemoveAgent
     mustInstallAgent = NO;   /* default value */
+    mustRemoveAgent = NO;   /* default value */
     
     _searchLocationsTableContents = [[NSMutableArray alloc] init];
     
@@ -113,20 +114,14 @@
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
-    //
-    //  XXX should triiger the _applyChanges-button mechanism
-    //
-    
-    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
-    
     if ([sender state] == NSOffState)
     {
         NSLog(@"Request to remove the Agent!");
         
-        /* SMJobRemove() deprecated but suggested by Apple, see https://lists.macosforge.org/pipermail/launchd-dev/2016-October/001229.html */
-        SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
-        
-        unlink([conkyAgentPlistPath UTF8String]);
+        mustRemoveAgent = YES;
+        [_changesSavedLabel setHidden:YES];
+        [_applyChangesButton setHidden:NO];
+        [_doneButton setTitle:@"Cancel"];
     }
     else
     {
@@ -147,6 +142,7 @@
                 break;
         }
         
+        [_changesSavedLabel setHidden:YES];
         [_applyChangesButton setHidden:NO];
         [_doneButton setTitle:@"Cancel"];
         mustInstallAgent = YES;
@@ -159,6 +155,7 @@
  */
 - (void)controlTextDidChange:(NSNotification *)obj
 {
+    [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
     mustInstallAgent = YES;
@@ -167,6 +164,7 @@
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
+    [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
     mustInstallAgent = YES;
@@ -257,72 +255,98 @@
 
 - (IBAction)applyChanges:(id)sender
 {
-    // XXX replace Agent code with SM* API calls
-    
-    NSWindow *sheet = [super sheet];
-    NSInteger startupDelay_ = [_startupDelayField integerValue];
-    static
-    BOOL shownX11TakesAlotTimeWarning = NO;
+    BOOL changesApplied = NO;
     
     /*
-     * show X11 warning
+     * ATTENTION: (XXX keep updated)
+     * The user has the ability to trigger the following cases: 1. remove agent 2. install agent
+     * The 1. can be triggered by UNchecking the equivalent checkbox, and the 2. can be triggered
+     *  by CHECKing the checkbox or editing the startupDelay.
+     *
+     * This can have unwanted results unless mustRemoveAgent takes priority.
+     * Thus, check it always FIRST.
      */
-    if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
+    
+    if (mustRemoveAgent)
     {
-        NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
-        [alert setMessageText:@"Warning"];
-        [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
-        [alert setAlertStyle:NSAlertStyleWarning];
-        [alert runModalSheetForWindow:sheet];
+        /* revert */
+        mustRemoveAgent = NO;
         
-        shownX11TakesAlotTimeWarning = YES;
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+        
+        bool res1 = SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
+        bool res2 = (unlink([conkyAgentPlistPath UTF8String]) == 0);
+        
+        changesApplied =  (res1 && res2);
     }
-    
-    /*
-     * We must create and save the Conky Agent Property List File
-     */
-    NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
-    NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
-    
-    id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
-    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    
-    /* create LaunchAgents directory at User's Home */
-    NSError *error;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
-    if (error)
+    else if (mustInstallAgent)
     {
-        NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
+        /* revert */
+        mustInstallAgent = NO;
+        
+        NSWindow *sheet = [super sheet];
+        NSInteger startupDelay_ = [_startupDelayField integerValue];
+        static
+        BOOL shownX11TakesAlotTimeWarning = NO;
+        
+        /*
+         * show X11 warning
+         */
+        if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
+        {
+            NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+            [alert setMessageText:@"Warning"];
+            [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
+            [alert setAlertStyle:NSAlertStyleWarning];
+            [alert runModalSheetForWindow:sheet];
+            
+            shownX11TakesAlotTimeWarning = YES;
+        }
+        
+        /*
+         * We must create and save the Conky Agent Property List File
+         */
+        NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
+        
+        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
+        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
+        NSUInteger count = sizeof(objects) / sizeof(id);
+        
+        /* create LaunchAgents directory at User's Home */
+        NSError *error;
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
+        if (error)
+        {
+            NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
+        }
+        
+        /* write the Agent plist */
+        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+        changesApplied = [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
+        
+        [[NSApp mainWindow] setDocumentEdited:NO];
+        
+        /* debug */
+        NSLog(@"\n\n%@", conkyAgentPlist);
     }
     
-    /* write the Agent plist */
-    NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-    BOOL agentSaved = [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
-    
-    [_changesSavedLabel setStringValue:agentSaved ? @"Changes saved successfully." : @"Failed to apply changes!"];
+    [_changesSavedLabel setStringValue:changesApplied ? @"Changes applied successfully" : @"Failed to apply changes!"];
     [_changesSavedLabel setHidden:NO];
-    
-    /* revert _doneButton's functionality to original */
-    mustInstallAgent = NO;
     [_doneButton setTitle:@"OK"];
     [_applyChangesButton setHidden:YES];
-    
-    [[NSApp mainWindow] setDocumentEdited:NO];
-    
-    /* debug */
-    NSLog(@"\n\n%@", conkyAgentPlist);
 }
 
 - (IBAction)okButtonPressed:(id)sender
 {
     NSWindow *sheet = [super sheet];
-    BOOL worksAsCancelButton = mustInstallAgent;
+    BOOL worksAsCancelButton = mustInstallAgent || mustRemoveAgent;
     
     if (worksAsCancelButton)
     {
         mustInstallAgent = NO;
+        mustRemoveAgent = NO;
         [_doneButton setTitle:@"OK"];
         [_applyChangesButton setHidden:YES];
         [_changesSavedLabel setHidden:YES];
