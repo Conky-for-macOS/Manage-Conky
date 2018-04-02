@@ -27,11 +27,9 @@ void PFMoveToApplicationsFolderIfNecessary(void);
  See https://github.com/potionfactory/LetsMove/issues/64 for details. */
 BOOL PFMoveIsInProgress(void);
     
-// XXX move to seperate class... PFMoveApplication+Forcibly+Relaunch.h
 /**
  Function based off of PFMoveToApplicationsFolderIfNecessary() to forcibly move the ConkyX to /Applications
  because it is heavily tied to /Applications */
-void CXForciblyMoveToApplicationsFolderConkyX(void);
 void CXForciblyMoveToApplicationsFolder(void);
 
 /**
