@@ -147,8 +147,9 @@
                 break;
         }
         
-        mustInstallAgent = YES;  /* set to install Agent later */
-        [_doneButton setTitle:@"Save changes"];
+        [_applyChangesButton setHidden:NO];
+        [_doneButton setTitle:@"Cancel"];
+        mustInstallAgent = YES;
         [[NSApp mainWindow] setDocumentEdited:YES];
     }
 }
@@ -256,9 +257,10 @@
 
 - (IBAction)applyChanges:(id)sender
 {
-    NSWindow *sheet = [super sheet];
+    // XXX replace Agent code with SM* API calls
     
-    NSInteger startupDelay_ = [_startupDelayField integerValue];    /* deprecate the use/manipulation of startupDelay variable */
+    NSWindow *sheet = [super sheet];
+    NSInteger startupDelay_ = [_startupDelayField integerValue];
     static
     BOOL shownX11TakesAlotTimeWarning = NO;
     
@@ -316,8 +318,9 @@
 - (IBAction)okButtonPressed:(id)sender
 {
     NSWindow *sheet = [super sheet];
-
-    if (mustInstallAgent)
+    BOOL worksAsCancelButton = mustInstallAgent;
+    
+    if (worksAsCancelButton)
     {
         mustInstallAgent = NO;
         [_doneButton setTitle:@"OK"];
