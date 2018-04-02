@@ -108,21 +108,21 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [_progressIndicator startAnimation:nil];
     
     /*
-     * Copy ConkyX.app to /Applications
-     * using code from LetsMove to handle many cases
-     * such as dmg, authentication etc.
-     */
-    CXForciblyMoveToApplicationsFolderConkyX();
-    
-    /*
      * Create symbolic link to allow using from terminal
      */
     NSError *error = nil;
     NSFileManager *fm = [[NSFileManager alloc] init];
     
+    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
+    {
+        NSLog(@"Error creating symlink to /Applications for ConkyX: \n\n%@", error);
+        return;
+    }
+    
     if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
     {
         NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+        return;
     }
     
     /*
@@ -137,6 +137,13 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
         [hbalert setAlertStyle:NSAlertStyleCritical];
         [hbalert runModalSheetForWindow:_window];
+        
+        NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"InstallHombrew" ofType:@"sh"];
+        NSTask *brew = [[NSTask alloc] init];
+        brew.launchPath = @"/bin/sh";
+        brew.arguments = @[scriptPath];
+        [brew launch];
+        [brew waitUntilExit];
     }
     
     [self installMissingLibraries];
