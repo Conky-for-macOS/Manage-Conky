@@ -107,9 +107,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
 {
     [_progressIndicator startAnimation:nil];
     
-    /*
-     * Create symbolic link to allow using from terminal
-     */
     NSError *error = nil;
     NSFileManager *fm = [[NSFileManager alloc] init];
     
@@ -119,6 +116,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         return;
     }
     
+    /*
+     * Create symbolic link to allow using from terminal
+     */
     if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
     {
         NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
