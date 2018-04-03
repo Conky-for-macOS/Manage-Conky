@@ -119,6 +119,7 @@
         NSLog(@"Request to remove the Agent!");
         
         mustRemoveAgent = YES;
+        mustInstallAgent = NO;  /* disable if enabled */
         [_changesSavedLabel setHidden:YES];
         [_applyChangesButton setHidden:NO];
         [_doneButton setTitle:@"Cancel"];
@@ -146,6 +147,7 @@
         [_applyChangesButton setHidden:NO];
         [_doneButton setTitle:@"Cancel"];
         mustInstallAgent = YES;
+        mustRemoveAgent = NO;   /* disable if enabled */
         [[NSApp mainWindow] setDocumentEdited:YES];
     }
 }
@@ -159,6 +161,7 @@
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
     mustInstallAgent = YES;
+    mustRemoveAgent = NO;   /* disable if enabled */
 }
 
 - (IBAction)modifyStartupDelay:(id)sender
@@ -168,6 +171,7 @@
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
     mustInstallAgent = YES;
+    mustRemoveAgent = NO;   /* disable if enabled */
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
@@ -256,16 +260,6 @@
 - (IBAction)applyChanges:(id)sender
 {
     BOOL changesApplied = NO;
-    
-    /*
-     * ATTENTION: (XXX keep updated)
-     * The user has the ability to trigger the following cases: 1. remove agent 2. install agent
-     * The 1. can be triggered by UNchecking the equivalent checkbox, and the 2. can be triggered
-     *  by CHECKing the checkbox or editing the startupDelay.
-     *
-     * This can have unwanted results unless mustRemoveAgent takes priority.
-     * Thus, check it always FIRST.
-     */
     
     if (mustRemoveAgent)
     {
