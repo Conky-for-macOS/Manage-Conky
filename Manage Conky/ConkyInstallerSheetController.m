@@ -110,9 +110,12 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     NSError *error = nil;
     NSFileManager *fm = [[NSFileManager alloc] init];
     
+    /*
+     * Create symbolic link to install ConkyX to Applications
+     */
     if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
     {
-        NSLog(@"Error creating symlink to /Applications for ConkyX: \n\n%@", error);
+        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
         return;
     }
     
