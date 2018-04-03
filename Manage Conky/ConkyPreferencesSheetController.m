@@ -112,17 +112,29 @@
     [_startupDelayLabel setTextColor:[NSColor grayColor]];
 }
 
+- (void)enableMustInstallAgentMode
+{
+    [_changesSavedLabel setHidden:YES];
+    [_applyChangesButton setHidden:NO];
+    [_doneButton setTitle:@"Cancel"];
+    mustInstallAgent = YES;
+    mustRemoveAgent = NO;   /* disable if enabled */
+}
+- (void)enableMustRemoveAgentMode
+{
+    mustRemoveAgent = YES;
+    mustInstallAgent = NO;  /* disable if enabled */
+    [_changesSavedLabel setHidden:YES];
+    [_applyChangesButton setHidden:NO];
+    [_doneButton setTitle:@"Cancel"];
+}
+
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
     if ([sender state] == NSOffState)
     {
         NSLog(@"Request to remove the Agent!");
-        
-        mustRemoveAgent = YES;
-        mustInstallAgent = NO;  /* disable if enabled */
-        [_changesSavedLabel setHidden:YES];
-        [_applyChangesButton setHidden:NO];
-        [_doneButton setTitle:@"Cancel"];
+        [self enableMustRemoveAgentMode];
     }
     else
     {
@@ -143,11 +155,7 @@
                 break;
         }
         
-        [_changesSavedLabel setHidden:YES];
-        [_applyChangesButton setHidden:NO];
-        [_doneButton setTitle:@"Cancel"];
-        mustInstallAgent = YES;
-        mustRemoveAgent = NO;   /* disable if enabled */
+        [self enableMustInstallAgentMode];
         [[NSApp mainWindow] setDocumentEdited:YES];
     }
 }
@@ -157,21 +165,13 @@
  */
 - (void)controlTextDidChange:(NSNotification *)obj
 {
-    [_changesSavedLabel setHidden:YES];
-    [_applyChangesButton setHidden:NO];
-    [_doneButton setTitle:@"Cancel"];
-    mustInstallAgent = YES;
-    mustRemoveAgent = NO;   /* disable if enabled */
+    [self enableMustInstallAgentMode];
 }
 
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
-    [_changesSavedLabel setHidden:YES];
-    [_applyChangesButton setHidden:NO];
-    [_doneButton setTitle:@"Cancel"];
-    mustInstallAgent = YES;
-    mustRemoveAgent = NO;   /* disable if enabled */
+    [self enableMustInstallAgentMode];
 }
 
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
