@@ -77,7 +77,7 @@
     {
         /* first try to read already written information */
         
-        _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AdditionalSearchPaths"] mutableCopy];
+        _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [[NSMutableArray alloc] init];
@@ -96,7 +96,7 @@
         [_runConkyAtStartupCheckbox setState:conkyAgentPresent];
         
         /* Conky configuration file location? */
-        NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+        NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
         if (!conkyConfigsPath)
         {
             NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingString:@"/.conky"];    /* default value */
@@ -146,8 +146,6 @@
     [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
-    mustRemoveAgent = NO;   /* disable if enabled */
-    mustInstallAgent = NO;  /* disable if enabled */
     mustAddSearchPaths = YES;
 }
 
@@ -347,7 +345,12 @@
         /* debug */
         NSLog(@"\n\n%@", conkyAgentPlist);
     }
-    else if (mustAddSearchPaths)
+    
+    /*
+     * We should be able to add/remove search paths to our list
+     *  whether mustInstallAgent or mustRemoveAgent modes are enabled.
+     */
+    if (mustAddSearchPaths)
     {
         /* revert */
         mustAddSearchPaths = NO;
@@ -355,7 +358,7 @@
         /*
          * Write the Additional Search Locations
          */
-        [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"AdditionalSearchPaths"];
+        [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"additionalSearchPaths"];
         changesApplied = YES;
     }
     
@@ -374,7 +377,7 @@
     {
         if (mustAddSearchPaths)
         {
-            [_searchLocationsTableContents removeAllObjects];
+            [_searchLocationsTableContents removeAllObjects];   // XXX remove all newly added ONLY
             [_searchLocationsTable reloadData];
         }
         
@@ -420,6 +423,7 @@
     panel.canChooseFiles = NO;
     panel.showsHiddenFiles = YES;
     panel.canChooseDirectories = YES;
+    panel.canCreateDirectories = YES;
     panel.allowsMultipleSelection = NO;
     panel.canSelectHiddenExtension = NO;
     
