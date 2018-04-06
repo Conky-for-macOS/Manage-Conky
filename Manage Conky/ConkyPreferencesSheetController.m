@@ -418,6 +418,7 @@
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
     panel.canChooseFiles = NO;
+    panel.showsHiddenFiles = YES;
     panel.canChooseDirectories = YES;
     panel.allowsMultipleSelection = NO;
     panel.canSelectHiddenExtension = NO;
