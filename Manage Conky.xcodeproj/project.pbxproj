@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
@@ -63,6 +64,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		091506C920729E0E00019E40 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0984A9262067F06600BDE1B9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +116,9 @@
 
 /* Begin PBXFileReference section */
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shared.h; path = "Manage Conky/Shared.h"; sourceTree = "<group>"; };
+		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		095F9B402077DE6E003C60C1 /* FinderSync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FinderSync.framework; path = System/Library/Frameworks/FinderSync.framework; sourceTree = SDKROOT; };
 		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
 		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CBFEA92066A55500EB8A1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */,
 				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
@@ -244,6 +258,9 @@
 		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				095F9B402077DE6E003C60C1 /* FinderSync.framework */,
+				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
+				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
 				EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */,
 			);
@@ -350,6 +367,7 @@
 				F7274ACE208100D26DB22441 /* [CP] Copy Pods Resources */,
 				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
 				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
+				091506C920729E0E00019E40 /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -30,6 +30,7 @@
     
     BOOL mustRemoveAgent;
     BOOL mustInstallAgent;
+    BOOL mustAddSearchPaths;
     
     NSMutableArray *_searchLocationsTableContents;
 }

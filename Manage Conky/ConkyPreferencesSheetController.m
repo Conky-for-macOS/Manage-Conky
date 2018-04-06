@@ -71,24 +71,35 @@
     // mustInstall/RemoveAgent
     mustInstallAgent = NO;   /* default value */
     mustRemoveAgent = NO;   /* default value */
-    
-    _searchLocationsTableContents = [[NSMutableArray alloc] init];
+    mustAddSearchPaths = NO;    /* default value */
     
     if (conkyXInstalled)
     {
+        /* first try to read already written information */
+        
+        _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AdditionalSearchPaths"] mutableCopy];
+        
+        if (!_searchLocationsTableContents)
+            _searchLocationsTableContents = [[NSMutableArray alloc] init];
+        
+        [_searchLocationsTable setDelegate:self];
+        [_searchLocationsTable setDataSource:self];
+        
         /* Is conky agent present? */
         NSString* conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
         conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
+        if (!conkyAgentPresent)
+            NSLog(@"Agent plist doesnt exist or not accessible!");
         
-        if (conkyAgentPresent)  [_runConkyAtStartupCheckbox setState:1];
-        else                    NSLog(@"Agent plist doesnt exist or not accessible!");
+        /* set checkbox state accordingly */
+        [_runConkyAtStartupCheckbox setState:conkyAgentPresent];
         
         /* Conky configuration file location? */
         NSString * conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
         if (!conkyConfigsPath)
         {
-            NSString *kConkyConfigsDefaultPath = [NSString stringWithFormat:@"%@/.conky", NSHomeDirectory()];
+            NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingString:@"/.conky"];    /* default value */
             
             [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
             conkyConfigsPath = kConkyConfigsDefaultPath;
@@ -110,6 +121,8 @@
     [_startupDelayStepper setEnabled:NO];
     [_startupDelayField setEnabled:NO];
     [_startupDelayLabel setTextColor:[NSColor grayColor]];
+    [_addSearchLocationButton setEnabled:NO];
+    [_removeSearchLocationButton setEnabled:NO];
 }
 
 - (void)enableMustInstallAgentMode
@@ -122,11 +135,20 @@
 }
 - (void)enableMustRemoveAgentMode
 {
-    mustRemoveAgent = YES;
-    mustInstallAgent = NO;  /* disable if enabled */
     [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
+    mustRemoveAgent = YES;
+    mustInstallAgent = NO;  /* disable if enabled */
+}
+- (void)enableMustAddSearchPathsMode
+{
+    [_changesSavedLabel setHidden:YES];
+    [_applyChangesButton setHidden:NO];
+    [_doneButton setTitle:@"Cancel"];
+    mustRemoveAgent = NO;   /* disable if enabled */
+    mustInstallAgent = NO;  /* disable if enabled */
+    mustAddSearchPaths = YES;
 }
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
@@ -266,7 +288,7 @@
         /* revert */
         mustRemoveAgent = NO;
         
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
+        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
         bool res1 = SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
         bool res2 = (unlink([conkyAgentPlistPath UTF8String]) == 0);
@@ -325,6 +347,17 @@
         /* debug */
         NSLog(@"\n\n%@", conkyAgentPlist);
     }
+    else if (mustAddSearchPaths)
+    {
+        /* revert */
+        mustAddSearchPaths = NO;
+        
+        /*
+         * Write the Additional Search Locations
+         */
+        [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"AdditionalSearchPaths"];
+        changesApplied = YES;
+    }
     
     [_changesSavedLabel setStringValue:changesApplied ? @"Changes applied successfully" : @"Failed to apply changes!"];
     [_changesSavedLabel setHidden:NO];
@@ -335,12 +368,19 @@
 - (IBAction)okButtonPressed:(id)sender
 {
     NSWindow *sheet = [super sheet];
-    BOOL worksAsCancelButton = mustInstallAgent || mustRemoveAgent;
+    BOOL worksAsCancelButton = mustInstallAgent || mustRemoveAgent || mustAddSearchPaths;
     
     if (worksAsCancelButton)
     {
+        if (mustAddSearchPaths)
+        {
+            [_searchLocationsTableContents removeAllObjects];
+            [_searchLocationsTable reloadData];
+        }
+        
         mustInstallAgent = NO;
         mustRemoveAgent = NO;
+        mustAddSearchPaths = NO;
         [_doneButton setTitle:@"OK"];
         [_applyChangesButton setHidden:YES];
         [_changesSavedLabel setHidden:YES];
@@ -377,8 +417,10 @@
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
-    panel.canChooseDirectories = NO;
+    panel.canChooseFiles = NO;
+    panel.canChooseDirectories = YES;
     panel.allowsMultipleSelection = NO;
+    panel.canSelectHiddenExtension = NO;
     
     /*
      * display the panel
@@ -391,31 +433,37 @@
             
             /* add to table contents array */
             [_searchLocationsTableContents addObject:theDocumentInString];
-            NSLog(@"Path = %@", theDocumentInString);
+            [_searchLocationsTable reloadData];
+            
+            [self enableMustAddSearchPathsMode];
         }
     }];
 }
 
 - (IBAction)removeSearchLocation:(id)sender
 {
+    NSInteger selectedRow = [_searchLocationsTable selectedRow];
+    
+    if (selectedRow == -1)
+        return;
+        
+    [_searchLocationsTableContents removeObjectAtIndex:selectedRow];
+    [_searchLocationsTable reloadData];
+    
+    [self enableMustAddSearchPathsMode];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return [_searchLocationsTableContents count];
 }
-
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSString *searchLocation = _searchLocationsTableContents[row];
     
-#define IDENTIFIER_SET_IN_INTERFACE_BUILDER @"MainCell"
-    
-    NSTableCellView *cellView = [tableView makeViewWithIdentifier:IDENTIFIER_SET_IN_INTERFACE_BUILDER owner:self];
-    
+#define IDENTIFIER_SET_IN_INTERFACE_BUILDER @"SearchPathCellID"
+    NSTableCellView *cellView = [tableView makeViewWithIdentifier:IDENTIFIER_SET_IN_INTERFACE_BUILDER owner:nil];
     cellView.textField.stringValue = searchLocation;
-    cellView.imageView.image = [NSImage imageNamed:@"Maintain"];
-    
     return cellView;
 }
 
