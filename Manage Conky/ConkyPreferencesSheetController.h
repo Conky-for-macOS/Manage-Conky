@@ -44,6 +44,7 @@
 // Conky Config Files Location
 @property (weak) IBOutlet NSTextField *conkyConfigFilesLocationLabel;
 @property (weak) IBOutlet NSTextField *conkyConfigLocationTextfield;
+@property (weak) IBOutlet NSButton *setConkyConfigFilesLocationButton;
 
 // Startup Delay
 @property (weak) IBOutlet NSTextField *startupDelayField;
@@ -53,6 +54,7 @@
 @property (weak) IBOutlet NSTableView *searchLocationsTable;
 @property (weak) IBOutlet NSButton *addSearchLocationButton;
 @property (weak) IBOutlet NSButton *removeSearchLocationButton;
+@property (weak) IBOutlet NSTextField *additionalLocationsToSearchLabel;
 
 @property (weak) IBOutlet NSTextField *changesSavedLabel;
 

@@ -115,14 +115,19 @@
 
 - (void)disableControls
 {
-    [_conkyConfigLocationTextfield setEnabled:NO];
     [_runConkyAtStartupCheckbox setEnabled:NO];
+    
+    [_conkyConfigLocationTextfield setEnabled:NO];
+    [_setConkyConfigFilesLocationButton setEnabled:NO];
     [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+    
     [_startupDelayStepper setEnabled:NO];
     [_startupDelayField setEnabled:NO];
     [_startupDelayLabel setTextColor:[NSColor grayColor]];
+    
     [_addSearchLocationButton setEnabled:NO];
     [_removeSearchLocationButton setEnabled:NO];
+    [_additionalLocationsToSearchLabel setTextColor:[NSColor grayColor]];
 }
 
 - (void)enableMustInstallAgentMode
@@ -178,6 +183,34 @@
         [self enableMustInstallAgentMode];
         [[NSApp mainWindow] setDocumentEdited:YES];
     }
+}
+
+- (IBAction)setConkyConfigsLocation:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    panel.canChooseFiles = NO;
+    panel.showsHiddenFiles = YES;
+    panel.canChooseDirectories = YES;
+    panel.canCreateDirectories = YES;
+    panel.allowsMultipleSelection = NO;
+    panel.canSelectHiddenExtension = NO;
+    
+    /*
+     * display the panel
+     */
+    [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
+        if (result == NSFileHandlingPanelOKButton)
+        {
+            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
+            NSString *theDocumentInString = [theDocument path];
+            
+            [_conkyConfigLocationTextfield setStringValue:theDocumentInString];
+            
+            // XXX quick patch
+            [[NSUserDefaults standardUserDefaults] setObject:theDocumentInString forKey:@"configsLocation"];
+        }
+    }];
 }
 
 /*
