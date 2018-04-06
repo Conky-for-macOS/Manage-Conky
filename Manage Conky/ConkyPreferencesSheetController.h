@@ -51,13 +51,14 @@
 @property (weak) IBOutlet NSStepper *startupDelayStepper;
 @property (weak) IBOutlet NSTextField *startupDelayLabel;
 
+// Additional Search Locations
 @property (weak) IBOutlet NSTableView *searchLocationsTable;
 @property (weak) IBOutlet NSButton *addSearchLocationButton;
 @property (weak) IBOutlet NSButton *removeSearchLocationButton;
 @property (weak) IBOutlet NSTextField *additionalLocationsToSearchLabel;
 
+// Changes Applied
 @property (weak) IBOutlet NSTextField *changesSavedLabel;
-
 @property (weak) IBOutlet NSButton *applyChangesButton;
 @property (weak) IBOutlet NSButton *doneButton;
 
