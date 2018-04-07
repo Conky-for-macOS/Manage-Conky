@@ -11,19 +11,12 @@
 #define MC_PID_NOT_SET (-100)
 
 @implementation MCThemeOrWidget
-- (instancetype)initWithPid:(pid_t)pid_ andPath:(NSString *)path_
++ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString * _Nullable)path
 {
-    pid = pid_;
-    path = path_;
-    return [self init];
-}
-- (NSString *)path
-{
-    return path;
-}
-- (pid_t)pid
-{
-    return pid;
+    id res = [[self alloc] init];
+    [res setPid:pid];
+    [res setItemPath:path];
+    return res;
 }
 @end
 
@@ -38,6 +31,9 @@
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
+    widgetsArray = [[NSMutableArray alloc] init];
+    themesArray = [[NSMutableArray alloc] init];
+    
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator;
     
@@ -50,11 +46,21 @@
     enumerator = [fm enumeratorAtPath:basicSearchPath];
     for (NSString *path in enumerator)
     {
-        MCThemeOrWidget *themeOrWidget = [[MCThemeOrWidget alloc] initWithPid:MC_PID_NOT_SET andPath:path];
+        /* fullpath */
+        NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, path];
         
-        [[path pathExtension] isEqualToString:@"conkyTheme"] ?
-        [themesArray addObject:themeOrWidget] :
-        [widgetsArray addObject:themeOrWidget];
+        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
+        
+        if ([path isEqualToString:@".DS_Store"])
+            continue;
+        
+        /*
+         * Empty extension means we found conky config file
+         */
+        if ([[path pathExtension] isEqualToString:@""] || [[path pathExtension] isEqualToString:@"conf"])
+            [widgetsArray addObject:themeOrWidget];
+        else if ([[path pathExtension] isEqualToString:@"cmtheme"])
+            [themesArray addObject:themeOrWidget];
     }
     
     for (NSString *additionalPath in additionalSearchPaths)
@@ -62,11 +68,13 @@
         enumerator = [fm enumeratorAtPath:additionalPath];
         for (NSString *path in enumerator)
         {
-            MCThemeOrWidget *themeOrWidget = [[MCThemeOrWidget alloc] initWithPid:MC_PID_NOT_SET andPath:path];
+            /* fullpath */
+            NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, path];
+
             
-            [[path pathExtension] isEqualToString:@"conkyTheme"] ?
-            [themesArray addObject:themeOrWidget] :
-            [widgetsArray addObject:themeOrWidget];
+            MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
+            
+            // handle bad file types
         }
     }
     
@@ -95,24 +103,27 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSString *str = (whatToShow == widgetsThemesTableShowWidgets) ? [[widgetsArray objectAtIndex:row] path] : [[themesArray objectAtIndex:row] path];
+    NSArray *arr = (whatToShow == widgetsThemesTableShowWidgets) ? widgetsArray : themesArray;
+    NSString *str = (whatToShow == widgetsThemesTableShowWidgets) ? [[arr objectAtIndex:row] itemPath] : [[arr objectAtIndex:row] itemPath];
     
-    if (whatToShow == widgetsThemesTableShowWidgets)
+    if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
-        if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
-        {
-            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"CellAID" owner:nil];
-            // checkbox: ticked or not?
-            return cell;
-        }
-        else
-        {
-            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"CellBID" owner:nil];
-            cell.textField.stringValue = str;
-            return cell;
-        }
+        pid_t pid = [[arr objectAtIndex:row] pid];
+        return [NSNumber numberWithBool:((pid == MC_PID_NOT_SET) ? NO : YES)];
     }
-    else return nil;
+    else
+    {
+        NSTextFieldCell *cell = [tableColumn dataCellForRow:row];
+        
+        /*
+         * check if already allocated
+         */
+        if (!cell)
+            cell = [[NSTextFieldCell alloc] init];
+        
+        cell.stringValue = str;
+        return cell;
+    }
 }
 
 //
@@ -120,7 +131,7 @@
 //
 - (IBAction)startOrRestartWidget:(id)sender
 {
-    NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] path];
+    NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
     NSString *cmd = [NSString stringWithFormat:@"/usr/local/bin/conky -c %@", path];
     
     NSLog(@"%@", cmd);

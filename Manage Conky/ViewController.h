@@ -22,15 +22,11 @@ typedef enum {
  *  was launched with the specific widget/theme.
  */
 @interface MCThemeOrWidget : NSObject
-{
-    pid_t pid;
-    NSString *path;
-}
 
-- (instancetype)initWithPid:(pid_t)pid_ andPath:(NSString *)path_;
+@property pid_t pid;
+@property NSString *itemPath;
 
-- (NSString *)path;
-- (pid_t)pid;
++ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString * _Nullable)path;
 @end
 
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
