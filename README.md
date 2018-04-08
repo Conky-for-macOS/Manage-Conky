@@ -4,7 +4,7 @@
 
 Manage Conky is the implementation of [conky manager](https://github.com/teejee2008/conky-manager) for macOS.
 
-![preview](preview.png)
+![preview](preview.jpeg)
 
 # THANKS TO
 
