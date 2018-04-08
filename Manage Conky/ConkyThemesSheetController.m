@@ -24,17 +24,20 @@
 }
 
 /**
- Here happens all the graphicall stuff for showing the list of themes in the theme-pack file
- and giving the option to select and and install any number of themes...
+ * Fill the widgets/themes table in main window
  */
-- (void)showThemesList
+- (void)fillWidgetsThemesTable
 {
     /* HI! */
     NSLog(@"Omaewa mo sindeiru");
     
-    [_importedThemesView setHidden:NO];
-    
-    // XXX dirty patch
+    /*
+     * Get pointer to the one-and-only ViewController instance,
+     *  which is also the table's delegate and data-source.
+     *
+     *  Call the method `fillWidgetsThemesArrays` and fill the arrays
+     *  with data in order to reload table, with newly installed themes/widgets.
+     */
     ViewController *pVC = [_themesOrWidgetsTable delegate];
     [pVC fillWidgetsThemesArrays];
     [_themesOrWidgetsTable reloadData];
@@ -100,7 +103,7 @@
     res = [self openThemePackWithURL:defaultThemePackPath];
     
     if (res)
-        [self showThemesList];
+        [self fillWidgetsThemesTable];
 }
 
 - (IBAction)importFromCustomThemePack:(id)sender
@@ -130,7 +133,7 @@
          * show the list
          */
         if (res)
-            [self showThemesList];
+            [self fillWidgetsThemesTable];
     }];
 }
 
