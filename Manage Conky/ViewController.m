@@ -154,13 +154,11 @@
 - (IBAction)startOrRestartWidget:(id)sender
 {
     NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
-    NSString *cmd = [NSString stringWithFormat:@"/usr/local/bin/conky -c \"%@\"", path];
-    
-    NSLog(@"%@", cmd);
     
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/local/bin/conky"];
     [task setArguments:@[@"-c", path]];
+    [task setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
     [task launch];
     
     pid_t pid = [task processIdentifier];
