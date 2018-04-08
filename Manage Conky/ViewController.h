@@ -14,7 +14,7 @@ typedef enum {
     widgetsThemesTableShowThemes,
 } MCWidgetThemesTableShow;
 
-/*
+/**
  * MCThemeOrWidget
  *
  * An object that holds the path of a widget/theme
@@ -38,6 +38,11 @@ typedef enum {
 
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
+/**
+ * Function used to fill widgetsArray and themesArray
+ * Also used by ThemesSheet by getting the pointer to the ViewController instance
+ *  to fill the table after loading a themepack.
+ */
 - (void)fillWidgetsThemesArrays;
 
 @end
