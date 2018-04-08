@@ -155,6 +155,11 @@
 {
     NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
     
+    // check if already running to restart
+    pid_t tmp = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] pid];
+    if (tmp != MC_PID_NOT_SET)
+        [self stopWidget:nil];
+    
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/usr/local/bin/conky"];
     [task setArguments:@[@"-c", path]];
