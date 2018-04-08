@@ -960,7 +960,11 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="dEB-zH-v7c" customClass="ConkyPreferencesSheetController"/>
-                <customObject id="nOr-EW-XZ9" customClass="ConkyThemesSheetController"/>
+                <customObject id="nOr-EW-XZ9" customClass="ConkyThemesSheetController">
+                    <connections>
+                        <outlet property="themesOrWidgetsTable" destination="GFu-ou-xru" id="MQv-Sh-8MG"/>
+                    </connections>
+                </customObject>
                 <customObject id="QjW-XK-6TL" customClass="AboutSheetController"/>
             </objects>
             <point key="canvasLocation" x="75" y="824.5"/>

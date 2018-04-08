@@ -38,4 +38,6 @@ typedef enum {
 
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
+- (void)fillWidgetsThemesArrays;
+
 @end

@@ -13,6 +13,7 @@
 #import "ConkyThemesSheetController.h"
 
 #import "LzmaSDKObjC.h"
+#import "ViewController.h"
 #import "LzmaSDKObjCReader.h"
 
 @implementation ConkyThemesSheetController
@@ -32,6 +33,11 @@
     NSLog(@"Omaewa mo sindeiru");
     
     [_importedThemesView setHidden:NO];
+    
+    // XXX dirty patch
+    ViewController *pVC = [_themesOrWidgetsTable delegate];
+    [pVC fillWidgetsThemesArrays];
+    [_themesOrWidgetsTable reloadData];
 }
 
 - (BOOL)openThemePackWithURL:(NSURL*)url

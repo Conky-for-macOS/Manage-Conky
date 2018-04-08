@@ -22,6 +22,8 @@
 @property (weak) IBOutlet NSTableColumn *themesColumn;
 @property (weak) IBOutlet NSTableColumn *isInstalledColumn;
 
+@property (weak) IBOutlet NSTableView *themesOrWidgetsTable;
+
 - (IBAction)activateThemesSheet:(id)sender;
 
 @end

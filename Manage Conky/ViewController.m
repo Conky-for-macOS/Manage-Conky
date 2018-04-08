@@ -22,15 +22,8 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    /*
-     * Setup stuff
-     */
-    
-    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
-    
+- (void)fillWidgetsThemesArrays
+{
     widgetsArray = [[NSMutableArray alloc] init];
     themesArray = [[NSMutableArray alloc] init];
     
@@ -77,7 +70,7 @@
         {
             /* fullpath */
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, path];
-
+            
             BOOL isDirectory = NO;
             [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
             if (isDirectory)
@@ -98,6 +91,18 @@
             else continue;
         }
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    /*
+     * Setup stuff
+     */
+    
+    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
+    
+    [self fillWidgetsThemesArrays];
     
     [_widgetsThemesTable setDelegate:self];
     [_widgetsThemesTable setDataSource:self];
@@ -174,10 +179,11 @@
 {
     NSInteger i = [_widgetsThemesTable selectedRow];
     pid_t pid = [[widgetsArray objectAtIndex:i] pid];
+
     int stat_loc = 0;
-    
     kill(pid, SIGINT);
     waitpid(pid, &stat_loc, WNOHANG);
+    
     [[widgetsArray objectAtIndex:i] setPid:MC_PID_NOT_SET];
     [_widgetsThemesTable reloadData];
 }
@@ -189,9 +195,9 @@
         if (pid != MC_PID_NOT_SET)
         {
             int stat_loc = 0;
-            
             kill(pid, SIGINT);
             waitpid(pid, &stat_loc, WNOHANG);
+            
             [widget setPid:MC_PID_NOT_SET];
         }
     }
