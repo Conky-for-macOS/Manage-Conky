@@ -49,6 +49,11 @@
         /* fullpath */
         NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, path];
         
+        BOOL isDirectory = NO;
+        [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
+        if (isDirectory)
+            continue;
+        
         if ([path isEqualToString:@".DS_Store"])
             continue;
         
@@ -73,6 +78,11 @@
             /* fullpath */
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, path];
 
+            BOOL isDirectory = NO;
+            [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
+            if (isDirectory)
+                continue;
+            
             if ([path isEqualToString:@".DS_Store"])
                 continue;
             
@@ -180,9 +190,10 @@
             kill(pid, SIGINT);
             waitpid(pid, &stat_loc, WNOHANG);
             [widget setPid:MC_PID_NOT_SET];
-            [_widgetsThemesTable reloadData];
         }
     }
+    
+    [_widgetsThemesTable reloadData];
 }
 
 @end
