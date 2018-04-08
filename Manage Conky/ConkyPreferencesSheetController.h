@@ -62,6 +62,12 @@
 @property (weak) IBOutlet NSButton *applyChangesButton;
 @property (weak) IBOutlet NSButton *doneButton;
 
+/**
+ * Exists in this class to us with a handle to the table
+ *  shown in main-window.
+ */
+@property (weak) IBOutlet NSTableView *themesOrWidgetsTable;
+
 - (IBAction)activatePreferencesSheet:(id)sender;
 
 @end

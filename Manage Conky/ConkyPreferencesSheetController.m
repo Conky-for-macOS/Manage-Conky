@@ -11,6 +11,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
+#import "ViewController.h"
 #import <unistd.h>
 #import "Shared.h"
 
@@ -230,6 +231,18 @@
 - (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
+    
+    /*
+     * Get pointer to the one-and-only ViewController instance,
+     *  which is also the table's delegate and data-source.
+     *
+     *  Call the method `fillWidgetsThemesArrays` and fill the arrays
+     *  with data in order to reload table, with newly installed themes/widgets.
+     */
+    ViewController *pVC = [_themesOrWidgetsTable delegate];
+    [pVC emptyWidgetsThemesArrays];
+    [pVC fillWidgetsThemesArrays];
+    [_themesOrWidgetsTable reloadData];
 }
 
 - (void)installConkyX

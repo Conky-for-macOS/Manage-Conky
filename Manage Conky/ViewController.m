@@ -22,6 +22,12 @@
 
 @implementation ViewController
 
+- (void)emptyWidgetsThemesArrays
+{
+    [widgetsArray removeAllObjects];
+    [themesArray removeAllObjects];
+}
+
 - (void)fillWidgetsThemesArrays
 {
     widgetsArray = [[NSMutableArray alloc] init];

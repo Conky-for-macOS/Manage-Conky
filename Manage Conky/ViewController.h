@@ -44,5 +44,6 @@ typedef enum {
  *  to fill the table after loading a themepack.
  */
 - (void)fillWidgetsThemesArrays;
+- (void)emptyWidgetsThemesArrays;
 
 @end
