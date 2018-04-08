@@ -208,8 +208,7 @@
             
             [_conkyConfigLocationTextfield setStringValue:theDocumentInString];
             
-            // XXX quick patch
-            [[NSUserDefaults standardUserDefaults] setObject:theDocumentInString forKey:@"configsLocation"];
+            [self conkyConfigLocationFieldEnterPressed:_conkyConfigLocationTextfield];
         }
     }];
 }
