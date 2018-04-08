@@ -49,10 +49,10 @@
         /* fullpath */
         NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, path];
         
-        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
-        
         if ([path isEqualToString:@".DS_Store"])
             continue;
+        
+        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
         
         /*
          * Empty extension means we found conky config file
@@ -61,6 +61,8 @@
             [widgetsArray addObject:themeOrWidget];
         else if ([[path pathExtension] isEqualToString:@"cmtheme"])
             [themesArray addObject:themeOrWidget];
+        else continue;
+        
     }
     
     for (NSString *additionalPath in additionalSearchPaths)
@@ -71,10 +73,19 @@
             /* fullpath */
             NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, path];
 
+            if ([path isEqualToString:@".DS_Store"])
+                continue;
             
             MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
             
-            // handle bad file types
+            /*
+             * Empty extension means we found conky config file
+             */
+            if ([[path pathExtension] isEqualToString:@""] || [[path pathExtension] isEqualToString:@"conf"])
+                [widgetsArray addObject:themeOrWidget];
+            else if ([[path pathExtension] isEqualToString:@"cmtheme"])
+                [themesArray addObject:themeOrWidget];
+            else continue;
         }
     }
     
@@ -126,23 +137,36 @@
     }
 }
 
+
 //
 // CONKY CONTROL
 //
 - (IBAction)startOrRestartWidget:(id)sender
 {
     NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
-    NSString *cmd = [NSString stringWithFormat:@"/usr/local/bin/conky -c %@", path];
+    NSString *cmd = [NSString stringWithFormat:@"/usr/local/bin/conky -c \"%@\"", path];
     
     NSLog(@"%@", cmd);
     
-    system([cmd UTF8String]);
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/local/bin/conky"];
+    [task setArguments:@[@"-c", path]];
+    [task launch];
+    
+    pid_t pid = [task processIdentifier];
+    [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] setPid:pid];
+    [_widgetsThemesTable reloadData];
 }
 - (IBAction)stopWidget:(id)sender
 {
     NSInteger i = [_widgetsThemesTable selectedRow];
     pid_t pid = [[widgetsArray objectAtIndex:i] pid];
+    int stat_loc = 0;
+    
     kill(pid, SIGINT);
+    waitpid(pid, &stat_loc, WNOHANG);
+    [[widgetsArray objectAtIndex:i] setPid:MC_PID_NOT_SET];
+    [_widgetsThemesTable reloadData];
 }
 - (IBAction)stopAllWidgets:(id)sender
 {
@@ -150,7 +174,14 @@
     {
         pid_t pid = [widget pid];
         if (pid != MC_PID_NOT_SET)
+        {
+            int stat_loc = 0;
+            
             kill(pid, SIGINT);
+            waitpid(pid, &stat_loc, WNOHANG);
+            [widget setPid:MC_PID_NOT_SET];
+            [_widgetsThemesTable reloadData];
+        }
     }
 }
 
