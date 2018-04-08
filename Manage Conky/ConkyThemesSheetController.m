@@ -74,9 +74,16 @@
     }];
     
     /*
+     * Extract themepack
+     */
+    BOOL res = FALSE;
+    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    res = [themePackReader extract:items toPath:path withFullPaths:YES];
+    
+    /*
      * check if succeeded
      */
-    return ([items count] == [themePackReader itemsCount]) ? YES : NO;
+    return (res && ([items count] == [themePackReader itemsCount]));
 }
 
 - (IBAction)importFromDefaultThemePack:(id)sender
