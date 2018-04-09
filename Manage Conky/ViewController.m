@@ -22,6 +22,29 @@
 
 @implementation ViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    /*
+     * Setup stuff
+     */
+    
+    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
+    
+    [self fillWidgetsThemesArrays];
+    
+    [_widgetsThemesTable setDelegate:self];
+    [_widgetsThemesTable setDataSource:self];
+}
+
+- (void)setRepresentedObject:(id)representedObject {
+    [super setRepresentedObject:representedObject];
+}
+
+//
+// DATA ARRAYS CONTROL
+//
+
 - (void)emptyWidgetsThemesArrays
 {
     [widgetsArray removeAllObjects];
@@ -99,33 +122,105 @@
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+//
+// TABLE CONTROL
+//
 
-    /*
-     * Setup stuff
-     */
-    
-    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
-    
-    [self fillWidgetsThemesArrays];
-    
-    [_widgetsThemesTable setDelegate:self];
-    [_widgetsThemesTable setDataSource:self];
-}
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-}
-
+/**
+ * Change to themes list or widgets list
+ **/
 - (IBAction)changeTableContents:(id)sender
 {
-   if ([[sender title] isEqualToString:@"Themes"])
-       whatToShow = widgetsThemesTableShowThemes;
+    if ([[sender title] isEqualToString:@"Themes"])
+        whatToShow = widgetsThemesTableShowThemes;
     if ([[sender title] isEqualToString:@"Widgets"])
         whatToShow = widgetsThemesTableShowWidgets;
     
     [_widgetsThemesTable reloadData];
+}
+
+/*
+ * Applies a theme to computer by:
+ *  - applying conky config
+ *  - applying wallpaper
+ *
+ * supports two types of themes:
+ *  - original conky-manager themes (plain files with minimal info) (backwards compatibility)
+ *  - plist based (support many parameters/features in a native macOS way)
+ */
+- (void)applyTheme:(MCThemeOrWidget *)theme
+{
+    NSString *themeRoot = [[theme itemPath] stringByDeletingLastPathComponent];
+    NSString *themeRCFile = [themeRoot stringByAppendingString:@"/themerc.plist"];
+    
+    /*
+     * Information extracted from theme info file
+     */
+    NSInteger startupDelay = 0;
+    NSString *conkyConfig = nil;
+    NSArray *arguments = nil;
+    NSString *wallpaper = nil;
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+
+    /*
+     * Check if we can use a themerc.plist
+     */
+    if ([fm fileExistsAtPath:themeRCFile])
+    {
+        /*
+         * Doing it the ManageConky way...
+         */
+        
+        NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRCFile];
+        
+        //startupDelay = [rc objectForKey:@"startupDelay"];
+        conkyConfig = [rc objectForKey:@"config"];
+        arguments = [rc objectForKey:@"args"];
+        wallpaper = [rc objectForKey:@"wallpaper"];
+    }
+    else
+    {
+        /*
+         * Doing it the conky-manager way...
+         */
+        themeRCFile = nil;
+        
+        NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:themeRoot];
+        for (NSString *item in enumerator)
+        {
+            if ([[item pathExtension] isEqualToString:@"cmtheme"])
+            {
+                themeRCFile = [NSString stringWithFormat:@"%@/%@", themeRoot, item];
+                break;
+            }
+        }
+        
+        /*
+         * Check if we got something
+         */
+        if (!themeRCFile)
+            return;
+        
+        /*
+         * Start reading the file
+         */
+    }
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    /*
+     * Return if view is not Themes;
+     * This function exists only to support
+     *  controlling themes (start/restart/stop).
+     */
+    if (whatToShow != widgetsThemesTableShowThemes)
+        return;
+    
+    NSInteger row = [_widgetsThemesTable selectedRow];
+    MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
+    [self applyTheme:theme];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
