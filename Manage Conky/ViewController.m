@@ -232,8 +232,7 @@
     }
     else if (whatToShow == widgetsThemesTableShowThemes)
     {
-        MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
-        //[self applyTheme:theme];
+//        MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
     }
 }
 
@@ -245,7 +244,7 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSArray *arr = (whatToShow == widgetsThemesTableShowWidgets) ? widgetsArray : themesArray;
-    NSString *str = (whatToShow == widgetsThemesTableShowWidgets) ? [[arr objectAtIndex:row] itemPath] : [[arr objectAtIndex:row] itemPath];
+    NSString *str = [[arr objectAtIndex:row] itemPath];
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
@@ -273,6 +272,10 @@
 //
 - (IBAction)startOrRestartWidget:(id)sender
 {
+    /* guard */
+    if (whatToShow == widgetsThemesTableShowThemes)
+        return;
+    
     NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
     
     // check if already running to restart
@@ -292,6 +295,10 @@
 }
 - (IBAction)stopWidget:(id)sender
 {
+    /* guard */
+    if (whatToShow == widgetsThemesTableShowThemes)
+        return;
+    
     NSInteger i = [_widgetsThemesTable selectedRow];
     pid_t pid = [[widgetsArray objectAtIndex:i] pid];
 
@@ -304,6 +311,10 @@
 }
 - (IBAction)stopAllWidgets:(id)sender
 {
+    /* guard */
+    if (whatToShow == widgetsThemesTableShowThemes)
+        return;
+    
     for (MCThemeOrWidget *widget in widgetsArray)
     {
         pid_t pid = [widget pid];
