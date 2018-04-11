@@ -25,6 +25,7 @@
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
     BOOL conkyAgentPresent;
+    BOOL xquartzQuitAlertDisabled;
     
     BOOL keepAlive;
     

@@ -107,6 +107,13 @@
         }
         
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
+        
+        /* xquartz quit warning */
+        NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
+        xquartzQuitAlertDisabled = [[xquartzPreferences objectForKey:@"no_quit_alert"] boolValue];
+        
+        if (xquartzQuitAlertDisabled)
+            [_disableXQuartzWarningsCheckbox setState:NSControlStateValueOn];
     }
     else
     {
