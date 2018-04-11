@@ -11,7 +11,7 @@
 #define MC_PID_NOT_SET (-100)
 
 @implementation MCThemeOrWidget
-+ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString * _Nullable)path
++ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
     id res = [[self alloc] init];
     [res setPid:pid];
@@ -41,104 +41,6 @@
     [super setRepresentedObject:representedObject];
 }
 
-//
-// DATA ARRAYS CONTROL
-//
-
-- (void)emptyWidgetsThemesArrays
-{
-    [widgetsArray removeAllObjects];
-    [themesArray removeAllObjects];
-}
-
-- (void)fillWidgetsThemesArrays
-{
-    widgetsArray = [[NSMutableArray alloc] init];
-    themesArray = [[NSMutableArray alloc] init];
-    
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *enumerator;
-    
-    NSString *basicSearchPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-    NSArray *additionalSearchPaths = [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
-    
-    if (!basicSearchPath)
-        return;
-    
-    enumerator = [fm enumeratorAtPath:basicSearchPath];
-    for (NSString *path in enumerator)
-    {
-        /* fullpath */
-        NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, path];
-        
-        BOOL isDirectory = NO;
-        [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
-        if (isDirectory)
-            continue;
-        
-        if ([path isEqualToString:@".DS_Store"])
-            continue;
-        
-        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
-        
-        /*
-         * Empty extension means we found conky config file
-         */
-        if ([[path pathExtension] isEqualToString:@""] || [[path pathExtension] isEqualToString:@"conf"])
-            [widgetsArray addObject:themeOrWidget];
-        else if ([[path pathExtension] isEqualToString:@"cmtheme"])
-            [themesArray addObject:themeOrWidget];
-        else continue;
-        
-    }
-    
-    for (NSString *additionalPath in additionalSearchPaths)
-    {
-        enumerator = [fm enumeratorAtPath:additionalPath];
-        for (NSString *path in enumerator)
-        {
-            /* fullpath */
-            NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, path];
-            
-            BOOL isDirectory = NO;
-            [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
-            if (isDirectory)
-                continue;
-            
-            if ([path isEqualToString:@".DS_Store"])
-                continue;
-            
-            MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
-            
-            /*
-             * Empty extension means we found conky config file
-             */
-            if ([[path pathExtension] isEqualToString:@""] || [[path pathExtension] isEqualToString:@"conf"])
-                [widgetsArray addObject:themeOrWidget];
-            else if ([[path pathExtension] isEqualToString:@"cmtheme"])
-                [themesArray addObject:themeOrWidget];
-            else continue;
-        }
-    }
-}
-
-//
-// TABLE CONTROL
-//
-
-/**
- * Change to themes list or widgets list
- **/
-- (IBAction)changeTableContents:(id)sender
-{
-    if ([[sender title] isEqualToString:@"Themes"])
-        whatToShow = widgetsThemesTableShowThemes;
-    if ([[sender title] isEqualToString:@"Widgets"])
-        whatToShow = widgetsThemesTableShowWidgets;
-    
-    [_widgetsThemesTable reloadData];
-}
-
 /*
  * Applies a theme to computer by:
  *  - applying conky config
@@ -162,7 +64,7 @@
     NSString *wallpaper = nil;
     
     NSFileManager *fm = [NSFileManager defaultManager];
-
+    
     /*
      * Check if we can use a themerc.plist
      */
@@ -208,19 +110,131 @@
     }
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
+//
+// DATA ARRAYS CONTROL
+//
+
+- (void)emptyWidgetsThemesArrays
 {
-    /*
-     * Return if view is not Themes;
-     * This function exists only to support
-     *  controlling themes (start/restart/stop).
-     */
-    if (whatToShow != widgetsThemesTableShowThemes)
+    [widgetsArray removeAllObjects];
+    [themesArray removeAllObjects];
+}
+
+- (void)fillWidgetsThemesArrays
+{
+    widgetsArray = [[NSMutableArray alloc] init];
+    themesArray = [[NSMutableArray alloc] init];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *enumerator;
+    
+    NSString *basicSearchPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    NSArray *additionalSearchPaths = [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
+    
+    if (!basicSearchPath)
         return;
     
+    enumerator = [fm enumeratorAtPath:basicSearchPath];
+    for (NSString *item in enumerator)
+    {
+        /* fullpath */
+        NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, item];
+        
+        BOOL isDirectory = NO;
+        [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
+        if (isDirectory)
+            continue;
+        
+        if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
+            continue;
+        
+        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
+        
+        /*
+         * Empty extension means we found conky config file
+         */
+        if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
+            [widgetsArray addObject:themeOrWidget];
+        else if ([[item pathExtension] isEqualToString:@"cmtheme"])
+            [themesArray addObject:themeOrWidget];
+        else continue;
+        
+    }
+    
+    for (NSString *additionalPath in additionalSearchPaths)
+    {
+        enumerator = [fm enumeratorAtPath:additionalPath];
+        for (NSString *item in enumerator)
+        {
+            /* fullpath */
+            NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, item];
+            
+            BOOL isDirectory = NO;
+            [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
+            if (isDirectory)
+                continue;
+            
+            if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
+                continue;
+            
+            MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
+            
+            /*
+             * Empty extension means we found conky config file
+             */
+            if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
+                [widgetsArray addObject:themeOrWidget];
+            else if ([[item pathExtension] isEqualToString:@"cmtheme"])
+                [themesArray addObject:themeOrWidget];
+            else continue;
+        }
+    }
+}
+
+//
+// TABLE CONTROL
+//
+
+/**
+ * Change to themes list or widgets list
+ **/
+- (IBAction)changeTableContents:(id)sender
+{
+    if ([[sender title] isEqualToString:@"Themes"])
+        whatToShow = widgetsThemesTableShowThemes;
+    if ([[sender title] isEqualToString:@"Widgets"])
+        whatToShow = widgetsThemesTableShowWidgets;
+    
+    [_widgetsThemesTable reloadData];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
     NSInteger row = [_widgetsThemesTable selectedRow];
-    MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
-    [self applyTheme:theme];
+    
+    /*
+     *  If user selected a widget show preview.
+     *  Otherwise give the ability to apply a theme.
+     */
+    if (whatToShow == widgetsThemesTableShowWidgets)
+    {
+        MCThemeOrWidget *widget = [widgetsArray objectAtIndex:row];
+
+        /*
+         * For conky-manager all preview files all jpeg and follow the naming: widgetName.jpg
+         */
+        NSString *preview = [[widget itemPath] stringByAppendingString:@".jpg"];
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
+        
+        [_themeOrWidgetPreviewImage setFrameSize:[image size]];
+        [_themeOrWidgetPreviewImage setImageScaling:NSImageScaleNone];
+        [_themeOrWidgetPreviewImage setImage:image];
+    }
+    else if (whatToShow == widgetsThemesTableShowThemes)
+    {
+        MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
+        //[self applyTheme:theme];
+    }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView

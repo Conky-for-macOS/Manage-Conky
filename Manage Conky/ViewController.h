@@ -26,7 +26,7 @@ typedef enum {
 @property pid_t pid;
 @property NSString *itemPath;
 
-+ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString * _Nullable)path;
++ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString *)path;
 @end
 
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
@@ -36,6 +36,7 @@ typedef enum {
     MCWidgetThemesTableShow whatToShow;
 }
 
+@property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
 /**
