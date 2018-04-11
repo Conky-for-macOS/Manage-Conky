@@ -57,6 +57,10 @@
 @property (weak) IBOutlet NSButton *removeSearchLocationButton;
 @property (weak) IBOutlet NSTextField *additionalLocationsToSearchLabel;
 
+// XQuartz warnings
+@property (weak) IBOutlet NSButtonCell *disableXQuartzWarningsCheckbox;
+
+
 // Changes Applied
 @property (weak) IBOutlet NSTextField *changesSavedLabel;
 @property (weak) IBOutlet NSButton *applyChangesButton;

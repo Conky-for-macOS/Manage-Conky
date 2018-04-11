@@ -186,6 +186,20 @@
     }
 }
 
+/**
+ * disableXQuartzWarningsCheckboxAction
+ *
+ * Disable/Enable the "Do you really want to quit X11?" dialog when
+ *  XQuartz needs to quit.  This way, avoid XQuartz's annoying DEFAULT
+ *  behaviour.
+ */
+- (IBAction)disableXQuartzWarningsCheckboxAction:(id)sender
+{
+    BOOL onOrOff = [sender state];
+    NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
+    [xquartzPreferences setObject:[NSNumber numberWithBool:onOrOff] forKey:@"no_quit_alert"];
+}
+
 - (IBAction)setConkyConfigsLocation:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
