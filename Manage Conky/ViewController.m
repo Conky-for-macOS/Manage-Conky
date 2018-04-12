@@ -158,7 +158,6 @@
         else if ([[item pathExtension] isEqualToString:@"cmtheme"])
             [themesArray addObject:themeOrWidget];
         else continue;
-        
     }
     
     for (NSString *additionalPath in additionalSearchPaths)
@@ -225,14 +224,38 @@
          */
         NSString *preview = [[widget itemPath] stringByAppendingString:@".jpg"];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
+        NSImageView *imageView = [NSImageView imageViewWithImage:image];
+        [imageView setImageScaling:NSImageScaleNone];
+
+        NSViewController *controller = [[NSViewController alloc] init];
+        [controller setView:imageView];
+
+        if (!widgetPreviewPopover)
+        {
+            widgetPreviewPopover = [[NSPopover alloc] init];
+            [widgetPreviewPopover setAnimates:YES];
+        }
         
-        [_themeOrWidgetPreviewImage setFrameSize:[image size]];
-        [_themeOrWidgetPreviewImage setImageScaling:NSImageScaleNone];
-        [_themeOrWidgetPreviewImage setImage:image];
+        /*
+         * close any previously created popover
+         */
+        [widgetPreviewPopover close];
+
+        /*
+         * setup a new popover preview
+         */
+        [widgetPreviewPopover setContentViewController:controller];
+        [widgetPreviewPopover setContentSize:[image size]];
+        
+        /*
+         * show the preview
+         */
+        [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
+                                          ofView:[notification object] preferredEdge:NSMaxXEdge];
     }
     else if (whatToShow == widgetsThemesTableShowThemes)
     {
-//        MCThemeOrWidget *theme = [themesArray objectAtIndex:row];
+        
     }
 }
 

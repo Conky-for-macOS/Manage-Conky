@@ -108,7 +108,9 @@
         
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
         
-        /* xquartz quit warning */
+        /*
+         * xquartz quit warning
+         */
         NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
         xquartzQuitAlertDisabled = [[xquartzPreferences objectForKey:@"no_quit_alert"] boolValue];
         
@@ -354,8 +356,8 @@
         
         NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
         
-        bool res1 = SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
-        bool res2 = (unlink([conkyAgentPlistPath UTF8String]) == 0);
+        BOOL res1 = SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
+        BOOL res2 = (unlink([conkyAgentPlistPath UTF8String]) == 0);
         
         changesApplied =  (res1 && res2);
     }
