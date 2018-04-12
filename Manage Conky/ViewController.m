@@ -150,6 +150,8 @@
         
         MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
         
+        // XXX if we find a .cmtheme file inside a widget/theme (we don't know yet), treat as theme, thus add to themesArray
+        
         /*
          * Empty extension means we found conky config file
          */
@@ -224,6 +226,16 @@
          */
         NSString *preview = [[widget itemPath] stringByAppendingString:@".jpg"];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
+        
+        CGFloat w = [image size].width;
+        CGFloat h = [image size].height;
+        
+        /*
+         * Resize image if too big!
+         */
+        if (h > 800 || w > 400)
+            [image setSize:NSMakeSize(w/1.5, h/1.5)];
+        
         NSImageView *imageView = [NSImageView imageViewWithImage:image];
         [imageView setImageScaling:NSImageScaleNone];
 
