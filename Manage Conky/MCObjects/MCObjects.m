@@ -36,7 +36,8 @@
 + (instancetype)themeRepresentationForPath:(NSString *)path
 {
     NSString *themeRoot = path;
-    NSString *themeRC = [NSString stringWithFormat:@"%@/%@.cmtheme", themeRoot, [themeRoot lastPathComponent]];
+    NSString *themeName = [themeRoot lastPathComponent];
+    NSString *themeRC = [NSString stringWithFormat:@"%@/%@.cmtheme", themeRoot, themeName];
     NSString *MCThemeRC = [themeRoot stringByAppendingString:@"/themerc.plist"];
     BOOL useMCThemeRCFile = NO;
     

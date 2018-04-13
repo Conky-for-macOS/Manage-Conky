@@ -81,7 +81,8 @@
         }
         else if ([[item pathExtension] isEqualToString:@"cmtheme"])
         {
-            MCTheme *theme = [MCTheme themeRepresentationForPath:fullpath];
+            NSString *themeRoot = [fullpath stringByDeletingLastPathComponent];
+            MCTheme *theme = [MCTheme themeRepresentationForPath:themeRoot];
             if (!theme)
                 continue;
             [themesArray addObject:theme];
@@ -114,7 +115,8 @@
             }
             else if ([[item pathExtension] isEqualToString:@"cmtheme"])
             {
-                MCTheme *theme = [MCTheme themeRepresentationForPath:fullpath];
+                NSString *themeRoot = [fullpath stringByDeletingLastPathComponent];
+                MCTheme *theme = [MCTheme themeRepresentationForPath:themeRoot];
                 if (!theme)
                     continue;
                 [themesArray addObject:theme];
@@ -144,62 +146,70 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     NSInteger row = [_widgetsThemesTable selectedRow];
+
+    /*
+     * For conky-manager all preview files all jpeg and follow the naming: widgetName.jpg
+     */
+    NSString *preview = nil;
     
     /*
      *  If user selected a widget show preview.
-     *  Otherwise give the ability to apply a theme.
      */
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-
-        /*
-         * For conky-manager all preview files all jpeg and follow the naming: widgetName.jpg
-         */
-        NSString *preview = [[widget itemPath] stringByAppendingString:@".jpg"];
-        NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
-        
-        CGFloat w = [image size].width;
-        CGFloat h = [image size].height;
-        
-        /*
-         * Resize image if too big!
-         */
-        if (h > 800 || w > 400)
-            [image setSize:NSMakeSize(w/1.5, h/1.5)];
-        
-        NSImageView *imageView = [NSImageView imageViewWithImage:image];
-        [imageView setImageScaling:NSImageScaleNone];
-
-        NSViewController *controller = [[NSViewController alloc] init];
-        [controller setView:imageView];
-
-        if (!widgetPreviewPopover)
-        {
-            widgetPreviewPopover = [[NSPopover alloc] init];
-            [widgetPreviewPopover setBehavior:NSPopoverBehaviorSemitransient];
-            [widgetPreviewPopover setAnimates:YES];
-        }
-        
-        /*
-         * close any previously created popover
-         */
-        [widgetPreviewPopover setAnimates:NO];  /* close without animation */
-        [widgetPreviewPopover close];
-        [widgetPreviewPopover setAnimates:YES]; /* show with animation */
-
-        /*
-         * setup a new popover preview
-         */
-        [widgetPreviewPopover setContentViewController:controller];
-        [widgetPreviewPopover setContentSize:[image size]];
-        
-        /*
-         * show the preview
-         */
-        [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
-                                          ofView:[notification object] preferredEdge:NSMaxXEdge];
+        preview = [[widget itemPath] stringByAppendingString:@".jpg"];
     }
+    else if (whatToShow == widgetsThemesTableShowThemes)
+    {
+        MCTheme *theme = [themesArray objectAtIndex:row];
+        NSString *themeRoot = [[theme themeRC] stringByDeletingLastPathComponent];
+        NSString *themeName = [themeRoot lastPathComponent];
+        preview = [NSString stringWithFormat:@"%@/%@.jpg", themeRoot, themeName];
+    }
+    
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
+    
+    CGFloat w = [image size].width;
+    CGFloat h = [image size].height;
+    
+    /*
+     * Resize image if too big!
+     */
+    if (h > 800 || w > 400)
+        [image setSize:NSMakeSize(w/1.5, h/1.5)];
+    
+    NSImageView *imageView = [NSImageView imageViewWithImage:image];
+    [imageView setImageScaling:NSImageScaleNone];
+    
+    NSViewController *controller = [[NSViewController alloc] init];
+    [controller setView:imageView];
+    
+    if (!widgetPreviewPopover)
+    {
+        widgetPreviewPopover = [[NSPopover alloc] init];
+        [widgetPreviewPopover setBehavior:NSPopoverBehaviorSemitransient];
+        [widgetPreviewPopover setAnimates:YES];
+    }
+    
+    /*
+     * close any previously created popover
+     */
+    [widgetPreviewPopover setAnimates:NO];  /* close without animation */
+    [widgetPreviewPopover close];
+    [widgetPreviewPopover setAnimates:YES]; /* show with animation */
+    
+    /*
+     * setup a new popover preview
+     */
+    [widgetPreviewPopover setContentViewController:controller];
+    [widgetPreviewPopover setContentSize:[image size]];
+    
+    /*
+     * show the preview
+     */
+    [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
+                                      ofView:[notification object] preferredEdge:NSMaxXEdge];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
