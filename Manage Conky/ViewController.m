@@ -8,10 +8,32 @@
 
 #import "ViewController.h"
 
-#define MC_PID_NOT_SET (-100)
+// defines
+#define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
-@implementation MCThemeOrWidget
-+ (instancetype)themeOrWidgetWithPid:(pid_t)pid andPath:(NSString *)path
+@implementation MCTheme
++ (instancetype)themeWithConkyConfig:(NSString *)path
+                           arguments:(NSArray *)args
+                        startupDelay:(NSInteger)startupDelay
+                           wallpaper:(NSString *)wallpaperPath
+                             creator:(NSString *)creator
+                           andSource:(NSString *)source
+{
+    id res = [[self alloc] init];
+    [res setConkyConfig:path];
+    [res setArguments:args];
+    [res setStartupDelay:startupDelay];
+    [res setWallpaper:wallpaperPath];
+    [res setCreator:creator];
+    [res setSource:source];
+    
+    [res setPid:MC_PID_NOT_SET];
+    return res;
+}
+@end
+
+@implementation MCWidget
++ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
     id res = [[self alloc] init];
     [res setPid:pid];
@@ -50,9 +72,9 @@
  *  - original conky-manager themes (plain files with minimal info) (backwards compatibility)
  *  - plist based (support many parameters/features in a native macOS way)
  */
-- (void)applyTheme:(MCThemeOrWidget *)theme
+- (void)applyTheme:(MCTheme *)theme
 {
-    NSString *themeRoot = [[theme itemPath] stringByDeletingLastPathComponent];
+    NSString *themeRoot = nil;
     NSString *themeRCFile = [themeRoot stringByAppendingString:@"/themerc.plist"];
     
     /*
@@ -147,18 +169,23 @@
         
         if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
             continue;
-        
-        MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
-        
+                
         // XXX if we find a .cmtheme file inside a widget/theme (we don't know yet), treat as theme, thus add to themesArray
         
         /*
          * Empty extension means we found conky config file
          */
         if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
-            [widgetsArray addObject:themeOrWidget];
+        {
+            [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
+        }
         else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-            [themesArray addObject:themeOrWidget];
+            [themesArray addObject:[MCTheme themeWithConkyConfig:fullpath
+                                                       arguments:nil
+                                                    startupDelay:0
+                                                       wallpaper:nil
+                                                         creator:nil
+                                                       andSource:nil]];
         else continue;
     }
     
@@ -178,15 +205,20 @@
             if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
                 continue;
             
-            MCThemeOrWidget *themeOrWidget = [MCThemeOrWidget themeOrWidgetWithPid:MC_PID_NOT_SET andPath:fullpath];
-            
             /*
              * Empty extension means we found conky config file
              */
             if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
-                [widgetsArray addObject:themeOrWidget];
+            {
+                [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
+            }
             else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-                [themesArray addObject:themeOrWidget];
+                [themesArray addObject:[MCTheme themeWithConkyConfig:fullpath
+                                                           arguments:nil
+                                                        startupDelay:0
+                                                           wallpaper:nil
+                                                             creator:nil
+                                                           andSource:nil]];
             else continue;
         }
     }
@@ -219,7 +251,7 @@
      */
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
-        MCThemeOrWidget *widget = [widgetsArray objectAtIndex:row];
+        MCWidget *widget = [widgetsArray objectAtIndex:row];
 
         /*
          * For conky-manager all preview files all jpeg and follow the naming: widgetName.jpg
@@ -245,6 +277,7 @@
         if (!widgetPreviewPopover)
         {
             widgetPreviewPopover = [[NSPopover alloc] init];
+            [widgetPreviewPopover setBehavior:NSPopoverBehaviorSemitransient];
             [widgetPreviewPopover setAnimates:YES];
         }
         
@@ -280,8 +313,19 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSArray *arr = (whatToShow == widgetsThemesTableShowWidgets) ? widgetsArray : themesArray;
-    NSString *str = [[arr objectAtIndex:row] itemPath];
+    NSArray *arr = nil;
+    NSString *str = nil;
+    
+    if (whatToShow == widgetsThemesTableShowWidgets)
+    {
+        arr = widgetsArray;
+        str = [[arr objectAtIndex:row] itemPath];
+    }
+    else
+    {
+        arr = themesArray;
+        str = [[arr objectAtIndex:row] conkyConfig];
+    }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
@@ -352,7 +396,7 @@
     if (whatToShow == widgetsThemesTableShowThemes)
         return;
     
-    for (MCThemeOrWidget *widget in widgetsArray)
+    for (MCWidget *widget in widgetsArray)
     {
         pid_t pid = [widget pid];
         if (pid != MC_PID_NOT_SET)
