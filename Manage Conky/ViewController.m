@@ -251,7 +251,9 @@
         /*
          * close any previously created popover
          */
+        [widgetPreviewPopover setAnimates:NO];  /* close without animation */
         [widgetPreviewPopover close];
+        [widgetPreviewPopover setAnimates:YES]; /* show with animation */
 
         /*
          * setup a new popover preview
