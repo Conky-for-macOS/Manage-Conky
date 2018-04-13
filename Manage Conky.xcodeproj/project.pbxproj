@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
@@ -116,6 +117,8 @@
 
 /* Begin PBXFileReference section */
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shared.h; path = "Manage Conky/Shared.h"; sourceTree = "<group>"; };
+		095F81902080D08A008DD286 /* MCObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCObjects.m; path = MCObjects/MCObjects.m; sourceTree = "<group>"; };
+		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		095F9B402077DE6E003C60C1 /* FinderSync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FinderSync.framework; path = System/Library/Frameworks/FinderSync.framework; sourceTree = SDKROOT; };
@@ -195,6 +198,15 @@
 			path = ManageConkySMJobBlessHelper;
 			sourceTree = "<group>";
 		};
+		09E4382A2080D0120083EBEC /* MCObjects */ = {
+			isa = PBXGroup;
+			children = (
+				095F81922080D09B008DD286 /* MCObjects.h */,
+				095F81902080D08A008DD286 /* MCObjects.m */,
+			);
+			name = MCObjects;
+			sourceTree = "<group>";
+		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +236,7 @@
 				ECAF6F622024ADC900715D72 /* LetsMove */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
 				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
+				09E4382A2080D0120083EBEC /* MCObjects */,
 				EC9EFB8E2055554800C6BAAF /* Extensions */,
 				77B847411F62C2B600AF8BCA /* Assets.xcassets */,
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
@@ -537,6 +550,7 @@
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
+				095F81912080D08A008DD286 /* MCObjects.m in Sources */,
 				ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,

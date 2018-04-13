@@ -11,37 +11,6 @@
 // defines
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
-@implementation MCTheme
-+ (instancetype)themeWithConkyConfig:(NSString *)path
-                           arguments:(NSArray *)args
-                        startupDelay:(NSInteger)startupDelay
-                           wallpaper:(NSString *)wallpaperPath
-                             creator:(NSString *)creator
-                           andSource:(NSString *)source
-{
-    id res = [[self alloc] init];
-    [res setConkyConfig:path];
-    [res setArguments:args];
-    [res setStartupDelay:startupDelay];
-    [res setWallpaper:wallpaperPath];
-    [res setCreator:creator];
-    [res setSource:source];
-    
-    [res setPid:MC_PID_NOT_SET];
-    return res;
-}
-@end
-
-@implementation MCWidget
-+ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
-{
-    id res = [[self alloc] init];
-    [res setPid:pid];
-    [res setItemPath:path];
-    return res;
-}
-@end
-
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -61,75 +30,6 @@
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-}
-
-/*
- * Applies a theme to computer by:
- *  - applying conky config
- *  - applying wallpaper
- *
- * supports two types of themes:
- *  - original conky-manager themes (plain files with minimal info) (backwards compatibility)
- *  - plist based (support many parameters/features in a native macOS way)
- */
-- (void)applyTheme:(MCTheme *)theme
-{
-    NSString *themeRoot = nil;
-    NSString *themeRCFile = [themeRoot stringByAppendingString:@"/themerc.plist"];
-    
-    /*
-     * Information extracted from theme info file
-     */
-    NSInteger startupDelay = 0;
-    NSString *conkyConfig = nil;
-    NSArray *arguments = nil;
-    NSString *wallpaper = nil;
-    
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    /*
-     * Check if we can use a themerc.plist
-     */
-    if ([fm fileExistsAtPath:themeRCFile])
-    {
-        /*
-         * Doing it the ManageConky way...
-         */
-        
-        NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRCFile];
-        
-        //startupDelay = [rc objectForKey:@"startupDelay"];
-        conkyConfig = [rc objectForKey:@"config"];
-        arguments = [rc objectForKey:@"args"];
-        wallpaper = [rc objectForKey:@"wallpaper"];
-    }
-    else
-    {
-        /*
-         * Doing it the conky-manager way...
-         */
-        themeRCFile = nil;
-        
-        NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:themeRoot];
-        for (NSString *item in enumerator)
-        {
-            if ([[item pathExtension] isEqualToString:@"cmtheme"])
-            {
-                themeRCFile = [NSString stringWithFormat:@"%@/%@", themeRoot, item];
-                break;
-            }
-        }
-        
-        /*
-         * Check if we got something
-         */
-        if (!themeRCFile)
-            return;
-        
-        /*
-         * Start reading the file
-         */
-    }
 }
 
 //
@@ -180,12 +80,12 @@
             [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
         }
         else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-            [themesArray addObject:[MCTheme themeWithConkyConfig:fullpath
-                                                       arguments:nil
-                                                    startupDelay:0
-                                                       wallpaper:nil
-                                                         creator:nil
-                                                       andSource:nil]];
+        {
+            MCTheme *theme = [MCTheme themeRepresentationForPath:fullpath];
+            if (!theme)
+                continue;
+            [themesArray addObject:theme];
+        }
         else continue;
     }
     
@@ -213,12 +113,12 @@
                 [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
             }
             else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-                [themesArray addObject:[MCTheme themeWithConkyConfig:fullpath
-                                                           arguments:nil
-                                                        startupDelay:0
-                                                           wallpaper:nil
-                                                             creator:nil
-                                                           andSource:nil]];
+            {
+                MCTheme *theme = [MCTheme themeRepresentationForPath:fullpath];
+                if (!theme)
+                    continue;
+                [themesArray addObject:theme];
+            }
             else continue;
         }
     }
@@ -300,10 +200,6 @@
         [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
                                           ofView:[notification object] preferredEdge:NSMaxXEdge];
     }
-    else if (whatToShow == widgetsThemesTableShowThemes)
-    {
-        
-    }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -324,7 +220,7 @@
     else
     {
         arr = themesArray;
-        str = [[arr objectAtIndex:row] conkyConfig];
+        str = [[arr objectAtIndex:row] themeRC];
     }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
@@ -353,25 +249,32 @@
 //
 - (IBAction)startOrRestartWidget:(id)sender
 {
-    /* guard */
-    if (whatToShow == widgetsThemesTableShowThemes)
-        return;
+    NSInteger row = [_widgetsThemesTable selectedRow];
     
-    NSString *path = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] itemPath];
+    if (whatToShow == widgetsThemesTableShowWidgets)
+    {
+        NSString *path = [[widgetsArray objectAtIndex:row] itemPath];
+        
+        /* check if already running to restart */
+        pid_t tmp = [[widgetsArray objectAtIndex:row] pid];
+        if (tmp != MC_PID_NOT_SET)
+            [self stopWidget:nil];
+        
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/usr/local/bin/conky"];
+        [task setArguments:@[@"-c", path]];
+        [task setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
+        [task launch];
+        
+        pid_t pid = [task processIdentifier];
+        [[widgetsArray objectAtIndex:row] setPid:pid];
+    }
+    else
+    {
+        MCTheme *theme = [themesArray objectAtIndex:row];
+        [theme applyTheme];
+    }
     
-    // check if already running to restart
-    pid_t tmp = [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] pid];
-    if (tmp != MC_PID_NOT_SET)
-        [self stopWidget:nil];
-    
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/local/bin/conky"];
-    [task setArguments:@[@"-c", path]];
-    [task setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
-    [task launch];
-    
-    pid_t pid = [task processIdentifier];
-    [[widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]] setPid:pid];
     [_widgetsThemesTable reloadData];
 }
 - (IBAction)stopWidget:(id)sender
