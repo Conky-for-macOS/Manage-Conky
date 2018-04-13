@@ -85,7 +85,11 @@
         // parse the file
         
         source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/source.txt"] encoding:NSUTF8StringEncoding error:nil];
+        if (!source)
+            source = @"unknown";
         creator = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/creator.txt"] encoding:NSUTF8StringEncoding error:nil];
+        if (!creator)
+            creator = @"unknown";
     }
     
     /*
