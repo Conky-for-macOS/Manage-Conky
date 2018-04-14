@@ -80,17 +80,13 @@
     /*
      * create theme representation
      */
-    id res = [[self alloc] init];
-    [res setThemeRC:themeRC];
-    [res setConkyConfigs:conkyConfigs];
-    [res setArguments:arguments];
-    [res setStartupDelay:startupDelay];
-    [res setWallpaper:wallpaper];
-    [res setCreator:creator];
-    [res setSource:source];
-    
-    [res setPid:MC_PID_NOT_SET];
-    return res;
+    return [self themeWithResourceFile:themeRC
+                          conkyConfigs:conkyConfigs
+                             arguments:arguments
+                          startupDelay:startupDelay
+                             wallpaper:wallpaper
+                               creator:creator
+                             andSource:source];
 }
 
 - (void)applyTheme
