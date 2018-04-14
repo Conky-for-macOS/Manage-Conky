@@ -38,7 +38,7 @@
                               creator:(NSString *)creator
                             andSource:(NSString *)source;
 
-+ (instancetype)themeRepresentationForPath:(NSString *)path;
++ (instancetype)themeRepresentationForThemeRC:(NSString *)themeRC;
 
 /*
  * Applies a theme to computer by:

@@ -33,14 +33,8 @@
     return res;
 }
 
-+ (instancetype)themeRepresentationForPath:(NSString *)path
++ (instancetype)themeRepresentationForThemeRC:(NSString *)themeRC
 {
-    NSString *themeRoot = path;
-    NSString *themeName = [themeRoot lastPathComponent];
-    NSString *themeRC = [NSString stringWithFormat:@"%@/%@.cmtheme", themeRoot, themeName];
-    NSString *MCThemeRC = [themeRoot stringByAppendingString:@"/themerc.plist"];
-    BOOL useMCThemeRCFile = NO;
-    
     /*
      * Information to be extracted from theme rc file
      */
@@ -51,22 +45,13 @@
     NSString *creator = @"unknown";
     NSString *source = @"unknown";
     
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    /*
-     * Check if themerc.plist exists which means we are using
-     *  ManageConky type Themes; otherwise fallback to conky-manager
-     *  compatibility Themes.
-     */
-    useMCThemeRCFile = [fm fileExistsAtPath:MCThemeRC];
+    BOOL useMCThemeRCFile = [[themeRC pathExtension] isEqualToString:@"plist"] ? YES : NO;
     
     if (useMCThemeRCFile)
     {
         /*
          * Doing it the ManageConky way...
-         */
-        themeRC = MCThemeRC;
-        
+         */        
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
         
         //startupDelay = [rc objectForKey:@"startupDelay"];
@@ -82,7 +67,7 @@
          * Doing it the conky-manager way...
          */
         
-        // parse the file
+        NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
         
         source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/source.txt"] encoding:NSUTF8StringEncoding error:nil];
         if (!source)

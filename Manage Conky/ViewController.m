@@ -74,7 +74,10 @@
         {
             if ([[subItem pathExtension] isEqualToString:@"cmtheme"] || [subItem isEqualToString:@"themerc.plist"])
             {
-                MCTheme *theme = [MCTheme themeRepresentationForPath:itemFullpath];
+                BOOL useNewThemeRCFormat = [subItem isEqualToString:@"themerc.plist"] ? YES : NO;
+                NSString *themeRC = [NSString stringWithFormat:@"%@/%@", itemFullpath, (useNewThemeRCFormat ? @"themerc.plist" : subItem)];
+                
+                MCTheme *theme = [MCTheme themeRepresentationForThemeRC:themeRC];
                 [themesArray addObject:theme];
                 
                 /*
