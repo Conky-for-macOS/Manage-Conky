@@ -42,88 +42,112 @@
     [themesArray removeAllObjects];
 }
 
+- (void)fillWidgetsThemesArraysWithBasicSearchPath:(NSString *)basicSearchPath
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *basicSearchDirectoryContents = [fm contentsOfDirectoryAtPath:basicSearchPath error:&error];
+    if (!basicSearchDirectoryContents)
+    {
+        NSLog(@"Error: Failed getting list of %@ contents: \n\n%@", basicSearchPath, error);
+        return;
+    }
+    
+    /*
+     * Foreach item in the basic-search-path get enumerator of contents.
+     */
+    for (NSString *item in basicSearchDirectoryContents)
+    {
+        NSString *itemFullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, item];   /* full path for item of basicSearchDirectory */
+        NSArray *itemContents = [fm contentsOfDirectoryAtPath:itemFullpath error:&error];   /* list of sub-items in item */
+        
+        if (!itemContents)
+            continue;
+        
+        /*
+         * These variable is set only if the following loop fails to locate
+         *  Theme but does locate Widget.
+         */
+        BOOL foundWidget = NO;
+        
+        for (NSString *subItem in itemContents)
+        {
+            if ([[subItem pathExtension] isEqualToString:@"cmtheme"] || [subItem isEqualToString:@"themerc.plist"])
+            {
+                MCTheme *theme = [MCTheme themeRepresentationForPath:itemFullpath];
+                [themesArray addObject:theme];
+                
+                /*
+                 * Break and set foundWidget to NO to avoid treating item as Widget;
+                 * Remember: Themes should be first priority.
+                 */
+                foundWidget = NO;
+                break;
+            }
+            else
+            {
+                if ([subItem isEqualToString:@".DS_Store"])
+                    continue;
+                
+                /*
+                 * subItem definitely isn't a Theme but it could be a Widget.
+                 * Check if it really is and set the appropriate variables.
+                 */
+                if ([[subItem pathExtension] isEqualToString:@""])
+                {
+                    foundWidget = YES;
+                }
+            }
+        }
+        
+        if (foundWidget)
+        {
+            /*
+             * Re-iterate in item to add all conky configs to array.
+             */
+            
+            for (NSString *subItem in itemContents)
+            {
+                if ([subItem isEqualToString:@".DS_Store"])
+                    continue;
+                
+                /*
+                 * subItem definitely isn't a Theme but it could be a Widget.
+                 * Check if it really is and set the appropriate variables.
+                 */
+                if ([[subItem pathExtension] isEqualToString:@""])
+                {
+                    NSString *widgetRCFullpath = [NSString stringWithFormat:@"%@/%@", itemFullpath, subItem];
+                    MCWidget *widget = [MCWidget widgetWithPid:MC_PID_NOT_SET andPath:widgetRCFullpath];
+                    [widgetsArray addObject:widget];
+                }
+            }
+        }
+    }
+}
+
 - (void)fillWidgetsThemesArrays
 {
     widgetsArray = [[NSMutableArray alloc] init];
     themesArray = [[NSMutableArray alloc] init];
     
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *enumerator;
-    
     NSString *basicSearchPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
     NSArray *additionalSearchPaths = [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
     
     if (!basicSearchPath)
+    {
+        NSLog(@"Error: no basicSearchPath set!");
         return;
-    
-    enumerator = [fm enumeratorAtPath:basicSearchPath];
-    for (NSString *item in enumerator)
-    {
-        /* fullpath */
-        NSString *fullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, item];
-        
-        BOOL isDirectory = NO;
-        [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
-        if (isDirectory)
-            continue;
-        
-        if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
-            continue;
-                
-        // XXX if we find a .cmtheme file inside a widget/theme (we don't know yet), treat as theme, thus add to themesArray
-        
-        /*
-         * Empty extension means we found conky config file
-         */
-        if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
-        {
-            [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
-        }
-        else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-        {
-            NSString *themeRoot = [fullpath stringByDeletingLastPathComponent];
-            MCTheme *theme = [MCTheme themeRepresentationForPath:themeRoot];
-            if (!theme)
-                continue;
-            [themesArray addObject:theme];
-        }
-        else continue;
     }
     
-    for (NSString *additionalPath in additionalSearchPaths)
-    {
-        enumerator = [fm enumeratorAtPath:additionalPath];
-        for (NSString *item in enumerator)
-        {
-            /* fullpath */
-            NSString *fullpath = [NSString stringWithFormat:@"%@/%@", additionalPath, item];
-            
-            BOOL isDirectory = NO;
-            [fm fileExistsAtPath:fullpath isDirectory:&isDirectory];
-            if (isDirectory)
-                continue;
-            
-            if ([[item lastPathComponent] isEqualToString:@".DS_Store"])
-                continue;
-            
-            /*
-             * Empty extension means we found conky config file
-             */
-            if ([[item pathExtension] isEqualToString:@""] || [[item pathExtension] isEqualToString:@"conf"])
-            {
-                [widgetsArray addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andPath:fullpath]];
-            }
-            else if ([[item pathExtension] isEqualToString:@"cmtheme"])
-            {
-                NSString *themeRoot = [fullpath stringByDeletingLastPathComponent];
-                MCTheme *theme = [MCTheme themeRepresentationForPath:themeRoot];
-                if (!theme)
-                    continue;
-                [themesArray addObject:theme];
-            }
-            else continue;
-        }
-    }
+    /* fill arrays for basic-search-path */
+    [self fillWidgetsThemesArraysWithBasicSearchPath:basicSearchPath];
+    
+    /* fill arrays for each additional-search-path */
+    if (!additionalSearchPaths)
+        return;
+    for (NSString *additionalSearchPath in additionalSearchPaths)
+        [self fillWidgetsThemesArraysWithBasicSearchPath:additionalSearchPath];
 }
 
 //
