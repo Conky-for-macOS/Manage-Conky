@@ -797,6 +797,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="editInTextEditor:" target="XfG-lQ-9wD" id="q15-7L-vJc"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qby-H0-Tgz">
                                 <rect key="frame" x="149" y="384" width="34" height="17"/>
@@ -804,6 +807,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="edit:" target="XfG-lQ-9wD" id="J2w-Ba-QJ8"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m2G-6h-cz3">
                                 <rect key="frame" x="77" y="357" width="61" height="19"/>

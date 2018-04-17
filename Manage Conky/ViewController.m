@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MCConfigEditor.h"  // Editor View Controller
 
 // defines
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
@@ -239,7 +240,8 @@
      * show the preview
      */
     [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
-                                      ofView:[notification object] preferredEdge:NSMaxXEdge];
+                                      ofView:[notification object]
+                               preferredEdge:NSMaxXEdge];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -352,6 +354,84 @@
     }
     
     [_widgetsThemesTable reloadData];
+}
+
+- (IBAction)edit:(id)sender
+{
+    MCWidget *widget = [widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]];
+    
+    /*
+     * Initialise popover view controller
+     */
+    if (!editorController)
+        editorController = [[MCConfigEditor alloc] initWithNibName:@"Editor" bundle:nil];
+    
+    /*
+     * Initialise editor popover
+     */
+    if (!editorPopover)
+    {
+        editorPopover = [[NSPopover alloc] init];
+        [editorPopover setBehavior:NSPopoverBehaviorSemitransient];
+        [editorPopover setAnimates:YES];
+    }
+    
+    /*
+     * Setup a new popover
+     */
+    [editorPopover setContentViewController:editorController];
+    [editorPopover setContentSize:[editorController view].bounds.size];
+
+    /*
+     * Show popover
+     */
+    [editorPopover showRelativeToRect:[sender bounds]
+                               ofView:sender
+                        preferredEdge:NSMaxXEdge];
+    
+    /*
+     * Fill editorView with contents.
+     * This should go after editorView gets initialised;
+     *  thus after showing it for atleast once.
+     */
+    [editorController loadConfig:[widget itemPath]];
+}
+
+- (IBAction)editInTextEditor:(id)sender
+{
+    NSInteger row = [_widgetsThemesTable selectedRow];
+    MCWidget *widget = [widgetsArray objectAtIndex:row];
+    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+    
+    NSURL *conkyConfigFileUrl = [NSURL fileURLWithPath:[widget itemPath]];
+    NSURL *applicationFileUrl = [ws URLForApplicationToOpenURL:conkyConfigFileUrl];
+    
+    if (!applicationFileUrl)
+    {
+        NSLog(@"Failed to obtain application to open conky-config file.");
+        return;
+    }
+    
+    NSString *application = [applicationFileUrl path];
+    
+    /*
+     * If application used to open conky-config is TextEdit
+     *  show an alert saying that TextEdit is not approved because
+     *  of being a word-processor.
+     */
+    if ([application isEqualToString:@"/Applications/TextEdit.app"])
+    {
+        NSAlert *alert = [[NSAlert alloc] init];
+        
+        [alert setMessageText:@"Warning"];
+        [alert setInformativeText:@"Word-processors (like TextEdit) can cause problems with conky because of the tendancy to replace characters.  Please use a text-editor like Sublime-Text or the incorporated editor for your convenience."];
+        [alert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {}];
+    }
+    
+    /*
+     * Open with associated TextEditor
+     */
+    [ws openFile:[widget itemPath] withApplication:application];
 }
 
 @end

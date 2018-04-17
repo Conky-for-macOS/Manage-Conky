@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MCConfigEditor.h"
 #import "MCObjects.h"
 #import <unistd.h>
 
@@ -22,6 +23,9 @@ typedef enum {
     NSMutableArray<MCTheme*> *themesArray;
     NSMutableArray<MCWidget*> *widgetsArray;
     MCWidgetThemesTableShow whatToShow;
+    
+    MCConfigEditor *editorController;
+    NSPopover *editorPopover;
 }
 
 @property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;

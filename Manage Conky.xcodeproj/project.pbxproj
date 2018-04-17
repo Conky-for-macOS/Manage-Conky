@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
+		093BDFC020861BCD004E6354 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093BDFBF20861BCD004E6354 /* Editor.xib */; };
+		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
@@ -116,6 +119,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
+		093BDFBF20861BCD004E6354 /* Editor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Editor.xib; sourceTree = "<group>"; };
+		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
+		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shared.h; path = "Manage Conky/Shared.h"; sourceTree = "<group>"; };
 		095F81902080D08A008DD286 /* MCObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCObjects.m; path = MCObjects/MCObjects.m; sourceTree = "<group>"; };
 		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
@@ -245,6 +252,8 @@
 				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
 				77B8473E1F62C2B600AF8BCA /* ViewController.h */,
 				77B8473F1F62C2B600AF8BCA /* ViewController.m */,
+				093BDFC120861C0E004E6354 /* MCConfigEditor.h */,
+				093BDFC220861C0E004E6354 /* MCConfigEditor.m */,
 				77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */,
 				77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */,
 				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
@@ -264,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				ECB76D60205D725100A3BB22 /* Credits.rtf */,
+				092114A42084BE9A0098AC5D /* Changelog.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -308,6 +318,7 @@
 				ECB76D55205D713900A3BB22 /* ConkyPreferences.xib */,
 				ECB76D52205D713900A3BB22 /* ConkyThemes.xib */,
 				EC89E7F42060503900152AB3 /* SaveTheme.xib */,
+				093BDFBF20861BCD004E6354 /* Editor.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -454,6 +465,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093BDFC020861BCD004E6354 /* Editor.xib in Resources */,
+				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				ECB76D58205D713900A3BB22 /* About.xib in Resources */,
 				ECB76D59205D713900A3BB22 /* ConkyPreferences.xib in Resources */,
 				EC89E7F52060503900152AB3 /* SaveTheme.xib in Resources */,
@@ -542,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */,
 				77B847401F62C2B600AF8BCA /* ViewController.m in Sources */,
 				09D8226D206F8FFC008BBFEB /* Shared.m in Sources */,
 				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
