@@ -397,41 +397,26 @@
     [editorController loadConfig:[widget itemPath]];
 }
 
-- (IBAction)editInTextEditor:(id)sender
+- (IBAction)openInFinder:(id)sender
 {
     NSInteger row = [_widgetsThemesTable selectedRow];
-    MCWidget *widget = [widgetsArray objectAtIndex:row];
-    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+    NSString *containingDirectory = nil;
     
-    NSURL *conkyConfigFileUrl = [NSURL fileURLWithPath:[widget itemPath]];
-    NSURL *applicationFileUrl = [ws URLForApplicationToOpenURL:conkyConfigFileUrl];
-    
-    if (!applicationFileUrl)
-    {
-        NSLog(@"Failed to obtain application to open conky-config file.");
+    if (row < 0)
         return;
-    }
     
-    NSString *application = [applicationFileUrl path];
-    
-    /*
-     * If application used to open conky-config is TextEdit
-     *  show an alert saying that TextEdit is not approved because
-     *  of being a word-processor.
-     */
-    if ([application isEqualToString:@"/Applications/TextEdit.app"])
+    if (whatToShow == widgetsThemesTableShowWidgets)
     {
-        NSAlert *alert = [[NSAlert alloc] init];
-        
-        [alert setMessageText:@"Warning"];
-        [alert setInformativeText:@"Word-processors (like TextEdit) can cause problems with conky because of the tendancy to replace characters.  Please use a text-editor like Sublime-Text or the incorporated editor for your convenience."];
-        [alert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {}];
+        MCWidget *widget = [widgetsArray objectAtIndex:row];
+        containingDirectory = [[widget itemPath] stringByDeletingLastPathComponent];
+    }
+    else if (whatToShow == widgetsThemesTableShowThemes)
+    {
+        MCTheme *theme = [themesArray objectAtIndex:row];
+        containingDirectory = [[theme themeRC] stringByDeletingLastPathComponent];
     }
     
-    /*
-     * Open with associated TextEditor
-     */
-    [ws openFile:[widget itemPath] withApplication:application];
+    [[NSWorkspace sharedWorkspace] openFile:containingDirectory];
 }
 
 @end

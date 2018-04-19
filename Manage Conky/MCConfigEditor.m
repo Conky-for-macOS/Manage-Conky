@@ -30,8 +30,8 @@
 {
     NSError *error = nil;
     
-    _conkyConfigContents = [_editorView string];
-    [_conkyConfigContents writeToFile:_conkyConfig
+    NSString *viewContents = [_editorView string];
+    [viewContents writeToFile:_conkyConfig
                            atomically:YES
                              encoding:NSUTF8StringEncoding
                                 error:&error];
