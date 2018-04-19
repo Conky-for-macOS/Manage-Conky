@@ -26,13 +26,30 @@
     [_editorView toggleAutomaticSpellingCorrection:self];
 }
 
+- (void)viewWillDisappear
+{
+    NSError *error = nil;
+    
+    _conkyConfigContents = [_editorView string];
+    [_conkyConfigContents writeToFile:_conkyConfig
+                           atomically:YES
+                             encoding:NSUTF8StringEncoding
+                                error:&error];
+    if (error)
+    {
+        NSLog(@"Error applying changes to config: \n\n%@", error);
+    }
+}
+
 - (void)loadConfig:(NSString *)config
 {
     NSError *error = nil;
-    NSString *conkyConfigContents = [NSString stringWithContentsOfFile:config
-                                                              encoding:NSUTF8StringEncoding
-                                                                 error:&error];
-    [_editorView setString:conkyConfigContents];
+    
+    _conkyConfig = config;
+    _conkyConfigContents = [NSString stringWithContentsOfFile:config
+                                                     encoding:NSUTF8StringEncoding
+                                                        error:&error];
+    [_editorView setString:_conkyConfigContents];
 }
 
 @end

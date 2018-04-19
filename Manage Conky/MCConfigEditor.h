@@ -11,6 +11,9 @@
 
 @interface MCConfigEditor : NSViewController<NSTextViewDelegate>
 
+@property NSString *conkyConfig;
+@property NSString *conkyConfigContents;
+
 @property (unsafe_unretained) IBOutlet NSTextView *editorView;
 
 - (void)loadConfig:(NSString *)config;
