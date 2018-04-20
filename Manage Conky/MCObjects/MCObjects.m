@@ -42,9 +42,13 @@
     NSArray *conkyConfigs = nil;
     NSArray *arguments = nil;
     NSString *wallpaper = nil;
+    __block NSString *scaling = nil;
     NSString *creator = @"unknown";
     NSString *source = @"unknown";
     
+    /*
+     * Is it modern or legacy theme?
+     */
     BOOL useMCThemeRCFile = [[themeRC pathExtension] isEqualToString:@"plist"] ? YES : NO;
     
     if (useMCThemeRCFile)
@@ -69,6 +73,43 @@
         
         NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
         
+        NSError *error = nil;
+        NSMutableArray *lines = [[NSMutableArray alloc] init];
+        
+        [[NSString stringWithContentsOfFile:themeRC
+                                   encoding:NSUTF8StringEncoding
+                                      error:&error] enumerateLinesUsingBlock:^(NSString * _Nonnull line, BOOL * _Nonnull stop) {
+            /* We need to avoid empty lines */
+            if (![line isEqualToString:@""])
+                [lines addObject:line];
+        }];
+        
+        /* pretty index */
+        NSInteger i = [lines count] - 1;
+        
+        /*
+         * Take scaling (last line)
+         */
+        scaling = [[lines objectAtIndex:i] substringFromIndex:18];
+        
+        /*
+         * Take wallpaper which is always the line before-last;
+         */
+        i -= 1;
+        wallpaper = [lines objectAtIndex:i];
+        
+        /*
+         * Remove scaling & wallpaper;
+         * Leave only configs inside
+         */
+        [lines removeLastObject];
+        [lines removeLastObject];
+        
+        /*
+         * Take configs
+         */
+        conkyConfigs = lines;
+        
         source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/source.txt"] encoding:NSUTF8StringEncoding error:nil];
         if (!source)
             source = @"unknown";
@@ -91,7 +132,7 @@
 
 - (void)applyTheme
 {
-    NSLog(@"Applying theme...");
+    NSLog(@"%ld\n%@\n%@\n%@\n%@\n%@\n\n", (long)_startupDelay, _conkyConfigs, _arguments, _wallpaper, _creator, _source);
 }
 @end
 
