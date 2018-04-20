@@ -23,6 +23,8 @@
     [_editorView toggleAutomaticTextReplacement:self];
     [_editorView toggleSmartInsertDelete:self];
     [_editorView toggleAutomaticQuoteSubstitution:self];
+    [_editorView toggleGrammarChecking:self];
+    [_editorView toggleContinuousSpellChecking:self];
     [_editorView toggleAutomaticSpellingCorrection:self];
 }
 
