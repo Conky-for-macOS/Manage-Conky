@@ -98,9 +98,9 @@
         
         /* Conky configuration file location? */
         NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-        if (!conkyConfigsPath)
+        if (!conkyConfigsPath || [conkyConfigsPath isEqualToString:@""])
         {
-            NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingString:@"/.conky"];    /* default value */
+            NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/Conky"];    /* default value */
             
             [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
             conkyConfigsPath = kConkyConfigsDefaultPath;

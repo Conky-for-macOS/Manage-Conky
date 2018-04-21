@@ -84,6 +84,9 @@
                 [lines addObject:line];
         }];
         
+        if ([lines count] == 0)
+            return nil;
+        
         /* pretty index */
         NSInteger i = [lines count] - 1;
         

@@ -306,6 +306,7 @@
         [task setArguments:@[@"-c", path]];
         [task setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
         [task launch];
+        //[task waitUntilExit];   // debug
         
         pid_t pid = [task processIdentifier];
         [[widgetsArray objectAtIndex:row] setPid:pid];
