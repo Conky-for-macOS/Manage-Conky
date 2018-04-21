@@ -20,4 +20,10 @@ Upon ManageConky update, we should be able to update the `default-theme-pack` in
 	 	
 	 	
 --------------------------------------------------------------------------------------------
-### 2. 
+### 2.  Create a ManageConky build guide
+
+### 3.  Implement themes parser 
+
+### 4.  Add donate sheet
+
+### 5.  
