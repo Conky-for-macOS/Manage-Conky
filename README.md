@@ -8,7 +8,9 @@ Manage Conky is the implementation of [conky-manager](https://github.com/teejee2
 
 # THANKS TO
 
-[conky](https://github.com/Conky-for-macOS/conky-for-macOS)
+[conky](https://github.com/brndnmtthws/conky)
+
+[conky-for-macOS](https://github.com/Conky-for-macOS/conky-for-macOS)
 
 [conky-manager](https://github.com/teejee2008/conky-manager)
 
@@ -16,7 +18,8 @@ Manage Conky is the implementation of [conky-manager](https://github.com/teejee2
 
 [Sparkle Framework](https://sparkle-project.org)
 
+[default-themes](https://github.com/Conky-for-macOS/default-themes)
+
 # License
 
 MIT License
-
