@@ -359,6 +359,10 @@
 
 - (IBAction)edit:(id)sender
 {
+    /* guard */
+    if (whatToShow != widgetsThemesTableShowWidgets)
+        return;
+    
     MCWidget *widget = [widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]];
     
     /*
