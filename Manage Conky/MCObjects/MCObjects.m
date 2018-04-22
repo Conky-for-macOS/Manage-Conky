@@ -8,8 +8,16 @@
 
 #import "MCObjects.h"
 
-// defines
-#define MC_PID_NOT_SET (-100)   /* pid not yet set */
+
+@implementation MCWidget
++ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
+{
+    id res = [[self alloc] init];
+    [res setPid:pid];
+    [res setItemPath:path];
+    return res;
+}
+@end
 
 @implementation MCTheme
 + (instancetype)themeWithResourceFile:(NSString *)themeRC
@@ -146,25 +154,20 @@
                              andSource:source];
 }
 
-- (BOOL)apply_wallpaper:(NSString *)wallpaper
+- (BOOL)apply_wallpaper:(NSString *)wallpaper error:(NSError **)error
 {
     /*
      * based on https://github.com/sindresorhus/macos-wallpaper
      */
     
-    NSError *err = nil;
-    
     NSWorkspace *sw = [NSWorkspace sharedWorkspace];
     NSScreen *screen = [NSScreen mainScreen];
     NSMutableDictionary *so = [[sw desktopImageOptionsForScreen:screen] mutableCopy];
     
-    BOOL res = [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
-                            forScreen:screen
-                              options:so
-                                error:&err];
-    if (err)
-        NSLog(@"%@", err);
-    return res;
+    return [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
+                        forScreen:screen
+                          options:so
+                            error:error];
 }
 
 - (void)applyTheme
@@ -180,7 +183,13 @@
     /*
      * Apply wallpaper
      */
-    [self apply_wallpaper:_wallpaper];
+    NSError *err = nil;
+    [self apply_wallpaper:_wallpaper error:&err];
+    if (err)
+    {
+        NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
+        return;
+    }
     
     /*
      * create required directories
@@ -229,16 +238,6 @@
     NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
     BOOL res = [plist writeToFile:plistPath atomically:YES];
     if (!res)
-        NSLog(@"applyTheme: Error when saving launchAgent");
-}
-@end
-
-@implementation MCWidget
-+ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
-{
-    id res = [[self alloc] init];
-    [res setPid:pid];
-    [res setItemPath:path];
-    return res;
+            NSLog(@"applyTheme: Error when saving launchAgent");
 }
 @end

@@ -18,11 +18,11 @@ typedef enum {
 
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
 {
-    NSPopover *widgetPreviewPopover;
-    
+    MCWidgetThemesTableShow whatToShow;
     NSMutableArray<MCTheme*> *themesArray;
     NSMutableArray<MCWidget*> *widgetsArray;
-    MCWidgetThemesTableShow whatToShow;
+    
+    NSPopover *previewPopover;
     
     MCConfigEditor *editorController;
     NSPopover *editorPopover;

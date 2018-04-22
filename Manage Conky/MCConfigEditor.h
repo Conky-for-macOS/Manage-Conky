@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "GeneralSheetController.h"
 
-@interface MCConfigEditor : NSViewController<NSTextViewDelegate>
+@interface MCConfigEditor : NSViewController
 
 @property NSString *conkyConfig;
 @property NSString *conkyConfigContents;

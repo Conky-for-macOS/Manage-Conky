@@ -11,6 +11,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+/* defines */
+#define MC_PID_NOT_SET (-100)   /* pid not yet set */
+
+/**
+ * MCWidget
+ *
+ * A ManageConky Widget representation.  Pretty simple, I know.
+ */
+@interface MCWidget : NSObject
+
+@property pid_t pid;
+@property NSString *itemPath;
+
++ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
+@end
+
 /**
  * MCTheme
  *
@@ -41,7 +57,7 @@
 
 + (instancetype)themeRepresentationForThemeRC:(NSString *)themeRC;
 
-/*
+/**
  * Applies a theme to computer by:
  *  - applying conky config
  *  - applying wallpaper
@@ -51,19 +67,6 @@
  *  - plist based (support many parameters/features in a native macOS way)
  */
 - (void)applyTheme;
-@end
-
-/**
- * MCWidget
- *
- * A ManageConky Widget representation.  Pretty simple, I know.
- */
-@interface MCWidget : NSObject
-
-@property pid_t pid;
-@property NSString *itemPath;
-
-+ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
 @end
 
 #endif /* MCObjects_h */
