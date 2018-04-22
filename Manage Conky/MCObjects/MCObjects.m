@@ -55,8 +55,8 @@
      * Information to be extracted from theme rc file
      */
     NSInteger startupDelay = 0;
-    NSArray *conkyConfigs = nil;
-    NSArray *arguments = nil;
+    NSArray *conkyConfigs = [NSArray array];
+    NSArray *arguments = [NSArray array];
     NSString *wallpaper = nil;
     __block NSString *scaling = nil;
     NSString *creator = @"unknown";
@@ -75,8 +75,8 @@
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
         
         startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
-        conkyConfigs = [rc objectForKey:@"configs"];    // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
-        arguments = [rc objectForKey:@"args"];  // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        conkyConfigs = [rc valueForKey:@"configs"];    // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        arguments = [rc valueForKey:@"args"];  // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
         wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
         source = [rc objectForKey:@"source"];
         creator = [rc objectForKey:@"creator"];
