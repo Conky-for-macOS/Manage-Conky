@@ -267,8 +267,14 @@
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
-        pid_t pid = [[arr objectAtIndex:row] pid];
-        return [NSNumber numberWithBool:((pid == MC_PID_NOT_SET) ? NO : YES)];
+        if (whatToShow == widgetsThemesTableShowWidgets)
+        {
+            pid_t pid = [[arr objectAtIndex:row] pid];
+            return [NSNumber numberWithBool: ((pid == MC_PID_NOT_SET) ? NO : YES) ];
+        }
+
+        // else
+        return [NSNumber numberWithBool: [[arr objectAtIndex:row] isEnabled] ];
     }
     else
     {

@@ -11,6 +11,10 @@
 // defines
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
+void apply_wallpaper (NSString *wallpaper)
+{
+}
+
 @implementation MCTheme
 + (instancetype)themeWithResourceFile:(NSString *)themeRC
                          conkyConfigs:(NSArray *)configs
@@ -29,7 +33,15 @@
     [res setCreator:creator];
     [res setSource:source];
     
-    [res setPid:MC_PID_NOT_SET];
+    /* themeName */
+    [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
+    
+    /*
+     * Check if isEnabled by attempting to access a LaunchAgent
+     */
+    NSString *plistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@.plist", [res themeName]];
+    [res setIsEnabled: (access([plistPath UTF8String], R_OK) == 0)];
+    
     return res;
 }
 
@@ -58,10 +70,10 @@
          */        
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
         
-        //startupDelay = [rc objectForKey:@"startupDelay"];
+        startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
         conkyConfigs = [rc objectForKey:@"configs"];    // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
-        arguments = [rc objectForKey:@"args"];
-        wallpaper = [rc objectForKey:@"wallpaper"];
+        arguments = [rc objectForKey:@"args"];  // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
         source = [rc objectForKey:@"source"];
         creator = [rc objectForKey:@"creator"];
     }
@@ -135,7 +147,67 @@
 
 - (void)applyTheme
 {
-    NSLog(@"%ld\n%@\n%@\n%@\n%@\n%@\n\n", (long)_startupDelay, _conkyConfigs, _arguments, _wallpaper, _creator, _source);
+    /**
+     * We need to create a LaunchAgent item for this specific Theme
+     *  which will be able to load each conky-config with its corresponding
+     *  arguments for conky.  This can be 'easily' done by telling Launchd to
+     *  execute a script which on its turn will do our job.
+     */
+#define MANAGE_CONKY_STAMP @"#;ManageConky;\n"
+    
+    /*
+     * Apply wallpaper
+     */
+    apply_wallpaper(_wallpaper);
+    
+    /*
+     * create required directories
+     */
+    
+    /*
+     * Create the script
+     */
+    NSError *error = nil;
+    NSString *scriptLocation = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.sh", _themeName];
+    NSString *scriptContents = MANAGE_CONKY_STAMP;
+    /*
+     * foreach config create a conky instance like so:
+     * conky [args] -c  [config-path]
+     */
+    for (int i = 0; i < [_conkyConfigs count]; i++)
+    {
+        NSArray *args = [_arguments objectAtIndex:i];
+        NSString *conf = [[_conkyConfigs objectAtIndex:i] stringByExpandingTildeInPath];
+        
+        scriptContents = [scriptContents stringByAppendingFormat:@"/usr/local/bin/conky %@ -c \"%@\"\n",
+                          (args == nil ? @"" : args),
+                          conf];
+    }
+    /* write file */
+    [scriptContents writeToFile:scriptLocation
+                     atomically:YES
+                       encoding:NSUTF8StringEncoding
+                          error:&error];
+    if (error)
+    {
+        NSLog(@"applyTheme: Error: \n\n%@", error);
+        return;
+    }
+    
+    NSLog(@"%@", scriptContents);
+    
+    /*
+     * Create LaunchAgent for the script
+     */
+    NSString *plistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@.plist", _themeName];
+    id objects[] = {_themeName, @[@"/bin/sh", @"-c", scriptLocation], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:_startupDelay]};
+    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    
+    NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+    BOOL res = [plist writeToFile:plistPath atomically:YES];
+    if (!res)
+        NSLog(@"applyTheme: Error when saving launchAgent");
 }
 @end
 

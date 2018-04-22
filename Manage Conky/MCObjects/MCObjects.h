@@ -19,6 +19,7 @@
  */
 @interface MCTheme : NSObject
 
+@property NSString *themeName;  /* theme name */
 @property NSString *themeRC;    /* resource file (.plist or .cmtheme) */
 @property NSInteger startupDelay;   /* startup delay */
 @property NSArray *conkyConfigs;    /* conky configs */
@@ -28,7 +29,7 @@
 @property NSString *creator;    /* creator of theme */
 @property NSString *source;     /* source of theme */
 
-@property pid_t pid;    // XXX not sure if gonna be used
+@property BOOL isEnabled;    /* a LaunchAgent for it exists */
 
 + (instancetype)themeWithResourceFile:(NSString *)themeRC
                          conkyConfigs:(NSArray *)configs
