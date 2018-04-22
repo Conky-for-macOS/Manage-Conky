@@ -11,10 +11,6 @@
 // defines
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
-void apply_wallpaper (NSString *wallpaper)
-{
-}
-
 @implementation MCTheme
 + (instancetype)themeWithResourceFile:(NSString *)themeRC
                          conkyConfigs:(NSArray *)configs
@@ -111,7 +107,7 @@ void apply_wallpaper (NSString *wallpaper)
          * Take wallpaper which is always the line before-last;
          */
         i -= 1;
-        wallpaper = [lines objectAtIndex:i];
+        wallpaper = [[lines objectAtIndex:i] stringByExpandingTildeInPath];
         
         /*
          * Remove scaling & wallpaper;
@@ -123,6 +119,11 @@ void apply_wallpaper (NSString *wallpaper)
         /*
          * Take configs
          */
+        /* first expand tilde */
+        for (int i = 0; i < [lines count]; i++)
+        {
+            [lines setObject:[[lines objectAtIndex:i] stringByExpandingTildeInPath] atIndexedSubscript:i];
+        }
         conkyConfigs = lines;
         
         source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/source.txt"] encoding:NSUTF8StringEncoding error:nil];
@@ -145,6 +146,27 @@ void apply_wallpaper (NSString *wallpaper)
                              andSource:source];
 }
 
+- (BOOL)apply_wallpaper:(NSString *)wallpaper
+{
+    /*
+     * based on https://github.com/sindresorhus/macos-wallpaper
+     */
+    
+    NSError *err = nil;
+    
+    NSWorkspace *sw = [NSWorkspace sharedWorkspace];
+    NSScreen *screen = [NSScreen mainScreen];
+    NSMutableDictionary *so = [[sw desktopImageOptionsForScreen:screen] mutableCopy];
+    
+    BOOL res = [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
+                            forScreen:screen
+                              options:so
+                                error:&err];
+    if (err)
+        NSLog(@"%@", err);
+    return res;
+}
+
 - (void)applyTheme
 {
     /**
@@ -158,7 +180,7 @@ void apply_wallpaper (NSString *wallpaper)
     /*
      * Apply wallpaper
      */
-    apply_wallpaper(_wallpaper);
+    [self apply_wallpaper:_wallpaper];
     
     /*
      * create required directories
