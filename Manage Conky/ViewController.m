@@ -9,8 +9,6 @@
 #import "ViewController.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 
-// defines
-#define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
 @implementation ViewController
 
@@ -216,32 +214,32 @@
     NSViewController *controller = [[NSViewController alloc] init];
     [controller setView:imageView];
     
-    if (!widgetPreviewPopover)
+    if (!previewPopover)
     {
-        widgetPreviewPopover = [[NSPopover alloc] init];
-        [widgetPreviewPopover setBehavior:NSPopoverBehaviorSemitransient];
-        [widgetPreviewPopover setAnimates:YES];
+        previewPopover = [[NSPopover alloc] init];
+        [previewPopover setBehavior:NSPopoverBehaviorSemitransient];
+        [previewPopover setAnimates:YES];
     }
     
     /*
      * close any previously created popover
      */
-    [widgetPreviewPopover setAnimates:NO];  /* close without animation */
-    [widgetPreviewPopover close];
-    [widgetPreviewPopover setAnimates:YES]; /* show with animation */
+    [previewPopover setAnimates:NO];  /* close without animation */
+    [previewPopover close];
+    [previewPopover setAnimates:YES]; /* show with animation */
     
     /*
      * setup a new popover preview
      */
-    [widgetPreviewPopover setContentViewController:controller];
-    [widgetPreviewPopover setContentSize:[image size]];
+    [previewPopover setContentViewController:controller];
+    [previewPopover setContentSize:[image size]];
     
     /*
      * show the preview
      */
-    [widgetPreviewPopover showRelativeToRect:[[notification object] bounds]
-                                      ofView:[notification object]
-                               preferredEdge:NSMaxXEdge];
+    [previewPopover showRelativeToRect:[[notification object] bounds]
+                                ofView:[notification object]
+                         preferredEdge:NSMaxXEdge];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
