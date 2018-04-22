@@ -296,6 +296,9 @@
 {
     NSInteger row = [_widgetsThemesTable selectedRow];
     
+    if (row < 0)
+        return;
+    
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         NSString *path = [[widgetsArray objectAtIndex:row] itemPath];
@@ -330,6 +333,10 @@
         return;
     
     NSInteger i = [_widgetsThemesTable selectedRow];
+    
+    if (i < 0)
+        return;
+    
     pid_t pid = [[widgetsArray objectAtIndex:i] pid];
 
     int stat_loc = 0;
