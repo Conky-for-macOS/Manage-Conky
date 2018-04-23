@@ -29,6 +29,10 @@
                             andSource:(NSString *)source;
 {
     id res = [[self alloc] init];
+    
+    /*
+     * General properties
+     */
     [res setThemeRC:themeRC];
     [res setConkyConfigs:configs];
     [res setArguments:args];
@@ -37,11 +41,14 @@
     [res setCreator:creator];
     [res setSource:source];
     
-    /* themeName */
+    /*
+     * themeName
+     */
     [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
     
     /*
-     * Check if isEnabled by attempting to access a LaunchAgent
+     * isEnabled?
+     * Set isEnabled property by attempting to access the Theme's equivalent LaunchAgent plist
      */
     NSString *plistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@.plist", [res themeName]];
     [res setIsEnabled: (access([plistPath UTF8String], R_OK) == 0)];
@@ -90,7 +97,7 @@
         NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
         
         NSError *error = nil;
-        NSMutableArray *lines = [[NSMutableArray alloc] init];
+        NSMutableArray *lines = [NSMutableArray array];
         
         [[NSString stringWithContentsOfFile:themeRC
                                    encoding:NSUTF8StringEncoding
@@ -170,7 +177,10 @@
                             error:error];
 }
 
-- (void)applyTheme
+/**
+ * Apply myself (Theme) to computer
+ */
+- (void)apply
 {
     /**
      * We need to create a LaunchAgent item for this specific Theme

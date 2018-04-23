@@ -81,7 +81,7 @@
         _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
         
         if (!_searchLocationsTableContents)
-            _searchLocationsTableContents = [[NSMutableArray alloc] init];
+            _searchLocationsTableContents = [NSMutableArray array];
         
         [_searchLocationsTable setDelegate:self];
         [_searchLocationsTable setDataSource:self];
@@ -349,17 +349,15 @@
 {
     BOOL changesApplied = NO;
     
+    NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents"];
+    NSString *conkyAgentPlistPath = [userLaunchAgentPath stringByAppendingPathComponent:kConkyAgentPlistName];
+    
     if (mustRemoveAgent)
     {
         /* revert */
         mustRemoveAgent = NO;
         
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
-        
-        BOOL res1 = SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
-        BOOL res2 = (unlink([conkyAgentPlistPath UTF8String]) == 0);
-        
-        changesApplied =  (res1 && res2);
+        changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
     }
     else if (mustInstallAgent)
     {
@@ -388,10 +386,7 @@
         /*
          * We must create and save the Conky Agent Property List File
          */
-        NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents"];
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"%@/%@", userLaunchAgentPath, kConkyAgentPlistName];
-        
-        id objects[] = {kConkyLaunchAgentLabel, @[ kConkyExecutablePath, @"-b" ], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
+        id objects[] = {kConkyLaunchAgentLabel, @[kConkyExecutablePath, @"-b"], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
         id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
         NSUInteger count = sizeof(objects) / sizeof(id);
         

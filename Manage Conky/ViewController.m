@@ -130,8 +130,8 @@
 
 - (void)fillWidgetsThemesArrays
 {
-    widgetsArray = [[NSMutableArray alloc] init];
-    themesArray = [[NSMutableArray alloc] init];
+    widgetsArray = [NSMutableArray array];
+    themesArray = [NSMutableArray array];
     
     NSString *basicSearchPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
     NSArray *additionalSearchPaths = [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
@@ -321,7 +321,7 @@
     else
     {
         MCTheme *theme = [themesArray objectAtIndex:row];
-        [theme applyTheme];
+        [theme apply];
     }
     
     [_widgetsThemesTable reloadData];
