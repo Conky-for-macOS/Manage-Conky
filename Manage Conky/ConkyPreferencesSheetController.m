@@ -267,7 +267,7 @@
     [_themesOrWidgetsTable reloadData];
 }
 
-- (void)installConkyX
+- (void)installConky
 {
     /* create ConkyInstaller sheet */
     ctl = [[ConkyInstallerSheetController alloc] init];
@@ -341,7 +341,7 @@
          * Install Conky
          */
         
-        [self installConkyX];
+        [self installConky];
     }
 }
 
@@ -470,7 +470,7 @@
      *  brought by the updated ManageConky
      */
     NSLog(@"Must install ConkyX after update...");
-    [self installConkyX];
+    [self installConky];
 }
 
 //
