@@ -391,13 +391,7 @@
         NSUInteger count = sizeof(objects) / sizeof(id);
         
         /* create LaunchAgents directory at User's Home */
-        NSError *error;
-        NSFileManager *fm = [NSFileManager defaultManager];
-        [fm createDirectoryAtPath:userLaunchAgentPath withIntermediateDirectories:NO attributes:nil error:&error];
-        if (error)
-        {
-            NSLog(@"Failed to create LaunchAgents directory @Home with error: \n\n%@", error);
-        }
+        createUserLaunchAgentsDirectory();
         
         /* write the Agent plist */
         NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];

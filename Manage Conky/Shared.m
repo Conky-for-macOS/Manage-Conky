@@ -19,3 +19,13 @@ void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
                        [failed runModalSheetForWindow:window];
                    });
 }
+
+void createUserLaunchAgentsDirectory(void)
+{
+    /* create LaunchAgents directory at User's Home */
+    NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents"];
+    [[NSFileManager defaultManager] createDirectoryAtPath:userLaunchAgentPath
+                              withIntermediateDirectories:NO
+                                               attributes:nil
+                                                    error:nil];
+}

@@ -23,4 +23,9 @@
 
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
 
+/**
+ * Create LaunchAgents directory at ~/Library if it doesn't exist
+ */
+void createUserLaunchAgentsDirectory(void);
+
 #endif /* Shared_h */

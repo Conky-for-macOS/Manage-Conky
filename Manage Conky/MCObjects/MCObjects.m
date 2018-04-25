@@ -7,6 +7,7 @@
 //
 
 #import "MCObjects.h"
+#import "Shared.h"  // createUserLaunchAgentsDirectory()
 
 
 @implementation MCWidget
@@ -178,6 +179,21 @@
 }
 
 /**
+ * Helper function to create ~/Library/ManageConky directory
+ */
+void createLibraryManageConkyDirectory(void)
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/ManageConky"];
+    NSError *error;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
+    if (error)
+    {
+        NSLog(@"Failed to create ManageConky directory with error: \n\n%@", error);
+    }
+}
+
+/**
  * Apply myself (Theme) to computer
  */
 - (void)apply
@@ -204,6 +220,8 @@
     /*
      * create required directories
      */
+    createUserLaunchAgentsDirectory();
+    createLibraryManageConkyDirectory();
     
     /*
      * Create the script
