@@ -142,7 +142,11 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [hbalert runModalSheetForWindow:_window];
     }
     
-    [self installMissingLibraries];
+    
+    NSThread *thread1 = [[NSThread alloc] initWithBlock:^{
+        [self installMissingLibraries];
+    }];
+    [thread1 start];
     
     /*
      * detect if XQuartz is installed
