@@ -87,7 +87,7 @@
         [_searchLocationsTable setDataSource:self];
         
         /* Is conky agent present? */
-        NSString* conkyAgentPlistPath = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@", NSHomeDirectory(), kConkyAgentPlistName];
+        NSString* conkyAgentPlistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@", kConkyAgentPlistName];
         
         conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
         if (!conkyAgentPresent)

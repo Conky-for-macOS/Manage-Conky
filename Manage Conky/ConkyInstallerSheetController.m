@@ -108,7 +108,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     [_progressIndicator startAnimation:nil];
     
     NSError *error = nil;
-    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSFileManager *fm = [NSFileManager defaultManager];
     
     /*
      * Create symbolic link to install ConkyX to Applications
