@@ -317,7 +317,13 @@
         
         pid_t pid = [task processIdentifier];
         [[widgetsArray objectAtIndex:row] setPid:pid];
-        [[widgetsArray objectAtIndex:row] enable];
+        
+        /*
+         * Enable Widget for startup only if runConkyAtStartup is set
+         */
+        BOOL runConkyAtStartup = [[[NSUserDefaults standardUserDefaults] valueForKey:@"runConkyAtStartup"] boolValue];
+        if (runConkyAtStartup)
+            [[widgetsArray objectAtIndex:row] enable];
     }
     else
     {

@@ -87,9 +87,7 @@
         [_searchLocationsTable setDataSource:self];
         
         /* Is conky agent present? */
-        NSString* conkyAgentPlistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@", kConkyAgentPlistName];
-        
-        conkyAgentPresent = (access([conkyAgentPlistPath UTF8String], R_OK) == 0);
+        conkyAgentPresent = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
         if (!conkyAgentPresent)
             NSLog(@"Agent plist doesnt exist or not accessible!");
         
@@ -292,18 +290,6 @@
         
         [self disableControls];
         
-        /* unload agent */
-        SMJobRemove(kSMDomainUserLaunchd, CFSTR(CONKY_BUNDLE_IDENTIFIER), nil, YES, nil);
-        
-        /* remove agent plist */
-        NSString *conkyAgentPlistPath = [NSString stringWithFormat:@"/Users/%@/Library/LaunchAgents/%@", NSUserName(), kConkyAgentPlistName];
-        [fm removeItemAtPath:conkyAgentPlistPath error:&error];
-        if (error)
-        {
-            NSLog(@"Error removing agent plist: \n\n%@", error);
-            error = nil;
-        }
-        
         [fm removeItemAtPath:CONKYX error:&error];
         if (error)
         {
@@ -358,6 +344,11 @@
         mustRemoveAgent = NO;
         
         changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO]
+                                                 forKey:@"runConkyAtStartup"];
+        
+        changesApplied = YES;
     }
     else if (mustInstallAgent)
     {
@@ -383,24 +374,16 @@
             shownX11TakesAlotTimeWarning = YES;
         }
         
-        /*
-         * We must create and save the Conky Agent Property List File
-         */
-        id objects[] = {kConkyLaunchAgentLabel, @[kConkyExecutablePath, @"-b"], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:keepAlive], [NSNumber numberWithInteger:startupDelay_]};
-        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-        NSUInteger count = sizeof(objects) / sizeof(id);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES]
+                                                  forKey:@"runConkyAtStartup"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:keepAlive]
+                                                  forKey:@"keepAlive"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay_]
+                                                  forKey:@"startupDelay"];
         
-        /* create LaunchAgents directory at User's Home */
-        createUserLaunchAgentsDirectory();
-        
-        /* write the Agent plist */
-        NSDictionary *conkyAgentPlist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-        changesApplied = [conkyAgentPlist writeToFile:conkyAgentPlistPath atomically:YES];
+        changesApplied = YES;
         
         [[NSApp mainWindow] setDocumentEdited:NO];
-        
-        /* debug */
-        NSLog(@"\n\n%@", conkyAgentPlist);
     }
     
     /*

@@ -23,6 +23,7 @@
 {
     NSError *error;
     NSInteger startupDelay = 0;
+    BOOL keepAlive = NO;
     NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
     NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
     
@@ -30,6 +31,7 @@
         MCConfigsRunnerScriptContents = @"";
     
     startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
+    keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
     
     /*
      * command to execute for starting this specific widget (consider the startupDelay)
