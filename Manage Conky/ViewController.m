@@ -265,14 +265,8 @@
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
-        if (whatToShow == widgetsThemesTableShowWidgets)
-        {
-            pid_t pid = [[arr objectAtIndex:row] pid];
-            return [NSNumber numberWithBool: ((pid == MC_PID_NOT_SET) ? NO : YES) ];
-        }
-
-        // else
-        return [NSNumber numberWithBool: [[arr objectAtIndex:row] isEnabled] ];
+        BOOL isEnabled = [[arr objectAtIndex:row] isEnabled];
+        return [NSNumber numberWithBool:isEnabled];
     }
     else
     {

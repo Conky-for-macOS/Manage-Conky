@@ -19,6 +19,18 @@
     return res;
 }
 
+- (BOOL)isEnabled
+{
+    NSError *error;
+    NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
+    NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+
+    if ([MCConfigsRunnerScriptContents containsString:_itemPath])
+        return YES;
+    else
+        return NO;
+}
+
 - (BOOL)enable
 {
     NSError *error;

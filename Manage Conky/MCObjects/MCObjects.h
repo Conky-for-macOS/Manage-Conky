@@ -27,6 +27,7 @@
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
 
 - (BOOL)enable;
+- (BOOL)isEnabled;
 @end
 
 /**
