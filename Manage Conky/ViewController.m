@@ -317,6 +317,7 @@
         
         pid_t pid = [task processIdentifier];
         [[widgetsArray objectAtIndex:row] setPid:pid];
+        [[widgetsArray objectAtIndex:row] enable];
     }
     else
     {

@@ -25,6 +25,8 @@
 @property NSString *itemPath;
 
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
+
+- (BOOL)enable;
 @end
 
 /**

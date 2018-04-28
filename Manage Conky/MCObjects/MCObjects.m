@@ -18,6 +18,46 @@
     [res setItemPath:path];
     return res;
 }
+
+- (BOOL)enable
+{
+    NSError *error;
+    NSInteger startupDelay = 0;
+    NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
+    NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+    
+    if (!MCConfigsRunnerScriptContents)
+        MCConfigsRunnerScriptContents = @"";
+    
+    startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
+    
+    /*
+     * command to execute for starting this specific widget (consider the startupDelay)
+     */
+    NSString *cmd = [NSString stringWithFormat:@"%@conky -c %@\n",
+                     MCConfigsRunnerScriptContents,
+                     _itemPath];
+    
+    [cmd writeToFile:MCConfigsRunnerScript
+          atomically:YES
+            encoding:NSUTF8StringEncoding
+               error:&error];
+    
+    /*
+     * setup the LaunchAgent
+     */
+    NSString *plistPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents/conkyEnabledWidgets.plist"];
+    id objects[] = {@"org.npyl.conkyEnabledWidgets", @[@"/bin/sh", @"-c", MCConfigsRunnerScript], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:startupDelay]};
+    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    
+    NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+    BOOL res = [plist writeToFile:plistPath atomically:YES];
+    if (!res)
+        NSLog(@"applyWidget: Error when saving LaunchAgent");
+    
+    return res;
+}
 @end
 
 @implementation MCTheme

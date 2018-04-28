@@ -24,6 +24,16 @@
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
 
 /**
+ * Return ManageConky directory path in ~/Library
+ */
+NSString *MCDirectory(void);
+
+/**
+ * Create ManageConky directory in ~/Library
+ */
+BOOL createMCDirectory(void);
+
+/**
  * Create LaunchAgents directory at ~/Library if it doesn't exist
  */
 void createUserLaunchAgentsDirectory(void);

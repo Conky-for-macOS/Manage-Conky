@@ -20,6 +20,16 @@ void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
                    });
 }
 
+NSString *MCDirectory(void)
+{
+    return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/ManageConky"];
+}
+
+BOOL createMCDirectory(void)
+{
+    return YES;
+}
+
 void createUserLaunchAgentsDirectory(void)
 {
     /* create LaunchAgents directory at User's Home */

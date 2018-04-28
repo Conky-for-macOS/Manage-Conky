@@ -195,6 +195,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090C35B6209487B5009C97F8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				ECAF6F622024ADC900715D72 /* LetsMove */,
+				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
+				09E4382A2080D0120083EBEC /* MCObjects */,
+				EC9EFB8E2055554800C6BAAF /* Extensions */,
+				77B847381F62C2B600AF8BCA /* AppDelegate.h */,
+				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
+				77B8473E1F62C2B600AF8BCA /* ViewController.h */,
+				77B8473F1F62C2B600AF8BCA /* ViewController.m */,
+				093BDFC120861C0E004E6354 /* MCConfigEditor.h */,
+				093BDFC220861C0E004E6354 /* MCConfigEditor.m */,
+				77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */,
+				77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */,
+				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
+				77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */,
+				ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */,
+				ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */,
+				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
+				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
+				77B8473C1F62C2B600AF8BCA /* main.m */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
 		09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,29 +266,9 @@
 		77B847371F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXGroup;
 			children = (
-				ECAF6F622024ADC900715D72 /* LetsMove */,
-				EC9691F4204DD59E00B99EB5 /* Sheets */,
-				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
-				09E4382A2080D0120083EBEC /* MCObjects */,
-				EC9EFB8E2055554800C6BAAF /* Extensions */,
+				090C35B6209487B5009C97F8 /* Sources */,
 				77B847411F62C2B600AF8BCA /* Assets.xcassets */,
-				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				77B847461F62C2B600AF8BCA /* Info.plist */,
-				77B847381F62C2B600AF8BCA /* AppDelegate.h */,
-				77B847391F62C2B600AF8BCA /* AppDelegate.m */,
-				77B8473E1F62C2B600AF8BCA /* ViewController.h */,
-				77B8473F1F62C2B600AF8BCA /* ViewController.m */,
-				093BDFC120861C0E004E6354 /* MCConfigEditor.h */,
-				093BDFC220861C0E004E6354 /* MCConfigEditor.m */,
-				77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */,
-				77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */,
-				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
-				77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */,
-				ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */,
-				ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */,
-				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
-				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
-				77B8473C1F62C2B600AF8BCA /* main.m */,
 				EC3DF95C205D6035000ACB95 /* Resources */,
 				77B8473B1F62C2B600AF8BCA /* Supporting Files */,
 			);
@@ -302,6 +308,8 @@
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC9691F4204DD59E00B99EB5 /* Sheets */,
+				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
 				ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */,
