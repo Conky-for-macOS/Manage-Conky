@@ -24,7 +24,6 @@
 {
     ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
-    BOOL conkyAgentPresent;         // XXX: legacy variable; should be called runConkyAtStartup
     BOOL xquartzQuitAlertDisabled;
     
     BOOL keepAlive;

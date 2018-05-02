@@ -86,18 +86,17 @@
         [_searchLocationsTable setDelegate:self];
         [_searchLocationsTable setDataSource:self];
         
-        // XXX keep the var named `conkyAgentPresent` instead of runConkyAtStartup for legacy reasons
         
         /* Is conky agent present? */
-        conkyAgentPresent = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
-        if (!conkyAgentPresent)
+        BOOL tmp = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
+        if (!tmp)
             NSLog(@"Agent plist doesnt exist or not accessible!");
         
         /* publish it to our settings-holder */
-        [MCSettingsHolder setConkyRunsAtStartup:conkyAgentPresent];
+        [MCSettingsHolder setConkyRunsAtStartup:tmp];
         
         /* set checkbox state accordingly */
-        [_runConkyAtStartupCheckbox setState:conkyAgentPresent];
+        [_runConkyAtStartupCheckbox setState:tmp];
         
         /* Conky configuration file location? */
         NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
