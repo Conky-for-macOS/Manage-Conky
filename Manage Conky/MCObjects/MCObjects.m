@@ -7,8 +7,7 @@
 //
 
 #import "MCObjects.h"
-#import "Shared.h"  // createUserLaunchAgentsDirectory()
-
+#import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
 
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
@@ -16,61 +15,109 @@
     id res = [[self alloc] init];
     [res setPid:pid];
     [res setItemPath:path];
+    
     return res;
 }
 
-- (BOOL)isEnabled
+- (void)kill
 {
-    NSError *error;
-    NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
-    NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
-
-    if ([MCConfigsRunnerScriptContents containsString:_itemPath])
-        return YES;
-    else
-        return NO;
+    int stat_loc = 0;
+    kill(_pid, SIGINT);
+    waitpid(_pid, &stat_loc, WNOHANG);
+    [self setPid:MC_PID_NOT_SET];
 }
 
 - (BOOL)enable
 {
-    NSError *error;
-    NSInteger startupDelay = 0;
-    BOOL keepAlive = NO;
-    NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
-    NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+    if ([MCSettingsHolder conkyRunsAtStartup])
+    {
+        NSError *error;
+        NSInteger startupDelay = 0;
+        BOOL keepAlive = NO;
+        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
+        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+        
+        if (!MCConfigsRunnerScriptContents)
+            MCConfigsRunnerScriptContents = @"";
+        
+        startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
+        keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+        
+        /*
+         * command to execute for starting this specific widget (consider the startupDelay)
+         */
+        NSString *cmd = [NSString stringWithFormat:@"%@conky -c %@ &\n",
+                         MCConfigsRunnerScriptContents,
+                         _itemPath];
+        
+        [cmd writeToFile:MCConfigsRunnerScript
+              atomically:YES
+                encoding:NSUTF8StringEncoding
+                   error:&error];
+        
+        /*
+         * setup the LaunchAgent
+         */
+        NSString *plistPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents/conkyEnabledWidgets.plist"];
+        id objects[] = {@"org.npyl.conkyEnabledWidgets", @[@"/bin/sh", MCConfigsRunnerScript], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:startupDelay]};
+        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
+        NSUInteger count = sizeof(objects) / sizeof(id);
+        
+        NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+        BOOL res = [plist writeToFile:plistPath atomically:YES];
+        if (!res)
+            NSLog(@"applyWidget: Error when saving LaunchAgent");
+    }
     
-    if (!MCConfigsRunnerScriptContents)
-        MCConfigsRunnerScriptContents = @"";
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/local/bin/conky"];
+    [task setArguments:@[@"-c", _itemPath]];
+    [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
+    [task launch];
     
-    startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
-    keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+    pid_t pid = [task processIdentifier];
+    [self setPid:pid];
     
-    /*
-     * command to execute for starting this specific widget (consider the startupDelay)
-     */
-    NSString *cmd = [NSString stringWithFormat:@"%@conky -c %@\n",
-                     MCConfigsRunnerScriptContents,
-                     _itemPath];
+    return YES;
+}
+
+- (BOOL)disable
+{
+    [self kill];
     
-    [cmd writeToFile:MCConfigsRunnerScript
-          atomically:YES
-            encoding:NSUTF8StringEncoding
-               error:&error];
+    if ([MCSettingsHolder conkyRunsAtStartup])
+    {
+        NSError *error;
+        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
+        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+        
+        NSMutableArray *lines = [[MCConfigsRunnerScriptContents componentsSeparatedByString:@"\n"] mutableCopy];
+        
+        for (int i = 0; i < [lines count]; i++)
+            if ([[lines objectAtIndex:i] containsString:_itemPath])
+            {
+                [lines removeObjectAtIndex:i];
+                break;
+            }
+    }
     
-    /*
-     * setup the LaunchAgent
-     */
-    NSString *plistPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents/conkyEnabledWidgets.plist"];
-    id objects[] = {@"org.npyl.conkyEnabledWidgets", @[@"/bin/sh", @"-c", MCConfigsRunnerScript], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:startupDelay]};
-    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    
-    NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-    BOOL res = [plist writeToFile:plistPath atomically:YES];
-    if (!res)
-        NSLog(@"applyWidget: Error when saving LaunchAgent");
-    
-    return res;
+    return YES;
+}
+
+- (BOOL)isEnabled
+{
+    if ([MCSettingsHolder conkyRunsAtStartup])
+    {
+        NSError *error;
+        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
+        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+        
+        return [MCConfigsRunnerScriptContents containsString:_itemPath] ? YES : NO;
+    }
+    else
+    {
+        return (_pid != MC_PID_NOT_SET) ? YES : NO;
+    }
 }
 @end
 
@@ -233,24 +280,9 @@
 }
 
 /**
- * Helper function to create ~/Library/ManageConky directory
+ * Apply Theme to computer
  */
-void createLibraryManageConkyDirectory(void)
-{
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/ManageConky"];
-    NSError *error;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
-    if (error)
-    {
-        NSLog(@"Failed to create ManageConky directory with error: \n\n%@", error);
-    }
-}
-
-/**
- * Apply myself (Theme) to computer
- */
-- (void)apply
+- (void)enable
 {
     /**
      * We need to create a LaunchAgent item for this specific Theme
@@ -275,7 +307,7 @@ void createLibraryManageConkyDirectory(void)
      * create required directories
      */
     createUserLaunchAgentsDirectory();
-    createLibraryManageConkyDirectory();
+    MCDirectory();
     
     /*
      * Create the script
@@ -321,5 +353,10 @@ void createLibraryManageConkyDirectory(void)
     BOOL res = [plist writeToFile:plistPath atomically:YES];
     if (!res)
             NSLog(@"applyTheme: Error when saving launchAgent");
+}
+
+- (void)disable
+{
+    NSLog(@"Off to disable Theme(%@)", self);
 }
 @end

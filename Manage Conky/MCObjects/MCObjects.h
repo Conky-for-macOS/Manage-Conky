@@ -14,6 +14,14 @@
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
+@interface MCSettings
+
+@property BOOL conkyRunsAtStartup;  /* yes or no? */
+
+@end
+
+static MCSettings *MCSettingsHolder;
+
 /**
  * MCWidget
  *
@@ -21,12 +29,14 @@
  */
 @interface MCWidget : NSObject
 
-@property pid_t pid;
-@property NSString *itemPath;
+@property pid_t pid;            /* pid */
+@property NSString *itemPath;   /* conky *.conf path */
 
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
 
 - (BOOL)enable;
+- (void)kill;
+- (BOOL)disable;
 - (BOOL)isEnabled;
 @end
 
@@ -79,7 +89,8 @@
  *  - original conky-manager Themes (plain files with minimal info) (backwards compatibility)
  *  - plist-based (support many parameters/features in a native macOS way)
  */
-- (void)apply;
+- (void)enable;
+- (void)disable;
 @end
 
 #endif /* MCObjects_h */

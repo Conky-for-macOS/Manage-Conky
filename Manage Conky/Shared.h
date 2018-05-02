@@ -21,6 +21,9 @@
 #define kSMJOBBLESSHELPER_IDENTIFIER @"org.npyl.ManageConkySMJobBlessHelper"
 #define SMJOBBLESSHELPER_IDENTIFIER "org.npyl.ManageConkySMJobBlessHelper"
 
+//
+// HELPER FUNCTIONS
+//
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
 
 /**

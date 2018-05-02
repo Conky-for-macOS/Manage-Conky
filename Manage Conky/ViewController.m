@@ -295,74 +295,56 @@
     
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
-        NSString *path = [[widgetsArray objectAtIndex:row] itemPath];
-        
-        /* check if already running to restart */
-        pid_t tmp = [[widgetsArray objectAtIndex:row] pid];
-        if (tmp != MC_PID_NOT_SET)
-            [self stopWidget:nil];
-        
-        NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:@"/usr/local/bin/conky"];
-        [task setArguments:@[@"-c", path]];
-        [task setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
-        [task launch];
-        //[task waitUntilExit];   // debug
-        
-        pid_t pid = [task processIdentifier];
-        [[widgetsArray objectAtIndex:row] setPid:pid];
-        
-        /*
-         * Enable Widget for startup only if runConkyAtStartup is set
-         */
-        BOOL runConkyAtStartup = [[[NSUserDefaults standardUserDefaults] valueForKey:@"runConkyAtStartup"] boolValue];
-        if (runConkyAtStartup)
-            [[widgetsArray objectAtIndex:row] enable];
+        MCWidget *widget = [widgetsArray objectAtIndex:row];
+        if ([widget isEnabled])
+            [widget kill];
+        [widget enable];
     }
     else
     {
         MCTheme *theme = [themesArray objectAtIndex:row];
-        [theme apply];
+        // XXX need a kill() function for this too!
+        [theme enable];
     }
     
     [_widgetsThemesTable reloadData];
 }
 - (IBAction)stopWidget:(id)sender
 {
-    /* guard */
-    if (whatToShow == widgetsThemesTableShowThemes)
-        return;
-    
     NSInteger i = [_widgetsThemesTable selectedRow];
     
     if (i < 0)
         return;
     
-    pid_t pid = [[widgetsArray objectAtIndex:i] pid];
-
-    int stat_loc = 0;
-    kill(pid, SIGINT);
-    waitpid(pid, &stat_loc, WNOHANG);
+    if (whatToShow == widgetsThemesTableShowThemes)
+    {
+        MCTheme *theme = [themesArray objectAtIndex:i];
+        if ([theme isEnabled])
+            [theme disable];
+    }
+    else
+    {
+        MCWidget *widget = [widgetsArray objectAtIndex:i];
+        if ([widget isEnabled])
+            [widget disable];
+    }
     
-    [[widgetsArray objectAtIndex:i] setPid:MC_PID_NOT_SET];
     [_widgetsThemesTable reloadData];
 }
 - (IBAction)stopAllWidgets:(id)sender
 {
-    /* guard */
     if (whatToShow == widgetsThemesTableShowThemes)
-        return;
-    
-    for (MCWidget *widget in widgetsArray)
     {
-        pid_t pid = [widget pid];
-        if (pid != MC_PID_NOT_SET)
+        for (MCTheme *theme in themesArray)
+            if ([theme isEnabled])
+                [theme disable];
+    }
+    else
+    {
+        for (MCWidget *widget in widgetsArray)
         {
-            int stat_loc = 0;
-            kill(pid, SIGINT);
-            waitpid(pid, &stat_loc, WNOHANG);
-            
-            [widget setPid:MC_PID_NOT_SET];
+            if ([widget isEnabled])
+                [widget disable];
         }
     }
     
