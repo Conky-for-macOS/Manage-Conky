@@ -43,10 +43,10 @@ static MCSettings *MCSettingsHolder;
  * Abstract object upon which MCWidget and MCTheme are based!
  */
 @interface MCWidgetOrTheme : NSObject
-- (BOOL)enable;
-- (BOOL)reenable;
+- (void)enable;
+- (void)reenable;
 - (void)kill;
-- (BOOL)disable;
+- (void)disable;
 - (BOOL)isEnabled;
 @end
 

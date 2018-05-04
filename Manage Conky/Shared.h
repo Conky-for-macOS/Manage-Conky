@@ -41,4 +41,10 @@ BOOL createMCDirectory(void);
  */
 void createUserLaunchAgentsDirectory(void);
 
+void createLaunchAgent(NSString *program,
+                       NSString *label,
+                       NSArray *args,
+                       BOOL runAtLoad,
+                       NSUInteger throttle);
+
 #endif /* Shared_h */

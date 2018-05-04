@@ -13,11 +13,11 @@
 @end
 
 @implementation MCWidgetOrTheme
-- (BOOL)enable {return YES;}
-- (BOOL)reenable {return YES;}
+- (void)enable {}
+- (void)reenable {}
 - (void)kill {}
-- (BOOL)disable {return YES;}
-- (BOOL)isEnabled {return YES;}
+- (void)disable {}
+- (BOOL)isEnabled { return YES; }
 @end
 
 @implementation MCWidget
@@ -38,7 +38,7 @@
     [self setPid:MC_PID_NOT_SET];
 }
 
-- (BOOL)enable
+- (void)enable
 {
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
@@ -73,15 +73,13 @@
         /*
          * setup the LaunchAgent
          */
-        NSString *plistPath = [NSHomeDirectory() stringByAppendingString:@"/Library/LaunchAgents/conkyEnabledWidgets.plist"];
-        id objects[] = {@"org.npyl.conkyEnabledWidgets", @[@"/bin/sh", MCConfigsRunnerScript], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:startupDelay]};
-        id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-        NSUInteger count = sizeof(objects) / sizeof(id);
+        createLaunchAgent(@"/bin/sh",
+                          @"org.npyl.conkyEnabledWidgets",
+                          @[@"-c", MCConfigsRunnerScript],
+                          keepAlive,
+                          startupDelay);
         
-        NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-        BOOL res = [plist writeToFile:plistPath atomically:YES];
-        if (!res)
-            NSLog(@"applyWidget: Error when saving LaunchAgent");
+        // xxx error checking
     }
     
     NSTask *task = [[NSTask alloc] init];
@@ -92,8 +90,6 @@
     
     pid_t pid = [task processIdentifier];
     [self setPid:pid];
-    
-    return YES;
 }
 
 /**
@@ -102,14 +98,14 @@
  * Enable Widget BUT first check if already enabled and kill it
  * to achieve restart!
  */
-- (BOOL)reenable
+- (void)reenable
 {
     if ([self isEnabled])
         [self kill];
-    return [self enable];
+    [self enable];
 }
 
-- (BOOL)disable
+- (void)disable
 {
     [self kill];
     
@@ -135,8 +131,6 @@
         [lines writeToFile:MCConfigsRunnerScript
                 atomically:YES];
     }
-    
-    return YES;
 }
 
 - (BOOL)isEnabled
@@ -329,8 +323,7 @@
  *  - original conky-manager Themes (plain files with minimal info) (backwards compatibility)
  *  - plist-based (support many parameters/features in a native macOS way)
  */
-
-- (BOOL)enable
+- (void)enable
 {
     /**
      * We need to create a LaunchAgent item for this specific Theme
@@ -348,7 +341,7 @@
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
-        return NO;
+        return;
     }
     
     /*
@@ -360,7 +353,6 @@
     /*
      * Create the script
      */
-    NSError *error = nil;
     NSString *scriptLocation = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.sh", _themeName];
     NSString *scriptContents = MANAGE_CONKY_STAMP;
     /*
@@ -380,11 +372,11 @@
     [scriptContents writeToFile:scriptLocation
                      atomically:YES
                        encoding:NSUTF8StringEncoding
-                          error:&error];
-    if (error)
+                          error:&err];
+    if (err)
     {
-        NSLog(@"applyTheme: Error: \n\n%@", error);
-        return NO;
+        NSLog(@"applyTheme: Error: \n\n%@", err);
+        return;
     }
     
     NSLog(@"%@", scriptContents);
@@ -392,17 +384,12 @@
     /*
      * Create LaunchAgent for the script
      */
-    NSString *plistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@.plist", _themeName];
-    id objects[] = {_themeName, @[@"/bin/sh", @"-c", scriptLocation], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], [NSNumber numberWithInteger:_startupDelay]};
-    id keys[] = {@"Label", @"ProgramArguments", @"RunAtLoad", @"KeepAlive", @"ThrottleInterval"};
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    
-    NSDictionary *plist = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-    BOOL res = [plist writeToFile:plistPath atomically:YES];
-    if (!res)
-            NSLog(@"applyTheme: Error when saving launchAgent");
-    
-    return YES;
+    createLaunchAgent(@"/bin/sh",
+                      _themeName,
+                      @[@"-c", scriptLocation],
+                      YES,
+                      _startupDelay);
+    // xxx error checking
 }
 
 /**
@@ -411,21 +398,19 @@
  * Enable Theme BUT first check if already enabled and kill it
  * to achieve restart!
  */
-- (BOOL)reenable
+- (void)reenable
 {
     if ([self isEnabled])
         [self kill];
-    return [self enable];
+    [self enable];
 }
 
 - (void)kill
 {
-    // Not yet implemented
 }
 
-- (BOOL)disable
+- (void)disable
 {
     NSLog(@"Off to disable Theme(%@)", self);
-    return YES;
 }
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Shared.h"
+#import <AHLaunchCtl/AHLaunchCtl.h>
 
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
 {
@@ -59,4 +60,29 @@ void createUserLaunchAgentsDirectory(void)
                               withIntermediateDirectories:NO
                                                attributes:nil
                                                     error:nil];
+}
+
+void createLaunchAgent(NSString *program,
+                       NSString *label,
+                       NSArray *args,
+                       BOOL runAtLoad,
+                       NSUInteger throttle)
+{
+    NSError *error = nil;
+    
+    AHLaunchJob* job = [AHLaunchJob new];
+    job.Program = program;
+    job.Label = label;
+    job.ProgramArguments = args;
+    job.ThrottleInterval = throttle;
+    job.RunAtLoad = runAtLoad;
+    
+    // All sharedController methods return BOOL values.
+    // `YES` for success, `NO` on failure (which will also populate an NSError).
+    [[AHLaunchCtl sharedController] add:job
+                               toDomain:kAHUserLaunchAgent
+                                  error:&error];
+    
+    if (error)
+        NSLog(@"Error adding LaunchAgent. \n\n%@", error);
 }
