@@ -12,6 +12,14 @@
 @implementation MCSettings
 @end
 
+@implementation MCWidgetOrTheme
+- (BOOL)enable {return YES;}
+- (BOOL)reenable {return YES;}
+- (void)kill {}
+- (BOOL)disable {return YES;}
+- (BOOL)isEnabled {return YES;}
+@end
+
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
@@ -86,6 +94,19 @@
     [self setPid:pid];
     
     return YES;
+}
+
+/**
+ * re-enable
+ *
+ * Enable Widget BUT first check if already enabled and kill it
+ * to achieve restart!
+ */
+- (BOOL)reenable
+{
+    if ([self isEnabled])
+        [self kill];
+    return [self enable];
 }
 
 - (BOOL)disable
@@ -297,10 +318,19 @@
                             error:error];
 }
 
+
 /**
- * Apply Theme to computer
+ * enable
+ *
+ * Applies this Theme to computer by:
+ *  - applying conky config
+ *  - applying wallpaper
+ * supports two types of Themes:
+ *  - original conky-manager Themes (plain files with minimal info) (backwards compatibility)
+ *  - plist-based (support many parameters/features in a native macOS way)
  */
-- (void)enable
+
+- (BOOL)enable
 {
     /**
      * We need to create a LaunchAgent item for this specific Theme
@@ -318,7 +348,7 @@
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
-        return;
+        return NO;
     }
     
     /*
@@ -354,7 +384,7 @@
     if (error)
     {
         NSLog(@"applyTheme: Error: \n\n%@", error);
-        return;
+        return NO;
     }
     
     NSLog(@"%@", scriptContents);
@@ -371,10 +401,31 @@
     BOOL res = [plist writeToFile:plistPath atomically:YES];
     if (!res)
             NSLog(@"applyTheme: Error when saving launchAgent");
+    
+    return YES;
 }
 
-- (void)disable
+/**
+ * re-enable
+ *
+ * Enable Theme BUT first check if already enabled and kill it
+ * to achieve restart!
+ */
+- (BOOL)reenable
+{
+    if ([self isEnabled])
+        [self kill];
+    return [self enable];
+}
+
+- (void)kill
+{
+    // Not yet implemented
+}
+
+- (BOOL)disable
 {
     NSLog(@"Off to disable Theme(%@)", self);
+    return YES;
 }
 @end

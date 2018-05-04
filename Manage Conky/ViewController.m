@@ -19,14 +19,12 @@
      * Setup stuff
      */
     
-    /* Is conky agent present? */
-    BOOL tmp = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
-    if (!tmp)
-        NSLog(@"Agent plist doesnt exist or not accessible!");
+    /* Is conky set to run at startup? */
+    BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
     
     /* publish it to our settings-holder */
     MCSettingsHolder = [[MCSettings alloc] init];
-    [MCSettingsHolder setConkyRunsAtStartup:tmp];
+    [MCSettingsHolder setConkyRunsAtStartup:a];
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
@@ -305,15 +303,12 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-        if ([widget isEnabled])
-            [widget kill];
-        [widget enable];
+        [widget reenable];
     }
     else
     {
         MCTheme *theme = [themesArray objectAtIndex:row];
-        // XXX need a kill() function for this too!
-        [theme enable];
+        [theme reenable];
     }
     
     [_widgetsThemesTable reloadData];

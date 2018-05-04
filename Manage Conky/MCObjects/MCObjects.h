@@ -14,28 +14,53 @@
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
+/**
+ * MCSettings
+ *
+ * ManageConky's settings class
+ * Used to provide global access to ManageConky settings
+ * amongst many parts of the program!
+ */
 @interface MCSettings : NSObject
 @property BOOL conkyRunsAtStartup;  /* yes or no? */
 @end
 
+/**
+ * MCSettingsHolder
+ *
+ * Single MCSettings object to provide access to ManageConky settings
+ * through any part of the program!
+ */
 static MCSettings *MCSettingsHolder;
+
+//
+// WIDGETS / THEMES SECTION
+//
+
+/**
+ * MCWidgetOrTheme
+ *
+ * Abstract object upon which MCWidget and MCTheme are based!
+ */
+@interface MCWidgetOrTheme : NSObject
+- (BOOL)enable;
+- (BOOL)reenable;
+- (void)kill;
+- (BOOL)disable;
+- (BOOL)isEnabled;
+@end
 
 /**
  * MCWidget
  *
  * ManageConky Widget representation.
  */
-@interface MCWidget : NSObject
+@interface MCWidget : MCWidgetOrTheme
 
 @property pid_t pid;            /* pid */
 @property NSString *itemPath;   /* conky *.conf path */
 
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
-
-- (BOOL)enable;
-- (void)kill;
-- (BOOL)disable;
-- (BOOL)isEnabled;
 @end
 
 /**
@@ -44,7 +69,7 @@ static MCSettings *MCSettingsHolder;
  * Representation of a ManageConky Theme.
  * Fully backwards compatible with conky-manager Themes (.cmtheme).
  */
-@interface MCTheme : NSObject
+@interface MCTheme : MCWidgetOrTheme
 
 @property NSString *themeName;  /* theme name */
 @property NSString *themeRC;    /* resource file (.plist or .cmtheme) */
@@ -78,17 +103,6 @@ static MCSettings *MCSettingsHolder;
  * Supports both modern ManageConky Themes and legacy conky-manager Themes.
  */
 + (instancetype)themeRepresentationForThemeRC:(NSString *)themeRC;
-
-/**
- * Applies this Theme to computer by:
- *  - applying conky config
- *  - applying wallpaper
- * supports two types of Themes:
- *  - original conky-manager Themes (plain files with minimal info) (backwards compatibility)
- *  - plist-based (support many parameters/features in a native macOS way)
- */
-- (void)enable;
-- (void)disable;
 @end
 
 #endif /* MCObjects_h */
