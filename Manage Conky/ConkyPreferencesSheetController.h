@@ -28,8 +28,8 @@
     
     BOOL keepAlive;
     
-    BOOL mustRemoveAgent;
-    BOOL mustInstallAgent;
+    BOOL mustDisableConkyForStartup;
+    BOOL mustEnableConkyForStartup;
     BOOL mustAddSearchPaths;
     
     NSMutableArray *_searchLocationsTableContents;

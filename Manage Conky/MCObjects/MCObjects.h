@@ -14,10 +14,8 @@
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
-@interface MCSettings
-
+@interface MCSettings : NSObject
 @property BOOL conkyRunsAtStartup;  /* yes or no? */
-
 @end
 
 static MCSettings *MCSettingsHolder;

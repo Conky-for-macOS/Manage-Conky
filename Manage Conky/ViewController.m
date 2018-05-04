@@ -19,6 +19,15 @@
      * Setup stuff
      */
     
+    /* Is conky agent present? */
+    BOOL tmp = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
+    if (!tmp)
+        NSLog(@"Agent plist doesnt exist or not accessible!");
+    
+    /* publish it to our settings-holder */
+    MCSettingsHolder = [[MCSettings alloc] init];
+    [MCSettingsHolder setConkyRunsAtStartup:tmp];
+    
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
     [self fillWidgetsThemesArrays];

@@ -9,6 +9,9 @@
 #import "MCObjects.h"
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
 
+@implementation MCSettings
+@end
+
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
@@ -31,6 +34,10 @@
 {
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
+        /*
+         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+         */
+        
         NSError *error;
         NSInteger startupDelay = 0;
         BOOL keepAlive = NO;
@@ -87,6 +94,10 @@
     
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
+        /*
+         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+         */
+        
         NSError *error;
         NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
         NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
@@ -99,6 +110,9 @@
                 [lines removeObjectAtIndex:i];
                 break;
             }
+        
+        [lines writeToFile:MCConfigsRunnerScript
+                atomically:YES];
     }
     
     return YES;
@@ -108,6 +122,10 @@
 {
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
+        /*
+         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+         */
+        
         NSError *error;
         NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
         NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];

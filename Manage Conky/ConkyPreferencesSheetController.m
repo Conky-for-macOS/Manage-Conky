@@ -70,8 +70,8 @@
     keepAlive = YES;    /* default value */
     
     // mustInstall/RemoveAgent
-    mustInstallAgent = NO;   /* default value */
-    mustRemoveAgent = NO;   /* default value */
+    mustEnableConkyForStartup = NO;   /* default value */
+    mustDisableConkyForStartup = NO;   /* default value */
     mustAddSearchPaths = NO;    /* default value */
     
     if (conkyXInstalled)
@@ -86,17 +86,12 @@
         [_searchLocationsTable setDelegate:self];
         [_searchLocationsTable setDataSource:self];
         
-        
-        /* Is conky agent present? */
-        BOOL tmp = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
-        if (!tmp)
-            NSLog(@"Agent plist doesnt exist or not accessible!");
-        
-        /* publish it to our settings-holder */
-        [MCSettingsHolder setConkyRunsAtStartup:tmp];
-        
-        /* set checkbox state accordingly */
-        [_runConkyAtStartupCheckbox setState:tmp];
+        /*
+         * Conky is Set to run at startup?
+         * set checkbox state accordingly
+         */
+        BOOL conkyRunsAtStartup = [MCSettingsHolder conkyRunsAtStartup];
+        [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
         
         /* Conky configuration file location? */
         NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
@@ -147,16 +142,16 @@
     [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
-    mustInstallAgent = YES;
-    mustRemoveAgent = NO;   /* disable if enabled */
+    mustEnableConkyForStartup = YES;
+    mustDisableConkyForStartup = NO;   /* disable if enabled */
 }
 - (void)enableMustRemoveAgentMode
 {
     [_changesSavedLabel setHidden:YES];
     [_applyChangesButton setHidden:NO];
     [_doneButton setTitle:@"Cancel"];
-    mustRemoveAgent = YES;
-    mustInstallAgent = NO;  /* disable if enabled */
+    mustDisableConkyForStartup = YES;
+    mustEnableConkyForStartup = NO;  /* disable if enabled */
 }
 - (void)enableMustAddSearchPathsMode
 {
@@ -226,7 +221,7 @@
      * display the panel
      */
     [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
-        if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];
             NSString *theDocumentInString = [theDocument path];
@@ -337,32 +332,30 @@
 
 - (IBAction)applyChanges:(id)sender
 {
-    BOOL changesApplied = NO;
+    BOOL changesApplied = YES;
     
     NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents"];
     NSString *conkyAgentPlistPath = [userLaunchAgentPath stringByAppendingPathComponent:kConkyAgentPlistName];
     
-    if (mustRemoveAgent)
+    if (mustDisableConkyForStartup)
     {
         /* revert */
-        mustRemoveAgent = NO;
+        mustDisableConkyForStartup = NO;
         
         changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
         
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO]
                                                  forKey:@"runConkyAtStartup"];
-        
-        changesApplied = YES;
+        [MCSettingsHolder setConkyRunsAtStartup:!changesApplied];
     }
-    else if (mustInstallAgent)
+    else if (mustEnableConkyForStartup)
     {
         /* revert */
-        mustInstallAgent = NO;
+        mustEnableConkyForStartup = NO;
         
         NSWindow *sheet = [super sheet];
         NSInteger startupDelay_ = [_startupDelayField integerValue];
-        static
-        BOOL shownX11TakesAlotTimeWarning = NO;
+        static BOOL shownX11TakesAlotTimeWarning = NO;
         
         /*
          * show X11 warning
@@ -384,8 +377,7 @@
                                                   forKey:@"keepAlive"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay_]
                                                   forKey:@"startupDelay"];
-        
-        changesApplied = YES;
+        [MCSettingsHolder setConkyRunsAtStartup:YES];
         
         [[NSApp mainWindow] setDocumentEdited:NO];
     }
@@ -403,7 +395,6 @@
          * Write the Additional Search Locations
          */
         [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"additionalSearchPaths"];
-        changesApplied = YES;
     }
     
     [_changesSavedLabel setStringValue:changesApplied ? @"Changes applied successfully" : @"Failed to apply changes!"];
@@ -415,7 +406,7 @@
 - (IBAction)okButtonPressed:(id)sender
 {
     NSWindow *sheet = [super sheet];
-    BOOL worksAsCancelButton = mustInstallAgent || mustRemoveAgent || mustAddSearchPaths;
+    BOOL worksAsCancelButton = mustEnableConkyForStartup || mustDisableConkyForStartup || mustAddSearchPaths;
     
     if (worksAsCancelButton)
     {
@@ -425,8 +416,8 @@
             [_searchLocationsTable reloadData];
         }
         
-        mustInstallAgent = NO;
-        mustRemoveAgent = NO;
+        mustEnableConkyForStartup = NO;
+        mustDisableConkyForStartup = NO;
         mustAddSearchPaths = NO;
         [_doneButton setTitle:@"OK"];
         [_applyChangesButton setHidden:YES];
@@ -475,7 +466,7 @@
      * display the panel
      */
     [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
-        if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];
             NSString *theDocumentInString = [theDocument path];
