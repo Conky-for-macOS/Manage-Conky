@@ -123,7 +123,7 @@
      * display the panel
      */
     [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
-        if (result == NSFileHandlingPanelOKButton)
+        if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
             res = [self openThemePackWithURL:theDocument];
