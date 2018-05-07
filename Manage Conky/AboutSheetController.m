@@ -25,6 +25,11 @@
     
 }
 
+- (IBAction)openCredits:(id)sender
+{
+
+}
+
 - (IBAction)activateAboutSheet:(id)sender
 {
     [super activateSheet:@"About"];
