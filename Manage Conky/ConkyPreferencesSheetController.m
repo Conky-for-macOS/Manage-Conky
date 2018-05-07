@@ -226,9 +226,9 @@
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];
             NSString *theDocumentInString = [theDocument path];
             
-            [_conkyConfigLocationTextfield setStringValue:theDocumentInString];
+            [self->_conkyConfigLocationTextfield setStringValue:theDocumentInString];
             
-            [self conkyConfigLocationFieldEnterPressed:_conkyConfigLocationTextfield];
+            [self conkyConfigLocationFieldEnterPressed:self->_conkyConfigLocationTextfield];
         }
     }];
 }
@@ -472,8 +472,8 @@
             NSString *theDocumentInString = [theDocument path];
             
             /* add to table contents array */
-            [_searchLocationsTableContents addObject:theDocumentInString];
-            [_searchLocationsTable reloadData];
+            [self->_searchLocationsTableContents addObject:theDocumentInString];
+            [self->_searchLocationsTable reloadData];
             
             [self enableMustAddSearchPathsMode];
         }

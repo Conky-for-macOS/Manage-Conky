@@ -73,7 +73,7 @@
     {
         if (item)
         {
-            [items addObject:item];
+            [self->items addObject:item];
             return YES;
         }
         else

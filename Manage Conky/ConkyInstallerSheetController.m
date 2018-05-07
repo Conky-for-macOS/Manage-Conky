@@ -54,7 +54,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
 - (void)writeToLog:(NSString *)str
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _logField.stringValue = [_logField.stringValue stringByAppendingString:str];
+        self->_logField.stringValue = [self->_logField.stringValue stringByAppendingString:str];
     });
 }
 
@@ -210,10 +210,10 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                      * Show the user we failed!
                      */
                     xpc_connection_cancel(connection);
-                    showErrorAlertWithMessageForWindow(@"Something went wrong during XQuartz installation.", _window);
+                    showErrorAlertWithMessageForWindow(@"Something went wrong during XQuartz installation.", self->_window);
                     dispatch_async(dispatch_get_main_queue(),
                                    ^{
-                                       [_doneButton setEnabled:YES];
+                                       [self->_doneButton setEnabled:YES];
                                    });
                 }
                 else
@@ -242,10 +242,10 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                                    ^{
                                        NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
                                        [alert setMessageText:@"Conky Finished Installing"];
-                                       [alert runModalSheetForWindow:_window];
+                                       [alert runModalSheetForWindow:self->_window];
                                    
-                                       [_progressIndicator stopAnimation:nil];
-                                       [_doneButton setEnabled:YES];
+                                       [self->_progressIndicator stopAnimation:nil];
+                                       [self->_doneButton setEnabled:YES];
                                    });
                 }
                 else
