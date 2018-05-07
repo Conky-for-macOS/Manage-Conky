@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,68 +16,83 @@
         <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="372" height="296"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="contentRect" x="196" y="240" width="372" height="286"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="372" height="296"/>
+                <rect key="frame" x="0.0" y="0.0" width="372" height="286"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zd5-RQ-24H">
-                        <rect key="frame" x="162" y="228" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zd5-RQ-24H">
+                        <rect key="frame" x="162" y="218" width="48" height="48"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="conkylogosmall4_48x48" id="zmj-dG-5Kw"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Saa-Be-lfl">
-                        <rect key="frame" x="93" y="194" width="185" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Saa-Be-lfl">
+                        <rect key="frame" x="93" y="184" width="185" height="17"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Manage Conky for macOS" id="lZT-34-t0T">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-85-ha1">
-                        <rect key="frame" x="116" y="135" width="139" height="51"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tdC-85-ha1">
+                        <rect key="frame" x="18" y="159" width="335" height="17"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Brings to macOS what conky-manager brings to Linux" id="Zeg-M6-gnw">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5d-79-Zkf">
-                        <rect key="frame" x="127" y="78" width="118" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="GitHub Repo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Cp-fJ-M6j">
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="cRx-th-glg">
+                        <rect key="frame" x="70" y="94" width="106" height="48"/>
+                        <buttonCell key="cell" type="square" title="conky-manager" bezelStyle="shadowlessSquare" image="GitHub-Mark-16px" imagePosition="above" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EXb-hF-DJF">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BMy-of-3V0">
+                        <rect key="frame" x="12" y="207" width="348" height="5"/>
+                    </box>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pY1-C3-1wq">
+                        <rect key="frame" x="11" y="148" width="348" height="5"/>
+                    </box>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Clu-rR-vBe">
+                        <rect key="frame" x="12" y="94" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="BSS-IM-81s"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="GitHub-Mark-64px" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="phT-Ce-d3H">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="openGitHubRepo:" target="-2" id="nrD-rI-5Hr"/>
+                            <action selector="openGitHubRepo:" target="-2" id="bKc-6k-1ju"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fx9-CL-vu6">
-                        <rect key="frame" x="70" y="46" width="216" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="conky-manager GitHub Repo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hat-Ch-xMm">
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="OKw-vb-BbN">
+                        <rect key="frame" x="309" y="94" width="50" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="R9c-dm-zP9"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" title="Donate Bitcoin" bezelStyle="shadowlessSquare" image="bitcoin-coin" imagePosition="only" alignment="justified" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="EDq-ww-PgH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="openConkyManagersGitHubRepo:" target="-2" id="qsD-HL-OeU"/>
+                            <action selector="donateBitcoin:" target="-2" id="dF8-AF-Hc8"/>
                         </connections>
                     </button>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BMy-of-3V0">
-                        <rect key="frame" x="12" y="217" width="348" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </box>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pY1-C3-1wq">
-                        <rect key="frame" x="12" y="124" width="348" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </box>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iG5-8B-Qpo">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-RQ-n4W">
+                        <rect key="frame" x="144" y="46" width="84" height="32"/>
+                        <buttonCell key="cell" type="push" title="Credits" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pbx-yM-ubW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openCredits:" target="-2" id="ErP-yw-6m6"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iG5-8B-Qpo">
                         <rect key="frame" x="156" y="13" width="59" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C6m-OS-DWs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -90,11 +105,42 @@ DQ
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Saa-Be-lfl" firstAttribute="centerX" secondItem="tdC-85-ha1" secondAttribute="centerX" id="0xh-JA-38I"/>
+                    <constraint firstItem="BMy-of-3V0" firstAttribute="leading" secondItem="Clu-rR-vBe" secondAttribute="leading" id="1IO-op-q2G"/>
+                    <constraint firstItem="ZFX-RQ-n4W" firstAttribute="centerX" secondItem="iG5-8B-Qpo" secondAttribute="centerX" id="30t-mv-x3m"/>
+                    <constraint firstItem="BMy-of-3V0" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="12" symbolic="YES" id="4RG-Tv-PwL"/>
+                    <constraint firstItem="Saa-Be-lfl" firstAttribute="top" secondItem="BMy-of-3V0" secondAttribute="bottom" constant="8" symbolic="YES" id="6FR-zM-s9N"/>
+                    <constraint firstAttribute="trailing" secondItem="BMy-of-3V0" secondAttribute="trailing" constant="12" symbolic="YES" id="7Gk-Wt-aXx"/>
+                    <constraint firstItem="Saa-Be-lfl" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="95" id="8PR-aT-p7R"/>
+                    <constraint firstItem="pY1-C3-1wq" firstAttribute="trailing" secondItem="OKw-vb-BbN" secondAttribute="trailing" id="8vl-g0-z7T"/>
+                    <constraint firstItem="Clu-rR-vBe" firstAttribute="bottom" secondItem="cRx-th-glg" secondAttribute="bottom" id="B32-SG-jyX"/>
+                    <constraint firstItem="ZFX-RQ-n4W" firstAttribute="top" secondItem="cRx-th-glg" secondAttribute="bottom" constant="20" symbolic="YES" id="C9q-6e-xaD"/>
+                    <constraint firstItem="BMy-of-3V0" firstAttribute="centerX" secondItem="Saa-Be-lfl" secondAttribute="centerX" id="EcC-Qh-HKq"/>
+                    <constraint firstItem="cRx-th-glg" firstAttribute="top" secondItem="OKw-vb-BbN" secondAttribute="top" id="HcG-5b-1WT"/>
+                    <constraint firstItem="cRx-th-glg" firstAttribute="leading" secondItem="Clu-rR-vBe" secondAttribute="trailing" constant="10" symbolic="YES" id="JFj-Vu-QJH"/>
+                    <constraint firstItem="iG5-8B-Qpo" firstAttribute="top" secondItem="ZFX-RQ-n4W" secondAttribute="bottom" constant="12" symbolic="YES" id="Kdj-xV-PPW"/>
+                    <constraint firstItem="Zd5-RQ-24H" firstAttribute="leading" secondItem="iG5-8B-Qpo" secondAttribute="leading" id="Oew-Kk-Aj6"/>
+                    <constraint firstItem="Clu-rR-vBe" firstAttribute="top" secondItem="cRx-th-glg" secondAttribute="top" id="VsT-2w-LQJ"/>
+                    <constraint firstAttribute="bottom" secondItem="iG5-8B-Qpo" secondAttribute="bottom" constant="20" symbolic="YES" id="YJh-1l-bC1"/>
+                    <constraint firstItem="pY1-C3-1wq" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="11" id="aOm-aQ-Z3N"/>
+                    <constraint firstItem="Zd5-RQ-24H" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="bkz-CK-w7c"/>
+                    <constraint firstItem="Zd5-RQ-24H" firstAttribute="centerX" secondItem="BMy-of-3V0" secondAttribute="centerX" id="czV-AC-dwu"/>
+                    <constraint firstItem="pY1-C3-1wq" firstAttribute="top" secondItem="tdC-85-ha1" secondAttribute="bottom" constant="8" symbolic="YES" id="eyL-yL-85O"/>
+                    <constraint firstItem="BMy-of-3V0" firstAttribute="top" secondItem="Zd5-RQ-24H" secondAttribute="bottom" constant="8" symbolic="YES" id="faH-A5-aJ1"/>
+                    <constraint firstItem="cRx-th-glg" firstAttribute="bottom" secondItem="OKw-vb-BbN" secondAttribute="bottom" id="lgJ-jV-TGD"/>
+                    <constraint firstItem="tdC-85-ha1" firstAttribute="top" secondItem="Saa-Be-lfl" secondAttribute="bottom" constant="8" symbolic="YES" id="liL-ac-1E8"/>
+                    <constraint firstItem="tdC-85-ha1" firstAttribute="centerX" secondItem="pY1-C3-1wq" secondAttribute="centerX" id="rut-Mg-Suo"/>
+                    <constraint firstItem="Clu-rR-vBe" firstAttribute="top" secondItem="pY1-C3-1wq" secondAttribute="bottom" constant="8" symbolic="YES" id="vxG-RR-z9D"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="85" y="18"/>
+            <point key="canvasLocation" x="85" y="13"/>
         </window>
     </objects>
     <resources>
+        <image name="GitHub-Mark-16px" width="16" height="16"/>
+        <image name="GitHub-Mark-64px" width="64" height="64"/>
+        <image name="bitcoin-coin" width="102.40000152587891" height="102.40000152587891"/>
         <image name="conkylogosmall4_48x48" width="48" height="48"/>
     </resources>
 </document>

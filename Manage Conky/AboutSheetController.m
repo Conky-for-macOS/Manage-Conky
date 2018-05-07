@@ -20,6 +20,16 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/teejee2008/conky-manager"]];
 }
 
+- (IBAction)donateBitcoin:(id)sender
+{
+    
+}
+
+- (IBAction)openCredits:(id)sender
+{
+
+}
+
 - (IBAction)activateAboutSheet:(id)sender
 {
     [super activateSheet:@"About"];
