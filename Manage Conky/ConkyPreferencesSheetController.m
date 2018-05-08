@@ -135,6 +135,8 @@
     [_addSearchLocationButton setEnabled:NO];
     [_removeSearchLocationButton setEnabled:NO];
     [_additionalLocationsToSearchLabel setTextColor:[NSColor grayColor]];
+    
+    [_disableXQuartzWarningsCheckbox setEnabled:NO];
 }
 
 - (void)enableMustInstallAgentMode
