@@ -20,42 +20,51 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/teejee2008/conky-manager"]];
 }
 
+- (NSString *)get_BCH_key
+{
+    NSURL *url = [NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"];
+    NSError* error;
+    NSString *content = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    return content;
+}
+
 - (IBAction)donateBitcoin:(id)sender
 {
-    const NSString *kMyBCHKey = @"i haven't set it up yet!";
-    
-    static NSPopover *previewPopover = nil;
+    NSString *keys = [self get_BCH_key];
+    NSString *str = keys ? [NSString stringWithFormat:@"Thank you for supporting! \n\n%@", keys] :  @"I am really really sorry! \nSomething went wrong! \nPlease open an issue to ManageConky's Github Repo if the problem persists! \nThank you very much!";
+    static NSPopover *donatePopover = nil;
 
-    NSTextField *field = [NSTextField textFieldWithString:[NSString stringWithFormat:@"Thank you for supporting! My BCH key is: \n\n%@", kMyBCHKey]];
+    NSTextField *field = [NSTextField textFieldWithString:str];
+    [field setAlignment:NSTextAlignmentCenter];
     NSViewController *controller = [[NSViewController alloc] init];
     [controller setView:field];
     
-    if (!previewPopover)
+    if (!donatePopover)
     {
-        previewPopover = [[NSPopover alloc] init];
-        [previewPopover setBehavior:NSPopoverBehaviorSemitransient];
-        [previewPopover setAnimates:YES];
+        donatePopover = [[NSPopover alloc] init];
+        [donatePopover setBehavior:NSPopoverBehaviorSemitransient];
+        [donatePopover setAnimates:YES];
     }
     
     /*
      * close any previously created popover
      */
-    [previewPopover setAnimates:NO];  /* close without animation */
-    [previewPopover close];
-    [previewPopover setAnimates:YES]; /* show with animation */
+    [donatePopover setAnimates:NO];  /* close without animation */
+    [donatePopover close];
+    [donatePopover setAnimates:YES]; /* show with animation */
     
     /*
      * setup a new popover preview
      */
-    [previewPopover setContentViewController:controller];
-    [previewPopover setContentSize:field.frame.size];
+    [donatePopover setContentViewController:controller];
+    [donatePopover setContentSize:field.frame.size];
     
     /*
      * show the preview
      */
-    [previewPopover showRelativeToRect:[sender bounds]
-                                ofView:sender
-                         preferredEdge:NSMaxYEdge];
+    [donatePopover showRelativeToRect:[sender bounds]
+                               ofView:sender
+                        preferredEdge:NSMaxYEdge];
 }
 
 - (IBAction)openCredits:(id)sender
