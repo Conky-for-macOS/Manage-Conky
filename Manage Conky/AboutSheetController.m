@@ -74,7 +74,7 @@
 
 - (IBAction)openCredits:(id)sender
 {
-
+    [NSApp orderFrontStandardAboutPanel:nil];
 }
 
 - (IBAction)activateAboutSheet:(id)sender
