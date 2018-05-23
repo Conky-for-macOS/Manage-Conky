@@ -20,6 +20,11 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/teejee2008/conky-manager"]];
 }
 
+- (IBAction)openGithubIssues:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/Conky-for-macOS/Manage-Conky/issues"]];
+}
+
 - (NSString *)get_BCH_key
 {
     NSURL *url = [NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"];
