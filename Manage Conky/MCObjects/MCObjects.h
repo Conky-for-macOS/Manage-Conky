@@ -23,15 +23,8 @@
  */
 @interface MCSettings : NSObject
 @property BOOL conkyRunsAtStartup;  /* yes or no? */
++ (instancetype)sharedInstance;
 @end
-
-/**
- * MCSettingsHolder
- *
- * Single MCSettings object to provide access to ManageConky settings
- * through any part of the program!
- */
-static MCSettings *MCSettingsHolder;
 
 //
 // WIDGETS / THEMES SECTION
@@ -43,11 +36,16 @@ static MCSettings *MCSettingsHolder;
  * Abstract object upon which MCWidget and MCTheme are based!
  */
 @interface MCWidgetOrTheme : NSObject
+{
+    MCSettings *MCSettingsHolder;
+}
 - (void)enable;
 - (void)reenable;
 - (void)kill;
 - (void)disable;
 - (BOOL)isEnabled;
+
+- (void)configureMCSettingsHolder;
 @end
 
 /**

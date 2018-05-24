@@ -10,6 +10,12 @@
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
 
 @implementation MCSettings
++ (instancetype)sharedInstance
+{
+    id res = [[self alloc] init];
+    [res setConkyRunsAtStartup:NO];
+    return res;
+}
 @end
 
 @implementation MCWidgetOrTheme
@@ -18,6 +24,8 @@
 - (void)kill {}
 - (void)disable {}
 - (BOOL)isEnabled { return YES; }
+
+- (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedInstance]; }
 @end
 
 @implementation MCWidget
@@ -26,6 +34,8 @@
     id res = [[self alloc] init];
     [res setPid:pid];
     [res setItemPath:path];
+    
+    [res configureMCSettingsHolder];
     
     return res;
 }
@@ -175,6 +185,8 @@
     [res setWallpaper:wallpaper];
     [res setCreator:creator];
     [res setSource:source];
+    
+    [res configureMCSettingsHolder];
     
     /*
      * themeName

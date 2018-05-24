@@ -90,7 +90,7 @@
          * Conky is Set to run at startup?
          * set checkbox state accordingly
          */
-        BOOL conkyRunsAtStartup = [MCSettingsHolder conkyRunsAtStartup];
+        BOOL conkyRunsAtStartup = [[MCSettings sharedInstance] conkyRunsAtStartup];
         [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
         
         /* Conky configuration file location? */
@@ -334,6 +334,8 @@
 
 - (IBAction)applyChanges:(id)sender
 {
+    MCSettings *MCSettingsHolder = [MCSettings sharedInstance];
+    
     BOOL changesApplied = YES;
     
     NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents"];

@@ -27,9 +27,9 @@
 
 - (NSString *)get_BCH_key
 {
-    NSURL *url = [NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"];
-    NSError* error;
-    NSString *content = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    NSString *content = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"]
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:nil];
     return content;
 }
 

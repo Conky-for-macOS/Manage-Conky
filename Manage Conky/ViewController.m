@@ -23,7 +23,7 @@
     BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
     
     /* publish it to our settings-holder */
-    MCSettingsHolder = [[MCSettings alloc] init];
+    MCSettingsHolder = [MCSettings sharedInstance];
     [MCSettingsHolder setConkyRunsAtStartup:a];
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
