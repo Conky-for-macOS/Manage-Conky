@@ -12,7 +12,9 @@
 @implementation MCSettings
 + (instancetype)sharedInstance
 {
-    id res = [[self alloc] init];
+    static id res = nil;
+    if (!res)
+        res = [[self alloc] init];
     [res setConkyRunsAtStartup:NO];
     return res;
 }
@@ -24,7 +26,6 @@
 - (void)kill {}
 - (void)disable {}
 - (BOOL)isEnabled { return YES; }
-
 - (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedInstance]; }
 @end
 
@@ -34,9 +35,7 @@
     id res = [[self alloc] init];
     [res setPid:pid];
     [res setItemPath:path];
-    
     [res configureMCSettingsHolder];
-    
     return res;
 }
 
