@@ -90,7 +90,8 @@
          * Conky is Set to run at startup?
          * set checkbox state accordingly
          */
-        BOOL conkyRunsAtStartup = [[MCSettings sharedInstance] conkyRunsAtStartup];
+        MCSettings *t = [MCSettings sharedInstance];
+        BOOL conkyRunsAtStartup = [t conkyRunsAtStartup];
         [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
         
         /* Conky configuration file location? */
@@ -346,11 +347,9 @@
         /* revert */
         mustDisableConkyForStartup = NO;
         
-        changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
+        unlink([conkyAgentPlistPath UTF8String]);
         
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO]
-                                                 forKey:@"runConkyAtStartup"];
-        [MCSettingsHolder setConkyRunsAtStartup:!changesApplied];
+        [MCSettingsHolder setConkyRunsAtStartup:changesApplied];
     }
     else if (mustEnableConkyForStartup)
     {
@@ -375,13 +374,12 @@
             shownX11TakesAlotTimeWarning = YES;
         }
         
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES]
-                                                  forKey:@"runConkyAtStartup"];
+        [MCSettingsHolder setConkyRunsAtStartup:YES];
+        
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:keepAlive]
                                                   forKey:@"keepAlive"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay_]
                                                   forKey:@"startupDelay"];
-        [MCSettingsHolder setConkyRunsAtStartup:YES];
         
         [[NSApp mainWindow] setDocumentEdited:NO];
     }

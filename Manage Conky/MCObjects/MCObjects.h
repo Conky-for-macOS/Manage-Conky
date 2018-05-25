@@ -22,8 +22,10 @@
  * amongst many parts of the program!
  */
 @interface MCSettings : NSObject
-@property BOOL conkyRunsAtStartup;  /* yes or no? */
 + (instancetype)sharedInstance;
+
+- (void)setConkyRunsAtStartup:(BOOL)a;
+- (BOOL)conkyRunsAtStartup;
 @end
 
 //

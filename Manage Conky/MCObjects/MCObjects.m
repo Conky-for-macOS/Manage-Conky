@@ -15,9 +15,18 @@
     static id res = nil;
     if (!res)
         res = [[self alloc] init];
-    [res setConkyRunsAtStartup:NO];
     return res;
 }
+- (void)setConkyRunsAtStartup:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
+                                              forKey:@"runConkyAtStartup"];
+}
+- (BOOL)conkyRunsAtStartup
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
+}
+
 @end
 
 @implementation MCWidgetOrTheme
