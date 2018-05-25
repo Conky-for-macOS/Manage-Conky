@@ -79,7 +79,7 @@
         /*
          * command to execute for starting this specific widget (consider the startupDelay)
          */
-        NSString *cmd = [NSString stringWithFormat:@"%@conky -c %@ &\n",
+        NSString *cmd = [NSString stringWithFormat:@"%@conky -c \"%@\" &\n",
                          MCConfigsRunnerScriptContents,
                          _itemPath];
         
@@ -93,7 +93,7 @@
          */
         createLaunchAgent(@"/bin/sh",
                           @"org.npyl.conkyEnabledWidgets",
-                          @[@"-c", MCConfigsRunnerScript],
+                          @[@"/bin/sh", @"-c", MCConfigsRunnerScript],
                           keepAlive,
                           startupDelay);
         
@@ -406,7 +406,7 @@
      */
     createLaunchAgent(@"/bin/sh",
                       _themeName,
-                      @[@"-c", scriptLocation],
+                      @[@"/bin/sh", @"-c", scriptLocation],
                       YES,
                       _startupDelay);
     // xxx error checking

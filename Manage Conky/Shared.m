@@ -62,7 +62,7 @@ void createUserLaunchAgentsDirectory(void)
                                                     error:nil];
 }
 
-void createLaunchAgent(NSString *program,
+BOOL createLaunchAgent(NSString *program,
                        NSString *label,
                        NSArray *args,
                        BOOL runAtLoad,
@@ -79,10 +79,12 @@ void createLaunchAgent(NSString *program,
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
-    [[AHLaunchCtl sharedController] add:job
-                               toDomain:kAHUserLaunchAgent
-                                  error:&error];
+    BOOL res = [[AHLaunchCtl sharedController] add:job
+                                          toDomain:kAHUserLaunchAgent
+                                             error:&error];
     
     if (error)
         NSLog(@"Error adding LaunchAgent. \n\n%@", error);
+    
+    return res;
 }
