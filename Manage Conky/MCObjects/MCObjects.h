@@ -24,6 +24,9 @@
 @interface MCSettings : NSObject
 + (instancetype)sharedInstance;
 
+//
+// Special getters and setters
+//
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
 @end

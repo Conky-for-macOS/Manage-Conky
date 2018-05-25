@@ -350,6 +350,9 @@
         unlink([conkyAgentPlistPath UTF8String]);
         
         [MCSettingsHolder setConkyRunsAtStartup:NO];
+        
+        //changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
+        //[MCSettingsHolder setConkyRunsAtStartup:!changesApplied];
     }
     else if (mustEnableConkyForStartup)
     {
