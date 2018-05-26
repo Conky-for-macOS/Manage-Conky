@@ -9,6 +9,12 @@
 #import "ViewController.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 
+@implementation MCCustomSearchField
+- (BOOL)allowsVibrancy
+{
+    return YES;
+}
+@end
 
 @implementation ViewController
 

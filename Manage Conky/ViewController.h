@@ -16,6 +16,10 @@ typedef enum {
     widgetsThemesTableShowThemes,
 } MCWidgetThemesTableShow;
 
+@interface MCCustomSearchField : NSSearchField
+- (BOOL)allowsVibrancy;
+@end
+
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
 {
     MCWidgetThemesTableShow whatToShow;
@@ -32,6 +36,8 @@ typedef enum {
 
 @property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
+
+@property (weak) IBOutlet NSSearchField *searchField;
 
 /**
  * Function used to fill widgetsArray and themesArray
