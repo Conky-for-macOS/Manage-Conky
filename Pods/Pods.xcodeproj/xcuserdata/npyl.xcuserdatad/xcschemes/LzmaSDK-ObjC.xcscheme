@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9F867CA9DA7F2D22DA1E8622D3A72CC0"
+               BlueprintIdentifier = "50607AFD781EEACD46440BA01F357CCC"
                BuildableName = "LzmaSDK_ObjC.framework"
                BlueprintName = "LzmaSDK-ObjC"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F867CA9DA7F2D22DA1E8622D3A72CC0"
+            BlueprintIdentifier = "50607AFD781EEACD46440BA01F357CCC"
             BuildableName = "LzmaSDK_ObjC.framework"
             BlueprintName = "LzmaSDK-ObjC"
             ReferencedContainer = "container:Pods.xcodeproj">
