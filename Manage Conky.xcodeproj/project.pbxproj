@@ -68,15 +68,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		091506C920729E0E00019E40 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0984A9262067F06600BDE1B9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,7 +390,6 @@
 				F7274ACE208100D26DB22441 /* [CP] Copy Pods Resources */,
 				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
 				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
-				091506C920729E0E00019E40 /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -22,6 +22,4 @@ Upon ManageConky update, we should be able to update the `default-theme-pack` in
 --------------------------------------------------------------------------------------------
 ### 2.  Create a ManageConky build guide
 
-### 4.  Add donate sheet
-
 ### 5.  Add the Widget loader (the code that will add widgets to a conky-startup.sh)
