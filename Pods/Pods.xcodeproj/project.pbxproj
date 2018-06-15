@@ -1614,7 +1614,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		36FB63F49CCBC3F439E157FE85E79839 /* Release */ = {
+		14C50DBFA56B54848932C415271526FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9670A1C3BDB93F320EDE76A95BBD11A /* LzmaSDK-ObjC.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
+				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
+				PRODUCT_NAME = LzmaSDK_ObjC;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D50416E9EABC26F862B025C9F8D30E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BE4A0C19CB2458D434B5524B376F9B /* AHLaunchCtl.xcconfig */;
 			buildSettings = {
@@ -1635,6 +1666,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MODULEMAP_FILE = "Target Support Files/AHLaunchCtl/AHLaunchCtl.modulemap";
+				PRODUCT_MODULE_NAME = AHLaunchCtl;
 				PRODUCT_NAME = AHLaunchCtl;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1644,10 +1676,11 @@
 			};
 			name = Release;
 		};
-		74114D5858E44888233CC0F3C270D584 /* Release */ = {
+		5AF2DF4F0D4810DA40E3E86EFDCB9B8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 387A46C536CB6B980D6303129DC5DE96 /* Pods-Manage Conky.release.xcconfig */;
+			baseConfigurationReference = 347547ADACF227FAB0C693933694ABD3 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1670,15 +1703,46 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Manage_Conky;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
+			name = Debug;
+		};
+		775AE69995606D46022CDBF86232CFC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9670A1C3BDB93F320EDE76A95BBD11A /* LzmaSDK-ObjC.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
+				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
+				PRODUCT_NAME = LzmaSDK_ObjC;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
 			name = Release;
 		};
-		7776E8668CCA96B6A01D370004E6DE01 /* Debug */ = {
+		885072FBE917853E9C621EA32511C1DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1710,6 +1774,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1734,16 +1799,15 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		81CEB241B17A48DE3015FDEC4AF6CDD1 /* Release */ = {
+		9E325AAF2FC289AB8C57B7E85A867C40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9670A1C3BDB93F320EDE76A95BBD11A /* LzmaSDK-ObjC.xcconfig */;
+			baseConfigurationReference = 68BE4A0C19CB2458D434B5524B376F9B /* AHLaunchCtl.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1756,22 +1820,58 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/AHLaunchCtl/AHLaunchCtl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AHLaunchCtl/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
-				PRODUCT_NAME = LzmaSDK_ObjC;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULEMAP_FILE = "Target Support Files/AHLaunchCtl/AHLaunchCtl.modulemap";
+				PRODUCT_MODULE_NAME = AHLaunchCtl;
+				PRODUCT_NAME = AHLaunchCtl;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
+			name = Debug;
+		};
+		C882AA099E722A403718EE3660055F4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 387A46C536CB6B980D6303129DC5DE96 /* Pods-Manage Conky.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Manage Conky/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Target Support Files/Pods-Manage Conky/Pods-Manage Conky.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
 			name = Release;
 		};
-		8609651D963F7BEC7028306B76B8D545 /* Release */ = {
+		E574923E2959CFEF4FEBC7B272DBC6AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1803,6 +1903,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1823,105 +1924,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
-		};
-		CC9ECA65FF006F408AF6FF929A53245F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68BE4A0C19CB2458D434B5524B376F9B /* AHLaunchCtl.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/AHLaunchCtl/AHLaunchCtl-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AHLaunchCtl/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				MODULEMAP_FILE = "Target Support Files/AHLaunchCtl/AHLaunchCtl.modulemap";
-				PRODUCT_NAME = AHLaunchCtl;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D3D66C656D061B6BD40BC97C6742C086 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9670A1C3BDB93F320EDE76A95BBD11A /* LzmaSDK-ObjC.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
-				PRODUCT_NAME = LzmaSDK_ObjC;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E52F523632AB92E040D8A08B10FFED6A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 347547ADACF227FAB0C693933694ABD3 /* Pods-Manage Conky.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Manage Conky/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULEMAP_FILE = "Target Support Files/Pods-Manage Conky/Pods-Manage Conky.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Manage_Conky;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1929,8 +1935,8 @@
 		1C66B07D488C31EDA070C645F656C9CD /* Build configuration list for PBXNativeTarget "Pods-Manage Conky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E52F523632AB92E040D8A08B10FFED6A /* Debug */,
-				74114D5858E44888233CC0F3C270D584 /* Release */,
+				5AF2DF4F0D4810DA40E3E86EFDCB9B8F /* Debug */,
+				C882AA099E722A403718EE3660055F4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1938,8 +1944,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7776E8668CCA96B6A01D370004E6DE01 /* Debug */,
-				8609651D963F7BEC7028306B76B8D545 /* Release */,
+				885072FBE917853E9C621EA32511C1DA /* Debug */,
+				E574923E2959CFEF4FEBC7B272DBC6AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1947,8 +1953,8 @@
 		3EC6BDC1628E6C7B1C8AB39801AA84C5 /* Build configuration list for PBXNativeTarget "LzmaSDK-ObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3D66C656D061B6BD40BC97C6742C086 /* Debug */,
-				81CEB241B17A48DE3015FDEC4AF6CDD1 /* Release */,
+				14C50DBFA56B54848932C415271526FD /* Debug */,
+				775AE69995606D46022CDBF86232CFC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1956,8 +1962,8 @@
 		BFE6A58D0C9A8DE66D8F5BC3C38B1725 /* Build configuration list for PBXNativeTarget "AHLaunchCtl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CC9ECA65FF006F408AF6FF929A53245F /* Debug */,
-				36FB63F49CCBC3F439E157FE85E79839 /* Release */,
+				9E325AAF2FC289AB8C57B7E85A867C40 /* Debug */,
+				4D50416E9EABC26F862B025C9F8D30E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

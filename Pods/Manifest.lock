@@ -8,6 +8,12 @@ DEPENDENCIES:
   - LzmaSDK-ObjC
   - Sparkle
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AHLaunchCtl
+    - LzmaSDK-ObjC
+    - Sparkle
+
 SPEC CHECKSUMS:
   AHLaunchCtl: 696233a41a9b968e0683ce2cc1b8686ff25ca5c7
   LzmaSDK-ObjC: 1dd68a10d1af6c127f9811d117bf41a90bac9234
@@ -15,4 +21,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 378364995c3b13ad70f55d54cf6e9830b6eecc82
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
