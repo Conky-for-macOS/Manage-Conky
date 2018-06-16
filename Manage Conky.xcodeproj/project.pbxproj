@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090E425D20D5782900D78902 /* HomebrewCtl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090E425C20D5782900D78902 /* HomebrewCtl.framework */; };
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		093BDFC020861BCD004E6354 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093BDFBF20861BCD004E6354 /* Editor.xib */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		090E425C20D5782900D78902 /* HomebrewCtl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomebrewCtl.framework; path = "Manage Conky/Frameworks/HomebrewCtl.framework"; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		093BDFBF20861BCD004E6354 /* Editor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Editor.xib; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */,
+				090E425D20D5782900D78902 /* HomebrewCtl.framework in Frameworks */,
 				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
@@ -278,6 +281,7 @@
 		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				090E425C20D5782900D78902 /* HomebrewCtl.framework */,
 				095F9B402077DE6E003C60C1 /* FinderSync.framework */,
 				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
 				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,
@@ -752,6 +756,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CC63MSFH9N;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Manage\\ Conky",
+					"$(PROJECT_DIR)/Manage\\ Conky",
+					"$(PROJECT_DIR)/Manage\\ Conky/Frameworks",
+					"$(PROJECT_DIR)/Manage\\ Conky/Frameworks",
+				);
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -771,6 +782,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CC63MSFH9N;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Manage\\ Conky",
+					"$(PROJECT_DIR)/Manage\\ Conky",
+					"$(PROJECT_DIR)/Manage\\ Conky/Frameworks",
+					"$(PROJECT_DIR)/Manage\\ Conky/Frameworks",
+				);
 				INFOPLIST_FILE = "Manage Conky/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;

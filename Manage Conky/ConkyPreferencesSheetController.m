@@ -9,6 +9,7 @@
 #import "ConkyPreferencesSheetController.h"
 
 #import <ServiceManagement/ServiceManagement.h>
+#import "Frameworks/HomebrewCtl.framework/Headers/HomebrewCtl.h"
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
 #import "ViewController.h"
@@ -448,6 +449,12 @@
      */
     NSLog(@"Must install ConkyX after update...");
     [self installConky];
+    
+    // TODO: This should happen on scheduled times! :D
+    /* Upon every ManageConky update, also update Homebrew */
+    DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
+    [dhc updateHomebrew];
+    [dhc upgradeHomebrew];
 }
 
 //
