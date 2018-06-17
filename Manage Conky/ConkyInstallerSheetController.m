@@ -141,7 +141,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
         
         [dhc installHomebrew:&error];
-        if (error)
+        if (error && error.code != kHCInstallFailedInstallationAlreadyExists)
         {
             [self writeToLog:[NSString stringWithFormat:@"Error installing Homebrew: %@\n", error]];
             [_progressIndicator stopAnimation:nil];
