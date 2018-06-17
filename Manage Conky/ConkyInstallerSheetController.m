@@ -132,17 +132,19 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if (access(HOMEBREW_PATH, F_OK) != 0)
+    if (access(HOMEBREW_PATH, F_OK) == 0)
     {
-        [self writeToLog:@"Homebrew is missing. Attempting to install!"];
+        [self writeToLog:@"Homebrew is missing. Attempting to install!\n\n"];
         
         NSError *error = nil;
+        
         DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
         
         [dhc installHomebrew:&error];
         if (error)
         {
-            NSLog(@"Failed to install Homebrew! :? %@", error);
+            [self writeToLog:[NSString stringWithFormat:@"Error installing Homebrew: %@\n", error]];
+            [_progressIndicator stopAnimation:nil];
             [_doneButton setEnabled:YES];
             return;
         }
