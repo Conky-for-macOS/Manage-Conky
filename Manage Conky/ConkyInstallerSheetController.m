@@ -132,7 +132,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if (access(HOMEBREW_PATH, F_OK) == 0)
+    if (access(HOMEBREW_PATH, F_OK) != 0)
     {
         [self writeToLog:@"Homebrew is missing. Attempting to install!"];
         
