@@ -450,9 +450,9 @@
     
     // TODO: This should happen on scheduled times! :D
     /* Upon every ManageConky update, also update Homebrew */
-    DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
-    [dhc updateHomebrew];
-    [dhc upgradeHomebrew];
+//    DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
+//    [dhc updateHomebrew];
+//    [dhc upgradeHomebrew];
 }
 
 //
