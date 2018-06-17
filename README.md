@@ -14,6 +14,8 @@ Manage Conky is the implementation of [conky-manager](https://github.com/teejee2
 
 [conky-manager](https://github.com/teejee2008/conky-manager)
 
+[HomebrewCtl](https://github.com/npyl/HomebrewCtl-Issues)
+
 [LetsMove](https://github.com/potionfactory/LetsMove)
 
 [Sparkle Framework](https://sparkle-project.org)
