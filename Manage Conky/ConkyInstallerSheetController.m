@@ -14,6 +14,7 @@
 #import <Foundation/NSFileManager.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <ServiceManagement/ServiceManagement.h>
+#import "Frameworks/HomebrewCtl.framework/Headers/HomebrewCtl.h"
 
 #define MANAGE_CONKY_PATH "/Applications/Manage Conky.app"
 #define HOMEBREW_PATH "/usr/local/bin/brew"
@@ -131,15 +132,20 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if (access(HOMEBREW_PATH, F_OK) != 0)
+    if (access(HOMEBREW_PATH, F_OK) == 0)
     {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
+        [self writeToLog:@"Homebrew is missing. Attempting to install!"];
         
-        NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
-        [hbalert setMessageText:@"Homebrew missing"];
-        [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
-        [hbalert setAlertStyle:NSAlertStyleCritical];
-        [hbalert runModalSheetForWindow:_window];
+        NSError *error = nil;
+        DefaultHomebrewCtl *dhc = [DefaultHomebrewCtl controller];
+        
+        [dhc installHomebrew:&error];
+        if (error)
+        {
+            NSLog(@"Failed to install Homebrew! :? %@", error);
+            [_doneButton setEnabled:YES];
+            return;
+        }
     }
     
     

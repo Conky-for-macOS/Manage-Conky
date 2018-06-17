@@ -8,8 +8,8 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#import <ServiceManagement/ServiceManagement.h>
 #import "Frameworks/HomebrewCtl.framework/Headers/HomebrewCtl.h"
+#import <ServiceManagement/ServiceManagement.h>
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
 #import "ViewController.h"
@@ -22,8 +22,9 @@
 #define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
 #define CONKYX_PATH             "/Applications/ConkyX.app"
 
-#define kConkyLaunchAgentLabel  @"org.npyl.conky"
-#define kConkyExecutablePath    @"/Applications/ConkyX.app/Contents/Resources/conky"
+#define kConkyLaunchAgentLabel      @"org.npyl.conky"
+#define kConkyExecutablePath        @"/Applications/ConkyX.app/Contents/Resources/conky"
+#define kManageConkyHomebrewPath    @"/Library/ManageConky/Homebrew"
 
 #define CONKYX          @"/Applications/ConkyX.app"
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
@@ -351,9 +352,6 @@
         unlink([conkyAgentPlistPath UTF8String]);
         
         [MCSettingsHolder setConkyRunsAtStartup:NO];
-        
-        //changesApplied = (unlink([conkyAgentPlistPath UTF8String]) == 0);
-        //[MCSettingsHolder setConkyRunsAtStartup:!changesApplied];
     }
     else if (mustEnableConkyForStartup)
     {
