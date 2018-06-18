@@ -11,6 +11,7 @@
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		093BDFC020861BCD004E6354 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093BDFBF20861BCD004E6354 /* Editor.xib */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
+		09534BE820D7931E00A92424 /* HomebrewCtl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 090E425C20D5782900D78902 /* HomebrewCtl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
@@ -69,6 +70,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		09534BE720D7931100A92424 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09534BE820D7931E00A92424 /* HomebrewCtl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0984A9262067F06600BDE1B9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +404,7 @@
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
 				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
 				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
+				09534BE720D7931100A92424 /* CopyFiles */,
 			);
 			buildRules = (
 			);

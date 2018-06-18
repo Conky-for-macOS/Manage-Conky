@@ -24,7 +24,6 @@
 
 #define kConkyLaunchAgentLabel      @"org.npyl.conky"
 #define kConkyExecutablePath        @"/Applications/ConkyX.app/Contents/Resources/conky"
-#define kManageConkyHomebrewPath    @"/Library/ManageConky/Homebrew"
 
 #define CONKYX          @"/Applications/ConkyX.app"
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
