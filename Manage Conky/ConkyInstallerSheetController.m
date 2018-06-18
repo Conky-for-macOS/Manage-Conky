@@ -16,7 +16,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 
 #define MANAGE_CONKY_PATH "/Applications/Manage Conky.app"
-#define HOMEBREW_PATH "/usr/local/bin/brew"
+#define HOMEBREW_PATH @"/usr/local/bin/brew"
 #define XQUARTZ_PATH  "/usr/X11"
 
 @implementation ConkyInstallerSheetController
@@ -113,7 +113,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if (access(HOMEBREW_PATH, F_OK) != 0)
+    if (![fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
     {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
         
