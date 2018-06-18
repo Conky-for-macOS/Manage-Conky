@@ -112,24 +112,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     NSFileManager *fm = [NSFileManager defaultManager];
     
     /*
-     * Create symbolic link to install ConkyX to Applications
-     */
-    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
-    {
-        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
-        showErrorAlertWithMessageForWindow(@"Failed to install ConkyX.", _window);
-    }
-    
-    /*
-     * Create symbolic link to allow using from terminal
-     */
-    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
-    {
-        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
-        showErrorAlertWithMessageForWindow(@"Failed to create conky symbolic link.", _window);
-    }
-    
-    /*
      * detect if Homebrew is installed
      */
     if (access(HOMEBREW_PATH, F_OK) == 0)
@@ -282,6 +264,24 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     {
         [_progressIndicator stopAnimation:nil];
         [_doneButton setEnabled:YES];
+    }
+    
+    /*
+     * Create symbolic link to install ConkyX to Applications
+     */
+    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
+    {
+        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
+        showErrorAlertWithMessageForWindow(@"Failed to install ConkyX.", _window);
+    }
+    
+    /*
+     * Create symbolic link to allow using from terminal
+     */
+    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+    {
+        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+        showErrorAlertWithMessageForWindow(@"Failed to create conky symbolic link.", _window);
     }
 }
 
