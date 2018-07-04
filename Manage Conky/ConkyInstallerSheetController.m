@@ -124,11 +124,43 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [hbalert runModalSheetForWindow:_window];
     }
     
+    __block int counter = 0;
+    __block bool installedXquartz = NO;
     
     NSThread *thread1 = [[NSThread alloc] initWithBlock:^{
+        counter++;
         [self installMissingLibraries];
+        counter--;
     }];
+    
+    NSThread *thread2 = [[NSThread alloc] initWithBlock:^{
+        
+        /*
+         * poll until all jobs have finished
+         */
+        while (counter > 0) { usleep(2000); }
+        
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+                           NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+                           [alert setMessageText:@"Conky Finished Installing"];
+                           [alert runModalSheetForWindow:self->_window];
+                           
+                           [self->_progressIndicator stopAnimation:nil];
+                           [self->_doneButton setEnabled:YES];
+                           
+                           if (installedXquartz)
+                           {
+                               NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+                               [alert setMessageText:@"You need to logout for changes to take effect!"];
+                               [alert runModalSheetForWindow:self->_window];
+                           }
+
+                       });
+    }];
+    
     [thread1 start];
+    [thread2 start];
     
     /*
      * detect if XQuartz is installed
@@ -137,6 +169,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     {
         // XXX Fetch beta.xml from xquartz's site
         // XXX Read the XML file and get xquartz_download_url
+        // Xquartz gets updated once in a blue moon so there isn't much problem keeping the link hardtyped.
+        
+        counter++;
         
         const char *xquartz_download_url = "https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg";
         
@@ -151,8 +186,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         {
             NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
             showErrorAlertWithMessageForWindow(@"Failed to launch helper.", _window);
-            [_progressIndicator stopAnimation:nil];
-            [_doneButton setEnabled:YES];
+            //[_progressIndicator stopAnimation:nil];
+            //[_doneButton setEnabled:YES];
+            counter--;
             return;
         }
         
@@ -161,8 +197,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         {
             NSLog(@"Failed to create XPC connection.");
             showErrorAlertWithMessageForWindow(@"Failed to create connection to helper.", _window);
-            [_progressIndicator stopAnimation:nil];
-            [_doneButton setEnabled:YES];
+            //[_progressIndicator stopAnimation:nil];
+            //[_doneButton setEnabled:YES];
+            counter--;
             return;
         }
         
@@ -197,14 +234,17 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                                    ^{
                                        [self->_doneButton setEnabled:YES];
                                    });
+                    counter--;
                 }
                 else
                 {
                     //
                     // Otherwise the errors are normal, and indicate termination of helper.
                     //
+                    
+                    counter--;
+                    installedXquartz = YES;
                 }
-
             }
             else
             {
@@ -220,15 +260,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                 if (strcmp(message, HELPER_FINISHED_MESSAGE) == 0)
                 {
                     installationSucceeded = true;
-                    dispatch_async(dispatch_get_main_queue(),
-                                   ^{
-                                       NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
-                                       [alert setMessageText:@"Conky Finished Installing"];
-                                       [alert runModalSheetForWindow:self->_window];
-                                   
-                                       [self->_progressIndicator stopAnimation:nil];
-                                       [self->_doneButton setEnabled:YES];
-                                   });
                 }
                 else
                 {
@@ -252,11 +283,15 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         xpc_dictionary_set_string(startupDictionary, "scriptPath", [scriptPath UTF8String]);
         xpc_connection_send_message(connection, startupDictionary);
     }
+    /*
     else
     {
         [_progressIndicator stopAnimation:nil];
         [_doneButton setEnabled:YES];
-    }
+    }*/
+    
+    // TODO
+    // First we must delete these stuff (this multiplies chances of success)
     
     /*
      * Create symbolic link to install ConkyX to Applications
