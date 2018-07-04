@@ -8,6 +8,7 @@
 
 #import "MCObjects.h"
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
+#import <Foundation/Foundation.h>
 
 @implementation MCSettings
 + (instancetype)sharedInstance
@@ -25,6 +26,62 @@
 - (BOOL)conkyRunsAtStartup
 {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
+}
+
+#define CONKYX          @"/Applications/ConkyX.app"
+#define MANAGE_CONKY    @"/Applications/Manage Conky.app"
+#define CONKY_SYMLINK   @"/usr/local/bin/conky"
+
+- (void)installManageConkyFilesystem
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    /*
+     * Create symbolic link to install ConkyX to Applications
+     */
+    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
+    {
+        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
+//        showErrorAlertWithMessageForWindow(@"Failed to install ConkyX.", _window);
+    }
+    
+    /*
+     * Create symbolic link to allow using from terminal
+     */
+    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+    {
+        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+//        showErrorAlertWithMessageForWindow(@"Failed to create conky symbolic link.", _window);
+    }
+}
+
+- (void)uninstallManageConkyFilesystem
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    [fm removeItemAtPath:CONKYX error:&error];
+    if (error)
+    {
+//        showErrorAlertWithMessageForWindow(@"Failed to remove ConkyX.", _window);
+        NSLog(@"Error removing ConkyX: \n\n%@", error);
+        return;
+    }
+    
+    [fm removeItemAtPath:MANAGE_CONKY error:&error];
+    if (error)
+    {
+//        showErrorAlertWithMessageForWindow(@"Failed to remove Manage Conky.", _window);
+        NSLog(@"Error removing Manage Conky: \n\n%@", error);
+        return;
+    }
+    
+    [fm removeItemAtPath:CONKY_SYMLINK error:&error];
+    if (error)
+    {
+        NSLog(@"Error removing symlink: \n\n%@", error);
+    }
 }
 
 @end

@@ -25,10 +25,6 @@
 #define kConkyLaunchAgentLabel      @"org.npyl.conky"
 #define kConkyExecutablePath        @"/Applications/ConkyX.app/Contents/Resources/conky"
 
-#define CONKYX          @"/Applications/ConkyX.app"
-#define MANAGE_CONKY    @"/Applications/Manage Conky.app"
-#define CONKY_SYMLINK   @"/usr/local/bin/conky"
-
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
@@ -293,27 +289,7 @@
         
         [self disableControls];
         
-        [fm removeItemAtPath:CONKYX error:&error];
-        if (error)
-        {
-            showErrorAlertWithMessageForWindow(@"Failed to remove ConkyX.", _window);
-            NSLog(@"Error removing ConkyX: \n\n%@", error);
-            return;
-        }
-        
-        [fm removeItemAtPath:MANAGE_CONKY error:&error];
-        if (error)
-        {
-            showErrorAlertWithMessageForWindow(@"Failed to remove Manage Conky.", _window);
-            NSLog(@"Error removing Manage Conky: \n\n%@", error);
-            return;
-        }
-        
-        [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-        if (error)
-        {
-            NSLog(@"Error removing symlink: \n\n%@", error);
-        }
+        [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
         
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];

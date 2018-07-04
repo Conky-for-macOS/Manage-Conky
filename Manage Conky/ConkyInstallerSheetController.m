@@ -10,6 +10,7 @@
 
 #import "Shared.h"
 #import "PFMoveApplication.h"
+#import "MCObjects/MCObjects.h"
 #import "NSAlert+runModalSheet.h"
 #import <Foundation/NSFileManager.h>
 #import <CoreFoundation/CoreFoundation.h>
@@ -107,7 +108,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
 {
     [_progressIndicator startAnimation:nil];
     
-    NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
     
     /*
@@ -290,26 +290,9 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         [_doneButton setEnabled:YES];
     }*/
     
-    // TODO
-    // First we must delete these stuff (this multiplies chances of success)
-    
-    /*
-     * Create symbolic link to install ConkyX to Applications
-     */
-    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
-    {
-        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
-        showErrorAlertWithMessageForWindow(@"Failed to install ConkyX.", _window);
-    }
-    
-    /*
-     * Create symbolic link to allow using from terminal
-     */
-    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
-    {
-        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
-        showErrorAlertWithMessageForWindow(@"Failed to create conky symbolic link.", _window);
-    }
+    /* uninstall old & install new */
+    [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
+    [[MCSettings sharedInstance] installManageConkyFilesystem];
 }
 
 - (IBAction)doneButtonPressed:(id)sender

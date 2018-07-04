@@ -29,6 +29,9 @@
 //
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
+
+- (void)installManageConkyFilesystem;
+- (void)uninstallManageConkyFilesystem;
 @end
 
 //
