@@ -274,10 +274,6 @@
 
 - (IBAction)un_in_stallConky:(id)sender
 {
-    NSError *error = nil;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSWindow *_window = [super sheet];
-    
     /* disable the Install/Uninstall button */
     [_un_in_stallConkyButton setEnabled:NO];
     
