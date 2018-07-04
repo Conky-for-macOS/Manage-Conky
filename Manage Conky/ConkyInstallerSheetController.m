@@ -169,7 +169,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     {
         // XXX Fetch beta.xml from xquartz's site
         // XXX Read the XML file and get xquartz_download_url
-        // Xquartz gets updated once in a blue moon so there isn't much problem keeping the link hardtyped.
+        // Xquartz gets updated once in a blue moon so it isn't much of problem keeping the link hardcoded.
         
         counter++;
         
