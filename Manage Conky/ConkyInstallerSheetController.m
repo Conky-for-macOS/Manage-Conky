@@ -186,8 +186,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         {
             NSLog(@"Failed to bless helper. Error: %@", (__bridge NSError *)error);
             showErrorAlertWithMessageForWindow(@"Failed to launch helper.", _window);
-            //[_progressIndicator stopAnimation:nil];
-            //[_doneButton setEnabled:YES];
             counter--;
             return;
         }
@@ -197,8 +195,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         {
             NSLog(@"Failed to create XPC connection.");
             showErrorAlertWithMessageForWindow(@"Failed to create connection to helper.", _window);
-            //[_progressIndicator stopAnimation:nil];
-            //[_doneButton setEnabled:YES];
             counter--;
             return;
         }
@@ -283,12 +279,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         xpc_dictionary_set_string(startupDictionary, "scriptPath", [scriptPath UTF8String]);
         xpc_connection_send_message(connection, startupDictionary);
     }
-    /*
-    else
-    {
-        [_progressIndicator stopAnimation:nil];
-        [_doneButton setEnabled:YES];
-    }*/
     
     /* uninstall old & install new */
     [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
