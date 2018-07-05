@@ -285,7 +285,7 @@
         
         [self disableControls];
         
-        [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
+        [[MCSettings sharedInstance] uninstallCompletelyManageConkyFilesystem];
         
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];

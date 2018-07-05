@@ -14,6 +14,7 @@
 @interface SMJobBlessHelper : NSObject
 {
     xpc_connection_t connection_handle;
+    xpc_connection_t service;
 }
 @end
 @implementation SMJobBlessHelper
@@ -146,12 +147,17 @@
     xpc_connection_resume(connection);
 }
 
+- (void)dispatchMain
+{
+    dispatch_main();
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self)
     {
-        xpc_connection_t service = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER,
+        service = xpc_connection_create_mach_service(SMJOBBLESSHELPER_IDENTIFIER,
                                                                       dispatch_get_main_queue(),
                                                                       XPC_CONNECTION_MACH_SERVICE_LISTENER);
         if (!service)
@@ -165,7 +171,6 @@
                                              [self __XPC_Connection_Handler:connection];
                                          });
         xpc_connection_resume(service);
-        dispatch_main();
     }
     return self;
 }
@@ -177,5 +182,8 @@ int main(int argc, const char *argv[])
     SMJobBlessHelper *helper = [[SMJobBlessHelper alloc] init];
     if (!helper)
         return EXIT_FAILURE;
+    
+    [helper dispatchMain];
+    
     return EXIT_SUCCESS;
 }

@@ -32,6 +32,7 @@
 
 - (void)installManageConkyFilesystem;
 - (void)uninstallManageConkyFilesystem;
+- (void)uninstallCompletelyManageConkyFilesystem;
 @end
 
 //

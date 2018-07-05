@@ -65,11 +65,19 @@
     [fm removeItemAtPath:CONKYX error:&error];
     if (error) { NSLog(@"Error removing ConkyX: \n\n%@", error); }
     
-    [fm removeItemAtPath:MANAGE_CONKY error:&error];
-    if (error) { NSLog(@"Error removing Manage Conky: \n\n%@", error); }
-    
     [fm removeItemAtPath:CONKY_SYMLINK error:&error];
     if (error) { NSLog(@"Error removing symlink: \n\n%@", error); }
+}
+
+- (void)uninstallCompletelyManageConkyFilesystem
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    [self uninstallManageConkyFilesystem];
+    
+    [fm removeItemAtPath:MANAGE_CONKY error:&error];
+    if (error) { NSLog(@"Error removing Manage Conky: \n\n%@", error); }
 }
 
 @end
@@ -164,8 +172,18 @@
 - (void)reenable
 {
     if ([self isEnabled])
-        [self kill];
-    [self enable];
+    {
+        NSNumber *pid = [NSNumber numberWithInt:[self pid]];
+        
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/bin/kill"];
+        [task setArguments:@[@"-SIGUSR1", pid.stringValue]];
+        [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
+        [task launch];
+    }
+    else {
+        [self enable];
+    }
 }
 
 - (void)disable
