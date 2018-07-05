@@ -10,10 +10,13 @@
 # this script must be run with sudo
 #
 
+CONKYX_XQUARTZ_DOWNLOAD_URL=$1
+
 #
 # Fix PATH for tools search paths
 #
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+
 
 echo "Downloading XQuartz..."
 

@@ -107,20 +107,9 @@
         
         NSTask *script = [[NSTask alloc] init];
         [script setLaunchPath:@"/bin/sh"];
-        [script setArguments:@[scriptPath]];
+        [script setArguments:@[scriptPath, xquartzDownloadUrl]];
         [script setStandardOutput:outputPipe];
         [script setStandardError:errorPipe];
-    
-        /*
-         * Append the download url to the app's environment
-         * variables to be used by script.
-         */
-#define XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE   @"CONKYX_XQUARTZ_DOWNLOAD_URL"
-        NSMutableDictionary *env = [NSMutableDictionary dictionaryWithDictionary:[script environment]];
-        [env setValue:xquartzDownloadUrl forKey:XQUARTZ_DOWNLOAD_URL_ENV_VARIABLE];
-        [script setEnvironment:env];
-        
-        NSLog(@"Environment dictionary: %@", env);
         
         NSFileHandle *outputHandle = [outputPipe fileHandleForReading];
         NSFileHandle *errorHandle = [errorPipe fileHandleForReading];
@@ -143,7 +132,7 @@
         }];
         
         [script launch];
-        [script waitUntilExit]; // XXX make this go away
+        [script waitUntilExit];
     }
 }
 
