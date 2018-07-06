@@ -45,10 +45,9 @@ BOOL isLaunchAgentEnabled(NSString *label);
 
 BOOL removeLaunchAgent(NSString* label);
 
-BOOL createLaunchAgent(NSString *program,
-                       NSString *label,
+BOOL createLaunchAgent(NSString *label,
                        NSArray *args,
-                       BOOL runAtLoad,
+                       BOOL keepAlive,
                        NSUInteger throttle);
 
 #endif /* Shared_h */

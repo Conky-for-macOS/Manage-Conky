@@ -12,9 +12,9 @@
 #import <AHLaunchCtl/AHLaunchCtl.h>
 
 /* defines */
-#define CONKYX          @"/Applications/ConkyX.app"
-#define MANAGE_CONKY    @"/Applications/Manage Conky.app"
-#define CONKY_SYMLINK   @"/usr/local/bin/conky"
+#define CONKYX              @"/Applications/ConkyX.app"
+#define MANAGE_CONKY        @"/Applications/Manage Conky.app"
+#define CONKY_SYMLINK       @"/usr/local/bin/conky"
 #define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
 
 @implementation MCSettings
@@ -137,8 +137,7 @@
         /*
          * setup the LaunchAgent
          */
-        createLaunchAgent(CONKY_SYMLINK,
-                          label,
+        createLaunchAgent(label,
                           @[CONKY_SYMLINK, @"-c", _itemPath],
                           keepAlive,
                           startupDelay);
@@ -441,8 +440,7 @@
     /*
      * Create LaunchAgent for the script
      */
-    createLaunchAgent(@"/bin/sh",
-                      _themeName,
+    createLaunchAgent(_themeName,
                       @[@"/bin/sh", @"-c", scriptLocation],
                       YES,
                       _startupDelay);

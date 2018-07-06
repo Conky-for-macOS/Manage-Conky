@@ -64,8 +64,7 @@ void createUserLaunchAgentsDirectory(void)
 
 BOOL removeLaunchAgent(NSString* label)
 {
-    AHLaunchCtl *ctl = [AHLaunchCtl new];
-    [ctl remove:label fromDomain:kAHUserLaunchAgent error:nil];
+    [[AHLaunchCtl sharedController] remove:label fromDomain:kAHUserLaunchAgent error:nil];
     return YES;
 }
 
@@ -76,26 +75,29 @@ BOOL isLaunchAgentEnabled(NSString *label)
     return (access([path UTF8String], F_OK) == 0);
 }
 
-BOOL createLaunchAgent(NSString *program,
-                       NSString *label,
+BOOL createLaunchAgent(NSString *label,
                        NSArray *args,
-                       BOOL runAtLoad,
+                       BOOL keepAlive,
                        NSUInteger throttle)
 {
     NSError *error = nil;
     
     AHLaunchJob* job = [AHLaunchJob new];
-    job.Program = program;
     job.Label = label;
     job.ProgramArguments = args;
     job.ThrottleInterval = throttle;
-    job.RunAtLoad = runAtLoad;
+    job.KeepAlive = [NSNumber numberWithBool:keepAlive];
+    job.RunAtLoad = YES;
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
     BOOL res = [[AHLaunchCtl sharedController] add:job
                                           toDomain:kAHUserLaunchAgent
                                              error:&error];
+    
+    [[AHLaunchCtl sharedController] start:label
+                                 inDomain:kAHUserLaunchAgent
+                                    error:&error];
     
     if (error)
         NSLog(@"Error adding LaunchAgent. \n\n%@", error);
