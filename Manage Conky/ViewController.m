@@ -309,7 +309,9 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-        [widget reenable];
+        
+        if ([widget isEnabled]) [widget reenable];
+        else [widget enable];
     }
     else
     {

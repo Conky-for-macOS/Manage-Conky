@@ -166,24 +166,11 @@
 /**
  * re-enable
  *
- * Enable Widget BUT first check if already enabled and kill it
- * to achieve restart!
+ * Restart widget
  */
 - (void)reenable
 {
-    if ([self isEnabled])
-    {
-        NSNumber *pid = [NSNumber numberWithInt:[self pid]];
-        
-        NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:@"/bin/kill"];
-        [task setArguments:@[@"-SIGUSR1", pid.stringValue]];
-        [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
-        [task launch];
-    }
-    else {
-        [self enable];
-    }
+    kill(_pid, SIGUSR1);
 }
 
 - (void)disable
