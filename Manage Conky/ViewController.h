@@ -16,10 +16,6 @@ typedef enum {
     widgetsThemesTableShowThemes,
 } MCWidgetThemesTableShow;
 
-@interface MCCustomSearchField : NSSearchField
-- (BOOL)allowsVibrancy;
-@end
-
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
 {
     MCWidgetThemesTableShow whatToShow;
