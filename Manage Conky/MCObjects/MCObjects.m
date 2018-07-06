@@ -96,9 +96,13 @@
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
+    NSString *widgetName = [[path lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
     id res = [[self alloc] init];
     [res setPid:pid];
     [res setItemPath:path];
+    [res setWidgetName:widgetName];
+    [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
     [res configureMCSettingsHolder];
     return res;
 }
@@ -113,31 +117,18 @@
 
 - (void)enable
 {
+    /*
+     * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+     */
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
-        /*
-         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
-         */
-        
-        NSError *error;
-        NSInteger startupDelay = 0;
-        BOOL keepAlive = NO;
-        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
-        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
-        
-        if (!MCConfigsRunnerScriptContents)
-            MCConfigsRunnerScriptContents = @"";
-        
-        startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
-        keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
-        
-        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
-        
+        NSInteger startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
+        BOOL keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+
         /*
          * setup the LaunchAgent
          */
-        createLaunchAgent(label,
+        createLaunchAgent(_widgetLabel,
                           @[CONKY_SYMLINK, @"-c", _itemPath],
                           keepAlive,
                           startupDelay);
@@ -164,47 +155,35 @@
  */
 - (void)reenable
 {
-    kill(_pid, SIGUSR1);
+    if (![MCSettingsHolder conkyRunsAtStartup])
+        kill(_pid, SIGUSR1);
 }
 
 - (void)disable
 {
     [self kill];
     
+    /*
+     * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+     */
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
-        /*
-         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
-         */
-        
-        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
-        
-        removeLaunchAgent(label);
-        
+        removeLaunchAgent(_widgetLabel);
         // xxx error checking
     }
 }
 
 - (BOOL)isEnabled
 {
+    /*
+     * IF conky is set to run at startup we must do LaunchAgent housekeeping...
+     */
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
-        /*
-         * IF conky is set to run at startup we must do LaunchAgent housekeeping...
-         */
-        
-        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
-        
-        return isLaunchAgentEnabled(label);
-        
+        return isLaunchAgentEnabled(_widgetLabel);
         // XXX error checking
     }
-    else
-    {
-        return (_pid != MC_PID_NOT_SET) ? YES : NO;
-    }
+    else return (_pid != MC_PID_NOT_SET) ? YES : NO;
 }
 @end
 

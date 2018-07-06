@@ -86,6 +86,8 @@
 
 @property pid_t pid;            /* pid */
 @property NSString *itemPath;   /* conky *.conf path */
+@property NSString *widgetName; /* widget's name */
+@property NSString *widgetLabel;    /* label for LaunchAgent */
 
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
 @end
