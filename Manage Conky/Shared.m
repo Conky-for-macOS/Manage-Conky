@@ -62,6 +62,20 @@ void createUserLaunchAgentsDirectory(void)
                                                     error:nil];
 }
 
+BOOL removeLaunchAgent(NSString* label)
+{
+    AHLaunchCtl *ctl = [AHLaunchCtl new];
+    [ctl remove:label fromDomain:kAHUserLaunchAgent error:nil];
+    return YES;
+}
+
+BOOL isLaunchAgentEnabled(NSString *label)
+{
+    NSString *path = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@.plist", NSHomeDirectory(), label];
+    
+    return (access([path UTF8String], F_OK) == 0);
+}
+
 BOOL createLaunchAgent(NSString *program,
                        NSString *label,
                        NSArray *args,

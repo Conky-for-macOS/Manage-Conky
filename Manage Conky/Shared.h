@@ -41,6 +41,10 @@ BOOL createMCDirectory(void);
  */
 void createUserLaunchAgentsDirectory(void);
 
+BOOL isLaunchAgentEnabled(NSString *label);
+
+BOOL removeLaunchAgent(NSString* label);
+
 BOOL createLaunchAgent(NSString *program,
                        NSString *label,
                        NSArray *args,

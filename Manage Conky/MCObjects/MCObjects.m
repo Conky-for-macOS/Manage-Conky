@@ -9,11 +9,13 @@
 #import "MCObjects.h"
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
 #import <Foundation/Foundation.h>
+#import <AHLaunchCtl/AHLaunchCtl.h>
 
 /* defines */
 #define CONKYX          @"/Applications/ConkyX.app"
 #define MANAGE_CONKY    @"/Applications/Manage Conky.app"
 #define CONKY_SYMLINK   @"/usr/local/bin/conky"
+#define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
 
 @implementation MCSettings
 + (instancetype)sharedInstance
@@ -51,7 +53,7 @@
     /*
      * Create symbolic link to allow using from terminal
      */
-    if (![fm createSymbolicLinkAtPath:@"/usr/local/bin/conky" withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+    if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
     {
         NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
     }
@@ -130,18 +132,14 @@
         keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
         
         NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"org.npyl.conkyEnabledWidgets.%@", widgetName];
-        
-        NSLog(@"%@", label);
-        
-        NSString* str = @"/usr/local/bin/conky";
+        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
         
         /*
          * setup the LaunchAgent
          */
-        createLaunchAgent(str,
+        createLaunchAgent(CONKY_SYMLINK,
                           label,
-                          @[str, @"-c", _itemPath],
+                          @[CONKY_SYMLINK, @"-c", _itemPath],
                           keepAlive,
                           startupDelay);
         
@@ -150,7 +148,7 @@
     else
     {
         NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:@"/usr/local/bin/conky"];
+        [task setLaunchPath:CONKY_SYMLINK];
         [task setArguments:@[@"-c", _itemPath]];
         [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
         [task launch];
@@ -180,21 +178,12 @@
          * IF conky is set to run at startup we must do LaunchAgent housekeeping...
          */
         
-        NSError *error;
-        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
-        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
         
-        NSMutableArray *lines = [[MCConfigsRunnerScriptContents componentsSeparatedByString:@"\n"] mutableCopy];
+        removeLaunchAgent(label);
         
-        for (int i = 0; i < [lines count]; i++)
-            if ([[lines objectAtIndex:i] containsString:_itemPath])
-            {
-                [lines removeObjectAtIndex:i];
-                break;
-            }
-        
-        [lines writeToFile:MCConfigsRunnerScript
-                atomically:YES];
+        // xxx error checking
     }
 }
 
@@ -206,11 +195,12 @@
          * IF conky is set to run at startup we must do LaunchAgent housekeeping...
          */
         
-        NSError *error;
-        NSString *MCConfigsRunnerScript = [MCDirectory() stringByAppendingPathComponent:@"startup.sh"];
-        NSString *MCConfigsRunnerScriptContents = [NSString stringWithContentsOfFile:MCConfigsRunnerScript encoding:NSUTF8StringEncoding error:&error];
+        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *label = [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName];
         
-        return [MCConfigsRunnerScriptContents containsString:_itemPath] ? YES : NO;
+        return isLaunchAgentEnabled(label);
+        
+        // XXX error checking
     }
     else
     {
