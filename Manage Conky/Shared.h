@@ -48,6 +48,7 @@ BOOL removeLaunchAgent(NSString* label);
 BOOL createLaunchAgent(NSString *label,
                        NSArray *args,
                        BOOL keepAlive,
-                       NSUInteger throttle);
+                       NSUInteger throttle,
+                       NSString *workingDirectory);
 
 #endif /* Shared_h */

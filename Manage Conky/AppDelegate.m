@@ -17,7 +17,7 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    //CXForciblyMoveToApplicationsFolder();
+    CXForciblyMoveToApplicationsFolder();
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

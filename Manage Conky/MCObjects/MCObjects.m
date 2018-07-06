@@ -131,7 +131,8 @@
         createLaunchAgent(_widgetLabel,
                           @[CONKY_SYMLINK, @"-c", _itemPath],
                           keepAlive,
-                          startupDelay);
+                          startupDelay,
+                          [_itemPath stringByDeletingLastPathComponent]);
         
         // xxx error checking
     }
@@ -422,7 +423,8 @@
     createLaunchAgent(_themeName,
                       @[@"/bin/sh", @"-c", scriptLocation],
                       YES,
-                      _startupDelay);
+                      _startupDelay,
+                      nil);
     // xxx error checking
 }
 

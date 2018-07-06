@@ -78,7 +78,8 @@ BOOL isLaunchAgentEnabled(NSString *label)
 BOOL createLaunchAgent(NSString *label,
                        NSArray *args,
                        BOOL keepAlive,
-                       NSUInteger throttle)
+                       NSUInteger throttle,
+                       NSString *workingDirectory)
 {
     NSError *error = nil;
     
@@ -88,6 +89,7 @@ BOOL createLaunchAgent(NSString *label,
     job.ThrottleInterval = throttle;
     job.KeepAlive = [NSNumber numberWithBool:keepAlive];
     job.RunAtLoad = YES;
+    job.WorkingDirectory = workingDirectory;
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
