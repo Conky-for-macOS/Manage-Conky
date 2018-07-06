@@ -129,38 +129,35 @@
         startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
         keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
         
-        /*
-         * command to execute for starting this specific widget (consider the startupDelay)
-         */
-        NSString *cmd = [NSString stringWithFormat:@"%@conky -c \"%@\" &\n",
-                         MCConfigsRunnerScriptContents,
-                         _itemPath];
+        NSString *widgetName = [[_itemPath lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *label = [NSString stringWithFormat:@"org.npyl.conkyEnabledWidgets.%@", widgetName];
         
-        [cmd writeToFile:MCConfigsRunnerScript
-              atomically:YES
-                encoding:NSUTF8StringEncoding
-                   error:&error];
+        NSLog(@"%@", label);
+        
+        NSString* str = @"/usr/local/bin/conky";
         
         /*
          * setup the LaunchAgent
          */
-        createLaunchAgent(@"/bin/sh",
-                          @"org.npyl.conkyEnabledWidgets",
-                          @[@"/bin/sh", @"-c", MCConfigsRunnerScript],
+        createLaunchAgent(str,
+                          label,
+                          @[str, @"-c", _itemPath],
                           keepAlive,
                           startupDelay);
         
         // xxx error checking
     }
-    
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/local/bin/conky"];
-    [task setArguments:@[@"-c", _itemPath]];
-    [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
-    [task launch];
-    
-    pid_t pid = [task processIdentifier];
-    [self setPid:pid];
+    else
+    {
+        NSTask *task = [[NSTask alloc] init];
+        [task setLaunchPath:@"/usr/local/bin/conky"];
+        [task setArguments:@[@"-c", _itemPath]];
+        [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
+        [task launch];
+        
+        pid_t pid = [task processIdentifier];
+        [self setPid:pid];
+    }
 }
 
 /**
