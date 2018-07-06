@@ -19,13 +19,6 @@
 @end
 @implementation SMJobBlessHelper
 
-- (void)CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM
-{
-    ///
-    /// Must cleanup generated files...
-    ///
-}
-
 - (void)SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:(xpc_object_t)event
 {
     xpc_connection_t remote = xpc_dictionary_get_remote_connection(event);
@@ -127,7 +120,6 @@
              *  before invalidating the connection and causing false positives for him...
              */
             [self SEND_FINISHED_MESSAGE_AND_WAIT_FOR_REPLY:event];
-            [self CLEANUP_SMJOBBLESS_REQUIRED_ITEMS_FROM_FILESYSTEM];
             xpc_connection_cancel(connection);
             exit([script terminationStatus]);
         }];

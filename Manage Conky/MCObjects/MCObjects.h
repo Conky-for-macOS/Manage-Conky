@@ -30,8 +30,28 @@
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
 
+/**
+ * installManageConkyFilesystem
+ *
+ * Installs the basic files required for Manage Conky
+ * to operate.  (eg. ConkyX, symbolic link)
+ */
 - (void)installManageConkyFilesystem;
+
+/**
+ * uninstallManageConkyFilesystem
+ *
+ * Uninstall everything that `installManageConkyFilesystem`
+ * installed but keep ManageConky.app at /Applications
+ */
 - (void)uninstallManageConkyFilesystem;
+
+/**
+ * uninstallManageConkyFilesystem
+ *
+ * Uninstall everything that `installManageConkyFilesystem`
+ * including ManageConky.app.
+ */
 - (void)uninstallCompletelyManageConkyFilesystem;
 @end
 
