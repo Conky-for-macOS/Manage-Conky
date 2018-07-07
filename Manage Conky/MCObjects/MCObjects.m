@@ -157,7 +157,17 @@
 - (void)reenable
 {
     if (![MCSettingsHolder conkyRunsAtStartup])
+    {
+        [self kill];
+        [self enable];
+        
+        /*
+         Until #29 has been fixed for conky-for-macOS our best
+         way of doing this is killing and restarting conky
+         
         kill(_pid, SIGUSR1);
+         */
+    }
 }
 
 - (void)disable
@@ -362,23 +372,9 @@
 - (void)enable
 {
     /**
-     * We need to create a LaunchAgent item for this specific Theme
-     *  which will be able to load each conky-config with its corresponding
-     *  arguments for conky.  This can be 'easily' done by telling Launchd to
-     *  execute a script which on its turn will do our job.
+     * We create a LaunchAgent foreach conky-config of the Theme and
+     * a lock indicating that the theme is enabled on this user account.
      */
-#define MANAGE_CONKY_STAMP @"#;ManageConky;\n"
-    
-    /*
-     * Apply wallpaper
-     */
-    NSError *err = nil;
-    [self apply_wallpaper:_wallpaper error:&err];
-    if (err)
-    {
-        NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
-        return;
-    }
     
     /*
      * create required directories
@@ -399,6 +395,16 @@
                           YES,
                           _startupDelay,
                           workingDirectory);
+    }
+    
+    /*
+     * Apply wallpaper
+     */
+    NSError *err = nil;
+    [self apply_wallpaper:_wallpaper error:&err];
+    if (err)
+    {
+        NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
     }
     
     /*
@@ -434,21 +440,18 @@
 
 - (void)disable
 {
-    NSLog(@"Off to disable Theme(%@)", self);
-    
     for (NSString *config in _conkyConfigs)
     {
         NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", config];
-        
         removeLaunchAgent(label);
-        
-        /*
-         * Delete the lock
-         */
-        NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
-        
-        unlink([lock UTF8String]);
     }
+    
+    /*
+     * Delete the lock
+     */
+    NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
+    
+    unlink([lock UTF8String]);
     
     _isEnabled = NO;
 }
