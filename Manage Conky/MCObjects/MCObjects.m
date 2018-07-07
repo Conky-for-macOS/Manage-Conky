@@ -229,7 +229,7 @@
     
     /*
      * isEnabled?
-     * Set isEnabled property by attempting to access the Theme's equivalent LaunchAgent plist
+     * Try accessing the Theme's lock
      */
     NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", [res themeName]];
     [res setIsEnabled: (access([lock UTF8String], R_OK) == 0)];
