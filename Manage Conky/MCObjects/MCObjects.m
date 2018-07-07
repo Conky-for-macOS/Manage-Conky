@@ -221,8 +221,8 @@
      * isEnabled?
      * Set isEnabled property by attempting to access the Theme's equivalent LaunchAgent plist
      */
-    NSString *plistPath = [NSHomeDirectory() stringByAppendingFormat:@"/Library/LaunchAgents/%@.plist", [res themeName]];
-    [res setIsEnabled: (access([plistPath UTF8String], R_OK) == 0)];
+    NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", [res themeName]];
+    [res setIsEnabled: (access([lock UTF8String], R_OK) == 0)];
     
     return res;
 }
@@ -249,7 +249,7 @@
     {
         /*
          * Doing it the ManageConky way...
-         */        
+         */
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
         
         startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
@@ -384,47 +384,34 @@
      * create required directories
      */
     createUserLaunchAgentsDirectory();
-    MCDirectory();
+    createMCDirectory();
     
     /*
-     * Create the script
+     * Create LaunchAgent foreach config
      */
-    NSString *scriptLocation = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.sh", _themeName];
-    NSString *scriptContents = MANAGE_CONKY_STAMP;
-    /*
-     * foreach config create a conky instance like so:
-     * conky [args] -c  [config-path]
-     */
-    for (int i = 0; i < [_conkyConfigs count]; i++)
+    for (NSString *config in _conkyConfigs)
     {
-        NSArray *args = [_arguments objectAtIndex:i];
-        NSString *conf = [[_conkyConfigs objectAtIndex:i] stringByExpandingTildeInPath];
+        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", config];
+        NSString *workingDirectory = [config stringByDeletingLastPathComponent];
         
-        scriptContents = [scriptContents stringByAppendingFormat:@"/usr/local/bin/conky %@ -c \"%@\"\n",
-                          (args == nil ? @"" : args),
-                          conf];
+        createLaunchAgent(label,
+                          @[CONKY_SYMLINK, @"-c", config],
+                          YES,
+                          _startupDelay,
+                          workingDirectory);
     }
-    /* write file */
-    [scriptContents writeToFile:scriptLocation
-                     atomically:YES
-                       encoding:NSUTF8StringEncoding
-                          error:&err];
-    if (err)
-    {
-        NSLog(@"applyTheme: Error: \n\n%@", err);
-        return;
-    }
-    
-    NSLog(@"%@", scriptContents);
     
     /*
-     * Create LaunchAgent for the script
+     * Create a lock for theme
      */
-    createLaunchAgent(_themeName,
-                      @[@"/bin/sh", @"-c", scriptLocation],
-                      YES,
-                      _startupDelay,
-                      nil);
+    NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
+    
+    [[NSFileManager defaultManager] createFileAtPath:lock
+                                            contents:nil
+                                          attributes:nil];
+    
+    _isEnabled = YES;
+    
     // xxx error checking
 }
 
@@ -448,5 +435,21 @@
 - (void)disable
 {
     NSLog(@"Off to disable Theme(%@)", self);
+    
+    for (NSString *config in _conkyConfigs)
+    {
+        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", config];
+        
+        removeLaunchAgent(label);
+        
+        /*
+         * Delete the lock
+         */
+        NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
+        
+        unlink([lock UTF8String]);
+    }
+    
+    _isEnabled = NO;
 }
 @end
