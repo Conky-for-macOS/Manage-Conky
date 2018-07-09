@@ -1,6 +1,0 @@
-framework module HomebrewCtl {
-  umbrella header "HomebrewCtl.h"
-
-  export *
-  module * { export * }
-}

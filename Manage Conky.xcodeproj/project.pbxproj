@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090E425D20D5782900D78902 /* HomebrewCtl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090E425C20D5782900D78902 /* HomebrewCtl.framework */; };
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		093BDFC020861BCD004E6354 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093BDFBF20861BCD004E6354 /* Editor.xib */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
-		09534BE820D7931E00A92424 /* HomebrewCtl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 090E425C20D5782900D78902 /* HomebrewCtl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
@@ -29,7 +27,6 @@
 		77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */; };
 		77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
-		77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */; };
 		EC89E7F52060503900152AB3 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC89E7F42060503900152AB3 /* SaveTheme.xib */; };
 		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -76,7 +73,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09534BE820D7931E00A92424 /* HomebrewCtl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +118,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		090E425C20D5782900D78902 /* HomebrewCtl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomebrewCtl.framework; path = "Manage Conky/Frameworks/HomebrewCtl.framework"; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		093BDFBF20861BCD004E6354 /* Editor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Editor.xib; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
@@ -191,8 +186,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */,
-				090E425D20D5782900D78902 /* HomebrewCtl.framework in Frameworks */,
-				77F6D6D51F65EB2E00A61645 /* ServiceManagement.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +285,6 @@
 		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				090E425C20D5782900D78902 /* HomebrewCtl.framework */,
 				095F9B402077DE6E003C60C1 /* FinderSync.framework */,
 				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
 				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,

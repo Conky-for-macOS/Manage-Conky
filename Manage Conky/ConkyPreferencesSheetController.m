@@ -8,7 +8,6 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#import "Frameworks/HomebrewCtl.framework/Headers/HomebrewCtl.h"
 #import <ServiceManagement/ServiceManagement.h>
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
