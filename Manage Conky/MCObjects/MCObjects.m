@@ -162,8 +162,12 @@
         [self enable];
         
         /*
-         Until #29 has been fixed for conky-for-macOS our best
-         way of doing this is killing and restarting conky
+         Although we have a workaround for #29 we still can't rely on
+         SIGUSR1 because it has some side-effects such as causing the
+         Gotham Widget to be non-draggable.  If https://github.com/Conky-for-macOS/conky-for-macOS/issues/29
+         gets a proper solution (e.g. the XDamage incompatibilities get
+         fixed) this should be the optimal solution to restarting the
+         widget:
          
         kill(_pid, SIGUSR1);
          */
