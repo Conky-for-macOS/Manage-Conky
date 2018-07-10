@@ -30,6 +30,6 @@ LTC: 3N1EuxbmeXeTFjLEqmHeZfjK7HUig9XzpX
 ***NOTE:*** ManageConky should always have the up-to-date version of the keys; Just go to **About->Press the Bitcoin icon** and you got it. <br>
 Thank you. :beers:
 
-## LICENSE
+## LICENSE 👮
 
 MIT
