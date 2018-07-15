@@ -24,6 +24,7 @@
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
+    NSLog(@"Thanks for using ManageConky; Hope it worked!");
 }
 
 @end
