@@ -36,20 +36,15 @@ NSString *MCDirectory(void)
  *
  * Helper function to create ~/Library/ManageConky directory
  */
-BOOL createMCDirectory(void)
+void createMCDirectory(void)
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/ManageConky"];
     NSError *error;
     NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error];
+    [fm createDirectoryAtPath:MCDirectory() withIntermediateDirectories:NO attributes:nil error:&error];
     if (error)
     {
         NSLog(@"Failed to create ManageConky directory with error: \n\n%@", error);
     }
-    
-    // XXX error handling
-    
-    return YES;
 }
 
 void createUserLaunchAgentsDirectory(void)
@@ -71,18 +66,16 @@ BOOL removeLaunchAgent(NSString* label)
 BOOL isLaunchAgentEnabled(NSString *label)
 {
     NSString *path = [NSString stringWithFormat:@"%@/Library/LaunchAgents/%@.plist", NSHomeDirectory(), label];
-    
     return (access([path UTF8String], F_OK) == 0);
 }
 
-BOOL createLaunchAgent(NSString *label,
+void createLaunchAgent(NSString *label,
                        NSArray *args,
                        BOOL keepAlive,
                        NSUInteger throttle,
-                       NSString *workingDirectory)
+                       NSString *workingDirectory,
+                       NSError *error)
 {
-    NSError *error = nil;
-    
     AHLaunchJob* job = [AHLaunchJob new];
     job.Label = label;
     job.ProgramArguments = args;
@@ -100,9 +93,4 @@ BOOL createLaunchAgent(NSString *label,
     [[AHLaunchCtl sharedController] start:label
                                  inDomain:kAHUserLaunchAgent
                                     error:&error];
-    
-    if (error)
-        NSLog(@"Error adding LaunchAgent. \n\n%@", error);
-    
-    return res;
 }

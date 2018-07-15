@@ -34,7 +34,7 @@ NSString *MCDirectory(void);
 /**
  * Create ManageConky directory in ~/Library
  */
-BOOL createMCDirectory(void);
+void createMCDirectory(void);
 
 /**
  * Create LaunchAgents directory at ~/Library if it doesn't exist
@@ -45,10 +45,11 @@ BOOL isLaunchAgentEnabled(NSString *label);
 
 BOOL removeLaunchAgent(NSString* label);
 
-BOOL createLaunchAgent(NSString *label,
+void createLaunchAgent(NSString *label,
                        NSArray *args,
                        BOOL keepAlive,
                        NSUInteger throttle,
-                       NSString *workingDirectory);
+                       NSString *workingDirectory,
+                       NSError *error);
 
 #endif /* Shared_h */

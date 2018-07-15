@@ -132,9 +132,8 @@
                           @[CONKY_SYMLINK, @"-c", _itemPath],
                           keepAlive,
                           startupDelay,
-                          [_itemPath stringByDeletingLastPathComponent]);
-        
-        // xxx error checking
+                          [_itemPath stringByDeletingLastPathComponent],
+                          nil);
     }
     else
     {
@@ -367,8 +366,9 @@
  * enable
  *
  * Applies this Theme to computer by:
- *  - applying conky config
+ *  - applying conky config(s)
  *  - applying wallpaper
+ *
  * supports two types of Themes:
  *  - original conky-manager Themes (plain files with minimal info) (backwards compatibility)
  *  - plist-based (support many parameters/features in a native macOS way)
@@ -379,7 +379,7 @@
      * We create a LaunchAgent foreach conky-config of the Theme and
      * a lock indicating that the theme is enabled on this user account.
      */
-    
+
     /*
      * create required directories
      */
@@ -391,14 +391,24 @@
      */
     for (NSString *config in _conkyConfigs)
     {
-        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", config];
+        NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
         NSString *workingDirectory = [config stringByDeletingLastPathComponent];
+        const BOOL keepAlive = YES;
+        NSError *error = nil;
         
         createLaunchAgent(label,
                           @[CONKY_SYMLINK, @"-c", config],
-                          YES,
+                          keepAlive,
                           _startupDelay,
-                          workingDirectory);
+                          workingDirectory,
+                          error);
+        
+        if (error)
+        {
+            NSLog(@"applyTheme: Error creating agent: %@", error);
+            return;
+        }
     }
     
     /*
@@ -421,8 +431,6 @@
                                           attributes:nil];
     
     _isEnabled = YES;
-    
-    // xxx error checking
 }
 
 /**
@@ -438,15 +446,12 @@
     [self enable];
 }
 
-- (void)kill
-{
-}
-
 - (void)disable
 {
     for (NSString *config in _conkyConfigs)
     {
-        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", config];
+        NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
         removeLaunchAgent(label);
     }
     
