@@ -115,6 +115,12 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
      */
     if (![fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
     {
+        /*
+         * First ask user if he wants to install the dependencies;
+         * As I can imagine there is great chance something would
+         * break in a user's development workspace; thus ask the
+         * user.
+         */
         NSAlert *doYouAgree = [[NSAlert alloc] init];
         [doYouAgree setMessageText:@"Do you agree?"];
         [doYouAgree setInformativeText:@"Do you agree to install the following packages via Homebrew?: \n\timlib2 \n\tfreetype \n\tgettext \n\tlua \nManageConky will also attempt to force-link gettext. \n\nWARNING: If you do NOT accept, ManageConky will NOT be able to install conky and operate."];
