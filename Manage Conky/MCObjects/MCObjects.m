@@ -67,6 +67,8 @@
     [fm removeItemAtPath:CONKYX error:&error];
     if (error) { NSLog(@"Error removing ConkyX: \n\n%@", error); }
     
+    error = nil;
+    
     [fm removeItemAtPath:CONKY_SYMLINK error:&error];
     if (error) { NSLog(@"Error removing symlink: \n\n%@", error); }
 }
