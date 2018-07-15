@@ -113,8 +113,21 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if (![fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
+    if ([fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
     {
+        NSAlert *doYouAgree = [[NSAlert alloc] init];
+        [doYouAgree setMessageText:@"Do you agree?"];
+        [doYouAgree setInformativeText:@"Do you agree to install the following packages via Homebrew?: \n\timlib2 \n\tfreetype \n\tgettext \n\tlua \nManageConky will also attempt to force-link gettext. \n\nWARNING: If you do NOT accept, ManageConky will NOT be able to install conky and operate."];
+        [doYouAgree addButtonWithTitle:@"Agree"];
+        [doYouAgree addButtonWithTitle:@"DON'T Agree"];
+        NSModalResponse response = [doYouAgree runModal];
+        
+        if (response == NSAlertSecondButtonReturn)
+        {
+            [[self window] close];
+            return;
+        }
+        
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
         
         NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
