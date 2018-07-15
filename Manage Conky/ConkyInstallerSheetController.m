@@ -113,7 +113,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     /*
      * detect if Homebrew is installed
      */
-    if ([fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
+    if (![fm fileExistsAtPath:HOMEBREW_PATH isDirectory:nil])
     {
         NSAlert *doYouAgree = [[NSAlert alloc] init];
         [doYouAgree setMessageText:@"Do you agree?"];
