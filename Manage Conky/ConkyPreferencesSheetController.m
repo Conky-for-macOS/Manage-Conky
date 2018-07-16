@@ -302,8 +302,13 @@
 - (void)installConky
 {
     /* create ConkyInstaller sheet */
-    ctl = [[ConkyInstallerSheetController alloc] init];
+    static ConkyInstallerSheetController *ctl = nil;
+    
+    if (!ctl)
+        ctl = [[ConkyInstallerSheetController alloc] init];
+
     [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
+    
     [ctl beginInstalling];
 }
 
@@ -494,7 +499,7 @@
 {
     NSInteger selectedRow = [_searchLocationsTable selectedRow];
     
-    if (selectedRow == -1)
+    if (selectedRow < 0)
         return;
         
     [_searchLocationsTableContents removeObjectAtIndex:selectedRow];

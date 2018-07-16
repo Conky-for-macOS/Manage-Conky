@@ -22,7 +22,6 @@
 
 @interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
-    ConkyInstallerSheetController *ctl;
     BOOL conkyXInstalled;
     BOOL xquartzQuitAlertDisabled;
     
