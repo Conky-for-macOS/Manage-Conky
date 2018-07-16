@@ -1,4 +1,4 @@
-# ***Manage Conky***
+# ***Manage Conky*** [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/Conky-for-macOS/Manage-Conky/releases)
 
 ![icon](ManageConkyLogo.png)
 
