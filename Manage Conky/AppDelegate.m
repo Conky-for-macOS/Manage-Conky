@@ -17,14 +17,13 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    CXForciblyMoveToApplicationsFolder();
+    //CXForciblyMoveToApplicationsFolder();
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    NSLog(@"Thanks for using ManageConky; Hope it worked!");
 }
 
 @end

@@ -80,7 +80,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
     NSPipe *outputPipe = [[NSPipe alloc] init];
     NSPipe *errorPipe = [[NSPipe alloc] init];
     
-    NSString *scriptPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/InstallLibraries.sh"];
+    NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"InstallLibraries" ofType:@"sh"];
     
     NSTask *script = [[NSTask alloc] init];
     [script setLaunchPath:@"/bin/sh"];

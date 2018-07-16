@@ -121,9 +121,7 @@
         NSNumber *xquartzVisibility = [xquartzInfoPlist objectForKey:@"LSBackgroundOnly"];
         
         if (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE)
-        {
             [_toggleXQuartzIconVisibilityCheckbox setState:NSOnState];
-        }
     }
     else
     {
@@ -148,6 +146,7 @@
     [_additionalLocationsToSearchLabel setTextColor:[NSColor grayColor]];
     
     [_disableXQuartzWarningsCheckbox setEnabled:NO];
+    [_toggleXQuartzIconVisibilityCheckbox setEnabled:NO];
 }
 
 - (void)enableMustInstallAgentMode
@@ -227,16 +226,19 @@
 
     NSString *formatFilePath = [[NSBundle mainBundle] pathForResource:@"toggleXquartzVisibilityScript"
                                                                ofType:@"fmt"];
+    
     NSString *format = [NSString stringWithContentsOfFile:formatFilePath
                                                  encoding:NSUTF8StringEncoding
                                                     error:nil];
+    
     NSString *script = [NSString stringWithFormat:format, boolean];
+    
     NSAppleScript *object = [[NSAppleScript alloc] initWithSource:script];
     
     [object executeAndReturnError:&errorDict];
     
     if (errorDict)
-        NSLog(@"%@", errorDict);
+        NSLog(@"Error when executing applescript: %@", errorDict);
 }
 
 - (IBAction)setConkyConfigsLocation:(id)sender
