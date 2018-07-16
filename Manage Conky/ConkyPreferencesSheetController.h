@@ -59,7 +59,7 @@
 
 // XQuartz warnings
 @property (weak) IBOutlet NSButtonCell *disableXQuartzWarningsCheckbox;
-
+@property (weak) IBOutlet NSButtonCell *toggleXQuartzIconVisibilityCheckbox;
 
 // Changes Applied
 @property (weak) IBOutlet NSTextField *changesSavedLabel;

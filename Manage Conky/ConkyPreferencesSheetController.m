@@ -24,6 +24,9 @@
 #define kConkyLaunchAgentLabel      @"org.npyl.conky"
 #define kConkyExecutablePath        @"/Applications/ConkyX.app/Contents/Resources/conky"
 
+#define MC_XQUARTZ_VISIBLE      NO
+#define MC_XQUARTZ_INVISIBLE    YES
+
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
@@ -110,6 +113,18 @@
         
         if (xquartzQuitAlertDisabled)
             [_disableXQuartzWarningsCheckbox setState:NSControlStateValueOn];
+        
+        /*
+         * xquartz icon shows up on dock?
+         */
+        NSDictionary *xquartzInfoPlist = [[NSDictionary alloc] initWithContentsOfFile:@"/Applications/Utilities/XQuartz.app/Contents/Info.plist"];
+        NSNumber *xquartzVisibility = [xquartzInfoPlist objectForKey:@"LSBackgroundOnly"];
+        
+        if (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE)
+        {
+            [_toggleXQuartzIconVisibilityCheckbox setState:NSOnState];
+            [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Visible on Dock"];
+        }
     }
     else
     {
@@ -203,6 +218,35 @@
     BOOL onOrOff = [sender state];
     NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
     [xquartzPreferences setObject:[NSNumber numberWithBool:onOrOff] forKey:@"no_quit_alert"];
+}
+
+- (IBAction)toggleXQuartzVisibilityAction:(id)sender
+{
+    NSDictionary *errorDict = nil;
+
+    NSString *boolean = ([sender state] == NSOnState) ? @"NO" : @"YES";
+
+    NSString *formatFilePath = [[NSBundle mainBundle] pathForResource:@"toggleXquartzVisibilityScript"
+                                                               ofType:@"fmt"];
+    NSString *format = [NSString stringWithContentsOfFile:formatFilePath
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:nil];
+    NSString *script = [NSString stringWithFormat:format, boolean];
+    NSAppleScript *object = [[NSAppleScript alloc] initWithSource:script];
+    
+    [object executeAndReturnError:&errorDict];
+    
+    if (errorDict)
+    {
+        NSLog(@"%@", errorDict);
+        return;
+    }
+    
+    if ([sender state] == NSOnState)
+        [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Visible on Dock"];
+    else
+        [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Invisible from Dock"];
+
 }
 
 - (IBAction)setConkyConfigsLocation:(id)sender

@@ -10,6 +10,7 @@
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		093BDFC020861BCD004E6354 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093BDFBF20861BCD004E6354 /* Editor.xib */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
+		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		095F9B412077DE6E003C60C1 /* FinderSync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095F9B402077DE6E003C60C1 /* FinderSync.framework */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
@@ -122,6 +123,7 @@
 		093BDFBF20861BCD004E6354 /* Editor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Editor.xib; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
+		09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = toggleXquartzVisibilityScript.fmt; path = Resources/toggleXquartzVisibilityScript.fmt; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shared.h; path = "Manage Conky/Shared.h"; sourceTree = "<group>"; };
 		095F81902080D08A008DD286 /* MCObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCObjects.m; path = MCObjects/MCObjects.m; sourceTree = "<group>"; };
 		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
 				ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */,
 				099F773B2066BEAD0093F828 /* InstallXQuartz.sh */,
+				09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				093BDFC020861BCD004E6354 /* Editor.xib in Resources */,
+				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				ECB76D58205D713900A3BB22 /* About.xib in Resources */,
 				ECB76D59205D713900A3BB22 /* ConkyPreferences.xib in Resources */,
