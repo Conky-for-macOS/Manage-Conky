@@ -1,4 +1,4 @@
-# ***Manage Conky*** [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/Conky-for-macOS/Manage-Conky/releases)
+# ***Manage Conky*** [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
 
 ![icon](ManageConkyLogo.png)
 
@@ -29,7 +29,3 @@ LTC: 3N1EuxbmeXeTFjLEqmHeZfjK7HUig9XzpX
 
 ***NOTE:*** ManageConky should always have the up-to-date version of the keys; Just go to **About->Press the Bitcoin icon** and you got it. <br>
 Thank you. :beers:
-
-## LICENSE 👮
-
-MIT
