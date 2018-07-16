@@ -1,7 +1,7 @@
 do shell script "/bin/bash -s <<'EOF'
 
 cp /Applications/Utilities/XQuartz.app/Contents/Info.plist /tmp/Info.plist
-cp /Applications/Utilities/XQuartz.app/Contents/Info.plist /tmp/Info.plist.backup
+cp /Applications/Utilities/XQuartz.app/Contents/Info.plist /tmp/Info.plist.backup   # Make a backup file; Just in case
 
 defaults write /tmp/Info.plist LSBackgroundOnly %@
 

@@ -123,7 +123,6 @@
         if (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE)
         {
             [_toggleXQuartzIconVisibilityCheckbox setState:NSOnState];
-            [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Visible on Dock"];
         }
     }
     else
@@ -237,16 +236,7 @@
     [object executeAndReturnError:&errorDict];
     
     if (errorDict)
-    {
         NSLog(@"%@", errorDict);
-        return;
-    }
-    
-    if ([sender state] == NSOnState)
-        [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Visible on Dock"];
-    else
-        [_toggleXQuartzIconVisibilityCheckbox setTitle:@"XQuartz Icon: Invisible from Dock"];
-
 }
 
 - (IBAction)setConkyConfigsLocation:(id)sender
