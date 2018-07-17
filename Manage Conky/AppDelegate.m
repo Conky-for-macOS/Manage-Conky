@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "PFMoveApplication.h"
+#import <Sparkle/Sparkle.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +17,20 @@
 
 @implementation AppDelegate
 
-- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
+{
+    /*
+     * Homebrew doesn't allow using your own updating
+     * mechanism; thus disable Sparkle if we are building
+     * for Homebrew.
+     */
+#ifdef BUILDS_FOR_HOMEBREW_CASK
+    NSLog(@"Disabling Updater");
+    
+    SUUpdater *updater = [SUUpdater sharedUpdater];
+    [updater setAutomaticallyChecksForUpdates:NO];
+#endif
+    
     CXForciblyMoveToApplicationsFolder();
 }
 
