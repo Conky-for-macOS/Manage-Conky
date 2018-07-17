@@ -25,8 +25,7 @@
      * for Homebrew.
      */
 #ifdef BUILDS_FOR_HOMEBREW_CASK
-    NSLog(@"Disabling Updater");
-    
+    NSLog(@"Disabling Updater as part of Homebrew-Cask terms.");
     SUUpdater *updater = [SUUpdater sharedUpdater];
     [updater setAutomaticallyChecksForUpdates:NO];
 #endif

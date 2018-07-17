@@ -474,7 +474,7 @@
     panel.showsHiddenFiles = YES;
     panel.canChooseDirectories = YES;
     panel.canCreateDirectories = YES;
-    panel.allowsMultipleSelection = NO;     // XXX should be YES
+    panel.allowsMultipleSelection = NO;
     panel.canSelectHiddenExtension = NO;
     
     /*
