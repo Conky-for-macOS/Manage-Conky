@@ -63,7 +63,7 @@
     [_un_in_stallConkyButton setEnabled:YES];
     
     // Startup Delay
-    _startupDelayField.intValue = 20;   /* default value */
+    _startupDelayField.intValue = 0;    /* default value */
     
     // keepAlive
     keepAlive = YES;    /* default value */
