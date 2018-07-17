@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12D4A68A22508B3EFFA7E0E78CF30C73"
+               BlueprintIdentifier = "DFE075328762169A24C77579C1F0D7C9"
                BuildableName = "Pods_Manage_Conky.framework"
                BlueprintName = "Pods-Manage Conky"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "12D4A68A22508B3EFFA7E0E78CF30C73"
+            BlueprintIdentifier = "DFE075328762169A24C77579C1F0D7C9"
             BuildableName = "Pods_Manage_Conky.framework"
             BlueprintName = "Pods-Manage Conky"
             ReferencedContainer = "container:Pods.xcodeproj">

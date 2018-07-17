@@ -156,6 +156,7 @@
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.homebrew-cask.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.homebrew-cask.xcconfig"; sourceTree = "<group>"; };
 		EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manage_Conky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC89E7F42060503900152AB3 /* SaveTheme.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveTheme.xib; sourceTree = "<group>"; };
 		EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAlert+runModalSheet.h"; path = "Extensions/NSAlert+runModalSheet.h"; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 			children = (
 				340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */,
 				4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */,
+				EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -673,7 +675,7 @@
 		};
 		09CB721820FE28530049A136 /* Homebrew-Cask */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */;
+			baseConfigurationReference = EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
