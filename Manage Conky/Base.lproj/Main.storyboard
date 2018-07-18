@@ -890,7 +890,7 @@
                                     <action selector="openInFinder:" target="XfG-lQ-9wD" id="EQn-GN-nn2"/>
                                 </connections>
                             </button>
-                            <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rft-ZS-DAt">
+                            <searchField hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rft-ZS-DAt">
                                 <rect key="frame" x="223" y="355" width="237" height="22"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" usesSingleLineMode="YES" bezelStyle="round" id="zOY-MP-XEh">
                                     <font key="font" metaFont="system"/>
