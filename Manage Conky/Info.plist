@@ -35,8 +35,6 @@
 		<key>org.npyl.ManageConkySMJobBlessHelper</key>
 		<string>identifier &quot;org.npyl.ManageConkySMJobBlessHelper&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Mac Developer: n.pylarinos@hotmail.com (C674784ZBL)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 	</dict>
-	<key>SUFeedURL</key>
-	<string>https://npyl.github.io/Projects/ManageConky/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>
