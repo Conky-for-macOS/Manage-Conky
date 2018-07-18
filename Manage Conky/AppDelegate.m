@@ -24,15 +24,10 @@
      * mechanism; thus disable Sparkle if we are building
      * for Homebrew.
      */
-    SUUpdater *updater = [SUUpdater sharedUpdater];
-    
 #ifdef BUILDS_FOR_HOMEBREW_CASK
     NSLog(@"Disabling Updater as part of Homebrew-Cask terms.");
+    SUUpdater *updater = [SUUpdater sharedUpdater];
     [updater setAutomaticallyChecksForUpdates:NO];
-    
-    [updater setFeedURL:[NSURL URLWithString:@"https://npyl.github.io/Projects/ManageConky/Homebrew-Cask/appcast.xml"]];
-#else
-    [updater setFeedURL:[NSURL URLWithString:@"https://npyl.github.io/Projects/ManageConky/Release/appcast.xml"]];
 #endif
     
     CXForciblyMoveToApplicationsFolder();
