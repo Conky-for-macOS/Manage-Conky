@@ -9,5 +9,5 @@ target 'Manage Conky' do
 
   pod 'LzmaSDK-ObjC', :inhibit_warnings => true
   pod 'AHLaunchCtl'
-  pod 'Sparkle'
+  pod 'Sparkle', '~> 1.18.1'
 end

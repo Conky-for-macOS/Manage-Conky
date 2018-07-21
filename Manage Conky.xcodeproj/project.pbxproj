@@ -119,7 +119,6 @@
 		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		095F9B402077DE6E003C60C1 /* FinderSync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FinderSync.framework; path = System/Library/Frameworks/FinderSync.framework; sourceTree = SDKROOT; };
 		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
 		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CBFEA92066A55500EB8A1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -277,7 +276,6 @@
 		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				095F9B402077DE6E003C60C1 /* FinderSync.framework */,
 				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
 				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
