@@ -268,7 +268,18 @@
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
         
         startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
-        conkyConfigs = [rc valueForKey:@"configs"];    // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        
+        /* Try to standardize paths read first. */
+        NSMutableArray *conkyConfigsUnstandardized = [rc valueForKey:@"configs"];   // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+
+        for (NSUInteger i = 0; i < [conkyConfigsUnstandardized count]; i++)
+        {
+            conkyConfigsUnstandardized[i] = [conkyConfigsUnstandardized[i] stringByStandardizingPath];
+        }
+        
+        /* then write them filtered */
+        conkyConfigs = [conkyConfigsUnstandardized copy];
+
         arguments = [rc valueForKey:@"args"];  // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
         wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
         source = [rc objectForKey:@"source"];
