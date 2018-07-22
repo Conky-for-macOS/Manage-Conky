@@ -30,6 +30,9 @@
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
 
+- (void)setConfigsLocation:(NSString *)a;
+- (NSString *)configsLocation;
+
 /**
  * installManageConkyFilesystem
  *

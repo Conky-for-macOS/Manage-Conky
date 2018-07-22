@@ -37,6 +37,17 @@
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
 }
 
+- (void)setConfigsLocation:(NSString *)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:a
+                                              forKey:@"configsLocation"];
+}
+
+- (NSString *)configsLocation
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+}
+
 - (void)installManageConkyFilesystem
 {
     NSError *error = nil;
