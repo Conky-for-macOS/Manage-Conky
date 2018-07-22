@@ -12,6 +12,19 @@
 
 @implementation SaveThemeSheetController
 
+- (id)initWithWindowNibName:(NSString *)nibName;
+{
+    self = [super initWithWindowNibName:nibName];
+    if (self)
+    {
+        /*
+         * Basic initialisation
+         */
+        propertiesFilledIn = 0;
+    }
+    return self;
+}
+
 - (IBAction)saveTheme:(id)sender
 {
     NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
@@ -71,12 +84,6 @@
         
         propertiesFilledIn++;
     }
-}
-
-/* XXX override initWithNib: */
-- (void)initialise
-{
-    propertiesFilledIn = 0;
 }
 
 - (IBAction)closeButton:(id)sender

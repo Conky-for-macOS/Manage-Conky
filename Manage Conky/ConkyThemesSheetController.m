@@ -142,7 +142,6 @@
 - (IBAction)createTheme:(id)sender
 {
     SaveThemeSheetController *controller = [[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"];
-    [controller initialise];
     [self.sheet beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
         [self.sheet endSheet:controller.window];
     }];

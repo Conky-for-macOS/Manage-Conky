@@ -9,7 +9,7 @@
 #import "GeneralSheetController.h"
 
 
-@interface SaveThemeSheetController : NSWindowController
+@interface SaveThemeSheetController : NSWindowController<NSTableViewDelegate>
 {
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */
@@ -27,6 +27,6 @@
 @property (strong) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *themeNameField;
 
-- (void)initialise; /* basic initialisation stuff XXX should be removed later */
+- (id)initWithWindowNibName:(NSString *)nibName;
 
 @end
