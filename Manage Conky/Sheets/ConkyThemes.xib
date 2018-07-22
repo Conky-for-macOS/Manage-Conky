@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,17 +13,17 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="ConkyThemes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="ConkyThemes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="94"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="156"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="94"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-mv-6MM">
-                        <rect key="frame" x="14" y="13" width="318" height="32"/>
+                        <rect key="frame" x="14" y="75" width="318" height="32"/>
                         <buttonCell key="cell" type="push" title="Import from Custom Theme Pack ( *.cmtp.7z )" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XNx-hM-uTL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -33,7 +33,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-rp-Enh">
-                        <rect key="frame" x="14" y="46" width="238" height="32"/>
+                        <rect key="frame" x="14" y="108" width="238" height="32"/>
                         <buttonCell key="cell" type="push" title="Import from Default Theme Pack" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QqY-PO-MIL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -42,8 +42,21 @@
                             <action selector="importFromDefaultThemePack:" target="-2" id="Eis-aj-HdV"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LGJ-Z3-9cn">
+                        <rect key="frame" x="14" y="13" width="126" height="32"/>
+                        <buttonCell key="cell" type="push" title="Create Theme" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pbh-wZ-bdV">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="createTheme:" target="-2" id="Yng-eJ-9FF"/>
+                        </connections>
+                    </button>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Sg4-27-Son">
+                        <rect key="frame" x="20" y="59" width="440" height="5"/>
+                    </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EsE-TR-tlW">
-                        <rect key="frame" x="427" y="18" width="33" height="25"/>
+                        <rect key="frame" x="428.5" y="19" width="33" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q3L-Pn-qMq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -54,15 +67,20 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cXa-mv-6MM" firstAttribute="baseline" secondItem="EsE-TR-tlW" secondAttribute="baseline" id="7aa-5L-ELf"/>
-                    <constraint firstItem="cXa-mv-6MM" firstAttribute="top" secondItem="Nsd-rp-Enh" secondAttribute="bottom" constant="12" symbolic="YES" id="AAw-AV-Hry"/>
-                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="DKN-ip-nZj"/>
-                    <constraint firstAttribute="trailing" secondItem="EsE-TR-tlW" secondAttribute="trailing" constant="20" symbolic="YES" id="X3J-Sd-ZXA"/>
-                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="cXa-mv-6MM" secondAttribute="leading" id="agb-4z-oaL"/>
-                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="dd6-SD-7kc"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="010-K7-32K"/>
+                    <constraint firstItem="LGJ-Z3-9cn" firstAttribute="top" secondItem="Sg4-27-Son" secondAttribute="bottom" constant="20" symbolic="YES" id="5rs-4s-UkE"/>
+                    <constraint firstAttribute="trailing" secondItem="EsE-TR-tlW" secondAttribute="trailing" constant="19.5" id="7sR-7y-63f"/>
+                    <constraint firstItem="Sg4-27-Son" firstAttribute="top" secondItem="cXa-mv-6MM" secondAttribute="bottom" constant="20" symbolic="YES" id="I4q-68-WFs"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="leading" secondItem="cXa-mv-6MM" secondAttribute="leading" id="Mv6-LV-kwa"/>
+                    <constraint firstItem="LGJ-Z3-9cn" firstAttribute="baseline" secondItem="EsE-TR-tlW" secondAttribute="baseline" id="Npq-R4-eO4"/>
+                    <constraint firstItem="cXa-mv-6MM" firstAttribute="leading" secondItem="Sg4-27-Son" secondAttribute="leading" id="Nw7-yF-nnT"/>
+                    <constraint firstItem="Sg4-27-Son" firstAttribute="leading" secondItem="LGJ-Z3-9cn" secondAttribute="leading" id="QbD-ve-FT1"/>
+                    <constraint firstItem="Sg4-27-Son" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="RaK-oQ-dQy"/>
+                    <constraint firstItem="Nsd-rp-Enh" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="hqZ-uf-JYp"/>
+                    <constraint firstItem="cXa-mv-6MM" firstAttribute="top" secondItem="Nsd-rp-Enh" secondAttribute="bottom" constant="12" symbolic="YES" id="lnU-py-zVT"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="140" y="74"/>
+            <point key="canvasLocation" x="-1" y="98"/>
         </window>
     </objects>
 </document>

@@ -15,6 +15,7 @@
 #import "LzmaSDKObjC.h"
 #import "ViewController.h"
 #import "LzmaSDKObjCReader.h"
+#import "SaveThemeSheetController.h"
 
 @implementation ConkyThemesSheetController
 
@@ -135,6 +136,15 @@
          */
         if (res)
             [self fillWidgetsThemesTable];
+    }];
+}
+
+- (IBAction)createTheme:(id)sender
+{
+    SaveThemeSheetController *controller = [[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"];
+    NSLog(@"%@", [controller window]);
+    [self.sheet beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        [self.sheet endSheet:controller.window];
     }];
 }
 

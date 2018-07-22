@@ -10,8 +10,6 @@
 
 @implementation GeneralSheetController
 
-@synthesize sheet = _sheet;
-
 - (void)activateSheet:(NSString*)nibName withOwner:(id)owner
 {
     if (!_sheet)

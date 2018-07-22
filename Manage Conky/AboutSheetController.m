@@ -25,17 +25,16 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/Conky-for-macOS/Manage-Conky/issues"]];
 }
 
-- (NSString *)get_BCH_key
+- (NSString *)getCryptocoinKeys
 {
-    NSString *content = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"]
-                                                 encoding:NSUTF8StringEncoding
-                                                    error:nil];
-    return content;
+    return [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://npyl.github.io/Projects/donate.html"]
+                                    encoding:NSUTF8StringEncoding
+                                       error:nil];
 }
 
 - (IBAction)donateBitcoin:(id)sender
 {
-    NSString *keys = [self get_BCH_key];
+    NSString *keys = [self getCryptocoinKeys];
     NSString *str = keys ? [NSString stringWithFormat:@"Thank you for supporting! \n\n%@", keys] :  @"I am really really sorry! \nSomething went wrong! \nPlease open an issue to ManageConky's Github Repo if the problem persists! \nThank you very much!";
     static NSPopover *donatePopover = nil;
 
