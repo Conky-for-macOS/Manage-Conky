@@ -86,6 +86,11 @@
     }
 }
 
+- (IBAction)chooseScaling:(id)sender
+{
+    
+}
+
 - (IBAction)closeButton:(id)sender
 {
     [self.window close];
