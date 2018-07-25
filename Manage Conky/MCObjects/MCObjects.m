@@ -131,6 +131,14 @@
 - (void)enable
 {
     /*
+     * itemPath must have the spaces replaced by '/'
+     * Because bash is - well... bash! - and it won't
+     * parse them correctly
+     */
+    NSString *correctedItemPath = [_itemPath stringByReplacingOccurrencesOfString:@" "
+                                                                       withString:@"\\ "];
+    
+    /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
      */
     if ([MCSettingsHolder conkyRunsAtStartup])
@@ -142,7 +150,7 @@
          * setup the LaunchAgent
          */
         createLaunchAgent(_widgetLabel,
-                          @[CONKY_SYMLINK, @"-c", _itemPath],
+                          @[CONKY_SYMLINK, @"-c", correctedItemPath],
                           keepAlive,
                           startupDelay,
                           [_itemPath stringByDeletingLastPathComponent],
@@ -150,14 +158,6 @@
     }
     else
     {
-        /*
-         * itemPath must have the spaces replaced by '/'
-         * Because bash is - well... bash! - and it won't
-         * parse them correctly
-         */
-        NSString *correctedItemPath = [_itemPath stringByReplacingOccurrencesOfString:@" "
-                                                                           withString:@"\\ "];
-        
         NSString *cmd = [NSString stringWithFormat:@"%@ -c %@", CONKY_SYMLINK, correctedItemPath];
         
         NSTask *task = [[NSTask alloc] init];
@@ -173,8 +173,6 @@
                                                                                  * provide the basic environment for them
                                                                                  * like environment-variables.
                                                                                  */
-        // XXX same applies for agent... and for themes but it will work since the agent-creation function is the same;
-
         [task launch];
         
         pid_t pid = [task processIdentifier];

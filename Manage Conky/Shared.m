@@ -76,13 +76,18 @@ void createLaunchAgent(NSString *label,
                        NSString *workingDirectory,
                        NSError *error)
 {
+    NSString *cmd = [args componentsJoinedByString:@" "];
+    
     AHLaunchJob* job = [AHLaunchJob new];
     job.Label = label;
-    job.ProgramArguments = args;
+    job.ProgramArguments = @[@"/bin/bash",
+                             @"-l",
+                             @"-c", cmd];
     job.ThrottleInterval = throttle;
     job.KeepAlive = [NSNumber numberWithBool:keepAlive];
     job.RunAtLoad = YES;
     job.WorkingDirectory = workingDirectory;
+    job.EnvironmentVariables = [NSProcessInfo processInfo].environment;
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
