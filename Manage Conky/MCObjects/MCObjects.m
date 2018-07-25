@@ -131,7 +131,7 @@
 - (void)enable
 {
     /*
-     * itemPath must have the spaces replaced by '/'
+     * itemPath must have the spaces replaced by '\'
      * Because bash is - well... bash! - and it won't
      * parse them correctly
      */
