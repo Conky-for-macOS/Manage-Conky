@@ -133,10 +133,12 @@
     /*
      * itemPath must have the spaces replaced by '\'
      * Because bash is - well... bash! - and it won't
-     * parse them correctly
+     * parse them correctly.  Also fix the '(' and ')'.
      */
     NSString *correctedItemPath = [_itemPath stringByReplacingOccurrencesOfString:@" "
                                                                        withString:@"\\ "];
+    correctedItemPath = [correctedItemPath stringByReplacingOccurrencesOfString:@"(" withString:@"\\("];
+    correctedItemPath = [correctedItemPath stringByReplacingOccurrencesOfString:@")" withString:@"\\)"];
     
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
