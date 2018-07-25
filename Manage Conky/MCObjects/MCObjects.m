@@ -150,10 +150,31 @@
     }
     else
     {
+        /*
+         * itemPath must have the spaces replaced by '/'
+         * Because bash is - well... bash! - and it won't
+         * parse them correctly
+         */
+        NSString *correctedItemPath = [_itemPath stringByReplacingOccurrencesOfString:@" "
+                                                                           withString:@"\\ "];
+        
+        NSString *cmd = [NSString stringWithFormat:@"%@ -c %@", CONKY_SYMLINK, correctedItemPath];
+        
         NSTask *task = [[NSTask alloc] init];
-        [task setLaunchPath:CONKY_SYMLINK];
-        [task setArguments:@[@"-c", _itemPath]];
+        [task setLaunchPath:@"/bin/bash"];
+        [task setArguments:@[@"-l",
+                             @"-c",
+                             cmd]];
         [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
+        [task setEnvironment:[NSProcessInfo processInfo].environment];          /*
+                                                                                 * Some conky widgets like Conky-Vision
+                                                                                 * (original: https://github.com/zagortenay333/conky-Vision)
+                                                                                 * use external executables thus we need to
+                                                                                 * provide the basic environment for them
+                                                                                 * like environment-variables.
+                                                                                 */
+        // XXX same applies for agent... and for themes but it will work since the agent-creation function is the same;
+
         [task launch];
         
         pid_t pid = [task processIdentifier];
