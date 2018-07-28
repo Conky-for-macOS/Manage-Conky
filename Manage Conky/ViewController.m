@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 
+#define ERR_NSFD 260    /* no such file or directory */
 
 @implementation ViewController
 
@@ -48,6 +49,26 @@
     [themesArray removeAllObjects];
 }
 
+- (NSArray *)getExcludedFromPath:(NSString *)path
+{
+    NSError *error = nil;
+    NSString *mcignore = [path stringByAppendingPathComponent:@".mcignore"];
+    NSString *mcignoreItems = [[NSString alloc] initWithContentsOfFile:mcignore
+                                                              encoding:NSUTF8StringEncoding
+                                                                 error:&error];
+    
+    if (error && error.code != ERR_NSFD)
+    {
+        NSLog(@"fill: %@", error);
+        return nil;
+    }
+    
+    NSArray *excludedItems = [mcignoreItems componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    NSLog(@"ExcludedItems = %@", excludedItems);
+    return nil;
+}
+
 - (void)fillWidgetsThemesArraysWithBasicSearchPath:(NSString *)basicSearchPath
 {
     NSError *error = nil;
@@ -64,14 +85,17 @@
      */
     for (NSString *item in basicSearchDirectoryContents)
     {
-        NSString *itemFullpath = [NSString stringWithFormat:@"%@/%@", basicSearchPath, item];   /* full path for item of basicSearchDirectory */
-        NSArray *itemContents = [fm contentsOfDirectoryAtPath:itemFullpath error:&error];   /* list of sub-items in item */
+        NSString *itemFullpath = [basicSearchPath stringByAppendingPathComponent:item];   /* full path for item of basicSearchDirectory */
+        NSMutableArray *itemContents = [fm contentsOfDirectoryAtPath:itemFullpath error:&error].mutableCopy;   /* list of sub-items in item */
         
         if (!itemContents)
             continue;
         
+        /* Exclude all stuff from .mcignore */
+        [itemContents removeObjectsInArray:[self getExcludedFromPath:itemFullpath]];
+        
         /*
-         * These variable is set only if the following loop fails to locate
+         * This variable is set only if the following loop fails to locate
          *  Theme but does locate Widget.
          */
         BOOL foundWidget = NO;
@@ -81,7 +105,7 @@
             if ([[subItem pathExtension] isEqualToString:@"cmtheme"] || [subItem isEqualToString:@"themerc.plist"])
             {
                 BOOL useNewThemeRCFormat = [subItem isEqualToString:@"themerc.plist"] ? YES : NO;
-                NSString *themeRC = [NSString stringWithFormat:@"%@/%@", itemFullpath, (useNewThemeRCFormat ? @"themerc.plist" : subItem)];
+                NSString *themeRC = [itemFullpath stringByAppendingPathComponent:(useNewThemeRCFormat ? @"themerc.plist" : subItem)];
                 
                 MCTheme *theme = [MCTheme themeRepresentationForThemeRC:themeRC];
                 [themesArray addObject:theme];
@@ -96,6 +120,9 @@
             else
             {
                 if ([subItem isEqualToString:@".DS_Store"])
+                    continue;
+                
+                if ([subItem isEqualToString:@".mcignore"])
                     continue;
                 
                 /*
@@ -120,13 +147,16 @@
                 if ([subItem isEqualToString:@".DS_Store"])
                     continue;
                 
+                if ([subItem isEqualToString:@".mcignore"])
+                    continue;
+                
                 /*
                  * subItem definitely isn't a Theme but it could be a Widget.
                  * Check if it really is and set the appropriate variables.
                  */
                 if ([[subItem pathExtension] isEqualToString:@""])
                 {
-                    NSString *widgetRCFullpath = [NSString stringWithFormat:@"%@/%@", itemFullpath, subItem];
+                    NSString *widgetRCFullpath = [itemFullpath stringByAppendingPathComponent:subItem];
                     MCWidget *widget = [MCWidget widgetWithPid:MC_PID_NOT_SET andPath:widgetRCFullpath];
                     [widgetsArray addObject:widget];
                 }
@@ -194,17 +224,20 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-        preview = [[widget itemPath] stringByAppendingString:@".jpg"];
+        preview = [[widget itemPath] stringByAppendingPathExtension:@"jpg"];
     }
     else if (whatToShow == widgetsThemesTableShowThemes)
     {
         MCTheme *theme = [themesArray objectAtIndex:row];
         NSString *themeRoot = [[theme themeRC] stringByDeletingLastPathComponent];
         NSString *themeName = [themeRoot lastPathComponent];
-        preview = [NSString stringWithFormat:@"%@/%@.jpg", themeRoot, themeName];
+        preview = [[themeRoot stringByAppendingPathComponent:themeName] stringByAppendingPathExtension:@"jpg"];
     }
     
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
+    
+    if (!image)
+        return;
     
     CGFloat w = [image size].width;
     CGFloat h = [image size].height;
@@ -400,6 +433,61 @@
      *  thus after showing it for atleast once.
      */
     [editorController loadConfig:[widget itemPath]];
+}
+
+- (IBAction)ignore:(id)sender
+{
+    NSInteger row = [_widgetsThemesTable selectedRow];
+    
+    NSString *mcignore = @"";
+    NSString *itemName = @"";
+    
+    NSError *error = nil;
+    
+    switch (whatToShow)
+    {
+        case widgetsThemesTableShowWidgets:
+            mcignore = [[[[widgetsArray objectAtIndex:row] itemPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
+            
+            /*
+            [itemName initWithContentsOfFile:mcignore
+                                    encoding:NSUTF8StringEncoding
+                                       error:&error]; */
+            
+            if (error && error.code != ERR_NSFD)
+            {
+                NSLog(@"ignore: %@", error);
+                return;
+            }
+            
+            itemName = [itemName stringByAppendingString:[[[widgetsArray objectAtIndex:row] itemPath] lastPathComponent]];
+            break;
+        case widgetsThemesTableShowThemes:
+            mcignore = [[[[themesArray objectAtIndex:row] themeRC] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
+            
+            /*
+            [itemName initWithContentsOfFile:mcignore
+                                    encoding:NSUTF8StringEncoding
+                                       error:&error]; */
+            
+            if (error && error.code != ERR_NSFD)
+            {
+                NSLog(@"ignore: error %@", error);
+                return;
+            }
+
+            itemName = [itemName stringByAppendingString:[[[themesArray objectAtIndex:row] themeRC] lastPathComponent]];
+            break;
+    }
+    
+    [itemName writeToFile:mcignore
+               atomically:YES
+                 encoding:NSUTF8StringEncoding
+                    error:nil];
+
+    [self emptyWidgetsThemesArrays];
+    [self fillWidgetsThemesArrays];
+    [_widgetsThemesTable reloadData];   // XXX probably not needed
 }
 
 - (IBAction)openInFinder:(id)sender
