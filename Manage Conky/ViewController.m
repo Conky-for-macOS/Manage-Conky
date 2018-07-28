@@ -439,7 +439,11 @@
 {
     NSInteger row = [_widgetsThemesTable selectedRow];
     
+    if (row < 0)
+        return;
+    
     NSString *mcignore = @"";
+    NSString *itemPath = @"";
     NSString *itemName = @"";
     
     NSError *error = nil;
@@ -447,43 +451,51 @@
     switch (whatToShow)
     {
         case widgetsThemesTableShowWidgets:
-            mcignore = [[[[widgetsArray objectAtIndex:row] itemPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
+            itemPath = [[widgetsArray objectAtIndex:row] itemPath];
+            mcignore = [[itemPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
             
-            /*
-            [itemName initWithContentsOfFile:mcignore
-                                    encoding:NSUTF8StringEncoding
-                                       error:&error]; */
-            
-            if (error && error.code != ERR_NSFD)
-            {
-                NSLog(@"ignore: %@", error);
-                return;
-            }
-            
-            itemName = [itemName stringByAppendingString:[[[widgetsArray objectAtIndex:row] itemPath] lastPathComponent]];
             break;
         case widgetsThemesTableShowThemes:
-            mcignore = [[[[themesArray objectAtIndex:row] themeRC] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
+            itemPath = [[themesArray objectAtIndex:row] themeRC];
+            mcignore = [[itemPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
             
-            /*
-            [itemName initWithContentsOfFile:mcignore
-                                    encoding:NSUTF8StringEncoding
-                                       error:&error]; */
-            
-            if (error && error.code != ERR_NSFD)
-            {
-                NSLog(@"ignore: error %@", error);
-                return;
-            }
-
-            itemName = [itemName stringByAppendingString:[[[themesArray objectAtIndex:row] themeRC] lastPathComponent]];
             break;
     }
     
+    /*
+     * Try to initialise with contents of .mcignore
+     */
+    itemName = [[NSString alloc] initWithContentsOfFile:mcignore
+                                               encoding:NSUTF8StringEncoding
+                                                  error:&error];
+    
+    if (error && error.code != ERR_NSFD)
+    {
+        NSLog(@"ignore: error %@", error);
+        return;
+    }
+    
+    if (!itemName)
+    {
+        itemName = [[itemPath lastPathComponent] stringByAppendingString:@"\n"];
+    }
+    else
+    {
+        itemName = [itemName stringByAppendingFormat:@"%@\n", [itemPath lastPathComponent]];
+    }
+    
+    error = nil;
+    
+    /*
+     * Write to .mcignore
+     */
     [itemName writeToFile:mcignore
                atomically:YES
                  encoding:NSUTF8StringEncoding
-                    error:nil];
+                    error:&error];
+    
+    if (error)
+        NSLog(@"ignore: %@", error);
 
     [self emptyWidgetsThemesArrays];
     [self fillWidgetsThemesArrays];
