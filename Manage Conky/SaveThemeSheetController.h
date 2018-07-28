@@ -6,15 +6,9 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
+#import "MCObjects/MCObjects.h"
 #import "GeneralSheetController.h"
 
-typedef enum : NSUInteger {
-    FillScreen = 0,
-    FitToScreen,
-    StretchToFillScreen,
-    Centre,
-    Tile,
-} MCWallpaperScaling;
 
 @interface SaveThemeSheetController : NSWindowController<NSTableViewDelegate>
 {

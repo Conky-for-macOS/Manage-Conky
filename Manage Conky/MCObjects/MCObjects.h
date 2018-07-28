@@ -11,6 +11,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum : NSUInteger
+{
+    FillScreen = 0,
+    FitToScreen,
+    StretchToFillScreen,
+    Centre,
+    Tile,
+}
+MCWallpaperScaling;
+
+static NSArray *macScalingKeys;
+static NSArray *legacyScalingKeys;
+
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
@@ -109,6 +122,7 @@
 @property NSArray *conkyConfigs;    /* conky configs */
 @property NSArray *arguments;   /* arguments for conky */
 @property NSString *wallpaper;  /* wallpaper used by theme */
+@property MCWallpaperScaling scaling;   /* wallpaper scaling */
 
 @property NSString *creator;    /* creator of theme */
 @property NSString *source;     /* source of theme */
@@ -128,7 +142,8 @@
                          startupDelay:(NSInteger)startupDelay
                             wallpaper:(NSString *)wallpaper
                               creator:(NSString *)creator
-                            andSource:(NSString *)source;
+                               source:(NSString *)source
+                           andScaling:(MCWallpaperScaling)scaling;
 
 /**
  * Parse a theme resource-file from a path (themeRC) and create an MCTheme object.

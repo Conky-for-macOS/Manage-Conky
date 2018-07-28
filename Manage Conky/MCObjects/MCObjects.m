@@ -6,8 +6,8 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import "MCObjects.h"
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
+#import "MCObjects.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
 
@@ -242,7 +242,8 @@
                          startupDelay:(NSInteger)startupDelay
                             wallpaper:(NSString *)wallpaper
                               creator:(NSString *)creator
-                            andSource:(NSString *)source;
+                               source:(NSString *)source
+                           andScaling:(MCWallpaperScaling)scaling;
 {
     id res = [[self alloc] init];
     
@@ -256,6 +257,7 @@
     [res setWallpaper:wallpaper];
     [res setCreator:creator];
     [res setSource:source];
+    [res setScaling:scaling];
     
     [res configureMCSettingsHolder];
     
@@ -283,9 +285,24 @@
     NSArray *conkyConfigs = [NSArray array];
     NSArray *arguments = [NSArray array];
     NSString *wallpaper = nil;
-    __block NSString *scaling = nil;
+    __block NSString *strScaling = nil;
+    MCWallpaperScaling scaling = FillScreen;
     NSString *creator = @"unknown";
     NSString *source = @"unknown";
+    
+    macScalingKeys = @[@"FillScreen",
+                       @"FitToScreen",
+                       @"StretchToFillScreen",
+                       @"Centre",
+                       @"Tile",
+                       ];
+    
+    legacyScalingKeys = @[@"",
+                          @"",
+                          @"",
+                          @"",
+                          @"",
+                          ];
     
     /*
      * Is it modern or legacy theme?
@@ -316,6 +333,7 @@
         wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
         source = [rc objectForKey:@"source"];
         creator = [rc objectForKey:@"creator"];
+        strScaling = [rc objectForKey:@"scaling"];
     }
     else
     {
@@ -345,7 +363,7 @@
         /*
          * Take scaling (last line)
          */
-        scaling = [[lines objectAtIndex:i] substringFromIndex:18];
+        strScaling = [[lines objectAtIndex:i] substringFromIndex:18];
         
         /*
          * Take wallpaper which is always the line before-last;
@@ -379,6 +397,24 @@
     }
     
     /*
+     * Lookup scaling string in keys
+     */
+    if ([macScalingKeys containsObject:strScaling])
+    {
+        scaling = [macScalingKeys indexOfObject:strScaling];
+    }
+    else if ([legacyScalingKeys containsObject:strScaling])
+    {
+        NSString *modernKey = [self scalingKeyConvertLegacyToModern:strScaling];
+        scaling = [legacyScalingKeys indexOfObject:modernKey];
+    }
+    else
+    {
+        // oops; completely bad key passed from user
+        // scaling = FillScreen by default
+    }
+    
+    /*
      * create theme representation
      */
     return [self themeWithResourceFile:themeRC
@@ -387,10 +423,19 @@
                           startupDelay:startupDelay
                              wallpaper:wallpaper
                                creator:creator
-                             andSource:source];
+                                source:source
+                            andScaling:scaling];
 }
 
-- (BOOL)apply_wallpaper:(NSString *)wallpaper error:(NSError **)error
+/*
+ * Method that converts a legacy-key (conky-manager) to a modern-mac key (ManageConky)
+ */
++ (NSString *)scalingKeyConvertLegacyToModern:(NSString *)legacyKey
+{
+    return @"FillScreen";   // XXX actually write some code here...
+}
+
+- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
 {
     /*
      * based on https://github.com/sindresorhus/macos-wallpaper
@@ -398,7 +443,30 @@
     
     NSWorkspace *sw = [NSWorkspace sharedWorkspace];
     NSScreen *screen = [NSScreen mainScreen];
-    NSMutableDictionary *so = [[sw desktopImageOptionsForScreen:screen] mutableCopy];
+    NSMutableDictionary *so = [sw desktopImageOptionsForScreen:screen].mutableCopy;
+
+    switch (scaling)
+    {
+        case FillScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case FitToScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case StretchToFillScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleAxesIndependently] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case Centre:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleNone] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case Tile:
+            // XXX what do we do here???
+            break;
+    }
     
     return [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
                         forScreen:screen
@@ -460,7 +528,7 @@
      * Apply wallpaper
      */
     NSError *err = nil;
-    [self apply_wallpaper:_wallpaper error:&err];
+    [self applyWallpaper:_wallpaper withScaling:_scaling error:&err];
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);

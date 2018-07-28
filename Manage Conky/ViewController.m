@@ -62,7 +62,7 @@
         NSLog(@"fill: %@", error);
         return nil;
     }
-        
+    
     return [mcignoreItems componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 }
 
@@ -88,7 +88,7 @@
         if (!itemContents)
             continue;
         
-        /* Exclude all stuff from .mcignore */
+        /* Exclude all stuff in .mcignore */
         [itemContents removeObjectsInArray:[self getExcludedFromPath:itemFullpath]];
         
         /*
