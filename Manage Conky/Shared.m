@@ -91,9 +91,9 @@ void createLaunchAgent(NSString *label,
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
-    BOOL res = [[AHLaunchCtl sharedController] add:job
-                                          toDomain:kAHUserLaunchAgent
-                                             error:&error];
+    [[AHLaunchCtl sharedController] add:job
+                               toDomain:kAHUserLaunchAgent
+                                  error:nil];
     
     [[AHLaunchCtl sharedController] start:label
                                  inDomain:kAHUserLaunchAgent
