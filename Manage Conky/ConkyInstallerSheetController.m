@@ -8,13 +8,14 @@
 
 #import "ConkyInstallerSheetController.h"
 
+#import <Foundation/NSFileManager.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <ServiceManagement/ServiceManagement.h>
+
 #import "Shared.h"
 #import "PFMoveApplication.h"
 #import "MCObjects/MCObjects.h"
 #import "NSAlert+runModalSheet.h"
-#import <Foundation/NSFileManager.h>
-#import <CoreFoundation/CoreFoundation.h>
-#import <ServiceManagement/ServiceManagement.h>
 
 #define MANAGE_CONKY_PATH "/Applications/Manage Conky.app"
 #define HOMEBREW_PATH @"/usr/local/bin/brew"
@@ -186,8 +187,6 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
      */
     if (access(XQUARTZ_PATH, F_OK) != 0)
     {
-        // XXX Fetch beta.xml from xquartz's site
-        // XXX Read the XML file and get xquartz_download_url
         // Xquartz gets updated once in a blue moon so it isn't much of problem keeping the link hardcoded.
         
         counter++;
