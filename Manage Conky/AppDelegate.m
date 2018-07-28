@@ -29,7 +29,7 @@
     SUUpdater *updater = [SUUpdater sharedUpdater];
     [updater setAutomaticallyChecksForUpdates:NO];
 #endif
-    
+
 #ifndef DEBUG
     CXForciblyMoveToApplicationsFolder();
 #endif
