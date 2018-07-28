@@ -62,11 +62,8 @@
         NSLog(@"fill: %@", error);
         return nil;
     }
-    
-    NSArray *excludedItems = [mcignoreItems componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    
-    NSLog(@"ExcludedItems = %@", excludedItems);
-    return nil;
+        
+    return [mcignoreItems componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 }
 
 - (void)fillWidgetsThemesArraysWithBasicSearchPath:(NSString *)basicSearchPath
