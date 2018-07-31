@@ -24,7 +24,12 @@
 @property NSString *creator;
 @property MCWallpaperScaling scaling;
 
+@property BOOL relative;    /* keep path relative or not? */
+
 @property (weak) IBOutlet NSTextField *wallpaperPathLabel;
+
+@property (weak) IBOutlet NSTextField *themeCreatorField;
+@property (weak) IBOutlet NSTextField *themeSourceField;
 
 @property (strong) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *themeNameField;

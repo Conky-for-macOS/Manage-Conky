@@ -8,7 +8,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SaveThemeSheetController">
             <connections>
+                <outlet property="themeCreatorField" destination="UpE-mi-1hC" id="KCd-yc-sxy"/>
                 <outlet property="themeNameField" destination="gS3-yf-Kw0" id="M5M-yg-r71"/>
+                <outlet property="themeSourceField" destination="g8n-H5-ALa" id="jk7-D4-GPe"/>
                 <outlet property="wallpaperPathLabel" destination="nLd-Sz-71Y" id="Scs-Sl-sIK"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NmD-az-POr"/>
             </connections>
@@ -299,7 +301,7 @@
                     <constraint firstItem="2se-WR-a4L" firstAttribute="trailing" secondItem="GPT-pE-Kor" secondAttribute="trailing" id="z0k-2o-z49"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-703" y="154.5"/>
+            <point key="canvasLocation" x="-743" y="167"/>
         </window>
     </objects>
 </document>
