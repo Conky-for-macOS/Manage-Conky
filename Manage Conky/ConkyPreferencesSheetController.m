@@ -81,10 +81,7 @@
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
-        
-        [_searchLocationsTable setDelegate:self];
-        [_searchLocationsTable setDataSource:self];
-        
+                
         /*
          * Conky is Set to run at startup?
          * set checkbox state accordingly

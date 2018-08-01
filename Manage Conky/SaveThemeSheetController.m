@@ -6,7 +6,6 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import <unistd.h>
 #import "MCObjects/MCObjects.h"
 #import "SaveThemeSheetController.h"
 #import "Extensions/NSAlert+runModalSheet.h"
@@ -23,15 +22,15 @@
          */
         propertiesFilledIn = 0;
         _relative = YES;
+        
+        [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
     }
     return self;
 }
 
 - (IBAction)saveTheme:(id)sender
 {
-    /*
-     * Set the values
-     */
+    /* Set the values */
     _name = _themeNameField.stringValue;
     _source = _themeSourceField.stringValue;
     _creator = _themeCreatorField.stringValue;
@@ -42,9 +41,7 @@
 
     NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
 
-    /*
-     * Check if user has filled-in all info
-     */
+    /* Check if user has filled-in all info */
     if (propertiesFilledIn != MC_MAX_PROPERTIES)
     {
         NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
@@ -56,9 +53,7 @@
         return;
     }
 
-    /*
-     * Create theme directory
-     */
+    /* Create theme directory */
     NSError *error = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
 
@@ -68,26 +63,21 @@
         return;
     }
 
-    /*
-     * Set dictionary
-     */
-    if (_relative)
-        [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
-    else
-        [themerc setObject:_wallpaper forKey:@"wallpaper"];
-
-    //[themerc setObject:_conkyConfigs forKey:@"conkyConfigs"]; // XXX
+    /* Set dictionary */
+    if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
+    else [themerc setObject:_wallpaper forKey:@"wallpaper"];
+    
+    [themerc setObject:_conkyConfigs forKey:@"conkyConfigs"];
     [themerc setObject:_source forKey:@"source"];
     [themerc setObject:_creator forKey:@"creator"];
 
+    /* Write dictionary */
     [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
               atomically:YES];
 
     error = nil;    // re-use
 
-    /*
-     * Set Resources
-     */
+    /* Set Resources */
     if (_relative)
     {
         [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
@@ -154,6 +144,77 @@
 - (IBAction)closeButton:(id)sender
 {
     [self.window close];
+}
+
+//
+//=========================================================================================================
+//
+
+//
+// DATA SOURCE
+//
+
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    NSInteger row = [_widgetsTableView selectedRow];
+    
+    if (row < 0)
+        return;
+    
+    // xxx
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return [_conkyConfigs count];
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    if (row < 0)
+        return nil;
+    
+    NSString *str = [_conkyConfigs objectAtIndex:row];
+    
+    NSTextFieldCell *cell = [tableColumn dataCellForRow:row];
+    
+    /*
+     * check if already allocated
+     */
+    if (!cell)
+        cell = [[NSTextFieldCell alloc] init];
+    
+    cell.stringValue = str;
+    return cell;
+}
+
+//
+// DATA SOURCE
+//
+
+- (BOOL)tableView:(NSTableView *)tv
+writeRowsWithIndexes:(NSIndexSet *)rowIndexes
+     toPasteboard:(NSPasteboard*)pboard
+{
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView*)tv
+                validateDrop:(id <NSDraggingInfo>)info
+                 proposedRow:(NSInteger)row
+       proposedDropOperation:(NSTableViewDropOperation)op
+{
+    return NSDragOperationCopy;
+}
+
+
+- (BOOL)tableView:(NSTableView *)aTableView
+       acceptDrop:(id <NSDraggingInfo>)info
+              row:(NSInteger)row
+    dropOperation:(NSTableViewDropOperation)operation
+{
+    return YES;
 }
 
 @end

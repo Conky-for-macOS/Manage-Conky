@@ -30,9 +30,6 @@
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
     [self fillWidgetsThemesArrays];
-    
-    [_widgetsThemesTable setDelegate:self];
-    [_widgetsThemesTable setDataSource:self];
 }
 
 - (void)setRepresentedObject:(id)representedObject {

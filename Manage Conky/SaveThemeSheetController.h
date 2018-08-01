@@ -10,7 +10,7 @@
 #import "GeneralSheetController.h"
 
 
-@interface SaveThemeSheetController : NSWindowController<NSTableViewDelegate>
+@interface SaveThemeSheetController : NSWindowController<NSTableViewDelegate, NSTableViewDataSource>
 {
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */
@@ -19,21 +19,24 @@
 
 @property NSString *name;
 @property NSString *wallpaper;
-@property NSArray *conkyConfigs;
+@property NSMutableArray *conkyConfigs;
 @property NSString *source;
 @property NSString *creator;
 @property MCWallpaperScaling scaling;
 
 @property BOOL relative;    /* keep path relative or not? */
 
-@property (weak) IBOutlet NSTextField *wallpaperPathLabel;
-
+@property (weak) IBOutlet NSTextField *themeNameField;
 @property (weak) IBOutlet NSTextField *themeCreatorField;
 @property (weak) IBOutlet NSTextField *themeSourceField;
 
-@property (strong) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSTextField *themeNameField;
+@property (weak) IBOutlet NSTableView *widgetsTableView;
+
 @property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
+
+@property (weak) IBOutlet NSTextField *wallpaperPathLabel;
+
+@property (strong) IBOutlet NSWindow *window;
 
 - (id)initWithWindowNibName:(NSString *)nibName;
 

@@ -12,6 +12,7 @@
                 <outlet property="themeNameField" destination="gS3-yf-Kw0" id="M5M-yg-r71"/>
                 <outlet property="themeSourceField" destination="g8n-H5-ALa" id="jk7-D4-GPe"/>
                 <outlet property="wallpaperPathLabel" destination="nLd-Sz-71Y" id="Scs-Sl-sIK"/>
+                <outlet property="widgetsTableView" destination="S7f-YJ-rg9" id="z53-mL-L4Q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NmD-az-POr"/>
             </connections>
         </customObject>
@@ -147,6 +148,10 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-2" id="fxz-an-w7n"/>
+                                        <outlet property="delegate" destination="-2" id="tsC-j1-K1D"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                         </clipView>
