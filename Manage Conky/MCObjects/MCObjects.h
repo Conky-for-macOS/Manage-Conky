@@ -18,11 +18,29 @@ typedef enum : NSUInteger
     StretchToFillScreen,
     Centre,
     Tile,
+    
+    MAX_SCALING_KEYS,    /* used as a counter of Wallpaper Scaling keys */
 }
 MCWallpaperScaling;
 
 static NSArray *macScalingKeys;
 static NSArray *legacyScalingKeys;
+
+static const char *cMacScalingKeys[] = {
+    "FillScreen",
+    "FitToScreen",
+    "StretchToFillScreen",
+    "Centre",
+    "Tile",
+};
+
+static const char *cLegacyScalingKeys[] = {
+    "",
+    "",
+    "",
+    "",
+    "",
+};
 
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */

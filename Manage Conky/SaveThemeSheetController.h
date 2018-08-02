@@ -14,17 +14,17 @@
 {
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */
-#define MC_MAX_PROPERTIES   5   /* max properties to fill */
+#define MC_MAX_PROPERTIES   4   /* max properties to fill */
 }
 
 @property NSString *name;
 @property NSString *wallpaper;
-@property NSMutableArray *conkyConfigs;
+@property NSMutableArray<NSString *> *conkyConfigs;
 @property NSString *source;
 @property NSString *creator;
 @property MCWallpaperScaling scaling;
 
-@property BOOL relative;    /* keep path relative or not? */
+@property BOOL relative;    /* keep wallpaper path relative or not? */
 
 @property (weak) IBOutlet NSTextField *themeNameField;
 @property (weak) IBOutlet NSTextField *themeCreatorField;

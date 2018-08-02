@@ -21,11 +21,26 @@
          * Basic initialisation
          */
         propertiesFilledIn = 0;
+        _scaling = FillScreen;
         _relative = YES;
-        
-        [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    static BOOL initialised = NO;
+
+    if (!initialised)
+    {
+        /* popup button */
+        for (int i = 0; i < MAX_SCALING_KEYS; i++)
+            [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
+
+        [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
+        
+        initialised = YES;
+    }
 }
 
 - (IBAction)saveTheme:(id)sender
@@ -49,7 +64,7 @@
         [alert setInformativeText:@"You forgot to fill in some info."];
         [alert setAlertStyle:NSAlertStyleCritical];
         [alert runModalSheetForWindow:self.window];
-        
+
         return;
     }
 
@@ -66,10 +81,11 @@
     /* Set dictionary */
     if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
     else [themerc setObject:_wallpaper forKey:@"wallpaper"];
-    
+
     [themerc setObject:_conkyConfigs forKey:@"conkyConfigs"];
     [themerc setObject:_source forKey:@"source"];
     [themerc setObject:_creator forKey:@"creator"];
+    [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
 
     /* Write dictionary */
     [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
@@ -138,7 +154,7 @@
 
 - (IBAction)chooseScaling:(id)sender
 {
-    
+    _scaling = [sender indexOfSelectedItem];
 }
 
 - (IBAction)closeButton:(id)sender
@@ -153,7 +169,6 @@
 //
 // DATA SOURCE
 //
-
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
@@ -190,7 +205,7 @@
 }
 
 //
-// DATA SOURCE
+// DRAG & DROP
 //
 
 - (BOOL)tableView:(NSTableView *)tv
