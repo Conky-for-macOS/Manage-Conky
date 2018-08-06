@@ -190,8 +190,6 @@
     if (row < 0)
         return nil;
     
-    NSString *str = [_conkyConfigs objectAtIndex:row];
-    
     NSTextFieldCell *cell = [tableColumn dataCellForRow:row];
     
     /*
@@ -200,7 +198,7 @@
     if (!cell)
         cell = [[NSTextFieldCell alloc] init];
     
-    cell.stringValue = str;
+    cell.stringValue = [_conkyConfigs objectAtIndex:row];
     return cell;
 }
 
