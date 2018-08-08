@@ -11,12 +11,6 @@
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
 
-/* defines */
-#define CONKYX              @"/Applications/ConkyX.app"
-#define MANAGE_CONKY        @"/Applications/Manage Conky.app"
-#define CONKY_SYMLINK       @"/usr/local/bin/conky"
-#define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
-
 @implementation MCSettings
 + (instancetype)sharedInstance
 {

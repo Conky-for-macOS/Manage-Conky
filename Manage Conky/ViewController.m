@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MCConfigEditor.h"  // Editor View Controller
+#import "Shared.h"
 
 #define ERR_NSFD 260    /* no such file or directory */
 
@@ -529,6 +530,37 @@
     [self emptyWidgetsThemesArrays];
     [self fillWidgetsThemesArrays];
     [_widgetsThemesTable reloadData];
+}
+
+- (IBAction)runCommand:(id)sender
+{
+    if (whatToShow != widgetsThemesTableShowWidgets)
+        return;
+    
+    NSInteger row = [_widgetsThemesTable selectedRow];
+    
+    if (row < 0)
+        return;
+
+    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+
+    NSURL *url = [NSURL fileURLWithPath:CONKYX];
+
+    if (!url)
+        return;
+
+    NSError *error = nil;
+    NSArray *arguments = @[@"-c",
+                           [[widgetsArray objectAtIndex:row] itemPath],
+                           ];
+    
+    [workspace launchApplicationAtURL:url
+                              options:0
+                        configuration:[NSDictionary dictionaryWithObject:arguments forKey:NSWorkspaceLaunchConfigurationArguments]
+                                error:&error];
+
+    if (error)
+        NSLog(@"%@", error);
 }
 
 @end

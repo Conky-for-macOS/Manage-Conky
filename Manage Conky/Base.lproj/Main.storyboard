@@ -926,6 +926,17 @@
                                     <action selector="uninstall:" target="XfG-lQ-9wD" id="Zmk-ma-YUc"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Of1-sl-My8">
+                                <rect key="frame" x="271" y="406" width="93" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="Run Command" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="z4r-HE-Wgl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="runCommand:" target="XfG-lQ-9wD" id="pWH-ax-RO1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Taw-J9-QHl" firstAttribute="top" secondItem="aj2-26-zfP" secondAttribute="bottom" constant="8" symbolic="YES" id="1Mj-SK-O1q"/>
