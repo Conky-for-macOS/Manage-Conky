@@ -981,7 +981,6 @@
                     </view>
                     <connections>
                         <outlet property="searchField" destination="Rft-ZS-DAt" id="ejm-ri-VtW"/>
-                        <outlet property="uninstallButton" destination="pAL-Z1-kSx" id="ZuG-nU-nS3"/>
                         <outlet property="widgetsThemesTable" destination="GFu-ou-xru" id="7zx-OZ-ceI"/>
                     </connections>
                 </viewController>

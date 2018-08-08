@@ -16,7 +16,7 @@ typedef enum {
     widgetsThemesTableShowThemes,
 } MCWidgetThemesTableShow;
 
-@interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, NSPopoverDelegate>
+@interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
 {
     MCWidgetThemesTableShow whatToShow;
     NSMutableArray<MCTheme*> *themesArray;
@@ -34,8 +34,6 @@ typedef enum {
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
 @property (weak) IBOutlet NSSearchField *searchField;
-
-@property (weak) IBOutlet NSButton *uninstallButton;
 
 /**
  * Function used to fill widgetsArray and themesArray

@@ -103,6 +103,17 @@
 - (void)kill {}
 - (void)disable {}
 - (BOOL)isEnabled { return YES; }
+
+- (void)uninstall:(NSString *)path
+{
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:[path stringByDeletingLastPathComponent] error:&error];
+    
+    if (error)
+        NSLog(@"%@", error);
+}
+
+- (void)uninstall {}
 - (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedInstance]; }
 @end
 
@@ -234,7 +245,7 @@
 
 - (void)uninstall
 {
-    
+    [super uninstall:_itemPath];
 }
 
 @end
@@ -587,7 +598,7 @@
 
 - (void)uninstall
 {
-    
+    [super uninstall:_themeRC];
 }
 
 @end

@@ -253,7 +253,6 @@
         previewPopover = [[NSPopover alloc] init];
         [previewPopover setBehavior:NSPopoverBehaviorSemitransient];
         [previewPopover setAnimates:YES];
-        [previewPopover setDelegate:self];  /* => Get popover closing event */
     }
     
     /*
@@ -275,11 +274,6 @@
     [previewPopover showRelativeToRect:[[notification object] bounds]
                                 ofView:[notification object]
                          preferredEdge:NSMaxXEdge];
-    
-    /*
-     * Show Uninstall button
-     */
-    [_uninstallButton setHidden:NO];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -532,16 +526,9 @@
     id obj = (whatToShow == widgetsThemesTableShowWidgets) ? [widgetsArray objectAtIndex:row] : [themesArray objectAtIndex:row];
     [obj uninstall];
     
+    [self emptyWidgetsThemesArrays];
+    [self fillWidgetsThemesArrays];
     [_widgetsThemesTable reloadData];
-}
-
-//
-// Popover
-//
-
-- (void)popoverWillClose:(NSNotification *)notification
-{
-    [_uninstallButton setHidden:YES];
 }
 
 @end

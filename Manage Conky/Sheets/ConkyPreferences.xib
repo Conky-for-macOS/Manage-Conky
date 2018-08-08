@@ -18,7 +18,6 @@
                 <outlet property="doneButton" destination="ecK-bz-o3c" id="44p-bG-sC5"/>
                 <outlet property="removeSearchLocationButton" destination="nVT-Y6-5el" id="ncb-Vz-ek3"/>
                 <outlet property="runConkyAtStartupCheckbox" destination="G7a-wy-yQX" id="OZy-7O-XHD"/>
-                <outlet property="searchLocationsScrollView" destination="pBp-qi-Pxd" id="snx-B1-D7x"/>
                 <outlet property="searchLocationsTable" destination="9zm-OS-jra" id="xtd-gI-h0k"/>
                 <outlet property="setConkyConfigFilesLocationButton" destination="X4A-OB-fHs" id="z0w-Mj-eax"/>
                 <outlet property="sheet" destination="QvC-M9-y7g" id="4EO-4t-vy1"/>
@@ -146,7 +145,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="startupDelayFieldModified:" target="-2" id="vKw-Ew-MAD"/>
                             <outlet property="delegate" destination="-2" id="7ia-dG-u3h"/>
                             <outlet property="formatter" destination="BLp-7I-hEK" id="6x4-p3-wc7"/>
                         </connections>
@@ -322,7 +320,7 @@
                     <constraint firstItem="Xay-j4-4qQ" firstAttribute="leading" secondItem="pBp-qi-Pxd" secondAttribute="leading" id="y1B-KP-2ju"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="139" y="238"/>
+            <point key="canvasLocation" x="-38" y="166"/>
         </window>
         <customObject id="BLp-7I-hEK" customClass="OnlyIntegerValueFormatter"/>
         <customObject id="9dn-cb-wWg" customClass="ConkyPreferencesSheetController"/>
