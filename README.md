@@ -12,11 +12,11 @@ To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-C
 
 ## AKNOWLEDGEMENTS 📖
 
-- [conky](https://github.com/brndnmtthws/conky) - The original conky
+- [conky](https://github.com/brndnmtthws/conky) - Original conky
 - [conky-for-macOS](https://github.com/Conky-for-macOS/conky-for-macOS) - The port
-- [ConkyX](https://github.com/Conky-for-macOS/ConkyX) - The conky quick-launcher
+- [ConkyX](https://github.com/Conky-for-macOS/ConkyX) - Conky quick-launcher
 - [conky-manager](https://github.com/teejee2008/conky-manager) - The app that ManageConky mimics
-- [LetsMove](https://github.com/potionfactory/LetsMove) - Ofcourse
+- [LetsMove](https://github.com/potionfactory/LetsMove) - Move to Applications Library
 - [default-themes](https://github.com/Conky-for-macOS/default-themes) - This is where we get the themes
 
 ### This project uses [cocoapods](https://cocoapods.org/) as supplier of these frameworks:
@@ -24,6 +24,8 @@ To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-C
 - [AHLaunchCtl](https://github.com/eahrold/AHLaunchCtl) - Controlling LaunchD
 
 ## DONATING 💰
+
+***PayPal coming soon***
 
 ```
 BTC: 31qFE5JFeReEftU1sjDqigUDmpxYuTdwQm
