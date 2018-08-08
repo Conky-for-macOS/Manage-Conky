@@ -6,6 +6,10 @@ Manage Conky is the implementation of [conky-manager](https://github.com/teejee2
 
 ![preview](preview.jpeg)
 
+## INSTALL
+
+To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-Conky/releases/latest) or alternatively build it for yourself using the [guide in the wiki](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build).
+
 ## AKNOWLEDGEMENTS 📖
 
 - [conky](https://github.com/brndnmtthws/conky) - The original conky
