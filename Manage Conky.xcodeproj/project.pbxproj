@@ -14,6 +14,7 @@
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
+		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
 		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		09D11C992104C66F005C9685 /* SaveThemeSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D11C982104C66F005C9685 /* SaveThemeSheetController.m */; };
@@ -115,19 +116,21 @@
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = toggleXquartzVisibilityScript.fmt; path = Resources/toggleXquartzVisibilityScript.fmt; sourceTree = "<group>"; };
-		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shared.h; path = "Manage Conky/Shared.h"; sourceTree = "<group>"; };
+		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		095F81902080D08A008DD286 /* MCObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCObjects.m; path = MCObjects/MCObjects.m; sourceTree = "<group>"; };
 		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
+		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
+		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CBFEA92066A55500EB8A1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09CBFEAE2066A57600EB8A1A /* SMJobBlessHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Info.plist"; sourceTree = "<group>"; };
 		09CBFEAF2066A57600EB8A1A /* SMJobBlessHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Launchd.plist"; sourceTree = "<group>"; };
 		09D11C972104C66F005C9685 /* SaveThemeSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetController.h; sourceTree = "<group>"; };
 		09D11C982104C66F005C9685 /* SaveThemeSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveThemeSheetController.m; sourceTree = "<group>"; };
-		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Shared.m; path = "Manage Conky/Shared.m"; sourceTree = "<group>"; };
+		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
 		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +193,10 @@
 		090C35B6209487B5009C97F8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				09B56B05211B565B00075BC8 /* MCFilesystem.h */,
+				09B56B07211B574E00075BC8 /* MCFilesystem.m */,
+				09473739206AF28D009881EB /* Shared.h */,
+				09D8226C206F8FFC008BBFEB /* Shared.m */,
 				ECAF6F622024ADC900715D72 /* LetsMove */,
 				ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */,
 				09E4382A2080D0120083EBEC /* MCObjects */,
@@ -238,8 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
-				09473739206AF28D009881EB /* Shared.h */,
-				09D8226C206F8FFC008BBFEB /* Shared.m */,
 				09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				77B847361F62C2B600AF8BCA /* Products */,
@@ -551,6 +556,7 @@
 				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
+				09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,

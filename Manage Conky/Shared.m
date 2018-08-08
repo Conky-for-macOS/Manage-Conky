@@ -21,32 +21,6 @@ void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
                    });
 }
 
-/**
- * MCDirectory()
- *
- * Easily retrieve path to ManageConky directory in ~/Library
- */
-NSString *MCDirectory(void)
-{
-    return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/ManageConky"];
-}
-
-/**
- * createMCDirectory()
- *
- * Helper function to create ~/Library/ManageConky directory
- */
-void createMCDirectory(void)
-{
-    NSError *error;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createDirectoryAtPath:MCDirectory() withIntermediateDirectories:NO attributes:nil error:&error];
-    if (error)
-    {
-        NSLog(@"Failed to create ManageConky directory with error: \n\n%@", error);
-    }
-}
-
 void createUserLaunchAgentsDirectory(void)
 {
     /* create LaunchAgents directory at User's Home */

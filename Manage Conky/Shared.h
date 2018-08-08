@@ -10,6 +10,7 @@
 #define Shared_h
 
 #import <Cocoa/Cocoa.h>
+#import "MCFilesystem.h"
 #import "Extensions/NSAlert+runModalSheet.h"
 
 /* defines */
@@ -31,16 +32,6 @@
 // HELPER FUNCTIONS
 //
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
-
-/**
- * Return ManageConky directory path in ~/Library
- */
-NSString *MCDirectory(void);
-
-/**
- * Create ManageConky directory in ~/Library
- */
-void createMCDirectory(void);
 
 /**
  * Create LaunchAgents directory at ~/Library if it doesn't exist
