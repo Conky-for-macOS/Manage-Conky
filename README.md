@@ -25,7 +25,7 @@ To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-C
 
 ## DONATING 💰
 
-***PayPal coming soon***
+***PayPal coming soon 👊***
 
 ```
 BTC: 31qFE5JFeReEftU1sjDqigUDmpxYuTdwQm
