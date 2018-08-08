@@ -15,7 +15,7 @@ workdir=/tmp/ManageConkyDMG
 
 # Setup work directory
 mkdir -p "$workdir"
-ln -s "$workdir/Applications" /Applications
+ln -s /Applications "$workdir/Applications"
 cp -R "$1" "$workdir"
 
 # create dmg
@@ -31,5 +31,7 @@ echo "DSA Signature:"
 # create DSA signature
 ~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$2.dmg" ~/Documents/Private\ Key/dsa_priv.pem
 
-
 echo "Update your npyl.github.io with ManageConky.dmg and the DSA signature in appcast.xml"
+
+open ~/npyl.github.io/Projects/ManageConky/Release
+open ~/npyl.github.io/Projects/ManageConky/appcast.xml
