@@ -444,19 +444,6 @@
     }
 }
 
-/*
- * Called if the application has been relaunched from an update
- */
-- (void)updaterDidRelaunchApplication:(SUUpdater *)updater
-{
-    /*
-     * Install the newest version of ConkyX/conky
-     *  brought by the updated ManageConky
-     */
-    NSLog(@"Must install ConkyX after update...");
-    [self installConky];
-}
-
 //
 //
 // SEARCH LOCATIONS
