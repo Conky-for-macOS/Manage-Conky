@@ -217,7 +217,6 @@
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
         removeLaunchAgent(_widgetLabel);
-        // xxx error checking
     }
 }
 
@@ -229,10 +228,15 @@
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
         return isLaunchAgentEnabled(_widgetLabel);
-        // XXX error checking
     }
     else return (_pid != MC_PID_NOT_SET) ? YES : NO;
 }
+
+- (void)uninstall
+{
+    
+}
+
 @end
 
 @implementation MCTheme
@@ -466,6 +470,9 @@
         case Tile:
             // XXX what do we do here???
             break;
+        case MAX_SCALING_KEYS:
+        default:
+            break;
     }
     
     return [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
@@ -577,4 +584,10 @@
     
     _isEnabled = NO;
 }
+
+- (void)uninstall
+{
+    
+}
+
 @end

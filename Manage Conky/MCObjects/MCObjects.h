@@ -107,6 +107,7 @@ static const char *cLegacyScalingKeys[] = {
 - (void)kill;
 - (void)disable;
 - (BOOL)isEnabled;
+- (void)uninstall;
 
 - (void)configureMCSettingsHolder;
 @end

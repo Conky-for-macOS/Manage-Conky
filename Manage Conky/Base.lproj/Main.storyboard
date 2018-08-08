@@ -915,6 +915,17 @@
                                     <action selector="ignore:" target="XfG-lQ-9wD" id="SVk-pU-zFi"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-Z1-kSx">
+                                <rect key="frame" x="271" y="381" width="62" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="Uninstall" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="NFz-Pz-5AQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="uninstall:" target="XfG-lQ-9wD" id="Zmk-ma-YUc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Taw-J9-QHl" firstAttribute="top" secondItem="aj2-26-zfP" secondAttribute="bottom" constant="8" symbolic="YES" id="1Mj-SK-O1q"/>
@@ -970,6 +981,7 @@
                     </view>
                     <connections>
                         <outlet property="searchField" destination="Rft-ZS-DAt" id="ejm-ri-VtW"/>
+                        <outlet property="uninstallButton" destination="pAL-Z1-kSx" id="ZuG-nU-nS3"/>
                         <outlet property="widgetsThemesTable" destination="GFu-ou-xru" id="7zx-OZ-ceI"/>
                     </connections>
                 </viewController>

@@ -253,6 +253,7 @@
         previewPopover = [[NSPopover alloc] init];
         [previewPopover setBehavior:NSPopoverBehaviorSemitransient];
         [previewPopover setAnimates:YES];
+        [previewPopover setDelegate:self];  /* => Get popover closing event */
     }
     
     /*
@@ -274,6 +275,11 @@
     [previewPopover showRelativeToRect:[[notification object] bounds]
                                 ofView:[notification object]
                          preferredEdge:NSMaxXEdge];
+    
+    /*
+     * Show Uninstall button
+     */
+    [_uninstallButton setHidden:NO];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -446,15 +452,13 @@
     {
         case widgetsThemesTableShowWidgets:
             itemPath = [[widgetsArray objectAtIndex:row] itemPath];
-            mcignore = [[itemPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
-            
             break;
         case widgetsThemesTableShowThemes:
             itemPath = [[themesArray objectAtIndex:row] themeRC];
-            mcignore = [[itemPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
-            
             break;
     }
+    
+    mcignore = [[itemPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@".mcignore"];
     
     /*
      * Try to initialise with contents of .mcignore
@@ -493,7 +497,7 @@
 
     [self emptyWidgetsThemesArrays];
     [self fillWidgetsThemesArrays];
-    [_widgetsThemesTable reloadData];   // XXX probably not needed
+    [_widgetsThemesTable reloadData];
 }
 
 - (IBAction)openInFinder:(id)sender
@@ -516,6 +520,28 @@
     }
     
     [[NSWorkspace sharedWorkspace] openFile:containingDirectory];
+}
+
+- (IBAction)uninstall:(id)sender
+{
+    NSInteger row = [_widgetsThemesTable selectedRow];
+    
+    if (row < 0)
+        return;
+    
+    id obj = (whatToShow == widgetsThemesTableShowWidgets) ? [widgetsArray objectAtIndex:row] : [themesArray objectAtIndex:row];
+    [obj uninstall];
+    
+    [_widgetsThemesTable reloadData];
+}
+
+//
+// Popover
+//
+
+- (void)popoverWillClose:(NSNotification *)notification
+{
+    [_uninstallButton setHidden:YES];
 }
 
 @end
