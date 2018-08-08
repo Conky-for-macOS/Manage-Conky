@@ -136,14 +136,9 @@
 - (void)enable
 {
     /*
-     * itemPath must have the spaces replaced by '\'
-     * Because bash is - well... bash! - and it won't
-     * parse them correctly.  Also fix the '(' and ')'.
+     * Custom-Normalise for our needs
      */
-    NSString *correctedItemPath = [_itemPath stringByReplacingOccurrencesOfString:@" "
-                                                                       withString:@"\\ "];
-    correctedItemPath = [correctedItemPath stringByReplacingOccurrencesOfString:@"(" withString:@"\\("];
-    correctedItemPath = [correctedItemPath stringByReplacingOccurrencesOfString:@")" withString:@"\\)"];
+    NSString *correctedItemPath = MCNormalise(_itemPath);
     
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
@@ -349,7 +344,6 @@
         /*
          * Doing it the conky-manager way...
          */
-        
         NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
         
         NSError *error = nil;
@@ -522,8 +516,10 @@
         const BOOL keepAlive = YES;
         NSError *error = nil;
         
+        NSString *correctedConfig = MCNormalise(config);
+        
         createLaunchAgent(label,
-                          @[CONKY_SYMLINK, @"-c", config],
+                          @[CONKY_SYMLINK, @"-c", correctedConfig],
                           keepAlive,
                           _startupDelay,
                           workingDirectory,
