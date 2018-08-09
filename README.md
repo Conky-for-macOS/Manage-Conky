@@ -4,6 +4,8 @@
 
 Manage Conky is the implementation of [conky-manager](https://github.com/teejee2008/conky-manager) for macOS.
 
+It offers on the mac what conky-manager offers for linux plus the ability to painlessly install / uninstall conky on your machine!
+
 ![preview](preview.jpeg)
 
 ## INSTALL 💾
