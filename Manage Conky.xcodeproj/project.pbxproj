@@ -111,6 +111,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		090DD046211BC27B0061535E /* distributeManageConky.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.sh; path = Tools/distributeManageConky.sh; sourceTree = "<group>"; };
+		090DD048211BC3120061535E /* createDefaultThemepack.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDefaultThemepack.sh; path = Tools/createDefaultThemepack.sh; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		093BDFBF20861BCD004E6354 /* Editor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Editor.xib; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
@@ -222,6 +224,16 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
+		090DD045211BC2620061535E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				090DD046211BC27B0061535E /* distributeManageConky.sh */,
+				090DD048211BC3120061535E /* createDefaultThemepack.sh */,
+			);
+			name = Tools;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +280,7 @@
 				090C35B6209487B5009C97F8 /* Sources */,
 				77B847411F62C2B600AF8BCA /* Assets.xcassets */,
 				77B847461F62C2B600AF8BCA /* Info.plist */,
+				090DD045211BC2620061535E /* Tools */,
 				EC3DF95C205D6035000ACB95 /* Resources */,
 				77B8473B1F62C2B600AF8BCA /* Supporting Files */,
 			);
