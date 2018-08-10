@@ -301,13 +301,6 @@
                        @"Tile",
                        ];
     
-    legacyScalingKeys = @[@"",
-                          @"",
-                          @"",
-                          @"",
-                          @"",
-                          ];
-    
     /*
      * Is it modern or legacy theme?
      */
@@ -402,20 +395,16 @@
     /*
      * Lookup scaling string in keys
      */
-    if ([macScalingKeys containsObject:strScaling])
+    if (![macScalingKeys containsObject:strScaling])
     {
-        scaling = [macScalingKeys indexOfObject:strScaling];
+        // definitely not a modernScalingKey BUT
+        // This means either using a legacyKey or
+        // not a valid one.  Either way, `scalingKeyConvertLegacyToModern`
+        // will handle that, too!
+        strScaling = [self scalingKeyConvertLegacyToModern:strScaling];
     }
-    else if ([legacyScalingKeys containsObject:strScaling])
-    {
-        NSString *modernKey = [self scalingKeyConvertLegacyToModern:strScaling];
-        scaling = [legacyScalingKeys indexOfObject:modernKey];
-    }
-    else
-    {
-        // oops; completely bad key passed from user
-        // scaling = FillScreen by default
-    }
+    
+    scaling = [macScalingKeys indexOfObject:strScaling];
     
     /*
      * create theme representation
@@ -432,10 +421,44 @@
 
 /*
  * Method that converts a legacy-key (conky-manager) to a modern-mac key (ManageConky)
+ 
+ From conky-manager's source code:
+
+ public string[] bg_scaling = {"none","centered","tiled","stretched","scaled","zoomed"};
+ public string[] bg_scaling_gnome = {"stretched","centered","tiled","stretched","scaled","zoomed"};
+ public string[] bg_scaling_xfce = {"0","1","2","3","4","5"};
+ public string[] bg_scaling_lxde = {"","center","tile","stretch","fit","crop"};
+ 
+ NOTE: We do not support xfce's 0...5 types of scaling
+ 
  */
 + (NSString *)scalingKeyConvertLegacyToModern:(NSString *)legacyKey
 {
-    return @"FillScreen";   // XXX actually write some code here...
+    NSString *modernKey = @"";
+    
+    NSArray *legacyScalingKeys = @[@"none",         // -> 0
+                                   @"centered",     // ->
+                                   @"tiled",
+                                   @"stretched",
+                                   @"scaled",
+                                   @"zoomed",
+                                   ];
+    
+    // If nothing is found default to `FillScreen`
+    if (![legacyScalingKeys containsObject:legacyKey])
+        return macScalingKeys[0];
+    
+    NSUInteger index = [legacyScalingKeys indexOfObject:legacyKey];
+    
+    switch (index)
+    {
+        case 0:
+        default:
+            modernKey = macScalingKeys[0];
+            break;
+    }
+    
+    return modernKey;
 }
 
 - (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error

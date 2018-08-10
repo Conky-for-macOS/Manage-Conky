@@ -24,7 +24,6 @@ typedef enum : NSUInteger
 MCWallpaperScaling;
 
 static NSArray *macScalingKeys;
-static NSArray *legacyScalingKeys;
 
 static const char *cMacScalingKeys[] = {
     "FillScreen",
@@ -32,14 +31,6 @@ static const char *cMacScalingKeys[] = {
     "StretchToFillScreen",
     "Centre",
     "Tile",
-};
-
-static const char *cLegacyScalingKeys[] = {
-    "",
-    "",
-    "",
-    "",
-    "",
 };
 
 /* defines */
