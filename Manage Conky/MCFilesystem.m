@@ -9,7 +9,7 @@
 #import "MCFilesystem.h"
 
 /**
- * MCDirectory()
+ * MCDirectory
  *
  * Easily retrieve path to ManageConky directory in ~/Library
  */
@@ -19,7 +19,7 @@ NSString *MCDirectory(void)
 }
 
 /**
- * createMCDirectory()
+ * createMCDirectory
  *
  * Helper function to create ~/Library/ManageConky directory
  */
@@ -34,13 +34,15 @@ void createMCDirectory(void)
     }
 }
 
+/**
+ * MCNormalise
+ *
+ * path must have the spaces replaced by '\'
+ * Because bash is - well... bash! - and it won't
+ * parse them correctly.  Also fix the '(' and ')'.
+ */
 NSString* MCNormalise(NSString *path)
 {
-    /*
-     * path must have the spaces replaced by '\'
-     * Because bash is - well... bash! - and it won't
-     * parse them correctly.  Also fix the '(' and ')'.
-     */
     NSString *correctedPath = [path stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
     correctedPath = [correctedPath stringByReplacingOccurrencesOfString:@"(" withString:@"\\("];
     correctedPath = [correctedPath stringByReplacingOccurrencesOfString:@")" withString:@"\\)"];
