@@ -30,9 +30,9 @@
     [updater setAutomaticallyChecksForUpdates:NO];
 #endif
 
-//#ifndef DEBUG
+#ifndef DEBUG
     CXForciblyMoveToApplicationsFolder();
-//#endif
+#endif
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
