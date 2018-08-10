@@ -235,7 +235,10 @@
     [object executeAndReturnError:&errorDict];
     
     if (errorDict)
+    {
         NSLog(@"Error when executing applescript: %@", errorDict);
+        [sender setState:![sender state]];
+    }
 }
 
 - (IBAction)setConkyConfigsLocation:(id)sender
