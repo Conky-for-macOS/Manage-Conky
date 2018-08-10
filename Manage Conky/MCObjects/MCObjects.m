@@ -422,26 +422,40 @@
 /*
  * Method that converts a legacy-key (conky-manager) to a modern-mac key (ManageConky)
  
- From conky-manager's source code:
-
- public string[] bg_scaling = {"none","centered","tiled","stretched","scaled","zoomed"};
- public string[] bg_scaling_gnome = {"stretched","centered","tiled","stretched","scaled","zoomed"};
- public string[] bg_scaling_xfce = {"0","1","2","3","4","5"};
- public string[] bg_scaling_lxde = {"","center","tile","stretch","fit","crop"};
- 
- NOTE: We do not support xfce's 0...5 types of scaling
- 
+ v0.1: Doesn't support XFCE
  */
 + (NSString *)scalingKeyConvertLegacyToModern:(NSString *)legacyKey
 {
+    enum
+    {
+        none = 0,
+        centered,
+        tiled,
+        stretched,
+        scaled,
+        zoomed,
+    };
+    
     NSString *modernKey = @"";
     
-    NSArray *legacyScalingKeys = @[@"none",         // -> 0
-                                   @"centered",     // ->
-                                   @"tiled",
-                                   @"stretched",
-                                   @"scaled",
-                                   @"zoomed",
+    /*
+     * From conky-manager's source code:
+     */
+                                                    // macScalingKeys Index
+    NSArray *legacyScalingKeys = @[@"none",         // N/A ->           0
+                                   @"centered",     // ->               3
+                                   @"tiled",        // ->               4
+                                   @"stretched",    // ->               2
+                                   @"scaled",       // N/A ->           0
+                                   @"zoomed",       // N/A ->           0
+                                   
+                                   // XFCE
+                                   @"0",
+                                   @"1",
+                                   @"2",
+                                   @"3",
+                                   @"4",
+                                   @"5",
                                    ];
     
     // If nothing is found default to `FillScreen`
@@ -452,9 +466,23 @@
     
     switch (index)
     {
-        case 0:
+        case none:
+        case scaled:
+        case zoomed:
         default:
             modernKey = macScalingKeys[0];
+            break;
+
+        case centered:
+            modernKey = macScalingKeys[3];
+            break;
+
+        case tiled:
+            modernKey = macScalingKeys[4];
+            break;
+
+        case stretched:
+            modernKey = macScalingKeys[2];
             break;
     }
     
