@@ -16,7 +16,7 @@ typedef enum {
     widgetsThemesTableShowThemes,
 } MCWidgetThemesTableShow;
 
-@interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource>
+@interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, NSSearchFieldDelegate>
 {
     MCWidgetThemesTableShow whatToShow;
     NSMutableArray<MCTheme*> *themesArray;

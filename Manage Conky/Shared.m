@@ -13,7 +13,7 @@ void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
 {
     dispatch_async(dispatch_get_main_queue(),
                    ^{
-                       NSExtendedAlert *failed = [[NSExtendedAlert alloc] init];
+                       NSAlert *failed = [[NSAlert alloc] init];
                        [failed setMessageText:@"Error!"];
                        [failed setInformativeText:msg];
                        [failed setAlertStyle:NSAlertStyleCritical];

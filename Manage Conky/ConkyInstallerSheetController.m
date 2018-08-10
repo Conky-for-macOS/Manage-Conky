@@ -137,7 +137,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://brew.sh"]];
         
-        NSExtendedAlert *hbalert = [[NSExtendedAlert alloc] init];
+        NSAlert *hbalert = [[NSAlert alloc] init];
         [hbalert setMessageText:@"Homebrew missing"];
         [hbalert setInformativeText:@"Install Homebrew first using the link I opened in the browser.\nOnce you install click OK to continue"];
         [hbalert setAlertStyle:NSAlertStyleCritical];
@@ -162,7 +162,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
         
         dispatch_async(dispatch_get_main_queue(),
                        ^{
-                           NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+                           NSAlert *alert = [[NSAlert alloc] init];
                            [alert setMessageText:@"Conky Finished Installing"];
                            [alert runModalSheetForWindow:self->_window];
                            
@@ -171,7 +171,7 @@ BOOL blessHelperWithLabel(NSString *label, CFErrorRef *error)
                            
                            if (installedXquartz)
                            {
-                               NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+                               NSAlert *alert = [[NSAlert alloc] init];
                                [alert setMessageText:@"You need to logout for changes to take effect!"];
                                [alert runModalSheetForWindow:self->_window];
                            }

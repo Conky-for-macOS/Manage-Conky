@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "MCConfigEditor.h"  // Editor View Controller
+
 #import "Shared.h"
+#import "MCConfigEditor.h"  // Editor View Controller
+#import "Extensions/StringScore/NSString+Score.h"
 
 #define ERR_NSFD 260    /* no such file or directory */
 
@@ -561,6 +563,38 @@
 
     if (error)
         NSLog(@"%@", error);
+}
+
+//
+// SearchField Control
+//
+
+- (void)searchFieldDidStartSearching:(NSSearchField *)sender
+{
+    NSString *txt = [sender stringValue];
+    
+    NSMutableArray *obj = [[NSMutableArray alloc] init];
+    
+    CGFloat score = 0;
+
+    if (whatToShow == widgetsThemesTableShowWidgets)
+        for (MCWidget *widget in widgetsArray)
+        {
+            score = [[widget widgetName] scoreAgainst:txt];
+            
+            if (score >= 0.5)
+                [obj addObject:widget];
+        }
+    else
+        for (MCTheme *theme in themesArray)
+        {
+            score = [[theme themeName] scoreAgainst:txt];
+            
+            if (score >= 0.5)
+                [obj addObject:theme];
+        }
+    
+    NSLog(@"%@", obj);
 }
 
 @end

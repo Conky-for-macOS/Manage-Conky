@@ -8,7 +8,7 @@
 
 #import "NSAlert+runModalSheet.h"
 
-@implementation NSExtendedAlert
+@implementation NSAlert (ExtendedAlert)
 - (NSModalResponse)runModalSheetForWindow:(NSWindow *)window
 {
     [self beginSheetModalForWindow:window completionHandler:^(NSModalResponse returnCode)

@@ -59,7 +59,7 @@
     /* Check if user has filled-in all info */
     if (propertiesFilledIn != MC_MAX_PROPERTIES)
     {
-        NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+        NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Whoa! Hold your horses!"];
         [alert setInformativeText:@"You forgot to fill in some info."];
         [alert setAlertStyle:NSAlertStyleCritical];

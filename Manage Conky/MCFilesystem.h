@@ -21,6 +21,9 @@ NSString *MCDirectory(void);
  */
 void createMCDirectory(void);
 
+/**
+ * Custom-Normalise a path for usage in MCObjects (Widgets / Themes)
+ */
 NSString* MCNormalise(NSString *path);
 
 #endif /* MCFilesystem_h */

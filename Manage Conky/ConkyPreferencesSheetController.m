@@ -181,7 +181,7 @@
     {
         NSLog(@"Request to add the Agent!");
         
-        NSExtendedAlert *keepAlivePrompt = [[NSExtendedAlert alloc] init];
+        NSAlert *keepAlivePrompt = [[NSAlert alloc] init];
         [keepAlivePrompt setMessageText:@"Select your preference"];
         [keepAlivePrompt setInformativeText:@"Always restart conky when for some reason it quits?"];
         [keepAlivePrompt setAlertStyle:NSAlertStyleInformational];
@@ -378,7 +378,7 @@
          */
         if (!shownX11TakesAlotTimeWarning && (startupDelay_ != 0))
         {
-            NSExtendedAlert *alert = [[NSExtendedAlert alloc] init];
+            NSAlert *alert = [[NSAlert alloc] init];
             [alert setMessageText:@"Warning"];
             [alert setInformativeText:@"Keep in mind that X11 takes aloooot time to open. You may want to recalculate your startup delay."];
             [alert setAlertStyle:NSAlertStyleWarning];

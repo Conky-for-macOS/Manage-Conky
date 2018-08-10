@@ -14,7 +14,7 @@
 /**
  * Provide extensions such as present a sheet with the ability to wait until completed.
  */
-@interface NSExtendedAlert : NSAlert
+@interface NSAlert (ExtendedAlert)
 
 /**
  * Show an alert-sheet with the ability to wait until its completion.
