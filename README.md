@@ -1,5 +1,4 @@
 <h1 align="center">
-  <br>
   <a><img src="icon.png" alt="Manage Conky" width="100"></a>
   <br>
   Manage Conky
