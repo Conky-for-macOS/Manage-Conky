@@ -1,8 +1,15 @@
 # Manage Conky <br> [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
 
-![icon](icon.png)
 
-ManageConky is the implementation of [conky-manager](https://github.com/teejee2008/conky-manager) for macOS.
+<h1 align="center">
+  <br>
+  <a><img src="icon.png" alt="Manage Conky" width="100"></a>
+  <br>
+  Manage Conky
+  <br>
+</h1>
+
+<h4 align="center">ManageConky is the implementation of <a href="https://github.com/teejee2008/conky-manager" target="_blank">conky-manager</a> for macOS.</h4>
 
 It offers on the mac what conky-manager offers for linux plus the ability to painlessly install / uninstall conky on your machine!
 
