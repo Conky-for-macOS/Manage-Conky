@@ -29,18 +29,11 @@
 
 - (void)awakeFromNib
 {
-    static BOOL initialised = NO;
+    /* popup button */
+    for (int i = 0; i < MAX_SCALING_KEYS; i++)
+        [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
 
-    if (!initialised)
-    {
-        /* popup button */
-        for (int i = 0; i < MAX_SCALING_KEYS; i++)
-            [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
-
-        [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
-        
-        initialised = YES;
-    }
+    [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
 }
 
 - (IBAction)saveTheme:(id)sender
