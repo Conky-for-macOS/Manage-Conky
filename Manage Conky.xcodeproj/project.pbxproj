@@ -339,8 +339,8 @@
 				09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */,
 				09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */,
 				09F14C62211E1F0D00715664 /* ConkyThemes.xib */,
-				09F14C5F211E1F0D00715664 /* Editor.xib */,
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
+				09F14C5F211E1F0D00715664 /* Editor.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
