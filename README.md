@@ -1,6 +1,6 @@
-# ***Manage Conky***
+# ***Manage Conky*** <PRE> [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
 
-![icon](icon.png) [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
+![icon](icon.png)
 
 ManageConky is the implementation of [conky-manager](https://github.com/teejee2008/conky-manager) for macOS.
 
