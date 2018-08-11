@@ -123,7 +123,7 @@
     /*
      * display the panel
      */
-    [panel beginSheetModalForWindow:self.sheet completionHandler:^(NSModalResponse result) {
+    [self.sheet beginSheet:panel completionHandler:^(NSModalResponse result) {
         if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
