@@ -1,6 +1,3 @@
-# Manage Conky <br> [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
-
-
 <h1 align="center">
   <br>
   <a><img src="icon.png" alt="Manage Conky" width="100"></a>
