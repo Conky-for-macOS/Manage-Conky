@@ -1,4 +1,4 @@
-# ***Manage Conky*** <PRE> [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
+# Manage Conky <br> [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/Conky-for-macOS/Manage-Conky/master/LICENSE)
 
 ![icon](icon.png)
 
