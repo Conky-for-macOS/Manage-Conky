@@ -580,7 +580,9 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
         for (MCWidget *widget in widgetsArray)
         {
-            score = [[widget widgetName] scoreAgainst:txt];
+            score = [txt scoreAgainst:[widget widgetName]];
+            
+//            NSLog(@"%@/%@: %f", txt, [widget widgetName], score);
             
             if (score >= 0.5)
                 [obj addObject:widget];
@@ -588,8 +590,10 @@
     else
         for (MCTheme *theme in themesArray)
         {
-            score = [[theme themeName] scoreAgainst:txt];
+            score = [txt scoreAgainst:[theme themeName]];
             
+  //          NSLog(@"%@: %f", txt, score);
+
             if (score >= 0.5)
                 [obj addObject:theme];
         }
