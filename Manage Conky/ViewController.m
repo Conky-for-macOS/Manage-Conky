@@ -578,27 +578,39 @@
     CGFloat score = 0;
 
     if (whatToShow == widgetsThemesTableShowWidgets)
+    {
         for (MCWidget *widget in widgetsArray)
         {
             score = [txt scoreAgainst:[widget widgetName]];
-            
-//            NSLog(@"%@/%@: %f", txt, [widget widgetName], score);
-            
+
             if (score >= 0.5)
                 [obj addObject:widget];
         }
+        
+        [widgetsArray removeAllObjects];
+        [widgetsArray addObjectsFromArray:obj];
+    }
     else
+    {
         for (MCTheme *theme in themesArray)
         {
             score = [txt scoreAgainst:[theme themeName]];
-            
-  //          NSLog(@"%@: %f", txt, score);
 
             if (score >= 0.5)
                 [obj addObject:theme];
         }
+        
+        [themesArray removeAllObjects];
+        [themesArray addObjectsFromArray:obj];
+    }
     
-    NSLog(@"%@", obj);
+    [_widgetsThemesTable reloadData];
+}
+
+- (void)searchFieldDidEndSearching:(NSSearchField *)sender
+{
+    [self fillWidgetsThemesArrays];
+    [_widgetsThemesTable reloadData];
 }
 
 @end

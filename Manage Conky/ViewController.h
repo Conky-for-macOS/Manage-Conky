@@ -21,7 +21,7 @@ typedef enum {
     MCWidgetThemesTableShow whatToShow;
     NSMutableArray<MCTheme*> *themesArray;
     NSMutableArray<MCWidget*> *widgetsArray;
-    
+
     NSPopover *previewPopover;
     
     MCConfigEditor *editorController;
