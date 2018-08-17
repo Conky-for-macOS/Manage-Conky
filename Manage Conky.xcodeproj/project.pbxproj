@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
+		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
@@ -114,6 +115,8 @@
 		090DD046211BC27B0061535E /* distributeManageConky.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.sh; path = Tools/distributeManageConky.sh; sourceTree = "<group>"; };
 		090DD048211BC3120061535E /* createDefaultThemepack.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = createDefaultThemepack.sh; path = Tools/createDefaultThemepack.sh; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
+		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
+		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = toggleXquartzVisibilityScript.fmt; path = Resources/toggleXquartzVisibilityScript.fmt; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		09D11C972104C66F005C9685 /* SaveThemeSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetController.h; sourceTree = "<group>"; };
 		09D11C982104C66F005C9685 /* SaveThemeSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveThemeSheetController.m; sourceTree = "<group>"; };
 		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
-		09E667B8211DEDFA0083C927 /* StringScore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = StringScore; path = Extensions/StringScore; sourceTree = "<group>"; };
 		09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyPreferences.xib; path = Sheets/ConkyPreferences.xib; sourceTree = "<group>"; };
 		09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyInstaller.xib; path = Sheets/ConkyInstaller.xib; sourceTree = "<group>"; };
 		09F14C5F211E1F0D00715664 /* Editor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Editor.xib; path = Sheets/Editor.xib; sourceTree = "<group>"; };
@@ -348,7 +350,8 @@
 		EC9EFB8E2055554800C6BAAF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				09E667B8211DEDFA0083C927 /* StringScore */,
+				092E12C02125BCC200491CDA /* NSString+Score.h */,
+				092E12C12125BCC200491CDA /* NSString+Score.m */,
 				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
 				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
 			);
@@ -574,6 +577,7 @@
 				09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
+				092E12C22125BCC200491CDA /* NSString+Score.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				095F81912080D08A008DD286 /* MCObjects.m in Sources */,
 				ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */,

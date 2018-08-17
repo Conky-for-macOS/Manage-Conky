@@ -297,13 +297,23 @@
     else
     {
         arr = themesArray;
-        str = [[arr objectAtIndex:row] themeRC];
+        str = [[arr objectAtIndex:row] themeName];
     }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
-    {
+    {        
         BOOL isEnabled = [[arr objectAtIndex:row] isEnabled];
-        return [NSNumber numberWithBool:isEnabled];
+        
+        NSImage *cell = [tableColumn dataCellForRow:row];
+        
+        /*
+         * check if already allocated
+         */
+        if (!cell)
+            cell = [[NSImage alloc] init];
+        
+        cell = isEnabled ? [NSImage imageNamed:@"noun_enabled_896264_3BB300"] : [NSImage imageNamed:@"noun_disabled_1467765_FF6868"];
+        return cell;
     }
     else
     {
@@ -583,7 +593,7 @@
         score = [txt scoreAgainst:[object realName] fuzziness:[NSNumber numberWithInteger:0.8] options:(NSStringScoreOptionFavorSmallerWords | NSStringScoreOptionReducedLongStringPenalty)];
         
         if (score >= 0.5)
-            [searchArray addObject:object];        
+            [searchArray addObject:object];
     }
     
     [objectArray removeAllObjects];
