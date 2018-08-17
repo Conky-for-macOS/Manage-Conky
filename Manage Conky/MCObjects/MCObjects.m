@@ -114,11 +114,13 @@
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
+    NSString *realName = [path lastPathComponent];
     NSString *widgetName = [[path lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
     id res = [[self alloc] init];
     [res setPid:pid];
     [res setItemPath:path];
+    [res setRealName:realName];
     [res setWidgetName:widgetName];
     [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
     [res configureMCSettingsHolder];
@@ -250,7 +252,7 @@
                            andScaling:(MCWallpaperScaling)scaling;
 {
     id res = [[self alloc] init];
-    
+
     /*
      * General properties
      */
@@ -269,6 +271,7 @@
      * themeName
      */
     [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
+    [res setRealName:[res themeName]];  /* for themes they are the same; Why though? */
     
     /*
      * isEnabled?

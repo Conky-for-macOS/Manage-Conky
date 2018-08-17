@@ -93,6 +93,9 @@ static const char *cMacScalingKeys[] = {
 {
     MCSettings *MCSettingsHolder;
 }
+
+@property NSString *realName;   /* un-normalised name */
+
 - (void)enable;
 - (void)reenable;
 - (void)kill;

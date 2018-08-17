@@ -572,37 +572,22 @@
 - (void)searchFieldDidStartSearching:(NSSearchField *)sender
 {
     NSString *txt = [sender stringValue];
-    
-    NSMutableArray *obj = [[NSMutableArray alloc] init];
-    
+
+    NSMutableArray *searchArray = [[NSMutableArray alloc] init];
+    NSMutableArray *objectArray = (whatToShow == widgetsThemesTableShowWidgets) ? widgetsArray : themesArray;
+
     CGFloat score = 0;
 
-    if (whatToShow == widgetsThemesTableShowWidgets)
+    for (id object in objectArray)
     {
-        for (MCWidget *widget in widgetsArray)
-        {
-            score = [txt scoreAgainst:[widget widgetName]];
-
-            if (score >= 0.5)
-                [obj addObject:widget];
-        }
+        score = [txt scoreAgainst:[object realName] fuzziness:[NSNumber numberWithInteger:0.8] options:(NSStringScoreOptionFavorSmallerWords | NSStringScoreOptionReducedLongStringPenalty)];
         
-        [widgetsArray removeAllObjects];
-        [widgetsArray addObjectsFromArray:obj];
+        if (score >= 0.5)
+            [searchArray addObject:object];        
     }
-    else
-    {
-        for (MCTheme *theme in themesArray)
-        {
-            score = [txt scoreAgainst:[theme themeName]];
-
-            if (score >= 0.5)
-                [obj addObject:theme];
-        }
-        
-        [themesArray removeAllObjects];
-        [themesArray addObjectsFromArray:obj];
-    }
+    
+    [objectArray removeAllObjects];
+    [objectArray addObjectsFromArray:searchArray];
     
     [_widgetsThemesTable reloadData];
 }
