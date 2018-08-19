@@ -239,13 +239,13 @@ fail:
  *  * changed the cancel button text to "Quit", made it terminate app if clicked
  *  * changed applicationsDirectory to @"/Applications" always.
  */
-void CXForciblyMoveToApplicationsFolder(void) {
+void MCForciblyMoveToApplicationsFolder(void) {
     
     // Make sure to do our work on the main thread.
     // Apparently Electron apps need this for things to work properly.
     if (![NSThread isMainThread]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            CXForciblyMoveToApplicationsFolder();
+            MCForciblyMoveToApplicationsFolder();
         });
         return;
     }
@@ -400,11 +400,6 @@ fail:
         [alert runModal];
         MoveInProgress = NO;
     }
-}
-
-void CXRelaunch(void) {
-    Relaunch(@"/Applications/Manage Conky.app");
-    [NSApp terminate:nil];
 }
 
 BOOL PFMoveIsInProgress() {

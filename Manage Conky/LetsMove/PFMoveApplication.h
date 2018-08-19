@@ -30,12 +30,7 @@ BOOL PFMoveIsInProgress(void);
 /**
  Function based off of PFMoveToApplicationsFolderIfNecessary() to forcibly move the ConkyX to /Applications
  because it is heavily tied to /Applications */
-void CXForciblyMoveToApplicationsFolder(void);
-
-/**
- Function that calls Relaunch() which is used internally from PFMoveToApplicationsFolderIfNecessary() to implement relaunch
- functionality. Used by ConkyX */
-void CXRelaunch(void);
+void MCForciblyMoveToApplicationsFolder(void);
 
 #ifdef __cplusplus
 }
