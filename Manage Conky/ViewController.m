@@ -301,7 +301,7 @@
     }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
-    {        
+    {
         BOOL isEnabled = [[arr objectAtIndex:row] isEnabled];
         
         NSImage *cell = [tableColumn dataCellForRow:row];
@@ -553,6 +553,8 @@
     
     if (row < 0)
         return;
+    
+    MCWidget *widget = [widgetsArray objectAtIndex:row];
 
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
 
@@ -563,7 +565,7 @@
 
     NSError *error = nil;
     NSArray *arguments = @[@"-c",
-                           [[widgetsArray objectAtIndex:row] itemPath],
+                           [widget itemPath],
                            ];
     
     [workspace launchApplicationAtURL:url

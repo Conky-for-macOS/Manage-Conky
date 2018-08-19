@@ -115,7 +115,7 @@
 + (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
 {
     NSString *realName = [path lastPathComponent];
-    NSString *widgetName = [[path lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *widgetName = [realName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
     id res = [[self alloc] init];
     [res setPid:pid];
