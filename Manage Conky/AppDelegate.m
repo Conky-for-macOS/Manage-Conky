@@ -30,7 +30,7 @@
     [updater setAutomaticallyChecksForUpdates:NO];
 #endif
 
-#ifndef DEBUG
+#ifdef DEBUG
     CXForciblyMoveToApplicationsFolder();
 #endif
 }
