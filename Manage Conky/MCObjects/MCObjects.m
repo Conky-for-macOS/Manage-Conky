@@ -118,12 +118,15 @@
     NSString *widgetName = [realName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
     id res = [[self alloc] init];
-    [res setPid:pid];
-    [res setItemPath:path];
-    [res setRealName:realName];
-    [res setWidgetName:widgetName];
-    [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
-    [res configureMCSettingsHolder];
+    if (res)
+    {
+        [res setPid:pid];
+        [res setItemPath:path];
+        [res setRealName:realName];
+        [res setWidgetName:widgetName];
+        [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
+        [res configureMCSettingsHolder];
+    }
     return res;
 }
 
@@ -253,32 +256,35 @@
 {
     id res = [[self alloc] init];
 
-    /*
-     * General properties
-     */
-    [res setThemeRC:themeRC];
-    [res setConkyConfigs:configs];
-    [res setArguments:args];
-    [res setStartupDelay:startupDelay];
-    [res setWallpaper:wallpaper];
-    [res setCreator:creator];
-    [res setSource:source];
-    [res setScaling:scaling];
-    
-    [res configureMCSettingsHolder];
-    
-    /*
-     * themeName
-     */
-    [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
-    [res setRealName:[res themeName]];  /* for themes they are the same; Why though? */
-    
-    /*
-     * isEnabled?
-     * Try accessing the Theme's lock
-     */
-    NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", [res themeName]];
-    [res setIsEnabled: (access([lock UTF8String], R_OK) == 0)];
+    if (res)
+    {
+        /*
+         * General properties
+         */
+        [res setThemeRC:themeRC];
+        [res setConkyConfigs:configs];
+        [res setArguments:args];
+        [res setStartupDelay:startupDelay];
+        [res setWallpaper:wallpaper];
+        [res setCreator:creator];
+        [res setSource:source];
+        [res setScaling:scaling];
+        
+        [res configureMCSettingsHolder];
+        
+        /*
+         * themeName
+         */
+        [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
+        [res setRealName:[res themeName]];  /* for themes they are the same; Why though? */
+        
+        /*
+         * isEnabled?
+         * Try accessing the Theme's lock
+         */
+        NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", [res themeName]];
+        [res setIsEnabled: (access([lock UTF8String], R_OK) == 0)];
+    }
     
     return res;
 }
