@@ -45,6 +45,7 @@
 
     NSTextField *field = [NSTextField textFieldWithString:str];
     [field setAlignment:NSTextAlignmentCenter];
+    [field setEditable:NO];
     NSViewController *controller = [[NSViewController alloc] init];
     [controller setView:field];
     
