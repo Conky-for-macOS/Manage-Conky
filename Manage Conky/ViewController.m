@@ -589,7 +589,9 @@
 
     for (id object in objectArray)
     {
-        score = [txt scoreAgainst:[object realName] fuzziness:[NSNumber numberWithInteger:0.8] options:(NSStringScoreOptionFavorSmallerWords | NSStringScoreOptionReducedLongStringPenalty)];
+        score = [txt scoreAgainst:[object realName]
+                        fuzziness:[NSNumber numberWithInteger:0.8]
+                          options:(NSStringScoreOptionFavorSmallerWords | NSStringScoreOptionReducedLongStringPenalty)];
         
         if (score >= 0.5)
             [searchArray addObject:object];
