@@ -403,14 +403,18 @@
     if (whatToShow != widgetsThemesTableShowWidgets)
         return;
     
-    MCWidget *widget = [widgetsArray objectAtIndex:[_widgetsThemesTable selectedRow]];
+    NSInteger row = [_widgetsThemesTable selectedRow];
     
+    if (row < 0)
+        return;
+    
+    MCWidget *widget = [widgetsArray objectAtIndex:row];
+
     /*
-     * Initialise popover view controller
+     * Initialise editor controller
      */
-    if (!editorController)
-        editorController = [[MCConfigEditor alloc] initWithNibName:@"Editor" bundle:nil];
-    
+    MCConfigEditor *editorController = [[MCConfigEditor alloc] initWithConfig:[widget itemPath]];
+
     /*
      * Initialise editor popover
      */
@@ -425,7 +429,7 @@
      * Setup a new popover
      */
     [editorPopover setContentViewController:editorController];
-    [editorPopover setContentSize:[editorController view].bounds.size];
+    [editorPopover setContentSize:[editorController editorField].bounds.size];
 
     /*
      * Show popover
@@ -433,13 +437,6 @@
     [editorPopover showRelativeToRect:[sender bounds]
                                ofView:sender
                         preferredEdge:NSMaxXEdge];
-    
-    /*
-     * Fill editorView with contents.
-     * This should go after editorView gets initialised;
-     *  thus after showing it for atleast once.
-     */
-    [editorController loadConfig:[widget itemPath]];
 }
 
 - (IBAction)ignore:(id)sender

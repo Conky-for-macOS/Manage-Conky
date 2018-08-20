@@ -14,7 +14,8 @@
 @property NSString *conkyConfig;
 @property NSString *conkyConfigContents;
 
-@property (unsafe_unretained) IBOutlet NSTextView *editorView;
+@property NSTextField *editorField;
 
-- (void)loadConfig:(NSString *)config;
+- (instancetype)initWithConfig:(NSString *)config;
+
 @end

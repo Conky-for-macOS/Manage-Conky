@@ -14,44 +14,49 @@
 
 @implementation MCConfigEditor
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
-    
-    [_editorView toggleAutomaticDashSubstitution:self];
-    [_editorView toggleAutomaticTextCompletion:self];
-    [_editorView toggleAutomaticTextReplacement:self];
-    [_editorView toggleSmartInsertDelete:self];
-    [_editorView toggleAutomaticQuoteSubstitution:self];
-    [_editorView toggleGrammarChecking:self];
-    [_editorView toggleContinuousSpellChecking:self];
-    [_editorView toggleAutomaticSpellingCorrection:self];
+- (instancetype)initWithConfig:(NSString *)config
+{
+    self = [super init];
+    if (self)
+    {
+        NSError *error = nil;
+        
+        _conkyConfig = config;
+        _conkyConfigContents = [NSString stringWithContentsOfFile:config
+                                                         encoding:NSUTF8StringEncoding
+                                                            error:&error];
+
+        if (error)
+        {
+            NSLog(@"%@", error);
+            return nil;
+        }
+        
+        _editorField = [NSTextField textFieldWithString:_conkyConfigContents];
+        
+        NSScrollView *scrollView = [[NSScrollView alloc] init];
+        NSClipView *clipView = [[NSClipView alloc] init];
+        
+        [clipView setDocumentView:_editorField];
+        [scrollView setContentView:clipView];
+        [self setView:scrollView];
+    }
+    return self;
 }
 
 - (void)viewWillDisappear
 {
     NSError *error = nil;
     
-    NSString *viewContents = [_editorView string];
+    NSString *viewContents = [_editorField stringValue];
     [viewContents writeToFile:_conkyConfig
-                           atomically:YES
-                             encoding:NSUTF8StringEncoding
-                                error:&error];
+                   atomically:YES
+                     encoding:NSUTF8StringEncoding
+                        error:&error];
     if (error)
     {
         NSLog(@"Error applying changes to config: \n\n%@", error);
     }
-}
-
-- (void)loadConfig:(NSString *)config
-{
-    NSError *error = nil;
-    
-    _conkyConfig = config;
-    _conkyConfigContents = [NSString stringWithContentsOfFile:config
-                                                     encoding:NSUTF8StringEncoding
-                                                        error:&error];
-    [_editorView setString:_conkyConfigContents];
 }
 
 @end
