@@ -26,6 +26,7 @@ Follow [this](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build) (relat
 - [ConkyX](https://github.com/Conky-for-macOS/ConkyX) - Conky quick-launcher
 - [conky-manager](https://github.com/teejee2008/conky-manager) - The app that ManageConky mimics
 - [LetsMove](https://github.com/potionfactory/LetsMove) - Move to Applications Library
+- [Fragaria](https://github.com/Conky-for-macOS/Fragaria) - Syntax Highlighting and more for our Config Editor
 - [default-themes](https://github.com/Conky-for-macOS/default-themes) - This is where we get the themes
 
 ### This project uses [cocoapods](https://cocoapods.org/) as supplier of these frameworks:
