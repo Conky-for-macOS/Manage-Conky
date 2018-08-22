@@ -15,10 +15,11 @@
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		09ACA822212E0D16002B9754 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; };
-		09ACA824212E0F21002B9754 /* Fragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09ACA824212E0F21002B9754 /* Fragaria.framework in Copy Fragaria Framework */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
-		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in Copy SMJobBlessHelper */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		09D11C992104C66F005C9685 /* SaveThemeSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D11C982104C66F005C9685 /* SaveThemeSheetController.m */; };
 		09D8226D206F8FFC008BBFEB /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D8226C206F8FFC008BBFEB /* Shared.m */; };
 		09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */; };
@@ -42,7 +43,7 @@
 		ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */; };
 		ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */; };
 		ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D60205D725100A3BB22 /* Credits.rtf */; };
-		ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ECD50217204F21A400B9D76C /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */; };
 /* End PBXBuildFile section */
 
@@ -137,24 +138,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		09ACA823212E0F17002B9754 /* CopyFiles */ = {
+		09ACA823212E0F17002B9754 /* Copy Fragaria Framework */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09ACA824212E0F21002B9754 /* Fragaria.framework in CopyFiles */,
+				09ACA824212E0F21002B9754 /* Fragaria.framework in Copy Fragaria Framework */,
 			);
+			name = "Copy Fragaria Framework";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		09CBFEA22066A4FB00EB8A1A /* CopyFiles */ = {
+		09ACA825212E1C65002B9754 /* Copy Licenses */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Licenses;
+			dstSubfolderSpec = 7;
+			files = (
+				09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */,
+			);
+			name = "Copy Licenses";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CBFEA22066A4FB00EB8A1A /* Copy SMJobBlessHelper */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */,
+				09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in Copy SMJobBlessHelper */,
 			);
+			name = "Copy SMJobBlessHelper";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		09CBFEA52066A55500EB8A1A /* CopyFiles */ = {
@@ -166,14 +180,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		EC9691F2204DD4F600B99EB5 /* CopyFiles */ = {
+		EC9691F2204DD4F600B99EB5 /* Copy ConkyX */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				ECD50217204F21A400B9D76C /* ConkyX.app in CopyFiles */,
+				ECD50217204F21A400B9D76C /* ConkyX.app in Copy ConkyX */,
 			);
+			name = "Copy ConkyX";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -194,6 +209,7 @@
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
 		09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
+		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +335,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		09ACA826212E1CF8002B9754 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */,
+			);
+			name = Licenses;
+			sourceTree = "<group>";
+		};
 		09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +430,7 @@
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09ACA826212E1CF8002B9754 /* Licenses */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
@@ -496,9 +521,10 @@
 				77B847321F62C2B600AF8BCA /* Frameworks */,
 				77B847331F62C2B600AF8BCA /* Resources */,
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
-				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
-				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
-				09ACA823212E0F17002B9754 /* CopyFiles */,
+				EC9691F2204DD4F600B99EB5 /* Copy ConkyX */,
+				09CBFEA22066A4FB00EB8A1A /* Copy SMJobBlessHelper */,
+				09ACA823212E0F17002B9754 /* Copy Fragaria Framework */,
+				09ACA825212E1C65002B9754 /* Copy Licenses */,
 			);
 			buildRules = (
 			);
