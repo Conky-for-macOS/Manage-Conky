@@ -14,6 +14,8 @@
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
+		09ACA822212E0D16002B9754 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; };
+		09ACA824212E0F21002B9754 /* Fragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
 		09CBFEB22066A5B900EB8A1A /* org.npyl.ManageConkySMJobBlessHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -21,7 +23,6 @@
 		09D8226D206F8FFC008BBFEB /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D8226C206F8FFC008BBFEB /* Shared.m */; };
 		09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */; };
 		09F14C64211E1F0D00715664 /* ConkyInstaller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */; };
-		09F14C65211E1F0D00715664 /* Editor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5F211E1F0D00715664 /* Editor.xib */; };
 		09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C60211E1F0D00715664 /* SaveTheme.xib */; };
 		09F14C67211E1F0D00715664 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C61211E1F0D00715664 /* About.xib */; };
 		09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C62211E1F0D00715664 /* ConkyThemes.xib */; };
@@ -46,6 +47,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		09ACA812212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB648E2A11FB385700AEF7BD;
+			remoteInfo = "Fragaria Doc";
+		};
+		09ACA814212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ABCA4DAF16137FC000E4849B;
+			remoteInfo = "Fragaria Simple";
+		};
+		09ACA816212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0C1464C1A87196200DDE90A;
+			remoteInfo = "Fragaria Complex";
+		};
+		09ACA818212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0718B501AB551460073493A;
+			remoteInfo = "Fragaria Prefs";
+		};
+		09ACA81A212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 01F0D6FC1C120F7D000A08B6;
+			remoteInfo = "Fragaria Swift";
+		};
+		09ACA81C212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AB69B62B118B745700903D1D;
+			remoteInfo = Fragaria;
+		};
+		09ACA81E212E0CAB002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0E5210D1A90E34F005CB80B;
+			remoteInfo = "Fragaria Tests";
+		};
+		09ACA820212E0CE4002B9754 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AB69B62A118B745700903D1D;
+			remoteInfo = Fragaria;
+		};
 		09CBFEB02066A5B200EB8A1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
@@ -77,6 +134,16 @@
 			dstSubfolderSpec = 7;
 			files = (
 				0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09ACA823212E0F17002B9754 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09ACA824212E0F21002B9754 /* Fragaria.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +193,7 @@
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
+		09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09CBFEA72066A55500EB8A1A /* org.npyl.ManageConkySMJobBlessHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = org.npyl.ManageConkySMJobBlessHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +205,6 @@
 		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
 		09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyPreferences.xib; path = Sheets/ConkyPreferences.xib; sourceTree = "<group>"; };
 		09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyInstaller.xib; path = Sheets/ConkyInstaller.xib; sourceTree = "<group>"; };
-		09F14C5F211E1F0D00715664 /* Editor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Editor.xib; path = Sheets/Editor.xib; sourceTree = "<group>"; };
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
@@ -188,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09ACA822212E0D16002B9754 /* Fragaria.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +305,20 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		09ACA808212E0CA7002B9754 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09ACA813212E0CAB002B9754 /* Fragaria Doc.app */,
+				09ACA815212E0CAB002B9754 /* Fragaria Simple.app */,
+				09ACA817212E0CAB002B9754 /* Fragaria Complex.app */,
+				09ACA819212E0CAB002B9754 /* Fragaria Prefs.app */,
+				09ACA81B212E0CAB002B9754 /* Fragaria Swift.app */,
+				09ACA81D212E0CAB002B9754 /* Fragaria.framework */,
+				09ACA81F212E0CAB002B9754 /* Fragaria Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +341,7 @@
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
+				09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */,
 				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
 				09CBFEA82066A55500EB8A1A /* ManageConkySMJobBlessHelper */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
@@ -342,7 +425,6 @@
 				09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */,
 				09F14C62211E1F0D00715664 /* ConkyThemes.xib */,
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
-				09F14C5F211E1F0D00715664 /* Editor.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -416,10 +498,12 @@
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
 				EC9691F2204DD4F600B99EB5 /* CopyFiles */,
 				09CBFEA22066A4FB00EB8A1A /* CopyFiles */,
+				09ACA823212E0F17002B9754 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09ACA821212E0CE4002B9754 /* PBXTargetDependency */,
 				09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */,
 				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
@@ -465,6 +549,10 @@
 					ProductGroup = ECD5020F204F210500B9D76C /* Products */;
 					ProjectRef = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
 				},
+				{
+					ProductGroup = 09ACA808212E0CA7002B9754 /* Products */;
+					ProjectRef = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -475,6 +563,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		09ACA813212E0CAB002B9754 /* Fragaria Doc.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Doc.app";
+			remoteRef = 09ACA812212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA815212E0CAB002B9754 /* Fragaria Simple.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Simple.app";
+			remoteRef = 09ACA814212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA817212E0CAB002B9754 /* Fragaria Complex.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Complex.app";
+			remoteRef = 09ACA816212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA819212E0CAB002B9754 /* Fragaria Prefs.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Prefs.app";
+			remoteRef = 09ACA818212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA81B212E0CAB002B9754 /* Fragaria Swift.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Fragaria Swift.app";
+			remoteRef = 09ACA81A212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA81D212E0CAB002B9754 /* Fragaria.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Fragaria.framework;
+			remoteRef = 09ACA81C212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09ACA81F212E0CAB002B9754 /* Fragaria Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Fragaria Tests.xctest";
+			remoteRef = 09ACA81E212E0CAB002B9754 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ECD50214204F210600B9D76C /* ConkyX.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -501,7 +638,6 @@
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
 				09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */,
 				09F14C64211E1F0D00715664 /* ConkyInstaller.xib in Resources */,
-				09F14C65211E1F0D00715664 /* Editor.xib in Resources */,
 				09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */,
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 			);
@@ -589,6 +725,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		09ACA821212E0CE4002B9754 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Fragaria;
+			targetProxy = 09ACA820212E0CE4002B9754 /* PBXContainerItemProxy */;
+		};
 		09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 09CBFEA62066A55500EB8A1A /* ManageConkySMJobBlessHelper */;

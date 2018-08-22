@@ -31,15 +31,22 @@
             NSLog(@"%@", error);
             return nil;
         }
-        
-        _editorField = [NSTextField textFieldWithString:_conkyConfigContents];
-        
-        NSScrollView *scrollView = [[NSScrollView alloc] init];
-        NSClipView *clipView = [[NSClipView alloc] init];
-        
-        [clipView setDocumentView:_editorField];
-        [scrollView setContentView:clipView];
-        [self setView:scrollView];
+
+        // I am not sure how to get proper NSRect
+        // but surely this is a way to do it.
+        NSTextField *dummyField = [NSTextField textFieldWithString:_conkyConfigContents];
+        NSRect editorFieldRect = dummyField.bounds;
+
+        _editorField = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
+
+        // Lua is the place to be
+        [_editorField setSyntaxDefinitionName:@"lua"];
+
+        // set initial text
+        [_editorField setString:_conkyConfigContents];
+
+        // embed in our container - exception thrown if containerView is nil
+        [self setView:_editorField];
     }
     return self;
 }
@@ -48,7 +55,7 @@
 {
     NSError *error = nil;
     
-    NSString *viewContents = [_editorField stringValue];
+    NSString *viewContents = [_editorField string];
     [viewContents writeToFile:_conkyConfig
                    atomically:YES
                      encoding:NSUTF8StringEncoding
