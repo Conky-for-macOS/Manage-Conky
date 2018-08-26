@@ -11,3 +11,4 @@ before_install:
 
 install:
   - xcodebuild Manage\ Conky.xcworkspace
+  
