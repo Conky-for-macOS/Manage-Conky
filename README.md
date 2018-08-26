@@ -5,6 +5,9 @@
   <br>
 </h1>
 
+[![License](https://img.shields.io/badge/LICENSE-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+
 <h4 align="center">ManageConky is the implementation of <a href="https://github.com/teejee2008/conky-manager" target="_blank">conky-manager</a> for macOS.</h4>
 
 It offers on the mac what conky-manager offers on linux plus alot more (exclusive) [amazing features](https://github.com/Conky-for-macOS/Manage-Conky/wiki).
