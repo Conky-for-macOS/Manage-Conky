@@ -5,6 +5,7 @@
   <br>
 </h1>
 
+[![Build Status](https://travis-ci.org/Conky-for-macOS/Manage-Conky.svg?branch=master)](https://travis-ci.org/Conky-for-macOS/Manage-Conky)
 [![License](https://img.shields.io/badge/LICENSE-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 
