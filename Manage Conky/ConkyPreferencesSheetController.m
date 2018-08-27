@@ -332,6 +332,9 @@
         /* uninstall old & install new */
         [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
         [[MCSettings sharedInstance] installManageConkyFilesystem];
+        
+        [super closeSheet:[super sheet]];
+        [self activatePreferencesSheet:self];
     }
 }
 
