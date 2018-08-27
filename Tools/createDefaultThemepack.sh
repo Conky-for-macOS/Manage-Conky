@@ -12,7 +12,3 @@
 # replace the one we are using with the new one
 rm ../Manage\ Conky/Resources/default-themes-2.1.cmtp.7z
 mv /tmp/default-themes-2.1.cmtp.7z ../Manage\ Conky/Resources
-
-# git commit change
-git add ../Manage\ Conky/Resources/default-themes-2.1.cmtp.7z
-git commit -m "Update default themepack!"
