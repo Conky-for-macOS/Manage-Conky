@@ -30,7 +30,7 @@
     [updater setAutomaticallyChecksForUpdates:NO];
 #endif
 
-#ifdef DEBUG
+#ifndef DEBUG
     MCForciblyMoveToApplicationsFolder();
 #endif
 }
