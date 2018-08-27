@@ -10,4 +10,4 @@ before_install:
   - brew link gettext --force
 
 install:
-  - xcodebuild -workspace Manage\ Conky.xcworkspace
+  - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
