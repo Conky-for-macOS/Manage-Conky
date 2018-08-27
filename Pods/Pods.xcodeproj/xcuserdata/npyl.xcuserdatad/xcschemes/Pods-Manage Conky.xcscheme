@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DFE075328762169A24C77579C1F0D7C9"
+               BlueprintIdentifier = "2755E4FFA8B918D51B25BBB1A0BFE045"
                BuildableName = "Pods_Manage_Conky.framework"
                BlueprintName = "Pods-Manage Conky"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DFE075328762169A24C77579C1F0D7C9"
+            BlueprintIdentifier = "2755E4FFA8B918D51B25BBB1A0BFE045"
             BuildableName = "Pods_Manage_Conky.framework"
             BlueprintName = "Pods-Manage Conky"
             ReferencedContainer = "container:Pods.xcodeproj">

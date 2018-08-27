@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DF18C70E00430FA49E2BDDD9959B1384"
+               BlueprintIdentifier = "3C7F819CB8925D2EAFF218377403A346"
                BuildableName = "LzmaSDK_ObjC.framework"
                BlueprintName = "LzmaSDK-ObjC"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DF18C70E00430FA49E2BDDD9959B1384"
+            BlueprintIdentifier = "3C7F819CB8925D2EAFF218377403A346"
             BuildableName = "LzmaSDK_ObjC.framework"
             BlueprintName = "LzmaSDK-ObjC"
             ReferencedContainer = "container:Pods.xcodeproj">
