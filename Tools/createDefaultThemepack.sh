@@ -12,3 +12,6 @@
 # replace the one we are using with the new one
 rm ../Manage\ Conky/Resources/default-themes-2.1.cmtp.7z
 mv /tmp/default-themes-2.1.cmtp.7z ../Manage\ Conky/Resources
+
+# open Github Desktop
+open /Applications/Github\ Desktop.app
