@@ -299,19 +299,6 @@
     [_themesOrWidgetsTable reloadData];
 }
 
-- (void)installConky
-{
-    /* create ConkyInstaller sheet */
-    static ConkyInstallerSheetController *ctl = nil;
-    
-    if (!ctl)
-        ctl = [[ConkyInstallerSheetController alloc] init];
-
-    [[NSBundle mainBundle] loadNibNamed:@"ConkyInstaller" owner:ctl topLevelObjects:nil];
-    
-    [ctl beginInstalling];
-}
-
 - (IBAction)un_in_stallConky:(id)sender
 {
     /* disable the Install/Uninstall button */
@@ -342,7 +329,9 @@
          * Install Conky
          */
         
-        [self installConky];
+        /* uninstall old & install new */
+        [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
+        [[MCSettings sharedInstance] installManageConkyFilesystem];
     }
 }
 

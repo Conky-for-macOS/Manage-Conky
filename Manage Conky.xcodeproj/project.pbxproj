@@ -14,8 +14,6 @@
 		094A27A621345B2A00346608 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
-		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
-		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
@@ -23,7 +21,6 @@
 		09D11C992104C66F005C9685 /* SaveThemeSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D11C982104C66F005C9685 /* SaveThemeSheetController.m */; };
 		09D8226D206F8FFC008BBFEB /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D8226C206F8FFC008BBFEB /* Shared.m */; };
 		09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */; };
-		09F14C64211E1F0D00715664 /* ConkyInstaller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */; };
 		09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C60211E1F0D00715664 /* SaveTheme.xib */; };
 		09F14C67211E1F0D00715664 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C61211E1F0D00715664 /* About.xib */; };
 		09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C62211E1F0D00715664 /* ConkyThemes.xib */; };
@@ -41,10 +38,8 @@
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */; };
 		ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */; };
-		ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */; };
 		ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D60205D725100A3BB22 /* Credits.rtf */; };
 		ECD50217204F21A400B9D76C /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +122,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +185,6 @@
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		096341FB212E234200D011FD /* ConkyX-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ConkyX-LICENSE"; path = "Resources/Licenses/ConkyX-LICENSE"; sourceTree = "<group>"; };
-		099F773B2066BEAD0093F828 /* InstallXQuartz.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallXQuartz.sh; path = Resources/InstallXQuartz.sh; sourceTree = "<group>"; };
 		09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
@@ -204,7 +197,6 @@
 		09D11C982104C66F005C9685 /* SaveThemeSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveThemeSheetController.m; sourceTree = "<group>"; };
 		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
 		09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyPreferences.xib; path = Sheets/ConkyPreferences.xib; sourceTree = "<group>"; };
-		09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyInstaller.xib; path = Sheets/ConkyInstaller.xib; sourceTree = "<group>"; };
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
@@ -236,11 +228,8 @@
 		ECAF6F642024ADC900715D72 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
-		ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = InstallLibraries.sh; path = Resources/InstallLibraries.sh; sourceTree = "<group>"; };
 		ECB76D60205D725100A3BB22 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
-		ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConkyInstallerSheetController.h; sourceTree = "<group>"; };
-		ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConkyInstallerSheetController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,8 +273,6 @@
 				77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */,
 				77B9EFF61F64293000C375FE /* ConkyPreferencesSheetController.h */,
 				77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */,
-				ECEEE8A12049A630008C6D54 /* ConkyInstallerSheetController.h */,
-				ECEEE8A22049A630008C6D54 /* ConkyInstallerSheetController.m */,
 				77B9EFF91F64295100C375FE /* ConkyThemesSheetController.h */,
 				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
 				09D11C972104C66F005C9685 /* SaveThemeSheetController.h */,
@@ -420,8 +407,6 @@
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
-				ECB76D5C205D716B00A3BB22 /* InstallLibraries.sh */,
-				099F773B2066BEAD0093F828 /* InstallXQuartz.sh */,
 				09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */,
 			);
 			name = Resources;
@@ -431,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				09F14C61211E1F0D00715664 /* About.xib */,
-				09F14C5E211E1F0D00715664 /* ConkyInstaller.xib */,
 				09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */,
 				09F14C62211E1F0D00715664 /* ConkyThemes.xib */,
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
@@ -640,13 +624,10 @@
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
 				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
-				ECB76D5F205D716C00A3BB22 /* InstallLibraries.sh in Resources */,
-				099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				09F14C67211E1F0D00715664 /* About.xib in Resources */,
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
 				09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */,
-				09F14C64211E1F0D00715664 /* ConkyInstaller.xib in Resources */,
 				09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */,
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 			);
@@ -725,7 +706,6 @@
 				092E12C22125BCC200491CDA /* NSString+Score.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				095F81912080D08A008DD286 /* MCObjects.m in Sources */,
-				ECEEE8A32049A630008C6D54 /* ConkyInstallerSheetController.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,
 			);
