@@ -11,12 +11,11 @@
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
+		094A27A621345B2A00346608 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
 		099F773C2066BEAD0093F828 /* InstallXQuartz.sh in Resources */ = {isa = PBXBuildFile; fileRef = 099F773B2066BEAD0093F828 /* InstallXQuartz.sh */; };
-		09ACA822212E0D16002B9754 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; };
-		09ACA824212E0F21002B9754 /* Fragaria.framework in Copy Fragaria Framework */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09CBFEAA2066A55500EB8A1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFEA92066A55500EB8A1A /* main.m */; };
@@ -98,13 +97,6 @@
 			remoteGlobalIDString = D0E5210D1A90E34F005CB80B;
 			remoteInfo = "Fragaria Tests";
 		};
-		09ACA820212E0CE4002B9754 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AB69B62A118B745700903D1D;
-			remoteInfo = Fragaria;
-		};
 		09CBFEB02066A5B200EB8A1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
@@ -137,17 +129,6 @@
 			files = (
 				0984A9272067F07300BDE1B9 /* InstallXQuartz.sh in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		09ACA823212E0F17002B9754 /* Copy Fragaria Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				09ACA824212E0F21002B9754 /* Fragaria.framework in Copy Fragaria Framework */,
-			);
-			name = "Copy Fragaria Framework";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		09ACA825212E1C65002B9754 /* Copy Licenses */ = {
@@ -274,7 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09ACA822212E0D16002B9754 /* Fragaria.framework in Frameworks */,
+				094A27A621345B2A00346608 /* Fragaria.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,13 +508,11 @@
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
 				EC9691F2204DD4F600B99EB5 /* Copy ConkyX */,
 				09CBFEA22066A4FB00EB8A1A /* Copy SMJobBlessHelper */,
-				09ACA823212E0F17002B9754 /* Copy Fragaria Framework */,
 				09ACA825212E1C65002B9754 /* Copy Licenses */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				09ACA821212E0CE4002B9754 /* PBXTargetDependency */,
 				09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */,
 				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
@@ -755,11 +734,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		09ACA821212E0CE4002B9754 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Fragaria;
-			targetProxy = 09ACA820212E0CE4002B9754 /* PBXContainerItemProxy */;
-		};
 		09CBFEB12066A5B200EB8A1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 09CBFEA62066A55500EB8A1A /* ManageConkySMJobBlessHelper */;
