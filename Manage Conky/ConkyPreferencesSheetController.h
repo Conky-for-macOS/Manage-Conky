@@ -7,7 +7,6 @@
 //
 
 #import "GeneralSheetController.h"
-#import "ConkyInstallerSheetController.h"
 #import <Sparkle/Sparkle.h>
 
 /**
