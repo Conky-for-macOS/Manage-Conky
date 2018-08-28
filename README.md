@@ -37,7 +37,7 @@ Follow [this](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build) (relat
 - [Sparkle Framework](https://sparkle-project.org) - Updating mechanism
 - [AHLaunchCtl](https://github.com/eahrold/AHLaunchCtl) - Controlling LaunchD
 
-## CONTRIBUTE 🤝
+## CONTRIBUTING 🤝
 
 In order to contribute you need 2 things:
 
