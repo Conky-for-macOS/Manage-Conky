@@ -117,8 +117,10 @@
         NSDictionary *xquartzInfoPlist = [[NSDictionary alloc] initWithContentsOfFile:@"/Applications/Utilities/XQuartz.app/Contents/Info.plist"];
         NSNumber *xquartzVisibility = [xquartzInfoPlist objectForKey:@"LSBackgroundOnly"];
         
-        if (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE)
+        if (!xquartzVisibility || (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE))
+        {
             [_toggleXQuartzIconVisibilityCheckbox setState:NSOnState];
+        }
     }
     else
     {
