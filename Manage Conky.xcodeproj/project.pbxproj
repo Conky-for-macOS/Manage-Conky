@@ -13,6 +13,7 @@
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
+		098C76A4213BF64500B1F05A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 098C769C213BF64500B1F05A /* .travis.yml */; };
 		09A1021921348DDD001FA2F3 /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
@@ -165,6 +166,7 @@
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		096341FB212E234200D011FD /* ConkyX-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ConkyX-LICENSE"; path = "Resources/Licenses/ConkyX-LICENSE"; sourceTree = "<group>"; };
+		098C769C213BF64500B1F05A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				098C769C213BF64500B1F05A /* .travis.yml */,
 				09ACA826212E1CF8002B9754 /* Licenses */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
@@ -555,6 +558,7 @@
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
 				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
+				098C76A4213BF64500B1F05A /* .travis.yml in Resources */,
 				09F14C67211E1F0D00715664 /* About.xib in Resources */,
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
 				09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */,
