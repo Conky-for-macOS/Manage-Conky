@@ -2,9 +2,6 @@ os: osx
 osx_image: xcode9.4
 
 before_install:
-# install xquartz
-#  - sudo sh Manage\ Conky/Resources/InstallXQuartz.sh https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
-
 # install dependancies
   - brew install freetype gettext lua imlib2
   - brew link gettext --force
@@ -13,6 +10,8 @@ before_install:
   - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -G Xcode
   - cd ../../..
+
+# codesigning
 
 install:
   - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
