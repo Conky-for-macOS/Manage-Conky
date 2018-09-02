@@ -14,6 +14,7 @@
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76A4213BF64500B1F05A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 098C769C213BF64500B1F05A /* .travis.yml */; };
+		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
 		09A1021921348DDD001FA2F3 /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09ACA81D212E0CAB002B9754 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
@@ -42,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		098C76B1213C097600B1F05A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77B847341F62C2B600AF8BCA;
+			remoteInfo = "Manage Conky";
+		};
 		09A1021521348D26001FA2F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */;
@@ -167,6 +175,9 @@
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		096341FB212E234200D011FD /* ConkyX-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ConkyX-LICENSE"; path = "Resources/Licenses/ConkyX-LICENSE"; sourceTree = "<group>"; };
 		098C769C213BF64500B1F05A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Manage Conky Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manage_Conky_Tests.m; sourceTree = "<group>"; };
+		098C76B0213C097600B1F05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
@@ -211,6 +222,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		098C76A9213C097600B1F05A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B847321F62C2B600AF8BCA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +280,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		098C76AD213C097600B1F05A /* Manage Conky Tests */ = {
+			isa = PBXGroup;
+			children = (
+				098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */,
+				098C76B0213C097600B1F05A /* Info.plist */,
+			);
+			path = "Manage Conky Tests";
+			sourceTree = "<group>";
+		};
 		09ACA808212E0CA7002B9754 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +327,7 @@
 				09ACA807212E0CA7002B9754 /* Fragaria.xcodeproj */,
 				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
+				098C76AD213C097600B1F05A /* Manage Conky Tests */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
 				84D8AFEE31EBA1C4C04E918A /* Pods */,
@@ -310,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				77B847351F62C2B600AF8BCA /* Manage Conky.app */,
+				098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -422,6 +451,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		098C76AB213C097600B1F05A /* Manage Conky Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 098C76BD213C097600B1F05A /* Build configuration list for PBXNativeTarget "Manage Conky Tests" */;
+			buildPhases = (
+				098C76A8213C097600B1F05A /* Sources */,
+				098C76A9213C097600B1F05A /* Frameworks */,
+				098C76AA213C097600B1F05A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				098C76B2213C097600B1F05A /* PBXTargetDependency */,
+			);
+			name = "Manage Conky Tests";
+			productName = "Manage Conky Tests";
+			productReference = 098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		77B847341F62C2B600AF8BCA /* Manage Conky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B847491F62C2B600AF8BCA /* Build configuration list for PBXNativeTarget "Manage Conky" */;
@@ -455,6 +502,11 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Nickolas Pylarinos";
 				TargetAttributes = {
+					098C76AB213C097600B1F05A = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 77B847341F62C2B600AF8BCA;
+					};
 					77B847341F62C2B600AF8BCA = {
 						CreatedOnToolsVersion = 8.3.3;
 					};
@@ -484,6 +536,7 @@
 			projectRoot = "";
 			targets = (
 				77B847341F62C2B600AF8BCA /* Manage Conky */,
+				098C76AB213C097600B1F05A /* Manage Conky Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -548,6 +601,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		098C76AA213C097600B1F05A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B847331F62C2B600AF8BCA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -615,6 +675,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		098C76A8213C097600B1F05A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B847311F62C2B600AF8BCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,6 +708,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		098C76B2213C097600B1F05A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
+			targetProxy = 098C76B1213C097600B1F05A /* PBXContainerItemProxy */;
+		};
 		09A1021621348D26001FA2F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Fragaria;
@@ -664,6 +737,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		098C76B3213C097600B1F05A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Manage Conky Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = Debug;
+		};
+		098C76B4213C097600B1F05A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Manage Conky Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = Release;
+		};
+		098C76B5213C097600B1F05A /* Homebrew-Cask */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Manage Conky Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.npyl.Manage-Conky-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = "Homebrew-Cask";
+		};
 		09CB721620FE28530049A136 /* Homebrew-Cask */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -904,6 +1031,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		098C76BD213C097600B1F05A /* Build configuration list for PBXNativeTarget "Manage Conky Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				098C76B3213C097600B1F05A /* Debug */,
+				098C76B4213C097600B1F05A /* Release */,
+				098C76B5213C097600B1F05A /* Homebrew-Cask */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		77B847301F62C2B600AF8BCA /* Build configuration list for PBXProject "Manage Conky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
