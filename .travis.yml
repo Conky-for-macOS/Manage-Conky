@@ -2,7 +2,7 @@ language: objective-c
 os: osx
 osx_image: xcode9.4
 
-xcode_project: Manage Conky.xcworkspace
+xcode_workspace: Manage Conky.xcworkspace
 xcode_scheme: Manage Conky
 xcode_destination: platform=macOS
 
