@@ -1,6 +1,11 @@
 os: osx
 osx_image: xcode9.4
 
+# blocklist
+branches:
+  except:
+  - bakcport-0.8.1
+
 before_install:
 # install dependancies
   - brew install freetype gettext lua imlib2
