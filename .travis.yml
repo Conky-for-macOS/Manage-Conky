@@ -9,5 +9,9 @@ before_install:
   - brew install freetype gettext lua imlib2
   - brew link gettext --force
 
+# setup xcode project
+  - cd Manage\ Conky/ConkyX/conky-for-macOS/forConkyX
+  - cmake .. -G Xcode
+
 install:
   - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
