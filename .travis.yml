@@ -10,8 +10,7 @@ before_install:
 #  - brew link gettext --force
 
 # setup xcode project
-  - pwd
-  - cd Manage\ Conky/ConkyX/conky-for-macOS/forConkyX
+  - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -G Xcode
 
 install:
