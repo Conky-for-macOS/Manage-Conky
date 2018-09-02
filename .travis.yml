@@ -1,6 +1,8 @@
 language: objective-c
 os: osx
 osx_image: xcode9.4
+xcode_project: Manage\ Conky.xcworkspace
+xcode_scheme: Manage\ Conky
 
 before_install:
 # install dependancies
@@ -11,6 +13,3 @@ before_install:
   - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -G Xcode
   - cd ../../..
-
-install:
-  - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
