@@ -6,8 +6,8 @@ before_install:
 #  - sudo sh Manage\ Conky/Resources/InstallXQuartz.sh https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
 
 # install dependancies
-#  - brew install freetype gettext lua imlib2
-#  - brew link gettext --force
+  - brew install freetype gettext lua imlib2
+  - brew link gettext --force
 
 # setup xcode project
   - cd ConkyX/conky-for-macOS/forConkyX
