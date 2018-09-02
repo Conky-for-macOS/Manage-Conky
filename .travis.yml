@@ -12,6 +12,7 @@ before_install:
   - cd ../../..
 
 # codesigning
+  - sh temp.sh
 
 install:
   - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
