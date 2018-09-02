@@ -10,6 +10,9 @@ before_install:
   - brew install freetype gettext lua imlib2
   - brew link gettext --force
 
+# setup cocoapods
+  - pod update
+
 # setup xcode project
   - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -G Xcode
