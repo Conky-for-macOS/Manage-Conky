@@ -16,3 +16,4 @@ before_install:
 
 install:
   - xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky
+  - rake --trace
