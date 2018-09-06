@@ -31,6 +31,9 @@ echo "DSA Signature:"
 # create DSA signature
 ~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$2.dmg" ~/Documents/Private\ Key/dsa_priv.pem
 
+# move to ~
+mv "/tmp/Manage Conky_v$2.dmg" ~
+
 echo "Update your npyl.github.io with ManageConky.dmg and the DSA signature in appcast.xml"
 
 open ~/npyl.github.io/Projects/ManageConky/Release
