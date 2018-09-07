@@ -31,20 +31,15 @@ cd "$symroot"
 # build project for RELEASE
 xcodebuild -workspace "Manage Conky.xcworkspace" -scheme "Manage Conky" -configuration "Release" -derivedDataPath "/tmp/ManageConky.build" clean build
 
-# copy ManageConky.app to $workdir
-cp -R "$builddir/Build/Products/Release/Manage Conky.app" "$workdir"
-
 # Setup work directory
 ln -s "/Applications" "$workdir/Applications"
-cp -R "$1" "$workdir"
+cp -R "$builddir/Build/Products/Release/Manage Conky.app" "$workdir"
 
 # create dmg
 hdiutil create -fs HFS+ -srcfolder "$workdir" -volname "Manage Conky_v$2" "/tmp/Manage Conky_v$2.dmg"
 
-cd "/tmp"
-
 # sign dmg
-codesign -s Mac\ Developer "Manage Conky_v$2.dmg"
+codesign -s "Mac Developer" "/tmp/Manage Conky_v$2.dmg"
 
 echo "DSA Signature:"
 
