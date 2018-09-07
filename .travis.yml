@@ -17,4 +17,5 @@ before_install:
   - cd ../../..
 
 # disable codesigning
-  - CODE_SIGN_IDENTITY=""
+  - export CODE_SIGN_IDENTITY=""
+  - export CODE_SIGNING_REQUIRED=NO
