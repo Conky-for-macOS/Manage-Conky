@@ -6,6 +6,11 @@ xcode_workspace: Manage Conky.xcworkspace
 xcode_scheme: Manage Conky
 xcode_destination: platform=macOS
 
+env:
+  global:
+    - CODE_SIGN_IDENTITY=""
+    - CODE_SIGNING_REQUIRED=NO
+
 before_install:
 # install dependancies
   - brew install freetype gettext lua imlib2
@@ -15,7 +20,3 @@ before_install:
   - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -G Xcode
   - cd ../../..
-
-# disable codesigning
-  - export CODE_SIGN_IDENTITY=""
-  - export CODE_SIGNING_REQUIRED=NO
