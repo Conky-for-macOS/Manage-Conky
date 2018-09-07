@@ -10,6 +10,7 @@
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
+		093DC7F7214139F7005C782B /* createDefaultThemepack.command in Resources */ = {isa = PBXBuildFile; fileRef = 093DC7F6214139F7005C782B /* createDefaultThemepack.command */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
@@ -618,6 +619,7 @@
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
+				093DC7F7214139F7005C782B /* createDefaultThemepack.command in Resources */,
 				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				098C76A4213BF64500B1F05A /* .travis.yml in Resources */,
