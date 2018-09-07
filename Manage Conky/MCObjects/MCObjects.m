@@ -140,6 +140,8 @@
 
 - (void)enable
 {
+    NSError *error = nil;
+    
     /*
      * Custom-Normalise for our needs
      */
@@ -161,7 +163,10 @@
                           keepAlive,
                           startupDelay,
                           [_itemPath stringByDeletingLastPathComponent],
-                          nil);
+                          error);
+        
+        if (error)
+            NSLog(@"%@", error);
     }
     else
     {
@@ -527,7 +532,10 @@
             [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
             break;
         case Tile:
-            // XXX what do we do here???
+            // TODO: to emulate the tiling behaviour,
+            //  probably we could create a new .png with the wallpaper
+            //  small tiles (create the tiling ourselves).
+            //  Then, load the custom wallpaper.
             break;
         case MAX_SCALING_KEYS:
         default:

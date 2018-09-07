@@ -52,8 +52,20 @@ void createLaunchAgent(NSString *label,
 {
     NSString *cmd = [args componentsJoinedByString:@" "];
     
+    /* Create LaunchAgents in case it doesn't exist */
+    createUserLaunchAgentsDirectory();
+    
+    /*
+     * Remove $DISPLAY environment variable because
+     * it changes upon each login; we don't want to
+     * force conky to load on a false socket.
+     */
+    NSMutableDictionary *environment = [NSProcessInfo processInfo].environment.mutableCopy;
+    [environment removeObjectForKey:@"DISPLAY"];
+    
     AHLaunchJob* job = [AHLaunchJob new];
     job.Label = label;
+    job.Program = @"/bin/bash";
     job.ProgramArguments = @[@"/bin/bash",
                              @"-l",
                              @"-c", cmd];
@@ -61,7 +73,7 @@ void createLaunchAgent(NSString *label,
     job.KeepAlive = [NSNumber numberWithBool:keepAlive];
     job.RunAtLoad = YES;
     job.WorkingDirectory = workingDirectory;
-    job.EnvironmentVariables = [NSProcessInfo processInfo].environment;
+    job.EnvironmentVariables = environment;
     
     // All sharedController methods return BOOL values.
     // `YES` for success, `NO` on failure (which will also populate an NSError).
