@@ -9,13 +9,14 @@
 # on macOS Sierra and later.
 
 #
-# Usage: distributeManageConky [ManageConky project location] [new ManageConky's version number]
-# eg. distributeManageConky ~/Manage-Conky 0.8.1
+# Usage: distributeManageConky [new ManageConky's version number]
+# eg. distributeManageConky 0.8.1
 #
 
 workdir="/tmp/ManageConkyDMG"
 builddir="/tmp/ManageConky.build"
-symroot=$1
+symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..
+version=$1
 
 # remove any previous files...
 rm -rf "$builddir"
@@ -36,18 +37,18 @@ ln -s "/Applications" "$workdir/Applications"
 cp -R "$builddir/Build/Products/Release/Manage Conky.app" "$workdir"
 
 # create dmg
-hdiutil create -fs HFS+ -srcfolder "$workdir" -volname "Manage Conky_v$2" "/tmp/Manage Conky_v$2.dmg"
+hdiutil create -fs HFS+ -srcfolder "$workdir" -volname "Manage Conky_v$version" "/tmp/Manage Conky_v$version.dmg"
 
 # sign dmg
-codesign -s "Mac Developer" "/tmp/Manage Conky_v$2.dmg"
+codesign -s "Mac Developer" "/tmp/Manage Conky_v$version.dmg"
 
 echo "DSA Signature:"
 
 # create DSA signature
-~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$2.dmg" ~/Documents/Private\ Key/dsa_priv.pem
+~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$version.dmg" ~/Documents/Private\ Key/dsa_priv.pem
 
 # move to ~
-mv "/tmp/Manage Conky_v$2.dmg" ~
+mv "/tmp/Manage Conky_v$version.dmg" ~
 
 echo "Update your npyl.github.io with ManageConky.dmg and the DSA signature in appcast.xml"
 
