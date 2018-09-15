@@ -6,8 +6,6 @@
 #  Created by Nickolas Pylarinos on 09/08/2018.
 #  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 
-cd ~
-
 # zip up default-themes
 7z a "/tmp/default-themes-2.1.cmtp.7z" "default-themes/*"
 
