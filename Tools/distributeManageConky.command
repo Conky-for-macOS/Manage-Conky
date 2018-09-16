@@ -31,7 +31,7 @@ symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..       
 version=$(get_version_number $1)                                                    # dmg's version number
 
 # check if Manage-Conky repo is in same dir as Manage-Conky
-if [ ! -d "~/npyl.github.io" ]; then
+if [ ! -d "$symroot/../npyl.github.io" ]; then
     echo "Error: npyl.github.io repo MUST reside in the same directory as Manage-Conky!"
     exit 1
 fi
