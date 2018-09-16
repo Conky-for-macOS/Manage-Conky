@@ -160,7 +160,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		090DD046211BC27B0061535E /* distributeManageConky.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.sh; path = Tools/distributeManageConky.sh; sourceTree = "<group>"; };
+		090DD046211BC27B0061535E /* distributeManageConky.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.command; path = Tools/distributeManageConky.command; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				093DC7F6214139F7005C782B /* createDefaultThemepack.command */,
-				090DD046211BC27B0061535E /* distributeManageConky.sh */,
+				090DD046211BC27B0061535E /* distributeManageConky.command */,
 			);
 			name = Tools;
 			path = ..;

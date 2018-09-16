@@ -25,6 +25,9 @@ function get_version_number()
 
     # increment
     version_number=$(bc -l <<< "$version_number + 0.1")
+
+    # return
+    echo $version_number
 }
 
 workdir="/tmp/ManageConkyDMG"                                                       # Temporary directory
@@ -32,13 +35,20 @@ builddir="/tmp/ManageConky.build"                                               
 symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..           # Manage-Conky dir location
 version=$(get_version_number $1)                                                    # dmg's version number
 
-echo "Got version: $version"
-
 # check if npyl.github.io repo is in same dir as Manage-Conky
 if [ ! -d "$symroot/../npyl.github.io" ]; then
     echo "Error: npyl.github.io repo MUST reside in the same directory as Manage-Conky!"
     exit 1
 fi
+
+##
+## BEAUTIFY
+##
+bold=$(tput bold)
+echo "${bold}DistributeManageConky.command | version 1.0 | by npyl"
+echo "\n"
+echo "${bold}Will create a ManageConky dmg in $HOME with version number: $version"
+echo "\n"
 
 # remove any previous files...
 rm -rf "$builddir"

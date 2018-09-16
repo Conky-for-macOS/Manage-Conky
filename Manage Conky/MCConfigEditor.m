@@ -39,7 +39,7 @@
 
         _editorField = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
 
-        // Lua is the place to be
+        // Lua is my city
         [_editorField setSyntaxDefinitionName:@"lua"];
 
         // set initial text
