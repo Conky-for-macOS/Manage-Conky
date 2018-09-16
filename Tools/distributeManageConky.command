@@ -13,16 +13,18 @@
 # eg. distributeManageConky 0.8.1
 #
 
-get_version_number()
+function get_version_number()
 {
     local version_number=0
 
     if [[ $1 ]]; then
         version_number=$1
     else
-        version_number=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "~/Manage-Conky/Manage Conky/Info.plist")
-        version_number=$(bc -l <<< "$version_number + 0.1")
+        version_number=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$symroot/Manage Conky/Info.plist")
     fi
+
+    # increment
+    version_number=$(bc -l <<< "$version_number + 0.1")
 }
 
 workdir="/tmp/ManageConkyDMG"                                                       # Temporary directory
@@ -30,7 +32,9 @@ builddir="/tmp/ManageConky.build"                                               
 symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..           # Manage-Conky dir location
 version=$(get_version_number $1)                                                    # dmg's version number
 
-# check if Manage-Conky repo is in same dir as Manage-Conky
+echo "Got version: $version"
+
+# check if npyl.github.io repo is in same dir as Manage-Conky
 if [ ! -d "$symroot/../npyl.github.io" ]; then
     echo "Error: npyl.github.io repo MUST reside in the same directory as Manage-Conky!"
     exit 1
