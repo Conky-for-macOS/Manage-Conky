@@ -32,6 +32,16 @@
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
+    /* Conky configuration file location? */
+    NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    if (!conkyConfigsPath || [conkyConfigsPath isEqualToString:@""])
+    {
+        NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"];    /* default value */
+        
+        [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
+        conkyConfigsPath = kConkyConfigsDefaultPath;
+    }
+
     [self fillWidgetsThemesArrays];
 }
 

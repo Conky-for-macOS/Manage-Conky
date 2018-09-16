@@ -64,12 +64,12 @@
         NSLog(@"Error: Failed to open themepack with error: \n\n%@", error);
         return NO;
     }
-    
+
+    items = [NSMutableArray array];
+
     /*
      *  fill the array with the zip-file items
      */
-    items = [NSMutableArray array];
-    
     [themePackReader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error)
     {
         if (item)
@@ -87,7 +87,7 @@
     /*
      * Extract themepack
      */
-    BOOL res = FALSE;
+    BOOL res = NO;
     NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
     res = [themePackReader extract:items toPath:path withFullPaths:YES];
     

@@ -89,17 +89,11 @@
         MCSettings *t = [MCSettings sharedInstance];
         BOOL conkyRunsAtStartup = [t conkyRunsAtStartup];
         [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
-        
-        /* Conky configuration file location? */
+
+        /*
+         * Conky configsLocation textfield
+         */
         NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-        if (!conkyConfigsPath || [conkyConfigsPath isEqualToString:@""])
-        {
-            NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/Conky"];    /* default value */
-            
-            [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
-            conkyConfigsPath = kConkyConfigsDefaultPath;
-        }
-        
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
         
         /*
