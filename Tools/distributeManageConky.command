@@ -79,7 +79,7 @@ codesign -s "Mac Developer" "/tmp/Manage Conky_v$version.dmg"
 echo "DSA Signature:"
 
 # create DSA signature
-~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$version.dmg" "~/Documents/Private Key/dsa_priv.pem"
+~/Manage-Conky/Pods/Sparkle/bin/sign_update "/tmp/Manage Conky_v$version.dmg" "$HOME/Documents/Private Key/dsa_priv.pem"
 
 # move to ~
 mv "/tmp/Manage Conky_v$version.dmg" ~
