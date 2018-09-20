@@ -12,8 +12,7 @@ symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..       
 7z a "/tmp/default-themes-2.1.cmtp.7z" "$symroot/default-themes/*"
 
 # replace the one we are using with the new one
-rm "$symroot/Manage Conky/Resources/default-themes-2.1.cmtp.7z"
-mv "/tmp/default-themes-2.1.cmtp.7z" "$symroot/Manage Conky/Resources"
+mv -f "/tmp/default-themes-2.1.cmtp.7z" "$symroot/Manage Conky/Resources"
 
 # open Github Desktop
 open "/Applications/Github Desktop.app"
