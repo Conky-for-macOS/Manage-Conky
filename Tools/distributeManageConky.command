@@ -12,6 +12,9 @@
 # Usage: distributeManageConky [new ManageConky's version number]
 # eg. distributeManageConky 0.8.1
 #
+# NOTE: If you don't provide a version number this script will read
+# from Info.plist and will increment by 0.1
+#
 
 function get_version_number()
 {
@@ -21,10 +24,9 @@ function get_version_number()
         version_number=$1
     else
         version_number=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$symroot/Manage Conky/Info.plist")
+        # increment
+        version_number=$(bc -l <<< "$version_number + 0.1")
     fi
-
-    # increment
-    version_number=$(bc -l <<< "$version_number + 0.1")
 
     # return
     echo $version_number
