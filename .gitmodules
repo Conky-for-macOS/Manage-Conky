@@ -1,9 +1,6 @@
 [submodule "ConkyX"]
 	path = ConkyX
 	url = https://github.com/Conky-for-macOS/ConkyX
-[submodule "Manage Conky/Fragaria"]
-	path = Manage Conky/Fragaria
-	url = https://github.com/Conky-for-macOS/Fragaria
 [submodule "default-themes"]
 	path = default-themes
 	url = https://github.com/Conky-for-macOS/default-themes
