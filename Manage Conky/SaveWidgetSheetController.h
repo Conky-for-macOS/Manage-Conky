@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Fragaria/Fragaria.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SaveWidgetSheetController : NSWindowController
 
+@property (strong) IBOutlet MGSFragariaView *scriptView;
 @property (strong) IBOutlet NSWindow *window;
 
 - (id)initWithWindowNibName:(NSString *)nibName;
