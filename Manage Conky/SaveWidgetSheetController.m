@@ -25,6 +25,16 @@
     [self.window close];
 }
 
+- (IBAction)addPreview:(id)sender
+{
+    
+}
+
+- (IBAction)addResources:(id)sender
+{
+    
+}
+
 - (IBAction)saveButton:(id)sender
 {
     NSSavePanel *sp = [NSSavePanel savePanel];
@@ -36,6 +46,8 @@
     {
         NSString *widgetDirectory = sp.URL.path;
         NSString *widgetConfig = [widgetDirectory stringByAppendingPathComponent:sp.nameFieldStringValue];
+        NSString *widgetSource = [widgetDirectory stringByAppendingPathComponent:@"source.txt"];
+        NSString *widgetCreator = [widgetDirectory stringByAppendingPathComponent:@"creator.txt"];
         NSFileManager *fm = [NSFileManager defaultManager];
         NSError *error = nil;
         
@@ -52,7 +64,14 @@
         [fm createFileAtPath:widgetConfig
                     contents:[self->_scriptView.string dataUsingEncoding:NSUTF8StringEncoding]
                   attributes:nil];
-        
+        /* save source */
+        [fm createFileAtPath:widgetSource
+                    contents:[_widgetSourceField.stringValue dataUsingEncoding:NSUTF8StringEncoding]
+                  attributes:nil];
+        /* save creator */
+        [fm createFileAtPath:widgetCreator
+                    contents:[_widgetCreatorField.stringValue dataUsingEncoding:NSUTF8StringEncoding]
+                  attributes:nil];
         [self.window close];
     }
 }

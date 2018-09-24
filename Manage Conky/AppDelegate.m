@@ -31,7 +31,7 @@
 #endif
 
 #ifndef DEBUG
-    MCForciblyMoveToApplicationsFolder();
+    //MCForciblyMoveToApplicationsFolder();
 #endif
 }
 
