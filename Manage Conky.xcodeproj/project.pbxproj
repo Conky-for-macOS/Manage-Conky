@@ -11,6 +11,8 @@
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
+		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
+		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76A4213BF64500B1F05A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 098C769C213BF64500B1F05A /* .travis.yml */; };
@@ -169,6 +171,9 @@
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
 		09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = toggleXquartzVisibilityScript.fmt; path = Resources/toggleXquartzVisibilityScript.fmt; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		0953D7A221596AF60065BB4D /* SaveWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveWidget.xib; path = Sheets/SaveWidget.xib; sourceTree = "<group>"; };
+		0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveWidgetSheetController.h; sourceTree = "<group>"; };
+		0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveWidgetSheetController.m; sourceTree = "<group>"; };
 		095F81902080D08A008DD286 /* MCObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCObjects.m; path = MCObjects/MCObjects.m; sourceTree = "<group>"; };
 		095F81922080D09B008DD286 /* MCObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCObjects.h; path = MCObjects/MCObjects.h; sourceTree = "<group>"; };
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -265,6 +270,8 @@
 				77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */,
 				09D11C972104C66F005C9685 /* SaveThemeSheetController.h */,
 				09D11C982104C66F005C9685 /* SaveThemeSheetController.m */,
+				0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */,
+				0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */,
 				77B8473C1F62C2B600AF8BCA /* main.m */,
 			);
 			name = Sources;
@@ -407,6 +414,7 @@
 				09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */,
 				09F14C62211E1F0D00715664 /* ConkyThemes.xib */,
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
+				0953D7A221596AF60065BB4D /* SaveWidget.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
+				0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */,
 				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				098C76A4213BF64500B1F05A /* .travis.yml in Resources */,
@@ -695,6 +704,7 @@
 				09D8226D206F8FFC008BBFEB /* Shared.m in Sources */,
 				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
+				0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
 				09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,

@@ -23,6 +23,9 @@
         propertiesFilledIn = 0;
         _scaling = FillScreen;
         _relative = YES;
+        
+        _conkyConfigs = [NSMutableArray array];
+        [_widgetsTableView registerForDraggedTypes:@[NSStringPboardType]];
     }
     return self;
 }
@@ -199,26 +202,19 @@
 // DRAG & DROP
 //
 
-- (BOOL)tableView:(NSTableView *)tv
-writeRowsWithIndexes:(NSIndexSet *)rowIndexes
-     toPasteboard:(NSPasteboard*)pboard
-{
-    return YES;
-}
-
+// What kind of drag operation should I perform?
 - (NSDragOperation)tableView:(NSTableView*)tv
-                validateDrop:(id <NSDraggingInfo>)info
-                 proposedRow:(NSInteger)row
+                validateDrop:(id )info proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)op
 {
-    return NSDragOperationCopy;
+    return NSDragOperationEvery; // Specifies that the drop should occur above the specified row.
 }
 
-
-- (BOOL)tableView:(NSTableView *)aTableView
-       acceptDrop:(id <NSDraggingInfo>)info
+// The mouse button was released over a row in the table view, should I accept the drop?
+- (BOOL)tableView:(NSTableView*)tv
+       acceptDrop:(id )info
               row:(NSInteger)row
-    dropOperation:(NSTableViewDropOperation)operation
+    dropOperation:(NSTableViewDropOperation)op
 {
     return YES;
 }
