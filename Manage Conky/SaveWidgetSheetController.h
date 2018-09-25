@@ -6,12 +6,16 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import <Fragaria/Fragaria.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SaveWidgetSheetController : NSWindowController
+{
+    NSURL                       *previewLocation;
+    NSMutableArray<NSURL *>     *resourcesLocations;
+}
 
 @property (strong) IBOutlet MGSFragariaView *scriptView;
 @property (strong) IBOutlet NSWindow *window;

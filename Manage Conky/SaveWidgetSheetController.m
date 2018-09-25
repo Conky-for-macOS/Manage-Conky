@@ -27,12 +27,29 @@
 
 - (IBAction)addPreview:(id)sender
 {
-    
+    NSOpenPanel *op = [NSOpenPanel openPanel];
+    [op setAllowsMultipleSelection:NO];
+    [self.window beginSheet:op completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK)
+        {
+            self->previewLocation = op.URL.filePathURL;
+        }
+    }];
 }
 
 - (IBAction)addResources:(id)sender
 {
-    
+    NSOpenPanel *op = [NSOpenPanel openPanel];
+    [op setAllowsMultipleSelection:YES];
+    [self.window beginSheet:op completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK)
+        {
+            for (NSURL *url in [op URLs])
+            {
+                [self->resourcesLocations addObject:url.filePathURL];
+            }
+        }
+    }];
 }
 
 - (IBAction)saveButton:(id)sender
@@ -72,6 +89,10 @@
         [fm createFileAtPath:widgetCreator
                     contents:[_widgetCreatorField.stringValue dataUsingEncoding:NSUTF8StringEncoding]
                   attributes:nil];
+        
+        NSLog(@"%@", previewLocation);
+        NSLog(@"%@", resourcesLocations);
+        
         [self.window close];
     }
 }
