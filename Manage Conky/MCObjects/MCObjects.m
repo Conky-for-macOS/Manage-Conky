@@ -11,6 +11,36 @@
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
 
+/** `Helper function`
+ * Check if Xquartz and conky are installed
+ * and if not, show an alert and return NO.
+ */
+BOOL isXquartzAndConkyInstalled()
+{
+    BOOL res1 = (access(XQUARTZ, R_OK) == 0);
+    BOOL res2 = (access(CONKY_SYMLINK.UTF8String, R_OK) == 0);
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    
+    if (!res1)
+    {
+        [alert setMessageText:@"Xquartz is missing!"];
+        [alert setInformativeText:@"You need to reinstall Xquartz from https://www.xquartz.org/"];
+        [alert setAlertStyle:NSAlertStyleCritical];
+        [alert runModal];
+    }
+
+    if (!res2)
+    {
+        [alert setMessageText:@"conky is missing!"];
+        [alert setInformativeText:@"You need to reinstall conky from `Conky Preferences`->`Install conky`"];
+        [alert setAlertStyle:NSAlertStyleCritical];
+        [alert runModal];
+    }
+
+    return (res1 && res2);
+}
+
 @implementation MCSettings
 + (instancetype)sharedInstance
 {
@@ -50,7 +80,7 @@
     /*
      * Create symbolic link to install ConkyX to Applications
      */
-    if (![fm createSymbolicLinkAtPath:@"/Applications/ConkyX.app" withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
+    if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
     {
         NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
     }
@@ -140,6 +170,9 @@
 
 - (void)enable
 {
+    if (!isXquartzAndConkyInstalled())
+        return;
+
     NSError *error = nil;
     
     /*
@@ -562,6 +595,9 @@
  */
 - (void)enable
 {
+    if (!isXquartzAndConkyInstalled())
+        return;
+    
     /**
      * We create a LaunchAgent foreach conky-config of the Theme and
      * a lock indicating that the theme is enabled on this user account.

@@ -18,6 +18,7 @@
 #define MANAGE_CONKY        @"/Applications/Manage Conky.app"
 #define CONKY_SYMLINK       @"/usr/local/bin/conky"
 #define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
+#define XQUARTZ             "/Applications/Utilities/XQuartz.app"
 
 //
 // Contains stuff used by more than one subprojects or files
