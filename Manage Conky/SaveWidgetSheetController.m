@@ -18,14 +18,12 @@
 
 - (void)awakeFromNib
 {
-    BOOL beenHereAgain = NO;
-    if (!beenHereAgain)
-    {
-        resourcesLocations = [NSMutableArray array];
-        [_scriptView setSyntaxDefinitionName:@"lua"];
-        
-        beenHereAgain = YES;
-    }
+    static BOOL beenHereAgain = NO;
+    if (beenHereAgain) { return; }
+    
+    resourcesLocations = [NSMutableArray array];
+    [_scriptView setSyntaxDefinitionName:@"lua"];
+    beenHereAgain = YES;
 }
 
 - (IBAction)clearButton:(id)sender
@@ -47,6 +45,7 @@
     NSOpenPanel *op = [NSOpenPanel openPanel];
     [op setAllowsMultipleSelection:NO];
     [op setPrompt:@"Add"];
+    [op setAllowedFileTypes:@[@"png", @"jpg", @"jpeg", @"tiff"]];
     NSModalResponse res = [op runModal];
 
     if (res == NSModalResponseOK)
