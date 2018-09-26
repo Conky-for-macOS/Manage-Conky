@@ -13,7 +13,6 @@
 - (id)initWithWindowNibName:(NSString *)nibName;
 {
     self = [super initWithWindowNibName:nibName];
-    if (self)
     return self;
 }
 
