@@ -20,10 +20,10 @@
 {
     static BOOL beenHereAgain = NO;
     if (beenHereAgain) { return; }
-    
+    beenHereAgain = YES;
+
     resourcesLocations = [NSMutableArray array];
     [_scriptView setSyntaxDefinitionName:@"lua"];
-    beenHereAgain = YES;
 }
 
 - (IBAction)clearButton:(id)sender
