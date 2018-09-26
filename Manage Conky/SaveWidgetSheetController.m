@@ -14,11 +14,19 @@
 {
     self = [super initWithWindowNibName:nibName];
     if (self)
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    BOOL beenHereAgain = NO;
+    if (!beenHereAgain)
     {
         resourcesLocations = [NSMutableArray array];
         [_scriptView setSyntaxDefinitionName:@"lua"];
+        
+        beenHereAgain = YES;
     }
-    return self;
 }
 
 - (IBAction)clearButton:(id)sender
