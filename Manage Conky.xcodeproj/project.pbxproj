@@ -187,7 +187,6 @@
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09BF3BD0215CF203003EF57D /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = "Manage Conky/Fragaria/Fragaria.xcodeproj"; sourceTree = "<group>"; };
-		09BF3BED215CF24D003EF57D /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		09D11C972104C66F005C9685 /* SaveThemeSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetController.h; sourceTree = "<group>"; };
 		09D11C982104C66F005C9685 /* SaveThemeSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveThemeSheetController.m; sourceTree = "<group>"; };
 		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
@@ -398,7 +397,6 @@
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				09BF3BED215CF24D003EF57D /* Podfile */,
 				098C769C213BF64500B1F05A /* .travis.yml */,
 				09ACA826212E1CF8002B9754 /* Licenses */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,
