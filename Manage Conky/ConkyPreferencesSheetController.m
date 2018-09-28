@@ -55,11 +55,12 @@
 {
     [super activateSheet:@"ConkyPreferences"];
     
-    /* Is ConkyX already installed? */
-    conkyXInstalled = (access(CONKYX_PATH, F_OK) == 0);
-    
+    /* Is Conky installed? */
+    conkyXInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKYX];
+    BOOL conkyInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKY_SYMLINK];
+
     // Install / Uninstall Button
-    [_un_in_stallConkyButton setTitle:conkyXInstalled ? @"Uninstall Conky" : @"Install Conky"];
+    [_un_in_stallConkyButton setTitle:(conkyXInstalled && conkyInstalled) ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
     
     // Startup Delay
@@ -73,7 +74,7 @@
     mustDisableConkyForStartup = NO;   /* default value */
     mustAddSearchPaths = NO;    /* default value */
     
-    if (conkyXInstalled)
+    if (conkyXInstalled && conkyInstalled)
     {
         /* first try to read already written information */
         
@@ -81,7 +82,7 @@
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
-                
+
         /*
          * Conky is Set to run at startup?
          * set checkbox state accordingly
