@@ -77,10 +77,13 @@ BOOL isXquartzAndConkyInstalled()
     NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
     
+    NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
+    NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+    
     /*
      * Create symbolic link to install ConkyX to Applications
      */
-    if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:[[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"] error:&error])
+    if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
     {
         NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
     }
@@ -88,7 +91,7 @@ BOOL isXquartzAndConkyInstalled()
     /*
      * Create symbolic link to allow using from terminal
      */
-    if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:@"/Applications/ConkyX.app/Contents/Resources/conky" error:&error])
+    if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:conkyPath error:&error])
     {
         NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
     }
