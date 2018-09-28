@@ -45,10 +45,6 @@
     [self fillWidgetsThemesArrays];
 }
 
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-}
-
 //
 // DATA ARRAYS CONTROL
 //
