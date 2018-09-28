@@ -17,11 +17,17 @@ It offers on the mac what conky-manager offers on linux plus alot more (exclusiv
 
 ## INSTALL 💾
 
-To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-Conky/releases/latest).
+To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-Conky/releases/latest). <br>
+Make sure to take care of the ["Requirements"](https://github.com/Conky-for-macOS/conky-for-macOS/wiki/Build-on-macOS#-requirements), too! Conky won't work without them.
 
 ## BUILD 🏗
 
 Follow [this](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build) (relatively) small guide.
+
+## Need Help? 💉
+
+Take advice from the [WIKI](https://github.com/Conky-for-macOS/Manage-Conky/wiki) or <br>
+[Ask](https://github.com/Conky-for-macOS/Manage-Conky/issues) a human.
 
 ## AKNOWLEDGEMENTS 📖
 
