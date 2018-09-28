@@ -80,6 +80,7 @@ BOOL isXquartzAndConkyInstalled()
     NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
     
+    // TODO(npyl): this needs to be done as ROOT, see #17
     /*
      * Create symbolic link to install ConkyX to Applications
      */
@@ -88,6 +89,20 @@ BOOL isXquartzAndConkyInstalled()
         NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
     }
     
+    error = nil;
+    
+    // TODO: this needs to be done as ROOT
+    /*
+     * Create /usr/local/bin dir;
+     * Ensure that we are going to get the symlink in place.
+     */
+    //[fm createDirectoryAtPath:@"/usr/local/bin" withIntermediateDirectories:YES attributes:nil error:&error];
+    //if (error)
+    //{
+    //    NSLog(@"%@", error);
+    //}
+    
+    // TODO: This needs to be done as normal user
     /*
      * Create symbolic link to allow using from terminal
      */
