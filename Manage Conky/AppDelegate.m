@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "PreferencesController.h"
 #import "PFMoveApplication.h"
 #import <Sparkle/Sparkle.h>
 
@@ -33,6 +34,14 @@
 #ifndef DEBUG
     MCForciblyMoveToApplicationsFolder();
 #endif
+}
+
+- (IBAction)openPreferences:(id)sender
+{
+    PreferencesController *pfctl = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
+    [[NSApp mainWindow] beginSheet:pfctl.window completionHandler:^(NSModalResponse returnCode) {
+        [[NSApp mainWindow] endSheet:pfctl.window];
+    }];
 }
 
 @end

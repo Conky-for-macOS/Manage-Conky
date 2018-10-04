@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
+		09366F712166A67900157ECA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09366F702166A67900157ECA /* Preferences.xib */; };
+		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
@@ -166,6 +168,9 @@
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
+		09366F702166A67900157ECA /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		09366F792166ADB300157ECA /* PreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		09366F7A2166ADB300157ECA /* PreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
@@ -273,6 +278,8 @@
 				09D11C982104C66F005C9685 /* SaveThemeSheetController.m */,
 				0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */,
 				0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */,
+				09366F792166ADB300157ECA /* PreferencesController.h */,
+				09366F7A2166ADB300157ECA /* PreferencesController.m */,
 				77B8473C1F62C2B600AF8BCA /* main.m */,
 			);
 			name = Sources;
@@ -416,6 +423,7 @@
 				09F14C62211E1F0D00715664 /* ConkyThemes.xib */,
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
 				0953D7A221596AF60065BB4D /* SaveWidget.xib */,
+				09366F702166A67900157ECA /* Preferences.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -624,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
+				09366F712166A67900157ECA /* Preferences.xib in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
@@ -713,6 +722,7 @@
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				095F81912080D08A008DD286 /* MCObjects.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
+				09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
