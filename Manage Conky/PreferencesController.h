@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface PreferencesController : NSWindowController
 
 @property (strong) IBOutlet NSWindow *window;
@@ -17,5 +15,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)initWithWindowNibName:(NSString *)nibName;
 
 @end
-
-NS_ASSUME_NONNULL_END
