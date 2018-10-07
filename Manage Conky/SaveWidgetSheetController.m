@@ -10,12 +10,6 @@
 
 @implementation SaveWidgetSheetController
 
-- (id)initWithWindowNibName:(NSString *)nibName;
-{
-    self = [super initWithWindowNibName:nibName];
-    return self;
-}
-
 - (void)awakeFromNib
 {
     static BOOL beenHereAgain = NO;
@@ -33,11 +27,6 @@
     _widgetSourceField.stringValue = @"";
     [resourcesLocations removeAllObjects];
     previewLocation = [NSURL URLWithString:@""];
-}
-
-- (IBAction)cancelButton:(id)sender
-{
-    [self.window close];
 }
 
 - (IBAction)addPreview:(id)sender

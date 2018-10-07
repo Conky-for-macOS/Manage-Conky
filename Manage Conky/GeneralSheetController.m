@@ -30,3 +30,25 @@
 }
 
 @end
+
+@implementation GeneralSheetController0
+
+- (id)initWithWindowNibName:(NSString *)nibName;
+{
+    self = [super initWithWindowNibName:nibName];
+    return self;
+}
+
+- (void)loadOnWindow:(NSWindow *)targetWindow
+{
+    [targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
+        [targetWindow endSheet:self.window];
+    }];
+}
+
+- (IBAction)close:(id)sender
+{
+    [self.window close];
+}
+
+@end

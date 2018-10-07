@@ -153,11 +153,6 @@
     _scaling = [sender indexOfSelectedItem];
 }
 
-- (IBAction)closeButton:(id)sender
-{
-    [self.window close];
-}
-
 //
 //=========================================================================================================
 //

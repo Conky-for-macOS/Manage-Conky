@@ -6,13 +6,9 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "GeneralSheetController.h"
 
-@interface PreferencesController : NSWindowController
-
-@property (strong) IBOutlet NSWindow *window;
-
-- (id)initWithWindowNibName:(NSString *)nibName;
+@interface PreferencesController : GeneralSheetController0
 
 @property (weak) IBOutlet NSButton *loggingToggle;
 @property (weak) IBOutlet NSView *logfileLocation;

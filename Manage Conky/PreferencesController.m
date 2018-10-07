@@ -10,17 +10,6 @@
 
 @implementation PreferencesController
 
-- (id)initWithWindowNibName:(NSString *)nibName;
-{
-    self = [super initWithWindowNibName:nibName];
-    return self;
-}
-
-- (IBAction)close:(id)sender
-{
-    [self.window close];
-}
-
 - (void)awakeFromNib
 {
     NSNumber *logging = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];

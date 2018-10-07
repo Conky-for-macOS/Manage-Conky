@@ -10,7 +10,7 @@
             <connections>
                 <outlet property="logfileLocation" destination="EiT-Mj-1SZ" id="ftS-SL-LPf"/>
                 <outlet property="loggingToggle" destination="Ybi-0w-Mdk" id="yCD-7g-ssG"/>
-                <outlet property="window" destination="QvC-M9-y7g" id="0i6-cZ-FzN"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="0kA-B6-5uI"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>

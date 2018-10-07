@@ -18,3 +18,15 @@
 - (IBAction)closeSheet:(id)sender;
 
 @end
+
+
+/*
+ * a new approach ...
+ */
+@interface GeneralSheetController0 : NSWindowController
+
+- (id)initWithWindowNibName:(NSString *)nibName;
+- (void)loadOnWindow:(NSWindow *)targetWindow;
+- (IBAction)close:(id)sender;
+
+@end

@@ -34,10 +34,7 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-    PreferencesController *pfctl = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
-    [[NSApp mainWindow] beginSheet:pfctl.window completionHandler:^(NSModalResponse returnCode) {
-        [[NSApp mainWindow] endSheet:pfctl.window];
-    }];
+    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[NSApp mainWindow]];
 }
 
 @end

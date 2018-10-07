@@ -10,7 +10,7 @@
 #import "GeneralSheetController.h"
 
 
-@interface SaveThemeSheetController : NSWindowController<NSTableViewDelegate, NSTableViewDataSource>
+@interface SaveThemeSheetController : GeneralSheetController0<NSTableViewDelegate, NSTableViewDataSource>
 {
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */
@@ -35,9 +35,5 @@
 @property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
 
 @property (weak) IBOutlet NSTextField *wallpaperPathLabel;
-
-@property (strong) IBOutlet NSWindow *window;
-
-- (id)initWithWindowNibName:(NSString *)nibName;
 
 @end

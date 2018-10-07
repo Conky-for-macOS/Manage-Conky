@@ -7,20 +7,17 @@
 //
 
 #import <Fragaria/Fragaria.h>
-#import <Foundation/Foundation.h>
+#import "GeneralSheetController.h"
 
-@interface SaveWidgetSheetController : NSWindowController
+@interface SaveWidgetSheetController : GeneralSheetController0
 {
     NSURL                       *previewLocation;
     NSMutableArray<NSURL *>     *resourcesLocations;
 }
 
 @property (strong) IBOutlet MGSFragariaView *scriptView;
-@property (strong) IBOutlet NSWindow *window;
 
 @property (weak) IBOutlet NSTextField *widgetSourceField;
 @property (weak) IBOutlet NSTextField *widgetCreatorField;
-
-- (id)initWithWindowNibName:(NSString *)nibName;
 
 @end
