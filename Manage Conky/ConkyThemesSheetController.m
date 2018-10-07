@@ -142,18 +142,12 @@
 
 - (IBAction)createTheme:(id)sender
 {
-    SaveThemeSheetController *controller = [[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"];
-    [self.sheet beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-        [self.sheet endSheet:controller.window];
-    }];
+    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"] loadOnWindow:self.sheet];
 }
 
 - (IBAction)createWidget:(id)sender
 {
-    SaveWidgetSheetController *controller = [[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"];
-    [self.sheet beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-        [self.sheet endSheet:controller.window];
-    }];
+    [[[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"] loadOnWindow:self.sheet];
 }
 
 @end
