@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib
 {
+    /*
+     * Logging
+     */
     NSString *logfileLocation = [[NSUserDefaults standardUserDefaults] objectForKey:@"LogfileLocation"];
     
     if (!logfileLocation || [logfileLocation isEqualToString:@""])
@@ -26,12 +29,24 @@
     NSNumber *logging = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];
     [_loggingToggle setState:logging.boolValue];
     [_logfileLocationField setHidden:!logging.boolValue];
+    
+    /*
+     * Resizeable Window
+     */
+    NSNumber *canResizeWindow = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
+    [_resizeableWindow setState:canResizeWindow.boolValue];
 }
 
 - (IBAction)toggleLogging:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"Logging"];
     [_logfileLocationField setHidden:![sender state]];
+}
+
+- (IBAction)toggleResize:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"CanResizeWindow"];
+//  [NSApp mainWindow] .... XXX apply change
 }
 
 - (IBAction)close:(id)sender;

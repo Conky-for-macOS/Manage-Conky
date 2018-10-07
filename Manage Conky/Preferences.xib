@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="logfileLocationField" destination="8PD-Sz-frU" id="F1S-BB-fKn"/>
                 <outlet property="loggingToggle" destination="Ybi-0w-Mdk" id="yCD-7g-ssG"/>
+                <outlet property="resizeableWindow" destination="GEp-k4-v0M" id="ZiE-Zu-yex"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="0kA-B6-5uI"/>
             </connections>
         </customObject>
@@ -55,15 +56,27 @@ DQ
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-k4-v0M">
+                        <rect key="frame" x="18" y="25" width="140" height="18"/>
+                        <buttonCell key="cell" type="check" title="Resizeable Window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rBK-Ut-ral">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleResize:" target="-2" id="QDD-mX-cLI"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8PD-Sz-frU" firstAttribute="trailing" secondItem="XE9-hc-w01" secondAttribute="trailing" id="6c3-IQ-mxT"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="ET5-4x-edp"/>
-                    <constraint firstAttribute="trailing" secondItem="8PD-Sz-frU" secondAttribute="trailing" constant="20" symbolic="YES" id="YYq-Vu-YlB"/>
-                    <constraint firstItem="XE9-hc-w01" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="bottom" constant="8" symbolic="YES" id="YnJ-lM-Pnl"/>
-                    <constraint firstItem="8PD-Sz-frU" firstAttribute="leading" secondItem="Ybi-0w-Mdk" secondAttribute="trailing" constant="16" id="bA9-ui-RnD"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="ctZ-VV-x3J"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="top" id="tby-cv-cCk"/>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="trailing" secondItem="XE9-hc-w01" secondAttribute="trailing" id="3Y3-IV-Lzn"/>
+                    <constraint firstAttribute="trailing" secondItem="8PD-Sz-frU" secondAttribute="trailing" constant="20" symbolic="YES" id="ISP-Zh-4fo"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="PKW-l3-BMd"/>
+                    <constraint firstItem="GEp-k4-v0M" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="bottom" constant="8" symbolic="YES" id="Rod-aY-MDP"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="GEp-k4-v0M" secondAttribute="leading" id="WBf-cT-lpC"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="top" id="bPz-Dp-UII"/>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="leading" secondItem="Ybi-0w-Mdk" secondAttribute="trailing" constant="16" id="dIb-si-leq"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="fqb-qz-140"/>
+                    <constraint firstItem="GEp-k4-v0M" firstAttribute="top" secondItem="XE9-hc-w01" secondAttribute="top" id="wMt-lg-gb9"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="-537" y="-60.5"/>

@@ -27,6 +27,10 @@
      * Setup stuff
      */
     
+//    NSNumber *canResizeWindow = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
+//    [[NSApp mainWindow] setCanResize:canResizeWindow];
+// XXX why isn't there something like this apple?
+    
     /* Is conky set to run at startup? */
     BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
     
