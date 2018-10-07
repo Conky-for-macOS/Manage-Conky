@@ -407,7 +407,6 @@
 
 - (IBAction)okButtonPressed:(id)sender
 {
-    NSWindow *sheet = self.window;
     BOOL worksAsCancelButton = mustEnableConkyForStartup || mustDisableConkyForStartup || mustAddSearchPaths;
     
     if (worksAsCancelButton)

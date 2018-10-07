@@ -9,7 +9,7 @@
 #import <Fragaria/Fragaria.h>
 #import "GeneralSheetController.h"
 
-@interface SaveWidgetSheetController : GeneralSheetController0
+@interface SaveWidgetSheetController : GeneralSheetController
 {
     NSURL                       *previewLocation;
     NSMutableArray<NSURL *>     *resourcesLocations;

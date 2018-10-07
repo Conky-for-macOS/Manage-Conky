@@ -10,7 +10,7 @@
 #import "GeneralSheetController.h"
 
 
-@interface SaveThemeSheetController : GeneralSheetController0<NSTableViewDelegate, NSTableViewDataSource>
+@interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource>
 {
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */

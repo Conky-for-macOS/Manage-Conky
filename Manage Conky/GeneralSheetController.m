@@ -9,7 +9,7 @@
 #import "GeneralSheetController.h"
 
 
-@implementation GeneralSheetController0
+@implementation GeneralSheetController
 
 - (id)initWithWindowNibName:(NSString *)nibName;
 {

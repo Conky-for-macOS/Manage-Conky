@@ -8,7 +8,7 @@
 
 #import "GeneralSheetController.h"
 
-@interface PreferencesController : GeneralSheetController0
+@interface PreferencesController : GeneralSheetController
 
 @property (weak) IBOutlet NSButton *loggingToggle;
 @property (weak) IBOutlet NSView *logfileLocation;

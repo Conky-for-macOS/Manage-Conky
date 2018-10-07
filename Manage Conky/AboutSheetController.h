@@ -8,6 +8,6 @@
 
 #import "GeneralSheetController.h"
 
-@interface AboutSheetController : GeneralSheetController0
+@interface AboutSheetController : GeneralSheetController
 
 @end
