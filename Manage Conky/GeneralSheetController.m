@@ -8,28 +8,6 @@
 
 #import "GeneralSheetController.h"
 
-@implementation GeneralSheetController
-
-- (void)activateSheet:(NSString*)nibName withOwner:(id)owner
-{
-    if (!_sheet)
-        [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:nil];
-    
-    [[NSApp mainWindow] beginSheet:self.sheet completionHandler:^(NSModalResponse returnCode) {}];
-}
-
-- (void)activateSheet:(NSString*)nibName
-{
-    [self activateSheet:nibName withOwner:self];
-}
-
-- (IBAction)closeSheet:(id)sender
-{
-    [[NSApp mainWindow] endSheet:self.sheet];
-    self.sheet = nil;
-}
-
-@end
 
 @implementation GeneralSheetController0
 
@@ -39,10 +17,11 @@
     return self;
 }
 
-- (void)loadOnWindow:(NSWindow *)targetWindow
+- (void)loadOnWindow:(NSWindow *)_targetWindow
 {
-    [targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
-        [targetWindow endSheet:self.window];
+    self.targetWindow = _targetWindow;
+    [_targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
+        [_targetWindow endSheet:self.window];
     }];
 }
 

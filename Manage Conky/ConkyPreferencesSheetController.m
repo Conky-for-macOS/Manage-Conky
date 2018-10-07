@@ -51,10 +51,8 @@
 
 @implementation ConkyPreferencesSheetController
 
-- (IBAction)activatePreferencesSheet:(id)sender
+- (void)awakeFromNib
 {
-    [super activateSheet:@"ConkyPreferences"];
-    
     /* Is Conky installed? */
     conkyXInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKYX];
     BOOL conkyInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKY_SYMLINK];
@@ -185,7 +183,7 @@
         [keepAlivePrompt addButtonWithTitle:@"Yes"];
         [keepAlivePrompt addButtonWithTitle:@"No"];
         
-        NSModalResponse response = [keepAlivePrompt runModalSheetForWindow:[super sheet]];
+        NSModalResponse response = [keepAlivePrompt runModalSheetForWindow:self.window];
         switch (response)
         {
             case NSAlertSecondButtonReturn:
@@ -252,7 +250,7 @@
     /*
      * display the panel
      */
-    [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
         if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];
@@ -330,8 +328,8 @@
         [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
         [[MCSettings sharedInstance] installManageConkyFilesystem];
         
-        [super closeSheet:[super sheet]];
-        [self activatePreferencesSheet:self];
+        [self close];
+        [self loadOnWindow:self.targetWindow];
     }
 }
 
@@ -358,7 +356,7 @@
         /* revert */
         mustEnableConkyForStartup = NO;
         
-        NSWindow *sheet = [super sheet];
+        NSWindow *sheet = self.window;
         NSInteger startupDelay_ = [_startupDelayField integerValue];
         static BOOL shownX11TakesAlotTimeWarning = NO;
         
@@ -409,7 +407,7 @@
 
 - (IBAction)okButtonPressed:(id)sender
 {
-    NSWindow *sheet = [super sheet];
+    NSWindow *sheet = self.window;
     BOOL worksAsCancelButton = mustEnableConkyForStartup || mustDisableConkyForStartup || mustAddSearchPaths;
     
     if (worksAsCancelButton)
@@ -432,7 +430,7 @@
         /*
          * Close the sheet
          */
-        [super closeSheet:sheet];
+        [self close];
     }
 }
 
@@ -456,7 +454,7 @@
     /*
      * display the panel
      */
-    [panel beginSheetModalForWindow:[super sheet] completionHandler:^(NSModalResponse result) {
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
         if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];

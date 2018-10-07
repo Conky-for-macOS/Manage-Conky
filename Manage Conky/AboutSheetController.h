@@ -8,8 +8,6 @@
 
 #import "GeneralSheetController.h"
 
-@interface AboutSheetController : GeneralSheetController
-
-- (IBAction)activateAboutSheet:(id)sender;
+@interface AboutSheetController : GeneralSheetController0
 
 @end

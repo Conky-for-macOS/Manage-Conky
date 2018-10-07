@@ -12,6 +12,10 @@
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "Extensions/StringScore/NSString+Score.h"
 
+#import "ConkyPreferencesSheetController.h"
+#import "ConkyThemesSheetController.h"
+#import "AboutSheetController.h"
+
 #define ERR_NSFD 260    /* no such file or directory */
 
 @implementation ViewController
@@ -613,6 +617,19 @@
 {
     [self fillWidgetsThemesArrays];
     [_widgetsThemesTable reloadData];
+}
+
+- (IBAction)loadConkyPreferences:(id)sender
+{
+    [[[ConkyPreferencesSheetController alloc] initWithWindowNibName:@"ConkyPreferences"] loadOnWindow:[NSApp mainWindow]];
+}
+- (IBAction)loadConkyThemes:(id)sender
+{
+    [[[ConkyThemesSheetController alloc] initWithWindowNibName:@"ConkyThemes"] loadOnWindow:[NSApp mainWindow]];
+}
+- (IBAction)loadAbout:(id)sender
+{
+    [[[AboutSheetController alloc] initWithWindowNibName:@"About"] loadOnWindow:[NSApp mainWindow]];
 }
 
 @end

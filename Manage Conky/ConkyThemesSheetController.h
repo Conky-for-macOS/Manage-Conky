@@ -9,7 +9,7 @@
 #import "GeneralSheetController.h"
 #import "LzmaSDKObjCReader.h"
 
-@interface ConkyThemesSheetController : GeneralSheetController <LzmaSDKObjCReaderDelegate>
+@interface ConkyThemesSheetController : GeneralSheetController0 <LzmaSDKObjCReaderDelegate>
 {
     /**
      The theme-pack items
@@ -22,7 +22,5 @@
  *  shown in main-window.
  */
 @property (weak) IBOutlet NSTableView *themesOrWidgetsTable;
-
-- (IBAction)activateThemesSheet:(id)sender;
 
 @end

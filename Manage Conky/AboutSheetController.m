@@ -82,9 +82,4 @@
     [NSApp orderFrontStandardAboutPanel:nil];
 }
 
-- (IBAction)activateAboutSheet:(id)sender
-{
-    [super activateSheet:@"About"];
-}
-
 @end

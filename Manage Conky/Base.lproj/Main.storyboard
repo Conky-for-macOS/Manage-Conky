@@ -722,7 +722,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="activatePreferencesSheet:" target="dEB-zH-v7c" id="Deh-Sh-Vsm"/>
+                                    <action selector="loadConkyPreferences:" target="XfG-lQ-9wD" id="qVV-cV-8q2"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="g6i-0l-yKP">
@@ -732,7 +732,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="activateAboutSheet:" target="QjW-XK-6TL" id="waU-zf-tYv"/>
+                                    <action selector="loadAbout:" target="XfG-lQ-9wD" id="0oH-yJ-hM2"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vjZ-mY-u91">
@@ -750,7 +750,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="activateThemesSheet:" target="nOr-EW-XZ9" id="x9S-3d-wc0"/>
+                                    <action selector="loadConkyThemes:" target="XfG-lQ-9wD" id="CXf-Q5-T61"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vbw-J9-Uzg">

@@ -9,24 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-@interface GeneralSheetController : NSObject
-
-@property (assign) IBOutlet NSWindow * sheet;
-
-- (void)activateSheet:(NSString*)nibName;
-- (void)activateSheet:(NSString*)nibName withOwner:(id)owner;
-- (IBAction)closeSheet:(id)sender;
-
-@end
-
-
-/*
- * a new approach ...
- */
 @interface GeneralSheetController0 : NSWindowController
 
+@property NSWindow *targetWindow;
+
 - (id)initWithWindowNibName:(NSString *)nibName;
-- (void)loadOnWindow:(NSWindow *)targetWindow;
+- (void)loadOnWindow:(NSWindow *)_targetWindow;
 - (IBAction)close:(id)sender;
 
 @end

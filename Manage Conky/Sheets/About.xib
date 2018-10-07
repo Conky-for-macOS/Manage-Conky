@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AboutSheetController">
             <connections>
-                <outlet property="sheet" destination="QvC-M9-y7g" id="deT-HQ-wya"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="9ux-3I-iKw"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -102,7 +102,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="closeSheet:" target="-2" id="UNs-KM-LRE"/>
+                            <action selector="close:" target="-2" id="WYE-dA-2Zs"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="7YG-e4-RES">

@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ConkyThemesSheetController">
             <connections>
-                <outlet property="sheet" destination="QvC-M9-y7g" id="BBJ-FI-VMp"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="6KB-og-Z5w"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -68,7 +68,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="closeSheet:" target="-2" id="UFz-6w-ibk"/>
+                            <action selector="close:" target="-2" id="RpP-Qy-AOY"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlj-jU-OYB">

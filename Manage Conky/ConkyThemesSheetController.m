@@ -20,11 +20,6 @@
 
 @implementation ConkyThemesSheetController
 
-- (IBAction)activateThemesSheet:(id)sender
-{
-    [super activateSheet:@"ConkyThemes"];
-}
-
 /**
  * Fill the widgets/themes table in main window
  */
@@ -124,7 +119,7 @@
     /*
      * display the panel
      */
-    [self.sheet beginSheet:panel completionHandler:^(NSModalResponse result) {
+    [self.window beginSheet:panel completionHandler:^(NSModalResponse result) {
         if (result == NSModalResponseOK)
         {
             NSURL *theDocument = [[panel URLs]objectAtIndex:0];
@@ -142,12 +137,12 @@
 
 - (IBAction)createTheme:(id)sender
 {
-    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"] loadOnWindow:self.sheet];
+    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"] loadOnWindow:self.window];
 }
 
 - (IBAction)createWidget:(id)sender
 {
-    [[[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"] loadOnWindow:self.sheet];
+    [[[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"] loadOnWindow:self.window];
 }
 
 @end

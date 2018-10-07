@@ -19,7 +19,7 @@
 @end
 
 
-@interface ConkyPreferencesSheetController : GeneralSheetController<SUUpdaterDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface ConkyPreferencesSheetController : GeneralSheetController0<SUUpdaterDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSTableViewDelegate>
 {
     BOOL conkyXInstalled;
     BOOL xquartzQuitAlertDisabled;
@@ -69,7 +69,5 @@
  *  shown in main-window.
  */
 @property (weak) IBOutlet NSTableView *themesOrWidgetsTable;
-
-- (IBAction)activatePreferencesSheet:(id)sender;
 
 @end
