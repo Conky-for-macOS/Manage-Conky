@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesController">
             <connections>
-                <outlet property="logfileLocation" destination="EiT-Mj-1SZ" id="ftS-SL-LPf"/>
+                <outlet property="logfileLocationField" destination="8PD-Sz-frU" id="F1S-BB-fKn"/>
                 <outlet property="loggingToggle" destination="Ybi-0w-Mdk" id="yCD-7g-ssG"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="0kA-B6-5uI"/>
             </connections>
@@ -47,7 +47,7 @@ DQ
                             <action selector="close:" target="-2" id="0C8-4M-k3Q"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
+                    <textField hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
                         <rect key="frame" x="148" y="49" width="216" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Log File Location: " drawsBackground="YES" id="4TB-uw-bil">
                             <font key="font" metaFont="system"/>

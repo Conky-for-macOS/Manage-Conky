@@ -11,6 +11,6 @@
 @interface PreferencesController : GeneralSheetController
 
 @property (weak) IBOutlet NSButton *loggingToggle;
-@property (weak) IBOutlet NSView *logfileLocation;
+@property (weak) IBOutlet NSTextField *logfileLocationField;
 
 @end
