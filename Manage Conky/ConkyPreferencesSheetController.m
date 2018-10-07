@@ -51,12 +51,12 @@
 
 @implementation ConkyPreferencesSheetController
 
-- (void)awakeFromNib
+- (void)initStuff
 {
     /* Is Conky installed? */
     conkyXInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKYX];
     BOOL conkyInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKY_SYMLINK];
-
+    
     // Install / Uninstall Button
     [_un_in_stallConkyButton setTitle:(conkyXInstalled && conkyInstalled) ? @"Uninstall Conky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
@@ -80,7 +80,7 @@
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
-
+        
         /*
          * Conky is Set to run at startup?
          * set checkbox state accordingly
@@ -88,7 +88,7 @@
         MCSettings *t = [MCSettings sharedInstance];
         BOOL conkyRunsAtStartup = [t conkyRunsAtStartup];
         [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
-
+        
         /*
          * Conky configsLocation textfield
          */
@@ -117,28 +117,29 @@
     }
     else
     {
-        [self disableControls];
+        [self toggleControls:NSOffState];
     }
 }
 
-- (void)disableControls
+
+- (void)toggleControls:(NSControlStateValue)state
 {
-    [_runConkyAtStartupCheckbox setEnabled:NO];
+    [_runConkyAtStartupCheckbox setEnabled:state];
     
-    [_conkyConfigLocationTextfield setEnabled:NO];
-    [_setConkyConfigFilesLocationButton setEnabled:NO];
-    [_conkyConfigFilesLocationLabel setTextColor:[NSColor grayColor]];
+    [_conkyConfigLocationTextfield setEnabled:state];
+    [_setConkyConfigFilesLocationButton setEnabled:state];
+    [_conkyConfigFilesLocationLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
     
-    [_startupDelayStepper setEnabled:NO];
-    [_startupDelayField setEnabled:NO];
-    [_startupDelayLabel setTextColor:[NSColor grayColor]];
+    [_startupDelayStepper setEnabled:state];
+    [_startupDelayField setEnabled:state];
+    [_startupDelayLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
     
-    [_addSearchLocationButton setEnabled:NO];
-    [_removeSearchLocationButton setEnabled:NO];
-    [_additionalLocationsToSearchLabel setTextColor:[NSColor grayColor]];
+    [_addSearchLocationButton setEnabled:state];
+    [_removeSearchLocationButton setEnabled:state];
+    [_additionalLocationsToSearchLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
     
-    [_disableXQuartzWarningsCheckbox setEnabled:NO];
-    [_toggleXQuartzIconVisibilityCheckbox setEnabled:NO];
+    [_disableXQuartzWarningsCheckbox setEnabled:state];
+    [_toggleXQuartzIconVisibilityCheckbox setEnabled:state];
 }
 
 - (void)enableMustInstallAgentMode
@@ -305,8 +306,8 @@
          * Uninstall conky
          */
         
-        [self disableControls];
-        
+        [self toggleControls:NSOffState];
+
         [[MCSettings sharedInstance] uninstallCompletelyManageConkyFilesystem];
         
         /* create Successfully Installed message */
@@ -330,6 +331,8 @@
         
         [self close];
         [self loadOnWindow:self.targetWindow];
+        [self initStuff];   // XXX try to remove this
+        [self toggleControls:NSOnState];
     }
 }
 

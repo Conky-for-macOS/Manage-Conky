@@ -70,4 +70,6 @@
  */
 @property (weak) IBOutlet NSTableView *themesOrWidgetsTable;
 
+- (void)initStuff;
+
 @end
