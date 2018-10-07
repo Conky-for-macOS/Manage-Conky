@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesController">
             <connections>
+                <outlet property="logfileLocation" destination="EiT-Mj-1SZ" id="ftS-SL-LPf"/>
+                <outlet property="loggingToggle" destination="Ybi-0w-Mdk" id="yCD-7g-ssG"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="0i6-cZ-FzN"/>
             </connections>
         </customObject>
@@ -16,23 +18,24 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="384" height="91"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-0w-Mdk">
-                        <rect key="frame" x="18" y="234" width="116" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-0w-Mdk">
+                        <rect key="frame" x="18" y="55" width="116" height="18"/>
                         <buttonCell key="cell" type="check" title="Enable Logging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vx2-T1-1bp">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="toggleLogging:" target="-2" id="GTq-2h-olu"/>
+                        </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XE9-hc-w01">
-                        <rect key="frame" x="407" y="13" width="59" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XE9-hc-w01">
+                        <rect key="frame" x="311" y="13" width="59" height="32"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MO8-R7-eRm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -44,9 +47,26 @@ DQ
                             <action selector="close:" target="-2" id="0C8-4M-k3Q"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
+                        <rect key="frame" x="148" y="49" width="216" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Log File Location: " drawsBackground="YES" id="4TB-uw-bil">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="trailing" secondItem="XE9-hc-w01" secondAttribute="trailing" id="6c3-IQ-mxT"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="ET5-4x-edp"/>
+                    <constraint firstAttribute="trailing" secondItem="8PD-Sz-frU" secondAttribute="trailing" constant="20" symbolic="YES" id="YYq-Vu-YlB"/>
+                    <constraint firstItem="XE9-hc-w01" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="bottom" constant="8" symbolic="YES" id="YnJ-lM-Pnl"/>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="leading" secondItem="Ybi-0w-Mdk" secondAttribute="trailing" constant="16" id="bA9-ui-RnD"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="ctZ-VV-x3J"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="top" id="tby-cv-cCk"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="-119" y="124"/>
+            <point key="canvasLocation" x="-537" y="-60.5"/>
         </window>
     </objects>
 </document>

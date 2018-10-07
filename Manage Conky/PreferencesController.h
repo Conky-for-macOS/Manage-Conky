@@ -14,4 +14,7 @@
 
 - (id)initWithWindowNibName:(NSString *)nibName;
 
+@property (weak) IBOutlet NSButton *loggingToggle;
+@property (weak) IBOutlet NSView *logfileLocation;
+
 @end

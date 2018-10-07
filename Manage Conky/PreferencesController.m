@@ -21,4 +21,15 @@
     [self.window close];
 }
 
+- (void)awakeFromNib
+{
+    NSNumber *logging = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];
+    [_loggingToggle setState:logging.boolValue];
+}
+
+- (IBAction)toggleLogging:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"Logging"];
+}
+
 @end
