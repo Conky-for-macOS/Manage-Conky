@@ -12,6 +12,8 @@
 #import "PFMoveApplication.h"
 #import <Sparkle/Sparkle.h>
 
+#include "Shared.h" /* logging */
+
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
