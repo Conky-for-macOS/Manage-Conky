@@ -616,7 +616,7 @@
     NSString *txt = [sender stringValue];
 
     NSMutableArray *searchArray = [[NSMutableArray alloc] init];
-    NSMutableArray *objectArray = (whatToShow == widgetsThemesTableShowWidgets) ? widgetsArray : themesArray;
+    NSMutableArray *objectArray = (whatToShow == widgetsThemesTableShowWidgets) ? (NSMutableArray *)widgetsArray : (NSMutableArray *)themesArray;
 
     CGFloat score = 0;
 

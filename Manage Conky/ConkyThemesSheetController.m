@@ -37,7 +37,7 @@
      *  Call the method `fillWidgetsThemesArrays` and fill the arrays
      *  with data in order to reload table, with newly installed themes/widgets.
      */
-    ViewController *pVC = [_themesOrWidgetsTable delegate];
+    ViewController *pVC = (ViewController *)[_themesOrWidgetsTable delegate];
     [pVC emptyWidgetsThemesArrays];
     [pVC fillWidgetsThemesArrays];
     [_themesOrWidgetsTable reloadData];
