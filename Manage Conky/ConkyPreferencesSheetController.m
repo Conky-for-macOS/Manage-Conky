@@ -122,23 +122,19 @@
     }
 }
 
-
 - (void)toggleControls:(NSControlStateValue)state
 {
-    /* XXX patch for dark mode */
     [_runConkyAtStartupCheckbox setEnabled:state];
     
     [_conkyConfigLocationTextfield setEnabled:state];
     [_setConkyConfigFilesLocationButton setEnabled:state];
-    [_conkyConfigFilesLocationLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
+    [_conkyConfigFilesLocationLabel setEnabled:state];
     
     [_startupDelayStepper setEnabled:state];
     [_startupDelayField setEnabled:state];
-    [_startupDelayLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
     
     [_addSearchLocationButton setEnabled:state];
     [_removeSearchLocationButton setEnabled:state];
-    [_additionalLocationsToSearchLabel setTextColor:(state == NSOnState) ? [NSColor whiteColor] : [NSColor grayColor]];
     
     [_disableXQuartzWarningsCheckbox setEnabled:state];
     [_toggleXQuartzIconVisibilityCheckbox setEnabled:state];
