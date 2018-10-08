@@ -8,6 +8,8 @@
 
 #import "AboutSheetController.h"
 
+#include "Shared.h" /* logging */
+
 @implementation AboutSheetController
 
 - (IBAction)openGitHubRepo:(id)sender

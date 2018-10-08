@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SaveThemeSheetController">
             <connections>
+                <outlet property="dropStuffHereLabel" destination="JWW-yl-KZP" id="D5i-Si-oEw"/>
                 <outlet property="scalingPopUpButton" destination="c3C-a5-NHR" id="3tz-Sj-PBi"/>
                 <outlet property="themeCreatorField" destination="UpE-mi-1hC" id="KCd-yc-sxy"/>
                 <outlet property="themeNameField" destination="gS3-yf-Kw0" id="M5M-yg-r71"/>

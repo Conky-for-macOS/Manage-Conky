@@ -8,6 +8,8 @@
 
 #import "MCConfigEditor.h"
 
+#include "Shared.h" /* logging */
+
 @interface MCConfigEditor ()
 
 @end

@@ -8,6 +8,8 @@
 
 #import "SaveWidgetSheetController.h"
 
+#include "Shared.h" /* logging */
+
 @implementation SaveWidgetSheetController
 
 - (void)awakeFromNib

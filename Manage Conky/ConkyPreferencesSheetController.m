@@ -13,7 +13,8 @@
 #import "PFMoveApplication.h"
 #import "ViewController.h"
 #import <unistd.h>
-#import "Shared.h"
+
+#include "Shared.h" /* logging */
 
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
@@ -124,6 +125,7 @@
 
 - (void)toggleControls:(NSControlStateValue)state
 {
+    /* XXX patch for dark mode */
     [_runConkyAtStartupCheckbox setEnabled:state];
     
     [_conkyConfigLocationTextfield setEnabled:state];

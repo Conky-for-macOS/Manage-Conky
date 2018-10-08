@@ -8,6 +8,8 @@
 
 #import "PreferencesController.h"
 
+#include "Shared.h" /* logging */
+
 @implementation PreferencesController
 
 - (void)awakeFromNib

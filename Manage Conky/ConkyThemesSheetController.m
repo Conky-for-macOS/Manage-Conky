@@ -18,6 +18,8 @@
 #import "SaveThemeSheetController.h"
 #import "SaveWidgetSheetController.h"
 
+#include "Shared.h" /* logging */
+
 @implementation ConkyThemesSheetController
 
 /**

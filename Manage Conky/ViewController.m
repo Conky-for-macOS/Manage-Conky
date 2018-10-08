@@ -27,6 +27,25 @@
      * Setup stuff
      */
     
+    /*
+     * Logging
+     * =======
+     */
+    NSNumber *loggingEnabled = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];
+    shouldLogToFile = loggingEnabled.boolValue;
+    NSString *lf = [[NSUserDefaults standardUserDefaults] objectForKey:@"LogfileLocation"];
+    
+    /*
+     * Check if logging is enabled; If yes, check if we want default logfile (length = 0)
+     *                              or, we want user-defined (length > 0)
+     * Otherwise, set logfile to nil.  (We interpret it as DO_NOT_LOG)
+     */
+#define MC_DO_NOT_LOG nil
+    if (shouldLogToFile)
+        logfile = (lf && lf.length > 0) ? lf : @"/Library/Logs/ManageConky.log";
+    else
+        logfile = MC_DO_NOT_LOG;
+
 //    NSNumber *canResizeWindow = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
 //    [[NSApp mainWindow] setCanResize:canResizeWindow];
 // XXX why isn't there something like this apple?

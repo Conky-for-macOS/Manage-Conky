@@ -10,6 +10,8 @@
 #import "SaveThemeSheetController.h"
 #import "Extensions/NSAlert+runModalSheet.h"
 
+#include "Shared.h" /* logging */
+
 @implementation SaveThemeSheetController
 
 - (id)initWithWindowNibName:(NSString *)nibName;
@@ -25,7 +27,6 @@
         _relative = YES;
         
         _conkyConfigs = [NSMutableArray array];
-        [_widgetsTableView registerForDraggedTypes:@[NSStringPboardType]];
     }
     return self;
 }
@@ -36,7 +37,7 @@
     for (int i = 0; i < MAX_SCALING_KEYS; i++)
         [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
 
-    [_widgetsTableView registerForDraggedTypes:@[NSURLPboardType]]; /*  we only accept files with no-extension*/
+    [_widgetsTableView registerForDraggedTypes:@[NSFilenamesPboardType]]; /*  we only accept files with no-extension*/
 }
 
 - (IBAction)saveTheme:(id)sender
@@ -202,7 +203,8 @@
                 validateDrop:(id )info proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)op
 {
-    return NSDragOperationEvery; // Specifies that the drop should occur above the specified row.
+    [_dropStuffHereLabel setHidden:YES];
+    return NSDragOperationCopy; // Specifies that the drop should occur above the specified row.
 }
 
 // The mouse button was released over a row in the table view, should I accept the drop?
@@ -211,6 +213,11 @@
               row:(NSInteger)row
     dropOperation:(NSTableViewDropOperation)op
 {
+    //NSPasteboard* pboard = [info pasteboard];
+//    NSData* data = [pboard dataForType:@""];     /* no extention */
+    NSLog(@"%@", [info pasteboardItems]);
+//    [_conkyConfigs addObject:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+//    [_widgetsTableView reloadData];
     return YES;
 }
 

@@ -85,3 +85,38 @@ void createLaunchAgent(NSString *label,
                                  inDomain:kAHUserLaunchAgent
                                     error:&error];
 }
+
+/*
+ * Logging
+ * =======
+ */
+BOOL shouldLogToFile = NO;
+NSString *logfile = nil;
+void NPLog(NSString *format, ...)
+{
+    va_list vargs;
+    va_start(vargs, format);
+    NSString* formattedMessage = [[NSString alloc] initWithFormat:format arguments:vargs];
+    va_end(vargs);
+
+    if (shouldLogToFile)
+    {
+        /* write to file */
+        NSError *error = nil;
+        NSString *contents = [NSString stringWithContentsOfFile:logfile encoding:NSUTF8StringEncoding error:&error];
+        if (!error)
+        {
+            contents = [contents stringByAppendingFormat:@"%@\n", formattedMessage];
+            [contents writeToFile:logfile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            
+            if (error)
+            {
+                printf("Error writing to logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
+            }
+        }
+    }
+    else
+    {
+        printf("%s\n", formattedMessage.UTF8String);
+    }
+}
