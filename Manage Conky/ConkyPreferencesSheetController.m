@@ -128,7 +128,6 @@
     
     [_conkyConfigLocationTextfield setEnabled:state];
     [_setConkyConfigFilesLocationButton setEnabled:state];
-    [_conkyConfigFilesLocationLabel setEnabled:state];
     
     [_startupDelayStepper setEnabled:state];
     [_startupDelayField setEnabled:state];
