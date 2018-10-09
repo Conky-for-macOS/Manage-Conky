@@ -17,7 +17,7 @@
     static BOOL beenHereAgain = NO;
     if (beenHereAgain) { return; }
     beenHereAgain = YES;
-
+    
     resourcesLocations = [NSMutableArray array];
     [_scriptView setSyntaxDefinitionName:@"lua"];
 }
@@ -38,7 +38,7 @@
     [op setPrompt:@"Add"];
     [op setAllowedFileTypes:@[@"png", @"jpg", @"jpeg", @"tiff"]];
     NSModalResponse res = [op runModal];
-
+    
     if (res == NSModalResponseOK)
     {
         self->previewLocation = op.URL;
@@ -80,7 +80,7 @@
         
         /* delete any previous versions */
         [fm removeItemAtPath:widgetDirectory error:nil];
-
+        
         /* create widget directory */
         [fm createDirectoryAtPath:widgetDirectory withIntermediateDirectories:NO attributes:nil error:&error];
         if (error)
@@ -101,9 +101,9 @@
         [fm createFileAtPath:widgetCreator
                     contents:[_widgetCreatorField.stringValue dataUsingEncoding:NSUTF8StringEncoding]
                   attributes:nil];
-
+        
         /* copy preview */
-        [fm copyItemAtPath:previewLocation.path toPath:widgetDirectory error:&error];
+        [fm copyItemAtPath:previewLocation.path toPath:[widgetDirectory stringByAppendingPathComponent:[previewLocation.path lastPathComponent]] error:&error];
         if (error)
         {
             NSLog(@"%@", error);
@@ -112,7 +112,7 @@
         /* copy resources */
         for (NSURL *resource in resourcesLocations)
         {
-            [fm copyItemAtPath:resource.path toPath:widgetDirectory error:&error];
+            [fm copyItemAtPath:resource.path toPath:[widgetDirectory stringByAppendingPathComponent:[resource.path lastPathComponent]] error:&error];
             if (error)
             {
                 NSLog(@"%@", error);
