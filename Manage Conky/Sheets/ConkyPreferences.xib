@@ -74,7 +74,7 @@
                         <rect key="frame" x="192" y="364" width="268" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OCs-lf-sof">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
@@ -82,7 +82,7 @@
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-o9-e08">
-                        <rect key="frame" x="20" y="19" width="151" height="23"/>
+                        <rect key="frame" x="19.5" y="19" width="152" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="151" id="kfi-Vg-C7w"/>
                         </constraints>
