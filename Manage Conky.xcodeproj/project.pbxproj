@@ -436,10 +436,10 @@
 			children = (
 				092E12C02125BCC200491CDA /* NSString+Score.h */,
 				092E12C12125BCC200491CDA /* NSString+Score.m */,
-				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
-				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
 				090F2834217168C400D9F406 /* NSString+Empty.h */,
 				090F2835217168C400D9F406 /* NSString+Empty.m */,
+				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
+				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";

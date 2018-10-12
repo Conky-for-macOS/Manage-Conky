@@ -1,5 +1,5 @@
 //
-//  NSString+NSString_Empty.m
+//  NSString+Empty.m
 //  Manage Conky
 //
 //  Created by Nickolas Pylarinos Stamatelatos on 13/10/2018.
@@ -9,10 +9,8 @@
 #import "NSString+Empty.h"
 
 @implementation NSString (Empty)
-
 - (BOOL)empty
 {
     return [self isEqualToString:@""];
 }
-
 @end
