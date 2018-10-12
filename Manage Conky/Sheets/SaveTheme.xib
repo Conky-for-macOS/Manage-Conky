@@ -8,7 +8,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SaveThemeSheetController">
             <connections>
-                <outlet property="dropStuffHereLabel" destination="JWW-yl-KZP" id="D5i-Si-oEw"/>
                 <outlet property="scalingPopUpButton" destination="c3C-a5-NHR" id="3tz-Sj-PBi"/>
                 <outlet property="themeCreatorField" destination="UpE-mi-1hC" id="KCd-yc-sxy"/>
                 <outlet property="themeNameField" destination="gS3-yf-Kw0" id="M5M-yg-r71"/>
@@ -138,7 +137,7 @@
                         <rect key="frame" x="20" y="100" width="440" height="5"/>
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5p-As-eqb">
-                        <rect key="frame" x="329" y="70" width="133" height="23"/>
+                        <rect key="frame" x="328.5" y="70" width="134" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="Choose" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CS6-FP-mDg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -229,15 +228,17 @@
                             <action selector="close:" target="-2" id="HoQ-lp-XSg"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JWW-yl-KZP">
-                        <rect key="frame" x="180" y="210" width="120" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Drop Widgets Here" id="wGg-ZA-LTt">
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUA-lt-bit">
+                        <rect key="frame" x="76" y="300" width="258" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="qJJ-XG-1qc">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                            <segments>
+                                <segment label="From List" width="126"/>
+                                <segment label="From File System" width="125" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                    </segmentedControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gS3-yf-Kw0" firstAttribute="leading" secondItem="xV0-2h-ryU" secondAttribute="trailing" constant="8" symbolic="YES" id="50n-GT-ES6"/>

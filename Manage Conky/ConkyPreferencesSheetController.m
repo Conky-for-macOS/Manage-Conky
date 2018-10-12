@@ -328,7 +328,7 @@
         
         [self close];
         [self loadOnWindow:self.targetWindow];
-        [self initStuff];   // XXX try to remove this
+        [self initStuff];
         [self toggleControls:NSOnState];
     }
 }

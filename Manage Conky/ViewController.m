@@ -45,10 +45,6 @@
         logfile = (lf && lf.length > 0) ? lf : @"/Library/Logs/ManageConky.log";
     else
         logfile = MC_DO_NOT_LOG;
-
-//    NSNumber *canResizeWindow = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
-//    [[NSApp mainWindow] setCanResize:canResizeWindow];
-// XXX why isn't there something like this apple?
     
     /* Is conky set to run at startup? */
     BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
@@ -646,7 +642,7 @@
 {
     ConkyPreferencesSheetController *pfctl = [[ConkyPreferencesSheetController alloc] initWithWindowNibName:@"ConkyPreferences"];
     [pfctl loadOnWindow:[NSApp mainWindow]];
-    [pfctl initStuff];   // XXX try to remove this
+    [pfctl initStuff];
 }
 - (IBAction)loadConkyThemes:(id)sender
 {

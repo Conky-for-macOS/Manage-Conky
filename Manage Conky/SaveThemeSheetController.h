@@ -36,6 +36,4 @@
 
 @property (weak) IBOutlet NSTextField *wallpaperPathLabel;
 
-
-@property (weak) IBOutlet NSTextField *dropStuffHereLabel;
 @end

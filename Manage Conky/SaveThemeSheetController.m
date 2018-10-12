@@ -57,7 +57,7 @@
     if (propertiesFilledIn != MC_MAX_PROPERTIES)
     {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Whoa! Hold your horses!"];
+        [alert setMessageText:@"Whoah! Hold your horses!"];
         [alert setInformativeText:@"You forgot to fill in some info."];
         [alert setAlertStyle:NSAlertStyleCritical];
         [alert runModalSheetForWindow:self.window];
@@ -192,33 +192,6 @@
     
     cell.stringValue = [_conkyConfigs objectAtIndex:row];
     return cell;
-}
-
-//
-// DRAG & DROP
-//
-
-// What kind of drag operation should I perform?
-- (NSDragOperation)tableView:(NSTableView*)tv
-                validateDrop:(id )info proposedRow:(NSInteger)row
-       proposedDropOperation:(NSTableViewDropOperation)op
-{
-    [_dropStuffHereLabel setHidden:YES];
-    return NSDragOperationCopy; // Specifies that the drop should occur above the specified row.
-}
-
-// The mouse button was released over a row in the table view, should I accept the drop?
-- (BOOL)tableView:(NSTableView*)tv
-       acceptDrop:(id )info
-              row:(NSInteger)row
-    dropOperation:(NSTableViewDropOperation)op
-{
-    //NSPasteboard* pboard = [info pasteboard];
-//    NSData* data = [pboard dataForType:@""];     /* no extention */
-    NSLog(@"%@", [info pasteboardItems]);
-//    [_conkyConfigs addObject:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
-//    [_widgetsTableView reloadData];
-    return YES;
 }
 
 @end
