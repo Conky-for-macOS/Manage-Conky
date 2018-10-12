@@ -80,7 +80,7 @@ void createLaunchAgent(NSString *label,
     [[AHLaunchCtl sharedController] add:job
                                toDomain:kAHUserLaunchAgent
                                   error:nil];
-    
+
     [[AHLaunchCtl sharedController] start:label
                                  inDomain:kAHUserLaunchAgent
                                     error:&error];
@@ -101,18 +101,29 @@ void NPLog(NSString *format, ...)
 
     if (shouldLogToFile)
     {
-        /* write to file */
         NSError *error = nil;
+
+        /* create logfile if it doesn't exist */
+        if (access(logfile.UTF8String, R_OK) != 0)
+            [[NSFileManager defaultManager] createFileAtPath:logfile contents:nil attributes:nil];
+        
+        /* read contents */
         NSString *contents = [NSString stringWithContentsOfFile:logfile encoding:NSUTF8StringEncoding error:&error];
-        if (!error)
+
+        if (error)
         {
-            contents = [contents stringByAppendingFormat:@"%@\n", formattedMessage];
-            [contents writeToFile:logfile atomically:YES encoding:NSUTF8StringEncoding error:&error];
-            
-            if (error)
-            {
-                printf("Error writing to logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
-            }
+            printf("Error opening logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
+        }
+        
+        error = nil;    // re-use
+
+        /* write to file */
+        contents = [contents stringByAppendingFormat:@"%@\n", formattedMessage];
+        [contents writeToFile:logfile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        if (error)
+        {
+            printf("Error writing to logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
         }
     }
     else
