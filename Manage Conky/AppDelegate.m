@@ -16,6 +16,18 @@
 
 @implementation AppDelegate
 
+- (NSSize)windowWillResize:(NSWindow *) window toSize:(NSSize)newSize
+{
+    NSNumber *b = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
+    return (b.boolValue) ? newSize : [window frame].size;
+}
+
+- (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)newFrame
+{
+    NSNumber *b = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
+    return b.boolValue;
+}
+
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
     /*
@@ -32,6 +44,9 @@
 #ifndef DEBUG
     MCForciblyMoveToApplicationsFolder();
 #endif
+  
+    /* take care of resizing */
+    [[NSApp mainWindow] setDelegate:self];
 }
 
 - (IBAction)openPreferences:(id)sender

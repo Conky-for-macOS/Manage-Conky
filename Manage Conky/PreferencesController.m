@@ -48,7 +48,6 @@
 - (IBAction)toggleResize:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"CanResizeWindow"];
-//  [NSApp mainWindow] .... XXX apply change
 }
 
 - (IBAction)close:(id)sender;
