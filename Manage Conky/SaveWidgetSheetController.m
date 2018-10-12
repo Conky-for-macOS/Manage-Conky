@@ -36,6 +36,7 @@
     NSOpenPanel *op = [NSOpenPanel openPanel];
     [op setAllowsMultipleSelection:NO];
     [op setPrompt:@"Add"];
+    [op setMessage:@"Choose Preview Image"];
     [op setAllowedFileTypes:@[@"png", @"jpg", @"jpeg", @"tiff"]];
     NSModalResponse res = [op runModal];
     
