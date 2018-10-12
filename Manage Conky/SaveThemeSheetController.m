@@ -12,6 +12,9 @@
 
 #include "Shared.h" /* logging */
 
+#define MC_FROM_LIST        0
+#define MC_FROM_DIRECTORY   1
+
 @implementation SaveThemeSheetController
 
 - (id)initWithWindowNibName:(NSString *)nibName;
@@ -27,6 +30,9 @@
         _relative = YES;
         
         _conkyConfigs = [NSMutableArray array];
+        fromListWidgets = [NSMutableArray array];
+        fromDirectoryWidgets = [NSMutableArray array];
+        searchDirectories = [NSMutableArray array];
     }
     return self;
 }
@@ -154,6 +160,24 @@
     _scaling = [sender indexOfSelectedItem];
 }
 
+- (IBAction)changeTableView:(id)sender
+{
+    if ([sender selectedSegment] == MC_FROM_DIRECTORY)
+    {
+        NSOpenPanel *op = [NSOpenPanel openPanel];
+        [op setMessage:@"Select Directory with Widgets"];
+        
+        NSModalResponse res = [op runModal];
+        
+        if (res == NSModalResponseOK)
+        {
+            [searchDirectories addObject:op.URL.path];
+        }
+    }
+    
+    selectedView = [sender selectedSegment];
+}
+
 //
 //=========================================================================================================
 //
@@ -162,19 +186,9 @@
 // DATA SOURCE
 //
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
-{
-    NSInteger row = [_widgetsTableView selectedRow];
-    
-    if (row < 0)
-        return;
-    
-    // xxx
-}
-
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return [_conkyConfigs count];
+    return (selectedView == MC_FROM_LIST) ? [fromListWidgets count] : [fromDirectoryWidgets count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -190,7 +204,7 @@
     if (!cell)
         cell = [[NSTextFieldCell alloc] init];
     
-    cell.stringValue = [_conkyConfigs objectAtIndex:row];
+    cell.stringValue = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
     return cell;
 }
 

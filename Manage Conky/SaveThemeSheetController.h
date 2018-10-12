@@ -15,6 +15,12 @@
     NSUInteger propertiesFilledIn;  /* count of properties filled by user;
                                      * If he forgets one, prompt the user. */
 #define MC_MAX_PROPERTIES   4   /* max properties to fill */
+    
+    /* table */
+    NSInteger selectedView;
+    NSMutableArray *fromListWidgets;
+    NSMutableArray *fromDirectoryWidgets;
+    NSMutableArray *searchDirectories;
 }
 
 @property NSString *name;
