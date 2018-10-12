@@ -10,9 +10,6 @@
 
 #include "Shared.h" /* logging */
 
-@interface MCConfigEditor ()
-
-@end
 
 @implementation MCConfigEditor
 

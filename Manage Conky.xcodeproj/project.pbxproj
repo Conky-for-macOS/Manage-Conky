@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090F2836217168C400D9F406 /* NSString+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2835217168C400D9F406 /* NSString+Empty.m */; };
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		09366F712166A67900157ECA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09366F702166A67900157ECA /* Preferences.xib */; };
@@ -165,6 +166,8 @@
 
 /* Begin PBXFileReference section */
 		090DD046211BC27B0061535E /* distributeManageConky.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.command; path = Tools/distributeManageConky.command; sourceTree = "<group>"; };
+		090F2834217168C400D9F406 /* NSString+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+Empty.h"; path = "Extensions/NSString+Empty.h"; sourceTree = "<group>"; };
+		090F2835217168C400D9F406 /* NSString+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+Empty.m"; path = "Extensions/NSString+Empty.m"; sourceTree = "<group>"; };
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				092E12C12125BCC200491CDA /* NSString+Score.m */,
 				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
 				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
+				090F2834217168C400D9F406 /* NSString+Empty.h */,
+				090F2835217168C400D9F406 /* NSString+Empty.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -722,6 +727,7 @@
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				095F81912080D08A008DD286 /* MCObjects.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
+				090F2836217168C400D9F406 /* NSString+Empty.m in Sources */,
 				09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,
 			);

@@ -6,14 +6,16 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
+#import "Shared.h"
+#import <Fragaria/Fragaria.h>
 #import "MCObjects/MCObjects.h"
 #import "SaveThemeSheetController.h"
+#import "Extensions/NSString+Empty.h"
 #import "Extensions/NSAlert+runModalSheet.h"
-
-#include "Shared.h" /* logging */
 
 #define MC_FROM_LIST        0
 #define MC_FROM_DIRECTORY   1
+
 
 @implementation SaveThemeSheetController
 
@@ -25,7 +27,6 @@
         /*
          * Basic initialisation
          */
-        propertiesFilledIn = 0;
         _scaling = FillScreen;
         _relative = YES;
         
@@ -33,6 +34,9 @@
         fromListWidgets = [NSMutableArray array];
         fromDirectoryWidgets = [NSMutableArray array];
         searchDirectories = [NSMutableArray array];
+        
+        [_widgetsTableView setDelegate:self];
+        [_widgetsTableView setDataSource:self];
     }
     return self;
 }
@@ -48,29 +52,49 @@
 
 - (IBAction)saveTheme:(id)sender
 {
-    /* Set the values */
+    /*
+     * Set the values
+     */
     _name = _themeNameField.stringValue;
     _source = _themeSourceField.stringValue;
     _creator = _themeCreatorField.stringValue;
-    propertiesFilledIn++;
 
-    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
-    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
-
-    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
-
-    /* Check if user has filled-in all info */
-    if (propertiesFilledIn != MC_MAX_PROPERTIES)
+    if (_name.empty || _source.empty || _creator.empty || ([_conkyConfigs count] == 0))
     {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Whoah! Hold your horses!"];
         [alert setInformativeText:@"You forgot to fill in some info."];
         [alert setAlertStyle:NSAlertStyleCritical];
         [alert runModalSheetForWindow:self.window];
-
         return;
     }
+    
+    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
+    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
 
+    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
+    
+    /* get PROPER rect for our text */
+    NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    NSRect editorFieldRect = dummyField.bounds;
+    
+    /* create fragaria view */
+    MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
+    [mgs setString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    [mgs setShowsLineNumbers:NO];
+    
+    /* prompt user whether to continue or not */
+    NSAlert *approveWidgets = [[NSAlert alloc] init];
+    [approveWidgets setMessageText:@"Are you sure you want these Widgets in your Theme?"];
+    [approveWidgets setAccessoryView:mgs];
+    [approveWidgets setAlertStyle:NSAlertStyleCritical];
+    [approveWidgets addButtonWithTitle:@"Actually, No"];
+    [approveWidgets addButtonWithTitle:@"Yes"];
+    NSModalResponse res = [approveWidgets runModal];
+    
+    if (res == NSAlertFirstButtonReturn)
+        return;
+    
     /* Create theme directory */
     NSError *error = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
@@ -125,8 +149,6 @@
         [_wallpaperPathLabel setStringValue:_wallpaper];
         [_wallpaperPathLabel setTextColor:[NSColor grayColor]];
         [_wallpaperPathLabel setHidden:NO];
-        
-        propertiesFilledIn++;
     }
     else
         return;
@@ -165,6 +187,8 @@
     if ([sender selectedSegment] == MC_FROM_DIRECTORY)
     {
         NSOpenPanel *op = [NSOpenPanel openPanel];
+        [op setCanChooseFiles:NO];
+        [op setCanChooseDirectories:YES];
         [op setMessage:@"Select Directory with Widgets"];
         
         NSModalResponse res = [op runModal];
@@ -172,10 +196,18 @@
         if (res == NSModalResponseOK)
         {
             [searchDirectories addObject:op.URL.path];
+            
+            for (NSString *item in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:op.URL.path error:nil])
+            {
+                [fromDirectoryWidgets addObject:item];
+                [_conkyConfigs addObject:item];
+            }
         }
     }
     
     selectedView = [sender selectedSegment];
+
+    [_widgetsTableView reloadData];
 }
 
 //
