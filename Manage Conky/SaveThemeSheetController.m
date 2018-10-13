@@ -188,15 +188,12 @@ enum {
      * Keep path relative to theme directory OR full?
      */
     NSAlert *alert = [[NSAlert alloc] init];
-    
-    alert.informativeText = @"Path relative or Full?";
-    alert.messageText = @"Choosing a relative path will tell ManageConky to save the wallpaper inside your theme directory! This way you have a portable Theme!";
+    alert.messageText = @"Relative or Absolute path?";
+    alert.informativeText = @"Choosing Relative path will make your Theme Portable!";
     [alert addButtonWithTitle:@"Relative"];
-    [alert addButtonWithTitle:@"Fullpath"];
+    [alert addButtonWithTitle:@"Absolute"];
     
-    NSModalResponse response = [alert runModal];
-    
-    switch (response)
+    switch ([alert runModal])
     {
         case NSAlertFirstButtonReturn:
             _relative = YES;
@@ -222,10 +219,8 @@ enum {
         [op setCanChooseDirectories:YES];
         [op setAllowsMultipleSelection:NO];
         [op setMessage:@"Select Directory with Widgets"];
-        
-        NSModalResponse res = [op runModal];
-        
-        if (res == NSModalResponseOK)
+
+        if ([op runModal] == NSModalResponseOK)
         {
             [searchDirectories addObject:op.URL.path];
             
