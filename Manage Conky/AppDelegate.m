@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "PreferencesController.h"
+#import "MCObjects/MCObjects.h"
 #import "PFMoveApplication.h"
 #import <Sparkle/Sparkle.h>
 
@@ -51,7 +52,7 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[NSApp mainWindow]];
+    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedInstance].currentWindow];
 }
 
 @end

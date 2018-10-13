@@ -42,6 +42,17 @@ BOOL isXquartzAndConkyInstalled()
 }
 
 @implementation MCSettings
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        windowVector = [NSMutableArray array];
+    }
+    return self;
+}
+
 + (instancetype)sharedInstance
 {
     static id res = nil;
@@ -136,6 +147,11 @@ BOOL isXquartzAndConkyInstalled()
     [fm removeItemAtPath:MANAGE_CONKY error:&error];
     if (error) { NSLog(@"Error removing Manage Conky: \n\n%@", error); }
 }
+
+/* Windows Vector */
+- (void)pushWindow:(NSWindow *)window       { [windowVector addObject:window]; }
+- (void)popWindow                           { [windowVector removeLastObject]; }
+- (NSWindow *)currentWindow                 { return [windowVector lastObject]; }
 
 @end
 

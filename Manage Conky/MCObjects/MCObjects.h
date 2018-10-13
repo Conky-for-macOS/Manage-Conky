@@ -44,6 +44,10 @@ static const char *cMacScalingKeys[] = {
  * amongst many parts of the program!
  */
 @interface MCSettings : NSObject
+{
+    NSMutableArray *windowVector;
+}
+
 + (instancetype)sharedInstance;
 
 //
@@ -78,6 +82,14 @@ static const char *cMacScalingKeys[] = {
  * including ManageConky.app.
  */
 - (void)uninstallCompletelyManageConkyFilesystem;
+
+/*
+ * Vector of Windows -- Always keep a record of current
+ * window by maintaining a vector of windows (provide push/pop/current)
+ */
+- (void)pushWindow:(NSWindow *)window;
+- (void)popWindow;
+- (NSWindow *)currentWindow;
 @end
 
 //

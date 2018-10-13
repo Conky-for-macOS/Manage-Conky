@@ -6,8 +6,8 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
+#import "MCObjects/MCObjects.h"
 #import "GeneralSheetController.h"
-
 
 @implementation GeneralSheetController
 
@@ -23,11 +23,15 @@
     [_targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
         [_targetWindow endSheet:self.window];
     }];
+
+    [[MCSettings sharedInstance] pushWindow:self.window];
 }
 
 - (IBAction)close:(id)sender
 {
     [self.window close];
+    
+    [[MCSettings sharedInstance] popWindow];
 }
 
 @end
