@@ -42,7 +42,7 @@
      */
 #define MC_DO_NOT_LOG nil
     if (shouldLogToFile)
-        logfile = (lf && lf.length > 0) ? lf : @"/Library/Logs/ManageConky.log";
+        logfile = (lf && lf.length > 0) ? lf : [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Logs/ManageConky.log"];
     else
         logfile = MC_DO_NOT_LOG;
     
