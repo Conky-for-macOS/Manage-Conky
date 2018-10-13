@@ -14,9 +14,10 @@
 #import "Extensions/NSString+Empty.h"
 #import "Extensions/NSAlert+runModalSheet.h"
 
-#define MC_FROM_LIST        0
-#define MC_FROM_DIRECTORY   1
-
+enum {
+    MC_FROM_LIST = 0,
+    MC_FROM_DIRECTORY
+};
 
 @implementation SaveThemeSheetController
 
@@ -67,6 +68,15 @@
     [_widgetsTableView registerForDraggedTypes:@[NSFilenamesPboardType]]; /*  we only accept files with no-extension*/
 }
 
+// HELPER
+- (NSMutableArray *)getConkyConfigsFrom:(NSMutableArray *)widgetsFromList and:(NSMutableArray *)widgetsFromDirectories
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr addObjectsFromArray:widgetsFromList];
+    [arr addObjectsFromArray:widgetsFromDirectories];
+    return arr;
+}
+
 - (IBAction)saveTheme:(id)sender
 {
     /*
@@ -75,8 +85,9 @@
     _name = _themeNameField.stringValue;
     _source = _themeSourceField.stringValue;
     _creator = _themeCreatorField.stringValue;
+    _conkyConfigs = [self getConkyConfigsFrom:fromListWidgets and:fromDirectoryWidgets];
 
-    if (_name.empty || _source.empty || _creator.empty || ([_conkyConfigs count] == 0))
+    if (_name.empty || _source.empty || _creator.empty || !_conkyConfigs || ([_conkyConfigs count] == 0))
     {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Whoah! Hold your horses!"];
@@ -217,7 +228,6 @@
             for (NSString *item in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:op.URL.path error:nil])
             {
                 [fromDirectoryWidgets addObject:item];
-                [_conkyConfigs addObject:item];
             }
         }
     }
