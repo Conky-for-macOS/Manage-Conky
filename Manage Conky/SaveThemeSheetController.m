@@ -96,12 +96,7 @@ enum {
         [alert runModalSheetForWindow:self.window];
         return;
     }
-    
-    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
-    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
 
-    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
-    
     /* get PROPER rect for our text */
     NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigs componentsJoinedByString:@"\n"]];
     NSRect editorFieldRect = dummyField.bounds;
@@ -118,10 +113,18 @@ enum {
     [approveWidgets setAlertStyle:NSAlertStyleCritical];
     [approveWidgets addButtonWithTitle:@"Actually, No"];
     [approveWidgets addButtonWithTitle:@"Yes"];
-    NSModalResponse res = [approveWidgets runModal];
     
+    NSModalResponse res = [approveWidgets runModal];
     if (res == NSAlertFirstButtonReturn)
         return;
+
+    /*
+     * User wants to continue; Create the Theme
+     */
+    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
+    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
+    
+    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
     
     /* Create theme directory */
     NSError *error = nil;
@@ -187,7 +190,7 @@ enum {
     NSAlert *alert = [[NSAlert alloc] init];
     
     alert.informativeText = @"Path relative or Full?";
-    alert.messageText = @"Choosing a relative path will tell ManageConky to save the wallpaper inside your theme directory! This way you will never loose the wallpaper!";
+    alert.messageText = @"Choosing a relative path will tell ManageConky to save the wallpaper inside your theme directory! This way you have a portable Theme!";
     [alert addButtonWithTitle:@"Relative"];
     [alert addButtonWithTitle:@"Fullpath"];
     
@@ -217,6 +220,7 @@ enum {
         NSOpenPanel *op = [NSOpenPanel openPanel];
         [op setCanChooseFiles:NO];
         [op setCanChooseDirectories:YES];
+        [op setAllowsMultipleSelection:NO];
         [op setMessage:@"Select Directory with Widgets"];
         
         NSModalResponse res = [op runModal];
