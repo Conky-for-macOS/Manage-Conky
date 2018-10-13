@@ -43,11 +43,17 @@
 #endif
 
 #ifndef DEBUG
-    //MCForciblyMoveToApplicationsFolder();
+    MCForciblyMoveToApplicationsFolder();
 #endif
   
     /* take care of resizing */
     [[NSApp mainWindow] setDelegate:self];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)notification
+{
+    /* First window created is mainWindow; push it to our vector */
+    [[MCSettings sharedInstance] pushWindow:[NSApp mainWindow]];
 }
 
 - (IBAction)openPreferences:(id)sender
