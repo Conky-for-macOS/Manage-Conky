@@ -720,6 +720,8 @@
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Maintain" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="acY-T4-c8C">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent">p</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="loadConkyPreferences:" target="XfG-lQ-9wD" id="qVV-cV-8q2"/>
@@ -748,6 +750,8 @@
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Param" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="YhB-X4-wx7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent">t</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="loadConkyThemes:" target="XfG-lQ-9wD" id="CXf-Q5-T61"/>
