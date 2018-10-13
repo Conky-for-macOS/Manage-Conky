@@ -280,21 +280,29 @@ enum {
     return (selectedView == MC_FROM_LIST) ? [fromListWidgets count] : [fromDirectoryWidgets count];
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     if (row < 0)
         return nil;
+
+    if ([[tableColumn identifier] isEqualToString:@"Text"])
+    {
+        NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Text" owner:nil];
+        [[cell textField] setStringValue:(selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row]];
+        return cell;
+    }
+    else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
+    {
+        if (selectedView == MC_FROM_LIST)
+        {
+            
+            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:nil];
+            
+            return cell;
+        }
+    }
     
-    NSTextFieldCell *cell = [tableColumn dataCellForRow:row];
-    
-    /*
-     * check if already allocated
-     */
-    if (!cell)
-        cell = [[NSTextFieldCell alloc] init];
-    
-    cell.stringValue = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
-    return cell;
+    return nil;
 }
 
 @end
