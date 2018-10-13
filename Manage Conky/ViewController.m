@@ -68,6 +68,11 @@
     [self fillWidgetsThemesArrays];
 }
 
+- (NSMutableArray *)widgets
+{
+    return widgetsArray;
+}
+
 //
 // DATA ARRAYS CONTROL
 //

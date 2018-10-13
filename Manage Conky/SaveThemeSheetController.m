@@ -7,6 +7,7 @@
 //
 
 #import "Shared.h"
+#import "ViewController.h"
 #import <Fragaria/Fragaria.h>
 #import "MCObjects/MCObjects.h"
 #import "SaveThemeSheetController.h"
@@ -35,8 +36,24 @@
         fromDirectoryWidgets = [NSMutableArray array];
         searchDirectories = [NSMutableArray array];
         
+        /*
+         * Our ViewController already contains the infrastructure
+         * for getting the list of widgets in a directory; Use it
+         * to speed things up.
+         */
+        ViewController *vc = [[ViewController alloc] init];
+        [vc fillWidgetsThemesArrays];
+        NSMutableArray<MCWidget *> *widgets = vc.widgets;
+        
+        for (MCWidget *widget in widgets)
+        {
+            [fromListWidgets addObject:widget.realName];
+        }
+        
         [_widgetsTableView setDelegate:self];
         [_widgetsTableView setDataSource:self];
+
+        selectedView = MC_FROM_LIST;
     }
     return self;
 }

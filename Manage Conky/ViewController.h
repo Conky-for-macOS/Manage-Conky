@@ -19,8 +19,8 @@ typedef enum {
 @interface ViewController : NSViewController<NSTableViewDelegate, NSTableViewDataSource, NSSearchFieldDelegate>
 {
     MCWidgetThemesTableShow whatToShow;
-    NSMutableArray<MCTheme*> *themesArray;
-    NSMutableArray<MCWidget*> *widgetsArray;
+    NSMutableArray<MCTheme *> *themesArray;
+    NSMutableArray<MCWidget *> *widgetsArray;
 
     NSPopover *previewPopover;
     
@@ -29,6 +29,9 @@ typedef enum {
     
     MCSettings *MCSettingsHolder;
 }
+
+/* getter */
+- (NSMutableArray *)widgets;
 
 @property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
