@@ -11,6 +11,7 @@
 #import <Fragaria/Fragaria.h>
 #import "MCObjects/MCObjects.h"
 #import "SaveThemeSheetController.h"
+#import "SaveWidgetSheetController.h"
 #import "Extensions/NSString+Empty.h"
 #import "Extensions/NSAlert+runModalSheet.h"
 
@@ -44,9 +45,8 @@ enum {
          */
         ViewController *vc = [[ViewController alloc] init];
         [vc fillWidgetsThemesArrays];
-        NSMutableArray<MCWidget *> *widgets = vc.widgets;
         
-        for (MCWidget *widget in widgets)
+        for (MCWidget *widget in vc.widgets)
         {
             [fromListWidgets addObject:widget.realName];
         }
@@ -240,6 +240,32 @@ enum {
 
     [_widgetsTableView reloadData];
 }
+
+//
+//=========================================================================================================
+//
+
+- (IBAction)createWidgetRightNow:(id)sender
+{
+    /*
+     * Introduce a new search-directory and create the widget there!
+     */
+    
+    
+    /*
+     * Initialise editor controller
+     */
+    [[[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"] loadOnWindow:self.window];
+    
+    /*
+     * Reload the "From List" list
+     */
+    
+    /*
+     * Now mark it! (With green colour) XXX is this possible?
+     */
+}
+
 
 //
 //=========================================================================================================

@@ -59,13 +59,16 @@
                         <rect key="frame" x="20" y="59" width="440" height="5"/>
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EsE-TR-tlW">
-                        <rect key="frame" x="428" y="19" width="33" height="23"/>
+                        <rect key="frame" x="427.5" y="19" width="34" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="UTG-z6-DYm"/>
                         </constraints>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q3L-Pn-qMq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
                         <connections>
                             <action selector="close:" target="-2" id="RpP-Qy-AOY"/>
