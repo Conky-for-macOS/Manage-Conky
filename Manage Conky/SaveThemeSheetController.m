@@ -25,7 +25,6 @@ static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
 NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 
 @implementation Checkbox
-
 + (instancetype)checkboxForWidget:(NSString *)widget
 {
     /* check if registry has already been created */
@@ -53,11 +52,9 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     }
     return entry;
 }
-
 @end
 
 @implementation CheckboxEventListener
-
 - (IBAction)click:(id)sender
 {
     NSTableView *tableView = (NSTableView *)[[[sender superview] superview] superview];
@@ -71,7 +68,6 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     
     checkboxRegistry[row].state = [(NSButton *)sender state];
 }
-
 @end
 
 @implementation SaveThemeSheetController
@@ -126,7 +122,12 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 - (NSMutableArray *)getConkyConfigsFrom:(NSMutableArray *)widgetsFromList and:(NSMutableArray *)widgetsFromDirectories
 {
     NSMutableArray *arr = [NSMutableArray array];
-    [arr addObjectsFromArray:widgetsFromList];
+
+    /* Only take user-selected widgets */
+    for (Checkbox *cb in checkboxRegistry)
+        if ([fromListWidgets doesContain:[cb widget]] && ([cb state] == NSOnState))
+            [arr addObject:[cb widget]];
+
     [arr addObjectsFromArray:widgetsFromDirectories];
     return arr;
 }
@@ -168,8 +169,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     [approveWidgets addButtonWithTitle:@"Actually, No"];
     [approveWidgets addButtonWithTitle:@"Yes"];
     
-    NSModalResponse res = [approveWidgets runModal];
-    if (res == NSAlertFirstButtonReturn)
+    if ([approveWidgets runModal] == NSAlertFirstButtonReturn)
         return;
 
     /*
@@ -218,16 +218,13 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 - (IBAction)chooseWallpaper:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    
     panel.canChooseDirectories = NO;
     panel.allowedFileTypes = @[@"png", @"jpg", @"tiff"];
     
     /*
      * display the panel
      */
-    NSModalResponse result = [panel runModal];
-    
-    if (result == NSModalResponseOK)
+    if ([panel runModal] == NSModalResponseOK)
     {
         _wallpaper = [[[panel URLs] objectAtIndex:0] path];
         
