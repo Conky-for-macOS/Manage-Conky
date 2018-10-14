@@ -20,9 +20,11 @@ enum {
     MC_FROM_DIRECTORY
 };
 
-/* Registry of checkboxes */
+/*
+ * Registry of checkboxes
+ */
 static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
-NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
+NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
 
 @implementation Checkbox
 + (instancetype)checkboxForWidget:(NSString *)widget
@@ -36,7 +38,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
                 return cb;  /* return one from registry */
     }
     else
-        checkboxRegistry = [NSMutableArray arrayWithCapacity:widgetsCount];
+        checkboxRegistry = [NSMutableArray arrayWithCapacity:fromListWidgetsCount];
     
     /*
      * either registry hadn't been created yet or we didn't find an entry;
@@ -59,12 +61,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 {
     NSTableView *tableView = (NSTableView *)[[[sender superview] superview] superview];
     NSTableCellView *cellView = (NSTableCellView *)[sender superview];
-    
     NSUInteger row = [tableView rowForView:cellView];
-    
-    /* impossible */
-    if (row < 0)
-        return;
     
     checkboxRegistry[row].state = [(NSButton *)sender state];
 }
@@ -97,7 +94,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
         
         for (MCWidget *widget in vc.widgets)
         {
-            [fromListWidgets addObject:widget.realName];
+            [fromListWidgets addObject:widget.itemPath];
         }
         
         [_widgetsTableView setDelegate:self];
@@ -235,6 +232,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 - (IBAction)saveTheme:(id)sender
 {
     // DBG
+    NSLog(@"These are all the widgets from List (+ accepted?)");
     for (Checkbox *cb in checkboxRegistry)
     {
         NSLog(@"%@: %i", [cb widget], [cb state]);
@@ -279,24 +277,24 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
         return;
     
     /*
-     * User wants to continue; Create the Theme
+     * User wants to continue; Lets the Theme...
      */
     NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
     NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
-    
     NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
     
-    /* Create theme directory */
+    /*
+     * Create Theme directory
+     */
     NSError *error = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
-    
     if (error)
     {
         NSLog(@"saveTheme: %@", error);
         return;
     }
     
-    /* Set dictionary */
+    /* Create ThemeRC */
     if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
     else [themerc setObject:_wallpaper forKey:@"wallpaper"];
     
@@ -305,20 +303,37 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     [themerc setObject:_creator forKey:@"creator"];
     [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
     
-    /* Write dictionary */
+    /* Write ThemeRC */
     [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
               atomically:YES];
     
     error = nil;    // re-use
     
-    /* Set Resources */
+    /*
+     * Copy Resources
+     */
+    /* copy widgets */
+    for (NSString *widgetPath in _conkyConfigs)
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error];
+        if (error)
+        {
+            NSLog(@"%@", error);
+            error = nil;
+        }
+    }
+
+    error = nil;    /// re-use
+
+    /* copy wallpaper */
     if (_relative)
     {
         [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
-        
         if (error)
             NSLog(@"saveTheme: %@", error);
     }
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
 }
 
 //
@@ -331,7 +346,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    widgetsCount = [fromListWidgets count];
+    fromListWidgetsCount = [fromListWidgets count];
     return (selectedView == MC_FROM_LIST) ? [fromListWidgets count] : [fromDirectoryWidgets count];
 }
 
@@ -343,7 +358,7 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     if ([[tableColumn identifier] isEqualToString:@"Text"])
     {
         NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Text" owner:nil];
-        [[cell textField] setStringValue:(selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row]];
+        [[cell textField] setStringValue:(selectedView == MC_FROM_LIST) ? [[fromListWidgets objectAtIndex:row] lastPathComponent] : [fromDirectoryWidgets objectAtIndex:row]];
         return cell;
     }
     else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
