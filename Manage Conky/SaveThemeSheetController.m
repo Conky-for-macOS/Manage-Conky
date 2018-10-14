@@ -71,7 +71,6 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 @end
 
 @implementation SaveThemeSheetController
-
 - (id)initWithWindowNibName:(NSString *)nibName;
 {
     self = [super initWithWindowNibName:nibName];
@@ -116,103 +115,6 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
         [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
 
     [_widgetsTableView registerForDraggedTypes:@[NSFilenamesPboardType]]; /*  we only accept files with no-extension*/
-}
-
-// HELPER
-- (NSMutableArray *)getConkyConfigsFrom:(NSMutableArray *)widgetsFromList and:(NSMutableArray *)widgetsFromDirectories
-{
-    NSMutableArray *arr = [NSMutableArray array];
-
-    /* Only take user-selected widgets */
-    for (Checkbox *cb in checkboxRegistry)
-        if ([fromListWidgets doesContain:[cb widget]] && ([cb state] == NSOnState))
-            [arr addObject:[cb widget]];
-
-    [arr addObjectsFromArray:widgetsFromDirectories];
-    return arr;
-}
-
-- (IBAction)saveTheme:(id)sender
-{
-    /*
-     * Set the values
-     */
-    _name = _themeNameField.stringValue;
-    _source = _themeSourceField.stringValue;
-    _creator = _themeCreatorField.stringValue;
-    _conkyConfigs = [self getConkyConfigsFrom:fromListWidgets and:fromDirectoryWidgets];
-
-    if (_name.empty || _source.empty || _creator.empty || !_conkyConfigs || ([_conkyConfigs count] == 0))
-    {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Whoah! Hold your horses!"];
-        [alert setInformativeText:@"You forgot to fill in some info."];
-        [alert setAlertStyle:NSAlertStyleCritical];
-        [alert runModalSheetForWindow:self.window];
-        return;
-    }
-
-    /* get PROPER rect for our text */
-    NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigs componentsJoinedByString:@"\n"]];
-    NSRect editorFieldRect = dummyField.bounds;
-    
-    /* create fragaria view */
-    MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
-    [mgs setString:[_conkyConfigs componentsJoinedByString:@"\n"]];
-    [mgs setShowsLineNumbers:NO];
-    
-    /* prompt user whether to continue or not */
-    NSAlert *approveWidgets = [[NSAlert alloc] init];
-    [approveWidgets setMessageText:@"Are you sure you want these Widgets in your Theme?"];
-    [approveWidgets setAccessoryView:mgs];
-    [approveWidgets setAlertStyle:NSAlertStyleCritical];
-    [approveWidgets addButtonWithTitle:@"Actually, No"];
-    [approveWidgets addButtonWithTitle:@"Yes"];
-    
-    if ([approveWidgets runModal] == NSAlertFirstButtonReturn)
-        return;
-
-    /*
-     * User wants to continue; Create the Theme
-     */
-    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
-    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
-    
-    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
-    
-    /* Create theme directory */
-    NSError *error = nil;
-    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
-
-    if (error)
-    {
-        NSLog(@"saveTheme: %@", error);
-        return;
-    }
-
-    /* Set dictionary */
-    if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
-    else [themerc setObject:_wallpaper forKey:@"wallpaper"];
-
-    [themerc setObject:_conkyConfigs forKey:@"conkyConfigs"];
-    [themerc setObject:_source forKey:@"source"];
-    [themerc setObject:_creator forKey:@"creator"];
-    [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
-
-    /* Write dictionary */
-    [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
-              atomically:YES];
-
-    error = nil;    // re-use
-
-    /* Set Resources */
-    if (_relative)
-    {
-        [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
-
-        if (error)
-            NSLog(@"saveTheme: %@", error);
-    }
 }
 
 - (IBAction)chooseWallpaper:(id)sender
@@ -293,12 +195,6 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
 
 - (IBAction)createWidgetRightNow:(id)sender
 {
-    for (Checkbox *cb in checkboxRegistry)
-    {
-        NSLog(@"%@: %i", [cb widget], [cb state]);
-    }
-    return;
-    
     /*
      * Introduce a new search-directory and create the widget there!
      */
@@ -317,6 +213,113 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
      */
 }
 
+//
+//=========================================================================================================
+//
+
+
+// HELPER
+- (NSMutableArray *)getConkyConfigsFrom:(NSMutableArray *)widgetsFromList and:(NSMutableArray *)widgetsFromDirectories
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    /* Only take user-selected widgets */
+    for (Checkbox *cb in checkboxRegistry)
+        if ([fromListWidgets doesContain:[cb widget]] && ([cb state] == NSOnState))
+            [arr addObject:[cb widget]];
+    
+    [arr addObjectsFromArray:widgetsFromDirectories];
+    return arr;
+}
+
+- (IBAction)saveTheme:(id)sender
+{
+    // DBG
+    for (Checkbox *cb in checkboxRegistry)
+    {
+        NSLog(@"%@: %i", [cb widget], [cb state]);
+    }
+    
+    /*
+     * Set the values
+     */
+    _name = _themeNameField.stringValue;
+    _source = _themeSourceField.stringValue;
+    _creator = _themeCreatorField.stringValue;
+    _conkyConfigs = [self getConkyConfigsFrom:fromListWidgets and:fromDirectoryWidgets];
+    
+    if (_name.empty || _source.empty || _creator.empty || !_wallpaper || !_conkyConfigs || ([_conkyConfigs count] == 0))
+    {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Whoah! Hold your horses!"];
+        [alert setInformativeText:@"You forgot to fill in some info."];
+        [alert setAlertStyle:NSAlertStyleCritical];
+        [alert runModalSheetForWindow:self.window];
+        return;
+    }
+    
+    /* get PROPER rect for our text */
+    NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    NSRect editorFieldRect = dummyField.bounds;
+    
+    /* create fragaria view */
+    MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
+    [mgs setString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    [mgs setShowsLineNumbers:NO];
+    
+    /* prompt user whether to continue or not */
+    NSAlert *approveWidgets = [[NSAlert alloc] init];
+    [approveWidgets setMessageText:@"Are you sure you want these Widgets in your Theme?"];
+    [approveWidgets setAccessoryView:mgs];
+    [approveWidgets setAlertStyle:NSAlertStyleCritical];
+    [approveWidgets addButtonWithTitle:@"Actually, No"];
+    [approveWidgets addButtonWithTitle:@"Yes"];
+    
+    if ([approveWidgets runModal] == NSAlertFirstButtonReturn)
+        return;
+    
+    /*
+     * User wants to continue; Create the Theme
+     */
+    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
+    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
+    
+    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
+    
+    /* Create theme directory */
+    NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    if (error)
+    {
+        NSLog(@"saveTheme: %@", error);
+        return;
+    }
+    
+    /* Set dictionary */
+    if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
+    else [themerc setObject:_wallpaper forKey:@"wallpaper"];
+    
+    [themerc setObject:_conkyConfigs forKey:@"conkyConfigs"];
+    [themerc setObject:_source forKey:@"source"];
+    [themerc setObject:_creator forKey:@"creator"];
+    [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
+    
+    /* Write dictionary */
+    [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
+              atomically:YES];
+    
+    error = nil;    // re-use
+    
+    /* Set Resources */
+    if (_relative)
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
+        
+        if (error)
+            NSLog(@"saveTheme: %@", error);
+    }
+}
 
 //
 //=========================================================================================================
@@ -355,5 +358,4 @@ NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
     
     return nil;
 }
-
 @end
