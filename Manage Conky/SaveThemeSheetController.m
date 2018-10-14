@@ -231,13 +231,6 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
 
 - (IBAction)saveTheme:(id)sender
 {
-    // DBG
-    NSLog(@"These are all the widgets from List (+ accepted?)");
-    for (Checkbox *cb in checkboxRegistry)
-    {
-        NSLog(@"%@: %i", [cb widget], [cb state]);
-    }
-    
     /*
      * Set the values
      */
@@ -264,7 +257,7 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
     [mgs setString:[_conkyConfigs componentsJoinedByString:@"\n"]];
     [mgs setShowsLineNumbers:NO];
-    
+
     /* prompt user whether to continue or not */
     NSAlert *approveWidgets = [[NSAlert alloc] init];
     [approveWidgets setMessageText:@"Are you sure you want these Widgets in your Theme?"];
@@ -275,17 +268,23 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     
     if ([approveWidgets runModal] == NSAlertFirstButtonReturn)
         return;
-    
+
     /*
-     * User wants to continue; Lets the Theme...
+     * Select location to save!
      */
-    NSString *basicSearchPath = [[MCSettings sharedInstance] configsLocation];
-    NSString *path = [basicSearchPath stringByAppendingPathComponent:_name];
-    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
+    NSString *path = nil;
+    NSSavePanel *sp = [NSSavePanel savePanel];
+    [sp setMessage:@"Choose where to save"];
+
+    if ([sp runModal] != NSModalResponseOK)
+        return;
+    
+    path = sp.URL.path;
     
     /*
      * Create Theme directory
      */
+    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
     NSError *error = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
     if (error)
@@ -294,7 +293,9 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
         return;
     }
     
-    /* Create ThemeRC */
+    /*
+     * Create ThemeRC
+     */
     if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
     else [themerc setObject:_wallpaper forKey:@"wallpaper"];
     
@@ -333,6 +334,7 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
             NSLog(@"saveTheme: %@", error);
     }
     
+    /* open theme directory */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
 }
 
