@@ -66,7 +66,6 @@ BOOL isXquartzAndConkyInstalled()
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
                                               forKey:@"runConkyAtStartup"];
 }
-
 - (BOOL)conkyRunsAtStartup
 {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
@@ -77,10 +76,23 @@ BOOL isXquartzAndConkyInstalled()
     [[NSUserDefaults standardUserDefaults] setObject:a
                                               forKey:@"configsLocation"];
 }
-
 - (NSString *)configsLocation
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+}
+
+- (NSArray *)additionalSearchPaths
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
+}
+- (void)addAdditionalSearchPath:(NSString *)path
+{
+    NSMutableArray *arr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
+    if (arr)
+        [arr addObject:path];
+    else
+        arr = [NSMutableArray arrayWithObject:path];
+    [[NSUserDefaults standardUserDefaults] setObject:arr forKey:@"additionalSearchPaths"];
 }
 
 - (void)installManageConkyFilesystem

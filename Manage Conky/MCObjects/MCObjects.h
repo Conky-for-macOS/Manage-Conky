@@ -58,6 +58,8 @@ static const char *cMacScalingKeys[] = {
 
 - (void)setConfigsLocation:(NSString *)a;
 - (NSString *)configsLocation;
+- (NSArray *)additionalSearchPaths;
+- (void)addAdditionalSearchPath:(NSString *)path;
 
 /**
  * installManageConkyFilesystem
