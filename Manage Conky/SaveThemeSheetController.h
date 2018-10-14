@@ -9,6 +9,17 @@
 #import "MCObjects/MCObjects.h"
 #import "GeneralSheetController.h"
 
+/*
+ * Our checkbox class that maintains a self-registry of checkboxes!
+ * These checkboxes are used in the TableView
+ */
+@interface Checkbox : NSObject
+@property BOOL state;   /* ON/OFF */
+@property NSString *widget;
+@end
+
+@interface CheckboxEventListener : NSButtonCell
+@end
 
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource>
 {

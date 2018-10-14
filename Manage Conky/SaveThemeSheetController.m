@@ -20,6 +20,60 @@ enum {
     MC_FROM_DIRECTORY
 };
 
+/* Registry of checkboxes */
+static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
+NSUInteger widgetsCount = 0;    /* the -fromList- widgets */
+
+@implementation Checkbox
+
++ (instancetype)checkboxForWidget:(NSString *)widget
+{
+    /* check if registry has already been created */
+    if (checkboxRegistry)
+    {
+        /* Try to find an entry corresponding to this widget! */
+        for (Checkbox *cb in checkboxRegistry)
+            if ([[cb widget] isEqualToString:widget])
+                return cb;  /* return one from registry */
+    }
+    else
+        checkboxRegistry = [NSMutableArray arrayWithCapacity:widgetsCount];
+    
+    /*
+     * either registry hadn't been created yet or we didn't find an entry;
+     * create one
+     */
+    id entry = [[Checkbox alloc] init];
+    if (entry)
+    {
+        [entry setWidget:widget];
+        
+        /* publish ourselves to registry */
+        [checkboxRegistry addObject:entry];
+    }
+    return entry;
+}
+
+@end
+
+@implementation CheckboxEventListener
+
+- (IBAction)click:(id)sender
+{
+    NSTableView *tableView = (NSTableView *)[[[sender superview] superview] superview];
+    NSTableCellView *cellView = (NSTableCellView *)[sender superview];
+    
+    NSUInteger row = [tableView rowForView:cellView];
+    
+    /* impossible */
+    if (row < 0)
+        return;
+    
+    checkboxRegistry[row].state = [(NSButton *)sender state];
+}
+
+@end
+
 @implementation SaveThemeSheetController
 
 - (id)initWithWindowNibName:(NSString *)nibName;
@@ -242,10 +296,15 @@ enum {
 
 - (IBAction)createWidgetRightNow:(id)sender
 {
+    for (Checkbox *cb in checkboxRegistry)
+    {
+        NSLog(@"%@: %i", [cb widget], [cb state]);
+    }
+    return;
+    
     /*
      * Introduce a new search-directory and create the widget there!
      */
-    
     
     /*
      * Initialise editor controller
@@ -272,6 +331,7 @@ enum {
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
+    widgetsCount = [fromListWidgets count];
     return (selectedView == MC_FROM_LIST) ? [fromListWidgets count] : [fromDirectoryWidgets count];
 }
 
@@ -290,9 +350,8 @@ enum {
     {
         if (selectedView == MC_FROM_LIST)
         {
-            
-            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:nil];
-            
+            Checkbox *cb = [Checkbox checkboxForWidget:[fromListWidgets objectAtIndex:row]];
+            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
             return cell;
         }
     }

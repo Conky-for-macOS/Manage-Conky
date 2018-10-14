@@ -120,10 +120,13 @@
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fmj-nJ-YEo">
                                                             <rect key="frame" x="1" y="-2" width="221" height="18"/>
-                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" identifier="Checkbox" inset="2" id="7y7-q9-9Y8">
+                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" identifier="Checkbox" inset="2" id="7y7-q9-9Y8" customClass="CheckboxEventListener">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="click:" target="7y7-q9-9Y8" id="gb5-x2-OWX"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
