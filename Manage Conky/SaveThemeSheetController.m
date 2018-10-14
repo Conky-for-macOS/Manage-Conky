@@ -282,6 +282,27 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     path = sp.URL.path;
     
     /*
+     * Does this location belong to our `searchPaths`?
+     */
+    MCSettings *mcsettings = [MCSettings sharedInstance];
+    if (
+        ![[mcsettings additionalSearchPaths] containsObject:path] &&
+        ![[mcsettings configsLocation] isEqualToString:path])
+    {
+        /* prompt user to add this to search paths */
+        NSAlert *addSearchPath = [[NSAlert alloc] init];
+        [addSearchPath setMessageText:@"Would you like to add this location to your search paths?"];
+        [addSearchPath setAlertStyle:NSAlertStyleCritical];
+        [addSearchPath addButtonWithTitle:@"Yes"];
+        [addSearchPath addButtonWithTitle:@"No"];
+
+        if ([addSearchPath runModal] == NSAlertFirstButtonReturn)
+            [mcsettings addAdditionalSearchPath:path.stringByDeletingLastPathComponent];
+        
+        NSLog(@"Additional Search Locations: %@", [mcsettings additionalSearchPaths]);
+    }
+    
+    /*
      * Create Theme directory
      */
     NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
