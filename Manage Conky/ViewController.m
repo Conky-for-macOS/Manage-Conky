@@ -27,6 +27,8 @@
      * Setup stuff
      */
     
+    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
+    
     /*
      * Logging
      * =======
@@ -52,9 +54,7 @@
     /* publish it to our settings-holder */
     MCSettingsHolder = [MCSettings sharedInstance];
     [MCSettingsHolder setConkyRunsAtStartup:a];
-    
-    whatToShow = widgetsThemesTableShowWidgets; /* initial value */
-    
+
     /* Conky configuration file location? */
     NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
     if (!conkyConfigsPath || [conkyConfigsPath isEqualToString:@""])
@@ -68,14 +68,12 @@
     [self fillWidgetsThemesArrays];
 }
 
-- (NSMutableArray *)widgets
-{
-    return widgetsArray;
-}
-
 //
 // DATA ARRAYS CONTROL
 //
+
+- (NSMutableArray *)widgets { return widgetsArray; }
+- (void)createWidgetsArray { widgetsArray = [NSMutableArray array]; }
 
 - (void)emptyWidgetsThemesArrays
 {
@@ -100,14 +98,14 @@
     return [mcignoreItems componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 }
 
-- (void)fillWidgetsThemesArraysWithBasicSearchPath:(NSString *)basicSearchPath
+- (void)fillWidgetsThemesArraysWithSearchPath:(NSString *)searchPath
 {
     NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *basicSearchDirectoryContents = [fm contentsOfDirectoryAtPath:basicSearchPath error:&error];
+    NSArray *basicSearchDirectoryContents = [fm contentsOfDirectoryAtPath:searchPath error:&error];
     if (!basicSearchDirectoryContents)
     {
-        NSLog(@"Error: Failed getting list of %@ contents: \n\n%@", basicSearchPath, error);
+        NSLog(@"Error: Failed getting list of %@ contents: \n\n%@", searchPath, error);
         return;
     }
     
@@ -116,7 +114,7 @@
      */
     for (NSString *item in basicSearchDirectoryContents)
     {
-        NSString *itemFullpath = [basicSearchPath stringByAppendingPathComponent:item];   /* full path for item of basicSearchDirectory */
+        NSString *itemFullpath = [searchPath stringByAppendingPathComponent:item];   /* full path for item of basicSearchDirectory */
         NSMutableArray *itemContents = [fm contentsOfDirectoryAtPath:itemFullpath error:&error].mutableCopy;   /* list of sub-items in item */
         
         if (!itemContents)
@@ -211,13 +209,13 @@
     }
     
     /* fill arrays for basic-search-path */
-    [self fillWidgetsThemesArraysWithBasicSearchPath:basicSearchPath];
+    [self fillWidgetsThemesArraysWithSearchPath:basicSearchPath];
     
     /* fill arrays for each additional-search-path */
     if (!additionalSearchPaths)
         return;
     for (NSString *additionalSearchPath in additionalSearchPaths)
-        [self fillWidgetsThemesArraysWithBasicSearchPath:additionalSearchPath];
+        [self fillWidgetsThemesArraysWithSearchPath:additionalSearchPath];
 }
 
 //

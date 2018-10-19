@@ -164,6 +164,9 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
 {
     if ([sender selectedSegment] == MC_FROM_DIRECTORY)
     {
+        ViewController *vc = [[ViewController alloc] init];
+        [vc createWidgetsArray];
+        
         NSOpenPanel *op = [NSOpenPanel openPanel];
         [op setCanChooseFiles:NO];
         [op setCanChooseDirectories:YES];
@@ -174,10 +177,9 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
         {
             [searchDirectories addObject:op.URL.path];
             
-            for (NSString *item in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:op.URL.path error:nil])
-            {
-                [fromDirectoryWidgets addObject:item];
-            }
+            [vc fillWidgetsThemesArraysWithSearchPath:op.URL.path];
+            for (MCWidget *widget in [vc widgets])
+                [fromDirectoryWidgets addObject:[widget widgetName]];
         }
     }
     

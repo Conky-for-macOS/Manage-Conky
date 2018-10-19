@@ -26,8 +26,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-0w-Mdk">
-                        <rect key="frame" x="18" y="55" width="116" height="18"/>
-                        <buttonCell key="cell" type="check" title="Enable Logging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vx2-T1-1bp">
+                        <rect key="frame" x="18" y="55" width="85" height="18"/>
+                        <buttonCell key="cell" type="check" title="Log to File" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vx2-T1-1bp">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -49,7 +49,7 @@ DQ
                         </connections>
                     </button>
                     <textField hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
-                        <rect key="frame" x="148" y="49" width="216" height="22"/>
+                        <rect key="frame" x="117" y="49" width="247" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Log File Location: " drawsBackground="YES" id="4TB-uw-bil">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

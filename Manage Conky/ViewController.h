@@ -30,7 +30,14 @@ typedef enum {
     MCSettings *MCSettingsHolder;
 }
 
-/* getter */
+/**
+ * Functions for easy Widgets / Themes access
+ * ==================================================
+ * Some ManageConky classes use ViewController
+ * just so that they can leverage its Widget / Themes
+ * manipulation functions!!
+ */
+- (void)createWidgetsArray;
 - (NSMutableArray *)widgets;
 
 @property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
@@ -43,6 +50,7 @@ typedef enum {
  * Also used by ThemesSheet by getting the pointer to the ViewController instance
  *  to fill the table after loading a themepack.
  */
+- (void)fillWidgetsThemesArraysWithSearchPath:(NSString *)searchPath;
 - (void)fillWidgetsThemesArrays;
 - (void)emptyWidgetsThemesArrays;
 
