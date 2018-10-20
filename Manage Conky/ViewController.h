@@ -43,6 +43,7 @@ typedef enum {
 - (void)fillWidgetsThemesArraysWithSearchPath:(NSString *)searchPath;
 - (void)fillWidgetsThemesArrays;
 - (void)emptyWidgetsThemesArrays;
+- (void)updateWidgetsThemesArray;
 
 /**
  * Functions for easy Widgets / Themes access
@@ -53,5 +54,4 @@ typedef enum {
  */
 - (void)createWidgetsArray;
 - (NSMutableArray *)widgets;
-
 @end

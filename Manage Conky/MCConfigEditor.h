@@ -11,12 +11,10 @@
 #import "GeneralSheetController.h"
 
 @interface MCConfigEditor : NSViewController
-
 @property NSString *conkyConfig;
 @property NSString *conkyConfigContents;
 
 @property MGSFragariaView *editorField;
 
 - (instancetype)initWithConfig:(NSString *)config;
-
 @end

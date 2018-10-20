@@ -9,18 +9,6 @@
 #import "MCObjects/MCObjects.h"
 #import "SaveWidgetSheetController.h"
 
-/*
- * Our checkbox class that maintains a self-registry of checkboxes!
- * These checkboxes are used in the TableView
- */
-@interface Checkbox : NSObject
-@property BOOL state;   /* ON/OFF */
-@property NSString *widget;
-@end
-
-@interface CheckboxEventListener : NSButtonCell
-@end
-
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>
 {
     /* table */
@@ -46,6 +34,7 @@
 @property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
 @property (weak) IBOutlet NSTextField *wallpaperPathLabel;
 
+@property (weak) IBOutlet NSTableView *wt;
 @property (weak) IBOutlet NSTableView *widgetsTableView;
 
 @end

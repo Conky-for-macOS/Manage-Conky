@@ -19,9 +19,10 @@
 #define ERR_NSFD 260    /* no such file or directory */
 
 @implementation ViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[MCSettings sharedInstance] setMainViewController:self];
     
     /*
      * Setup stuff
@@ -216,6 +217,13 @@
         return;
     for (NSString *additionalSearchPath in additionalSearchPaths)
         [self fillWidgetsThemesArraysWithSearchPath:additionalSearchPath];
+}
+
+- (void)updateWidgetsThemesArray
+{
+    [self emptyWidgetsThemesArrays];
+    [self fillWidgetsThemesArrays];
+    [_widgetsThemesTable reloadData];
 }
 
 //
@@ -655,5 +663,4 @@
 {
     [[[AboutSheetController alloc] initWithWindowNibName:@"About"] loadOnWindow:[NSApp mainWindow]];
 }
-
 @end

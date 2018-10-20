@@ -95,6 +95,20 @@ BOOL isXquartzAndConkyInstalled()
     [[NSUserDefaults standardUserDefaults] setObject:arr forKey:@"additionalSearchPaths"];
 }
 
+- (void)setMainViewController:(ViewController *)vc
+{
+    static BOOL beenHereAgain = NO;
+    if (!beenHereAgain)
+    {
+        mainViewController = vc;
+        beenHereAgain = YES;
+    }
+}
+- (ViewController *)mainViewController
+{
+    return mainViewController;
+}
+
 - (void)installManageConkyFilesystem
 {
     NSError *error = nil;

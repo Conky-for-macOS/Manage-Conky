@@ -9,5 +9,4 @@
 #import "GeneralSheetController.h"
 
 @interface AboutSheetController : GeneralSheetController
-
 @end

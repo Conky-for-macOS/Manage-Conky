@@ -7,8 +7,7 @@
 //
 
 #import "MCConfigEditor.h"
-
-#include "Shared.h" /* logging */
+#include "Shared.h"
 
 
 @implementation MCConfigEditor

@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import <Fragaria/Fragaria.h>
 #import "MCObjects/MCObjects.h"
+#import "SaveThemeSheetCheckbox.h"
 #import "SaveThemeSheetController.h"
 #import "SaveWidgetSheetController.h"
 #import "Extensions/NSString+Empty.h"
@@ -24,7 +25,7 @@ enum {
  * Registry of checkboxes
  */
 static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
-NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
+static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
 
 @implementation Checkbox
 + (instancetype)checkboxForWidget:(NSString *)widget
@@ -131,8 +132,6 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
         [_wallpaperPathLabel setTextColor:[NSColor grayColor]];
         [_wallpaperPathLabel setHidden:NO];
     }
-    else
-        return;
 }
 
 - (IBAction)choosePreview:(id)sender
@@ -200,7 +199,8 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     SaveWidgetSheetController *swsc = [[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"];
     [swsc setDelegate:self];    /*
                                  * do stuff ONLY if user ACTUALLY
-                                 * created a widget!
+                                 * created a widget, that is if
+                                 
                                  */
     [swsc loadOnWindow:self.window];
 }
@@ -275,6 +275,7 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     
     path = sp.URL.path;
     
+    // XXX
     /*
      * Does this location belong to our `searchPaths`?
      */
@@ -339,8 +340,6 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
         }
     }
 
-    error = nil;    // re-use
-
     /* copy wallpaper */
     if (_relative)
     {
@@ -362,8 +361,7 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
     
     /* refresh List of Widgets/Themes */
-    // XXX
-    //[ViewController RefreshTable:_widgetsTableView];
+    [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
 }
 
 //

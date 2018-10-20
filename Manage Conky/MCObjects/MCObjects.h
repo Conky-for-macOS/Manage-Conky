@@ -11,6 +11,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ViewController;
+
 typedef enum : NSUInteger
 {
     FillScreen = 0,
@@ -46,6 +48,7 @@ static const char *cMacScalingKeys[] = {
 @interface MCSettings : NSObject
 {
     NSMutableArray *windowVector;
+    ViewController *mainViewController; /* handle to main view controller */
 }
 
 + (instancetype)sharedInstance;
@@ -60,6 +63,9 @@ static const char *cMacScalingKeys[] = {
 - (NSString *)configsLocation;
 - (NSArray *)additionalSearchPaths;
 - (void)addAdditionalSearchPath:(NSString *)path;
+
+- (void)setMainViewController:(ViewController *)vc;
+- (ViewController *)mainViewController;
 
 /**
  * installManageConkyFilesystem
