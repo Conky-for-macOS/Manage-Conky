@@ -34,7 +34,6 @@
 @property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
 @property (weak) IBOutlet NSTextField *wallpaperPathLabel;
 
-@property (weak) IBOutlet NSTableView *wt;
 @property (weak) IBOutlet NSTableView *widgetsTableView;
 
 @end

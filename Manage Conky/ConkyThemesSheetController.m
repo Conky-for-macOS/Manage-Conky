@@ -104,7 +104,6 @@
      */
     __block BOOL res = NO;
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    
     panel.canChooseDirectories = NO;
     panel.allowsMultipleSelection = NO;
     panel.allowedFileTypes = @[@"7z"];
