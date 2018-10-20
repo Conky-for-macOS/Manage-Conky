@@ -207,32 +207,28 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
 //=========================================================================================================
 //
 
+- (void)didSaveWidget
+{
+    
+}
+
 - (IBAction)createWidgetRightNow:(id)sender
 {
     /*
-     * Introduce a new search-directory and create the widget there!
-     */
-    
-    /*
      * Initialise editor controller
      */
-    [[[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"] loadOnWindow:self.window];
-    
-    /*
-     * Reload the "From List" list
-     */
-    
-    /*
-     * Now mark it! (With green colour) XXX is this possible?
-     */
+    SaveWidgetSheetController *swsc = [[SaveWidgetSheetController alloc] initWithWindowNibName:@"SaveWidget"];
+    [swsc setDelegate:self];    /*
+                                 * do stuff ONLY if user ACTUALLY
+                                 * created a widget!
+                                 */
+    [swsc loadOnWindow:self.window];
 }
 
 //
 //=========================================================================================================
 //
 
-
-// HELPER
 - (NSMutableArray *)getConkyConfigsFrom:(NSMutableArray *)widgetsFromList and:(NSMutableArray *)widgetsFromDirectories
 {
     NSMutableArray *arr = [NSMutableArray array];
@@ -386,15 +382,12 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
     
     /* refresh List of Widgets/Themes */
+    // XXX
     //[ViewController RefreshTable:_widgetsTableView];
 }
 
 //
-//=========================================================================================================
-//
-
-//
-// DATA SOURCE
+// DATA SOURCE =====================================================================================
 //
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView

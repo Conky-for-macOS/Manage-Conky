@@ -9,11 +9,19 @@
 #import <Fragaria/Fragaria.h>
 #import "GeneralSheetController.h"
 
+@protocol SaveWidgetSheetControllerDelegate<NSObject>
+@optional
+- (void)didSaveWidget;
+- (void)didNotSaveWidget;
+@end
+
 @interface SaveWidgetSheetController : GeneralSheetController
 {
     NSURL                       *previewLocation;
     NSMutableArray<NSURL *>     *resourcesLocations;
 }
+
+@property (nonatomic, weak) id<SaveWidgetSheetControllerDelegate> delegate;
 
 @property (strong) IBOutlet MGSFragariaView *scriptView;
 

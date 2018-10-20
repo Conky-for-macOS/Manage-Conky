@@ -122,6 +122,12 @@
         
         /* open widget's directory */
         [[NSWorkspace sharedWorkspace] openFile:widgetDirectory];
+        
+        [_delegate didSaveWidget];
+    }
+    else
+    {
+        [_delegate didNotSaveWidget];
     }
 }
 

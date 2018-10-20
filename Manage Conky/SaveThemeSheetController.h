@@ -7,7 +7,7 @@
 //
 
 #import "MCObjects/MCObjects.h"
-#import "GeneralSheetController.h"
+#import "SaveWidgetSheetController.h"
 
 /*
  * Our checkbox class that maintains a self-registry of checkboxes!
@@ -21,7 +21,7 @@
 @interface CheckboxEventListener : NSButtonCell
 @end
 
-@interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource>
+@interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>
 {
     /* table */
     NSInteger selectedView;
@@ -43,11 +43,9 @@
 @property (weak) IBOutlet NSTextField *themeNameField;
 @property (weak) IBOutlet NSTextField *themeCreatorField;
 @property (weak) IBOutlet NSTextField *themeSourceField;
+@property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
+@property (weak) IBOutlet NSTextField *wallpaperPathLabel;
 
 @property (weak) IBOutlet NSTableView *widgetsTableView;
-
-@property (weak) IBOutlet NSPopUpButton *scalingPopUpButton;
-
-@property (weak) IBOutlet NSTextField *wallpaperPathLabel;
 
 @end
