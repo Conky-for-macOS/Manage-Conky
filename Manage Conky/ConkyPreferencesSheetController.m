@@ -87,7 +87,7 @@
          * Conky is Set to run at startup?
          * set checkbox state accordingly
          */
-        MCSettings *t = [MCSettings sharedInstance];
+        MCSettings *t = [MCSettings sharedSettings];
         BOOL conkyRunsAtStartup = [t conkyRunsAtStartup];
         [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
         
@@ -280,7 +280,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
     
     /* refresh List of Widgets/Themes */
-    [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
+    [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
 }
 
 - (IBAction)un_in_stallConky:(id)sender
@@ -296,7 +296,7 @@
         
         [self toggleControls:NSOffState];
 
-        [[MCSettings sharedInstance] uninstallCompletelyManageConkyFilesystem];
+        [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem];
         
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
@@ -314,8 +314,8 @@
          */
         
         /* uninstall old & install new */
-        [[MCSettings sharedInstance] uninstallManageConkyFilesystem];
-        [[MCSettings sharedInstance] installManageConkyFilesystem];
+        [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
+        [[MCSettings sharedSettings] installManageConkyFilesystem];
         
         [self close];
         [self loadOnWindow:self.targetWindow];
@@ -326,7 +326,7 @@
 
 - (IBAction)applyChanges:(id)sender
 {
-    MCSettings *MCSettingsHolder = [MCSettings sharedInstance];
+    MCSettings *MCSettingsHolder = [MCSettings sharedSettings];
     
     BOOL changesApplied = YES;
     
@@ -390,7 +390,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"additionalSearchPaths"];
         
         /* refresh List of Widgets/Themes */
-        [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
+        [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
     }
     
     [_changesSavedLabel setStringValue:changesApplied ? @"Changes applied successfully" : @"Failed to apply changes!"];

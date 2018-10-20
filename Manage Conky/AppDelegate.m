@@ -53,12 +53,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     /* First window created is mainWindow; push it to our vector */
-    [[MCSettings sharedInstance] pushWindow:[NSApp mainWindow]];
+    [[MCSettings sharedSettings] pushWindow:[NSApp mainWindow]];
 }
 
 - (IBAction)openPreferences:(id)sender
 {
-    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedInstance].currentWindow];
+    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedSettings].currentWindow];
 }
 
 @end

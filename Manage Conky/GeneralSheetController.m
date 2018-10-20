@@ -24,14 +24,14 @@
         [_targetWindow endSheet:self.window];
     }];
 
-    [[MCSettings sharedInstance] pushWindow:self.window];
+    [[MCSettings sharedSettings] pushWindow:self.window];
 }
 
 - (IBAction)close:(id)sender
 {
     [self.window close];
     
-    [[MCSettings sharedInstance] popWindow];
+    [[MCSettings sharedSettings] popWindow];
 }
 
 @end

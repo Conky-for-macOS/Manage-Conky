@@ -122,7 +122,7 @@
         [[NSWorkspace sharedWorkspace] openFile:widgetDirectory];
 
         /* refresh List of Widgets/Themes */
-        [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
+        [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
         
         [_delegate didSaveWidget];
     }

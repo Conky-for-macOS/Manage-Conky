@@ -279,7 +279,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     /*
      * Does this location belong to our `searchPaths`?
      */
-    MCSettings *mcsettings = [MCSettings sharedInstance];
+    MCSettings *mcsettings = [MCSettings sharedSettings];
     if (
         ![[mcsettings additionalSearchPaths] containsObject:path] &&
         ![[mcsettings configsLocation] isEqualToString:path])
@@ -361,7 +361,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
     
     /* refresh List of Widgets/Themes */
-    [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
+    [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
 }
 
 //

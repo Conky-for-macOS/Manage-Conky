@@ -53,7 +53,7 @@ BOOL isXquartzAndConkyInstalled()
     return self;
 }
 
-+ (instancetype)sharedInstance
++ (instancetype)sharedSettings
 {
     static id res = nil;
     if (!res)
@@ -197,7 +197,7 @@ BOOL isXquartzAndConkyInstalled()
 }
 
 - (void)uninstall {}
-- (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedInstance]; }
+- (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedSettings]; }
 @end
 
 @implementation MCWidget

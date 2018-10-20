@@ -31,7 +31,7 @@
     NSLog(@"Omaewa mo sindeiru");
     
     /* refresh List of Widgets/Themes */
-    [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
+    [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
 }
 
 - (BOOL)openThemePackWithURL:(NSURL*)url
@@ -77,11 +77,11 @@
      * Extract themepack
      */
     BOOL res = NO;
-    if (![[MCSettings sharedInstance] configsLocation])
-        [[MCSettings sharedInstance] setConfigsLocation:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"]];
+    if (![[MCSettings sharedSettings] configsLocation])
+        [[MCSettings sharedSettings] setConfigsLocation:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"]];
         
     res = [themePackReader extract:items
-                            toPath:[[MCSettings sharedInstance] configsLocation]
+                            toPath:[[MCSettings sharedSettings] configsLocation]
                      withFullPaths:YES];
     
     /*

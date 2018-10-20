@@ -33,7 +33,7 @@
      * we only get the handle of the mainViewController,
      * which is actually really useful for many stuff...
      */
-    [[MCSettings sharedInstance] setMainViewController:self];
+    [[MCSettings sharedSettings] setMainViewController:self];
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
@@ -60,7 +60,7 @@
     BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
     
     /* publish it to our settings-holder */
-    MCSettingsHolder = [MCSettings sharedInstance];
+    MCSettingsHolder = [MCSettings sharedSettings];
     [MCSettingsHolder setConkyRunsAtStartup:a];
 
     /* Conky configuration file location? */

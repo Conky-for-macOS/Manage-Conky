@@ -51,7 +51,7 @@ static const char *cMacScalingKeys[] = {
     ViewController *mainViewController; /* handle to main view controller */
 }
 
-+ (instancetype)sharedInstance;
++ (instancetype)sharedSettings;
 
 //
 // Special getters and setters
