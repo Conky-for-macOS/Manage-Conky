@@ -7,8 +7,9 @@
 //
 
 #import "SaveWidgetSheetController.h"
-
-#include "Shared.h" /* logging */
+#import "MCObjects/MCObjects.h"
+#import "ViewController.h"
+#import "Shared.h"
 
 @implementation SaveWidgetSheetController
 
@@ -122,6 +123,9 @@
         
         /* open widget's directory */
         [[NSWorkspace sharedWorkspace] openFile:widgetDirectory];
+
+        /* refresh List of Widgets/Themes */
+        [[[MCSettings sharedInstance] mainViewController] updateWidgetsThemesArray];
         
         [_delegate didSaveWidget];
     }
