@@ -200,7 +200,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     [swsc setDelegate:self];    /*
                                  * do stuff ONLY if user ACTUALLY
                                  * created a widget, that is if
-                                 
+                                 * -didSaveWidget is called.
                                  */
     [swsc loadOnWindow:self.window];
 }

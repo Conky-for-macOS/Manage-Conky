@@ -36,9 +36,11 @@ typedef enum {
 @property (weak) IBOutlet NSSearchField *searchField;
 
 /**
- * Function used to fill widgetsArray and themesArray
- * Also used by ThemesSheet by getting the pointer to the ViewController instance
- *  to fill the table after loading a themepack.
+ * Functions for Main VC Table Manipulation
+ * ===================================================
+ * Some ManageConky classes use ViewController because
+ * they need to manipulate the MAIN view controller's
+ * widgets/themes table.
  */
 - (void)fillWidgetsThemesArraysWithSearchPath:(NSString *)searchPath;
 - (void)fillWidgetsThemesArrays;
@@ -47,10 +49,10 @@ typedef enum {
 
 /**
  * Functions for easy Widgets / Themes access
- * ==================================================
- * Some ManageConky classes use ViewController
- * just so that they can leverage its Widget / Themes
- * manipulation functions!!
+ * =====================================================
+ * Some ManageConky classes use ViewController because
+ * they leverage its advanced Widget/Themes manipulation
+ * capabilities.
  */
 - (void)createWidgetsArray;
 - (NSMutableArray *)widgets;

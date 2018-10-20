@@ -21,12 +21,19 @@
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[MCSettings sharedInstance] setMainViewController:self];
-    
+
     /*
      * Setup stuff
      */
+
+    /*
+     * Will happen for every ViewController we allocate;
+     * BUT, inside MCSettings we have a GUARD that returns
+     * if the method has been called already once; THUS,
+     * we only get the handle of the mainViewController,
+     * which is actually really useful for many stuff...
+     */
+    [[MCSettings sharedInstance] setMainViewController:self];
     
     whatToShow = widgetsThemesTableShowWidgets; /* initial value */
     
@@ -74,7 +81,7 @@
 //
 
 - (NSMutableArray *)widgets { return widgetsArray; }
-- (void)createWidgetsArray { widgetsArray = [NSMutableArray array]; }
+- (void)createWidgetsArray  { widgetsArray = [NSMutableArray array]; }
 
 - (void)emptyWidgetsThemesArrays
 {
@@ -200,8 +207,8 @@
     widgetsArray = [NSMutableArray array];
     themesArray = [NSMutableArray array];
     
-    NSString *basicSearchPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-    NSArray *additionalSearchPaths = [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
+    NSString *basicSearchPath = [MCSettingsHolder configsLocation];
+    NSArray *additionalSearchPaths = [MCSettingsHolder additionalSearchPaths];
     
     if (!basicSearchPath)
     {

@@ -12,13 +12,13 @@
 
 #import "ConkyThemesSheetController.h"
 
+#import "Shared.h"
 #import "LzmaSDKObjC.h"
 #import "ViewController.h"
 #import "LzmaSDKObjCReader.h"
 #import "SaveThemeSheetController.h"
 #import "SaveWidgetSheetController.h"
 
-#include "Shared.h" /* logging */
 
 @implementation ConkyThemesSheetController
 
@@ -77,8 +77,12 @@
      * Extract themepack
      */
     BOOL res = NO;
-    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-    res = [themePackReader extract:items toPath:path withFullPaths:YES];
+    if (![[MCSettings sharedInstance] configsLocation])
+        [[MCSettings sharedInstance] setConfigsLocation:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"]];
+        
+    res = [themePackReader extract:items
+                            toPath:[[MCSettings sharedInstance] configsLocation]
+                     withFullPaths:YES];
     
     /*
      * check if succeeded

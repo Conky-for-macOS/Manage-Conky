@@ -12,9 +12,8 @@
 #import "NSAlert+runModalSheet.h"
 #import "PFMoveApplication.h"
 #import "ViewController.h"
+#import "Shared.h"
 #import <unistd.h>
-
-#include "Shared.h" /* logging */
 
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
