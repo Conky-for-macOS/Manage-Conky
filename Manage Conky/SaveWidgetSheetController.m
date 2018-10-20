@@ -39,9 +39,8 @@
     [op setPrompt:@"Add"];
     [op setMessage:@"Choose Preview Image"];
     [op setAllowedFileTypes:@[@"png", @"jpg", @"jpeg", @"tiff"]];
-    NSModalResponse res = [op runModal];
     
-    if (res == NSModalResponseOK)
+    if ([op runModal] == NSModalResponseOK)
     {
         self->previewLocation = op.URL;
     }
@@ -52,9 +51,8 @@
     NSOpenPanel *op = [NSOpenPanel openPanel];
     [op setAllowsMultipleSelection:YES];
     [op setPrompt:@"Add"];
-    NSModalResponse res = [op runModal];
     
-    if (res == NSModalResponseOK)
+    if ([op runModal] == NSModalResponseOK)
     {
         for (NSURL *url in [op URLs])
         {
@@ -69,9 +67,8 @@
     [sp setMessage:@"Choose Widget's Location"];
     [sp setNameFieldLabel:@"Widget's Name"];
     [sp setPrompt:@"Create"];
-    NSModalResponse res = [sp runModal];
     
-    if (res == NSModalResponseOK)
+    if ([sp runModal] == NSModalResponseOK)
     {
         NSString *widgetDirectory = sp.URL.path;
         NSString *widgetConfig = [widgetDirectory stringByAppendingPathComponent:widgetDirectory.lastPathComponent];

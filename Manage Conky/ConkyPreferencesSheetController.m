@@ -182,9 +182,8 @@
         [keepAlivePrompt setAlertStyle:NSAlertStyleInformational];
         [keepAlivePrompt addButtonWithTitle:@"Yes"];
         [keepAlivePrompt addButtonWithTitle:@"No"];
-        
-        NSModalResponse response = [keepAlivePrompt runModalSheetForWindow:self.window];
-        switch (response)
+
+        switch ([keepAlivePrompt runModalSheetForWindow:self.window])
         {
             case NSAlertSecondButtonReturn:
                 keepAlive = NO;
