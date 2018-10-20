@@ -31,6 +31,7 @@
     BOOL mustEnableConkyForStartup;
     BOOL mustAddSearchPaths;
     
+    NSMutableArray *_oldSearchLocationsTableContents;
     NSMutableArray *_searchLocationsTableContents;
 }
 

@@ -75,13 +75,16 @@
     if (conkyXInstalled && conkyInstalled)
     {
         /* first try to read already written information */
-        
+
         _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
         
         [_searchLocationsTable reloadData];
+        
+        /* initialise the Backup array */
+        _oldSearchLocationsTableContents = [NSMutableArray arrayWithArray:_searchLocationsTableContents];
         
         /*
          * Conky is Set to run at startup?
@@ -401,13 +404,13 @@
 
 - (IBAction)okButtonPressed:(id)sender
 {
-    BOOL worksAsCancelButton = mustEnableConkyForStartup || mustDisableConkyForStartup || mustAddSearchPaths;
+    BOOL worksAsCancelButton = (mustEnableConkyForStartup || mustDisableConkyForStartup || mustAddSearchPaths);
     
     if (worksAsCancelButton)
     {
         if (mustAddSearchPaths)
         {
-            [_searchLocationsTableContents removeAllObjects];   // XXX remove all newly added ONLY
+            _searchLocationsTableContents = [NSMutableArray arrayWithArray:_oldSearchLocationsTableContents];
             [_searchLocationsTable reloadData];
         }
         
@@ -426,12 +429,6 @@
         [self close];
     }
 }
-
-//
-//
-// SEARCH LOCATIONS
-//
-//
 
 - (IBAction)addSearchLocation:(id)sender
 {
@@ -468,12 +465,18 @@
     
     if (selectedRow < 0)
         return;
-        
+    
     [_searchLocationsTableContents removeObjectAtIndex:selectedRow];
     [_searchLocationsTable reloadData];
     
     [self enableMustAddSearchPathsMode];
 }
+
+//
+//
+// SEARCH LOCATIONS TABLE
+//
+//
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
