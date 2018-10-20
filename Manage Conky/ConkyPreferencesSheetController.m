@@ -450,11 +450,14 @@
             NSURL *theDocument = [[panel URLs] objectAtIndex:0];
             NSString *theDocumentInString = [theDocument path];
             
-            /* add to table contents array */
-            [self->_searchLocationsTableContents addObject:theDocumentInString];
-            [self->_searchLocationsTable reloadData];
+            /* add to table contents array if it doesn't already exist! */
+            if (![self->_searchLocationsTableContents containsObject:theDocumentInString])
+            {
+                [self->_searchLocationsTableContents addObject:theDocumentInString];
+                [self->_searchLocationsTable reloadData];
             
-            [self enableMustAddSearchPathsMode];
+                [self enableMustAddSearchPathsMode];
+            }
         }
     }];
 }
