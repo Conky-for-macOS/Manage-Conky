@@ -34,13 +34,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="424"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="424"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-bz-o3c">
-                        <rect key="frame" x="412.5" y="19" width="48" height="23"/>
+                        <rect key="frame" x="413" y="19" width="47" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="47" id="9yi-ly-iwv"/>
                         </constraints>
@@ -52,7 +52,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="close:" target="-2" id="9OU-Po-tah"/>
+                            <action selector="okButtonPressed:" target="-2" id="8yF-0n-jsU"/>
                         </connections>
                     </button>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="G7a-wy-yQX">
@@ -85,7 +85,7 @@ Gw
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-o9-e08">
-                        <rect key="frame" x="19.5" y="19" width="152" height="23"/>
+                        <rect key="frame" x="20" y="19" width="151" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="151" id="kfi-Vg-C7w"/>
                         </constraints>
