@@ -133,26 +133,6 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     }
     else
         return;
-
-    /*
-     * Keep path relative to theme directory OR full?
-     */
-    NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Relative or Absolute path?";
-    alert.informativeText = @"Choosing Relative path will make your Theme Portable!";
-    [alert addButtonWithTitle:@"Relative"];
-    [alert addButtonWithTitle:@"Absolute"];
-    
-    switch ([alert runModal])
-    {
-        case NSAlertFirstButtonReturn:
-            _relative = YES;
-            break;
-        case NSAlertSecondButtonReturn:
-        default:
-            _relative = NO;
-            break;
-    }
 }
 
 - (IBAction)choosePreview:(id)sender
