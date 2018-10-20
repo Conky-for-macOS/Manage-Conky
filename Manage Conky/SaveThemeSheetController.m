@@ -155,6 +155,21 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     }
 }
 
+- (IBAction)choosePreview:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    panel.canChooseDirectories = NO;
+    panel.allowedFileTypes = @[@"png", @"jpg", @"tiff"];
+    
+    /*
+     * display the panel
+     */
+    if ([panel runModal] == NSModalResponseOK)
+    {
+        _preview = [[[panel URLs] objectAtIndex:0] path];
+    }
+}
+
 - (IBAction)chooseScaling:(id)sender
 {
     _scaling = [sender indexOfSelectedItem];
@@ -277,7 +292,8 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
     NSString *path = nil;
     NSSavePanel *sp = [NSSavePanel savePanel];
     [sp setMessage:@"Choose where to save"];
-
+    [sp setNameFieldStringValue:_name];
+    
     if ([sp runModal] != NSModalResponseOK)
         return;
     
@@ -347,18 +363,30 @@ NSUInteger fromListWidgetsCount = 0;    /* the -fromList- widgets */
         }
     }
 
-    error = nil;    /// re-use
+    error = nil;    // re-use
 
     /* copy wallpaper */
     if (_relative)
     {
         [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
         if (error)
-            NSLog(@"saveTheme: %@", error);
+            NSLog(@"%@", error);
     }
+    
+    error = nil;
+    
+    /*
+     * copy preview image and set its name to <widgetName>.jpg
+     */
+    [[NSFileManager defaultManager] copyItemAtPath:_preview toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", path.lastPathComponent]] error:&error];
+    if (error)
+        NSLog(@"%@", error);
     
     /* open theme directory */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
+    
+    /* refresh List of Widgets/Themes */
+    //[ViewController RefreshTable:_widgetsTableView];
 }
 
 //

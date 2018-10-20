@@ -43,7 +43,7 @@
 #endif
 
 #ifndef DEBUG
-    MCForciblyMoveToApplicationsFolder();
+    //MCForciblyMoveToApplicationsFolder();
 #endif
   
     /* take care of resizing */

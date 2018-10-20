@@ -31,6 +31,7 @@
 }
 
 @property NSString *name;
+@property NSString *preview;
 @property NSString *wallpaper;
 @property NSMutableArray<NSString *> *conkyConfigs;
 @property NSString *source;
