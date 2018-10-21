@@ -149,6 +149,25 @@ BOOL isXquartzAndConkyInstalled()
     }
 }
 
+- (void)setShouldLogToFile:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:@"ShouldLogToFile"];
+}
+- (BOOL)shouldLogToFile
+{
+    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:@"ShouldLogToFile"];
+    return number.boolValue;
+}
+
+- (void)setLogfile:(NSString *)logfile
+{
+    [[NSUserDefaults standardUserDefaults] setObject:logfile forKey:@"Logfile"];
+}
+- (NSString *)logfile
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"Logfile"];
+}
+
 - (void)uninstallManageConkyFilesystem
 {
     NSError *error = nil;

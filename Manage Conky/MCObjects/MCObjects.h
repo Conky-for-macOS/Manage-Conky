@@ -67,6 +67,15 @@ static const char *cMacScalingKeys[] = {
 - (void)setMainViewController:(ViewController *)vc;
 - (ViewController *)mainViewController;
 
+/*
+ * Logfile
+ * =======
+ */
+- (void)setShouldLogToFile:(BOOL)a;
+- (BOOL)shouldLogToFile;
+- (void)setLogfile:(NSString *)logfile;
+- (NSString *)logfile;
+
 /**
  * installManageConkyFilesystem
  *

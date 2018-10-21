@@ -44,9 +44,8 @@
      * Logging
      * =======
      */
-    NSNumber *loggingEnabled = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];
-    shouldLogToFile = loggingEnabled.boolValue;
-    NSString *lf = [[NSUserDefaults standardUserDefaults] objectForKey:@"LogfileLocation"];
+    shouldLogToFile = [[MCSettings sharedSettings] shouldLogToFile];
+    NSString *lf = [[MCSettings sharedSettings] logfile];
     
     /*
      * Check if logging is enabled; If yes, check if we want default logfile (length = 0)

@@ -7,8 +7,8 @@
 //
 
 #import "PreferencesController.h"
-
-#include "Shared.h" /* logging */
+#import "MCObjects/MCObjects.h"
+#include "Shared.h"
 
 @implementation PreferencesController
 
@@ -17,7 +17,7 @@
     /*
      * Logging
      */
-    NSString *logfileLocation = [[NSUserDefaults standardUserDefaults] objectForKey:@"LogfileLocation"];
+    NSString *logfileLocation = [[MCSettings sharedSettings] logfile];
     
     if (!logfileLocation || [logfileLocation isEqualToString:@""])
     {
@@ -28,9 +28,9 @@
         _logfileLocationField.placeholderString = [_logfileLocationField.placeholderString stringByAppendingString:logfileLocation];
     }
     
-    NSNumber *logging = [[NSUserDefaults standardUserDefaults] objectForKey:@"Logging"];
-    [_loggingToggle setState:logging.boolValue];
-    [_logfileLocationField setHidden:!logging.boolValue];
+    BOOL shouldLogToFile = [[MCSettings sharedSettings] shouldLogToFile];
+    [_loggingToggle setState:shouldLogToFile];
+    [_logfileLocationField setHidden:!shouldLogToFile];
     
     /*
      * Resizeable Window
@@ -41,7 +41,7 @@
 
 - (IBAction)toggleLogging:(id)sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"Logging"];
+    [[MCSettings sharedSettings] setShouldLogToFile:[sender state]];
     [_logfileLocationField setHidden:![sender state]];
 }
 
@@ -50,11 +50,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"CanResizeWindow"];
 }
 
-- (IBAction)close:(id)sender;
+- (IBAction)close:(id)sender
 {
     /* check if user did bother about logging; otherwise keep the old setting */
     if ([[_logfileLocationField stringValue] length] != 0)
-        [[NSUserDefaults standardUserDefaults] setObject:_logfileLocationField.stringValue forKey:@"LogfileLocation"];
+        [[MCSettings sharedSettings] setLogfile:_logfileLocationField.stringValue];
     
     [super close:sender];
 }
