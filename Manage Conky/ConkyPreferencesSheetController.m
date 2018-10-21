@@ -246,7 +246,6 @@
 - (IBAction)setConkyConfigsLocation:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    
     panel.canChooseFiles = NO;
     panel.showsHiddenFiles = YES;
     panel.canChooseDirectories = YES;
@@ -327,6 +326,7 @@
         [[MCSettings sharedSettings] installManageConkyFilesystem];
         
         [self close];
+        [[MCSettings sharedSettings] popWindow];
         [self loadOnWindow:self.targetWindow];
         [self initStuff];
         [self toggleControls:NSOnState];
@@ -434,13 +434,13 @@
          * Close the sheet
          */
         [self close];
+        [[MCSettings sharedSettings] popWindow];
     }
 }
 
 - (IBAction)addSearchLocation:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    
     panel.canChooseFiles = NO;
     panel.showsHiddenFiles = YES;
     panel.canChooseDirectories = YES;
