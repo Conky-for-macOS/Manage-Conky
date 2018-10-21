@@ -16,7 +16,8 @@
 #import "ConkyThemesSheetController.h"
 #import "AboutSheetController.h"
 
-#define ERR_NSFD 260    /* no such file or directory */
+#define MC_DO_NOT_LOG   nil
+#define ERR_NSFD        260 /* no such file or directory */
 
 @implementation ViewController
 - (void)viewDidLoad {
@@ -25,7 +26,8 @@
     /*
      * Setup stuff
      */
-    NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"];    /* default value */
+    NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"];
+    NSString *kDefaultLogfile = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Logs/ManageConky.log"];
 
     /*
      * Will happen for every ViewController we allocate;
@@ -51,19 +53,14 @@
      *                              or, we want user-defined (length > 0)
      * Otherwise, set logfile to nil.  (We interpret it as DO_NOT_LOG)
      */
-#define MC_DO_NOT_LOG nil
     if (shouldLogToFile)
-        logfile = (lf && lf.length > 0) ? lf : [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Logs/ManageConky.log"];
+        logfile = (lf && lf.length > 0) ? lf : kDefaultLogfile;
     else
         logfile = MC_DO_NOT_LOG;
-    
-    /* Is conky set to run at startup? */
-    BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
-    
-    /* publish it to our settings-holder */
-    [[MCSettings sharedSettings] setConkyRunsAtStartup:a];
 
-    /* Conky configuration file location? */
+    /*
+     * Setup Default ConkyConfigs Location
+     */
     if (![[MCSettings sharedSettings] configsLocation]
         || [[[MCSettings sharedSettings] configsLocation] isEqualToString:@""])
     {
