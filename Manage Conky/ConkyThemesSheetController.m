@@ -83,9 +83,6 @@
      * location to `/Users/____/Documents/Conky`, but for some reason this
      * is not the case.
      */
-    if (![[MCSettings sharedSettings] configsLocation])
-        [[MCSettings sharedSettings] setConfigsLocation:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"]];
-        
     res = [themePackReader extract:items
                             toPath:[[MCSettings sharedSettings] configsLocation]
                      withFullPaths:YES];
