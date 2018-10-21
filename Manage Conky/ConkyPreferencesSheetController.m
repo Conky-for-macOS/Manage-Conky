@@ -141,6 +141,12 @@
     
     [_disableXQuartzWarningsCheckbox setEnabled:state];
     [_toggleXQuartzIconVisibilityCheckbox setEnabled:state];
+    
+    NSColor *labelColor = (state) ? [NSColor controlTextColor] : [NSColor disabledControlTextColor];
+    
+    [_startupDelayLabel setTextColor:labelColor];
+    [_conkyConfigFilesLocationLabel setTextColor:labelColor];
+    [_additionalLocationsToSearchLabel setTextColor:labelColor];
 }
 
 - (void)enableMustInstallAgentMode
