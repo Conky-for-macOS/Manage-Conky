@@ -25,6 +25,7 @@
     /*
      * Setup stuff
      */
+    NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"];    /* default value */
 
     /*
      * Will happen for every ViewController we allocate;
@@ -60,17 +61,13 @@
     BOOL a = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
     
     /* publish it to our settings-holder */
-    MCSettingsHolder = [MCSettings sharedSettings];
-    [MCSettingsHolder setConkyRunsAtStartup:a];
+    [[MCSettings sharedSettings] setConkyRunsAtStartup:a];
 
     /* Conky configuration file location? */
-    NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
-    if (!conkyConfigsPath || [conkyConfigsPath isEqualToString:@""])
+    if (![[MCSettings sharedSettings] configsLocation]
+        || [[[MCSettings sharedSettings] configsLocation] isEqualToString:@""])
     {
-        NSString *kConkyConfigsDefaultPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Conky"];    /* default value */
-        
-        [[NSUserDefaults standardUserDefaults] setObject:kConkyConfigsDefaultPath forKey:@"configsLocation"];
-        conkyConfigsPath = kConkyConfigsDefaultPath;
+        [[MCSettings sharedSettings] setConfigsLocation:kConkyConfigsDefaultPath];
     }
 
     [self fillWidgetsThemesArrays];
@@ -207,8 +204,8 @@
     widgetsArray = [NSMutableArray array];
     themesArray = [NSMutableArray array];
     
-    NSString *basicSearchPath = [MCSettingsHolder configsLocation];
-    NSArray *additionalSearchPaths = [MCSettingsHolder additionalSearchPaths];
+    NSString *basicSearchPath = [[MCSettings sharedSettings] configsLocation];
+    NSArray *additionalSearchPaths = [[MCSettings sharedSettings] additionalSearchPaths];
     
     if (!basicSearchPath)
     {

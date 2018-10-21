@@ -26,8 +26,6 @@ typedef enum {
     
     MCConfigEditor *editorController;
     NSPopover *editorPopover;
-    
-    MCSettings *MCSettingsHolder;
 }
 
 @property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
