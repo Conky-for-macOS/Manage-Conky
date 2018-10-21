@@ -391,6 +391,7 @@
          * Write the Additional Search Locations
          */
         [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"additionalSearchPaths"];
+        _oldSearchLocationsTableContents = [NSMutableArray arrayWithArray:_searchLocationsTableContents];   /* update backup keeper */
         
         /* refresh List of Widgets/Themes */
         [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
