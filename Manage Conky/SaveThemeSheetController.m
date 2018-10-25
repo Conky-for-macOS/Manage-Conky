@@ -266,6 +266,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
      * Select location to save!
      */
     NSString *path = nil;
+    NSString *parentDirectory = nil;
     NSSavePanel *sp = [NSSavePanel savePanel];
     [sp setMessage:@"Choose where to save"];
     [sp setNameFieldStringValue:_name];
@@ -274,15 +275,15 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
         return;
     
     path = sp.URL.path;
+    parentDirectory = [path stringByDeletingLastPathComponent];
     
-    // XXX
     /*
      * Does this location belong to our `searchPaths`?
      */
     MCSettings *mcsettings = [MCSettings sharedSettings];
     if (
-        ![[mcsettings additionalSearchPaths] containsObject:path] &&
-        ![[mcsettings configsLocation] isEqualToString:path])
+        ![[mcsettings additionalSearchPaths] containsObject:parentDirectory] &&
+        ![[mcsettings configsLocation] isEqualToString:parentDirectory])
     {
         /* prompt user to add this to search paths */
         NSAlert *addSearchPath = [[NSAlert alloc] init];
