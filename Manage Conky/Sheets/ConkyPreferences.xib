@@ -70,7 +70,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZCd-BW-TZI">
+                    <textField identifier="conkyConfigsLocationField" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCd-BW-TZI">
                         <rect key="frame" x="192" y="364" width="268" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OCs-lf-sof">
                             <font key="font" metaFont="system"/>
@@ -78,7 +78,7 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="conkyConfigLocationFieldEnterPressed:" target="-2" id="cir-Ti-ses"/>
+                            <outlet property="delegate" destination="-2" id="ys3-jR-0or"/>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-o9-e08">
@@ -136,7 +136,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-Qa-Enu">
+                    <textField identifier="startupDelayField" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-Qa-Enu">
                         <rect key="frame" x="347" y="392" width="113" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="e4n-fn-RzZ">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Zg4-xV-OiQ"/>

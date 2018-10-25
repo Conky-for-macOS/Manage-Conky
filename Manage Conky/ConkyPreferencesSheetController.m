@@ -102,6 +102,7 @@
          */
         NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
+        _oldConfigsLocation = _conkyConfigLocationTextfield.stringValue;
         
         /*
          * xquartz quit warning
@@ -262,36 +263,77 @@
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
         if (result == NSModalResponseOK)
         {
-            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
-            NSString *theDocumentInString = [theDocument path];
-            
-            [self->_conkyConfigLocationTextfield setStringValue:theDocumentInString];
-            
-            [self conkyConfigLocationFieldEnterPressed:self->_conkyConfigLocationTextfield];
+            [self->_conkyConfigLocationTextfield setStringValue:panel.URL.path];
+            [self enableMustAddSearchPathsMode];
         }
     }];
 }
 
+- (IBAction)addSearchLocation:(id)sender
+{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    panel.canChooseFiles = NO;
+    panel.showsHiddenFiles = YES;
+    panel.canChooseDirectories = YES;
+    panel.canCreateDirectories = YES;
+    panel.allowsMultipleSelection = NO;
+    panel.canSelectHiddenExtension = NO;
+    
+    /*
+     * display the panel
+     */
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if (result == NSModalResponseOK)
+        {
+            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
+            NSString *theDocumentInString = [theDocument path];
+            
+            /* add to table contents array if it doesn't already exist! */
+            if (![self->_searchLocationsTableContents containsObject:theDocumentInString])
+            {
+                [self->_searchLocationsTableContents addObject:theDocumentInString];
+                [self->_searchLocationsTable reloadData];
+                
+                [self enableMustAddSearchPathsMode];
+            }
+        }
+    }];
+}
+
+- (IBAction)removeSearchLocation:(id)sender
+{
+    NSInteger selectedRow = [_searchLocationsTable selectedRow];
+    
+    if (selectedRow < 0)
+        return;
+    
+    [_searchLocationsTableContents removeObjectAtIndex:selectedRow];
+    [_searchLocationsTable reloadData];
+    
+    [self enableMustAddSearchPathsMode];
+}
+
 /*
- * catch changes to _startupDelayField
+ * catch changes to _startupDelayField & _conkyConfigsLocationField
  */
 - (void)controlTextDidChange:(NSNotification *)obj
 {
-    [self enableMustInstallAgentMode];
+    NSString *senderID = [[obj object] identifier];
+    
+    if ([senderID isEqualToString:@"startupDelayField"])
+    {
+        [self enableMustInstallAgentMode];
+    }
+    else if ([senderID isEqualToString:@"conkyConfigsLocationField"])
+    {
+        [self enableMustAddSearchPathsMode];
+    }
 }
 
 - (IBAction)modifyStartupDelay:(id)sender
 {
     _startupDelayField.integerValue = [sender integerValue];
     [self enableMustInstallAgentMode];
-}
-
-- (IBAction)conkyConfigLocationFieldEnterPressed:(id)sender
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[sender stringValue] forKey:@"configsLocation"];
-    
-    /* refresh List of Widgets/Themes */
-    [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
 }
 
 - (IBAction)un_in_stallConky:(id)sender
@@ -329,7 +371,7 @@
         [[MCSettings sharedSettings] installManageConkyFilesystem];
         
         [self close];
-        [[MCSettings sharedSettings] popWindow];
+        [[MCSettings sharedSettings] popWindow];    // XXX should be handled by [self close]
         [self loadOnWindow:self.targetWindow];
         [self initStuff];
         [self toggleControls:NSOnState];
@@ -399,12 +441,27 @@
         mustAddSearchPaths = NO;
         
         /*
+         * Write Standard Configs Location
+         */
+        [[MCSettings sharedSettings] setConfigsLocation:_conkyConfigLocationTextfield.stringValue];
+        _oldConfigsLocation = _conkyConfigLocationTextfield.stringValue;    /* update backup */
+        
+        /*
          * Write the Additional Search Locations
          */
-        [[NSUserDefaults standardUserDefaults] setObject:_searchLocationsTableContents forKey:@"additionalSearchPaths"];
-        _oldSearchLocationsTableContents = [NSMutableArray arrayWithArray:_searchLocationsTableContents];   /* update backup keeper */
+        for (NSString *searchPath in _searchLocationsTableContents)
+        {
+            [[MCSettings sharedSettings] addAdditionalSearchPath:searchPath];
+        }
         
-        /* refresh List of Widgets/Themes */
+        /*
+         * update backup keeper
+         */
+        _oldSearchLocationsTableContents = [NSMutableArray arrayWithArray:_searchLocationsTableContents];
+        
+        /*
+         * refresh List of Widgets/Themes
+         */
         [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
     }
     
@@ -426,6 +483,7 @@
             [_searchLocationsTable reloadData];
         }
         
+        _conkyConfigLocationTextfield.stringValue = _oldConfigsLocation;    // revert
         _startupDelayStepper.integerValue = _oldStartupDelay;   // revert
         _startupDelayField.integerValue = _oldStartupDelay;     // revert
         
@@ -442,52 +500,8 @@
          * Close the sheet
          */
         [self close];
-        [[MCSettings sharedSettings] popWindow];
+        [[MCSettings sharedSettings] popWindow];    // XXX should be handled automatically by [self close]...
     }
-}
-
-- (IBAction)addSearchLocation:(id)sender
-{
-    NSOpenPanel *panel = [NSOpenPanel openPanel];
-    panel.canChooseFiles = NO;
-    panel.showsHiddenFiles = YES;
-    panel.canChooseDirectories = YES;
-    panel.canCreateDirectories = YES;
-    panel.allowsMultipleSelection = NO;
-    panel.canSelectHiddenExtension = NO;
-    
-    /*
-     * display the panel
-     */
-    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
-        if (result == NSModalResponseOK)
-        {
-            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
-            NSString *theDocumentInString = [theDocument path];
-            
-            /* add to table contents array if it doesn't already exist! */
-            if (![self->_searchLocationsTableContents containsObject:theDocumentInString])
-            {
-                [self->_searchLocationsTableContents addObject:theDocumentInString];
-                [self->_searchLocationsTable reloadData];
-            
-                [self enableMustAddSearchPathsMode];
-            }
-        }
-    }];
-}
-
-- (IBAction)removeSearchLocation:(id)sender
-{
-    NSInteger selectedRow = [_searchLocationsTable selectedRow];
-    
-    if (selectedRow < 0)
-        return;
-    
-    [_searchLocationsTableContents removeObjectAtIndex:selectedRow];
-    [_searchLocationsTable reloadData];
-    
-    [self enableMustAddSearchPathsMode];
 }
 
 //
