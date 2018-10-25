@@ -63,6 +63,7 @@
     
     // Startup Delay
     _startupDelayField.intValue = 0;    /* default value */
+    _oldStartupDelay = _startupDelayField.intValue;
     
     // keepAlive
     keepAlive = YES;    /* default value */
@@ -360,6 +361,8 @@
         NSInteger startupDelay_ = [_startupDelayField integerValue];
         static BOOL shownX11TakesAlotTimeWarning = NO;
         
+        _oldStartupDelay = startupDelay_;   // commit update to backup
+        
         /*
          * show X11 warning
          */
@@ -420,6 +423,9 @@
             _searchLocationsTableContents = [NSMutableArray arrayWithArray:_oldSearchLocationsTableContents];
             [_searchLocationsTable reloadData];
         }
+        
+        _startupDelayStepper.integerValue = _oldStartupDelay;   // revert
+        _startupDelayField.integerValue = _oldStartupDelay;     // revert
         
         mustEnableConkyForStartup = NO;
         mustDisableConkyForStartup = NO;
