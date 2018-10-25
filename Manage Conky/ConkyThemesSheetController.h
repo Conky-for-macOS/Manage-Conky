@@ -6,8 +6,8 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
-#import "GeneralSheetController.h"
 #import "LzmaSDKObjCReader.h"
+#import "GeneralSheetController.h"
 
 @interface ConkyThemesSheetController : GeneralSheetController<LzmaSDKObjCReaderDelegate>
 {

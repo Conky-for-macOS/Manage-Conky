@@ -101,8 +101,8 @@ static const char *cMacScalingKeys[] = {
 - (void)uninstallCompletelyManageConkyFilesystem;
 
 /*
- * Vector of Windows -- Always keep a record of current
- * window by maintaining a vector of windows (provide push/pop/current)
+ * Vector of Windows -- Used for always knowing current window
+ * (push/pop/current)
  */
 - (void)pushWindow:(NSWindow *)window;
 - (void)popWindow;

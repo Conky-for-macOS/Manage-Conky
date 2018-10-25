@@ -10,11 +10,10 @@
 
 #import "Shared.h"
 #import "MCConfigEditor.h"  // Editor View Controller
-#import "Extensions/StringScore/NSString+Score.h"
-
-#import "ConkyPreferencesSheetController.h"
-#import "ConkyThemesSheetController.h"
 #import "AboutSheetController.h"
+#import "ConkyThemesSheetController.h"
+#import "ConkyPreferencesSheetController.h"
+#import "Extensions/StringScore/NSString+Score.h"
 
 #define MC_DO_NOT_LOG   nil
 #define ERR_NSFD        260 /* no such file or directory */

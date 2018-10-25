@@ -80,8 +80,8 @@
     /* XXX
      * The first time you run MC on your computer and click import default
      * themepack, it is supposed to already have set the default config
-     * location to `/Users/____/Documents/Conky`, but for some reason this
-     * is not the case.
+     * location to `$HOME/Documents/Conky` (from ViewController), but for
+     * some reason this is not the case.
      */
     res = [themePackReader extract:items
                             toPath:[[MCSettings sharedSettings] configsLocation]

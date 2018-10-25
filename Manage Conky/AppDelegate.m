@@ -8,12 +8,11 @@
 
 #import "AppDelegate.h"
 
-#import "PreferencesController.h"
-#import "MCObjects/MCObjects.h"
-#import "PFMoveApplication.h"
+#import "Shared.h"
 #import <Sparkle/Sparkle.h>
-
-#include "Shared.h" /* logging */
+#import "PFMoveApplication.h"
+#import "MCObjects/MCObjects.h"
+#import "PreferencesController.h"
 
 @implementation AppDelegate
 

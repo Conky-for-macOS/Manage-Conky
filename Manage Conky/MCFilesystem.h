@@ -9,7 +9,7 @@
 #ifndef MCFilesystem_h
 #define MCFilesystem_h
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 /**
  * Return ManageConky directory path in ~/Library

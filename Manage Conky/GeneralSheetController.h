@@ -6,7 +6,6 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
 @interface GeneralSheetController : NSWindowController

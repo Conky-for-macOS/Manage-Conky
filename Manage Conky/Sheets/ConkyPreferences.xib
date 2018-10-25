@@ -40,7 +40,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ecK-bz-o3c">
-                        <rect key="frame" x="428.5" y="19" width="33" height="23"/>
+                        <rect key="frame" x="428" y="19" width="33" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="OK" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dCi-mZ-bUL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -82,7 +82,7 @@ Gw
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-o9-e08">
-                        <rect key="frame" x="20.5" y="19" width="152" height="23"/>
+                        <rect key="frame" x="21" y="19" width="151" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="151" id="d4o-w8-Qp2"/>
                         </constraints>
@@ -157,7 +157,7 @@ Gw
                         </connections>
                     </stepper>
                     <button hidden="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ew3-7s-FRS">
-                        <rect key="frame" x="274" y="13" width="153" height="32"/>
+                        <rect key="frame" x="274" y="13" width="152" height="32"/>
                         <buttonCell key="cell" type="push" title="Apply Changes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ihb-WE-kXa">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -254,7 +254,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="disableXQuartzWarningsCheckboxAction:" target="-2" id="NK9-Ks-rWW"/>
+                            <action selector="toggleXQuartzWarningsCheckboxAction:" target="-2" id="fwe-4y-lN7"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="30m-c7-bdQ">

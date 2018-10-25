@@ -7,8 +7,9 @@
 //
 
 #import "PreferencesController.h"
+
+#import "Shared.h"
 #import "MCObjects/MCObjects.h"
-#include "Shared.h"
 
 @implementation PreferencesController
 

@@ -8,12 +8,13 @@
 
 #import "ConkyPreferencesSheetController.h"
 
-#import <ServiceManagement/ServiceManagement.h>
-#import "NSAlert+runModalSheet.h"
-#import "PFMoveApplication.h"
-#import "ViewController.h"
-#import "Shared.h"
 #import <unistd.h>
+#import "Shared.h"
+#import "ViewController.h"
+#import "PFMoveApplication.h"
+#import "NSAlert+runModalSheet.h"
+#import <ServiceManagement/ServiceManagement.h>
+
 
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
@@ -29,6 +30,7 @@
 
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
+
 
 @implementation OnlyIntegerValueFormatter
 
@@ -211,7 +213,7 @@
  *  XQuartz needs to quit.  This way, avoid XQuartz's annoying DEFAULT
  *  behaviour.
  */
-- (IBAction)disableXQuartzWarningsCheckboxAction:(id)sender
+- (IBAction)toggleXQuartzWarningsCheckboxAction:(id)sender
 {
     BOOL onOrOff = [sender state];
     NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];

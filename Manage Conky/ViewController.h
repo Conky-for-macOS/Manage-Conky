@@ -6,10 +6,10 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
+#import <unistd.h>
+#import "MCObjects.h"
 #import <Cocoa/Cocoa.h>
 #import "MCConfigEditor.h"
-#import "MCObjects.h"
-#import <unistd.h>
 
 typedef enum {
     widgetsThemesTableShowWidgets,

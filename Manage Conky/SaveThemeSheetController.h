@@ -6,8 +6,8 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import "MCObjects/MCObjects.h"
 #import "SaveWidgetSheetController.h"
+#import "MCObjects/MCObjects.h"
 
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>
 {

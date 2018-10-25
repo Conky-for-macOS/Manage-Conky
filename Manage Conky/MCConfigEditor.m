@@ -9,7 +9,6 @@
 #import "MCConfigEditor.h"
 #include "Shared.h"
 
-
 @implementation MCConfigEditor
 
 - (instancetype)initWithConfig:(NSString *)config
