@@ -11,7 +11,6 @@
 
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>
 {
-    /* table */
     NSInteger selectedView;
     NSMutableArray *fromListWidgets;
     NSMutableArray *fromDirectoryWidgets;

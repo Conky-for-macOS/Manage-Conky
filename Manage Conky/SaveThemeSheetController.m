@@ -28,15 +28,28 @@ enum {
 static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
 static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
 
+/*
+ * Registry of Checkboxes Manipulation Functions
+ */
+void checkbox_registry_uncheck_all(void)
+{
+    for (int i = 0; i < checkboxRegistry.count; i++)
+        checkboxRegistry[i].state = NSOffState;
+}
+
+//
+//=================================================================================
+//
+
 @implementation Checkbox
-+ (instancetype)checkboxForWidget:(NSString *)widget
++ (instancetype)checkboxForWidgetWithIdentifier:(NSString *)widgetIdentifier
 {
     /* check if registry has already been created */
     if (checkboxRegistry)
     {
         /* Try to find an entry corresponding to this widget! */
         for (Checkbox *cb in checkboxRegistry)
-            if ([[cb widget] isEqualToString:widget])
+            if ([[cb widgetID] isEqualToString:widgetIdentifier])
                 return cb;  /* return one from registry */
     }
     else
@@ -49,7 +62,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     id entry = [[Checkbox alloc] init];
     if (entry)
     {
-        [entry setWidget:widget];
+        [entry setWidgetID:widgetIdentifier];
         
         /* publish ourselves to registry */
         [checkboxRegistry addObject:entry];
@@ -183,6 +196,36 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     [_widgetsTableView reloadData];
 }
 
+- (IBAction)clear:(id)sender
+{
+    return; // XXX code is still quite buggy
+    
+    /*
+     * Clear TextFields and
+     */
+    _themeNameField.stringValue = @"";
+    _themeCreatorField.stringValue = @"";
+    _themeSourceField.stringValue = @"";
+    [_scalingPopUpButton selectItemWithTag:0];
+    _wallpaperPathLabel.stringValue = @"";
+    
+    /*
+     * Uncheck checkboxes
+     */
+    checkbox_registry_uncheck_all();
+
+    /*
+     * Empty some arrays
+     */
+    [fromDirectoryWidgets removeAllObjects];
+    [_conkyConfigs removeAllObjects];
+    
+    /*
+     * Show changes to tableview
+     */
+    [_widgetsTableView reloadData];
+}
+
 //
 //=========================================================================================================
 //
@@ -216,8 +259,8 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     
     /* Only take user-selected widgets */
     for (Checkbox *cb in checkboxRegistry)
-        if ([fromListWidgets doesContain:[cb widget]] && ([cb state] == NSOnState))
-            [arr addObject:[cb widget]];
+        if ([fromListWidgets doesContain:[cb widgetID]] && ([cb state] == NSOnState))
+            [arr addObject:[cb widgetID]];
     
     [arr addObjectsFromArray:widgetsFromDirectories];
     return arr;
@@ -391,7 +434,7 @@ static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
     {
         if (selectedView == MC_FROM_LIST)
         {
-            Checkbox *cb = [Checkbox checkboxForWidget:[fromListWidgets objectAtIndex:row]];
+            Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:[fromListWidgets objectAtIndex:row]];
             NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
             return cell;
         }

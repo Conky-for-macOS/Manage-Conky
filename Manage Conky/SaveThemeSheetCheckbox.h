@@ -14,8 +14,8 @@
  * These checkboxes are used in the TableView
  */
 @interface Checkbox : NSObject
-@property BOOL state;   /* ON/OFF */
-@property NSString *widget;
+@property BOOL state;           /* ON/OFF */
+@property NSString *widgetID;   /* Widget Identifier -- the widget's path */
 @end
 
 @interface CheckboxEventListener : NSButtonCell
