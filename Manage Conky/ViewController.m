@@ -251,7 +251,7 @@
         return;
 
     /*
-     * For conky-manager all preview files all jpeg and follow the naming: widgetName.jpg
+     * For conky-manager all preview files all jpeg and follow the naming: <widgetName>.jpg
      */
     NSString *preview = nil;
     

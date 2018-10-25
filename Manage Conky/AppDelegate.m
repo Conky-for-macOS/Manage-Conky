@@ -17,6 +17,20 @@
 
 @implementation AppDelegate
 
+- (NSWindow *)mainWindow
+{
+    /* ** USE THIS INSTEAD of [NSApp mainWindow] **
+     *
+     * WHY?
+     * [NSApp mainWindow] can be nil if mainWindow is hidden,
+     * (usually happens when you start ManageConky and immediately
+     * click away before it shows up)
+     * thus, getting the list of the app's windows and choosing
+     * the first should always return the mainWindow, hidden or not.
+     */
+    return [[NSApp windows] firstObject];
+}
+
 - (NSSize)windowWillResize:(NSWindow *) window toSize:(NSSize)newSize
 {
     NSNumber *b = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
@@ -45,15 +59,15 @@
 #ifndef DEBUG
     //MCForciblyMoveToApplicationsFolder();
 #endif
-  
+
     /* take care of resizing */
-    [[NSApp mainWindow] setDelegate:self];
+    [[self mainWindow] setDelegate:self];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     /* First window created is mainWindow; push it to our vector */
-    [[MCSettings sharedSettings] pushWindow:[NSApp mainWindow]];
+    [[MCSettings sharedSettings] pushWindow:[self mainWindow]];
 }
 
 - (IBAction)openPreferences:(id)sender
