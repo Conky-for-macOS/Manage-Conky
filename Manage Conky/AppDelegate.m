@@ -25,7 +25,7 @@
      * [NSApp mainWindow] can be nil if mainWindow is hidden,
      * (usually happens when you start ManageConky and immediately
      * click away before it shows up)
-     * thus, getting the list of the app's windows and choosing
+     * instead, getting the list of the app's windows and choosing
      * the first should always return the mainWindow, hidden or not.
      */
     return [[NSApp windows] firstObject];
