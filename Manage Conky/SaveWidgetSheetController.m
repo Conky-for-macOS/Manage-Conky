@@ -15,12 +15,10 @@
 
 - (void)awakeFromNib
 {
-    static BOOL beenHereAgain = NO;
-    if (beenHereAgain) { return; }
-    beenHereAgain = YES;
-    
-    resourcesLocations = [NSMutableArray array];
-    [_scriptView setSyntaxDefinitionName:@"lua"];
+    MC_RUN_ONLY_ONCE({
+        resourcesLocations = [NSMutableArray array];
+        [_scriptView setSyntaxDefinitionName:@"lua"];
+    });
 }
 
 - (IBAction)clearButton:(id)sender

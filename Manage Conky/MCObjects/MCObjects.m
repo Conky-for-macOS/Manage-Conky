@@ -97,12 +97,10 @@ BOOL isXquartzAndConkyInstalled()
 
 - (void)setMainViewController:(ViewController *)vc
 {
-    static BOOL beenHereAgain = NO;
-    if (!beenHereAgain)
-    {
+    MC_RUN_ONLY_ONCE({
         mainViewController = vc;
         beenHereAgain = YES;
-    }
+    })
 }
 - (ViewController *)mainViewController
 {

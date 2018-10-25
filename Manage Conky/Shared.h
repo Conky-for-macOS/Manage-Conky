@@ -58,4 +58,13 @@ extern NSString *logfile;
 void NPLog(NSString *format, ...);
 #define NSLog(format, ...) NPLog(format, ##__VA_ARGS__)
 
+#define MC_RUN_ONLY_ONCE(block)         \
+{                                       \
+    static BOOL beenHereAgain = NO;     \
+    if (beenHereAgain) { return; }      \
+    beenHereAgain = YES;                \
+                                        \
+    block                               \
+}
+
 #endif /* Shared_h */
