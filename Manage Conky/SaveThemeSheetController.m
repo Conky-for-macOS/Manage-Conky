@@ -95,6 +95,7 @@ void checkbox_registry_uncheck_all(void)
         _relative = YES;
         
         _conkyConfigs = [NSMutableArray array];
+        _conkyConfigsPaths = [NSMutableArray array];
         fromListWidgets = [NSMutableArray array];
         fromDirectoryWidgets = [NSMutableArray array];
         searchDirectories = [NSMutableArray array];
@@ -218,7 +219,7 @@ void checkbox_registry_uncheck_all(void)
      * Empty some arrays
      */
     [fromDirectoryWidgets removeAllObjects];
-    [_conkyConfigs removeAllObjects];
+    [_conkyConfigsPaths removeAllObjects];
     
     /*
      * Show changes to tableview
@@ -274,9 +275,14 @@ void checkbox_registry_uncheck_all(void)
     _name = _themeNameField.stringValue;
     _source = _themeSourceField.stringValue;
     _creator = _themeCreatorField.stringValue;
-    _conkyConfigs = [self getConkyConfigsFrom:fromListWidgets and:fromDirectoryWidgets];
+    _conkyConfigsPaths = [self getConkyConfigsFrom:fromListWidgets and:fromDirectoryWidgets];
     
-    if (_name.empty || _source.empty || _creator.empty || !_wallpaper || !_conkyConfigs || ([_conkyConfigs count] == 0))
+    for (NSString *config in _conkyConfigsPaths)
+    {
+        [_conkyConfigs addObject:config.lastPathComponent];
+    }
+    
+    if (_name.empty || _source.empty || _creator.empty || !_wallpaper || !_conkyConfigsPaths || ([_conkyConfigsPaths count] == 0))
     {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Whoah! Hold your horses!"];
@@ -287,12 +293,12 @@ void checkbox_registry_uncheck_all(void)
     }
     
     /* get PROPER rect for our text */
-    NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigsPaths componentsJoinedByString:@"\n"]];
     NSRect editorFieldRect = dummyField.bounds;
     
     /* create fragaria view */
     MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
-    [mgs setString:[_conkyConfigs componentsJoinedByString:@"\n"]];
+    [mgs setString:[_conkyConfigsPaths componentsJoinedByString:@"\n"]];
     [mgs setShowsLineNumbers:NO];
 
     /* prompt user whether to continue or not */
@@ -375,7 +381,7 @@ void checkbox_registry_uncheck_all(void)
      * Copy Resources
      */
     /* copy widgets */
-    for (NSString *widgetPath in _conkyConfigs)
+    for (NSString *widgetPath in _conkyConfigsPaths)
     {
         [[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error];
         if (error)
