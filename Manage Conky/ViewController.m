@@ -186,7 +186,7 @@
                 if ([[subItem pathExtension] isEqualToString:@""])
                 {
                     NSString *widgetRCFullpath = [itemFullpath stringByAppendingPathComponent:subItem];
-                    MCWidget *widget = [MCWidget widgetWithPid:MC_PID_NOT_SET andPath:widgetRCFullpath];
+                    MCWidget *widget = [MCWidget widgetWithPid:MC_PID_NOT_SET andRC:widgetRCFullpath];
                     [widgetsArray addObject:widget];
                 }
             }

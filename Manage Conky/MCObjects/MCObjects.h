@@ -149,7 +149,7 @@ static const char *cMacScalingKeys[] = {
 @property NSString *widgetName; /* widget's name */
 @property NSString *widgetLabel;    /* label for LaunchAgent */
 
-+ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path;
++ (instancetype)widgetWithPid:(pid_t)pid andRC:(NSString *)path;
 @end
 
 /**

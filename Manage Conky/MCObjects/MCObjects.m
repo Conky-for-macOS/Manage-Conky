@@ -222,7 +222,7 @@ BOOL isXquartzAndConkyInstalled()
 @end
 
 @implementation MCWidget
-+ (instancetype)widgetWithPid:(pid_t)pid andPath:(NSString *)path
++ (instancetype)widgetWithPid:(pid_t)pid andRC:(NSString *)path
 {
     NSString *realName = [path lastPathComponent];
     NSString *widgetName = [realName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
@@ -438,7 +438,6 @@ BOOL isXquartzAndConkyInstalled()
          * Doing it the ManageConky way...
          */
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
-        
         startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
         
         /* Try to standardize paths read first. */
@@ -448,11 +447,9 @@ BOOL isXquartzAndConkyInstalled()
         {
             conkyConfigsUnstandardized[i] = [conkyConfigsUnstandardized[i] stringByStandardizingPath];
         }
-        
-        /* then write them filtered */
-        conkyConfigs = [conkyConfigsUnstandardized copy];
 
-        arguments = [rc valueForKey:@"args"];  // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        conkyConfigs = [conkyConfigsUnstandardized copy];   /* now write them standardized */
+        arguments = [rc valueForKey:@"args"];   /* must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig */
         wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
         source = [rc objectForKey:@"source"];
         creator = [rc objectForKey:@"creator"];
