@@ -10,6 +10,7 @@
 #import "MCObjects.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
+#import "../Extensions/NSString+Relative.h"
 
 /** `Helper function`
  * Check if Xquartz and conky are installed
@@ -382,14 +383,17 @@ BOOL isXquartzAndConkyInstalled()
          * =====================================================
          * Here we manipulate the provided data before we create
          * a theme object with these.
+         *
+         * REFINE is the process of converting a relative path to
+         * full.
          */
         
         /*
-         * Try to "REFINE" all relative paths to be fullpaths
+         * REFINE conky configs (when required)
          */
         for (NSString *config in configs)
         {
-            if ([config characterAtIndex:0] != '/')
+            if ([config isRelative])
             {
                 /*
                  * OH! We have a relative path, lets fix this...
@@ -403,7 +407,7 @@ BOOL isXquartzAndConkyInstalled()
         /*
          * REFINE the wallpaper, too!
          */
-        if ([wallpaper characterAtIndex:0] != '/')
+        if ([wallpaper isRelative])
         {
             wallpaper = [themeRC.stringByDeletingLastPathComponent stringByAppendingPathComponent:wallpaper];
         }
