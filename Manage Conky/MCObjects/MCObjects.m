@@ -397,8 +397,6 @@ BOOL isXquartzAndConkyInstalled()
                  */
                 NSUInteger index = [refinedConfigs indexOfObject:config];
                 refinedConfigs[index] = [NSString stringWithFormat:@"%@/%@", themeRC.stringByDeletingLastPathComponent, config];
-                
-                NSLog(@"REFINED %@", refinedConfigs[index]);
             }
         }
         
