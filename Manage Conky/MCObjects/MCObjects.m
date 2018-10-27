@@ -401,6 +401,14 @@ BOOL isXquartzAndConkyInstalled()
         }
         
         /*
+         * REFINE the wallpaper, too!
+         */
+        if ([wallpaper characterAtIndex:0] != '/')
+        {
+            wallpaper = [themeRC.stringByDeletingLastPathComponent stringByAppendingPathComponent:wallpaper];
+        }
+        
+        /*
          * General properties
          * ==================
          */
