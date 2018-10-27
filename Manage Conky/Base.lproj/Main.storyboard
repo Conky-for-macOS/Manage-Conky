@@ -902,7 +902,7 @@
                             </searchField>
                             <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0yv-2q-UET">
                                 <rect key="frame" x="215" y="384" width="74" height="17"/>
-                                <buttonCell key="cell" type="inline" title="Ignore" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="fGd-ce-ChS">
+                                <buttonCell key="cell" type="inline" title="Hide" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="fGd-ce-ChS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
