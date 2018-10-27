@@ -100,19 +100,8 @@ void checkbox_registry_uncheck_all(void)
         fromDirectoryWidgets = [NSMutableArray array];
         searchDirectories = [NSMutableArray array];
         
-        /*
-         * Our ViewController already contains the infrastructure
-         * for getting the list of widgets in a directory; Use it
-         * to speed things up.
-         */
-        ViewController *vc = [[ViewController alloc] init];
-        [vc fillWidgetsThemesArrays];
-        
-        for (MCWidget *widget in vc.widgets)
-        {
-            [fromListWidgets addObject:widget.itemPath];
-        }
-        
+        [self populateFromListWidgetsArray];
+
         [_widgetsTableView setDelegate:self];
         [_widgetsTableView setDataSource:self];
 
@@ -130,6 +119,32 @@ void checkbox_registry_uncheck_all(void)
     [_widgetsTableView registerForDraggedTypes:@[NSFilenamesPboardType]]; /*  we only accept files with no-extension*/
 }
 
+/*
+ * FromListWidgets Array Manipulation
+ */
+- (void)populateFromListWidgetsArray
+{
+    /*
+     * Our ViewController already contains the infrastructure
+     * for getting the list of widgets in a directory; Use it
+     * to speed things up.
+     */
+    ViewController *vc = [[ViewController alloc] init];
+    [vc fillWidgetsThemesArrays];
+    
+    for (MCWidget *widget in vc.widgets)
+    {
+        [fromListWidgets addObject:widget.itemPath];
+    }
+    
+    [_widgetsTableView reloadData];
+}
+- (void)re_populateFromListWidgetsArray
+{
+    [fromListWidgets removeAllObjects];
+    [self populateFromListWidgetsArray];
+}
+
 - (IBAction)chooseWallpaper:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -141,8 +156,7 @@ void checkbox_registry_uncheck_all(void)
      */
     if ([panel runModal] == NSModalResponseOK)
     {
-        _wallpaper = [[[panel URLs] objectAtIndex:0] path];
-        
+        _wallpaper = panel.URL.path;
         [_wallpaperPathLabel setStringValue:_wallpaper];
         [_wallpaperPathLabel setTextColor:[NSColor grayColor]];
         [_wallpaperPathLabel setHidden:NO];
@@ -233,7 +247,7 @@ void checkbox_registry_uncheck_all(void)
 
 - (void)didSaveWidget
 {
-    
+    [self re_populateFromListWidgetsArray];
 }
 
 - (IBAction)createWidgetRightNow:(id)sender
@@ -303,7 +317,8 @@ void checkbox_registry_uncheck_all(void)
 
     /* prompt user whether to continue or not */
     NSAlert *approveWidgets = [[NSAlert alloc] init];
-    [approveWidgets setMessageText:@"Are you sure you want these Widgets in your Theme?"];
+    [approveWidgets setMessageText:@"You want these Widgets in your Theme?"];
+    [approveWidgets setInformativeText:@"Summary:"];
     [approveWidgets setAccessoryView:mgs];
     [approveWidgets setAlertStyle:NSAlertStyleCritical];
     [approveWidgets addButtonWithTitle:@"Actually, No"];
