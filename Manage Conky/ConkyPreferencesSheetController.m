@@ -449,10 +449,7 @@
         /*
          * Write the Additional Search Locations
          */
-        for (NSString *searchPath in _searchLocationsTableContents)
-        {
-            [[MCSettings sharedSettings] addAdditionalSearchPath:searchPath];
-        }
+        [[MCSettings sharedSettings] setAdditionalSearchPaths:_searchLocationsTableContents];
         
         /*
          * update backup keeper

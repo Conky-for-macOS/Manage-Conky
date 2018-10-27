@@ -94,6 +94,10 @@ BOOL isXquartzAndConkyInstalled()
         arr = [NSMutableArray arrayWithObject:path];
     [[NSUserDefaults standardUserDefaults] setObject:arr forKey:@"additionalSearchPaths"];
 }
+- (void)setAdditionalSearchPaths:(NSArray *)array
+{
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"additionalSearchPaths"];
+}
 
 - (void)setMainViewController:(ViewController *)vc
 {

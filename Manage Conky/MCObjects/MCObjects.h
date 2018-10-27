@@ -63,6 +63,7 @@ static const char *cMacScalingKeys[] = {
 - (NSString *)configsLocation;
 - (NSArray *)additionalSearchPaths;
 - (void)addAdditionalSearchPath:(NSString *)path;
+- (void)setAdditionalSearchPaths:(NSArray *)array;
 
 - (void)setMainViewController:(ViewController *)vc;
 - (ViewController *)mainViewController;
