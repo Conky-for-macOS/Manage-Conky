@@ -10,6 +10,7 @@
 		090F2836217168C400D9F406 /* NSString+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 090F2835217168C400D9F406 /* NSString+Empty.m */; };
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		09287A502184BC80001AB18A /* NSString+Relative.m in Sources */ = {isa = PBXBuildFile; fileRef = 09287A4F2184BC80001AB18A /* NSString+Relative.m */; };
+		09287A5E2184BF58001AB18A /* NSApplication+mainWindowForSure.m in Sources */ = {isa = PBXBuildFile; fileRef = 09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		09366F712166A67900157ECA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09366F702166A67900157ECA /* Preferences.xib */; };
 		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
@@ -172,6 +173,8 @@
 		092114A42084BE9A0098AC5D /* Changelog.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Changelog.rtf; path = "Supporting Files/Changelog.rtf"; sourceTree = "<group>"; };
 		09287A4E2184BC65001AB18A /* NSString+Relative.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+Relative.h"; path = "Extensions/NSString+Relative.h"; sourceTree = "<group>"; };
 		09287A4F2184BC80001AB18A /* NSString+Relative.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+Relative.m"; path = "Extensions/NSString+Relative.m"; sourceTree = "<group>"; };
+		09287A5C2184BF45001AB18A /* NSApplication+mainWindowForSure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSApplication+mainWindowForSure.h"; path = "Extensions/NSApplication+mainWindowForSure.h"; sourceTree = "<group>"; };
+		09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSApplication+mainWindowForSure.m"; path = "Extensions/NSApplication+mainWindowForSure.m"; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
 		09366F702166A67900157ECA /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				09287A4F2184BC80001AB18A /* NSString+Relative.m */,
 				EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */,
 				EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */,
+				09287A5C2184BF45001AB18A /* NSApplication+mainWindowForSure.h */,
+				09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -724,6 +729,7 @@
 				77B847401F62C2B600AF8BCA /* ViewController.m in Sources */,
 				09D8226D206F8FFC008BBFEB /* Shared.m in Sources */,
 				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
+				09287A5E2184BF58001AB18A /* NSApplication+mainWindowForSure.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
 				0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,

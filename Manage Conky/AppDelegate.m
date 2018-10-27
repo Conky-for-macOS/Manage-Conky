@@ -13,22 +13,9 @@
 #import "PFMoveApplication.h"
 #import "MCObjects/MCObjects.h"
 #import "PreferencesController.h"
+#import "Extensions/NSApplication+mainWindowForSure.h"
 
 @implementation AppDelegate
-
-- (NSWindow *)mainWindow
-{
-    /* ** USE THIS INSTEAD of [NSApp mainWindow] **
-     *
-     * WHY?
-     * [NSApp mainWindow] can be nil if mainWindow is hidden,
-     * (usually happens when you start ManageConky and immediately
-     * click away before it shows up)
-     * instead, getting the list of the app's windows and choosing
-     * the first should always return the mainWindow, hidden or not.
-     */
-    return [[NSApp windows] firstObject];
-}
 
 - (NSSize)windowWillResize:(NSWindow *) window toSize:(NSSize)newSize
 {
@@ -60,13 +47,13 @@
 #endif
 
     /* take care of resizing */
-    [[self mainWindow] setDelegate:self];
+    [[NSApp mainWindow] setDelegate:self];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     /* First window created is mainWindow; push it to our vector */
-    [[MCSettings sharedSettings] pushWindow:[self mainWindow]];
+    [[MCSettings sharedSettings] pushWindow:[NSApp mainWindow]];
 }
 
 - (IBAction)openPreferences:(id)sender
