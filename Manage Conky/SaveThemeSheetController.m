@@ -366,7 +366,7 @@ void checkbox_registry_uncheck_all(void)
     if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
     else [themerc setObject:_wallpaper forKey:@"wallpaper"];
     
-    [themerc setObject:_conkyConfigs forKey:@"conkyConfigs"];
+    [themerc setObject:_conkyConfigs forKey:@"configs"];
     [themerc setObject:_source forKey:@"source"];
     [themerc setObject:_creator forKey:@"creator"];
     [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
