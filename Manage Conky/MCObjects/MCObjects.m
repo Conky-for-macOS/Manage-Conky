@@ -375,11 +375,39 @@ BOOL isXquartzAndConkyInstalled()
 
     if (res)
     {
+        NSMutableArray *refinedConfigs = [NSMutableArray arrayWithArray:configs];
+
+        /*
+         * Preparation...
+         * =====================================================
+         * Here we manipulate the provided data before we create
+         * a theme object with these.
+         */
+        
+        /*
+         * Try to "REFINE" all relative paths to be fullpaths
+         */
+        for (NSString *config in configs)
+        {
+            if ([config characterAtIndex:0] != '/')
+            {
+                /*
+                 * OH! We have a relative path, lets fix this...
+                 * Internally, we only will use full paths
+                 */
+                NSUInteger index = [refinedConfigs indexOfObject:config];
+                refinedConfigs[index] = [NSString stringWithFormat:@"%@/%@", themeRC.stringByDeletingLastPathComponent, config];
+                
+                NSLog(@"REFINED %@", refinedConfigs[index]);
+            }
+        }
+        
         /*
          * General properties
+         * ==================
          */
         [res setThemeRC:themeRC];
-        [res setConkyConfigs:configs];
+        [res setConkyConfigs:refinedConfigs];
         [res setArguments:args];
         [res setStartupDelay:startupDelay];
         [res setWallpaper:wallpaper];
