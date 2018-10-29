@@ -539,9 +539,7 @@
     if (error)
         NSLog(@"ignore: %@", error);
 
-    [self emptyWidgetsThemesArrays];
-    [self fillWidgetsThemesArrays];
-    [_widgetsThemesTable reloadData];
+    [self updateWidgetsThemesArray];
 }
 
 - (IBAction)openInFinder:(id)sender

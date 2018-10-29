@@ -79,7 +79,7 @@
     {
         /* first try to read already written information */
 
-        _searchLocationsTableContents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
+        _searchLocationsTableContents = [[MCSettings sharedSettings] additionalSearchPaths];
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
@@ -100,7 +100,7 @@
         /*
          * Conky configsLocation textfield
          */
-        NSString *conkyConfigsPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+        NSString *conkyConfigsPath = [[MCSettings sharedSettings] configsLocation];
         [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
         _oldConfigsLocation = _conkyConfigLocationTextfield.stringValue;
         
@@ -320,6 +320,8 @@
 {
     NSString *senderID = [[obj object] identifier];
     
+    // XXX id should be a define...
+    
     if ([senderID isEqualToString:@"startupDelayField"])
     {
         [self enableMustInstallAgentMode];
@@ -421,12 +423,9 @@
             shownX11TakesAlotTimeWarning = YES;
         }
         
-        [MCSettingsHolder setConkyRunsAtStartup:YES];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:keepAlive]
-                                                  forKey:@"keepAlive"];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay_]
-                                                  forKey:@"startupDelay"];
+        [[MCSettings sharedSettings] setConkyRunsAtStartup:YES];
+        [[MCSettings sharedSettings] setKeepAliveConky:keepAlive];
+        [[MCSettings sharedSettings] setConkyStartupDelay:startupDelay_];
         
         [[NSApp mainWindow] setDocumentEdited:NO];
     }

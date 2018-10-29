@@ -17,7 +17,7 @@
  * Check if Xquartz and conky are installed
  * and if not, show an alert and return NO.
  */
-BOOL isXquartzAndConkyInstalled()
+BOOL isXquartzAndConkyInstalled(void)
 {
     BOOL res1 = (access(XQUARTZ, R_OK) == 0);
     BOOL res2 = (access(CONKY_SYMLINK.UTF8String, R_OK) == 0);
@@ -65,8 +65,7 @@ BOOL isXquartzAndConkyInstalled()
 
 - (void)setConkyRunsAtStartup:(BOOL)a
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
-                                              forKey:kMCRunConkyAtStartupKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCRunConkyAtStartupKey];
 }
 - (BOOL)conkyRunsAtStartup
 {
@@ -75,8 +74,7 @@ BOOL isXquartzAndConkyInstalled()
 
 - (void)setKeepAliveConky:(BOOL)a
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
-                                              forKey:kMCKeepAliveConkyKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCKeepAliveConkyKey];
 }
 - (BOOL)keepAliveConky
 {
@@ -85,8 +83,7 @@ BOOL isXquartzAndConkyInstalled()
 
 - (void)setConkyStartupDelay:(NSInteger)startupDelay
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay]
-                                              forKey:kMCConkyStartupDelayKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay] forKey:kMCConkyStartupDelayKey];
 }
 - (NSInteger)conkyStartupDelay
 {
@@ -95,8 +92,7 @@ BOOL isXquartzAndConkyInstalled()
 
 - (void)setConfigsLocation:(NSString *)a
 {
-    [[NSUserDefaults standardUserDefaults] setObject:a
-                                              forKey:kMCConkyConfigsLocationKey];
+    [[NSUserDefaults standardUserDefaults] setObject:a forKey:kMCConkyConfigsLocationKey];
 }
 - (NSString *)configsLocation
 {
@@ -773,14 +769,14 @@ BOOL isXquartzAndConkyInstalled()
      */
     for (NSString *config in _conkyConfigs)
     {
+        NSString *correctedConfig = MCNormalise(config);
         NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
         NSString *workingDirectory = [config stringByDeletingLastPathComponent];
         const BOOL keepAlive = YES;
+
         NSError *error = nil;
-        
-        NSString *correctedConfig = MCNormalise(config);
-        
+
         createLaunchAgent(label,
                           @[CONKY_SYMLINK, @"-c", correctedConfig],
                           keepAlive,
