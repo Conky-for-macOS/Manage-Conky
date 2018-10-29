@@ -66,59 +66,59 @@ BOOL isXquartzAndConkyInstalled()
 - (void)setConkyRunsAtStartup:(BOOL)a
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
-                                              forKey:@"runConkyAtStartup"];
+                                              forKey:kMCRunConkyAtStartupKey];
 }
 - (BOOL)conkyRunsAtStartup
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCRunConkyAtStartupKey] boolValue];
 }
 
 - (void)setKeepAliveConky:(BOOL)a
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
-                                              forKey:@"keepAlive"];
+                                              forKey:kMCKeepAliveConkyKey];
 }
 - (BOOL)keepAliveConky
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCKeepAliveConkyKey] boolValue];
 }
 
 - (void)setConkyStartupDelay:(NSInteger)startupDelay
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay]
-                                              forKey:@"startupDelay"];
+                                              forKey:kMCConkyStartupDelayKey];
 }
 - (NSInteger)conkyStartupDelay
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"starupDelay"] integerValue];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyStartupDelayKey] integerValue];
 }
 
 - (void)setConfigsLocation:(NSString *)a
 {
     [[NSUserDefaults standardUserDefaults] setObject:a
-                                              forKey:@"configsLocation"];
+                                              forKey:kMCConkyConfigsLocationKey];
 }
 - (NSString *)configsLocation
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"configsLocation"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyConfigsLocationKey];
 }
 
 - (NSArray *)additionalSearchPaths
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyAdditionalSearchPathsKey];
 }
 - (void)addAdditionalSearchPath:(NSString *)path
 {
-    NSMutableArray *arr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"additionalSearchPaths"] mutableCopy];
+    NSMutableArray *arr = [[[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyAdditionalSearchPathsKey] mutableCopy];
     if (arr)
         [arr addObject:path];
     else
         arr = [NSMutableArray arrayWithObject:path];
-    [[NSUserDefaults standardUserDefaults] setObject:arr forKey:@"additionalSearchPaths"];
+    [[NSUserDefaults standardUserDefaults] setObject:arr forKey:kMCConkyAdditionalSearchPathsKey];
 }
 - (void)setAdditionalSearchPaths:(NSArray *)array
 {
-    [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"additionalSearchPaths"];
+    [[NSUserDefaults standardUserDefaults] setObject:array forKey:kMCConkyAdditionalSearchPathsKey];
 }
 
 - (void)setMainViewController:(ViewController *)vc

@@ -25,6 +25,12 @@ static const NSString *kMCThemeSourceKey = @"source";
 static const NSString *kMCThemeCreatorKey = @"creator";
 static const NSString *kMCThemeScalingKey = @"scaling";
 
+static NSString *kMCRunConkyAtStartupKey = @"runConkyAtStartup";
+static NSString *kMCKeepAliveConkyKey = @"keepAlive";
+static NSString *kMCConkyStartupDelayKey = @"startupDelay";
+static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
+static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
+
 typedef enum : NSUInteger
 {
     FillScreen = 0,
