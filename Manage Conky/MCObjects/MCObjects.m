@@ -215,7 +215,7 @@ BOOL isXquartzAndConkyInstalled()
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"MCOldWallpaper"];
 }
-- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
+- (BOOL)setWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
 {
     /*
      * based on https://github.com/sindresorhus/macos-wallpaper
@@ -786,7 +786,9 @@ BOOL isXquartzAndConkyInstalled()
     /*
      * Apply new wallpaper
      */
-    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];
+    [MCSettingsHolder setWallpaper:_wallpaper
+                       withScaling:_scaling
+                             error:&err];
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
@@ -829,7 +831,14 @@ BOOL isXquartzAndConkyInstalled()
     /*
      * Revert to old wallpaper
      */
-    [MCSettingsHolder applyWallpaper:[MCSettingsHolder oldWallpaper] withScaling:FillScreen error:nil];
+    NSError *error = nil;
+    [MCSettingsHolder setWallpaper:[MCSettingsHolder oldWallpaper]
+                       withScaling:FillScreen
+                             error:&error];
+    if (error)
+    {
+        NSLog(@"%@", error);
+    }
     
     _isEnabled = NO;
 }

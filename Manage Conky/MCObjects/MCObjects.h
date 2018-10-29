@@ -11,7 +11,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class ViewController;
+/* defines */
+#define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
 /*
  * Conky ThemeRC (Plist) Keys
@@ -46,8 +47,7 @@ static const char *cMacScalingKeys[] = {
     "Tile",
 };
 
-/* defines */
-#define MC_PID_NOT_SET (-100)   /* pid not yet set */
+@class ViewController;
 
 /**
  * MCSettings
@@ -64,9 +64,10 @@ static const char *cMacScalingKeys[] = {
 
 + (instancetype)sharedSettings;
 
-//
-// Special getters and setters
-//
+/*
+ * General Conky Settings
+ * ======================
+ */
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
 
@@ -114,6 +115,7 @@ static const char *cMacScalingKeys[] = {
 
 /*
  * Vector of Windows -- Used for always knowing current window
+ * ===========================================================
  * (push/pop/current)
  */
 - (void)pushWindow:(NSWindow *)window;
@@ -122,6 +124,7 @@ static const char *cMacScalingKeys[] = {
 
 /*
  * Mac Wallpaper Manipulation
+ * ==========================
  */
 /**
  * Returns current wallpaper used
@@ -143,7 +146,7 @@ static const char *cMacScalingKeys[] = {
  * `wallpaper` (path), with scaling options and
  * error message.
  */
-- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error;
+- (BOOL)setWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error;
 /**
  * Returns `YES` if the wallpaper given is not used
  * by any of the User's MCThemes!
