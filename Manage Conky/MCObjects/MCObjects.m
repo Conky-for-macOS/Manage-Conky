@@ -201,6 +201,63 @@ BOOL isXquartzAndConkyInstalled()
 - (void)popWindow                           { [windowVector removeLastObject]; }
 - (NSWindow *)currentWindow                 { return [windowVector lastObject]; }
 
+/* Wallpaper */
+- (NSString *)wallpaper
+{
+    return [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:NSScreen.mainScreen].path;
+}
+- (void)setOldWallpaper:(NSString *)old
+{
+    [[NSUserDefaults standardUserDefaults] setObject:old forKey:@"MCOldWallpaper"];
+}
+- (NSString *)oldWallpaper
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"MCOldWallpaper"];
+}
+- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
+{
+    /*
+     * based on https://github.com/sindresorhus/macos-wallpaper
+     */
+    
+    NSWorkspace *sw = [NSWorkspace sharedWorkspace];
+    NSScreen *screen = [NSScreen mainScreen];
+    NSMutableDictionary *so = [sw desktopImageOptionsForScreen:screen].mutableCopy;
+    
+    switch (scaling)
+    {
+        case FillScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case FitToScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case StretchToFillScreen:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleAxesIndependently] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case Centre:
+            [so setObject:[NSNumber numberWithInt:NSImageScaleNone] forKey:NSWorkspaceDesktopImageScalingKey];
+            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
+            break;
+        case Tile:
+            // TODO: to emulate the tiling behaviour,
+            //  probably we could create a new .png with the wallpaper
+            //  small tiles (create the tiling ourselves).
+            //  Then, load the custom wallpaper.
+            break;
+        case MAX_SCALING_KEYS:
+        default:
+            break;
+    }
+    
+    return [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
+                        forScreen:screen
+                          options:so
+                            error:error];
+}
 @end
 
 @implementation MCWidgetOrTheme
@@ -650,52 +707,6 @@ BOOL isXquartzAndConkyInstalled()
     return modernKey;
 }
 
-- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
-{
-    /*
-     * based on https://github.com/sindresorhus/macos-wallpaper
-     */
-    
-    NSWorkspace *sw = [NSWorkspace sharedWorkspace];
-    NSScreen *screen = [NSScreen mainScreen];
-    NSMutableDictionary *so = [sw desktopImageOptionsForScreen:screen].mutableCopy;
-
-    switch (scaling)
-    {
-        case FillScreen:
-            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
-            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
-            break;
-        case FitToScreen:
-            [so setObject:[NSNumber numberWithInt:NSImageScaleProportionallyUpOrDown] forKey:NSWorkspaceDesktopImageScalingKey];
-            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
-            break;
-        case StretchToFillScreen:
-            [so setObject:[NSNumber numberWithInt:NSImageScaleAxesIndependently] forKey:NSWorkspaceDesktopImageScalingKey];
-            [so setObject:[NSNumber numberWithBool:YES] forKey:NSWorkspaceDesktopImageAllowClippingKey];
-            break;
-        case Centre:
-            [so setObject:[NSNumber numberWithInt:NSImageScaleNone] forKey:NSWorkspaceDesktopImageScalingKey];
-            [so setObject:[NSNumber numberWithBool:NO] forKey:NSWorkspaceDesktopImageAllowClippingKey];
-            break;
-        case Tile:
-            // TODO: to emulate the tiling behaviour,
-            //  probably we could create a new .png with the wallpaper
-            //  small tiles (create the tiling ourselves).
-            //  Then, load the custom wallpaper.
-            break;
-        case MAX_SCALING_KEYS:
-        default:
-            break;
-    }
-    
-    return [sw setDesktopImageURL:[NSURL fileURLWithPath:wallpaper]
-                        forScreen:screen
-                          options:so
-                            error:error];
-}
-
-
 /**
  * enable
  *
@@ -754,7 +765,7 @@ BOOL isXquartzAndConkyInstalled()
      * Apply wallpaper
      */
     NSError *err = nil;
-    [self applyWallpaper:_wallpaper withScaling:_scaling error:&err];
+    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);

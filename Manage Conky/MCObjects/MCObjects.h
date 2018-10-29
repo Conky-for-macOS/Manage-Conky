@@ -119,6 +119,32 @@ static const char *cMacScalingKeys[] = {
 - (void)pushWindow:(NSWindow *)window;
 - (void)popWindow;
 - (NSWindow *)currentWindow;
+
+/*
+ * Mac Wallpaper Manipulation
+ */
+/**
+ * Returns current wallpaper used
+ */
+- (NSString *)wallpaper;
+/**
+ * Sets a record of the image used as current
+ * wallpaper, soon to be replaced by MCTheme
+ * wallpaper.
+ */
+- (void)setOldWallpaper:(NSString *)old;
+/**
+ * Returns path to the image used as wallpaper before
+ * applying the current MCTheme.
+ */
+- (NSString *)oldWallpaper;
+/**
+ * Sets desktop wallpaper using image located in
+ * `wallpaper` (path), with scaling options and
+ * error message.
+ */
+- (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error;
+
 @end
 
 //
