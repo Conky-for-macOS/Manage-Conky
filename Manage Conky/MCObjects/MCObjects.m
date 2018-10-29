@@ -73,6 +73,26 @@ BOOL isXquartzAndConkyInstalled()
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"runConkyAtStartup"] boolValue];
 }
 
+- (void)setKeepAliveConky:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a]
+                                              forKey:@"keepAlive"];
+}
+- (BOOL)keepAliveConky
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+}
+
+- (void)setConkyStartupDelay:(NSInteger)startupDelay
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:startupDelay]
+                                              forKey:@"startupDelay"];
+}
+- (NSInteger)conkyStartupDelay
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"starupDelay"] integerValue];
+}
+
 - (void)setConfigsLocation:(NSString *)a
 {
     [[NSUserDefaults standardUserDefaults] setObject:a
@@ -337,8 +357,8 @@ BOOL isXquartzAndConkyInstalled()
      */
     if ([MCSettingsHolder conkyRunsAtStartup])
     {
-        NSInteger startupDelay = [[[NSUserDefaults standardUserDefaults] objectForKey:@"startupDelay"] integerValue];
-        BOOL keepAlive = [[[NSUserDefaults standardUserDefaults] objectForKey:@"keepAlive"] boolValue];
+        NSInteger startupDelay = [MCSettingsHolder conkyStartupDelay];
+        BOOL keepAlive = [MCSettingsHolder keepAliveConky];
 
         /*
          * setup the LaunchAgent

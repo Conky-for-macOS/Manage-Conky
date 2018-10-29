@@ -71,6 +71,12 @@ static const char *cMacScalingKeys[] = {
 - (void)setConkyRunsAtStartup:(BOOL)a;
 - (BOOL)conkyRunsAtStartup;
 
+- (void)setKeepAliveConky:(BOOL)a;
+- (BOOL)keepAliveConky;
+
+- (void)setConkyStartupDelay:(NSInteger)startupDelay;
+- (NSInteger)conkyStartupDelay;
+
 - (void)setConfigsLocation:(NSString *)a;
 - (NSString *)configsLocation;
 - (NSArray *)additionalSearchPaths;
