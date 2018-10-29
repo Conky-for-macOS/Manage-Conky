@@ -765,7 +765,14 @@ BOOL isXquartzAndConkyInstalled()
      * Apply wallpaper
      */
     NSError *err = nil;
-    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];
+    
+    //
+    // XXX remember old wallpaper ONLY if it is not one of the ones used by MCThemes
+    //
+    if ([MCSettingsHolder wallpaper])
+        [MCSettingsHolder setOldWallpaper:[MCSettingsHolder wallpaper]];    /* remember old wallpaper */
+    
+    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];   /* apply new  */
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
@@ -803,8 +810,13 @@ BOOL isXquartzAndConkyInstalled()
      * Delete the lock
      */
     NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
-    
     unlink([lock UTF8String]);
+    
+    /*
+     * Revert to old wallpaper
+     */
+    // XXX probably provide some way to set the scaling correct, too!
+    [MCSettingsHolder applyWallpaper:[MCSettingsHolder oldWallpaper] withScaling:FillScreen error:nil];
     
     _isEnabled = NO;
 }
