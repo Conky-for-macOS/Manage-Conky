@@ -73,6 +73,7 @@
 //
 
 - (NSMutableArray *)widgets { return widgetsArray; }
+- (NSMutableArray *)themes { return themesArray; }
 - (void)createWidgetsArray  { widgetsArray = [NSMutableArray array]; }
 
 - (void)emptyWidgetsThemesArrays

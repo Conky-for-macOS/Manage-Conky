@@ -8,6 +8,7 @@
 
 #import "Shared.h"  // createUserLaunchAgentsDirectory(), MCDirectory()
 #import "MCObjects.h"
+#import "../ViewController.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
 #import "../Extensions/NSString+Relative.h"
@@ -257,6 +258,19 @@ BOOL isXquartzAndConkyInstalled()
                         forScreen:screen
                           options:so
                             error:error];
+}
+- (BOOL)wallpaperIsNotFromMCTheme:(NSString *)wallpaper
+{
+    ViewController *vc = [[ViewController alloc] init];
+    [vc fillWidgetsThemesArrays];
+    for (MCTheme *theme in vc.themes)
+    {
+        /* Ok, wallpaper passed is an MCTheme wallpaper */
+        if ([theme.wallpaper isEqualToString:wallpaper])
+            return NO;
+    }
+    /* Ok, wallpaper passed is a wallpaper set by user himself */
+    return YES;
 }
 @end
 
@@ -760,19 +774,19 @@ BOOL isXquartzAndConkyInstalled()
             return;
         }
     }
-    
-    /*
-     * Apply wallpaper
-     */
+
     NSError *err = nil;
     
-    //
-    // XXX remember old wallpaper ONLY if it is not one of the ones used by MCThemes
-    //
-    if ([MCSettingsHolder wallpaper])
-        [MCSettingsHolder setOldWallpaper:[MCSettingsHolder wallpaper]];    /* remember old wallpaper */
-    
-    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];   /* apply new  */
+    /*
+     * Remember old wallpaper (but, ONLY if it is not one of the ones used by MCThemes)
+     */
+    if ([MCSettingsHolder wallpaper] && [MCSettingsHolder wallpaperIsNotFromMCTheme:[MCSettingsHolder wallpaper]])
+        [MCSettingsHolder setOldWallpaper:[MCSettingsHolder wallpaper]];
+
+    /*
+     * Apply new wallpaper
+     */
+    [MCSettingsHolder applyWallpaper:_wallpaper withScaling:_scaling error:&err];
     if (err)
     {
         NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
@@ -815,7 +829,6 @@ BOOL isXquartzAndConkyInstalled()
     /*
      * Revert to old wallpaper
      */
-    // XXX probably provide some way to set the scaling correct, too!
     [MCSettingsHolder applyWallpaper:[MCSettingsHolder oldWallpaper] withScaling:FillScreen error:nil];
     
     _isEnabled = NO;

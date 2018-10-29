@@ -144,6 +144,11 @@ static const char *cMacScalingKeys[] = {
  * error message.
  */
 - (BOOL)applyWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error;
+/**
+ * Returns `YES` if the wallpaper given is not used
+ * by any of the User's MCThemes!
+ */
+- (BOOL)wallpaperIsNotFromMCTheme:(NSString *)wallpaper;
 
 @end
 
