@@ -15,6 +15,15 @@
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
 
 /*
+ * Conky Basic Configuration Keys
+ */
+static NSString *kMCRunConkyAtStartupKey = @"runConkyAtStartup";
+static NSString *kMCKeepAliveConkyKey = @"keepAlive";
+static NSString *kMCConkyStartupDelayKey = @"startupDelay";
+static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
+static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
+
+/*
  * Conky ThemeRC (Plist) Keys
  */
 static const NSString *kMCThemeStartupDelayKey = @"startupDelay";
@@ -25,11 +34,10 @@ static const NSString *kMCThemeSourceKey = @"source";
 static const NSString *kMCThemeCreatorKey = @"creator";
 static const NSString *kMCThemeScalingKey = @"scaling";
 
-static NSString *kMCRunConkyAtStartupKey = @"runConkyAtStartup";
-static NSString *kMCKeepAliveConkyKey = @"keepAlive";
-static NSString *kMCConkyStartupDelayKey = @"startupDelay";
-static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
-static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
+/*
+ * Misc Keys
+ */
+static const NSString *kMCOldWallpaperKey = @"MCOldWallpaper";
 
 typedef enum : NSUInteger
 {

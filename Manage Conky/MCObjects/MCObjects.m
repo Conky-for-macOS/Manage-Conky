@@ -225,11 +225,11 @@ BOOL isXquartzAndConkyInstalled(void)
 }
 - (void)setOldWallpaper:(NSString *)old
 {
-    [[NSUserDefaults standardUserDefaults] setObject:old forKey:@"MCOldWallpaper"];
+    [[NSUserDefaults standardUserDefaults] setObject:old forKey:kMCOldWallpaperKey];
 }
 - (NSString *)oldWallpaper
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"MCOldWallpaper"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCOldWallpaperKey];
 }
 - (BOOL)setWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
 {
