@@ -13,6 +13,17 @@
 
 @class ViewController;
 
+/*
+ * Conky ThemeRC (Plist) Keys
+ */
+static const NSString *kMCThemeStartupDelayKey = @"startupDelay";
+static const NSString *kMCThemeConfigsKey = @"configs";
+static const NSString *kMCThemeArgumentsKey = @"args";
+static const NSString *kMCThemeWallpaperKey = @"wallpaper";
+static const NSString *kMCThemeSourceKey = @"source";
+static const NSString *kMCThemeCreatorKey = @"creator";
+static const NSString *kMCThemeScalingKey = @"scaling";
+
 typedef enum : NSUInteger
 {
     FillScreen = 0,

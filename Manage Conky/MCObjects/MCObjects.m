@@ -34,7 +34,7 @@ BOOL isXquartzAndConkyInstalled()
     if (!res2)
     {
         [alert setMessageText:@"conky is missing!"];
-        [alert setInformativeText:@"You need to reinstall conky from `Conky Preferences`->`Install conky`"];
+        [alert setInformativeText:@"You need to reinstall conky from `Conky Preferences`→`Install conky`"];
         [alert setAlertStyle:NSAlertStyleCritical];
         [alert runModal];
     }
@@ -476,10 +476,10 @@ BOOL isXquartzAndConkyInstalled()
          * Doing it the ManageConky way...
          */
         NSDictionary *rc = [NSDictionary dictionaryWithContentsOfFile:themeRC];
-        startupDelay = [[rc objectForKey:@"startupDelay"] integerValue];
+        startupDelay = [[rc objectForKey:kMCThemeStartupDelayKey] integerValue];
         
         /* Try to standardize paths read first. */
-        NSMutableArray *conkyConfigsUnstandardized = [rc valueForKey:@"configs"];   // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        NSMutableArray *conkyConfigsUnstandardized = [rc valueForKey:kMCThemeConfigsKey];   // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
 
         for (NSUInteger i = 0; i < [conkyConfigsUnstandardized count]; i++)
         {
@@ -487,11 +487,11 @@ BOOL isXquartzAndConkyInstalled()
         }
 
         conkyConfigs = [conkyConfigsUnstandardized copy];   /* now write them standardized */
-        arguments = [rc valueForKey:@"args"];   /* must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig */
-        wallpaper = [[rc objectForKey:@"wallpaper"] stringByExpandingTildeInPath];
-        source = [rc objectForKey:@"source"];
-        creator = [rc objectForKey:@"creator"];
-        strScaling = [rc objectForKey:@"scaling"];
+        arguments = [rc valueForKey:kMCThemeArgumentsKey];   /* must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig */
+        wallpaper = [[rc objectForKey:kMCThemeWallpaperKey] stringByExpandingTildeInPath];
+        source = [rc objectForKey:kMCThemeSourceKey];
+        creator = [rc objectForKey:kMCThemeCreatorKey];
+        strScaling = [rc objectForKey:kMCThemeScalingKey];
     }
     else
     {

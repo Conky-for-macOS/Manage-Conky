@@ -174,7 +174,7 @@ void checkbox_registry_uncheck_all(void)
      */
     if ([panel runModal] == NSModalResponseOK)
     {
-        _preview = [[[panel URLs] objectAtIndex:0] path];
+        _preview = panel.URL.path;
     }
 }
 
@@ -378,13 +378,13 @@ void checkbox_registry_uncheck_all(void)
     /*
      * Create ThemeRC
      */
-    if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:@"wallpaper"];
-    else [themerc setObject:_wallpaper forKey:@"wallpaper"];
+    if (_relative) [themerc setObject:_wallpaper.lastPathComponent forKey:kMCThemeWallpaperKey];
+    else [themerc setObject:_wallpaper forKey:kMCThemeWallpaperKey];
     
-    [themerc setObject:_conkyConfigs forKey:@"configs"];
-    [themerc setObject:_source forKey:@"source"];
-    [themerc setObject:_creator forKey:@"creator"];
-    [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:@"scaling"];
+    [themerc setObject:_conkyConfigs forKey:kMCThemeConfigsKey];
+    [themerc setObject:_source forKey:kMCThemeSourceKey];
+    [themerc setObject:_creator forKey:kMCThemeCreatorKey];
+    [themerc setObject:[NSString stringWithUTF8String:cMacScalingKeys[_scaling]] forKey:kMCThemeScalingKey];
     
     /* Write ThemeRC */
     [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
