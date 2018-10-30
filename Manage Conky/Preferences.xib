@@ -41,7 +41,7 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
-DQ
+Gw
 </string>
                         </buttonCell>
                         <connections>

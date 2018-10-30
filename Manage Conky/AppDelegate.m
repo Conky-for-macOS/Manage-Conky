@@ -58,7 +58,13 @@
 
 - (IBAction)openPreferences:(id)sender
 {
-    [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedSettings].currentWindow];
+    NSString *currentWindowNibName = [MCSettings sharedSettings].currentWindow.windowController.windowNibName;
+    
+    /*
+     * Load Preferences sheet only if not already loaded!
+     */
+    if (![currentWindowNibName isEqualToString:@"Preferences"])
+        [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedSettings].currentWindow];
 }
 
 @end
