@@ -22,7 +22,7 @@ Make sure to take care of the ["Requirements"](https://github.com/Conky-for-macO
 
 ## BUILD 🏗
 
-Follow [this](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build) (relatively) small guide.
+Follow [this](https://github.com/Conky-for-macOS/Manage-Conky/wiki/Build-or-Maintain) (relatively) small guide.
 
 ## Need Help? 💉
 
