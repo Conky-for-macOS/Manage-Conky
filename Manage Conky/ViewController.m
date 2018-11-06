@@ -314,8 +314,8 @@
     /*
      * show the preview
      */
-    [previewPopover showRelativeToRect:[[notification object] bounds]
-                                ofView:[notification object]
+    [previewPopover showRelativeToRect:[[NSApp mainWindow] contentView].bounds
+                                ofView:[[NSApp mainWindow] contentView]
                          preferredEdge:NSMaxXEdge];
 }
 
