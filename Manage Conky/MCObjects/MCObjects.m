@@ -129,6 +129,15 @@ BOOL isXquartzAndConkyInstalled(void)
     return mainViewController;
 }
 
+- (void)setCanResizeWindow:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCCanResizeWindow];
+}
+- (BOOL)canResizeWindow
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCCanResizeWindow];
+}
+
 - (void)installManageConkyFilesystem
 {
     NSError *error = nil;

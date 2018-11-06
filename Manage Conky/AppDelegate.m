@@ -19,14 +19,12 @@
 
 - (NSSize)windowWillResize:(NSWindow *) window toSize:(NSSize)newSize
 {
-    NSNumber *b = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
-    return (!b || b.boolValue) ? newSize : [window frame].size;
+    return [[MCSettings sharedSettings] canResizeWindow] ? newSize : [window frame].size;
 }
 
 - (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)newFrame
 {
-    NSNumber *b = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
-    return (!b) ? NO : b.boolValue;
+    return [[MCSettings sharedSettings] canResizeWindow];
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
@@ -58,13 +56,15 @@
 
 - (IBAction)openPreferences:(id)sender
 {
+#define PREFERENCES_SHEET_NIB @"Preferences"
+    
     NSString *currentWindowNibName = [MCSettings sharedSettings].currentWindow.windowController.windowNibName;
     
     /*
      * Load Preferences sheet only if not already loaded!
      */
-    if (![currentWindowNibName isEqualToString:@"Preferences"])
-        [[[PreferencesController alloc] initWithWindowNibName:@"Preferences"] loadOnWindow:[MCSettings sharedSettings].currentWindow];
+    if (![currentWindowNibName isEqualToString:PREFERENCES_SHEET_NIB])
+        [[[PreferencesController alloc] initWithWindowNibName:PREFERENCES_SHEET_NIB] loadOnWindow:[MCSettings sharedSettings].currentWindow];
 }
 
 @end

@@ -22,6 +22,7 @@ static NSString *kMCKeepAliveConkyKey = @"keepAlive";
 static NSString *kMCConkyStartupDelayKey = @"startupDelay";
 static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
 static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
+static NSString *kMCCanResizeWindow = @"CanResizeWindow";
 
 /*
  * Conky ThemeRC (Plist) Keys
@@ -99,6 +100,9 @@ static const char *cMacScalingKeys[] = {
 
 - (void)setMainViewController:(ViewController *)vc;
 - (ViewController *)mainViewController;
+
+- (void)setCanResizeWindow:(BOOL)a;
+- (BOOL)canResizeWindow;
 
 /*
  * Logfile
