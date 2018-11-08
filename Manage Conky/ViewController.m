@@ -585,16 +585,12 @@
         return;
     
     NSInteger row = [_widgetsThemesTable selectedRow];
-    
     if (row < 0)
         return;
     
     MCWidget *widget = [widgetsArray objectAtIndex:row];
-
-    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-
+    
     NSURL *url = [NSURL fileURLWithPath:CONKYX];
-
     if (!url)
         return;
 
@@ -603,10 +599,10 @@
                            [widget itemPath],
                            ];
     
-    [workspace launchApplicationAtURL:url
-                              options:0
-                        configuration:[NSDictionary dictionaryWithObject:arguments forKey:NSWorkspaceLaunchConfigurationArguments]
-                                error:&error];
+    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
+                                                  options:0
+                                            configuration:[NSDictionary dictionaryWithObject:arguments forKey:NSWorkspaceLaunchConfigurationArguments]
+                                                    error:&error];
 
     if (error)
         NSLog(@"%@", error);

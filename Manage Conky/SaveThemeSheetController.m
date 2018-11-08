@@ -83,35 +83,59 @@ void checkbox_registry_uncheck_all(void)
 @end
 
 @implementation SaveThemeSheetController
-- (id)initWithWindowNibName:(NSString *)nibName;
+
+- (void)basicInitialisation
+{
+    /*
+     * Basic initialisation
+     */
+    _scaling = FillScreen;
+    _relative = YES;
+    
+    _conkyConfigs = [NSMutableArray array];
+    _conkyConfigsPaths = [NSMutableArray array];
+    fromListWidgets = [NSMutableArray array];
+    fromDirectoryWidgets = [NSMutableArray array];
+    searchDirectories = [NSMutableArray array];
+    
+    [self populateFromListWidgetsArray];
+    
+    [_widgetsTableView setDelegate:self];
+    [_widgetsTableView setDataSource:self];
+    
+    selectedView = MC_FROM_LIST;
+}
+
+- (id)initWithWindowNibName:(NSString *)nibName
 {
     self = [super initWithWindowNibName:nibName];
+    if (self) { [self basicInitialisation]; }
+    return self;
+}
+
+- (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode
+{
+    /* we implement a custom init function, this DOES it! */
+    self = [super initWithWindowNibName:nibName andMode:mode];
     if (self)
     {
-        /*
-         * Basic initialisation
-         */
-        _scaling = FillScreen;
-        _relative = YES;
-        
-        _conkyConfigs = [NSMutableArray array];
-        _conkyConfigsPaths = [NSMutableArray array];
-        fromListWidgets = [NSMutableArray array];
-        fromDirectoryWidgets = [NSMutableArray array];
-        searchDirectories = [NSMutableArray array];
-        
-        [self populateFromListWidgetsArray];
-
-        [_widgetsTableView setDelegate:self];
-        [_widgetsTableView setDataSource:self];
-
-        selectedView = MC_FROM_LIST;
+        [self basicInitialisation];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
+    if (self.mode == 10)
+    {
+        [_themeNameLabel removeFromSuperview];
+        [_themeCreatorLabel removeFromSuperview];
+        [_themeSourceLabel removeFromSuperview];
+        
+        [_horizontalLineOne removeFromSuperview];
+        [_horizontalLineTwo removeFromSuperview];
+    }
+
     /* popup button */
     for (int i = 0; i < MAX_SCALING_KEYS; i++)
         [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];
@@ -214,31 +238,6 @@ void checkbox_registry_uncheck_all(void)
 - (IBAction)clear:(id)sender
 {
     return; // XXX code is still quite buggy
-    
-    /*
-     * Clear TextFields and
-     */
-    _themeNameField.stringValue = @"";
-    _themeCreatorField.stringValue = @"";
-    _themeSourceField.stringValue = @"";
-    [_scalingPopUpButton selectItemWithTag:0];
-    _wallpaperPathLabel.stringValue = @"";
-    
-    /*
-     * Uncheck checkboxes
-     */
-    checkbox_registry_uncheck_all();
-
-    /*
-     * Empty some arrays
-     */
-    [fromDirectoryWidgets removeAllObjects];
-    [_conkyConfigsPaths removeAllObjects];
-    
-    /*
-     * Show changes to tableview
-     */
-    [_widgetsTableView reloadData];
 }
 
 //

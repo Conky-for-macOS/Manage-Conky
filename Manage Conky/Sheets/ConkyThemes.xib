@@ -59,7 +59,7 @@
                         <rect key="frame" x="20" y="59" width="440" height="5"/>
                     </box>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EsE-TR-tlW">
-                        <rect key="frame" x="427.5" y="19" width="34" height="23"/>
+                        <rect key="frame" x="428" y="19" width="33" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="UTG-z6-DYm"/>
                         </constraints>
@@ -93,6 +93,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="createThemepack:" target="-2" id="OKB-6R-XpE"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

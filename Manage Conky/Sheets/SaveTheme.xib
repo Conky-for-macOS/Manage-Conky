@@ -8,10 +8,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SaveThemeSheetController">
             <connections>
+                <outlet property="horizontalLineOne" destination="iy2-wJ-dj9" id="LbT-sx-LZT"/>
+                <outlet property="horizontalLineTwo" destination="2se-WR-a4L" id="WMn-74-3Yn"/>
                 <outlet property="scalingPopUpButton" destination="c3C-a5-NHR" id="3tz-Sj-PBi"/>
                 <outlet property="themeCreatorField" destination="UpE-mi-1hC" id="KCd-yc-sxy"/>
+                <outlet property="themeCreatorLabel" destination="gAY-Kx-PUi" id="yRr-SI-aP2"/>
                 <outlet property="themeNameField" destination="gS3-yf-Kw0" id="M5M-yg-r71"/>
+                <outlet property="themeNameLabel" destination="xV0-2h-ryU" id="WsM-3s-sR5"/>
                 <outlet property="themeSourceField" destination="g8n-H5-ALa" id="jk7-D4-GPe"/>
+                <outlet property="themeSourceLabel" destination="JEj-ET-u7I" id="gSi-lo-A1a"/>
                 <outlet property="wallpaperPathLabel" destination="nLd-Sz-71Y" id="Scs-Sl-sIK"/>
                 <outlet property="widgetsTableView" destination="S7f-YJ-rg9" id="z53-mL-L4Q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NmD-az-POr"/>

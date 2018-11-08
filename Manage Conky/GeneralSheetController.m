@@ -17,6 +17,13 @@
     return self;
 }
 
+- (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode
+{
+    self = [super initWithWindowNibName:nibName];
+    self.mode = mode;
+    return self;
+}
+
 - (void)loadOnWindow:(NSWindow *)_targetWindow
 {
     self.targetWindow = _targetWindow;

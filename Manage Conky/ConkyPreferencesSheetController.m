@@ -77,9 +77,11 @@
     
     if (conkyXInstalled && conkyInstalled)
     {
-        /* first try to read already written information */
+        /*
+         * first try to read already written information
+         */
 
-        _searchLocationsTableContents = [[MCSettings sharedSettings] additionalSearchPaths];
+        _searchLocationsTableContents = [MCSettings sharedSettings].additionalSearchPaths.mutableCopy;
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
@@ -391,8 +393,7 @@
     
     if (mustDisableConkyForStartup)
     {
-        /* revert */
-        mustDisableConkyForStartup = NO;
+        mustDisableConkyForStartup = NO;    /* revert */
         
         unlink([conkyAgentPlistPath UTF8String]);
         
@@ -400,8 +401,7 @@
     }
     else if (mustEnableConkyForStartup)
     {
-        /* revert */
-        mustEnableConkyForStartup = NO;
+        mustEnableConkyForStartup = NO; /* revert */
         
         NSWindow *sheet = self.window;
         NSInteger startupDelay_ = [_startupDelayField integerValue];
@@ -436,8 +436,7 @@
      */
     if (mustAddSearchPaths)
     {
-        /* revert */
-        mustAddSearchPaths = NO;
+        mustAddSearchPaths = NO;    /* revert */
         
         /*
          * Write Standard Configs Location

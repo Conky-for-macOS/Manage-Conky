@@ -10,9 +10,14 @@
 
 @interface GeneralSheetController : NSWindowController
 
+@property NSUInteger mode;  /*
+                             * some of our sheets implement different behavior
+                             * based on the mode you set! :)
+                             */
 @property NSWindow *targetWindow;
 
 - (id)initWithWindowNibName:(NSString *)nibName;
+- (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode;
 - (void)loadOnWindow:(NSWindow *)_targetWindow;
 - (IBAction)close:(id)sender;
 
