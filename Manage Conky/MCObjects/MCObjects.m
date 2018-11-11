@@ -43,6 +43,52 @@ BOOL isXquartzAndConkyInstalled(void)
     return (res1 && res2);
 }
 
+/*
+ * Logging
+ * =======
+ */
+BOOL shouldLogToFile = NO;
+NSString *logfile = nil;
+void NPLog(NSString *format, ...)
+{
+    va_list vargs;
+    va_start(vargs, format);
+    NSString* formattedMessage = [[NSString alloc] initWithFormat:format arguments:vargs];
+    va_end(vargs);
+    
+    if (shouldLogToFile)
+    {
+        NSError *error = nil;
+        
+        /* create logfile if it doesn't exist */
+        if (access(logfile.UTF8String, R_OK) != 0)
+            [[NSFileManager defaultManager] createFileAtPath:logfile contents:nil attributes:nil];
+        
+        /* read contents */
+        NSString *contents = [NSString stringWithContentsOfFile:logfile encoding:NSUTF8StringEncoding error:&error];
+        
+        if (error)
+        {
+            printf("Error opening logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
+        }
+        
+        error = nil;    // re-use
+        
+        /* write to file */
+        contents = [contents stringByAppendingFormat:@"%@\n", formattedMessage];
+        [contents writeToFile:logfile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        if (error)
+        {
+            printf("Error writing to logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
+        }
+    }
+    else
+    {
+        printf("%s\n", formattedMessage.UTF8String);
+    }
+}
+
 @implementation MCSettings
 
 - (instancetype)init
@@ -152,7 +198,7 @@ BOOL isXquartzAndConkyInstalled(void)
      */
     if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
     {
-        NSLog(@"Error creating symlink to Applications for ConkyX: \n\n%@", error);
+        NSLog(@"Error creating symlink to Applications for ConkyX: \n%@\n", error);
     }
     
     error = nil;
@@ -174,26 +220,26 @@ BOOL isXquartzAndConkyInstalled(void)
      */
     if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:conkyPath error:&error])
     {
-        NSLog(@"Error creating symbolic link to /usr/local/bin: %@", error);
+        NSLog(@"Error creating symbolic link to /usr/local/bin: \n%@\n", error);
     }
 }
 
 - (void)setShouldLogToFile:(BOOL)a
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:@"ShouldLogToFile"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCConkyShouldLogToFileKey];
 }
 - (BOOL)shouldLogToFile
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"ShouldLogToFile"] boolValue];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyShouldLogToFileKey] boolValue];
 }
 
 - (void)setLogfile:(NSString *)logfile
 {
-    [[NSUserDefaults standardUserDefaults] setObject:logfile forKey:@"Logfile"];
+    [[NSUserDefaults standardUserDefaults] setObject:logfile forKey:kMCConkyConfigsLocationKey];
 }
 - (NSString *)logfile
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"Logfile"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyConfigsLocationKey];
 }
 
 - (void)uninstallManageConkyFilesystem
@@ -202,12 +248,12 @@ BOOL isXquartzAndConkyInstalled(void)
     NSFileManager *fm = [NSFileManager defaultManager];
     
     [fm removeItemAtPath:CONKYX error:&error];
-    if (error) { NSLog(@"Error removing ConkyX: \n\n%@", error); }
+    if (error) { NSLog(@"Error removing ConkyX: \n%@\n", error); }
     
     error = nil;
     
     [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-    if (error) { NSLog(@"Error removing symlink: \n\n%@", error); }
+    if (error) { NSLog(@"Error removing symlink: \n%@\n", error); }
 }
 
 - (void)uninstallCompletelyManageConkyFilesystem
@@ -218,7 +264,7 @@ BOOL isXquartzAndConkyInstalled(void)
     [self uninstallManageConkyFilesystem];
     
     [fm removeItemAtPath:MANAGE_CONKY error:&error];
-    if (error) { NSLog(@"Error removing Manage Conky: \n\n%@", error); }
+    if (error) { NSLog(@"Error removing Manage Conky: \n%@\n", error); }
 }
 
 /* Windows Vector */

@@ -21,6 +21,8 @@ static NSString *kMCRunConkyAtStartupKey = @"runConkyAtStartup";
 static NSString *kMCKeepAliveConkyKey = @"keepAlive";
 static NSString *kMCConkyStartupDelayKey = @"startupDelay";
 static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
+static NSString *kMCConkyShouldLogToFileKey = @"ShouldLogToFile";
+static NSString *kMCConkyLogfileLocationKey = @"LogfileLocation";
 static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
 static NSString *kMCCanResizeWindow = @"CanResizeWindow";
 
@@ -63,6 +65,14 @@ static const char *cMacScalingKeys[] = {
 };
 
 @class ViewController;
+
+/*
+ * Logging
+ */
+extern BOOL shouldLogToFile;
+extern NSString *logfile;
+void NPLog(NSString *format, ...);
+#define NSLog(format, ...) NPLog(format, ##__VA_ARGS__)
 
 /**
  * MCSettings

@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import "Shared.h"
 #import <Sparkle/Sparkle.h>
 #import "PFMoveApplication.h"
 #import "MCObjects/MCObjects.h"

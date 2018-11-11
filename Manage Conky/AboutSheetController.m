@@ -7,7 +7,6 @@
 //
 
 #import "AboutSheetController.h"
-#include "Shared.h"
 
 @implementation AboutSheetController
 

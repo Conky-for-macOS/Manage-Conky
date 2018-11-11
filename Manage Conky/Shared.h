@@ -50,14 +50,6 @@ void createLaunchAgent(NSString *label,
                        NSString *workingDirectory,
                        NSError *error);
 
-/*
- * Logging
- */
-extern BOOL shouldLogToFile;
-extern NSString *logfile;
-void NPLog(NSString *format, ...);
-#define NSLog(format, ...) NPLog(format, ##__VA_ARGS__)
-
 #define MC_RUN_ONLY_ONCE(block)         \
 {                                       \
     static BOOL beenHereAgain = NO;     \

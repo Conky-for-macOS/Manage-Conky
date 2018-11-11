@@ -8,7 +8,6 @@
 
 #import "PreferencesController.h"
 
-#import "Shared.h"
 #import "MCObjects/MCObjects.h"
 
 @implementation PreferencesController
