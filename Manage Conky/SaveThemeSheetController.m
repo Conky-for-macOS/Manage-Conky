@@ -237,7 +237,6 @@ void checkbox_registry_uncheck_all(void)
 
 - (IBAction)clear:(id)sender
 {
-    return; // XXX code is still quite buggy
 }
 
 //

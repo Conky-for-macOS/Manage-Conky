@@ -36,8 +36,7 @@
     /*
      * Resizeable Window
      */
-    NSNumber *canResizeWindow = [[NSUserDefaults standardUserDefaults] objectForKey:@"CanResizeWindow"];
-    [_resizeableWindow setState:canResizeWindow.boolValue];
+    [_resizeableWindow setState:[MCSettings sharedSettings].canResizeWindow];
 }
 
 - (IBAction)toggleLogging:(id)sender
@@ -48,7 +47,7 @@
 
 - (IBAction)toggleResize:(id)sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[sender state]] forKey:@"CanResizeWindow"];
+    [[MCSettings sharedSettings] setCanResizeWindow:[sender state]];
 }
 
 - (IBAction)close:(id)sender

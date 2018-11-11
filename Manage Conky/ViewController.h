@@ -28,10 +28,8 @@ typedef enum {
     NSPopover *editorPopover;
 }
 
-@property (weak) IBOutlet NSImageView *themeOrWidgetPreviewImage;
-@property (weak) IBOutlet NSTableView *widgetsThemesTable;
-
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
 /**
  * Functions for Main VC Table Manipulation
