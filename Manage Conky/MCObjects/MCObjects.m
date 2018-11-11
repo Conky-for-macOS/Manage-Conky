@@ -135,7 +135,7 @@ BOOL isXquartzAndConkyInstalled(void)
 }
 - (BOOL)canResizeWindow
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCCanResizeWindow];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCCanResizeWindow] boolValue];
 }
 
 - (void)installManageConkyFilesystem
