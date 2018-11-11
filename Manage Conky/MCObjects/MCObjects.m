@@ -184,8 +184,7 @@ BOOL isXquartzAndConkyInstalled(void)
 }
 - (BOOL)shouldLogToFile
 {
-    NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:@"ShouldLogToFile"];
-    return number.boolValue;
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"ShouldLogToFile"] boolValue];
 }
 
 - (void)setLogfile:(NSString *)logfile
@@ -575,7 +574,7 @@ BOOL isXquartzAndConkyInstalled(void)
         startupDelay = [[rc objectForKey:kMCThemeStartupDelayKey] integerValue];
         
         /* Try to standardize paths read first. */
-        NSMutableArray *conkyConfigsUnstandardized = [rc valueForKey:kMCThemeConfigsKey];   // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
+        NSMutableArray *conkyConfigsUnstandardized = [rc objectForKey:kMCThemeConfigsKey];   // must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig
 
         for (NSUInteger i = 0; i < [conkyConfigsUnstandardized count]; i++)
         {
@@ -583,7 +582,7 @@ BOOL isXquartzAndConkyInstalled(void)
         }
 
         conkyConfigs = [conkyConfigsUnstandardized copy];   /* now write them standardized */
-        arguments = [rc valueForKey:kMCThemeArgumentsKey];   /* must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig */
+        arguments = [rc objectForKey:kMCThemeArgumentsKey];   /* must be Array, not Dictionary because each arguments list corresponds to specific conkyConfig */
         wallpaper = [[rc objectForKey:kMCThemeWallpaperKey] stringByExpandingTildeInPath];
         source = [rc objectForKey:kMCThemeSourceKey];
         creator = [rc objectForKey:kMCThemeCreatorKey];
