@@ -89,6 +89,21 @@ void NPLog(NSString *format, ...)
     }
 }
 
+void MCError(NSError *error) MC_OVERLOADABLE
+{
+    NSLog(@"%@", error);
+}
+
+void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
+{
+    va_list vargs;
+    va_start(vargs, format);
+    NSString* formattedMessage = [[NSString alloc] initWithFormat:format arguments:vargs];
+    va_end(vargs);
+    
+    NSLog(@"%@: \n%@\n", formattedMessage, error);
+}
+
 @implementation MCSettings
 
 - (instancetype)init
@@ -198,7 +213,7 @@ void NPLog(NSString *format, ...)
      */
     if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
     {
-        NSLog(@"Error creating symlink to Applications for ConkyX: \n%@\n", error);
+        MCError(error, @"Error creating symlink to Applications for ConkyX");
     }
     
     error = nil;
@@ -220,7 +235,7 @@ void NPLog(NSString *format, ...)
      */
     if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:conkyPath error:&error])
     {
-        NSLog(@"Error creating symbolic link to /usr/local/bin: \n%@\n", error);
+        MCError(error, @"Error creating symbolic link to /usr/local/bin");
     }
 }
 
@@ -248,12 +263,12 @@ void NPLog(NSString *format, ...)
     NSFileManager *fm = [NSFileManager defaultManager];
     
     [fm removeItemAtPath:CONKYX error:&error];
-    if (error) { NSLog(@"Error removing ConkyX: \n%@\n", error); }
+    if (error) { MCError(error, @"Error removing ConkyX"); }
     
     error = nil;
     
     [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-    if (error) { NSLog(@"Error removing symlink: \n%@\n", error); }
+    if (error) { MCError(error, @"Error removing symlink"); }
 }
 
 - (void)uninstallCompletelyManageConkyFilesystem
@@ -264,7 +279,7 @@ void NPLog(NSString *format, ...)
     [self uninstallManageConkyFilesystem];
     
     [fm removeItemAtPath:MANAGE_CONKY error:&error];
-    if (error) { NSLog(@"Error removing Manage Conky: \n%@\n", error); }
+    if (error) { MCError(error, @"Error removing Manage Conky"); }
 }
 
 /* Windows Vector */
@@ -356,7 +371,7 @@ void NPLog(NSString *format, ...)
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[path stringByDeletingLastPathComponent] error:&error];
     if (error)
-        NSLog(@"%@", error);
+        MCError(error);
 }
 
 - (void)uninstall {}
@@ -421,7 +436,7 @@ void NPLog(NSString *format, ...)
                           error);
         
         if (error)
-            NSLog(@"%@", error);
+            MCError(error);
     }
     else
     {
@@ -840,7 +855,7 @@ void NPLog(NSString *format, ...)
         
         if (error)
         {
-            NSLog(@"applyTheme: Error creating agent: %@", error);
+            MCError(error, @"applyTheme: Error creating agent");
             return;
         }
     }
@@ -861,7 +876,7 @@ void NPLog(NSString *format, ...)
                              error:&err];
     if (err)
     {
-        NSLog(@"applyTheme: Failed to apply wallpaper with error: \n\n%@", err);
+        MCError(err, @"applyTheme: Failed to apply wallpaper");
     }
     
     /*
@@ -907,7 +922,7 @@ void NPLog(NSString *format, ...)
                              error:&error];
     if (error)
     {
-        NSLog(@"%@", error);
+        MCError(error);
     }
     
     _isEnabled = NO;

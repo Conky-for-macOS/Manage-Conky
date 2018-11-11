@@ -368,7 +368,7 @@ void checkbox_registry_uncheck_all(void)
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
     if (error)
     {
-        NSLog(@"saveTheme: %@", error);
+        MCError(error, @"saveTheme");
         return;
     }
     
@@ -398,7 +398,7 @@ void checkbox_registry_uncheck_all(void)
         [[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error];
         if (error)
         {
-            NSLog(@"%@", error);
+            MCError(error);
             error = nil;
         }
     }
@@ -408,7 +408,7 @@ void checkbox_registry_uncheck_all(void)
     {
         [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
         if (error)
-            NSLog(@"%@", error);
+            MCError(error);
     }
     
     error = nil;
@@ -418,8 +418,8 @@ void checkbox_registry_uncheck_all(void)
      */
     [[NSFileManager defaultManager] copyItemAtPath:_preview toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", path.lastPathComponent]] error:&error];
     if (error)
-        NSLog(@"%@", error);
-    
+        MCError(error);
+
     /* open theme directory */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];
     

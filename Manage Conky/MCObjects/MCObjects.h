@@ -13,6 +13,7 @@
 
 /* defines */
 #define MC_PID_NOT_SET (-100)   /* pid not yet set */
+#define MC_OVERLOADABLE __attribute__((overloadable))
 
 /*
  * Conky Basic Configuration Keys
@@ -73,6 +74,8 @@ extern BOOL shouldLogToFile;
 extern NSString *logfile;
 void NPLog(NSString *format, ...);
 #define NSLog(format, ...) NPLog(format, ##__VA_ARGS__)
+void MCError(NSError *error) MC_OVERLOADABLE;
+void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE;
 
 /**
  * MCSettings

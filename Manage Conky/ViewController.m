@@ -92,7 +92,7 @@
     
     if (error && error.code != ERR_NSFD)
     {
-        NSLog(@"fill: %@", error);
+        MCError(error, @"fill");
         return nil;
     }
     
@@ -106,7 +106,7 @@
     NSArray *basicSearchDirectoryContents = [fm contentsOfDirectoryAtPath:searchPath error:&error];
     if (!basicSearchDirectoryContents)
     {
-        NSLog(@"Error: Failed getting list of %@ contents: \n\n%@", searchPath, error);
+        MCError(error, @"Error: Failed getting list contents of %@", searchPath);
         return;
     }
     
@@ -513,7 +513,7 @@
     
     if (error && error.code != ERR_NSFD)
     {
-        NSLog(@"ignore: error %@", error);
+        MCError(error, @"ignore: error");
         return;
     }
     
@@ -537,7 +537,7 @@
                     error:&error];
     
     if (error)
-        NSLog(@"ignore: %@", error);
+        MCError(error, @"ignore: error");
 
     [self updateWidgetsThemesArray];
 }
@@ -605,7 +605,7 @@
                                                     error:&error];
 
     if (error)
-        NSLog(@"%@", error);
+        MCError(error);
 }
 
 //

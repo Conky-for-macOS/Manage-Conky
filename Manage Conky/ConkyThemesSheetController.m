@@ -50,7 +50,7 @@
     
     if (![themePackReader open:&error])
     {
-        NSLog(@"Error: Failed to open themepack with error: \n\n%@", error);
+        MCError(error, @"Error: Failed to open themepack with error");
         return NO;
     }
 
@@ -68,7 +68,7 @@
         }
         else
         {
-            NSLog(@"Error %@ iterating for item: %@", error, item);
+            MCError(error, @"Error iterating for item (%@)", item);
             return NO;
         }
     }];

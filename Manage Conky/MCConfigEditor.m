@@ -8,6 +8,8 @@
 
 #import "MCConfigEditor.h"
 
+#import "MCObjects/MCObjects.h"
+
 @implementation MCConfigEditor
 
 - (instancetype)initWithConfig:(NSString *)config
@@ -24,7 +26,7 @@
 
         if (error)
         {
-            NSLog(@"%@", error);
+            MCError(error);
             return nil;
         }
 
@@ -58,7 +60,7 @@
                         error:&error];
     if (error)
     {
-        NSLog(@"Error applying changes to config: \n\n%@", error);
+        MCError(error, @"Error applying changes to config");
     }
 }
 
