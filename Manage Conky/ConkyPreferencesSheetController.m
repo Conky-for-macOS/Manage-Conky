@@ -244,7 +244,7 @@
     
     if (errorDict)
     {
-        MCError(errorDict, @"Error when executing applescript");
+        NSLog(@"Error when executing applescript: %@\n", errorDict);
         [sender setState:![sender state]];
     }
 }

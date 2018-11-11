@@ -250,11 +250,11 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)setLogfile:(NSString *)logfile
 {
-    [[NSUserDefaults standardUserDefaults] setObject:logfile forKey:kMCConkyConfigsLocationKey];
+    [[NSUserDefaults standardUserDefaults] setObject:logfile forKey:kMCConkyLogfileLocationKey];
 }
 - (NSString *)logfile
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyConfigsLocationKey];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyLogfileLocationKey];
 }
 
 - (void)uninstallManageConkyFilesystem

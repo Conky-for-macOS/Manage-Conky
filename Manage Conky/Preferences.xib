@@ -57,8 +57,8 @@ Gw
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-k4-v0M">
-                        <rect key="frame" x="18" y="25" width="140" height="18"/>
-                        <buttonCell key="cell" type="check" title="Resizeable Window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rBK-Ut-ral">
+                        <rect key="frame" x="18" y="25" width="153" height="18"/>
+                        <buttonCell key="cell" type="check" title="Window is Resizeable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rBK-Ut-ral">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
