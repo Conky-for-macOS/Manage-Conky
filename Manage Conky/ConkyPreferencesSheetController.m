@@ -320,15 +320,16 @@
  */
 - (void)controlTextDidChange:(NSNotification *)obj
 {
+#define STARTUP_DELAY_FIELD_ID @"startupDelayField"
+#define CONFIGS_LOCAT_FIELD_ID @"conkyConfigsLocationField"
+    
     NSString *senderID = [[obj object] identifier];
     
-    // XXX id should be a define...
-    
-    if ([senderID isEqualToString:@"startupDelayField"])
+    if ([senderID isEqualToString:STARTUP_DELAY_FIELD_ID])
     {
         [self enableMustInstallAgentMode];
     }
-    else if ([senderID isEqualToString:@"conkyConfigsLocationField"])
+    else if ([senderID isEqualToString:CONFIGS_LOCAT_FIELD_ID])
     {
         [self enableMustAddSearchPathsMode];
     }
