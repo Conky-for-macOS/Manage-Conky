@@ -199,6 +199,15 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCCanResizeWindow] boolValue];
 }
 
+- (void)setUsesAbsolutePaths:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCUsesAbsolutePaths];
+}
+- (BOOL)usesAbsolutePaths
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCUsesAbsolutePaths] boolValue];
+}
+
 - (void)installManageConkyFilesystem
 {
     NSError *error = nil;

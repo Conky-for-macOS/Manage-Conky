@@ -22,10 +22,11 @@ static NSString *kMCRunConkyAtStartupKey = @"runConkyAtStartup";
 static NSString *kMCKeepAliveConkyKey = @"keepAlive";
 static NSString *kMCConkyStartupDelayKey = @"startupDelay";
 static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
+static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
 static NSString *kMCConkyShouldLogToFileKey = @"ShouldLogToFile";
 static NSString *kMCConkyLogfileLocationKey = @"LogfileLocation";
-static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
 static NSString *kMCCanResizeWindow = @"CanResizeWindow";
+static NSString *kMCUsesAbsolutePaths = @"UsesAbsolutePaths";
 
 /*
  * Conky ThemeRC (Plist) Keys
@@ -117,6 +118,8 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE;
 - (void)setCanResizeWindow:(BOOL)a;
 - (BOOL)canResizeWindow;
 
+- (void)setUsesAbsolutePaths:(BOOL)a;
+- (BOOL)usesAbsolutePaths;
 /*
  * Logfile
  * =======

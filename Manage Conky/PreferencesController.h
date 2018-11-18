@@ -13,5 +13,6 @@
 @property (weak) IBOutlet NSButton *loggingToggle;
 @property (weak) IBOutlet NSTextField *logfileLocationField;
 @property (weak) IBOutlet NSButton *resizeableWindow;
+@property (weak) IBOutlet NSButton *usesAbsolutePaths;
 
 @end

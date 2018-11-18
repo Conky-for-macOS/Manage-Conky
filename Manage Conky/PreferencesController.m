@@ -36,6 +36,7 @@
      * Resizeable Window
      */
     [_resizeableWindow setState:[MCSettings sharedSettings].canResizeWindow];
+    [_usesAbsolutePaths setState:[MCSettings sharedSettings].usesAbsolutePaths];
 }
 
 - (IBAction)toggleLogging:(id)sender
@@ -47,6 +48,11 @@
 - (IBAction)toggleResize:(id)sender
 {
     [[MCSettings sharedSettings] setCanResizeWindow:[sender state]];
+}
+
+- (IBAction)toggleUseAbsolutePaths:(id)sender
+{
+    [[MCSettings sharedSettings] setUsesAbsolutePaths:[sender state]];
 }
 
 - (IBAction)close:(id)sender

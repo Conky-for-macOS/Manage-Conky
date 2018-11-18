@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,6 +11,7 @@
                 <outlet property="logfileLocationField" destination="8PD-Sz-frU" id="F1S-BB-fKn"/>
                 <outlet property="loggingToggle" destination="Ybi-0w-Mdk" id="yCD-7g-ssG"/>
                 <outlet property="resizeableWindow" destination="GEp-k4-v0M" id="ZiE-Zu-yex"/>
+                <outlet property="usesAbsolutePaths" destination="s7p-1W-6IY" id="F2h-Sx-mbs"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="0kA-B6-5uI"/>
             </connections>
         </customObject>
@@ -19,20 +20,48 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="384" height="91"/>
+            <rect key="contentRect" x="196" y="240" width="384" height="114"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="384" height="91"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="114"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-0w-Mdk">
-                        <rect key="frame" x="18" y="55" width="85" height="18"/>
+                        <rect key="frame" x="18" y="78" width="85" height="18"/>
                         <buttonCell key="cell" type="check" title="Log to File" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vx2-T1-1bp">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="toggleLogging:" target="-2" id="GTq-2h-olu"/>
+                        </connections>
+                    </button>
+                    <textField hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
+                        <rect key="frame" x="117" y="72" width="247" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Log File Location: " drawsBackground="YES" id="4TB-uw-bil">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-k4-v0M">
+                        <rect key="frame" x="18" y="48" width="153" height="18"/>
+                        <buttonCell key="cell" type="check" title="Window is Resizeable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rBK-Ut-ral">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleResize:" target="-2" id="QDD-mX-cLI"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s7p-1W-6IY">
+                        <rect key="frame" x="18" y="22" width="139" height="18"/>
+                        <buttonCell key="cell" type="check" title="Use absolute paths" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ZUt-b3-3ig">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleUseAbsolutePaths:" target="-2" id="ktn-ML-CRf"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XE9-hc-w01">
@@ -48,38 +77,22 @@ Gw
                             <action selector="close:" target="-2" id="0C8-4M-k3Q"/>
                         </connections>
                     </button>
-                    <textField hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-Sz-frU">
-                        <rect key="frame" x="117" y="49" width="247" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Log File Location: " drawsBackground="YES" id="4TB-uw-bil">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-k4-v0M">
-                        <rect key="frame" x="18" y="25" width="153" height="18"/>
-                        <buttonCell key="cell" type="check" title="Window is Resizeable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rBK-Ut-ral">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="toggleResize:" target="-2" id="QDD-mX-cLI"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8PD-Sz-frU" firstAttribute="trailing" secondItem="XE9-hc-w01" secondAttribute="trailing" id="3Y3-IV-Lzn"/>
-                    <constraint firstAttribute="trailing" secondItem="8PD-Sz-frU" secondAttribute="trailing" constant="20" symbolic="YES" id="ISP-Zh-4fo"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="PKW-l3-BMd"/>
-                    <constraint firstItem="GEp-k4-v0M" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="bottom" constant="8" symbolic="YES" id="Rod-aY-MDP"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="GEp-k4-v0M" secondAttribute="leading" id="WBf-cT-lpC"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="top" id="bPz-Dp-UII"/>
-                    <constraint firstItem="8PD-Sz-frU" firstAttribute="leading" secondItem="Ybi-0w-Mdk" secondAttribute="trailing" constant="16" id="dIb-si-leq"/>
-                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="fqb-qz-140"/>
-                    <constraint firstItem="GEp-k4-v0M" firstAttribute="top" secondItem="XE9-hc-w01" secondAttribute="top" id="wMt-lg-gb9"/>
+                    <constraint firstAttribute="trailing" secondItem="8PD-Sz-frU" secondAttribute="trailing" constant="20" symbolic="YES" id="0X1-ZE-WJx"/>
+                    <constraint firstItem="GEp-k4-v0M" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="bottom" constant="8" symbolic="YES" id="12V-yz-CCH"/>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="trailing" secondItem="XE9-hc-w01" secondAttribute="trailing" id="4o2-o5-cyN"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="DoF-yA-nmy"/>
+                    <constraint firstItem="GEp-k4-v0M" firstAttribute="leading" secondItem="s7p-1W-6IY" secondAttribute="leading" id="JFY-Qw-QGd"/>
+                    <constraint firstItem="8PD-Sz-frU" firstAttribute="leading" secondItem="Ybi-0w-Mdk" secondAttribute="trailing" constant="16" id="SGZ-mR-yt2"/>
+                    <constraint firstAttribute="bottom" secondItem="XE9-hc-w01" secondAttribute="bottom" constant="20" symbolic="YES" id="Z4h-VZ-5w5"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="leading" secondItem="GEp-k4-v0M" secondAttribute="leading" id="bxq-9Y-RkE"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="goN-vM-njQ"/>
+                    <constraint firstItem="s7p-1W-6IY" firstAttribute="baseline" secondItem="XE9-hc-w01" secondAttribute="baseline" id="uCd-8d-lTR"/>
+                    <constraint firstItem="Ybi-0w-Mdk" firstAttribute="top" secondItem="8PD-Sz-frU" secondAttribute="top" id="xUo-g1-MBF"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-537" y="-60.5"/>
+            <point key="canvasLocation" x="-537" y="-49"/>
         </window>
     </objects>
 </document>
