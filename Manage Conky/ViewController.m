@@ -337,7 +337,7 @@
     else
     {
         arr = themesArray;
-        str = [[arr objectAtIndex:row] themeName];
+        str = [[arr objectAtIndex:row] themeRC];
     }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
@@ -357,6 +357,7 @@
     }
     else
     {
+        BOOL usesAbsolutePaths = [[MCSettings sharedSettings] usesAbsolutePaths];
         NSTextFieldCell *cell = [tableColumn dataCellForRow:row];
         
         /*
@@ -365,7 +366,7 @@
         if (!cell)
             cell = [[NSTextFieldCell alloc] init];
         
-        cell.stringValue = str;
+        cell.stringValue = (usesAbsolutePaths) ? [str stringByDeletingPathExtension] : [[str lastPathComponent] stringByDeletingPathExtension];
         return cell;
     }
 }
