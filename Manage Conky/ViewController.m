@@ -337,7 +337,7 @@
     else
     {
         arr = themesArray;
-        str = [[arr objectAtIndex:row] themeRC];
+        str = [[[arr objectAtIndex:row] themeRC] stringByDeletingLastPathComponent];
     }
     
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
