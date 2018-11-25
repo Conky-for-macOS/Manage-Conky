@@ -21,7 +21,6 @@
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
-		09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09BF3BEB215CF21A003EF57D /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; };
 		09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -148,7 +147,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */,
-				09ACA82C212E1F22002B9754 /* Fragaria-LICENSE-2.0.txt in Copy Licenses */,
 			);
 			name = "Copy Licenses";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,10 +325,10 @@
 		09BF3BD1215CF203003EF57D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09BF3BDC215CF203003EF57D /* Fragaria Doc.app */,
-				09BF3BDE215CF203003EF57D /* Fragaria Simple.app */,
 				09BF3BE0215CF203003EF57D /* Fragaria Complex.app */,
+				09BF3BDC215CF203003EF57D /* Fragaria Doc.app */,
 				09BF3BE2215CF203003EF57D /* Fragaria Prefs.app */,
+				09BF3BDE215CF203003EF57D /* Fragaria Simple.app */,
 				09BF3BE4215CF203003EF57D /* Fragaria Swift.app */,
 				09BF3BE6215CF203003EF57D /* Fragaria.framework */,
 				09BF3BE8215CF203003EF57D /* Fragaria Tests.xctest */,
