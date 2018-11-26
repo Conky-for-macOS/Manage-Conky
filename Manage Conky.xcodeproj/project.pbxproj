@@ -22,6 +22,8 @@
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
 		09A20B7321AC9CED00FB7258 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */; };
+		09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09BF3BEB215CF21A003EF57D /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; };
 		09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -241,6 +243,8 @@
 		098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manage_Conky_Tests.m; sourceTree = "<group>"; };
 		098C76B0213C097600B1F05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NPTask.xcodeproj; path = Frameworks/NPTask/NPTask.xcodeproj; sourceTree = "<group>"; };
+		09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = SetupFilesystem.sh; path = Resources/SetupFilesystem.sh; sourceTree = "<group>"; };
+		09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = UninstallFilesystem.sh; path = Resources/UninstallFilesystem.sh; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
 				09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */,
+				09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */,
+				09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -744,6 +750,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
+				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				09366F712166A67900157ECA /* Preferences.xib in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,

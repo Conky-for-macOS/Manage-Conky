@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
 #import "../Extensions/NSString+Relative.h"
+#import <NPTask/NPTask.h>
 
 /** `Helper function`
  * Check if Xquartz and conky are installed
@@ -215,30 +216,20 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     
     NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+    NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
-    // TODO(npyl): this needs to be done as ROOT, see #17
     /*
-     * Create symbolic link to install ConkyX to Applications
+     * Run script that setups basic paths as administrator
      */
-    if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
-    {
-        MCError(error, @"Error creating symlink to Applications for ConkyX");
-    }
-    
-    error = nil;
-    
-    // TODO: this needs to be done as ROOT
-    /*
-     * Create /usr/local/bin dir;
-     * Ensure that we are going to get the symlink in place.
-     */
-    //[fm createDirectoryAtPath:@"/usr/local/bin" withIntermediateDirectories:YES attributes:nil error:&error];
-    //if (error)
-    //{
-    //    NSLog(@"%@", error);
-    //}
-    
-    // TODO: This needs to be done as normal user
+    NSTask *script = [[NSTask alloc] init];
+    script.launchPath = @"/bin/bash";
+    script.arguments = @[@"-l",
+                         @"-c",
+                         scriptPath,
+                         ConkyXPath];
+    [script launchAuthenticated];
+    [script waitUntilExit];
+
     /*
      * Create symbolic link to allow using from terminal
      */
