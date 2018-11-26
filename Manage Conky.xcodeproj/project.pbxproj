@@ -21,6 +21,7 @@
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
+		09A20B7321AC9CED00FB7258 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09BF3BEB215CF21A003EF57D /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; };
 		09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -55,6 +56,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = 77B847341F62C2B600AF8BCA;
 			remoteInfo = "Manage Conky";
+		};
+		09A20B6721AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0966C5A6215DB1D0006B2DAA;
+			remoteInfo = NPTask;
+		};
+		09A20B6921AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0966C5C6215DB277006B2DAA;
+			remoteInfo = SMJobBlessHelper;
+		};
+		09A20B6B21AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 092F04E9215E69BA00869C20;
+			remoteInfo = NPAuthenticator;
+		};
+		09A20B6D21AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0966C5D1215DB2D5006B2DAA;
+			remoteInfo = tester;
+		};
+		09A20B6F21AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0966C5AF215DB1D0006B2DAA;
+			remoteInfo = NPTaskTests;
+		};
+		09A20B7121AC9CE200FB7258 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0966C5A5215DB1D0006B2DAA;
+			remoteInfo = NPTask;
 		};
 		09BF3BDB215CF203003EF57D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -135,6 +178,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				09A20B7321AC9CED00FB7258 /* NPTask.framework in Copy Frameworks */,
 				09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -196,6 +240,7 @@
 		098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Manage Conky Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manage_Conky_Tests.m; sourceTree = "<group>"; };
 		098C76B0213C097600B1F05A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NPTask.xcodeproj; path = Frameworks/NPTask/NPTask.xcodeproj; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
@@ -313,6 +358,18 @@
 			path = "Manage Conky Tests";
 			sourceTree = "<group>";
 		};
+		09A20B5921AC9CCE00FB7258 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09A20B6821AC9CCE00FB7258 /* NPTask.framework */,
+				09A20B6A21AC9CCE00FB7258 /* npyl.NPTask.SMJobBlessHelper */,
+				09A20B6C21AC9CCE00FB7258 /* NPAuthenticator.app */,
+				09A20B6E21AC9CCE00FB7258 /* tester */,
+				09A20B7021AC9CCE00FB7258 /* NPTaskTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		09ACA826212E1CF8002B9754 /* Licenses */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +449,7 @@
 		77F6D6D31F65EB2E00A61645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */,
 				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
 				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
@@ -517,6 +575,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				09A20B7221AC9CE200FB7258 /* PBXTargetDependency */,
 				09BF3BEA215CF20F003EF57D /* PBXTargetDependency */,
 				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
@@ -566,6 +625,10 @@
 					ProductGroup = 09BF3BD1215CF203003EF57D /* Products */;
 					ProjectRef = 09BF3BD0215CF203003EF57D /* Fragaria.xcodeproj */;
 				},
+				{
+					ProductGroup = 09A20B5921AC9CCE00FB7258 /* Products */;
+					ProjectRef = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -576,6 +639,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		09A20B6821AC9CCE00FB7258 /* NPTask.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NPTask.framework;
+			remoteRef = 09A20B6721AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09A20B6A21AC9CCE00FB7258 /* npyl.NPTask.SMJobBlessHelper */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = npyl.NPTask.SMJobBlessHelper;
+			remoteRef = 09A20B6921AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09A20B6C21AC9CCE00FB7258 /* NPAuthenticator.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = NPAuthenticator.app;
+			remoteRef = 09A20B6B21AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09A20B6E21AC9CCE00FB7258 /* tester */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = tester;
+			remoteRef = 09A20B6D21AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09A20B7021AC9CCE00FB7258 /* NPTaskTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NPTaskTests.xctest;
+			remoteRef = 09A20B6F21AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		09BF3BDC215CF203003EF57D /* Fragaria Doc.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -752,6 +850,11 @@
 			isa = PBXTargetDependency;
 			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
 			targetProxy = 098C76B1213C097600B1F05A /* PBXContainerItemProxy */;
+		};
+		09A20B7221AC9CE200FB7258 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NPTask;
+			targetProxy = 09A20B7121AC9CE200FB7258 /* PBXContainerItemProxy */;
 		};
 		09BF3BEA215CF20F003EF57D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

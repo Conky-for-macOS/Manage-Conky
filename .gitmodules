@@ -7,3 +7,6 @@
 [submodule "Manage Conky/Fragaria"]
 	path = Manage Conky/Fragaria
 	url = https://github.com/shysaur/Fragaria
+[submodule "Frameworks/NPTask"]
+	path = Frameworks/NPTask
+	url = https://github.com/npyl/NPTask
