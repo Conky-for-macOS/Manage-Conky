@@ -40,7 +40,7 @@
 - (IBAction)donateBitcoin:(id)sender
 {
     NSString *keys = [self getCryptocoinKeys];
-    NSString *str = keys ? [NSString stringWithFormat:@"Thank you for supporting! \n\n%@", keys] :  @"I am really really sorry! \nSomething went wrong! \nPlease open an issue to ManageConky's Github Repo if the problem persists! \nThank you very much!";
+    NSString *str = keys ? [NSString stringWithFormat:@"Thank you for supporting! \n\n%@", keys] :  @"I am really really sorry! \nSomething went wrong! 99.9% your internet connection is down. \nPlease open an issue to ManageConky's Github Repo if the problem persists! \nThank you very much!";
     static NSPopover *donatePopover = nil;
 
     NSTextField *field = [NSTextField textFieldWithString:str];
