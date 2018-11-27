@@ -125,16 +125,6 @@ void checkbox_registry_uncheck_all(void)
 
 - (void)awakeFromNib
 {
-    if (self.mode == MC_SAVETHEME_MODE_JUST_SELECT)
-    {
-        [_themeNameLabel removeFromSuperview];
-        [_themeCreatorLabel removeFromSuperview];
-        [_themeSourceLabel removeFromSuperview];
-        
-        [_horizontalLineOne removeFromSuperview];
-        [_horizontalLineTwo removeFromSuperview];
-    }
-
     /* popup button */
     for (int i = 0; i < MAX_SCALING_KEYS; i++)
         [_scalingPopUpButton addItemWithTitle:[NSString stringWithUTF8String:cMacScalingKeys[i]]];

@@ -130,11 +130,6 @@
     }];
 }
 
-- (IBAction)createThemepack:(id)sender
-{
-    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme" andMode:MC_SAVETHEME_MODE_JUST_SELECT] loadOnWindow:self.window];
-}
-
 - (IBAction)createTheme:(id)sender
 {
     [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme"] loadOnWindow:self.window];
