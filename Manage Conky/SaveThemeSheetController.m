@@ -125,7 +125,7 @@ void checkbox_registry_uncheck_all(void)
 
 - (void)awakeFromNib
 {
-    if (self.mode == 10)
+    if (self.mode == MC_SAVETHEME_MODE_JUST_SELECT)
     {
         [_themeNameLabel removeFromSuperview];
         [_themeCreatorLabel removeFromSuperview];

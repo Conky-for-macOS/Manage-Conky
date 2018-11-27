@@ -10,7 +10,7 @@
 #import "MCObjects/MCObjects.h"
 
 enum {
-    MC_SAVETHEME_MODE_JUSTSELECT,
+    MC_SAVETHEME_MODE_JUST_SELECT,
 };
 
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>

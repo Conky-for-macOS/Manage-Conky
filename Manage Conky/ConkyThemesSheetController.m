@@ -6,10 +6,6 @@
 //  Copyright © 2017 Nickolas Pylarinos. All rights reserved.
 //
 
-//
-// NOTE:  For Lzma Library to work we need to have selected the type of the library to dynamic library
-//
-
 #import "ConkyThemesSheetController.h"
 
 #import "Shared.h"
@@ -136,7 +132,7 @@
 
 - (IBAction)createThemepack:(id)sender
 {
-    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme" andMode:MC_SAVETHEME_MODE_JUSTSELECT] loadOnWindow:self.window];
+    [[[SaveThemeSheetController alloc] initWithWindowNibName:@"SaveTheme" andMode:MC_SAVETHEME_MODE_JUST_SELECT] loadOnWindow:self.window];
 }
 
 - (IBAction)createTheme:(id)sender
