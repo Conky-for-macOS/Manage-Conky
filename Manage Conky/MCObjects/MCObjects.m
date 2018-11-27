@@ -44,6 +44,11 @@ BOOL isXquartzAndConkyInstalled(void)
     return (res1 && res2);
 }
 
+BOOL userIsAdmin(void)
+{
+    return YES;
+}
+
 /*
  * Logging
  * =======
@@ -218,18 +223,44 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
-    /*
-     * Run script that setups basic paths as administrator
-     */
-    NSTask *script = [[NSTask alloc] init];
-    script.launchPath = @"/bin/bash";
-    script.arguments = @[@"-l",
-                         @"-c",
-                         scriptPath,
-                         ConkyXPath];
-    [script launchAuthenticated];
-    [script waitUntilExit];
-
+    if (userIsAdmin())
+    {
+        /*
+         * Create symbolic link to install ConkyX to Applications
+         * Run script that setups basic paths as administrator
+         */
+        if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
+        {
+            MCError(error, @"Error creating symlink to Applications for ConkyX");
+        }
+        
+        error = nil;
+        
+        /*
+         * Create /usr/local/bin dir;
+         * Ensure that we are going to get the symlink in place.
+         */
+        [fm createDirectoryAtPath:@"/usr/local/bin" withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+    }
+    else
+    {
+        /*
+         * Run script that setups basic paths as administrator
+         */
+        NSTask *script = [[NSTask alloc] init];
+        script.launchPath = @"/bin/bash";
+        script.arguments = @[@"-l",
+                             @"-c",
+                             scriptPath,
+                             ConkyXPath];
+        [script launchAuthenticated];
+        [script waitUntilExit];
+    }
+    
     /*
      * Create symbolic link to allow using from terminal
      */
@@ -261,16 +292,32 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
 {
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
     
-    /*
-     * Run script that setups basic paths as administrator
-     */
-    NSTask *script = [[NSTask alloc] init];
-    script.launchPath = @"/bin/bash";
-    script.arguments = @[@"-l",
-                         @"-c",
-                         scriptPath];
-    [script launchAuthenticated];
-    [script waitUntilExit];
+    if (userIsAdmin())
+    {
+        NSError *error = nil;
+        NSFileManager *fm = [NSFileManager defaultManager];
+        
+        [fm removeItemAtPath:CONKYX error:&error];
+        if (error) { MCError(error, @"Error removing ConkyX"); }
+        
+        error = nil;
+        
+        [fm removeItemAtPath:CONKY_SYMLINK error:&error];
+        if (error) { MCError(error, @"Error removing symlink"); }
+    }
+    else
+    {
+        /*
+         * Run script that setups basic paths as administrator
+         */
+        NSTask *script = [[NSTask alloc] init];
+        script.launchPath = @"/bin/bash";
+        script.arguments = @[@"-l",
+                             @"-c",
+                             scriptPath];
+        [script launchAuthenticated];
+        [script waitUntilExit];
+    }
 }
 
 - (void)uninstallCompletelyManageConkyFilesystem
