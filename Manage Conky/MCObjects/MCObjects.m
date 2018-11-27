@@ -259,16 +259,18 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstallManageConkyFilesystem
 {
-    NSError *error = nil;
-    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
     
-    [fm removeItemAtPath:CONKYX error:&error];
-    if (error) { MCError(error, @"Error removing ConkyX"); }
-    
-    error = nil;
-    
-    [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-    if (error) { MCError(error, @"Error removing symlink"); }
+    /*
+     * Run script that setups basic paths as administrator
+     */
+    NSTask *script = [[NSTask alloc] init];
+    script.launchPath = @"/bin/bash";
+    script.arguments = @[@"-l",
+                         @"-c",
+                         scriptPath];
+    [script launchAuthenticated];
+    [script waitUntilExit];
 }
 
 - (void)uninstallCompletelyManageConkyFilesystem

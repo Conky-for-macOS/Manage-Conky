@@ -5,3 +5,6 @@
 #
 #  Created by Nickolas Pylarinos Stamatelatos on 26/11/2018.
 #  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
+
+rm -rf /Applications/ConkyX.app
+rm -rf /usr/local/bin/conky
