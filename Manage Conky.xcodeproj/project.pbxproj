@@ -211,6 +211,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09081E7021ADE61400B9AB6C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		090DD046211BC27B0061535E /* distributeManageConky.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = distributeManageConky.command; path = Tools/distributeManageConky.command; sourceTree = "<group>"; };
 		090F2834217168C400D9F406 /* NSString+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+Empty.h"; path = "Extensions/NSString+Empty.h"; sourceTree = "<group>"; };
 		090F2835217168C400D9F406 /* NSString+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+Empty.m"; path = "Extensions/NSString+Empty.m"; sourceTree = "<group>"; };
@@ -475,6 +476,7 @@
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09081E7021ADE61400B9AB6C /* README.md */,
 				098C769C213BF64500B1F05A /* .travis.yml */,
 				09ACA826212E1CF8002B9754 /* Licenses */,
 				EC9691F4204DD59E00B99EB5 /* Sheets */,

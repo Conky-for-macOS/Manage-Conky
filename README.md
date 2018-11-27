@@ -15,6 +15,20 @@ It offers on the mac what conky-manager offers on linux plus alot more (exclusiv
 
 ![preview](preview.svg)
 
+## USAGE
+
+You can use shortcuts to improve the experience:
+
+`⌘P`    Open Conky Preferences<br>
+`⌘T`    Open Conky Themes<br>
+
+`R`      Run/Restart a Widget/Theme<br>
+`S`      Stop a Widget/Theme<br>
+`⌘A`    Stop All Widgets / Themes (depending on view)<br>
+`E`      Edit Code<br>
+`H`      Hide element from ManageConky<br>
+`⌘O`    Open in File Manager<br>
+
 ## INSTALL 💾
 
 To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-Conky/releases/latest). <br>

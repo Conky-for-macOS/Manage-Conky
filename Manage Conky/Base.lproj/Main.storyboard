@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -771,6 +771,7 @@
                                 <buttonCell key="cell" type="inline" title="Start/Restart" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="n6D-RQ-cM7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">r</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="startOrRestartWidget:" target="XfG-lQ-9wD" id="QgG-4x-eQz"/>
@@ -781,6 +782,7 @@
                                 <buttonCell key="cell" type="inline" title="Stop" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="YE4-ac-L0H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">s</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="stopWidget:" target="XfG-lQ-9wD" id="iXk-m2-pXG"/>
@@ -791,6 +793,8 @@
                                 <buttonCell key="cell" type="inline" title="Stop All" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="rzt-th-NNV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">a</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="stopAllWidgets:" target="XfG-lQ-9wD" id="BN9-4K-DDV"/>
@@ -885,6 +889,8 @@
                                 <buttonCell key="cell" type="inline" title="Open file in Finder" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="bZ3-gL-Jk4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">o</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="openInFinder:" target="XfG-lQ-9wD" id="EQn-GN-nn2"/>
@@ -906,6 +912,7 @@
                                 <buttonCell key="cell" type="inline" title="Hide" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="fGd-ce-ChS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">h</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="ignore:" target="XfG-lQ-9wD" id="SVk-pU-zFi"/>
@@ -926,6 +933,7 @@
                                 <buttonCell key="cell" type="inline" title="Edit" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="5qq-Az-efz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">e</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="edit:" target="XfG-lQ-9wD" id="J2w-Ba-QJ8"/>
@@ -936,6 +944,7 @@
                                 <buttonCell key="cell" type="inline" title="Uninstall" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="NFz-Pz-5AQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
+                                    <string key="keyEquivalent">u</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="uninstall:" target="XfG-lQ-9wD" id="Zmk-ma-YUc"/>
