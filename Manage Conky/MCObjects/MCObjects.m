@@ -264,6 +264,9 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     if (!userIsAdmin())
 //    if (userIsAdmin())
     {
+        /* Remove old files first */
+        [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
+        
         /*
          * Create symbolic link to install ConkyX to Applications
          * Run script that setups basic paths as administrator

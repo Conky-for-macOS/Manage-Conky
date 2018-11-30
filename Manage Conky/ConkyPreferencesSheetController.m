@@ -372,7 +372,6 @@
          */
         
         /* uninstall old & install new */
-        [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
         [[MCSettings sharedSettings] installManageConkyFilesystem];
         
         [self close];

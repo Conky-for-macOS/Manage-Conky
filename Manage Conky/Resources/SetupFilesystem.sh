@@ -8,6 +8,9 @@
 
 CONKY_X=$1
 
+# First uninstall old files
+$(pwd)/UninstallFilesystem.sh
+
 # create symlink to ConkyX in Applications
 ln -s "$CONKY_X" /Applications
 
