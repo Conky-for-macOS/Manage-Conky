@@ -259,7 +259,10 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
-    if (userIsAdmin())
+    NSLog(@"scriptPath = %@", scriptPath);
+    
+    if (!userIsAdmin())
+//    if (userIsAdmin())
     {
         /*
          * Create symbolic link to install ConkyX to Applications
@@ -289,9 +292,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
          */
         NSTask *script = [[NSTask alloc] init];
         script.launchPath = @"/bin/bash";
-        script.arguments = @[@"-l",
-                             @"-c",
-                             scriptPath,
+        script.arguments = @[scriptPath,
                              ConkyXPath];
         [script launchAuthenticated];
         [script waitUntilExit];
@@ -327,8 +328,11 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
 - (void)uninstallManageConkyFilesystem
 {
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
-    
-    if (userIsAdmin())
+
+    NSLog(@"scriptPath = %@", scriptPath);
+
+    if (!userIsAdmin())
+//    if (userIsAdmin())
     {
         NSError *error = nil;
         NSFileManager *fm = [NSFileManager defaultManager];
@@ -348,9 +352,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
          */
         NSTask *script = [[NSTask alloc] init];
         script.launchPath = @"/bin/bash";
-        script.arguments = @[@"-l",
-                             @"-c",
-                             scriptPath];
+        script.arguments = @[scriptPath];
         [script launchAuthenticated];
         [script waitUntilExit];
     }
