@@ -16,12 +16,13 @@
 		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
+		0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; };
+		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
 		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
-		09A20B7321AC9CED00FB7258 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */; };
 		09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
@@ -52,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0948AF5021B1720E0067A111 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0966C5A5215DB1D0006B2DAA;
+			remoteInfo = NPTask;
+		};
 		098C76B1213C097600B1F05A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
@@ -93,13 +101,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0966C5AF215DB1D0006B2DAA;
 			remoteInfo = NPTaskTests;
-		};
-		09A20B7121AC9CE200FB7258 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0966C5A5215DB1D0006B2DAA;
-			remoteInfo = NPTask;
 		};
 		09BF3BDB215CF203003EF57D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -180,7 +181,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09A20B7321AC9CED00FB7258 /* NPTask.framework in Copy Frameworks */,
+				0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */,
 				09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -301,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */,
 				09BF3BEB215CF21A003EF57D /* Fragaria.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
@@ -583,7 +585,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				09A20B7221AC9CE200FB7258 /* PBXTargetDependency */,
+				0948AF5121B1720E0067A111 /* PBXTargetDependency */,
 				09BF3BEA215CF20F003EF57D /* PBXTargetDependency */,
 				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
@@ -856,15 +858,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0948AF5121B1720E0067A111 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NPTask;
+			targetProxy = 0948AF5021B1720E0067A111 /* PBXContainerItemProxy */;
+		};
 		098C76B2213C097600B1F05A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
 			targetProxy = 098C76B1213C097600B1F05A /* PBXContainerItemProxy */;
-		};
-		09A20B7221AC9CE200FB7258 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = NPTask;
-			targetProxy = 09A20B7121AC9CE200FB7258 /* PBXContainerItemProxy */;
 		};
 		09BF3BEA215CF20F003EF57D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
