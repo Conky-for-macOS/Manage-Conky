@@ -259,10 +259,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
-    NSLog(@"scriptPath = %@", scriptPath);
-    
-    if (!userIsAdmin())
-//    if (userIsAdmin())
+    if (userIsAdmin())
     {
         /* Remove old files first */
         [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
@@ -332,10 +329,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
 {
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
 
-    NSLog(@"scriptPath = %@", scriptPath);
-
-    if (!userIsAdmin())
-//    if (userIsAdmin())
+    if (userIsAdmin())
     {
         NSError *error = nil;
         NSFileManager *fm = [NSFileManager defaultManager];
