@@ -22,11 +22,11 @@ You can use shortcuts to improve the experience:
 `⌘P`&emsp;Open Conky Preferences<br>
 `⌘T`&emsp;Open Conky Themes<br>
 
-`R`&emsp;Run/Restart a Widget/Theme<br>
-`S`&emsp;Stop a Widget/Theme<br>
+`R`&emsp;&nbsp;Run/Restart a Widget/Theme<br>
+`S`&emsp;&nbsp;Stop a Widget/Theme<br>
 `⌘A`&emsp;Stop All Widgets / Themes (depending on view)<br>
-`E`&emsp;Edit Code<br>
-`H`&emsp;Hide element from ManageConky<br>
+`E`&emsp;&nbsp;Edit Code<br>
+`H`&emsp;&nbsp;Hide element from ManageConky<br>
 `⌘O`&emsp;Open in File Manager<br>
 
 ## INSTALL 💾
