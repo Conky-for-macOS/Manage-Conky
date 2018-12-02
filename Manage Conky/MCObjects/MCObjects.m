@@ -11,10 +11,10 @@
 #import <pwd.h>
 #import <grp.h>
 #import "Shared.h"
-#import <NPTask/NPTask.h>
 #import "../ViewController.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
+#import <NPTask/NSAuthenticatedTask.h>
 #import "../Extensions/NSString+Relative.h"
 
 /** `Helper function`
@@ -290,7 +290,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
         /*
          * Run script that setups basic paths as administrator
          */
-        NSTask *script = [[NSTask alloc] init];
+        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
         script.launchPath = @"/bin/bash";
         script.arguments = @[scriptPath,
                              ConkyXPath];
@@ -347,7 +347,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
         /*
          * Run script that setups basic paths as administrator
          */
-        NSTask *script = [[NSTask alloc] init];
+        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
         script.launchPath = @"/bin/bash";
         script.arguments = @[scriptPath];
         [script launchAuthenticated];
