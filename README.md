@@ -19,15 +19,15 @@ It offers on the mac what conky-manager offers on linux plus alot more (exclusiv
 
 You can use shortcuts to improve the experience:
 
-`⌘P`    Open Conky Preferences<br>
-`⌘T`    Open Conky Themes<br>
+`⌘P`&emsp;Open Conky Preferences<br>
+`⌘T`&emsp;Open Conky Themes<br>
 
-`R`      Run/Restart a Widget/Theme<br>
-`S`      Stop a Widget/Theme<br>
-`⌘A`    Stop All Widgets / Themes (depending on view)<br>
-`E`      Edit Code<br>
-`H`      Hide element from ManageConky<br>
-`⌘O`    Open in File Manager<br>
+`R`&emsp;Run/Restart a Widget/Theme<br>
+`S`&emsp;Stop a Widget/Theme<br>
+`⌘A`&emsp;Stop All Widgets / Themes (depending on view)<br>
+`E`&emsp;Edit Code<br>
+`H`&emsp;Hide element from ManageConky<br>
+`⌘O`&emsp;Open in File Manager<br>
 
 ## INSTALL 💾
 
