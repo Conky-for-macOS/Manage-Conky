@@ -262,13 +262,11 @@
     /*
      * display the panel
      */
-    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
-        if (result == NSModalResponseOK)
-        {
-            [self->_conkyConfigLocationTextfield setStringValue:panel.URL.path];
-            [self enableMustAddSearchPathsMode];
-        }
-    }];
+    if ([panel runModal] == NSModalResponseOK)
+    {
+        [self->_conkyConfigLocationTextfield setStringValue:panel.URL.path];
+        [self enableMustAddSearchPathsMode];
+    }
 }
 
 - (IBAction)addSearchLocation:(id)sender
@@ -284,22 +282,20 @@
     /*
      * display the panel
      */
-    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
-        if (result == NSModalResponseOK)
+    if ([panel runModal] == NSModalResponseOK)
+    {
+        NSURL *theDocument = [[panel URLs] objectAtIndex:0];
+        NSString *theDocumentInString = [theDocument path];
+        
+        /* add to table contents array if it doesn't already exist! */
+        if (![self->_searchLocationsTableContents containsObject:theDocumentInString])
         {
-            NSURL *theDocument = [[panel URLs] objectAtIndex:0];
-            NSString *theDocumentInString = [theDocument path];
+            [self->_searchLocationsTableContents addObject:theDocumentInString];
+            [self->_searchLocationsTable reloadData];
             
-            /* add to table contents array if it doesn't already exist! */
-            if (![self->_searchLocationsTableContents containsObject:theDocumentInString])
-            {
-                [self->_searchLocationsTableContents addObject:theDocumentInString];
-                [self->_searchLocationsTable reloadData];
-                
-                [self enableMustAddSearchPathsMode];
-            }
+            [self enableMustAddSearchPathsMode];
         }
-    }];
+    }
 }
 
 - (IBAction)removeSearchLocation:(id)sender
