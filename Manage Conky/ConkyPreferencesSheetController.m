@@ -13,6 +13,7 @@
 #import "ViewController.h"
 #import "PFMoveApplication.h"
 #import "NSAlert+runModalSheet.h"
+#import <NPTask/NSAuthenticatedTask.h>
 #import <ServiceManagement/ServiceManagement.h>
 
 
@@ -20,13 +21,17 @@
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
 
 #define CONKY_BUNDLE_IDENTIFIER "org.npyl.conky"
-#define CONKYX_PATH             "/Applications/ConkyX.app"
+#define CONKYX_PATH "/Applications/ConkyX.app"
 
-#define kConkyLaunchAgentLabel      @"org.npyl.conky"
-#define kConkyExecutablePath        @"/Applications/ConkyX.app/Contents/Resources/conky"
+#define kConkyLaunchAgentLabel @"org.npyl.conky"
+#define kConkyExecutablePath @"/Applications/ConkyX.app/Contents/Resources/conky"
 
-#define MC_XQUARTZ_VISIBLE      NO
-#define MC_XQUARTZ_INVISIBLE    YES
+#define MC_XQUARTZ_VISIBLE NO
+#define MC_XQUARTZ_INVISIBLE YES
+
+#define INFO_PLIST_TMP @"/tmp/Info.plist"
+#define INFO_PLBAK_TMP @"/tmp/Info.plist.backup"
+#define INFO_PLIST_DST @"/Applications/Utilities/XQuartz.app/Contents/Info.plist"
 
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
@@ -118,13 +123,10 @@
         /*
          * xquartz icon shows up on dock?
          */
-        NSDictionary *xquartzInfoPlist = [[NSDictionary alloc] initWithContentsOfFile:@"/Applications/Utilities/XQuartz.app/Contents/Info.plist"];
-        NSNumber *xquartzVisibility = [xquartzInfoPlist objectForKey:@"LSBackgroundOnly"];
+        NSDictionary *xquartzInfoPlist = [[NSDictionary alloc] initWithContentsOfFile:INFO_PLIST_DST];
+        BOOL xquartzVisibility = ![[xquartzInfoPlist objectForKey:@"LSBackgroundOnly"] boolValue];
         
-        if (!xquartzVisibility || (xquartzVisibility && xquartzVisibility.boolValue == MC_XQUARTZ_VISIBLE))
-        {
-            [_toggleXQuartzIconVisibilityCheckbox setState:NSOnState];
-        }
+        [_toggleXQuartzIconVisibilityCheckbox setState:xquartzVisibility];
     }
     else
     {
@@ -225,27 +227,54 @@
 
 - (IBAction)toggleXQuartzVisibilityAction:(id)sender
 {
-    NSDictionary *errorDict = nil;
-
-    NSString *boolean = ([sender state] == NSOnState) ? @"NO" : @"YES";
-
-    NSString *formatFilePath = [[NSBundle mainBundle] pathForResource:@"toggleXquartzVisibilityScript"
-                                                               ofType:@"fmt"];
+    // XXX better error checking...
+    // I need goto's.  Why aren't they working???
     
-    NSString *format = [NSString stringWithContentsOfFile:formatFilePath
-                                                 encoding:NSUTF8StringEncoding
-                                                    error:nil];
-    
-    NSString *script = [NSString stringWithFormat:format, boolean];
-    
-    NSAppleScript *object = [[NSAppleScript alloc] initWithSource:script];
-    
-    [object executeAndReturnError:&errorDict];
-    
-    if (errorDict)
+    NSMutableDictionary *plist = [NSMutableDictionary dictionaryWithContentsOfFile:INFO_PLIST_DST];
+    if (!plist)
     {
-        NSLog(@"Error when executing applescript: %@\n", errorDict);
         [sender setState:![sender state]];
+        return;
+    }
+    
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLIST_TMP error:&error]; if (error) MCError(error); error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLBAK_TMP error:&error]; if (error) MCError(error); error = nil;
+
+    /* backup Info.plist */
+    [[NSFileManager defaultManager] copyItemAtPath:INFO_PLIST_DST toPath:INFO_PLBAK_TMP error:&error];
+    if (error)
+    {
+        [sender setState:![sender state]];
+        MCError(error);
+        return;
+    }
+    
+    /* set LSBackgroundOnly */
+    [plist setObject:[NSNumber numberWithBool:![sender state]] forKey:@"LSBackgroundOnly"];
+    
+    /* apply changes */
+    BOOL res = [plist writeToFile:INFO_PLIST_TMP atomically:YES];
+    if (!res)
+    {
+        [sender setState:![sender state]];
+        MCError(error);
+        return;
+    }
+    
+    NSString *str = [[NSBundle mainBundle] pathForResource:@"ToogleXQuartzVisibility" ofType:@"sh"];
+
+    /* Run the script */
+    NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
+    script.launchPath = @"/bin/bash";
+    script.arguments = @[str];
+    [script launchAuthenticated];
+    [script waitUntilExit];
+    
+    if (script.terminationStatus != 0)
+    {
+        [sender setState:![sender state]];
+        return;
     }
 }
 

@@ -15,9 +15,9 @@
 		09366F712166A67900157ECA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09366F702166A67900157ECA /* Preferences.xib */; };
 		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
-		09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */ = {isa = PBXBuildFile; fileRef = 09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */; };
 		0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; };
 		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */ = {isa = PBXBuildFile; fileRef = 094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */; };
 		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
 		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
@@ -230,8 +230,8 @@
 		093BDFC120861C0E004E6354 /* MCConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCConfigEditor.h; sourceTree = "<group>"; };
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
-		09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = toggleXquartzVisibilityScript.fmt; path = Resources/toggleXquartzVisibilityScript.fmt; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = ToogleXQuartzVisibility.sh; path = Resources/ToogleXQuartzVisibility.sh; sourceTree = "<group>"; };
 		0953D7A221596AF60065BB4D /* SaveWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveWidget.xib; path = Sheets/SaveWidget.xib; sourceTree = "<group>"; };
 		0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveWidgetSheetController.h; sourceTree = "<group>"; };
 		0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveWidgetSheetController.m; sourceTree = "<group>"; };
@@ -485,9 +485,9 @@
 				77B847431F62C2B600AF8BCA /* Main.storyboard */,
 				ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */,
 				ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */,
-				09421B4920FC2B480088187F /* toggleXquartzVisibilityScript.fmt */,
 				09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */,
 				09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */,
+				094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -756,13 +756,13 @@
 			files = (
 				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
 				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
+				094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */,
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				09366F712166A67900157ECA /* Preferences.xib in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
 				0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */,
-				09421B4A20FC2B490088187F /* toggleXquartzVisibilityScript.fmt in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				09F14C67211E1F0D00715664 /* About.xib in Resources */,
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
