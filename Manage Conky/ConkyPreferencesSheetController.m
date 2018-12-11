@@ -227,8 +227,7 @@
 
 - (IBAction)toggleXQuartzVisibilityAction:(id)sender
 {
-    // XXX better error checking...
-    // I need goto's.  Why aren't they working???
+    NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"ToogleXQuartzVisibility" ofType:@"sh"];
     
     NSMutableDictionary *plist = [NSMutableDictionary dictionaryWithContentsOfFile:INFO_PLIST_DST];
     if (!plist)
@@ -238,15 +237,15 @@
     }
     
     NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLIST_TMP error:&error]; if (error) MCError(error); error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLBAK_TMP error:&error]; if (error) MCError(error); error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLIST_TMP error:&error]; if (error) MCError(&error);
+    [[NSFileManager defaultManager] removeItemAtPath:INFO_PLBAK_TMP error:&error]; if (error) MCError(&error);
 
     /* backup Info.plist */
     [[NSFileManager defaultManager] copyItemAtPath:INFO_PLIST_DST toPath:INFO_PLBAK_TMP error:&error];
     if (error)
     {
         [sender setState:![sender state]];
-        MCError(error);
+        MCError(&error);
         return;
     }
     
@@ -258,16 +257,13 @@
     if (!res)
     {
         [sender setState:![sender state]];
-        MCError(error);
+        MCError(&error);
         return;
     }
-    
-    NSString *str = [[NSBundle mainBundle] pathForResource:@"ToogleXQuartzVisibility" ofType:@"sh"];
 
     /* Run the script */
     NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
-    script.launchPath = @"/bin/bash";
-    script.arguments = @[str];
+    script.launchPath = scriptPath;
     [script launchAuthenticated];
     [script waitUntilExit];
     

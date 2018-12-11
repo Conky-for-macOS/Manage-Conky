@@ -46,7 +46,7 @@
     
     if (![themePackReader open:&error])
     {
-        MCError(error, @"Error: Failed to open themepack with error");
+        MCError(&error, @"Error: Failed to open themepack with error");
         return NO;
     }
 
@@ -64,7 +64,7 @@
         }
         else
         {
-            MCError(error, @"Error iterating for item (%@)", item);
+            MCError(&error, @"Error iterating for item (%@)", item);
             return NO;
         }
     }];

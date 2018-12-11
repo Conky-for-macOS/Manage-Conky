@@ -26,7 +26,7 @@
 
         if (error)
         {
-            MCError(error);
+            MCError(&error);
             return nil;
         }
 
@@ -60,7 +60,7 @@
                         error:&error];
     if (error)
     {
-        MCError(error, @"Error applying changes to config");
+        MCError(&error, @"Error applying changes to config");
     }
 }
 

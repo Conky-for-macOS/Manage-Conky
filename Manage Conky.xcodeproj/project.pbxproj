@@ -754,20 +754,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
+				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
 				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
 				094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */,
-				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
-				09D1EC2221BCBB300049BE37 /* Preferences.xib in Resources */,
-				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
 				ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */,
-				0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */,
 				77B847451F62C2B600AF8BCA /* Main.storyboard in Resources */,
 				09F14C67211E1F0D00715664 /* About.xib in Resources */,
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
 				09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */,
 				09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */,
+				0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */,
+				09D1EC2221BCBB300049BE37 /* Preferences.xib in Resources */,
 				ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

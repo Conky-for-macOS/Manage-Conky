@@ -83,7 +83,7 @@
         [fm createDirectoryAtPath:widgetDirectory withIntermediateDirectories:NO attributes:nil error:&error];
         if (error)
         {
-            MCError(error);
+            MCError(&error);
             return;
         }
         
@@ -104,7 +104,7 @@
         [fm copyItemAtPath:previewLocation.path toPath:[widgetDirectory stringByAppendingPathComponent:[previewLocation.path lastPathComponent]] error:&error];
         if (error)
         {
-            MCError(error);
+            MCError(&error);
         }
         
         /* copy resources */
@@ -113,7 +113,7 @@
             [fm copyItemAtPath:resource.path toPath:[widgetDirectory stringByAppendingPathComponent:[resource.path lastPathComponent]] error:&error];
             if (error)
             {
-                MCError(error);
+                MCError(&error);
             }
         }
         

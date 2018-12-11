@@ -358,7 +358,7 @@ void checkbox_registry_uncheck_all(void)
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
     if (error)
     {
-        MCError(error, @"saveTheme");
+        MCError(&error, @"saveTheme");
         return;
     }
     
@@ -376,9 +376,7 @@ void checkbox_registry_uncheck_all(void)
     /* Write ThemeRC */
     [themerc writeToFile:[path stringByAppendingPathComponent:@"themerc.plist"]
               atomically:YES];
-    
-    error = nil;    // re-use
-    
+
     /*
      * Copy Resources
      */
@@ -388,8 +386,7 @@ void checkbox_registry_uncheck_all(void)
         [[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error];
         if (error)
         {
-            MCError(error);
-            error = nil;
+            MCError(&error);
         }
     }
 
@@ -398,17 +395,15 @@ void checkbox_registry_uncheck_all(void)
     {
         [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
         if (error)
-            MCError(error);
+            MCError(&error);
     }
-    
-    error = nil;
-    
+
     /*
      * copy preview image and set its name to <widgetName>.jpg
      */
     [[NSFileManager defaultManager] copyItemAtPath:_preview toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", path.lastPathComponent]] error:&error];
     if (error)
-        MCError(error);
+        MCError(&error);
 
     /* open theme directory */
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path]];

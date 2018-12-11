@@ -112,9 +112,8 @@ void NPLog(NSString *format, ...)
         if (error)
         {
             printf("Error opening logfile(%s): %s\n", logfile.UTF8String, error.localizedDescription.UTF8String);
+            error = nil;    // re-use
         }
-        
-        error = nil;    // re-use
         
         /* write to file */
         contents = [contents stringByAppendingFormat:@"%@\n", formattedMessage];
@@ -131,19 +130,21 @@ void NPLog(NSString *format, ...)
     }
 }
 
-void MCError(NSError *error) MC_OVERLOADABLE
+void MCError(NSError **error) MC_OVERLOADABLE
 {
-    NSLog(@"%@", error);
+    NSLog(@"%@", *error);
+    error = nil;
 }
 
-void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
+void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 {
     va_list vargs;
     va_start(vargs, format);
     NSString* formattedMessage = [[NSString alloc] initWithFormat:format arguments:vargs];
     va_end(vargs);
     
-    NSLog(@"%@: \n%@\n", formattedMessage, error);
+    NSLog(@"%@: \n%@\n", formattedMessage, *error);
+    error = nil;
 }
 
 @implementation MCSettings
@@ -270,19 +271,16 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
          */
         if (![fm createSymbolicLinkAtPath:CONKYX withDestinationPath:ConkyXPath error:&error])
         {
-            MCError(error, @"Error creating symlink to Applications for ConkyX");
+            MCError(&error, @"Error creating symlink to Applications for ConkyX");
         }
-        
-        error = nil;
-        
+
         /*
          * Create /usr/local/bin dir;
          * Ensure that we are going to get the symlink in place.
          */
-        [fm createDirectoryAtPath:@"/usr/local/bin" withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error)
+        if (![fm createDirectoryAtPath:@"/usr/local/bin" withIntermediateDirectories:YES attributes:nil error:&error])
         {
-            NSLog(@"%@", error);
+            MCError(&error);
         }
     }
     else
@@ -303,7 +301,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
      */
     if (![fm createSymbolicLinkAtPath:CONKY_SYMLINK withDestinationPath:conkyPath error:&error])
     {
-        MCError(error, @"Error creating symbolic link to /usr/local/bin");
+        MCError(&error, @"Error creating symbolic link to /usr/local/bin");
     }
 }
 
@@ -335,12 +333,10 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
         NSFileManager *fm = [NSFileManager defaultManager];
         
         [fm removeItemAtPath:CONKYX error:&error];
-        if (error) { MCError(error, @"Error removing ConkyX"); }
-        
-        error = nil;
-        
+        if (error) { MCError(&error, @"Error removing ConkyX"); }
+
         [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-        if (error) { MCError(error, @"Error removing symlink"); }
+        if (error) { MCError(&error, @"Error removing symlink"); }
     }
     else
     {
@@ -363,7 +359,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     [self uninstallManageConkyFilesystem];
     
     [fm removeItemAtPath:MANAGE_CONKY error:&error];
-    if (error) { MCError(error, @"Error removing Manage Conky"); }
+    if (error) { MCError(&error, @"Error removing Manage Conky"); }
 }
 
 /* Windows Vector */
@@ -455,7 +451,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[path stringByDeletingLastPathComponent] error:&error];
     if (error)
-        MCError(error);
+        MCError(&error);
 }
 
 - (void)uninstall {}
@@ -520,7 +516,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
                           error);
         
         if (error)
-            MCError(error);
+            MCError(&error);
     }
     else
     {
@@ -939,7 +935,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
         
         if (error)
         {
-            MCError(error, @"applyTheme: Error creating agent");
+            MCError(&error, @"applyTheme: Error creating agent");
             return;
         }
     }
@@ -960,7 +956,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
                              error:&err];
     if (err)
     {
-        MCError(err, @"applyTheme: Failed to apply wallpaper");
+        MCError(&err, @"applyTheme: Failed to apply wallpaper");
     }
     
     /*
@@ -1006,7 +1002,7 @@ void MCError(NSError *error, NSString *format, ...) MC_OVERLOADABLE
                              error:&error];
     if (error)
     {
-        MCError(error);
+        MCError(&error);
     }
     
     _isEnabled = NO;
