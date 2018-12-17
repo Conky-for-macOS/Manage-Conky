@@ -15,24 +15,38 @@
 {
     self = [super initWithWindowNibName:nibName];
     self.mode = mode;
+    
+    _openWindowed = (_mode & GSC_MODE_WINDOW);
+    
     return self;
 }
 
 - (void)loadOnWindow:(NSWindow *)_targetWindow
 {
     self.targetWindow = _targetWindow;
-    [_targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
-        [_targetWindow endSheet:self.window];
-    }];
-
-    [[MCSettings sharedSettings] pushWindow:self.window];
+    
+    if (_openWindowed)
+    {
+        [NSApp beginModalSessionForWindow:self.window];
+    }
+    else
+    {
+        [_targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
+            [_targetWindow endSheet:self.window];
+        }];
+        
+        [[MCSettings sharedSettings] pushWindow:self.window];
+    }
 }
 
 - (IBAction)close:(id)sender
 {
     [self.window close];
     
-    [[MCSettings sharedSettings] popWindow];
+    if (!_openWindowed)
+    {
+        [[MCSettings sharedSettings] popWindow];
+    }
 }
 
 @end

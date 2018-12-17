@@ -662,7 +662,7 @@
 
 - (IBAction)toggleLogger:(id)sender
 {
-    [[[Logger alloc] initWithWindowNibName:@"Logger"] loadOnWindow:[NSApp mainWindow]];
+    [[[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW] loadOnWindow:[NSApp mainWindow]];
 }
 
 @end

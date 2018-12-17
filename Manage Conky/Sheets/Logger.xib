@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Logger">
             <connections>
+                <outlet property="closeButton" destination="9NW-yL-HwU" id="KvX-BA-TEt"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="Fgm-kr-Vkn"/>
             </connections>
         </customObject>
@@ -44,15 +45,34 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9NW-yL-HwU">
+                        <rect key="frame" x="616" y="466" width="36" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="Tbd-bF-fAB"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="Freestanding_StopProgress_2x" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="7FV-Ch-8it">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="close:" target="-2" id="qNz-z4-R1j"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="F0T-GH-YJk" secondAttribute="bottom" constant="20" symbolic="YES" id="AUd-pi-N8e"/>
-                    <constraint firstAttribute="trailing" secondItem="F0T-GH-YJk" secondAttribute="trailing" constant="20" symbolic="YES" id="cGy-Tx-YBq"/>
-                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="jrL-KM-N61"/>
-                    <constraint firstItem="F0T-GH-YJk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="mt2-Rm-CUR"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="9NW-yL-HwU" secondAttribute="bottom" constant="4" id="7wK-ki-m4y"/>
+                    <constraint firstItem="9NW-yL-HwU" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="6" id="ASw-pv-PQf"/>
+                    <constraint firstAttribute="bottom" secondItem="F0T-GH-YJk" secondAttribute="bottom" constant="20" symbolic="YES" id="Q5h-H1-RAR"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="YSG-Ij-OtB"/>
+                    <constraint firstAttribute="trailing" secondItem="9NW-yL-HwU" secondAttribute="trailing" id="eNG-9X-17p"/>
+                    <constraint firstAttribute="trailing" secondItem="F0T-GH-YJk" secondAttribute="trailing" constant="20" symbolic="YES" id="mgq-yi-tNI"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="stw-oQ-dOH"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="144" y="90.5"/>
         </window>
     </objects>
+    <resources>
+        <image name="Freestanding_StopProgress_2x" width="16" height="16"/>
+    </resources>
 </document>
