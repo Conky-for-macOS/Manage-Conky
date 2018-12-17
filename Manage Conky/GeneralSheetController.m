@@ -11,12 +11,6 @@
 
 @implementation GeneralSheetController
 
-- (id)initWithWindowNibName:(NSString *)nibName;
-{
-    self = [super initWithWindowNibName:nibName];
-    return self;
-}
-
 - (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode
 {
     self = [super initWithWindowNibName:nibName];

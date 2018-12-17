@@ -15,7 +15,6 @@
 
 @property NSWindow *targetWindow;
 
-- (id)initWithWindowNibName:(NSString *)nibName;
 - (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode;
 - (void)loadOnWindow:(NSWindow *)_targetWindow;
 - (IBAction)close:(id)sender;
