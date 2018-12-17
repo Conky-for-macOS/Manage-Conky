@@ -263,6 +263,7 @@
 
     /* Run the script */
     NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
+    //script.icon = [NSApp applicationIconImage];
     script.launchPath = scriptPath;
     [script launchAuthenticated];
     [script waitUntilExit];

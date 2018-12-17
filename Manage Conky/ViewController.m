@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "Shared.h"
+#import "Logger.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "AboutSheetController.h"
 #import "ConkyThemesSheetController.h"
@@ -658,4 +659,10 @@
 {
     [[[AboutSheetController alloc] initWithWindowNibName:@"About"] loadOnWindow:[NSApp mainWindow]];
 }
+
+- (IBAction)toggleLogger:(id)sender
+{
+    [[[Logger alloc] initWithWindowNibName:@"Logger"] loadOnWindow:[NSApp mainWindow]];
+}
+
 @end

@@ -30,6 +30,8 @@
 		09D11C992104C66F005C9685 /* SaveThemeSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D11C982104C66F005C9685 /* SaveThemeSheetController.m */; };
 		09D1EC2221BCBB300049BE37 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D1EC2121BCBB300049BE37 /* Preferences.xib */; };
 		09D8226D206F8FFC008BBFEB /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D8226C206F8FFC008BBFEB /* Shared.m */; };
+		09E036EA21C7218200C7EED1 /* Logger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E036E921C7218200C7EED1 /* Logger.xib */; };
+		09E036F821C7234400C7EED1 /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E036F721C7234400C7EED1 /* Logger.m */; };
 		09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */; };
 		09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C60211E1F0D00715664 /* SaveTheme.xib */; };
 		09F14C67211E1F0D00715664 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C61211E1F0D00715664 /* About.xib */; };
@@ -254,6 +256,9 @@
 		09D11C982104C66F005C9685 /* SaveThemeSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveThemeSheetController.m; sourceTree = "<group>"; };
 		09D1EC2121BCBB300049BE37 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = Sheets/Preferences.xib; sourceTree = "<group>"; };
 		09D8226C206F8FFC008BBFEB /* Shared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
+		09E036E921C7218200C7EED1 /* Logger.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Logger.xib; path = Sheets/Logger.xib; sourceTree = "<group>"; };
+		09E036F621C7234400C7EED1 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		09E036F721C7234400C7EED1 /* Logger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
 		09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyPreferences.xib; path = Sheets/ConkyPreferences.xib; sourceTree = "<group>"; };
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
@@ -341,6 +346,8 @@
 				09D11C982104C66F005C9685 /* SaveThemeSheetController.m */,
 				09366F792166ADB300157ECA /* PreferencesController.h */,
 				09366F7A2166ADB300157ECA /* PreferencesController.m */,
+				09E036F621C7234400C7EED1 /* Logger.h */,
+				09E036F721C7234400C7EED1 /* Logger.m */,
 				77B8473C1F62C2B600AF8BCA /* main.m */,
 			);
 			name = Sources;
@@ -501,6 +508,7 @@
 				09F14C60211E1F0D00715664 /* SaveTheme.xib */,
 				0953D7A221596AF60065BB4D /* SaveWidget.xib */,
 				09D1EC2121BCBB300049BE37 /* Preferences.xib */,
+				09E036E921C7218200C7EED1 /* Logger.xib */,
 			);
 			name = Sheets;
 			sourceTree = "<group>";
@@ -765,6 +773,7 @@
 				09F14C67211E1F0D00715664 /* About.xib in Resources */,
 				09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */,
 				09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */,
+				09E036EA21C7218200C7EED1 /* Logger.xib in Resources */,
 				09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */,
 				0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */,
 				09D1EC2221BCBB300049BE37 /* Preferences.xib in Resources */,
@@ -851,6 +860,7 @@
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
 				090F2836217168C400D9F406 /* NSString+Empty.m in Sources */,
 				09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */,
+				09E036F821C7234400C7EED1 /* Logger.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
