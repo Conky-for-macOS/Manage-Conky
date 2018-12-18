@@ -8,14 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define GSC_MODE_WINDOW 1
+enum MC_GENERAL_SHEET_FLAGS {
+    GSC_MODE_WINDOW = 1,
+};
 
-@interface GeneralSheetController : NSWindowController
+@interface GeneralSheetController : NSWindowController<NSWindowDelegate>
 
 @property NSUInteger mode;  /* some of our sheets implement different behavior
                              * based on the mode you set! :) */
 
-@property BOOL openWindowed;
+@property BOOL opensWindowed;
 
 @property NSWindow *targetWindow;
 

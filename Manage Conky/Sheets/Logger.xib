@@ -14,8 +14,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Logger" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+        <window title="Logger" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="646" height="489"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -45,28 +45,28 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9NW-yL-HwU">
-                        <rect key="frame" x="616" y="466" width="36" height="21"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9NW-yL-HwU">
+                        <rect key="frame" x="-6" y="466" width="36" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="24" id="Tbd-bF-fAB"/>
+                            <constraint firstAttribute="width" constant="24" id="Imu-Pg-aDv"/>
                         </constraints>
                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="Freestanding_StopProgress_2x" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="7FV-Ch-8it">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="close:" target="-2" id="qNz-z4-R1j"/>
+                            <action selector="close:" target="-2" id="i29-gI-teI"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="9NW-yL-HwU" secondAttribute="bottom" constant="4" id="7wK-ki-m4y"/>
-                    <constraint firstItem="9NW-yL-HwU" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="6" id="ASw-pv-PQf"/>
-                    <constraint firstAttribute="bottom" secondItem="F0T-GH-YJk" secondAttribute="bottom" constant="20" symbolic="YES" id="Q5h-H1-RAR"/>
-                    <constraint firstItem="F0T-GH-YJk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="YSG-Ij-OtB"/>
-                    <constraint firstAttribute="trailing" secondItem="9NW-yL-HwU" secondAttribute="trailing" id="eNG-9X-17p"/>
-                    <constraint firstAttribute="trailing" secondItem="F0T-GH-YJk" secondAttribute="trailing" constant="20" symbolic="YES" id="mgq-yi-tNI"/>
-                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="stw-oQ-dOH"/>
+                    <constraint firstAttribute="trailing" secondItem="F0T-GH-YJk" secondAttribute="trailing" constant="20" symbolic="YES" id="CIY-23-3FI"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="Jwd-gx-1bS"/>
+                    <constraint firstItem="9NW-yL-HwU" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="6" id="L0A-TQ-w94"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="iy0-tq-gx0"/>
+                    <constraint firstItem="F0T-GH-YJk" firstAttribute="top" secondItem="9NW-yL-HwU" secondAttribute="bottom" constant="4" id="ovL-bs-7sh"/>
+                    <constraint firstAttribute="bottom" secondItem="F0T-GH-YJk" secondAttribute="bottom" constant="20" symbolic="YES" id="wu7-8x-XPs"/>
+                    <constraint firstItem="9NW-yL-HwU" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="xA6-Hq-ljt"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="144" y="90.5"/>

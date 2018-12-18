@@ -14,9 +14,13 @@
 - (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode
 {
     self = [super initWithWindowNibName:nibName];
-    self.mode = mode;
     
-    _openWindowed = (_mode & GSC_MODE_WINDOW);
+    if (self)
+    {
+        self.mode = mode;
+        
+        _opensWindowed = (_mode & GSC_MODE_WINDOW);
+    }
     
     return self;
 }
@@ -25,9 +29,9 @@
 {
     self.targetWindow = _targetWindow;
     
-    if (_openWindowed)
+    if (_opensWindowed)
     {
-        [NSApp beginModalSessionForWindow:self.window];
+        [self showWindow:self];
     }
     else
     {
@@ -43,7 +47,7 @@
 {
     [self.window close];
     
-    if (!_openWindowed)
+    if (!_opensWindowed)
     {
         [[MCSettings sharedSettings] popWindow];
     }

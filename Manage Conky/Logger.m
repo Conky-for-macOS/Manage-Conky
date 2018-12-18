@@ -26,11 +26,6 @@ BOOL done;
     if (self)
     {
         fileHandleRegistry = [NSMutableArray array];
-        
-        if (![super openWindowed])
-        {
-            [_closeButton setHidden:NO];
-        }
     }
     return self;
 }
@@ -53,6 +48,11 @@ BOOL done;
 + (void)addFilehandleForReading:(NSFileHandle *)fh
 {
     if (fh) [fileHandleRegistry addObject:fh];
+}
+
+- (IBAction)close:(id)sender
+{
+    [super close:sender];
 }
 
 @end
