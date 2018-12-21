@@ -134,7 +134,7 @@ void NPLog(NSString *format, ...)
 void MCError(NSError **error) MC_OVERLOADABLE
 {
     NSLog(@"%@", *error);
-    error = nil;    // allow re-use from caller
+    *error = nil;    // allow re-use from caller
 }
 
 void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
@@ -145,7 +145,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     va_end(vargs);
     
     NSLog(@"%@: \n%@\n", formattedMessage, *error);
-    error = nil;    // allow re-use from caller
+    *error = nil;    // allow re-use from caller
 }
 
 @implementation MCSettings
