@@ -6,53 +6,52 @@
 //  Copyright © 2018 Nickolas Pylarinos. All rights reserved.
 //
 
-#import "Shared.h"
 #import "Logger.h"
 
-#define UPDATE_INTERVAL 5   // sec
-
-/*
- * File Handles Registry
- */
-static NSMutableArray<NSFileHandle *> *fileHandleRegistry;
-
-BOOL done;
+#import "Shared.h"
 
 @implementation Logger
 
-- (instancetype)init
+static BOOL _isOpen = NO;
+static int _id = 0;
+
++ (id)logger
 {
-    self = [super init];
-    if (self)
-    {
-        fileHandleRegistry = [NSMutableArray array];
-    }
-    return self;
+    static id res = nil;
+    if (!res)
+        res = [[self alloc] init];
+    return res;
 }
 
 - (void)windowDidLoad
 {
-    [super windowDidLoad];
-    
-    NSLog(@"Starting to read all fh's");
-    
+    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" %i", ++_id]];
+    _isOpen = YES;
+}
+
+- (void)addFilehandleForReading:(NSFileHandle *)fh
+{
+    NSLog(@"Adding fh: %@", fh);
+
     /*
-     * Start reading all file handles
+     * Setup Readibility Handler
      */
-//    while (!done)
-//    {
-//        sleep(UPDATE_INTERVAL);
-//    }
+    [fh setReadabilityHandler:^(NSFileHandle *fileHandle) {
+        NSData *data = [fileHandle availableData];
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+//        NSLog(@"%@", str);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self->_textView.string = [self->_textView.string stringByAppendingString:str];
+        });
+        
+//        [fileHandle acceptConnectionInBackgroundAndNotify];
+    }];
+    
+    [fh acceptConnectionInBackgroundAndNotify];
 }
 
-+ (void)addFilehandleForReading:(NSFileHandle *)fh
-{
-    if (fh) [fileHandleRegistry addObject:fh];
-}
-
-- (IBAction)close:(id)sender
-{
-    [super close:sender];
-}
+- (BOOL)isOpen { return _isOpen; }
 
 @end

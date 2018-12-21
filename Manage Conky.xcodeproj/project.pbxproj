@@ -11,6 +11,7 @@
 		092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 092114A42084BE9A0098AC5D /* Changelog.rtf */; };
 		09287A502184BC80001AB18A /* NSString+Relative.m in Sources */ = {isa = PBXBuildFile; fileRef = 09287A4F2184BC80001AB18A /* NSString+Relative.m */; };
 		09287A5E2184BF58001AB18A /* NSApplication+mainWindowForSure.m in Sources */ = {isa = PBXBuildFile; fileRef = 09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */; };
+		092C9CFA21C9B3E600E2DD02 /* MCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 092C9CF921C9B3E600E2DD02 /* MCTask.m */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
 		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
@@ -223,6 +224,8 @@
 		09287A4F2184BC80001AB18A /* NSString+Relative.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+Relative.m"; path = "Extensions/NSString+Relative.m"; sourceTree = "<group>"; };
 		09287A5C2184BF45001AB18A /* NSApplication+mainWindowForSure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSApplication+mainWindowForSure.h"; path = "Extensions/NSApplication+mainWindowForSure.h"; sourceTree = "<group>"; };
 		09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSApplication+mainWindowForSure.m"; path = "Extensions/NSApplication+mainWindowForSure.m"; sourceTree = "<group>"; };
+		092C9CF821C9B3E600E2DD02 /* MCTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCTask.h; path = MCObjects/MCTask.h; sourceTree = "<group>"; };
+		092C9CF921C9B3E600E2DD02 /* MCTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCTask.m; path = MCObjects/MCTask.m; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
 		09366F792166ADB300157ECA /* PreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 		09E4382A2080D0120083EBEC /* MCObjects */ = {
 			isa = PBXGroup;
 			children = (
+				092C9CF821C9B3E600E2DD02 /* MCTask.h */,
+				092C9CF921C9B3E600E2DD02 /* MCTask.m */,
 				095F81922080D09B008DD286 /* MCObjects.h */,
 				095F81902080D08A008DD286 /* MCObjects.m */,
 			);
@@ -859,6 +864,7 @@
 				09287A502184BC80001AB18A /* NSString+Relative.m in Sources */,
 				77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */,
 				090F2836217168C400D9F406 /* NSString+Empty.m in Sources */,
+				092C9CFA21C9B3E600E2DD02 /* MCTask.m in Sources */,
 				09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */,
 				09E036F821C7234400C7EED1 /* Logger.m in Sources */,
 				ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */,

@@ -11,6 +11,7 @@
 #import <pwd.h>
 #import <grp.h>
 #import "Shared.h"
+#import "MCTask.h"
 #import "../ViewController.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
@@ -535,7 +536,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                                                                                  * provide the basic environment for them
                                                                                  * like environment-variables.
                                                                                  */
-        [task launch];
+        [task launch0];
         
         pid_t pid = [task processIdentifier];
         [self setPid:pid];

@@ -232,6 +232,7 @@
     NSMutableDictionary *plist = [NSMutableDictionary dictionaryWithContentsOfFile:INFO_PLIST_DST];
     if (!plist)
     {
+        NSLog(@"Unable to load Info.plist");
         [sender setState:![sender state]];
         return;
     }

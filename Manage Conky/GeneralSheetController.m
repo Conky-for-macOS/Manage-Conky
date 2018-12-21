@@ -18,7 +18,6 @@
     if (self)
     {
         self.mode = mode;
-        
         _opensWindowed = (_mode & GSC_MODE_WINDOW);
     }
     

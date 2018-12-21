@@ -9,13 +9,14 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Logger">
             <connections>
                 <outlet property="closeButton" destination="9NW-yL-HwU" id="KvX-BA-TEt"/>
+                <outlet property="textView" destination="JlG-nn-Xmq" id="d88-J0-hHR"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="Fgm-kr-Vkn"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Logger" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="646" height="489"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>

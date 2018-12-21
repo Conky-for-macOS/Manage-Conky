@@ -10,8 +10,13 @@
 
 @interface Logger : GeneralSheetController<NSWindowDelegate>
 
+@property (unsafe_unretained) IBOutlet NSTextView *textView;
 @property (weak) IBOutlet NSButton *closeButton;
 
-+ (void)addFilehandleForReading:(NSFileHandle *)fh;
++ (id)logger;
+
+- (void)addFilehandleForReading:(NSFileHandle *)fh;
+
+- (BOOL)isOpen;
 
 @end
