@@ -70,11 +70,33 @@
     if ([sp runModal] == NSModalResponseOK)
     {
         NSString *widgetDirectory = sp.URL.path;
+        NSString *parentDirectory = [widgetDirectory stringByDeletingLastPathComponent];
         NSString *widgetConfig = [widgetDirectory stringByAppendingPathComponent:widgetDirectory.lastPathComponent];
         NSString *widgetSource = [widgetDirectory stringByAppendingPathComponent:@"source.txt"];
         NSString *widgetCreator = [widgetDirectory stringByAppendingPathComponent:@"creator.txt"];
         NSFileManager *fm = [NSFileManager defaultManager];
         NSError *error = nil;
+        
+        /*
+         * Does this location belong to our `searchPaths`?
+         */
+        MCSettings *mcsettings = [MCSettings sharedSettings];
+        if (
+            ![[mcsettings additionalSearchPaths] containsObject:parentDirectory] &&
+            ![[mcsettings configsLocation] isEqualToString:parentDirectory])
+        {
+            /* prompt user to add this to search paths */
+            NSAlert *addSearchPath = [[NSAlert alloc] init];
+            [addSearchPath setMessageText:@"Would you like to add this location to your search paths?"];
+            [addSearchPath setAlertStyle:NSAlertStyleCritical];
+            [addSearchPath addButtonWithTitle:@"Yes"];
+            [addSearchPath addButtonWithTitle:@"No"];
+            
+            if ([addSearchPath runModal] == NSAlertFirstButtonReturn)
+                [mcsettings addAdditionalSearchPath:parentDirectory];
+            
+            NSLog(@"Additional Search Locations: %@", [mcsettings additionalSearchPaths]);
+        }
         
         /* delete any previous versions */
         [fm removeItemAtPath:widgetDirectory error:nil];
