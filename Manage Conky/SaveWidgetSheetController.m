@@ -123,11 +123,9 @@
                   attributes:nil];
         
         /* copy preview */
-        [fm copyItemAtPath:previewLocation.path toPath:[widgetDirectory stringByAppendingPathComponent:[previewLocation.path lastPathComponent]] error:&error];
-        if (error)
-        {
-            MCError(&error);
-        }
+        if (previewLocation)
+            if (![fm copyItemAtPath:previewLocation.path toPath:[widgetDirectory stringByAppendingPathComponent:[previewLocation.path lastPathComponent]] error:&error])
+                MCError(&error);
         
         /* copy resources */
         for (NSURL *resource in resourcesLocations)

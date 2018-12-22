@@ -210,6 +210,11 @@
         return;
     }
     
+    if (!additionalSearchPaths)
+    {
+        NSLog(@"No additional search paths set!");
+    }
+    
     /* fill arrays for basic-search-path */
     [self fillWidgetsThemesArraysWithSearchPath:basicSearchPath];
     
