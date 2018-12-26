@@ -10,29 +10,35 @@
 
 #import "Shared.h"
 
-@implementation Logger
+#include <vector>
+using namespace std;
 
-static BOOL _isOpen = NO;
+static vector<NSTextView *> _textViews;
+static BOOL _isOpen = NO;   // a public _isOpen property
 static int _id = 0;
+
+@implementation Logger
 
 + (id)logger
 {
     static id res = nil;
     if (!res)
+    {
         res = [[self alloc] init];
+        //_textViews = [NSMutableArray array];
+    }
     return res;
 }
 
 - (void)windowDidLoad
 {
-    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" %i", ++_id]];
+    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
+    _textViews.push_back(self->_textView);
     _isOpen = YES;
 }
 
 - (void)addFilehandleForReading:(NSFileHandle *)fh
 {
-    NSLog(@"Adding fh: %@", fh);
-
     /*
      * Setup Readibility Handler
      */
@@ -40,13 +46,12 @@ static int _id = 0;
         NSData *data = [fileHandle availableData];
         NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-//        NSLog(@"%@", str);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self->_textView.string = [self->_textView.string stringByAppendingString:str];
-        });
-        
-//        [fileHandle acceptConnectionInBackgroundAndNotify];
+        for (NSTextView *_textView0 : _textViews)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _textView0.string = [_textView0.string stringByAppendingString:str];
+            });
+        }
     }];
     
     [fh acceptConnectionInBackgroundAndNotify];
