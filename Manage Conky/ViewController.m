@@ -393,6 +393,16 @@
         
         if ([widget isEnabled]) [widget reenable];
         else [widget enable];
+        
+        /* Do we need the Logger? */
+        if ([_toggleLoggerButton state])
+        {
+//            NSLog(@"I am enabling logging for %@", widget.realName);
+            
+            Logger *logger = [[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
+            [logger setWidgetName:widget.realName];
+            [logger loadOnWindow:[NSApp mainWindow]];
+        }
     }
     else
     {
@@ -667,7 +677,7 @@
 
 - (IBAction)toggleLogger:(id)sender
 {
-    [[[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW] loadOnWindow:[NSApp mainWindow]];
+    [_toggleLoggerButton setImage:([sender state] ? [NSImage imageNamed:NSImageNameStatusAvailable] : nil)];
 }
 
 @end

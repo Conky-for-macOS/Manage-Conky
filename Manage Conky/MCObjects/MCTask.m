@@ -12,15 +12,17 @@
 
 @implementation NSTask (MCTask)
 
-- (void)launchForWidgetWithName:(NSString *)widgetName
+- (void)launchLoggableWithWidgetName:(NSString *)widgetName
 {
     [self setStandardOutput:[NSPipe pipe]];
     [self setStandardError:[NSPipe pipe]];
     
     if ([[Logger logger] isOpen])
     {
-        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidget:widgetName];
-        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidget:widgetName];
+        NSLog(@"adding fh for %@", widgetName);
+        
+        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidgetWithName:widgetName];
+        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidgetWithName:widgetName];
     }
 
     [self launch];  // call original

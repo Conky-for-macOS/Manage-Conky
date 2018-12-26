@@ -537,7 +537,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                                                                                  * provide the basic environment for them
                                                                                  * like environment-variables.
                                                                                  */
-        [task launchForWidgetWithName:_widgetName];
+        [task launchLoggableWithWidgetName:self.realName];
         
         pid_t pid = [task processIdentifier];
         [self setPid:pid];

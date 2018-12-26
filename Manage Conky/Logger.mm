@@ -89,13 +89,13 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
 - (void)windowDidLoad
 {
-    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
+    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i (%@)", ++_id, _widgetName]];
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
     
     /* create logger_entity */
     LoggerEntity *le = [[LoggerEntity alloc] init];
-    [le setWidget:@"CFG"];
-    [le setTextView:self->_textView];
+    le.widgetName = _widgetName;
+    le.textView = _textView;
     
     _textViews.push_back(le);
 
@@ -118,21 +118,22 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     [[_textView textStorage] setAttributedString:attrStr];
 }
 
-- (void)addFilehandleForReading:(NSFileHandle *)fh forWidget:(NSString *)widgetName
+- (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithName:(NSString *)widgetName
 {
     /*
      * Setup Readibility Handler
      */
     [fh setReadabilityHandler:^(NSFileHandle *fileHandle) {
         NSData *data = [fileHandle availableData];
-        NSString *str = [NSString stringWithFormat:@"[%@]: %@",
-                         widgetName,
-                         [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
         for (LoggerEntity *le : _textViews)
         {
+            NSLog(@"In window: %@ GOT %@", widgetName, le.widgetName);
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self showString:str toView:le.textView];
+                if ([le.widgetName isEqualToString:widgetName])
+                    [self showString:str toView:le.textView];
             });
         }
     }];

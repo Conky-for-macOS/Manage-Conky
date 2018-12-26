@@ -29,6 +29,7 @@ typedef enum {
 }
 
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSButton *toggleLoggerButton;
 @property (weak) IBOutlet NSTableView *widgetsThemesTable;
 
 /**
