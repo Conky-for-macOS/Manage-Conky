@@ -8,6 +8,11 @@
 
 #import "GeneralSheetController.h"
 
+@interface LoggerEntity : NSObject
+@property NSString *widget;
+@property NSTextView *textView;
+@end
+
 @interface Logger : GeneralSheetController<NSWindowDelegate>
 
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
@@ -15,7 +20,7 @@
 
 + (id)logger;
 
-- (void)addFilehandleForReading:(NSFileHandle *)fh;
+- (void)addFilehandleForReading:(NSFileHandle *)fh forWidget:(NSString *)widgetName;
 
 - (BOOL)isOpen;
 

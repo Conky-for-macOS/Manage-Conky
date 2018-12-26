@@ -12,15 +12,15 @@
 
 @implementation NSTask (MCTask)
 
-- (void)launch0
+- (void)launchForWidgetWithName:(NSString *)widgetName
 {
     [self setStandardOutput:[NSPipe pipe]];
     [self setStandardError:[NSPipe pipe]];
     
     if ([[Logger logger] isOpen])
     {
-        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading]];
-        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading]];
+        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidget:widgetName];
+        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidget:widgetName];
     }
 
     [self launch];  // call original

@@ -31,12 +31,16 @@ using namespace std;
 #define kANSIColorPrefKey_BgMagenta    @"ansiColorsBgMagenta"
 #define kANSIColorPrefKey_BgCyan    @"ansiColorsBgCyan"
 
-static vector<NSTextView *> _textViews;
+
+@implementation LoggerEntity
+@end
+
+@implementation Logger
+
+static vector<LoggerEntity *> _textViews;
 static BOOL _isOpen = NO;   // a public _isOpen property
 static int _id = 0;
 static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
-
-@implementation Logger
 
 + (id)logger
 {
@@ -86,7 +90,15 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 - (void)windowDidLoad
 {
     [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
-    _textViews.push_back(self->_textView);
+    [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
+    
+    /* create logger_entity */
+    LoggerEntity *le = [[LoggerEntity alloc] init];
+    [le setWidget:@"CFG"];
+    [le setTextView:self->_textView];
+    
+    _textViews.push_back(le);
+
     _isOpen = YES;
 }
 
@@ -106,19 +118,21 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     [[_textView textStorage] setAttributedString:attrStr];
 }
 
-- (void)addFilehandleForReading:(NSFileHandle *)fh
+- (void)addFilehandleForReading:(NSFileHandle *)fh forWidget:(NSString *)widgetName
 {
     /*
      * Setup Readibility Handler
      */
     [fh setReadabilityHandler:^(NSFileHandle *fileHandle) {
         NSData *data = [fileHandle availableData];
-        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *str = [NSString stringWithFormat:@"[%@]: %@",
+                         widgetName,
+                         [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
 
-        for (NSTextView *_textView0 : _textViews)
+        for (LoggerEntity *le : _textViews)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self showString:str toView:_textView0];
+                [self showString:str toView:le.textView];
             });
         }
     }];

@@ -525,7 +525,8 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         
         NSTask *task = [[NSTask alloc] init];
         [task setLaunchPath:@"/bin/bash"];
-        [task setArguments:@[@"-l",
+        [task setArguments:@[@"--noprofile",
+                             @"-l",
                              @"-c",
                              cmd]];
         [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
@@ -536,7 +537,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                                                                                  * provide the basic environment for them
                                                                                  * like environment-variables.
                                                                                  */
-        [task launch0];
+        [task launchForWidgetWithName:_widgetName];
         
         pid_t pid = [task processIdentifier];
         [self setPid:pid];

@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSTask (MCTask)
-- (void)launch0;
+- (void)launchForWidgetWithName:(NSString *)name;
 @end
