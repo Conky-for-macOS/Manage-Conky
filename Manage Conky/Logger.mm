@@ -45,11 +45,52 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     {
         res = [[self alloc] init];
         ansiEscapeHelper = [[AMR_ANSIEscapeHelper alloc] init];
+        
+        // set colors & font to use to ansiEscapeHelper
+        NSDictionary *colorPrefDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgBlack], kANSIColorPrefKey_FgBlack,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgWhite], kANSIColorPrefKey_FgWhite,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgRed], kANSIColorPrefKey_FgRed,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgGreen], kANSIColorPrefKey_FgGreen,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgYellow], kANSIColorPrefKey_FgYellow,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgBlue], kANSIColorPrefKey_FgBlue,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgMagenta], kANSIColorPrefKey_FgMagenta,
+                                           [NSNumber numberWithInt:AMR_SGRCodeFgCyan], kANSIColorPrefKey_FgCyan,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgBlack], kANSIColorPrefKey_BgBlack,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgWhite], kANSIColorPrefKey_BgWhite,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgRed], kANSIColorPrefKey_BgRed,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgGreen], kANSIColorPrefKey_BgGreen,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgYellow], kANSIColorPrefKey_BgYellow,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgBlue], kANSIColorPrefKey_BgBlue,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgMagenta], kANSIColorPrefKey_BgMagenta,
+                                           [NSNumber numberWithInt:AMR_SGRCodeBgCyan], kANSIColorPrefKey_BgCyan,
+                                           nil];
+        
+        NSUInteger iColorPrefDefaultsKey;
+        NSData *colorData;
+        NSString *thisPrefName;
+        for (iColorPrefDefaultsKey = 0; iColorPrefDefaultsKey < [[colorPrefDefaults allKeys] count]; iColorPrefDefaultsKey++)
+        {
+            thisPrefName = [[colorPrefDefaults allKeys] objectAtIndex:iColorPrefDefaultsKey];
+            colorData = [[NSUserDefaults standardUserDefaults] dataForKey:thisPrefName];
+            if (colorData != nil)
+            {
+                NSColor *thisColor = (NSColor *)[NSUnarchiver unarchiveObjectWithData:colorData];
+                [[ansiEscapeHelper ansiColors] setObject:thisColor forKey:[colorPrefDefaults objectForKey:thisPrefName]];
+            }
+        }
     }
     return res;
 }
 
-- (void) showString:(NSString*)string toView:(NSTextView *)_textView
+- (void)windowDidLoad
+{
+    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
+    _textViews.push_back(self->_textView);
+    _isOpen = YES;
+}
+
+- (void)showString:(NSString*)string toView:(NSTextView *)_textView
 {
     [_textView setBaseWritingDirection:NSWritingDirectionLeftToRight];
     
@@ -63,48 +104,6 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     [attrStr appendAttributedString:[ansiEscapeHelper attributedStringWithANSIEscapedString:string]];
     
     [[_textView textStorage] setAttributedString:attrStr];
-}
-
-- (void)windowDidLoad
-{
-    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
-    _textViews.push_back(self->_textView);
-    
-    // set colors & font to use to ansiEscapeHelper
-    NSDictionary *colorPrefDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgBlack], kANSIColorPrefKey_FgBlack,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgWhite], kANSIColorPrefKey_FgWhite,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgRed], kANSIColorPrefKey_FgRed,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgGreen], kANSIColorPrefKey_FgGreen,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgYellow], kANSIColorPrefKey_FgYellow,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgBlue], kANSIColorPrefKey_FgBlue,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgMagenta], kANSIColorPrefKey_FgMagenta,
-                                       [NSNumber numberWithInt:AMR_SGRCodeFgCyan], kANSIColorPrefKey_FgCyan,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgBlack], kANSIColorPrefKey_BgBlack,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgWhite], kANSIColorPrefKey_BgWhite,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgRed], kANSIColorPrefKey_BgRed,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgGreen], kANSIColorPrefKey_BgGreen,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgYellow], kANSIColorPrefKey_BgYellow,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgBlue], kANSIColorPrefKey_BgBlue,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgMagenta], kANSIColorPrefKey_BgMagenta,
-                                       [NSNumber numberWithInt:AMR_SGRCodeBgCyan], kANSIColorPrefKey_BgCyan,
-                                       nil];
-    
-    NSUInteger iColorPrefDefaultsKey;
-    NSData *colorData;
-    NSString *thisPrefName;
-    for (iColorPrefDefaultsKey = 0; iColorPrefDefaultsKey < [[colorPrefDefaults allKeys] count]; iColorPrefDefaultsKey++)
-    {
-        thisPrefName = [[colorPrefDefaults allKeys] objectAtIndex:iColorPrefDefaultsKey];
-        colorData = [[NSUserDefaults standardUserDefaults] dataForKey:thisPrefName];
-        if (colorData != nil)
-        {
-            NSColor *thisColor = (NSColor *)[NSUnarchiver unarchiveObjectWithData:colorData];
-            [[ansiEscapeHelper ansiColors] setObject:thisColor forKey:[colorPrefDefaults objectForKey:thisPrefName]];
-        }
-    }
-    
-    _isOpen = YES;
 }
 
 - (void)addFilehandleForReading:(NSFileHandle *)fh
