@@ -324,6 +324,16 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyLogfileLocationKey];
 }
 
+- (void)setLogsWidgets:(BOOL)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:@"DoesLogWidgets"];
+}
+
+- (BOOL)logsWidgets
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"DoesLogWidgets"];
+}
+
 - (void)uninstallManageConkyFilesystem
 {
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
@@ -537,6 +547,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                                                                                  * provide the basic environment for them
                                                                                  * like environment-variables.
                                                                                  */
+        
         [task launchLoggableWithWidgetName:self.realName];
         
         pid_t pid = [task processIdentifier];

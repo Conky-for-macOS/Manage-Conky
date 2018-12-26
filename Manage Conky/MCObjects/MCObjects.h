@@ -129,6 +129,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 - (void)setLogfile:(NSString *)logfile;
 - (NSString *)logfile;
 
+- (void)setLogsWidgets:(BOOL)a;
+- (BOOL)logsWidgets;
+
 /**
  * installManageConkyFilesystem
  *

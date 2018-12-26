@@ -9,17 +9,16 @@
 #import "MCTask.h"
 
 #import "../Logger.h"
+#import "../MCObjects/MCObjects.h"
 
 @implementation NSTask (MCTask)
 
 - (void)launchLoggableWithWidgetName:(NSString *)widgetName
 {
-    [self setStandardOutput:[NSPipe pipe]];
-    [self setStandardError:[NSPipe pipe]];
-    
-    if ([[Logger logger] isOpen])
+    if ([[MCSettings sharedSettings] logsWidgets])
     {
-        NSLog(@"adding fh for %@", widgetName);
+        [self setStandardOutput:[NSPipe pipe]];
+        [self setStandardError:[NSPipe pipe]];
         
         [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidgetWithName:widgetName];
         [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidgetWithName:widgetName];
