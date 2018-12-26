@@ -25,6 +25,7 @@
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
 		09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */; };
 		09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */; };
+		09AA970F21D3F41F00339061 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09BF3BEB215CF21A003EF57D /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; };
 		09BF3BEC215CF22C003EF57D /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09BF3BE6215CF203003EF57D /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -251,6 +252,8 @@
 		09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NPTask.xcodeproj; path = Frameworks/NPTask/NPTask.xcodeproj; sourceTree = "<group>"; };
 		09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = SetupFilesystem.sh; path = Resources/SetupFilesystem.sh; sourceTree = "<group>"; };
 		09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = UninstallFilesystem.sh; path = Resources/UninstallFilesystem.sh; sourceTree = "<group>"; };
+		09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMR_ANSIEscapeHelper.m; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
+		09AA970E21D3F41F00339061 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMR_ANSIEscapeHelper.h; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
@@ -322,6 +325,7 @@
 		090C35B6209487B5009C97F8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				09AA970621D3F38200339061 /* ANSIEscapeHelper */,
 				09B56B05211B565B00075BC8 /* MCFilesystem.h */,
 				09B56B07211B574E00075BC8 /* MCFilesystem.m */,
 				09473739206AF28D009881EB /* Shared.h */,
@@ -385,6 +389,15 @@
 				09A20B7021AC9CCE00FB7258 /* NPTaskTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		09AA970621D3F38200339061 /* ANSIEscapeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				09AA970E21D3F41F00339061 /* AMR_ANSIEscapeHelper.h */,
+				09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */,
+			);
+			name = ANSIEscapeHelper;
 			sourceTree = "<group>";
 		};
 		09ACA826212E1CF8002B9754 /* Licenses */ = {
@@ -852,6 +865,7 @@
 				09D8226D206F8FFC008BBFEB /* Shared.m in Sources */,
 				EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */,
 				09287A5E2184BF58001AB18A /* NSApplication+mainWindowForSure.m in Sources */,
+				09AA970F21D3F41F00339061 /* AMR_ANSIEscapeHelper.m in Sources */,
 				77B8473D1F62C2B600AF8BCA /* main.m in Sources */,
 				0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */,
 				77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */,
