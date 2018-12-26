@@ -53,6 +53,23 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 {
     [_textView setBaseWritingDirection:NSWritingDirectionLeftToRight];
     
+    [ansiEscapeHelper setFont:[_textView font]];
+    
+    if (string == nil)
+        return;
+    
+    // get attributed string and display it
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedString];
+    [attrStr appendAttributedString:[ansiEscapeHelper attributedStringWithANSIEscapedString:string]];
+    
+    [[_textView textStorage] setAttributedString:attrStr];
+}
+
+- (void)windowDidLoad
+{
+    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
+    _textViews.push_back(self->_textView);
+    
     // set colors & font to use to ansiEscapeHelper
     NSDictionary *colorPrefDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
                                        [NSNumber numberWithInt:AMR_SGRCodeFgBlack], kANSIColorPrefKey_FgBlack,
@@ -72,7 +89,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
                                        [NSNumber numberWithInt:AMR_SGRCodeBgMagenta], kANSIColorPrefKey_BgMagenta,
                                        [NSNumber numberWithInt:AMR_SGRCodeBgCyan], kANSIColorPrefKey_BgCyan,
                                        nil];
-
+    
     NSUInteger iColorPrefDefaultsKey;
     NSData *colorData;
     NSString *thisPrefName;
@@ -86,22 +103,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
             [[ansiEscapeHelper ansiColors] setObject:thisColor forKey:[colorPrefDefaults objectForKey:thisPrefName]];
         }
     }
-    [ansiEscapeHelper setFont:[_textView font]];
     
-    if (string == nil)
-        return;
-    
-    // get attributed string and display it
-    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedString];
-    [attrStr appendAttributedString:[ansiEscapeHelper attributedStringWithANSIEscapedString:string]];
-    
-    [[_textView textStorage] setAttributedString:attrStr];
-}
-
-- (void)windowDidLoad
-{
-    [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i", ++_id]];
-    _textViews.push_back(self->_textView);
     _isOpen = YES;
 }
 
