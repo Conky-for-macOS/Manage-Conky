@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSTask (MCTask)
-- (void)launchLoggableWithWidgetName:(NSString *)widgetName;
+- (void)launchLoggableWithWidgetUniqueID:(NSUInteger)uniqueID;
 @end

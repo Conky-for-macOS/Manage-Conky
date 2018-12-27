@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 #import "Shared.h"
-#import "Logger.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "AboutSheetController.h"
 #import "ConkyThemesSheetController.h"
@@ -393,14 +392,6 @@
         
         if ([widget isEnabled]) [widget reenable];
         else [widget enable];
-        
-        /* Do we need the Logger? */
-        if ([_toggleLoggerButton state])
-        {
-            Logger *logger = [[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
-            [logger setWidgetName:widget.realName];
-            [logger loadOnWindow:[NSApp mainWindow]];
-        }
     }
     else
     {

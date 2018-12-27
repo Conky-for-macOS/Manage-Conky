@@ -12,6 +12,7 @@
 #import <grp.h>
 #import "Shared.h"
 #import "MCTask.h"
+#import "../Logger.h"
 #import "../ViewController.h"
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
@@ -531,6 +532,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     }
     else
     {
+        /*
+         * Generate widget's unique ID
+         */
+        NSUInteger uniqueID = arc4random_uniform(100000000);
+        
         NSString *cmd = [NSString stringWithFormat:@"%@ -c %@", CONKY_SYMLINK, correctedItemPath];
         
         NSTask *task = [[NSTask alloc] init];
@@ -548,7 +554,19 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                                                                                  * like environment-variables.
                                                                                  */
         
-        [task launchLoggableWithWidgetName:self.realName];
+        /*
+         * Open Logger Window, Only if User has enabled widget logging;
+         * And do it, before starting the Widget
+         */
+        if ([[MCSettings sharedSettings] logsWidgets])
+        {
+            Logger *logger = [[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
+            [logger setWidgetUniqueID:uniqueID];
+            [logger setWidgetName:self.realName];
+            [logger loadOnWindow:[NSApp mainWindow]];
+        }
+        
+        [task launchLoggableWithWidgetUniqueID:uniqueID];
         
         pid_t pid = [task processIdentifier];
         [self setPid:pid];

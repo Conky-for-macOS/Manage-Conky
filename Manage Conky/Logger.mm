@@ -94,8 +94,9 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     
     /* create logger_entity */
     LoggerEntity *le = [[LoggerEntity alloc] init];
-    le.widgetName = _widgetName;
-    le.textView = _textView;
+    le.widgetName = self.widgetName;
+    le.textView = self.textView;
+    le.uniqueID = self.widgetUniqueID;
     
     _textViews.push_back(le);
 
@@ -118,7 +119,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     [[_textView textStorage] setAttributedString:attrStr];
 }
 
-- (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithName:(NSString *)widgetName
+- (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithUniqueID:(NSUInteger)uniqueID
 {
     /*
      * Setup Readibility Handler
@@ -129,10 +130,8 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
         for (LoggerEntity *le : _textViews)
         {
-            NSLog(@"In window: %@ GOT %@", widgetName, le.widgetName);
-            
             dispatch_async(dispatch_get_main_queue(), ^{
-                if ([le.widgetName isEqualToString:widgetName])
+                if (le.uniqueID == uniqueID)
                     [self showString:str toView:le.textView];
             });
         }

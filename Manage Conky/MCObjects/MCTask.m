@@ -13,15 +13,15 @@
 
 @implementation NSTask (MCTask)
 
-- (void)launchLoggableWithWidgetName:(NSString *)widgetName
+- (void)launchLoggableWithWidgetUniqueID:(NSUInteger)uniqueID
 {
     if ([[MCSettings sharedSettings] logsWidgets])
     {
         [self setStandardOutput:[NSPipe pipe]];
         [self setStandardError:[NSPipe pipe]];
         
-        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidgetWithName:widgetName];
-        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidgetWithName:widgetName];
+        [[Logger logger] addFilehandleForReading:[[self standardOutput] fileHandleForReading] forWidgetWithUniqueID:uniqueID];
+        [[Logger logger] addFilehandleForReading:[[self standardError] fileHandleForReading] forWidgetWithUniqueID:uniqueID];
     }
 
     [self launch];  // call original

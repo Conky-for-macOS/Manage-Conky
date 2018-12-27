@@ -10,11 +10,15 @@
 
 @interface LoggerEntity : NSObject
 @property NSString *widgetName;
+@property NSUInteger uniqueID;
 @property NSTextView *textView;
 @end
 
 @interface Logger : GeneralSheetController<NSWindowDelegate>
 
+@property NSUInteger widgetUniqueID;  /*
+                                 * we need this uniqueID to pair the request with the proper logger window
+                                 */
 @property NSString *widgetName;
 
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
@@ -22,7 +26,7 @@
 
 + (id)logger;
 
-- (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithName:(NSString *)widgetName;
+- (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithUniqueID:(NSUInteger)uniqueID;
 
 - (BOOL)isOpen;
 
