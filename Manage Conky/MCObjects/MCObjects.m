@@ -332,7 +332,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (BOOL)logsWidgets
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"DoesLogWidgets"];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"DoesLogWidgets"] boolValue];
 }
 
 - (void)uninstallManageConkyFilesystem
@@ -558,7 +558,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
          * Open Logger Window, Only if User has enabled widget logging;
          * And do it, before starting the Widget
          */
-        if ([[MCSettings sharedSettings] logsWidgets])
+        if ([MCSettings sharedSettings].logsWidgets)
             [Logger loggerForWidget:self.realName andUniqueID:uniqueID];
         
         [task launchLoggableWithWidgetUniqueID:uniqueID];

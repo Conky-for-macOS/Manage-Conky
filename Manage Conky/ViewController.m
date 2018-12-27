@@ -64,6 +64,9 @@
     {
         [[MCSettings sharedSettings] setConfigsLocation:kConkyConfigsDefaultPath];
     }
+    
+    [_toggleLoggerButton setState:[MCSettings sharedSettings].logsWidgets];
+    [_toggleLoggerButton setImage:([_toggleLoggerButton state] ? [NSImage imageNamed:NSImageNameStatusAvailable] : nil)];
 
     [self fillWidgetsThemesArrays];
 }
