@@ -25,6 +25,8 @@
 @property (weak) IBOutlet NSButton *closeButton;
 
 + (id)logger;
++ (id)loggerForWidget:(NSString *)widgetName
+          andUniqueID:(NSUInteger)uniqueID;
 
 - (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithUniqueID:(NSUInteger)uniqueID;
 

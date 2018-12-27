@@ -42,6 +42,26 @@ static BOOL _isOpen = NO;   // a public _isOpen property
 static int _id = 0;
 static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
+//---------------------------------------------------------------------------------
+//                            PRIVATE METHODS
+//---------------------------------------------------------------------------------
+
+- (id)initWithWidgetName:(NSString *)widgetName andUniqueID:(NSUInteger)uniqueID
+{
+    self = [super initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
+    if (self)
+    {
+        [self setWidgetUniqueID:uniqueID];
+        [self setWidgetName:widgetName];
+        [self loadOnWindow:[NSApp mainWindow]];
+    }
+    return self;
+}
+
+//---------------------------------------------------------------------------------
+//                            PUBLIC METHODS
+//---------------------------------------------------------------------------------
+
 + (id)logger
 {
     static id res = nil;
@@ -85,6 +105,11 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
         }
     }
     return res;
+}
+
++ (id)loggerForWidget:(NSString *)widgetName andUniqueID:(NSUInteger)uniqueID
+{
+    return [[super alloc] initWithWidgetName:widgetName andUniqueID:uniqueID];
 }
 
 - (void)windowDidLoad

@@ -559,12 +559,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
          * And do it, before starting the Widget
          */
         if ([[MCSettings sharedSettings] logsWidgets])
-        {
-            Logger *logger = [[Logger alloc] initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
-            [logger setWidgetUniqueID:uniqueID];
-            [logger setWidgetName:self.realName];
-            [logger loadOnWindow:[NSApp mainWindow]];
-        }
+            [Logger loggerForWidget:self.realName andUniqueID:uniqueID];
         
         [task launchLoggableWithWidgetUniqueID:uniqueID];
         
