@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "Shared.h"
+#import "MCPlugin.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "AboutSheetController.h"
 #import "ConkyThemesSheetController.h"
@@ -21,7 +22,56 @@
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    /*
+     * Load MCPlugins
+     */
+#define MC_PLUGIN_PATH_FORMAT @"%@/Library/ManageConky/Plugins"
+    NSString *pluginsPath = [NSString stringWithFormat:MC_PLUGIN_PATH_FORMAT, NSHomeDirectory()];
+    NSEnumerator *pluginEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:pluginsPath];
+    int pluginCount = 0;
+    
+    for (NSString *pluginName in pluginEnumerator)
+    {
+        NSString *pluginPath = [pluginsPath stringByAppendingPathComponent:pluginName];
+        
+        /* Check if we really got an MCPlugin */
+        if (![[pluginPath pathExtension] isEqualToString:@"mcplugin"])
+            continue;
+        
+        /* Create Bundle from plugin path */
+        NSBundle *bundle = [NSBundle bundleWithPath:pluginPath];
+        if (!bundle)
+        {
+            NSLog(@"Failed to load plugin (%@).", pluginName);
+            continue;
+        }
+        
+        /* Load Principal Class */
+        Class principalClass = [bundle principalClass];
+        if (!principalClass)
+        {
+            NSLog(@"Failed to load principal class for plugin (%@).", pluginName);
+            continue;
+        }
+        
+        /* Finally get an MCPlugin instance */
+        MCPlugin *plugin = [[principalClass alloc] init];
+        if (!plugin)
+        {
+            NSLog(@"Plugin (%@) not properly initilised.", pluginName);
+            continue;
+        }
+        
+        /* Start MCPlugin */
+        [plugin start];
+        
+        NSLog(@"Loaded plugin (%@)", pluginName);
+        pluginCount++;
+    }
+    
+    NSLog(@"Loaded %d MCPlugins!", pluginCount);
+    
     /*
      * Setup stuff
      */

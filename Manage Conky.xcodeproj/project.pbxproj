@@ -269,6 +269,7 @@
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
+		09F54D8221D5AFCC009D2C07 /* MCPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlugin.h; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
 		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +431,7 @@
 				092C9CF921C9B3E600E2DD02 /* MCTask.m */,
 				095F81922080D09B008DD286 /* MCObjects.h */,
 				095F81902080D08A008DD286 /* MCObjects.m */,
+				09F54D8221D5AFCC009D2C07 /* MCPlugin.h */,
 			);
 			name = MCObjects;
 			sourceTree = "<group>";
