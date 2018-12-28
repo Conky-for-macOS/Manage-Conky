@@ -55,6 +55,13 @@
             continue;
         }
         
+        /* Check if plugin implements what we need (-start method) */
+        if (![principalClass instancesRespondToSelector:@selector(start)])
+        {
+            NSLog(@"Aborting use of plugin (%@), because no -start method was found.", pluginName);
+            continue;
+        }
+        
         /* Finally get an MCPlugin instance */
         MCPlugin *plugin = [[principalClass alloc] init];
         if (!plugin)
