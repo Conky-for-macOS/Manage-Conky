@@ -11,7 +11,7 @@
 #import "ANSIEscapeHelper/AMR_ANSIEscapeHelper.h"
 #import "Shared.h"
 
-#include <vector>
+#include <list>
 using namespace std;
 
 #define kANSIColorPrefKey_FgBlack    @"ansiColorsFgBlack"
@@ -37,7 +37,7 @@ using namespace std;
 
 @implementation Logger
 
-static vector<LoggerEntity *> _textViews;
+static list<LoggerEntity *> _textViews;
 static BOOL _isOpen = NO;   // a public _isOpen property
 static int _id = 0;
 static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
@@ -126,6 +126,17 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     _textViews.push_back(le);
 
     _isOpen = YES;
+}
+
+- (void)loadOnWindow:(NSWindow *)_targetWindow
+{
+    [super loadOnWindow:_targetWindow];
+    
+    /*
+     * This should keep focus to mainWindow, thus
+     * speeding up development.
+     */
+    [[NSApp mainWindow] makeKeyAndOrderFront:nil];
 }
 
 - (void)showString:(NSString*)string toView:(NSTextView *)_textView
