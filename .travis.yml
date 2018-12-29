@@ -13,7 +13,7 @@ before_install:
 
 # setup xcode project
   - cd ConkyX/conky-for-macOS/forConkyX
-  - cmake .. -DWBUILD_WLAN=ON G Xcode
+  - cmake .. -DWBUILD_WLAN=ON -G Xcode
   - cd ../../..
 
 script:
