@@ -12,7 +12,7 @@ before_install:
   - brew link gettext --force
 
 # setup xcode project
-  - cd ConkyX/conky-for-macOS/ManageConky
+  - cd ConkyX/conky-for-macOS/forConkyX
   - cmake .. -DWBUILD_WLAN=ON G Xcode
   - cd ../../..
 
