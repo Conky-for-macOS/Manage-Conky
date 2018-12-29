@@ -36,6 +36,9 @@
 		09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C60211E1F0D00715664 /* SaveTheme.xib */; };
 		09F14C67211E1F0D00715664 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C61211E1F0D00715664 /* About.xib */; };
 		09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C62211E1F0D00715664 /* ConkyThemes.xib */; };
+		09F54EAE21D6AAA1009D2C07 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F54DD221D69DD0009D2C07 /* Fragaria.framework */; };
+		09F54EB921D6AB0E009D2C07 /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09F54DD221D69DD0009D2C07 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09F54EBA21D6AB13009D2C07 /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = 09F54EB521D6AADE009D2C07 /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
@@ -51,7 +54,6 @@
 		ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */; };
 		ECB76D5E205D716C00A3BB22 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */; };
 		ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D60205D725100A3BB22 /* Credits.rtf */; };
-		ECD50217204F21A400B9D76C /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = ECD50214204F210600B9D76C /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,16 +162,16 @@
 			remoteGlobalIDString = AB69B62A118B745700903D1D;
 			remoteInfo = Fragaria;
 		};
-		ECD50213204F210600B9D76C /* PBXContainerItemProxy */ = {
+		09F54EB421D6AADE009D2C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
+			containerPortal = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = EC923C2320169A230019C772;
 			remoteInfo = ConkyX;
 		};
-		ECD50215204F219E00B9D76C /* PBXContainerItemProxy */ = {
+		09F54EB621D6AAEB009D2C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
+			containerPortal = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = EC923C2220169A230019C772;
 			remoteInfo = ConkyX;
@@ -183,6 +185,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				09F54EB921D6AB0E009D2C07 /* Fragaria.framework in Copy Frameworks */,
 				0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -199,13 +202,13 @@
 			name = "Copy Licenses";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC9691F2204DD4F600B99EB5 /* Copy ConkyX */ = {
+		09F54EB821D6AAFF009D2C07 /* Copy ConkyX */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				ECD50217204F21A400B9D76C /* ConkyX.app in Copy ConkyX */,
+				09F54EBA21D6AB13009D2C07 /* ConkyX.app in Copy ConkyX */,
 			);
 			name = "Copy ConkyX";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +270,7 @@
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
 		09F54D8221D5AFCC009D2C07 /* MCPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlugin.h; sourceTree = "<group>"; };
 		09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = Frameworks/Fragaria/Fragaria.xcodeproj; sourceTree = "<group>"; };
+		09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
 		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,7 +300,6 @@
 		ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "default-themes-2.1.cmtp.7z"; path = "Resources/default-themes-2.1.cmtp.7z"; sourceTree = "<group>"; };
 		ECB76D5B205D716B00A3BB22 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
 		ECB76D60205D725100A3BB22 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
-		ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +314,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09F54EAE21D6AAA1009D2C07 /* Fragaria.framework in Frameworks */,
 				0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
@@ -432,11 +436,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		09F54EB021D6AADE009D2C07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09F54EB521D6AADE009D2C07 /* ConkyX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
+				09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */,
 				09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */,
-				ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				098C76AD213C097600B1F05A /* Manage Conky Tests */,
 				77B847361F62C2B600AF8BCA /* Products */,
@@ -555,14 +567,6 @@
 			path = LetsMove;
 			sourceTree = "<group>";
 		};
-		ECD5020F204F210500B9D76C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ECD50214204F210600B9D76C /* ConkyX.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		ECFEB3B520362E7D00A17AB5 /* GeneralSheetController */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,16 +606,16 @@
 				77B847321F62C2B600AF8BCA /* Frameworks */,
 				77B847331F62C2B600AF8BCA /* Resources */,
 				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
-				EC9691F2204DD4F600B99EB5 /* Copy ConkyX */,
 				09ACA825212E1C65002B9754 /* Copy Licenses */,
 				09A1021821348DCB001FA2F3 /* Copy Frameworks */,
+				09F54EB821D6AAFF009D2C07 /* Copy ConkyX */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09F54EB721D6AAEB009D2C07 /* PBXTargetDependency */,
 				09F54DD921D69E07009D2C07 /* PBXTargetDependency */,
 				0948AF5121B1720E0067A111 /* PBXTargetDependency */,
-				ECD50216204F219E00B9D76C /* PBXTargetDependency */,
 			);
 			name = "Manage Conky";
 			productName = "Manage Conky";
@@ -652,8 +656,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = ECD5020F204F210500B9D76C /* Products */;
-					ProjectRef = ECD5020E204F210500B9D76C /* ConkyX.xcodeproj */;
+					ProductGroup = 09F54EB021D6AADE009D2C07 /* Products */;
+					ProjectRef = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
 				},
 				{
 					ProductGroup = 09F54DBD21D69DD0009D2C07 /* Products */;
@@ -757,11 +761,11 @@
 			remoteRef = 09F54DD321D69DD0009D2C07 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		ECD50214204F210600B9D76C /* ConkyX.app */ = {
+		09F54EB521D6AADE009D2C07 /* ConkyX.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = ConkyX.app;
-			remoteRef = ECD50213204F210600B9D76C /* PBXContainerItemProxy */;
+			remoteRef = 09F54EB421D6AADE009D2C07 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -901,10 +905,10 @@
 			name = Fragaria;
 			targetProxy = 09F54DD821D69E07009D2C07 /* PBXContainerItemProxy */;
 		};
-		ECD50216204F219E00B9D76C /* PBXTargetDependency */ = {
+		09F54EB721D6AAEB009D2C07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ConkyX;
-			targetProxy = ECD50215204F219E00B9D76C /* PBXContainerItemProxy */;
+			targetProxy = 09F54EB621D6AAEB009D2C07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
