@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import <Sparkle/Sparkle.h>
 #import "PFMoveApplication.h"
 #import "MCObjects/MCObjects.h"
 #import "PreferencesController.h"
@@ -40,7 +39,7 @@
 #endif
 
 #ifndef DEBUG
-    //MCForciblyMoveToApplicationsFolder();
+    MCForciblyMoveToApplicationsFolder();
 #endif
 
     /* take care of resizing */
@@ -51,6 +50,18 @@
 {
     /* First window created is mainWindow; push it to our vector */
     [[MCSettings sharedSettings] pushWindow:[NSApp mainWindow]];
+}
+
+- (void)updaterDidRelaunchApplication:(SUUpdater *)updater
+{
+    /*
+     * Update MC filesystem after update.
+     * (see: added cairo support)
+     */
+    NSLog(@"Refreshing MC filesystem after update...");
+    [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
+    [[MCSettings sharedSettings] installManageConkyFilesystem];
+    NSLog(@"Refreshing MC filesystem: DONE");
 }
 
 - (IBAction)openPreferences:(id)sender

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Sparkle/Sparkle.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
+@interface AppDelegate : NSObject <SUUpdaterDelegate, NSApplicationDelegate, NSWindowDelegate>
 @end
