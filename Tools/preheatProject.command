@@ -6,7 +6,8 @@
 # (this is for when you first clone ManageConky, etc...)
 #
 
-symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..           # Manage-Conky dir location
+# Get ManageConky directory location
+symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..
 
 ##
 ## BEAUTIFY
@@ -15,10 +16,11 @@ bold=$(tput bold)
 echo "${bold}preheat | version 1.0 | by npyl"
 echo "\n"
 
+# refresh conky-for-macOS's build files on new workspace
 cd "$symroot"/ConkyX/conky-for-macOS/forConkyX
 rm -rf *
 
 #
-# We enable WLAN, 
+# We enable WLAN, CAIRO
 #
-cmake .. -DBUILD_WLAN=ON -G Xcode
+cmake .. -DBUILD_WLAN=ON -DBUILD_CAIRO=ON -G Xcode

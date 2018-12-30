@@ -63,6 +63,12 @@ mkdir -p "$workdir"
 # change directory into project root
 cd "$symroot"
 
+# call preheat script
+Tools/preheatProject.command
+
+# return to project root
+cd "$symroot"
+
 # build project for RELEASE
 xcodebuild -workspace "Manage Conky.xcworkspace" -scheme "Manage Conky" -configuration "Release" -derivedDataPath "$builddir" clean build
 

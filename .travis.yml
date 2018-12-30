@@ -12,9 +12,8 @@ before_install:
   - brew link gettext --force
 
 # setup xcode project
-  - cd ConkyX/conky-for-macOS/forConkyX
-  - cmake .. -DWBUILD_WLAN=ON -G Xcode
-  - cd ../../..
+  - Tools/preheatProject.command
+  - cd ../../.. # return to project root
 
 script:
   - set -o pipefail && xcodebuild -workspace Manage\ Conky.xcworkspace -scheme Manage\ Conky -destination platform\=macOS build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty
