@@ -22,6 +22,7 @@
 		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
 		096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 096341FB212E234200D011FD /* ConkyX-LICENSE */; };
+		0983DD9621D919A500ED0240 /* Fragaria-LICENSE in Copy Licenses */ = {isa = PBXBuildFile; fileRef = 0983DD9421D9199000ED0240 /* Fragaria-LICENSE */; };
 		098C76AF213C097600B1F05A /* Manage_Conky_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */; };
 		09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */; };
 		09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */; };
@@ -197,6 +198,7 @@
 			dstPath = Licenses;
 			dstSubfolderSpec = 7;
 			files = (
+				0983DD9621D919A500ED0240 /* Fragaria-LICENSE in Copy Licenses */,
 				096341FD212E235500D011FD /* ConkyX-LICENSE in Copy Licenses */,
 			);
 			name = "Copy Licenses";
@@ -245,6 +247,7 @@
 		095F9B3C2077DD6E003C60C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		095F9B3E2077DD74003C60C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		096341FB212E234200D011FD /* ConkyX-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ConkyX-LICENSE"; path = "Resources/Licenses/ConkyX-LICENSE"; sourceTree = "<group>"; };
+		0983DD9421D9199000ED0240 /* Fragaria-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE"; path = "Resources/Licenses/Fragaria-LICENSE"; sourceTree = "<group>"; };
 		098C769C213BF64500B1F05A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Manage Conky Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		098C76AE213C097600B1F05A /* Manage_Conky_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manage_Conky_Tests.m; sourceTree = "<group>"; };
@@ -254,7 +257,6 @@
 		09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = UninstallFilesystem.sh; path = Resources/UninstallFilesystem.sh; sourceTree = "<group>"; };
 		09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMR_ANSIEscapeHelper.m; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		09AA970E21D3F41F00339061 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMR_ANSIEscapeHelper.h; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
-		09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Fragaria-LICENSE-2.0.txt"; path = "Resources/Licenses/Fragaria-LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09D11C972104C66F005C9685 /* SaveThemeSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetController.h; sourceTree = "<group>"; };
@@ -404,8 +406,8 @@
 		09ACA826212E1CF8002B9754 /* Licenses */ = {
 			isa = PBXGroup;
 			children = (
+				0983DD9421D9199000ED0240 /* Fragaria-LICENSE */,
 				096341FB212E234200D011FD /* ConkyX-LICENSE */,
-				09ACA82A212E1F02002B9754 /* Fragaria-LICENSE-2.0.txt */,
 			);
 			name = Licenses;
 			sourceTree = "<group>";
