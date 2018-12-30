@@ -17,6 +17,7 @@
 #define CONKYX              @"/Applications/ConkyX.app"
 #define MANAGE_CONKY        @"/Applications/Manage Conky.app"
 #define CONKY_SYMLINK       @"/usr/local/bin/conky"
+#define CAIRO_SYMLINK       @"/usr/local/lib/conky/libcairo.so"
 #define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
 #define XQUARTZ             "/Applications/Utilities/XQuartz.app"
 

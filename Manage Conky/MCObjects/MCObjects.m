@@ -260,6 +260,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     
     NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
     NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+    NSString *cairoDylibPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"lua/libcairo" ofType:@"dylib"];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
     if (userIsAdmin())
@@ -305,6 +306,14 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     {
         MCError(&error, @"Error creating symbolic link to /usr/local/bin");
     }
+    
+    /*
+     * Create symbolink link to allow using libcairo.dylib
+     */
+    if (![fm createSymbolicLinkAtPath:CAIRO_SYMLINK withDestinationPath:cairoDylibPath error:&error])
+    {
+        MCError(&error, @"Error creating symbolic link to %@", CAIRO_SYMLINK);
+    }
 }
 
 - (void)setShouldLogToFile:(BOOL)a
@@ -337,13 +346,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstallManageConkyFilesystem
 {
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
 
     if (userIsAdmin())
     {
-        NSError *error = nil;
-        NSFileManager *fm = [NSFileManager defaultManager];
-        
         [fm removeItemAtPath:CONKYX error:&error];
         if (error) { MCError(&error, @"Error removing ConkyX"); }
 
@@ -361,6 +369,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         [script launchAuthenticated];
         [script waitUntilExit];
     }
+    
+    [fm removeItemAtPath:CAIRO_SYMLINK error:&error];
+    if (error) { MCError(&error, @"Error removing CAIRO symlink"); }
 }
 
 - (void)uninstallCompletelyManageConkyFilesystem

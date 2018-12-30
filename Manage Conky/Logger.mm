@@ -37,7 +37,7 @@ using namespace std;
 
 @implementation Logger
 
-static list<LoggerEntity *> _textViews;
+static list<LoggerEntity *> _loggerEntities;
 static BOOL _isOpen = NO;   // a public _isOpen property
 static int _id = 0;
 static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
@@ -123,7 +123,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     le.textView = self.textView;
     le.uniqueID = self.widgetUniqueID;
     
-    _textViews.push_back(le);
+    _loggerEntities.push_back(le);
 
     _isOpen = YES;
 }
@@ -164,7 +164,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
         NSData *data = [fileHandle availableData];
         NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-        for (LoggerEntity *le : _textViews)
+        for (LoggerEntity *le : _loggerEntities)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (le.uniqueID == uniqueID)
