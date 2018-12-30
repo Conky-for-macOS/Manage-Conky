@@ -263,6 +263,20 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     NSString *cairoDylibPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"lua/libcairo" ofType:@"dylib"];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
+    /*
+     * When we build MC, for some reason, conky executable may slip
+     * and not get bundled into ConkyX.  Try to slightly relief users
+     * from the pain of looking for the problem themselves.
+     */
+    if (!conkyPath || !cairoDylibPath || !scriptPath)
+    {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Something is wrong with app's consistency!"];
+        [alert setInformativeText:@"Open an issue in project's repo: https://github.com/Conky-for-macOS/Manage-Conky"];
+        [alert runModal];
+        return;
+    }
+    
     if (userIsAdmin())
     {
         /* Remove old files first */
