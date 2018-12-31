@@ -32,7 +32,7 @@ You can use shortcuts to improve the experience:
 ## INSTALL 💾
 
 To install grab the [Latest Release](https://github.com/Conky-for-macOS/Manage-Conky/releases/latest). <br>
-Make sure to take care of the ["Requirements"](https://github.com/Conky-for-macOS/conky-for-macOS/wiki/Build-on-macOS#-requirements), too! Conky won't work without them.
+Make sure to take care of the ["Requirements"](https://github.com/Conky-for-macOS/conky-for-macOS/wiki/Build#%EF%B8%8F-installing-requirements), too! Conky won't work without them.
 
 ## BUILD 🏗
 
