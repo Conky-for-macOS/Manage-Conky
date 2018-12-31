@@ -483,12 +483,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 - (void)disable {}
 - (BOOL)isEnabled { return YES; }
 
-- (void)uninstall:(NSString *)path
+- (void)moveToTrash:(NSString *)path
 {
-    NSString *widgetOrThemeDirectory = path.stringByDeletingLastPathComponent;
-    NSURL *url = [NSURL fileURLWithPath:widgetOrThemeDirectory];
+    NSURL *url = [NSURL fileURLWithPath:path];
 
-    NSLog(@"Moving (%@) to trash.", widgetOrThemeDirectory);
+    NSLog(@"Moving (%@) to trash.", path);
 
     [[NSWorkspace sharedWorkspace] recycleURLs:@[url] completionHandler:^(NSDictionary<NSURL *,NSURL *> * _Nonnull newURLs, NSError * _Nullable error) {
         if (error)
@@ -658,7 +657,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstall
 {
-    [super uninstall:_itemPath];
+    [super moveToTrash:_itemPath.stringByDeletingLastPathComponent];
 }
 
 @end
@@ -1075,7 +1074,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstall
 {
-    [super uninstall:_themeRC];
+    [super moveToTrash:_themeRC.stringByDeletingLastPathComponent];
 }
 
 @end
