@@ -485,10 +485,14 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstall:(NSString *)path
 {
-    NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:[path stringByDeletingLastPathComponent] error:&error];
-    if (error)
-        MCError(&error);
+    NSString *widgetOrThemeDirectory = path.stringByDeletingLastPathComponent;
+    NSURL *url = [NSURL fileURLWithPath:widgetOrThemeDirectory];
+
+    NSLog(@"Moving (%@) to trash.", widgetOrThemeDirectory);
+
+    [[NSWorkspace sharedWorkspace] recycleURLs:@[url] completionHandler:^(NSDictionary<NSURL *,NSURL *> * _Nonnull newURLs, NSError * _Nullable error) {
+        if (error) MCError(&error);
+    }];
 }
 
 - (void)uninstall {}
