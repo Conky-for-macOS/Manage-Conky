@@ -326,7 +326,7 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-        preview = [[widget itemPath] stringByAppendingPathExtension:@"jpg"];
+        preview = [[widget widgetRC] stringByAppendingPathExtension:@"jpg"];
     }
     else if (whatToShow == widgetsThemesTableShowThemes)
     {
@@ -397,7 +397,7 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         arr = widgetsArray;
-        str = [[arr objectAtIndex:row] itemPath];
+        str = [[arr objectAtIndex:row] widgetRC];
     }
     else
     {
@@ -519,7 +519,7 @@
     /*
      * Initialise editor controller
      */
-    MCConfigEditor *editorController = [[MCConfigEditor alloc] initWithConfig:[widget itemPath]];
+    MCConfigEditor *editorController = [[MCConfigEditor alloc] initWithConfig:[widget widgetRC]];
 
     /*
      * Initialise editor popover
@@ -561,7 +561,7 @@
     switch (whatToShow)
     {
         case widgetsThemesTableShowWidgets:
-            itemPath = [[widgetsArray objectAtIndex:row] itemPath];
+            itemPath = [[widgetsArray objectAtIndex:row] widgetRC];
             break;
         case widgetsThemesTableShowThemes:
             itemPath = [[themesArray objectAtIndex:row] themeRC];
@@ -619,7 +619,7 @@
     if (whatToShow == widgetsThemesTableShowWidgets)
     {
         MCWidget *widget = [widgetsArray objectAtIndex:row];
-        containingDirectory = [[widget itemPath] stringByDeletingLastPathComponent];
+        containingDirectory = [[widget widgetRC] stringByDeletingLastPathComponent];
     }
     else if (whatToShow == widgetsThemesTableShowThemes)
     {
@@ -659,7 +659,7 @@
 
     NSError *error = nil;
     NSArray *arguments = @[@"-c",
-                           [widget itemPath],
+                           [widget widgetRC],
                            ];
     
     [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url

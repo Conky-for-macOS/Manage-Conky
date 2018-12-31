@@ -147,7 +147,7 @@ void checkbox_registry_uncheck_all(void)
     
     for (MCWidget *widget in vc.widgets)
     {
-        [fromListWidgets addObject:widget.itemPath];
+        [fromListWidgets addObject:widget.widgetRC];
     }
     
     [_widgetsTableView reloadData];

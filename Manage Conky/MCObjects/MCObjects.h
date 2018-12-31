@@ -232,7 +232,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 @interface MCWidget : MCWidgetOrTheme
 
 @property pid_t pid;            /* pid */
-@property NSString *itemPath;   /* conky *.conf path */
+@property NSString *widgetRC;   /* conky *.conf path */
 @property NSString *widgetName; /* widget's name */
 @property NSString *widgetLabel;    /* label for LaunchAgent */
 

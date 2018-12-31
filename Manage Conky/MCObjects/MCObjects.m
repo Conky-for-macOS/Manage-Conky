@@ -518,7 +518,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     if (res)
     {
         [res setPid:pid];
-        [res setItemPath:path];
+        [res setWidgetRC:path];
         [res setRealName:realName];
         [res setWidgetName:widgetName];
         [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
@@ -545,7 +545,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /*
      * Custom-Normalise for our needs
      */
-    NSString *correctedItemPath = MCNormalise(_itemPath);
+    NSString *correctedItemPath = MCNormalise(_widgetRC);
     
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
@@ -562,7 +562,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                           @[CONKY_SYMLINK, @"-c", correctedItemPath],
                           keepAlive,
                           startupDelay,
-                          [_itemPath stringByDeletingLastPathComponent],
+                          [_widgetRC stringByDeletingLastPathComponent],
                           error);
         
         if (error)
@@ -583,7 +583,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                              @"-l",
                              @"-c",
                              cmd]];
-        [task setCurrentDirectoryPath:_itemPath.stringByDeletingLastPathComponent];
+        [task setCurrentDirectoryPath:_widgetRC.stringByDeletingLastPathComponent];
         [task setEnvironment:[NSProcessInfo processInfo].environment];          /*
                                                                                  * Some conky widgets like Conky-Vision
                                                                                  * (original: https://github.com/zagortenay333/conky-Vision)
@@ -657,7 +657,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstall
 {
-    [super moveToTrash:_itemPath.stringByDeletingLastPathComponent];
+    [super moveToTrash:_widgetRC.stringByDeletingLastPathComponent];
 }
 
 @end
