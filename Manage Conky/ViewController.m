@@ -638,11 +638,8 @@
         return;
     
     id obj = (whatToShow == widgetsThemesTableShowWidgets) ? [widgetsArray objectAtIndex:row] : [themesArray objectAtIndex:row];
+
     [obj uninstall];
-    
-    [self emptyWidgetsThemesArrays];
-    [self fillWidgetsThemesArrays];
-    [_widgetsThemesTable reloadData];
 }
 
 - (IBAction)runCommand:(id)sender
