@@ -219,7 +219,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 - (void)kill;
 - (void)disable;
 - (BOOL)isEnabled;
-- (void)uninstall:(NSString *)path;
 - (void)uninstall;
 
 - (void)configureMCSettingsHolder;

@@ -491,7 +491,17 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     NSLog(@"Moving (%@) to trash.", widgetOrThemeDirectory);
 
     [[NSWorkspace sharedWorkspace] recycleURLs:@[url] completionHandler:^(NSDictionary<NSURL *,NSURL *> * _Nonnull newURLs, NSError * _Nullable error) {
-        if (error) MCError(&error);
+        if (error)
+        {
+            MCError(&error);
+            return;
+        }
+        
+        /*
+         * After successful moving of Widget/Theme to Trash,
+         * update main window's table view.
+         */
+        [[[MCSettings sharedSettings] mainViewController] updateWidgetsThemesArray];
     }];
 }
 
@@ -574,7 +584,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                              @"-l",
                              @"-c",
                              cmd]];
-        [task setCurrentDirectoryPath:[_itemPath stringByDeletingLastPathComponent]];
+        [task setCurrentDirectoryPath:_itemPath.stringByDeletingLastPathComponent];
         [task setEnvironment:[NSProcessInfo processInfo].environment];          /*
                                                                                  * Some conky widgets like Conky-Vision
                                                                                  * (original: https://github.com/zagortenay333/conky-Vision)
