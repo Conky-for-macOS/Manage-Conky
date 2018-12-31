@@ -504,7 +504,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     }];
 }
 
-- (void)uninstall {}
+- (void)uninstall { [self moveToTrash:_location]; }
 - (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedSettings]; }
 @end
 
@@ -518,6 +518,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     if (res)
     {
         [res setPid:pid];
+        [res setLocation:path.stringByDeletingLastPathComponent];
         [res setWidgetRC:path];
         [res setRealName:realName];
         [res setWidgetName:widgetName];
@@ -655,11 +656,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     else return (_pid != MC_PID_NOT_SET) ? YES : NO;
 }
 
-- (void)uninstall
-{
-    [super moveToTrash:_widgetRC.stringByDeletingLastPathComponent];
-}
-
 @end
 
 @implementation MCTheme
@@ -716,6 +712,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
          * General properties
          * ==================
          */
+        [res setLocation:themeRC.stringByDeletingLastPathComponent];
         [res setThemeRC:themeRC];
         [res setConkyConfigs:refinedConfigs];
         [res setArguments:args];
@@ -1070,11 +1067,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     }
     
     _isEnabled = NO;
-}
-
-- (void)uninstall
-{
-    [super moveToTrash:_themeRC.stringByDeletingLastPathComponent];
 }
 
 @end

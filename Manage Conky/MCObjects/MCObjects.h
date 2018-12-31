@@ -212,6 +212,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
     MCSettings *MCSettingsHolder;
 }
 
+@property NSString *location;   /* its location */
 @property NSString *realName;   /* un-normalised name */
 
 - (void)enable;
