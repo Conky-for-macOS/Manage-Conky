@@ -18,22 +18,29 @@
 
 enum {
     MC_FROM_LIST = 0,
-    MC_FROM_DIRECTORY
+    MC_FROM_DIRECTORY,
+    
+    MC_FROM_XXX_COUNT   /* serves as a count of enum entries */
 };
 
 /*
  * Registry of checkboxes
  */
-static NSMutableArray<Checkbox *> *checkboxRegistry = nil;
-static NSUInteger fromListWidgetsCount = 0; /* the -fromList- widgets */
+static NSMutableArray<Checkbox *> *checkboxRegistry[MC_FROM_XXX_COUNT];
+static NSUInteger fromListWidgetsCount = 0;         /* the -fromList- widgets */
+static NSUInteger fromDirectoryWidgetsCount = 0;    /* the -fromDirectory- widgets */
+static NSUInteger selectedView;
 
 /*
  * Registry of Checkboxes Manipulation Functions
  */
 void checkbox_registry_uncheck_all(void)
 {
-    for (int i = 0; i < checkboxRegistry.count; i++)
-        checkboxRegistry[i].state = NSOffState;
+    for (int i = 0; i < checkboxRegistry[MC_FROM_LIST].count; i++)
+        checkboxRegistry[MC_FROM_LIST][i].state = NSOffState;
+    
+    for (int i = 0; i < checkboxRegistry[MC_FROM_DIRECTORY].count; i++)
+        checkboxRegistry[MC_FROM_DIRECTORY][i].state = NSOffState;
 }
 
 //
@@ -43,20 +50,24 @@ void checkbox_registry_uncheck_all(void)
 @implementation Checkbox
 + (instancetype)checkboxForWidgetWithIdentifier:(NSString *)widgetIdentifier
 {
+//    NSLog(@"Getting chkbx for view: %d", selectedView);
+    
+    NSUInteger count = (selectedView == MC_FROM_LIST) ? fromListWidgetsCount : fromDirectoryWidgetsCount;
+    
     /* check if registry has already been created */
-    if (checkboxRegistry)
+    if (checkboxRegistry[selectedView])
     {
         /* Try to find an entry corresponding to this widget! */
-        for (Checkbox *cb in checkboxRegistry)
+        for (Checkbox *cb in checkboxRegistry[selectedView])
             if ([[cb widgetID] isEqualToString:widgetIdentifier])
                 return cb;  /* return one from registry */
     }
     else
-        checkboxRegistry = [NSMutableArray arrayWithCapacity:fromListWidgetsCount];
+        checkboxRegistry[selectedView] = [NSMutableArray arrayWithCapacity:count];
     
     /*
-     * either registry hadn't been created yet or we didn't find an entry;
-     * create one
+     * either registry hadn't been created yet
+     * or we didn't find an entry; create one.
      */
     id entry = [[Checkbox alloc] init];
     if (entry)
@@ -64,7 +75,7 @@ void checkbox_registry_uncheck_all(void)
         [entry setWidgetID:widgetIdentifier];
         
         /* publish ourselves to registry */
-        [checkboxRegistry addObject:entry];
+        [checkboxRegistry[selectedView] addObject:entry];
     }
     return entry;
 }
@@ -77,7 +88,7 @@ void checkbox_registry_uncheck_all(void)
     NSTableCellView *cellView = (NSTableCellView *)[sender superview];
     NSUInteger row = [tableView rowForView:cellView];
     
-    checkboxRegistry[row].state = [(NSButton *)sender state];
+    checkboxRegistry[selectedView][row].state = [(NSButton *)sender state];
 }
 @end
 
@@ -101,6 +112,9 @@ void checkbox_registry_uncheck_all(void)
     
     [_widgetsTableView setDelegate:self];
     [_widgetsTableView setDataSource:self];
+    
+    checkboxRegistry[0] = nil;
+    checkboxRegistry[1] = nil;
     
     selectedView = MC_FROM_LIST;
 }
@@ -215,7 +229,7 @@ void checkbox_registry_uncheck_all(void)
             
             [vc fillWidgetsThemesArraysWithSearchPath:op.URL.path];
             for (MCWidget *widget in [vc widgets])
-                [fromDirectoryWidgets addObject:[widget widgetName]];
+                [fromDirectoryWidgets addObject:widget.widgetRC];
         }
     }
     
@@ -260,11 +274,16 @@ void checkbox_registry_uncheck_all(void)
     NSMutableArray *arr = [NSMutableArray array];
     
     /* Only take user-selected widgets */
-    for (Checkbox *cb in checkboxRegistry)
+    for (Checkbox *cb in checkboxRegistry[MC_FROM_LIST])
         if ([fromListWidgets doesContain:[cb widgetID]] && ([cb state] == NSOnState))
             [arr addObject:[cb widgetID]];
     
+    for (Checkbox *cb in checkboxRegistry[MC_FROM_DIRECTORY])
+        if ([fromDirectoryWidgets doesContain:[cb widgetID]] && ([cb state] == NSOnState))
+            [arr addObject:[cb widgetID]];
+    
     [arr addObjectsFromArray:widgetsFromDirectories];
+
     return arr;
 }
 
@@ -353,10 +372,10 @@ void checkbox_registry_uncheck_all(void)
     /*
      * Create Theme directory
      */
-    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
     NSError *error = nil;
-    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
-    if (error)
+    NSMutableDictionary *themerc = [NSMutableDictionary dictionary];
+    
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error])
     {
         MCError(&error, @"saveTheme");
         return;
@@ -382,27 +401,18 @@ void checkbox_registry_uncheck_all(void)
      */
     /* copy widgets */
     for (NSString *widgetPath in _conkyConfigsPaths)
-    {
-        [[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error];
-        if (error)
-        {
+        if (![[NSFileManager defaultManager] copyItemAtPath:widgetPath toPath:[path stringByAppendingPathComponent:widgetPath.lastPathComponent] error:&error])
             MCError(&error);
-        }
-    }
 
     /* copy wallpaper */
     if (_relative)
-    {
-        [[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error];
-        if (error)
+        if (![[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error])
             MCError(&error);
-    }
 
     /*
      * copy preview image and set its name to <widgetName>.jpg
      */
-    [[NSFileManager defaultManager] copyItemAtPath:_preview toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", path.lastPathComponent]] error:&error];
-    if (error)
+    if (![[NSFileManager defaultManager] copyItemAtPath:_preview toPath:[path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", path.lastPathComponent]] error:&error])
         MCError(&error);
 
     /* open theme directory */
@@ -419,6 +429,7 @@ void checkbox_registry_uncheck_all(void)
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     fromListWidgetsCount = [fromListWidgets count];
+    fromDirectoryWidgetsCount = [fromDirectoryWidgets count];
     return (selectedView == MC_FROM_LIST) ? [fromListWidgets count] : [fromDirectoryWidgets count];
 }
 
@@ -429,20 +440,22 @@ void checkbox_registry_uncheck_all(void)
 
     if ([[tableColumn identifier] isEqualToString:@"Text"])
     {
+        NSString *str = (selectedView == MC_FROM_LIST) ? [[fromListWidgets objectAtIndex:row] lastPathComponent] : [fromDirectoryWidgets objectAtIndex:row];
+        
         NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Text" owner:nil];
-        [[cell textField] setStringValue:(selectedView == MC_FROM_LIST) ? [[fromListWidgets objectAtIndex:row] lastPathComponent] : [fromDirectoryWidgets objectAtIndex:row]];
+        [[cell textField] setStringValue:str];
         return cell;
     }
     else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
     {
-        if (selectedView == MC_FROM_LIST)
-        {
-            Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:[fromListWidgets objectAtIndex:row]];
-            NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
-            return cell;
-        }
+        NSString *str = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
+        
+        Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:str];
+        NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
+        return cell;
     }
     
     return nil;
 }
+
 @end

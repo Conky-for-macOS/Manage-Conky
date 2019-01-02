@@ -15,7 +15,6 @@ enum {
 
 @interface SaveThemeSheetController : GeneralSheetController<NSTableViewDelegate, NSTableViewDataSource, SaveWidgetSheetControllerDelegate>
 {
-    NSInteger selectedView;
     NSMutableArray *fromListWidgets;
     NSMutableArray *fromDirectoryWidgets;
     NSMutableArray *searchDirectories;
