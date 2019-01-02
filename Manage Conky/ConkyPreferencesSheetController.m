@@ -183,6 +183,12 @@
 
 - (IBAction)runConkyAtStartupCheckboxAction:(id)sender
 {
+    /*
+     * Allow enabling logging, only if MC is being operated in testing mode...
+     * (`conky runs at startup` means that MC is NOT operating in test mode)
+     */
+    [[[[MCSettings sharedSettings] mainViewController] toggleLoggerButton] setEnabled:![sender state]];
+    
     if ([sender state] == NSOffState)
     {
         NSLog(@"Request to remove the Agent!");
