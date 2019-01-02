@@ -511,18 +511,25 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 @implementation MCWidget
 + (instancetype)widgetWithPid:(pid_t)pid andRC:(NSString *)path
 {
+    NSString *location = [path stringByDeletingLastPathComponent];
     NSString *realName = [path lastPathComponent];
     NSString *widgetName = [realName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *creator = [NSString stringWithContentsOfFile:[location stringByAppendingPathComponent:@"creator.txt"] encoding:NSUTF8StringEncoding error:nil];
+    NSString *source = [NSString stringWithContentsOfFile:[location stringByAppendingPathComponent:@"source.txt"] encoding:NSUTF8StringEncoding error:nil];
+    
+    NSLog(@"creator: %@; source: %@", creator, source);
     
     id res = [[self alloc] init];
     if (res)
     {
         [res setPid:pid];
-        [res setLocation:path.stringByDeletingLastPathComponent];
+        [res setLocation:location];
         [res setWidgetRC:path];
         [res setRealName:realName];
         [res setWidgetName:widgetName];
         [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
+        [res setCreator:creator];
+        [res setSource:source];
         [res configureMCSettingsHolder];
     }
     return res;

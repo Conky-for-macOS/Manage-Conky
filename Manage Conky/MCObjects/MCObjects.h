@@ -215,6 +215,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 @property NSString *location;   /* its location */
 @property NSString *realName;   /* un-normalised name */
 
+@property NSString *creator;    /* creator of theme */
+@property NSString *source;     /* source of theme */
+
 - (void)enable;
 - (void)reenable;
 - (void)kill;
@@ -255,9 +258,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 @property NSArray *arguments;   /* arguments for conky */
 @property NSString *wallpaper;  /* wallpaper used by theme */
 @property MCWallpaperScaling scaling;   /* wallpaper scaling */
-
-@property NSString *creator;    /* creator of theme */
-@property NSString *source;     /* source of theme */
 
 @property BOOL isEnabled;    /* a LaunchAgent for it exists */
 
