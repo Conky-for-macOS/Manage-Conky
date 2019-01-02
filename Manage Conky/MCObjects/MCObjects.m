@@ -477,6 +477,17 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 @end
 
 @implementation MCWidgetOrTheme
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        MCSettingsHolder = [MCSettings sharedSettings];
+    }
+    return self;
+}
+
 - (void)enable {}
 - (void)reenable {}
 - (void)kill {}
@@ -505,7 +516,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 }
 
 - (void)uninstall { [self moveToTrash:_location]; }
-- (void)configureMCSettingsHolder { MCSettingsHolder = [MCSettings sharedSettings]; }
 @end
 
 @implementation MCWidget
@@ -521,7 +531,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         source = @"unknown";
     if (!creator)
         creator = @"unknown";
-
+    
     id res = [[self alloc] init];
     if (res)
     {
@@ -533,7 +543,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         [res setWidgetLabel: [NSString stringWithFormat:@"%@.%@", LAUNCH_AGENT_PREFIX, widgetName]];
         [res setCreator:creator];
         [res setSource:source];
-        [res configureMCSettingsHolder];
     }
     return res;
 }
@@ -730,9 +739,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         [res setWallpaper:wallpaper];
         [res setCreator:creator];
         [res setSource:source];
-        [res setScaling:scaling];
-        
-        [res configureMCSettingsHolder];
+        [res setScaling:scaling];        
         
         /*
          * themeName
