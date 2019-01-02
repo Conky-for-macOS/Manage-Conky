@@ -723,6 +723,16 @@
 
 - (IBAction)toggleLogger:(id)sender
 {
+    /*
+     * Allow enabling logging, only if MC is being operated in testing mode...
+     * (`conky runs at startup` means that MC is NOT operating in test mode)
+     */
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
+    {
+        [sender setState:NSOffState];
+        return;
+    }
+    
     [_toggleLoggerButton setImage:([sender state] ? [NSImage imageNamed:NSImageNameStatusAvailable] : nil)];
     
     [[MCSettings sharedSettings] setLogsWidgets:[sender state]];
