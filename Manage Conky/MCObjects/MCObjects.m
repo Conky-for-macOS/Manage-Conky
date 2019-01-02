@@ -411,11 +411,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 }
 - (void)setOldWallpaper:(NSString *)old
 {
-    [[NSUserDefaults standardUserDefaults] setObject:old forKey:kMCOldWallpaperKey];
+    [[NSUserDefaults standardUserDefaults] setObject:old forKey:(NSString * _Nonnull)kMCOldWallpaperKey];
 }
 - (NSString *)oldWallpaper
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCOldWallpaperKey];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:(NSString * _Nonnull)kMCOldWallpaperKey];
 }
 - (BOOL)setWallpaper:(NSString *)wallpaper withScaling:(MCWallpaperScaling)scaling error:(NSError **)error
 {
