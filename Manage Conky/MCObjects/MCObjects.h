@@ -215,8 +215,8 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 @property NSString *location;   /* its location */
 @property NSString *realName;   /* un-normalised name */
 
-@property NSString *creator;    /* creator of theme */
-@property NSString *source;     /* source of theme */
+@property NSString *creator;    /* creator */
+@property NSString *source;     /* source */
 
 - (void)enable;
 - (void)reenable;

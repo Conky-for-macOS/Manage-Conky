@@ -517,8 +517,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     NSString *creator = [NSString stringWithContentsOfFile:[location stringByAppendingPathComponent:@"creator.txt"] encoding:NSUTF8StringEncoding error:nil];
     NSString *source = [NSString stringWithContentsOfFile:[location stringByAppendingPathComponent:@"source.txt"] encoding:NSUTF8StringEncoding error:nil];
     
-    NSLog(@"creator: %@; source: %@", creator, source);
-    
+    if (!source)
+        source = @"unknown";
+    if (!creator)
+        creator = @"unknown";
+
     id res = [[self alloc] init];
     if (res)
     {
@@ -802,10 +805,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         /*
          * Doing it the conky-manager way...
          */
-        NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
-        
         NSError *error = nil;
         NSMutableArray *lines = [NSMutableArray array];
+        NSString *themeRoot = [themeRC stringByDeletingLastPathComponent];
         
         [[NSString stringWithContentsOfFile:themeRC
                                    encoding:NSUTF8StringEncoding
@@ -849,10 +851,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         }
         conkyConfigs = lines;
         
-        source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/source.txt"] encoding:NSUTF8StringEncoding error:nil];
+        source = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingPathComponent:@"source.txt"] encoding:NSUTF8StringEncoding error:nil];
+        creator = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingPathComponent:@"creator.txt"] encoding:NSUTF8StringEncoding error:nil];
+
         if (!source)
             source = @"unknown";
-        creator = [NSString stringWithContentsOfFile:[themeRoot stringByAppendingString:@"/creator.txt"] encoding:NSUTF8StringEncoding error:nil];
         if (!creator)
             creator = @"unknown";
     }
