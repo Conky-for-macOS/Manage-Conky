@@ -27,6 +27,7 @@ static NSString *kMCConkyShouldLogToFileKey = @"ShouldLogToFile";
 static NSString *kMCConkyLogfileLocationKey = @"LogfileLocation";
 static NSString *kMCCanResizeWindow = @"CanResizeWindow";
 static NSString *kMCUsesAbsolutePaths = @"UsesAbsolutePaths";
+static NSString *kMCLogsWidgets = @"LogsWidgets";
 
 /*
  * Conky ThemeRC (Plist) Keys

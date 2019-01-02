@@ -350,12 +350,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)setLogsWidgets:(BOOL)a
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:@"DoesLogWidgets"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:a] forKey:kMCLogsWidgets];
 }
 
 - (BOOL)logsWidgets
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"DoesLogWidgets"] boolValue];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCLogsWidgets] boolValue];
 }
 
 - (void)uninstallManageConkyFilesystem
