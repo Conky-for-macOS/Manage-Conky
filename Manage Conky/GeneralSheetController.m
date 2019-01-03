@@ -14,14 +14,20 @@
 - (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode
 {
     self = [super initWithWindowNibName:nibName];
-    
     if (self)
     {
         self.mode = mode;
         _opensWindowed = (_mode & GSC_MODE_WINDOW);
+        
+        /* Enable App Termination if Window is Modal */
+        [[super window] setPreventsApplicationTerminationWhenModal:NO];
     }
-    
     return self;
+}
+
+- (id)initWithWindowNibName:(NSString *)nibName
+{
+    return [self initWithWindowNibName:nibName andMode:GSC_MODE_NOMODE];
 }
 
 - (void)loadOnWindow:(NSWindow *)_targetWindow

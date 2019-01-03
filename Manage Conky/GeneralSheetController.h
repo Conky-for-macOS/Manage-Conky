@@ -9,7 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 enum MC_GENERAL_SHEET_FLAGS {
-    GSC_MODE_WINDOW = 1,
+    GSC_MODE_NOMODE = 0,
+    GSC_MODE_WINDOW
 };
 
 @interface GeneralSheetController : NSWindowController<NSWindowDelegate>
