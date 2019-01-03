@@ -18,9 +18,6 @@
     {
         self.mode = mode;
         _opensWindowed = (_mode & GSC_MODE_WINDOW);
-        
-        /* Enable App Termination if Window is Modal */
-        [[super window] setPreventsApplicationTerminationWhenModal:NO];
     }
     return self;
 }
@@ -42,6 +39,9 @@
     }
     else
     {
+        /* Enable App Termination if Window is Modal */
+        [[super window] setPreventsApplicationTerminationWhenModal:NO];
+        
         [_targetWindow beginSheet:self.window completionHandler:^(NSModalResponse returnCode) {
             [_targetWindow endSheet:self.window];
         }];
