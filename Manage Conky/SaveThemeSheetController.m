@@ -282,8 +282,6 @@ void checkbox_registry_uncheck_all(void)
         if ([fromDirectoryWidgets doesContain:[cb widgetID]] && ([cb state] == NSOnState))
             [arr addObject:[cb widgetID]];
     
-    [arr addObjectsFromArray:widgetsFromDirectories];
-
     return arr;
 }
 
