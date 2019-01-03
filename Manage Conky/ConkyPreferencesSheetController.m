@@ -100,15 +100,12 @@
          * Conky is Set to run at startup?
          * set checkbox state accordingly
          */
-        MCSettings *t = [MCSettings sharedSettings];
-        BOOL conkyRunsAtStartup = [t conkyRunsAtStartup];
-        [_runConkyAtStartupCheckbox setState:conkyRunsAtStartup];
+        [_runConkyAtStartupCheckbox setState:[MCSettings sharedSettings].conkyRunsAtStartup];
         
         /*
          * Conky configsLocation textfield
          */
-        NSString *conkyConfigsPath = [[MCSettings sharedSettings] configsLocation];
-        [_conkyConfigLocationTextfield setStringValue:conkyConfigsPath];
+        [_conkyConfigLocationTextfield setStringValue:[MCSettings sharedSettings].configsLocation];
         _oldConfigsLocation = _conkyConfigLocationTextfield.stringValue;
         
         /*
