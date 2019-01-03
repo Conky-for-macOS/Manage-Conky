@@ -50,6 +50,23 @@ THE SOFTWARE.
 #define kAMRAttrDictKey_attrName       @"attributeName"
 #define kAMRAttrDictKey_attrValue      @"attributeValue"
 
+/* More Useful Defines */
+#define kANSIColorPrefKey_FgBlack    @"ansiColorsFgBlack"
+#define kANSIColorPrefKey_FgWhite    @"ansiColorsFgWhite"
+#define kANSIColorPrefKey_FgRed        @"ansiColorsFgRed"
+#define kANSIColorPrefKey_FgGreen    @"ansiColorsFgGreen"
+#define kANSIColorPrefKey_FgYellow    @"ansiColorsFgYellow"
+#define kANSIColorPrefKey_FgBlue    @"ansiColorsFgBlue"
+#define kANSIColorPrefKey_FgMagenta    @"ansiColorsFgMagenta"
+#define kANSIColorPrefKey_FgCyan    @"ansiColorsFgCyan"
+#define kANSIColorPrefKey_BgBlack    @"ansiColorsBgBlack"
+#define kANSIColorPrefKey_BgWhite    @"ansiColorsBgWhite"
+#define kANSIColorPrefKey_BgRed        @"ansiColorsBgRed"
+#define kANSIColorPrefKey_BgGreen    @"ansiColorsBgGreen"
+#define kANSIColorPrefKey_BgYellow    @"ansiColorsBgYellow"
+#define kANSIColorPrefKey_BgBlue    @"ansiColorsBgBlue"
+#define kANSIColorPrefKey_BgMagenta    @"ansiColorsBgMagenta"
+#define kANSIColorPrefKey_BgCyan    @"ansiColorsBgCyan"
 
 /*!
  @enum          AMR_SGRCode

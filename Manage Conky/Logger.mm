@@ -14,24 +14,6 @@
 #include <list>
 using namespace std;
 
-#define kANSIColorPrefKey_FgBlack    @"ansiColorsFgBlack"
-#define kANSIColorPrefKey_FgWhite    @"ansiColorsFgWhite"
-#define kANSIColorPrefKey_FgRed        @"ansiColorsFgRed"
-#define kANSIColorPrefKey_FgGreen    @"ansiColorsFgGreen"
-#define kANSIColorPrefKey_FgYellow    @"ansiColorsFgYellow"
-#define kANSIColorPrefKey_FgBlue    @"ansiColorsFgBlue"
-#define kANSIColorPrefKey_FgMagenta    @"ansiColorsFgMagenta"
-#define kANSIColorPrefKey_FgCyan    @"ansiColorsFgCyan"
-#define kANSIColorPrefKey_BgBlack    @"ansiColorsBgBlack"
-#define kANSIColorPrefKey_BgWhite    @"ansiColorsBgWhite"
-#define kANSIColorPrefKey_BgRed        @"ansiColorsBgRed"
-#define kANSIColorPrefKey_BgGreen    @"ansiColorsBgGreen"
-#define kANSIColorPrefKey_BgYellow    @"ansiColorsBgYellow"
-#define kANSIColorPrefKey_BgBlue    @"ansiColorsBgBlue"
-#define kANSIColorPrefKey_BgMagenta    @"ansiColorsBgMagenta"
-#define kANSIColorPrefKey_BgCyan    @"ansiColorsBgCyan"
-
-
 @implementation LoggerEntity
 @end
 
@@ -45,6 +27,17 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 //---------------------------------------------------------------------------------
 //                            PRIVATE METHODS
 //---------------------------------------------------------------------------------
+
+- (void)loadAsWindow
+{
+    [super loadAsWindow];
+    
+    /*
+     * This should keep focus to mainWindow, thus
+     * speeding up development.
+     */
+    [[NSApp mainWindow] makeKeyAndOrderFront:nil];
+}
 
 - (id)initWithWidgetName:(NSString *)widgetName andUniqueID:(NSUInteger)uniqueID
 {
@@ -127,17 +120,6 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     _loggerEntities.push_back(le);
 
     _isOpen = YES;
-}
-
-- (void)loadAsWindow
-{
-    [super loadAsWindow];
-    
-    /*
-     * This should keep focus to mainWindow, thus
-     * speeding up development.
-     */
-    [[NSApp mainWindow] makeKeyAndOrderFront:nil];
 }
 
 - (void)showString:(NSString*)string toView:(NSTextView *)_textView
