@@ -106,6 +106,7 @@ void checkbox_registry_uncheck_all(void)
     _conkyConfigsPaths = [NSMutableArray array];
     fromListWidgets = [NSMutableArray array];
     fromDirectoryWidgets = [NSMutableArray array];
+    _resources = [NSMutableArray array];
     searchDirectories = [NSMutableArray array];
     
     [self populateFromListWidgetsArray];
@@ -208,6 +209,21 @@ void checkbox_registry_uncheck_all(void)
 - (IBAction)chooseScaling:(id)sender
 {
     _scaling = [sender indexOfSelectedItem];
+}
+
+- (IBAction)addResource:(id)sender
+{
+    NSOpenPanel *op = [NSOpenPanel openPanel];
+    [op setCanChooseFiles:YES];
+    [op setCanChooseDirectories:YES];
+    [op setAllowsMultipleSelection:YES];
+    [op setMessage:@"Select Resources for the Theme"];
+    
+    if ([op runModal] == NSModalResponseOK)
+    {
+        for (NSURL *url in [op URLs])
+            [_resources addObject:url.path];
+    }
 }
 
 - (IBAction)changeTableView:(id)sender
@@ -406,6 +422,11 @@ void checkbox_registry_uncheck_all(void)
     if (_relative)
         if (![[NSFileManager defaultManager] copyItemAtPath:_wallpaper toPath:[path stringByAppendingPathComponent:_wallpaper.lastPathComponent] error:&error])
             MCError(&error);
+    
+    /* copy additional resource */
+    for (NSString *resource in _resources)
+        if (![[NSFileManager defaultManager] copyItemAtPath:resource toPath:[path stringByAppendingPathComponent:resource.lastPathComponent] error:&error])
+            MCError(&error);
 
     /*
      * copy preview image and set its name to <widgetName>.jpg
@@ -447,6 +468,8 @@ void checkbox_registry_uncheck_all(void)
     else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
     {
         NSString *str = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
+     
+        NSLog(@"Creating (%@) for row: %d", str, row);
         
         Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:str];
         NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];

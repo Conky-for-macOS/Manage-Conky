@@ -25,6 +25,7 @@ enum {
 @property NSString *wallpaper;
 @property NSMutableArray<NSString *> *conkyConfigs;
 @property NSMutableArray<NSString *> *conkyConfigsPaths;
+@property NSMutableArray *resources;
 @property NSString *source;
 @property NSString *creator;
 @property MCWallpaperScaling scaling;
