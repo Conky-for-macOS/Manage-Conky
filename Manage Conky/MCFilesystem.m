@@ -26,8 +26,6 @@ NSString *MCDirectory(void)
 void createMCDirectory(void)
 {
     NSError *error;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createDirectoryAtPath:MCDirectory() withIntermediateDirectories:NO attributes:nil error:&error];
     [[NSFileManager defaultManager] createDirectoryAtPath:MCDirectory() withIntermediateDirectories:NO attributes:nil error:&error];
     if (error)
     {
