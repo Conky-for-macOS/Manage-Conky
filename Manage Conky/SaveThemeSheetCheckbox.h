@@ -18,7 +18,8 @@
 @property NSString *widgetID;   /* Widget Identifier -- the widget's path */
 @end
 
-@interface CheckboxEventListener : NSButtonCell
+@interface CheckboxView : NSTableCellView
+@property (weak) IBOutlet NSButton *check;
 @end
 
 #endif /* SaveThemeSheetCheckbox_h */

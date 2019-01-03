@@ -50,8 +50,6 @@ void checkbox_registry_uncheck_all(void)
 @implementation Checkbox
 + (instancetype)checkboxForWidgetWithIdentifier:(NSString *)widgetIdentifier
 {
-//    NSLog(@"Getting chkbx for view: %d", selectedView);
-    
     NSUInteger count = (selectedView == MC_FROM_LIST) ? fromListWidgetsCount : fromDirectoryWidgetsCount;
     
     /* check if registry has already been created */
@@ -81,7 +79,7 @@ void checkbox_registry_uncheck_all(void)
 }
 @end
 
-@implementation CheckboxEventListener
+@implementation CheckboxView
 - (IBAction)click:(id)sender
 {
     NSTableView *tableView = (NSTableView *)[[[sender superview] superview] superview];
@@ -110,9 +108,6 @@ void checkbox_registry_uncheck_all(void)
     searchDirectories = [NSMutableArray array];
     
     [self populateFromListWidgetsArray];
-    
-    [_widgetsTableView setDelegate:self];
-    [_widgetsTableView setDataSource:self];
 
     selectedView = MC_FROM_LIST;
 }
@@ -467,13 +462,10 @@ void checkbox_registry_uncheck_all(void)
     else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
     {
         NSString *str = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
-        NSLog(@"Creating (%@) for row: %d", str, row);
-        
 
         Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:str];
-//        NSLog(@"VIEW: %d, row: %d (%d)", selectedView, row, cb.state);
-//        NSLog(@"VIEW: %d, row: %d (%@)", selectedView, row, cb);
-        NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
+        CheckboxView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:nil];
+        [[cell check] setState:cb.state];
         return cell;
     }
     

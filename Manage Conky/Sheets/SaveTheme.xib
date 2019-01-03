@@ -76,33 +76,29 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Uo1-Iu-dQC">
+                                            <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" title="Text Cell" id="Uo1-Iu-dQC">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="7xh-Ze-9og">
+                                                <tableCellView id="9mG-OJ-iGg">
                                                     <rect key="frame" x="1" y="1" width="209" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1sm-Af-Ces">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-5g-poY">
                                                             <rect key="frame" x="0.0" y="0.0" width="209" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" identifier="Text" title="Table View Cell" id="83S-yk-k8u">
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="L6K-aG-BWQ">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="1sm-Af-Ces" firstAttribute="centerX" secondItem="7xh-Ze-9og" secondAttribute="centerX" id="7NN-q7-dS5"/>
-                                                        <constraint firstItem="1sm-Af-Ces" firstAttribute="centerY" secondItem="7xh-Ze-9og" secondAttribute="centerY" id="Q6g-BD-koV"/>
-                                                        <constraint firstItem="1sm-Af-Ces" firstAttribute="leading" secondItem="7xh-Ze-9og" secondAttribute="leading" constant="2" id="oAn-1X-rGp"/>
-                                                    </constraints>
                                                     <connections>
-                                                        <outlet property="textField" destination="1sm-Af-Ces" id="1aF-Ju-BuS"/>
+                                                        <outlet property="textField" destination="xCY-5g-poY" id="zzv-8v-srL"/>
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
@@ -113,33 +109,29 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableHeaderCell>
-                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="u3b-gg-BkF">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
+                                            <customCell key="dataCell" alignment="left" id="R5R-X6-nSR"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="D4X-Vx-wik">
-                                                    <rect key="frame" x="213" y="1" width="223" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <customView id="A5z-bf-uYI" customClass="CheckboxView">
+                                                    <rect key="frame" x="213" y="1" width="223" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fmj-nJ-YEo">
-                                                            <rect key="frame" x="1" y="-2" width="221" height="18"/>
-                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" identifier="Checkbox" inset="2" id="7y7-q9-9Y8" customClass="CheckboxEventListener">
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2q-dS-q0K">
+                                                            <rect key="frame" x="81" y="-2" width="61" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" inset="2" id="gWg-QK-VAe">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
                                                             <connections>
-                                                                <action selector="click:" target="7y7-q9-9Y8" id="gb5-x2-OWX"/>
+                                                                <action selector="click:" target="A5z-bf-uYI" id="cd8-JL-ciU"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="fmj-nJ-YEo" secondAttribute="trailing" constant="3" id="V1w-C6-1eq"/>
-                                                        <constraint firstItem="fmj-nJ-YEo" firstAttribute="leading" secondItem="D4X-Vx-wik" secondAttribute="leading" constant="3" id="mYk-J2-QAA"/>
-                                                        <constraint firstItem="fmj-nJ-YEo" firstAttribute="top" secondItem="D4X-Vx-wik" secondAttribute="top" constant="3" id="w6R-cm-KTN"/>
-                                                    </constraints>
-                                                </tableCellView>
+                                                    <connections>
+                                                        <outlet property="check" destination="v2q-dS-q0K" id="onA-a7-Fy9"/>
+                                                    </connections>
+                                                </customView>
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
