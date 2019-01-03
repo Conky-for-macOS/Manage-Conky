@@ -26,7 +26,7 @@ enum {
 /*
  * Registry of checkboxes
  */
-static NSMutableArray<Checkbox *> *checkboxRegistry[MC_FROM_XXX_COUNT];
+static NSMutableArray<Checkbox *> *checkboxRegistry[MC_FROM_XXX_COUNT] = { nil, nil };
 static NSUInteger fromListWidgetsCount = 0;         /* the -fromList- widgets */
 static NSUInteger fromDirectoryWidgetsCount = 0;    /* the -fromDirectory- widgets */
 static NSUInteger selectedView;
@@ -113,10 +113,7 @@ void checkbox_registry_uncheck_all(void)
     
     [_widgetsTableView setDelegate:self];
     [_widgetsTableView setDataSource:self];
-    
-    checkboxRegistry[0] = nil;
-    checkboxRegistry[1] = nil;
-    
+
     selectedView = MC_FROM_LIST;
 }
 
@@ -131,10 +128,7 @@ void checkbox_registry_uncheck_all(void)
 {
     /* we implement a custom init function, this DOES it! */
     self = [super initWithWindowNibName:nibName andMode:mode];
-    if (self)
-    {
-        [self basicInitialisation];
-    }
+    if (self) { [self basicInitialisation]; }
     return self;
 }
 
@@ -330,9 +324,14 @@ void checkbox_registry_uncheck_all(void)
     NSTextField *dummyField = [NSTextField textFieldWithString:[_conkyConfigsPaths componentsJoinedByString:@"\n"]];
     NSRect editorFieldRect = dummyField.bounds;
     
+    /* add approx. one line more height and a bit more width */
+    editorFieldRect.size.height += 20;
+    editorFieldRect.size.width += 100;
+    
     /* create fragaria view */
     MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
     [mgs setString:[_conkyConfigsPaths componentsJoinedByString:@"\n"]];
+    [[mgs textView] setEditable:NO];
     [mgs setShowsLineNumbers:YES];
 
     /* prompt user whether to continue or not */
@@ -468,10 +467,12 @@ void checkbox_registry_uncheck_all(void)
     else if ([[tableColumn identifier] isEqualToString:@"Checkbox"])
     {
         NSString *str = (selectedView == MC_FROM_LIST) ? [fromListWidgets objectAtIndex:row] : [fromDirectoryWidgets objectAtIndex:row];
-     
         NSLog(@"Creating (%@) for row: %d", str, row);
         
+
         Checkbox *cb = [Checkbox checkboxForWidgetWithIdentifier:str];
+//        NSLog(@"VIEW: %d, row: %d (%d)", selectedView, row, cb.state);
+//        NSLog(@"VIEW: %d, row: %d (%@)", selectedView, row, cb);
         NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Checkbox" owner:cb];
         return cell;
     }
