@@ -23,6 +23,7 @@ enum MC_GENERAL_SHEET_FLAGS {
 
 - (id)initWithWindowNibName:(NSString *)nibName andMode:(NSUInteger)mode;
 - (void)loadOnWindow:(NSWindow *)_targetWindow;
+- (void)loadAsWindow;
 - (IBAction)close:(id)sender;
 
 @end

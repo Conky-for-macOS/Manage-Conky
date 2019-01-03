@@ -48,12 +48,12 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
 - (id)initWithWidgetName:(NSString *)widgetName andUniqueID:(NSUInteger)uniqueID
 {
-    self = [super initWithWindowNibName:@"Logger" andMode:GSC_MODE_WINDOW];
+    self = [super initWithWindowNibName:@"Logger"];
     if (self)
     {
         [self setWidgetUniqueID:uniqueID];
         [self setWidgetName:widgetName];
-        [self loadOnWindow:[NSApp mainWindow]];
+        [self loadAsWindow];
     }
     return self;
 }
@@ -129,9 +129,9 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
     _isOpen = YES;
 }
 
-- (void)loadOnWindow:(NSWindow *)_targetWindow
+- (void)loadAsWindow
 {
-    [super loadOnWindow:_targetWindow];
+    [super loadAsWindow];
     
     /*
      * This should keep focus to mainWindow, thus

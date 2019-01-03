@@ -30,7 +30,9 @@
     
     if (_opensWindowed)
     {
-        [self showWindow:self];
+        NSException *ex = [NSException exceptionWithName:@"MCAPIException" reason:@"InvalidUseOf_LOAD_ON_WINDOW()" userInfo:nil];
+        @throw ex;
+        return;
     }
     else
     {
@@ -40,6 +42,15 @@
         
         [[MCSettings sharedSettings] pushWindow:self.window];
     }
+}
+
+- (void)loadAsWindow
+{
+    /* first take care of the flags */
+    _mode |= GSC_MODE_WINDOW;
+    _opensWindowed = YES;
+    
+    [super showWindow:self];
 }
 
 - (IBAction)close:(id)sender

@@ -53,6 +53,9 @@
                     <constraint firstAttribute="bottom" secondItem="F0T-GH-YJk" secondAttribute="bottom" constant="20" symbolic="YES" id="wu7-8x-XPs"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="00C-3B-v4a"/>
+            </connections>
             <point key="canvasLocation" x="144" y="90.5"/>
         </window>
     </objects>
