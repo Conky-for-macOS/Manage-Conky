@@ -317,7 +317,7 @@ void checkbox_registry_uncheck_all(void)
     /* create fragaria view */
     MGSFragariaView *mgs = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
     [mgs setString:[_conkyConfigsPaths componentsJoinedByString:@"\n"]];
-    [mgs setShowsLineNumbers:NO];
+    [mgs setShowsLineNumbers:YES];
 
     /* prompt user whether to continue or not */
     NSAlert *approveWidgets = [[NSAlert alloc] init];
