@@ -116,6 +116,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 {
     [[super window] setTitle:[[super window].title stringByAppendingFormat:@" window %i (%@)", ++_id, _widgetName]];
     [_textView setFont:[NSFont fontWithName:@"Monaco" size:12.0]];
+    [_textView setBackgroundColor:[NSColor whiteColor]];
     
     /* create logger_entity */
     LoggerEntity *le = [[LoggerEntity alloc] init];
