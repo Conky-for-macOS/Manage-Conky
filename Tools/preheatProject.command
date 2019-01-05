@@ -23,4 +23,16 @@ rm -rf *
 #
 # We enable WLAN, CAIRO
 #
-MACOSX_DEPLOYMENT_TARGET=10.10 cmake .. -DBUILD_WLAN=ON -DBUILD_LUA_CAIRO=ON -DBUILD_IRC=ON -DBUILD_HTTPD=ON -G Xcode
+MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..		 \
+		-DBUILD_WLAN=ON 					 \
+		-DBUILD_MYSQL=ON 					 \
+        -DBUILD_LUA_IMLIB2=ON                \
+        -DBUILD_LUA_RSVG=ON                  \
+        -DBUILD_LUA_CAIRO=ON                 \
+        -DBUILD_ICAL=ON                      \
+        -DBUILD_IRC=ON                       \
+        -DBUILD_HTTP=ON                      \
+        -DBUILD_ICONV=ON                     \
+        -DBUILD_RSS=ON                       \
+        -DBUILD_IRC=ON                       \
+ -G Xcode
