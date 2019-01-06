@@ -20,12 +20,10 @@ echo "\n"
 cd "$symroot"/ConkyX/conky-for-macOS/forConkyX
 rm -rf *
 
-#
-# We enable WLAN, CAIRO
-#
-MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..		 \
-		-DBUILD_WLAN=ON 					 \
-		-DBUILD_MYSQL=ON 					 \
+# create an Xcode project using cmake
+MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
+	-DBUILD_WLAN=ON 		     \
+	-DBUILD_MYSQL=ON 		     \
         -DBUILD_LUA_IMLIB2=ON                \
         -DBUILD_LUA_RSVG=ON                  \
         -DBUILD_LUA_CAIRO=ON                 \
