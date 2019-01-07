@@ -54,4 +54,6 @@ typedef enum {
 - (void)createWidgetsArray;
 - (NSMutableArray *)themes;
 - (NSMutableArray *)widgets;
+    
+- (IBAction)stopAllWidgets:(id)sender;
 @end
