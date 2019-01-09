@@ -48,3 +48,9 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
         -DBUILD_RSS=ON                       \
         -DBUILD_IRC=ON                       \
  -G Xcode
+
+#
+# There must be a problem with TravisCI.
+# XXX, remove this later...
+#
+cd "$symroot"

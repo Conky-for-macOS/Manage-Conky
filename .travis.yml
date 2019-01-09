@@ -14,7 +14,7 @@ before_install:
 
 # setup xcode project
   - Tools/preheatProject.command
-  - cd ../../.. # return to project root
+#  - cd ../../.. # return to project root
   - echo "$(pwd)"
 
 script:
