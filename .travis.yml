@@ -9,7 +9,7 @@ xcode_destination: platform=macOS
 before_install:
 # install dependancies
   - brew tap Conky-for-macOS/homebrew-core
-  - brew install freetype gettext lua imlib2 libircclient libmicrohttpd libical mysql #cairo-conky
+  - brew install freetype gettext lua imlib2 libircclient libmicrohttpd libical mysql librsvg #cairo-conky
   - brew link gettext --force
 
 # setup xcode project
