@@ -16,6 +16,20 @@ bold=$(tput bold)
 echo "${bold}preheat | version 1.0 | by npyl"
 echo "\n"
 
+echo "${bold}applying patches to conky..."
+
+# clone our repo of conky-patches
+git clone https://github.com/Conky-for-macOS/conky-patches /tmp/conky-patches
+
+# cd into conky
+cd "$symroot"/ConkyX/conky-for-macOS
+
+# apply patches
+for p in /tmp/conky-patches/*; do
+        echo "${bold}applying patch: $p...\n"
+        /usr/bin/patch -p1 < "$p"
+done
+
 # refresh conky-for-macOS's build files on new workspace
 cd "$symroot"/ConkyX/conky-for-macOS/forConkyX
 rm -rf *
