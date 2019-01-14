@@ -13,7 +13,7 @@
 
 It offers on the mac what conky-manager offers on linux plus alot more (exclusive) [amazing features](https://github.com/Conky-for-macOS/Manage-Conky/wiki).
 
-![preview](preview.svg)
+![preview](preview.jpg)
 
 ## USAGE
 
