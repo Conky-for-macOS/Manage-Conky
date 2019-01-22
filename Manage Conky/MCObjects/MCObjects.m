@@ -309,7 +309,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         script.launchPath = @"/bin/bash";
         script.arguments = @[scriptPath,
                              ConkyXPath];
-        [script launchAuthenticated];
+        [script launchAuthorized];
         [script waitUntilExit];
     }
     
@@ -380,7 +380,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
         script.launchPath = @"/bin/bash";
         script.arguments = @[scriptPath];
-        [script launchAuthenticated];
+        [script launchAuthorized];
         [script waitUntilExit];
     }
     

@@ -268,7 +268,7 @@
     /* Run the script */
     NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
     script.launchPath = scriptPath;
-    [script launchAuthenticated];
+    [script launchAuthorized];
     [script waitUntilExit];
     
     if (script.terminationStatus != 0)
