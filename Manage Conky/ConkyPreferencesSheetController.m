@@ -270,6 +270,7 @@
     script.launchPath = scriptPath;
     [script launchAuthorized];
     [script waitUntilExit];
+    [script endSession];
     
     if (script.terminationStatus != 0)
     {

@@ -311,6 +311,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
                              ConkyXPath];
         [script launchAuthorized];
         [script waitUntilExit];
+        [script endSession];
     }
     
     /*
@@ -382,6 +383,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         script.arguments = @[scriptPath];
         [script launchAuthorized];
         [script waitUntilExit];
+        [script endSession];
     }
     
     [fm removeItemAtPath:CAIRO_SYMLINK error:&error];
