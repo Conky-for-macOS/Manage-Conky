@@ -676,6 +676,23 @@
         MCError(&error);
 }
 
+- (IBAction)killall:(id)sender
+{
+    BOOL prevState = [[MCSettings sharedSettings] conkyRunsAtStartup];
+    
+    /* Stops all Widgets and Themes (for both modes) */
+    [[MCSettings sharedSettings] setConkyRunsAtStartup:YES];
+    [self stopAllWidgets:sender];
+    [[MCSettings sharedSettings] setConkyRunsAtStartup:NO];
+    [self stopAllWidgets:sender];
+    
+    /* revert to original mode */
+    [[MCSettings sharedSettings] setConkyRunsAtStartup:prevState];
+    
+    /* Stop Instancies of conky that we've lost track of */
+    system("/usr/bin/killall -15 conky");
+}
+
 //
 // SearchField Control
 //

@@ -381,10 +381,7 @@
         [self toggleControls:NSOffState];
         
         /* Stops all Widgets and Themes */
-        [[[MCSettings sharedSettings] mainViewController] stopAllWidgets:self];
-
-        /* Stop Instancies of conky that we've lost track of */
-        system("/usr/bin/killall -15 conky");
+        [[[MCSettings sharedSettings] mainViewController] killall:self];
         
         [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem];
         
