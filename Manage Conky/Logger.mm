@@ -124,18 +124,20 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
 - (void)showString:(NSString*)string toView:(NSTextView *)_textView
 {
-    [_textView setBaseWritingDirection:NSWritingDirectionLeftToRight];
-    
-    [ansiEscapeHelper setFont:[_textView font]];
-    
-    if (string == nil)
-        return;
-    
-    // get attributed string and display it
-    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedString];
-    [attrStr appendAttributedString:[ansiEscapeHelper attributedStringWithANSIEscapedString:string]];
-    
-    [[_textView textStorage] setAttributedString:attrStr];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_textView setBaseWritingDirection:NSWritingDirectionLeftToRight];
+        
+        [ansiEscapeHelper setFont:[_textView font]];
+        
+        if (string == nil)
+            return;
+        
+        // get attributed string and display it
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedString];
+        [attrStr appendAttributedString:[ansiEscapeHelper attributedStringWithANSIEscapedString:string]];
+        
+        [[_textView textStorage] setAttributedString:attrStr];
+    });
 }
 
 - (void)addFilehandleForReading:(NSFileHandle *)fh forWidgetWithUniqueID:(NSUInteger)uniqueID
@@ -148,12 +150,8 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
         NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
         for (LoggerEntity *le : _loggerEntities)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (le.uniqueID == uniqueID)
-                    [self showString:str toView:le.textView];
-            });
-        }
+            if (le.uniqueID == uniqueID)
+                [self showString:str toView:le.textView];
     }];
     
     [fh acceptConnectionInBackgroundAndNotify];
