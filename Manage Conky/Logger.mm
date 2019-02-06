@@ -8,8 +8,8 @@
 
 #import "Logger.h"
 
-#import "ANSIEscapeHelper/AMR_ANSIEscapeHelper.h"
 #import "Shared.h"
+#import "ANSIEscapeHelper/AMR_ANSIEscapeHelper.h"
 
 #include <list>
 using namespace std;
@@ -124,13 +124,13 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 
 - (void)showString:(NSString*)string toView:(NSTextView *)_textView
 {
+    if (string == nil)
+        return;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [_textView setBaseWritingDirection:NSWritingDirectionLeftToRight];
         
         [ansiEscapeHelper setFont:[_textView font]];
-        
-        if (string == nil)
-            return;
         
         // get attributed string and display it
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedString];
