@@ -341,6 +341,9 @@
         preview = [[themeRoot stringByAppendingPathComponent:themeName] stringByAppendingPathExtension:@"jpg"];
     }
     
+    if (!preview)
+        return;
+    
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:preview];
     
     if (!image)
@@ -413,16 +416,9 @@
     if ([[tableColumn identifier] isEqualToString:@"CollumnA"])
     {
         BOOL isEnabled = [[arr objectAtIndex:row] isEnabled];
-        
-        NSImage *cell = [tableColumn dataCellForRow:row];
-        
-        /*
-         * check if already allocated
-         */
-        if (!cell)
-            cell = [[NSImage alloc] init];
-        
-        cell = isEnabled ? [NSImage imageNamed:@"noun_enabled_896264_3BB300"] : [NSImage imageNamed:@"noun_disabled_1467765_FF6868"];
+
+        NSImage *cell = isEnabled ? [NSImage imageNamed:@"noun_enabled_896264_3BB300"] : [NSImage imageNamed:@"noun_disabled_1467765_FF6868"];;
+
         return cell;
     }
     else
@@ -631,6 +627,9 @@
         MCTheme *theme = [themesArray objectAtIndex:row];
         containingDirectory = [[theme themeRC] stringByDeletingLastPathComponent];
     }
+    
+    if (!containingDirectory)
+        return;
     
     [[NSWorkspace sharedWorkspace] openFile:containingDirectory];
 }
