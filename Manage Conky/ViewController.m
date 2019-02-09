@@ -536,7 +536,7 @@
      * Setup a new popover
      */
     [editorPopover setContentViewController:editorController];
-    [editorPopover setContentSize:[editorController editorField].bounds.size];
+    [editorPopover setContentSize:NSApp.mainWindow.contentView.visibleRect.size];
 
     /*
      * Show popover
