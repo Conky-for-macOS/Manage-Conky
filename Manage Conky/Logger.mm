@@ -125,6 +125,7 @@ static AMR_ANSIEscapeHelper *ansiEscapeHelper = nil;
 - (void)showString:(NSString*)string toView:(NSTextView *)_textView
 {
     if (string == nil)
+    if (string == nil || _textView == nil)
         return;
     
     dispatch_async(dispatch_get_main_queue(), ^{
