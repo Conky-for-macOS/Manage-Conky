@@ -58,6 +58,12 @@ Take advice from the [WIKI](https://github.com/Conky-for-macOS/Manage-Conky/wiki
 - [Sparkle Framework](https://sparkle-project.org) - Updating mechanism
 - [AHLaunchCtl](https://github.com/eahrold/AHLaunchCtl) - Controlling LaunchD
 
+## LICENSE
+
+Dual-Licensed under [996ICU License](https://github.com/996icu/996.ICU/blob/master/LICENSE) and [MIT License](https://github.com/Conky-for-macOS/Manage-Conky/blob/master/LICENSE).
+
+By using this project as a company (or even person), you agree that your company (or yourself) will use the project while abiding to the labor rules of your country's.  For more info, and specific law matters carefully read the 996ICU License.
+
 ## CONTRIBUTING 🤝
 
 In order to contribute you need 2 things:
