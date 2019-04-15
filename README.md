@@ -7,7 +7,7 @@
 
 [![Build Status](https://travis-ci.org/Conky-for-macOS/Manage-Conky.svg?branch=master)](https://travis-ci.org/Conky-for-macOS/Manage-Conky)
 [![License](https://img.shields.io/badge/LICENSE-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) (Protest against 9-9-6 work schedule scheme)
 
 <h4 align="center">ManageConky is the implementation of <a href="https://github.com/teejee2008/conky-manager" target="_blank">conky-manager</a> for macOS.</h4>
 
