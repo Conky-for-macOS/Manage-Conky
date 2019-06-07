@@ -46,7 +46,8 @@
 
         _editorField = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
         [docs setFrame:NSMakeRect(0, 0, w, h)];
-//        [docs setKeyEquivalent:]  //TODO
+        [docs setKeyEquivalentModifierMask:NSControlKeyMask];
+        [docs setKeyEquivalent:@"i"];
         [docs setAction:@selector(openDocs:)];
         
         [_editorField addSubview:docs];
