@@ -93,19 +93,12 @@
 			remoteGlobalIDString = 092F04E9215E69BA00869C20;
 			remoteInfo = NPAuthenticator;
 		};
-		09A20B6D21AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
+		09B77D7122AAB07700C1E0A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 0966C5D1215DB2D5006B2DAA;
-			remoteInfo = tester;
-		};
-		09A20B6F21AC9CCE00FB7258 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0966C5AF215DB1D0006B2DAA;
-			remoteInfo = NPTaskTests;
+			remoteGlobalIDString = 09E39BEE2247A1670068AA0E;
+			remoteInfo = NPTaskTester;
 		};
 		09F54DC721D69DD0009D2C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -388,8 +381,7 @@
 				09A20B6821AC9CCE00FB7258 /* NPTask.framework */,
 				09A20B6A21AC9CCE00FB7258 /* npyl.NPTask.SMJobBlessHelper */,
 				09A20B6C21AC9CCE00FB7258 /* NPAuthenticator.app */,
-				09A20B6E21AC9CCE00FB7258 /* tester */,
-				09A20B7021AC9CCE00FB7258 /* NPTaskTests.xctest */,
+				09B77D7222AAB07700C1E0A8 /* NPTaskTester.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -647,7 +639,7 @@
 			};
 			buildConfigurationList = 77B847301F62C2B600AF8BCA /* Build configuration list for PBXProject "Manage Conky" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -700,18 +692,11 @@
 			remoteRef = 09A20B6B21AC9CCE00FB7258 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		09A20B6E21AC9CCE00FB7258 /* tester */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = tester;
-			remoteRef = 09A20B6D21AC9CCE00FB7258 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		09A20B7021AC9CCE00FB7258 /* NPTaskTests.xctest */ = {
+		09B77D7222AAB07700C1E0A8 /* NPTaskTester.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = NPTaskTests.xctest;
-			remoteRef = 09A20B6F21AC9CCE00FB7258 /* PBXContainerItemProxy */;
+			path = NPTaskTester.xctest;
+			remoteRef = 09B77D7122AAB07700C1E0A8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		09F54DC821D69DD0009D2C07 /* Fragaria Complex.app */ = {
