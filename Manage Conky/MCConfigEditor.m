@@ -12,6 +12,9 @@
 
 @implementation MCConfigEditor
 
+- (IBAction)openDocs:(id)sender {
+}
+
 - (instancetype)initWithConfig:(NSString *)config
 {
     self = [super init];
@@ -29,6 +32,12 @@
             MCError(&error);
             return nil;
         }
+        
+        int w = [NSImage imageNamed:NSImageNameInfo].size.width;
+        int h = [NSImage imageNamed:NSImageNameInfo].size.height;
+
+        NSButton *docs = [[NSButton alloc] init];
+        [docs setImage:[NSImage imageNamed:NSImageNameInfo]];
 
         // I am not sure how to get proper NSRect
         // but surely this is a way to do it.
@@ -36,7 +45,12 @@
         NSRect editorFieldRect = dummyField.bounds;
 
         _editorField = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
-
+        [docs setFrame:NSMakeRect(0, 0, w, h)];
+//        [docs setKeyEquivalent:]  //TODO
+        [docs setAction:@selector(openDocs:)];
+        
+        [_editorField addSubview:docs];
+        
         // Lua is my city
         [_editorField setSyntaxDefinitionName:@"lua"];
 
