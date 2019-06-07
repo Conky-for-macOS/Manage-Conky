@@ -36,8 +36,13 @@
         int w = [NSImage imageNamed:NSImageNameInfo].size.width;
         int h = [NSImage imageNamed:NSImageNameInfo].size.height;
 
+        // Setup Docs Button
         NSButton *docs = [[NSButton alloc] init];
         [docs setImage:[NSImage imageNamed:NSImageNameInfo]];
+        [docs setFrame:NSMakeRect(0, 0, w, h)];
+        [docs setKeyEquivalentModifierMask:NSControlKeyMask];
+        [docs setKeyEquivalent:@"i"];
+        [docs setAction:@selector(openDocs:)];
 
         // I am not sure how to get proper NSRect
         // but surely this is a way to do it.
@@ -45,11 +50,8 @@
         NSRect editorFieldRect = dummyField.bounds;
 
         _editorField = [[MGSFragariaView alloc] initWithFrame:editorFieldRect];
-        [docs setFrame:NSMakeRect(0, 0, w, h)];
-        [docs setKeyEquivalentModifierMask:NSControlKeyMask];
-        [docs setKeyEquivalent:@"i"];
-        [docs setAction:@selector(openDocs:)];
-        
+
+        // Add Docs Button
         [_editorField addSubview:docs];
         
         // Lua is my city
