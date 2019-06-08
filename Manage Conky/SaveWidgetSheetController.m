@@ -14,11 +14,72 @@
 
 @implementation SaveWidgetSheetController
 
+/* guards */
+static BOOL canGoBack = NO;
+static BOOL canOpenDocs = YES;
+
+static NSString *savedString = nil;
+
+- (IBAction)openDocs:(id)sender
+{
+    if (!canOpenDocs)
+        return;
+    
+    static NSString * docs = nil;
+    
+    if (!docs)
+    {
+        docs = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/brndnmtthws/conky/master/doc/variables.xml"]
+                                        encoding:NSUTF8StringEncoding
+                                           error:nil];
+    }
+    
+    savedString = _scriptView.string;
+    
+    _scriptView.string = docs;
+    _scriptView.syntaxDefinitionName = @"html";
+    
+    canGoBack = YES;
+    canOpenDocs = NO;
+}
+
+- (IBAction)goBack:(id)sender {
+    if (!canGoBack)
+        return;
+    
+    _scriptView.string = savedString;
+    _scriptView.syntaxDefinitionName = @"lua";
+    
+    canGoBack = NO;
+    canOpenDocs = YES;
+}
+
 - (void)awakeFromNib
 {
     MC_RUN_ONLY_ONCE({
         resourcesLocations = [NSMutableArray array];
+        
+        int w = [NSImage imageNamed:NSImageNameInfo].size.width;
+        int h = [NSImage imageNamed:NSImageNameInfo].size.height;
+        
+        // Setup Docs Button
+        NSButton *docs = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, w, h)];
+        [docs setImage:[NSImage imageNamed:NSImageNameInfo]];
+        [docs setKeyEquivalentModifierMask:NSControlKeyMask];
+        [docs setKeyEquivalent:@"i"];
+        [docs setAction:@selector(openDocs:)];
+        
+        // Setup Back Button
+        NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, 40, w, h)];
+        [back setImage:[NSImage imageNamed:NSImageNameGoBackTemplate]];
+        [back setKeyEquivalentModifierMask:NSControlKeyMask];
+        [back setKeyEquivalent:@"["];
+        [back setAction:@selector(goBack:)];
+        
         [_scriptView setSyntaxDefinitionName:@"lua"];
+
+        [_scriptView addSubview:docs];
+        [_scriptView addSubview:back];
     });
 }
 
