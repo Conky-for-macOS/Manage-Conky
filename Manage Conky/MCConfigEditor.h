@@ -13,6 +13,7 @@
 @interface MCConfigEditor : NSViewController
 @property NSString *conkyConfig;
 @property NSString *conkyConfigContents;
+@property NSString *editorString;
 
 @property MGSFragariaView *editorField;
 
