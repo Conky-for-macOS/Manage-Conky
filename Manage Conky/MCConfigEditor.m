@@ -12,24 +12,40 @@
 
 @implementation MCConfigEditor
 
+/* guards */
+static BOOL canGoBack = NO;
+static BOOL canOpenDocs = YES;
+
 - (IBAction)openDocs:(id)sender
 {
+    if (!canOpenDocs)
+        return;
+    
     static NSString * docs = nil;
 
     if (!docs)
     {
         docs = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/brndnmtthws/conky/master/doc/variables.xml"]
-                                         encoding:NSUTF8StringEncoding
-                                            error:nil];
+                                        encoding:NSUTF8StringEncoding
+                                           error:nil];
     }
-    
+
     _editorField.string = docs;
     _editorField.syntaxDefinitionName = @"html";
+    
+    canGoBack = YES;
+    canOpenDocs = NO;
 }
 
 - (IBAction)goBack:(id)sender {
+    if (!canGoBack)
+        return;
+
     _editorField.string = _conkyConfigContents;
     _editorField.syntaxDefinitionName = @"lua";
+    
+    canGoBack = NO;
+    canOpenDocs = YES;
 }
 
 - (instancetype)initWithConfig:(NSString *)config
