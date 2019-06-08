@@ -13,6 +13,13 @@
 @implementation MCConfigEditor
 
 - (IBAction)openDocs:(id)sender {
+  NSLog(@"Here!");
+    _editorField.string = @"test";
+}
+
+- (IBAction)goBack:(id)sender {
+    NSLog(@"Go back!");
+    _editorField.string = _conkyConfigContents;
 }
 
 - (instancetype)initWithConfig:(NSString *)config
@@ -43,6 +50,14 @@
         [docs setKeyEquivalentModifierMask:NSControlKeyMask];
         [docs setKeyEquivalent:@"i"];
         [docs setAction:@selector(openDocs:)];
+        
+        // Setup Back Button
+        NSButton *back = [[NSButton alloc] init];
+        [back setImage:[NSImage imageNamed:NSImageNameGoBackTemplate]];
+        [back setFrame:NSMakeRect(0, 40, w, h)];
+        [back setKeyEquivalentModifierMask:NSControlKeyMask];
+        [back setKeyEquivalent:@"["];
+        [back setAction:@selector(goBack:)];
 
         // I am not sure how to get proper NSRect
         // but surely this is a way to do it.
@@ -53,6 +68,9 @@
 
         // Add Docs Button
         [_editorField addSubview:docs];
+
+        // Add Back Button
+        [_editorField addSubview:back];
         
         // Lua is my city
         [_editorField setSyntaxDefinitionName:@"lua"];
