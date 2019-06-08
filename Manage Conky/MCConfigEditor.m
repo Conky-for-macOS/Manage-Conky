@@ -12,14 +12,24 @@
 
 @implementation MCConfigEditor
 
-- (IBAction)openDocs:(id)sender {
-  NSLog(@"Here!");
-    _editorField.string = @"test";
+- (IBAction)openDocs:(id)sender
+{
+    static NSString * docs = nil;
+
+    if (!docs)
+    {
+        docs = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/brndnmtthws/conky/master/doc/variables.xml"]
+                                         encoding:NSUTF8StringEncoding
+                                            error:nil];
+    }
+    
+    _editorField.string = docs;
+    _editorField.syntaxDefinitionName = @"html";
 }
 
 - (IBAction)goBack:(id)sender {
-    NSLog(@"Go back!");
     _editorField.string = _conkyConfigContents;
+    _editorField.syntaxDefinitionName = @"lua";
 }
 
 - (instancetype)initWithConfig:(NSString *)config
@@ -44,17 +54,15 @@
         int h = [NSImage imageNamed:NSImageNameInfo].size.height;
 
         // Setup Docs Button
-        NSButton *docs = [[NSButton alloc] init];
+        NSButton *docs = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, w, h)];
         [docs setImage:[NSImage imageNamed:NSImageNameInfo]];
-        [docs setFrame:NSMakeRect(0, 0, w, h)];
         [docs setKeyEquivalentModifierMask:NSControlKeyMask];
         [docs setKeyEquivalent:@"i"];
         [docs setAction:@selector(openDocs:)];
         
         // Setup Back Button
-        NSButton *back = [[NSButton alloc] init];
+        NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, 40, w, h)];
         [back setImage:[NSImage imageNamed:NSImageNameGoBackTemplate]];
-        [back setFrame:NSMakeRect(0, 40, w, h)];
         [back setKeyEquivalentModifierMask:NSControlKeyMask];
         [back setKeyEquivalent:@"["];
         [back setAction:@selector(goBack:)];
