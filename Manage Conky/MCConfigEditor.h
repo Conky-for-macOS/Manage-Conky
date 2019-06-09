@@ -10,10 +10,11 @@
 #import <Fragaria/Fragaria.h>
 #import "GeneralSheetController.h"
 
-@interface MCConfigEditor : NSViewController
+@interface MCConfigEditor : NSViewController {
+    NSString *_editorString;
+}
 @property NSString *conkyConfig;
 @property NSString *conkyConfigContents;
-@property NSString *editorString;
 
 @property MGSFragariaView *editorField;
 

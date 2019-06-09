@@ -31,6 +31,8 @@ static BOOL canOpenDocs = YES;
     }
 
     _editorField.textView.editable = NO;
+
+    _editorString = [NSString stringWithString:_editorField.string];
     
     _editorField.string = docs;
     _editorField.syntaxDefinitionName = @"html";
@@ -45,7 +47,9 @@ static BOOL canOpenDocs = YES;
 
     _editorField.textView.editable = YES;
 
-    _editorField.string = _conkyConfigContents;
+    NSLog(@"editorString: %@", _editorString);
+
+    _editorField.string = [NSString stringWithString:_editorString];
     _editorField.syntaxDefinitionName = @"lua";
     
     canGoBack = NO;
