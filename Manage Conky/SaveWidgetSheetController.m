@@ -34,7 +34,7 @@ static NSString *savedString = nil;
                                            error:nil];
     }
     
-    savedString = _scriptView.string;
+    _scriptView.textView.editable = NO;
     
     _scriptView.string = docs;
     _scriptView.syntaxDefinitionName = @"html";
@@ -46,6 +46,8 @@ static NSString *savedString = nil;
 - (IBAction)goBack:(id)sender {
     if (!canGoBack)
         return;
+    
+    _scriptView.textView.editable = YES;
     
     _scriptView.string = savedString;
     _scriptView.syntaxDefinitionName = @"lua";

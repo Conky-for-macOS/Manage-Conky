@@ -30,6 +30,8 @@ static BOOL canOpenDocs = YES;
                                            error:nil];
     }
 
+    _editorField.textView.editable = NO;
+    
     _editorField.string = docs;
     _editorField.syntaxDefinitionName = @"html";
     
@@ -40,6 +42,8 @@ static BOOL canOpenDocs = YES;
 - (IBAction)goBack:(id)sender {
     if (!canGoBack)
         return;
+
+    _editorField.textView.editable = YES;
 
     _editorField.string = _conkyConfigContents;
     _editorField.syntaxDefinitionName = @"lua";
