@@ -17,6 +17,8 @@
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; };
 		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */; };
+		094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */; };
 		094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */ = {isa = PBXBuildFile; fileRef = 094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */; };
 		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
 		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
@@ -231,6 +233,9 @@
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		094ACAB522B1CCBA00B6F39E /* MCTabbedConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabbedConfigEditor.h; sourceTree = "<group>"; };
+		094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabbedConfigEditor.m; sourceTree = "<group>"; };
+		094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCTabbedConfigEditor.xib; sourceTree = "<group>"; };
 		094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = ToogleXQuartzVisibility.sh; path = Resources/ToogleXQuartzVisibility.sh; sourceTree = "<group>"; };
 		0953D7A221596AF60065BB4D /* SaveWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveWidget.xib; path = Sheets/SaveWidget.xib; sourceTree = "<group>"; };
 		0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveWidgetSheetController.h; sourceTree = "<group>"; };
@@ -352,6 +357,9 @@
 				09E036F621C7234400C7EED1 /* Logger.h */,
 				09E036F721C7234400C7EED1 /* Logger.mm */,
 				77B8473C1F62C2B600AF8BCA /* main.m */,
+				094ACAB522B1CCBA00B6F39E /* MCTabbedConfigEditor.h */,
+				094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */,
+				094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -772,6 +780,7 @@
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
+				094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */,
 				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
 				094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */,
 				77B847421F62C2B600AF8BCA /* Assets.xcassets in Resources */,
@@ -861,6 +870,7 @@
 				09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */,
 				77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */,
 				77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */,
+				094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */,
 				092E12C22125BCC200491CDA /* NSString+Score.m in Sources */,
 				77B9EFEF1F641AB800C375FE /* GeneralSheetController.m in Sources */,
 				095F81912080D08A008DD286 /* MCObjects.m in Sources */,

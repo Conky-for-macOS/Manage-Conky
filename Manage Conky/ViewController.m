@@ -11,6 +11,7 @@
 #import "Shared.h"
 #import "MCPlugin.h"
 #import "MCConfigEditor.h"  // Editor View Controller
+#import "MCTabbedConfigEditor.h"
 #import "AboutSheetController.h"
 #import "ConkyThemesSheetController.h"
 #import "ConkyPreferencesSheetController.h"
@@ -506,22 +507,29 @@
 
 - (IBAction)edit:(id)sender
 {
-    /* guard */
-    if (whatToShow != widgetsThemesTableShowWidgets)
-        return;
-    
     NSInteger row = [_widgetsThemesTable selectedRow];
     
     if (row < 0)
         return;
     
-    MCWidget *widget = [widgetsArray objectAtIndex:row];
+    id editorController = nil;
+    
+    if (whatToShow == widgetsThemesTableShowWidgets)
+    {
+        MCWidget *widget = [widgetsArray objectAtIndex:row];
+        
+        /*
+         * Initialise editor controller
+         */
+        editorController = [[MCConfigEditor alloc] initWithConfig:[widget widgetRC]];
+    }
+    else if (whatToShow == widgetsThemesTableShowThemes)
+    {
+        MCTheme *theme = [themesArray objectAtIndex:row];
 
-    /*
-     * Initialise editor controller
-     */
-    MCConfigEditor *editorController = [[MCConfigEditor alloc] initWithConfig:[widget widgetRC]];
-
+        editorController = [[MCTabbedConfigEditor alloc] initWithConfigs:theme.conkyConfigs];
+    }
+    
     /*
      * Initialise editor popover
      */
@@ -537,7 +545,7 @@
      */
     [editorPopover setContentViewController:editorController];
     [editorPopover setContentSize:NSApp.mainWindow.contentView.visibleRect.size];
-
+    
     /*
      * Show popover
      */

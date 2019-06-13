@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MCTabbedConfigEditor">
+            <connections>
+                <outlet property="tabView" destination="m2R-H4-6vL" id="00g-yK-gKo"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <tabView translatesAutoresizingMaskIntoConstraints="NO" id="m2R-H4-6vL">
+                    <rect key="frame" x="-7" y="-10" width="494" height="288"/>
+                    <font key="font" metaFont="system"/>
+                </tabView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="m2R-H4-6vL" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="1Bu-Ws-8YJ"/>
+                <constraint firstAttribute="bottom" secondItem="m2R-H4-6vL" secondAttribute="bottom" id="Den-mj-lJL"/>
+                <constraint firstAttribute="trailing" secondItem="m2R-H4-6vL" secondAttribute="trailing" id="H8b-yX-Wfz"/>
+                <constraint firstItem="m2R-H4-6vL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="s4Q-bh-Fdr"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
