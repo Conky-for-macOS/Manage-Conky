@@ -9,10 +9,10 @@
 #import "ViewController.h"
 
 #import "Shared.h"
-#import "MCPlugin.h"
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "MCTabbedConfigEditor.h"
 #import "AboutSheetController.h"
+#import "../MCPluginAPI/MCPluginAPI.h"
 #import "ConkyThemesSheetController.h"
 #import "ConkyPreferencesSheetController.h"
 #import "Extensions/StringScore/NSString+Score.h"
@@ -138,8 +138,8 @@
 // DATA ARRAYS CONTROL
 //
 
-- (NSMutableArray *)widgets { return widgetsArray; }
-- (NSMutableArray *)themes { return themesArray; }
+- (NSArray *)widgets { return widgetsArray; }
+- (NSArray *)themes { return themesArray; }
 - (void)createWidgetsArray  { widgetsArray = [NSMutableArray array]; }
 
 - (void)emptyWidgetsThemesArrays

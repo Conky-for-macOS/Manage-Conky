@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Manage Conky.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0949D85722BA7D48005ECEB0"
+               BuildableName = "MCPluginAPITests.xctest"
+               BlueprintName = "MCPluginAPITests"
+               ReferencedContainer = "container:Manage Conky.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

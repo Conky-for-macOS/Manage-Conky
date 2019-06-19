@@ -17,6 +17,13 @@
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; };
 		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0949D85922BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
+		0949D86022BA7D48005ECEB0 /* MCPluginAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */; };
+		0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */ = {isa = PBXBuildFile; fileRef = 0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		0949D86522BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
+		0949D86622BA7D48005ECEB0 /* MCPluginAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0949D87222BA7EB5005ECEB0 /* MCPluginAPI.framework in Copy Plugin API */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */; };
 		094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */; };
 		094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */ = {isa = PBXBuildFile; fileRef = 094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */; };
@@ -66,6 +73,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0966C5A5215DB1D0006B2DAA;
 			remoteInfo = NPTask;
+		};
+		0949D85A22BA7D48005ECEB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0949D84F22BA7D48005ECEB0;
+			remoteInfo = MCPluginAPI;
+		};
+		0949D85C22BA7D48005ECEB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77B847341F62C2B600AF8BCA;
+			remoteInfo = "Manage Conky";
+		};
+		0949D86322BA7D48005ECEB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0949D84F22BA7D48005ECEB0;
+			remoteInfo = MCPluginAPI;
 		};
 		098C76B1213C097600B1F05A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -175,12 +203,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0949D84A22BA7CEA005ECEB0 /* Copy Plugin API */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = PluginAPI;
+			dstSubfolderSpec = 7;
+			files = (
+				0949D87222BA7EB5005ECEB0 /* MCPluginAPI.framework in Copy Plugin API */,
+			);
+			name = "Copy Plugin API";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09A1021821348DCB001FA2F3 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0949D86622BA7D48005ECEB0 /* MCPluginAPI.framework in Copy Frameworks */,
 				09F54EB921D6AB0E009D2C07 /* Fragaria.framework in Copy Frameworks */,
 				0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */,
 			);
@@ -233,6 +273,14 @@
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		0949D84822BA7BB4005ECEB0 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
+		0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCPluginAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPluginAPI.m; sourceTree = "<group>"; };
+		0949D85322BA7D48005ECEB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0949D85822BA7D48005ECEB0 /* MCPluginAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCPluginAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPluginAPITests.m; sourceTree = "<group>"; };
+		0949D86122BA7D48005ECEB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
 		094ACAB522B1CCBA00B6F39E /* MCTabbedConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabbedConfigEditor.h; sourceTree = "<group>"; };
 		094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabbedConfigEditor.m; sourceTree = "<group>"; };
 		094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCTabbedConfigEditor.xib; sourceTree = "<group>"; };
@@ -268,7 +316,7 @@
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
-		09F54D8221D5AFCC009D2C07 /* MCPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPlugin.h; sourceTree = "<group>"; };
+		09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPluginAPI.h; sourceTree = "<group>"; };
 		09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = Frameworks/Fragaria/Fragaria.xcodeproj; sourceTree = "<group>"; };
 		09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +351,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0949D84D22BA7D48005ECEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0949D85522BA7D48005ECEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0949D85922BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		098C76A9213C097600B1F05A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +379,7 @@
 			files = (
 				09F54EAE21D6AAA1009D2C07 /* Fragaria.framework in Frameworks */,
 				0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */,
+				0949D86522BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */,
 				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +437,27 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		0949D85122BA7D48005ECEB0 /* MCPluginAPI */ = {
+			isa = PBXGroup;
+			children = (
+				0949D84822BA7BB4005ECEB0 /* ZKSwizzle.h */,
+				0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */,
+				09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */,
+				0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */,
+				0949D85322BA7D48005ECEB0 /* Info.plist */,
+			);
+			path = MCPluginAPI;
+			sourceTree = "<group>";
+		};
+		0949D85E22BA7D48005ECEB0 /* MCPluginAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */,
+				0949D86122BA7D48005ECEB0 /* Info.plist */,
+			);
+			path = MCPluginAPITests;
+			sourceTree = "<group>";
+		};
 		098C76AD213C097600B1F05A /* Manage Conky Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,7 +503,6 @@
 				092C9CF921C9B3E600E2DD02 /* MCTask.m */,
 				095F81922080D09B008DD286 /* MCObjects.h */,
 				095F81902080D08A008DD286 /* MCObjects.m */,
-				09F54D8221D5AFCC009D2C07 /* MCPlugin.h */,
 			);
 			name = MCObjects;
 			sourceTree = "<group>";
@@ -452,6 +536,8 @@
 				09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				098C76AD213C097600B1F05A /* Manage Conky Tests */,
+				0949D85122BA7D48005ECEB0 /* MCPluginAPI */,
+				0949D85E22BA7D48005ECEB0 /* MCPluginAPITests */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
 				84D8AFEE31EBA1C4C04E918A /* Pods */,
@@ -463,6 +549,8 @@
 			children = (
 				77B847351F62C2B600AF8BCA /* Manage Conky.app */,
 				098C76AC213C097600B1F05A /* Manage Conky Tests.xctest */,
+				0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */,
+				0949D85822BA7D48005ECEB0 /* MCPluginAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,7 +668,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0949D84B22BA7D48005ECEB0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		0949D84F22BA7D48005ECEB0 /* MCPluginAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0949D86722BA7D48005ECEB0 /* Build configuration list for PBXNativeTarget "MCPluginAPI" */;
+			buildPhases = (
+				0949D84B22BA7D48005ECEB0 /* Headers */,
+				0949D84C22BA7D48005ECEB0 /* Sources */,
+				0949D84D22BA7D48005ECEB0 /* Frameworks */,
+				0949D84E22BA7D48005ECEB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MCPluginAPI;
+			productName = MCPluginAPI;
+			productReference = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0949D85722BA7D48005ECEB0 /* MCPluginAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0949D86B22BA7D48005ECEB0 /* Build configuration list for PBXNativeTarget "MCPluginAPITests" */;
+			buildPhases = (
+				0949D85422BA7D48005ECEB0 /* Sources */,
+				0949D85522BA7D48005ECEB0 /* Frameworks */,
+				0949D85622BA7D48005ECEB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0949D85B22BA7D48005ECEB0 /* PBXTargetDependency */,
+				0949D85D22BA7D48005ECEB0 /* PBXTargetDependency */,
+			);
+			name = MCPluginAPITests;
+			productName = MCPluginAPITests;
+			productReference = 0949D85822BA7D48005ECEB0 /* MCPluginAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		098C76AB213C097600B1F05A /* Manage Conky Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 098C76BD213C097600B1F05A /* Build configuration list for PBXNativeTarget "Manage Conky Tests" */;
@@ -611,6 +747,7 @@
 				09ACA825212E1C65002B9754 /* Copy Licenses */,
 				09A1021821348DCB001FA2F3 /* Copy Frameworks */,
 				09F54EB821D6AAFF009D2C07 /* Copy ConkyX */,
+				0949D84A22BA7CEA005ECEB0 /* Copy Plugin API */,
 			);
 			buildRules = (
 			);
@@ -618,6 +755,7 @@
 				09F54EB721D6AAEB009D2C07 /* PBXTargetDependency */,
 				09F54DD921D69E07009D2C07 /* PBXTargetDependency */,
 				0948AF5121B1720E0067A111 /* PBXTargetDependency */,
+				0949D86422BA7D48005ECEB0 /* PBXTargetDependency */,
 			);
 			name = "Manage Conky";
 			productName = "Manage Conky";
@@ -633,6 +771,17 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Nickolas Pylarinos";
 				TargetAttributes = {
+					0949D84F22BA7D48005ECEB0 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = CC63MSFH9N;
+						ProvisioningStyle = Automatic;
+					};
+					0949D85722BA7D48005ECEB0 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = CC63MSFH9N;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 77B847341F62C2B600AF8BCA;
+					};
 					098C76AB213C097600B1F05A = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
@@ -674,6 +823,8 @@
 			targets = (
 				77B847341F62C2B600AF8BCA /* Manage Conky */,
 				098C76AB213C097600B1F05A /* Manage Conky Tests */,
+				0949D84F22BA7D48005ECEB0 /* MCPluginAPI */,
+				0949D85722BA7D48005ECEB0 /* MCPluginAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -766,6 +917,20 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0949D84E22BA7D48005ECEB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0949D85622BA7D48005ECEB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		098C76AA213C097600B1F05A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -845,6 +1010,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0949D84C22BA7D48005ECEB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0949D85422BA7D48005ECEB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0949D86022BA7D48005ECEB0 /* MCPluginAPITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		098C76A8213C097600B1F05A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -892,6 +1073,21 @@
 			name = NPTask;
 			targetProxy = 0948AF5021B1720E0067A111 /* PBXContainerItemProxy */;
 		};
+		0949D85B22BA7D48005ECEB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0949D84F22BA7D48005ECEB0 /* MCPluginAPI */;
+			targetProxy = 0949D85A22BA7D48005ECEB0 /* PBXContainerItemProxy */;
+		};
+		0949D85D22BA7D48005ECEB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
+			targetProxy = 0949D85C22BA7D48005ECEB0 /* PBXContainerItemProxy */;
+		};
+		0949D86422BA7D48005ECEB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0949D84F22BA7D48005ECEB0 /* MCPluginAPI */;
+			targetProxy = 0949D86322BA7D48005ECEB0 /* PBXContainerItemProxy */;
+		};
 		098C76B2213C097600B1F05A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
@@ -921,6 +1117,161 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0949D86822BA7D48005ECEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0949D86922BA7D48005ECEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0949D86A22BA7D48005ECEB0 /* Homebrew-Cask */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = "Homebrew-Cask";
+		};
+		0949D86C22BA7D48005ECEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = Debug;
+		};
+		0949D86D22BA7D48005ECEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = Release;
+		};
+		0949D86E22BA7D48005ECEB0 /* Homebrew-Cask */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CC63MSFH9N;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MCPluginAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.npyl.MCPluginAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Manage Conky.app/Contents/MacOS/Manage Conky";
+			};
+			name = "Homebrew-Cask";
+		};
 		098C76B3213C097600B1F05A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1227,6 +1578,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0949D86722BA7D48005ECEB0 /* Build configuration list for PBXNativeTarget "MCPluginAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0949D86822BA7D48005ECEB0 /* Debug */,
+				0949D86922BA7D48005ECEB0 /* Release */,
+				0949D86A22BA7D48005ECEB0 /* Homebrew-Cask */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0949D86B22BA7D48005ECEB0 /* Build configuration list for PBXNativeTarget "MCPluginAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0949D86C22BA7D48005ECEB0 /* Debug */,
+				0949D86D22BA7D48005ECEB0 /* Release */,
+				0949D86E22BA7D48005ECEB0 /* Homebrew-Cask */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		098C76BD213C097600B1F05A /* Build configuration list for PBXNativeTarget "Manage Conky Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

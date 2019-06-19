@@ -52,8 +52,8 @@ typedef enum {
  * capabilities.
  */
 - (void)createWidgetsArray;
-- (NSMutableArray *)themes;
-- (NSMutableArray *)widgets;
+- (NSArray *)themes;
+- (NSArray *)widgets;
 
 - (IBAction)killall:(id)sender;
 @end
