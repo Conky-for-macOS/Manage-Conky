@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "609B5EDD1E08AAA9078EC1D7A29331D6"
-               BuildableName = "LzmaSDK-ObjC.framework"
-               BlueprintName = "LzmaSDK-ObjC"
+               BlueprintIdentifier = "ED77B4B88587C894E85C361023D67C53"
+               BuildableName = "Sparkle"
+               BlueprintName = "Sparkle"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

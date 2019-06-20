@@ -971,7 +971,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AHLaunchCtl/AHLaunchCtl.framework",
 				"${BUILT_PRODUCTS_DIR}/LzmaSDK-ObjC/LzmaSDK_ObjC.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
@@ -986,7 +986,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		06021C38407670CBC4B11E84 /* [CP] Check Pods Manifest.lock */ = {
