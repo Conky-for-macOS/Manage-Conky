@@ -56,3 +56,6 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
 # XXX, remove this later...
 #
 cd "$symroot"
+
+# Refresh our cocoapods
+pod install
