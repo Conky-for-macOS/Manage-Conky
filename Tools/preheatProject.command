@@ -40,7 +40,7 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
 		-DBUILD_MYSQL=ON 		     		 \
         -DBUILD_LUA_IMLIB2=ON                \
         -DBUILD_LUA_RSVG=ON                  \
-        -DBUILD_LUA_CAIRO=ON                 \
+        -DBUILD_LUA_CAIRO=OFF                \
         -DBUILD_ICAL=ON                      \
         -DBUILD_IRC=ON                       \
         -DBUILD_HTTP=ON                      \
@@ -48,7 +48,6 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
         -DBUILD_RSS=ON                       \
         -DBUILD_IRC=ON                       \
         -DBUILD_PULSEAUDIO=ON 				 \
-        -DCMAKE_BUILD_TYPE=Release           \
  -G Xcode
 
 #

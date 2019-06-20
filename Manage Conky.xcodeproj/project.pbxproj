@@ -19,13 +19,11 @@
 		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0949D85922BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
 		0949D86022BA7D48005ECEB0 /* MCPluginAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */; };
+		0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */ = {isa = PBXBuildFile; fileRef = 0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */; settings = {ATTRIBUTES = (Public, ); }; };
 		0949D86522BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
 		0949D86622BA7D48005ECEB0 /* MCPluginAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0949D87222BA7EB5005ECEB0 /* MCPluginAPI.framework in Copy Plugin API */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0949D89222BA8741005ECEB0 /* MCPluginAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0949D89D22BA8752005ECEB0 /* MCPluginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */; };
-		0949D8A022BA8D1B005ECEB0 /* MCPluginAPI.h in Resources */ = {isa = PBXBuildFile; fileRef = 09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */; };
 		094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */; };
 		094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */; };
 		094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */ = {isa = PBXBuildFile; fileRef = 094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */; };
@@ -675,7 +673,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0949D89222BA8741005ECEB0 /* MCPluginAPI.h in Headers */,
+				0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +921,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0949D8A022BA8D1B005ECEB0 /* MCPluginAPI.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,7 +1015,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */,
-				0949D89D22BA8752005ECEB0 /* MCPluginAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
