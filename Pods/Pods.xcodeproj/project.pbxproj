@@ -19,129 +19,121 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		00D0FBE969CB26171B0D4353AC64BD2D /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 111825ED290A476E0AA81BCC143BEFEF /* PpmdRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		01110F8B7DCFEA69DEFA7EE0F0D89BFD /* RegisterArc.h in Headers */ = {isa = PBXBuildFile; fileRef = 318814C18E828A33D1CCE936DEBADA8F /* RegisterArc.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		020A5BE1DBBD7BB9D6CBCEEC474EF38C /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB0A883679DA62ADFD2885E09B165F5 /* DummyOutStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		025D8040CA49670156EC6F9A29C978DC /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = D25A5869B7836463485152BB54992E56 /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		02ECB1B0125837DF2CB4CD4537E35DA2 /* XzIn.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E8A589C59023E9EABA7C34B092A9C /* XzIn.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		033F574DA3E151EA69FBFF3AEB9390BC /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 011FD8A662303C98C6230F13BE7CBA36 /* XzCrc64.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0402BCE630B173F7B6122A071E0CFA3A /* AHLaunchCtl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 716CD3E5A8A2FD03B9C2428DA1104049 /* AHLaunchCtl-dummy.m */; };
-		0571542994D045D1F77FC731C06AC553 /* ItemNameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9E3EA6F10964F3DC8FC4BE115442D7C /* ItemNameUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		068409F2EDF05EA13158E640C027C432 /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEDD1F6C1A8CB1011DF99F77FD04E /* Bcj2Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0872107DE38033F38C4FEF5EFAB12476 /* IntToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0D177147A297DE569728FD3112E50F /* IntToString.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		09DEDF385E25A286068D2A7BC635B2FE /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D2393631D9B9940E0DD9B3B82099BA0 /* LzmaSDKObjCBufferProcessor.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		06987176084D52A78FBB6D3C1DE30B35 /* Lzma2Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 1127FC25CB8D034EC13795A09C30F1B3 /* Lzma2Dec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0A22756FC7B6E5DD5EABDD587FFEA210 /* XzIn.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E8A589C59023E9EABA7C34B092A9C /* XzIn.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0B7393E3EDBCEB1EF6462FF810D44E2E /* StreamObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B29D78CA5CE8800C1AABACF53BF1BDB /* StreamObjects.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0E7A18731F538E58BB0138E4B4321238 /* PropId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66878C2F4779DA4984CD2914F1A673FD /* PropId.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0CC7182F850C65AD383CB45F76F90CBE /* LzmaSDKObjCExtractCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8704D31195820C059DA8FA3015F42AD1 /* LzmaSDKObjCExtractCallback.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0EE5067C0C3FB8C0530C56FB621EB8F2 /* LzmaEnc.h in Headers */ = {isa = PBXBuildFile; fileRef = A41D0966BC71336B6183B1B87D5F09E2 /* LzmaEnc.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0EF2E3AE4F40AAF97E06C2B66D97E8BA /* XzEnc.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B55C0E95AF95EE5F4EA0E124A42FED /* XzEnc.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		10939F1AB7538AEEB738DD328E8475C4 /* LzFindMt.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F5A20DF012B6D7E758F6C2212F31BE7 /* LzFindMt.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		10C29B6A430527DE67B1AF7B06DEAE47 /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2616DE9B919A77D3D3ED3E6BC61414A4 /* LzmaSDKObjCExtern.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		10E3E0891060CE598CAAEC1C2C6B56FB /* 7zOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AD80BFE1631579F343F3B913F579C1A /* 7zOut.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		115F4EBFA87D8EFEF0A9D486C0D910FF /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 5220C73B1F3571133ABD6CD7457BAEEE /* Ppmd7Dec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		11F4FFEC3881E7CDC059BFEDB628250E /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA36843F741143D9F79E5AD971BAA2 /* 7zAesRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		11F719D8AD9CF0E121630FD040949320 /* Sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 5BB3AC3B2750A66879FEA2A6AB52364E /* Sha256.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		1259D386628D83FCEC7647FD540B08ED /* 7zHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A52149973F11ED0432C77C8DE9374B3 /* 7zHeader.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		11924F4D2235D88565DEC41BC7EB627A /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 23FDEDD1F6C1A8CB1011DF99F77FD04E /* Bcj2Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		11ACF19C3CF75C4B61E0D9706CAB5C19 /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 111825ED290A476E0AA81BCC143BEFEF /* PpmdRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		12BD3B9A58400EB5AA38C5CBDD387438 /* MyTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = E711A76B2E92E4159F59082F2F1CFAB4 /* MyTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		134EDB1948B2745888FD90A305634FA4 /* StreamObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3BDAAEEC932E93FF844A32B4485870F /* StreamObjects.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		146528D69EA32C2B252D20E66182F819 /* Ppmd7.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EAD7738C125A704BD60E38EF9935D4 /* Ppmd7.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1485FF177242669E9950AC74259F171B /* MyAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A87DC7A2D355BA3185C110520D878FDE /* MyAes.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		14E99604C86F15AA47F892D920B559F1 /* LzmaSDKObjCMutableItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EE33370AE6C6E3808639475289E5822E /* LzmaSDKObjCMutableItem+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		152E5F08AEEB5F595EE3D856001F44D9 /* LzmaSDK-ObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C062EFEA041A681D0F185720A1BFB04C /* LzmaSDK-ObjC-dummy.m */; };
 		15909EC4E2A9092D5E12BCF567F61302 /* LzmaSDKObjCExtractCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = E05D8A33A7985FD4C8816436535EB412 /* LzmaSDKObjCExtractCallback.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		15D0D90D5151DACF1EF595DB7F46ABD8 /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E750DF18B5F5A1CA05F5B7F22AB358 /* 7zExtract.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		162E8251975E526D8626092C38F58DAC /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A5CED807504863F63586C19FB539C /* Ppmd7.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		165DD8150B0540FA43F6CEE421C0B018 /* CpuArch.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EB2F4EB1E8BA911DC638C6F6A56BE6C /* CpuArch.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		170368296709570F5448D3831DC88A04 /* IPassword.h in Headers */ = {isa = PBXBuildFile; fileRef = 856B8795EBDD3012C0DD0EBA230354DB /* IPassword.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		171F9EEDBD98A0A1096BD5376738DA21 /* HandlerOut.h in Headers */ = {isa = PBXBuildFile; fileRef = B40984621A1CD5CBC8FC328C592F00F9 /* HandlerOut.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1732288F7EF9BF2CB9B6DE9FC67FE82A /* Delta.c in Sources */ = {isa = PBXBuildFile; fileRef = 226E744944CEC7A218FC2AEF23749F8D /* Delta.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		175CFF8BB52A1602499C4CCFB6F9E80F /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB99970BD7E8FD4D6AAFDB7B019752 /* Bcj2.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1803B75BC52D6054646B7E8BFADDD16C /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 6794C12445066E9030225E5404A8729D /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1A0F13F5B79672203D3795FFE84C5109 /* MtCoder.c in Sources */ = {isa = PBXBuildFile; fileRef = AAE5562834F13677EB75CC900903F3C5 /* MtCoder.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1AA9399CDF8F6D5B9019153155131B49 /* StreamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 42035FDDA94B85DD47A073B543FD7B3F /* StreamUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1B93EF32B7066B83E5DF0F924C6EAA6C /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9986AEC7E8B821ED6FE48AA0DADB876 /* 7zDecode.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		1C503E4E98E418448CBEE576151F6724 /* BraIA64.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FA84FA81C46B95D90926EDC82B770 /* BraIA64.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1B5AFCF9C0E7FBF99839FF294D1D9EBF /* LzmaSDKObjCReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBCB282616836B105B07725BC31D9A8E /* LzmaSDKObjCReader.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1BB3FCB01128C2BB119E882DB3EB7356 /* MyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3544A25214B205AFD72523B092FBD046 /* MyString.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1CC2CE3B85966500EDD93D1277937292 /* ListFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 5232C14D532EA3DBAEFEF744566D222C /* ListFileUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1CD4079A14B4BA962EFFA9769693A2A4 /* CpuArch.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C7CC6D89D8CB02B25D3E88FEDC0C7CD /* CpuArch.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1CF8B6B3B33DDBCA80E2545C7DB518E5 /* AHLaunchJob.h in Headers */ = {isa = PBXBuildFile; fileRef = 56F2059442646E4FB4D9C5C97A62731B /* AHLaunchJob.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D217C3C353F6CB1A6E2841822E8B82E /* IStream.h in Headers */ = {isa = PBXBuildFile; fileRef = A52528A32ACF113E5B15D7EB7F006477 /* IStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1DD51A4E58C077263B1C5855A9853C5A /* LzmaSDKObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E8DCE3E23CBA38DCDAACA8B8A4810B9 /* LzmaSDKObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FB21A316C01CF4B900AC2D970AD67D7 /* Lzma2Encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6E9AAC17FEDB83874D48E55E390CF5 /* Lzma2Encoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		201AD2E02650D5304DEF7D9AFBE0C5B0 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16D05FA7B85F278D9B408FB52C774100 /* BranchMisc.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		20BA40BABEFD41658562861518C71F7D /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = B3B31C88463A54EBCEEBA0C8FBFDDE9A /* Threads.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		21117777EC813A9EB199A5B4683F9E0E /* 7zHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8387C8AE58518AA86ADE6E572076F9C /* 7zHandler.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		226462BFB5D2DDEAD7F800566B898532 /* Lzma2DecMt.c in Sources */ = {isa = PBXBuildFile; fileRef = F956C46C02E70F8007A2B4E45176254D /* Lzma2DecMt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1FB2712A0814D69E1B95EAB2255E52C9 /* LzmaSDKObjCItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = D00AD4B4E1E3DE46F3615097CEEA4997 /* LzmaSDKObjCItem.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		22952233A37DAF669E121B441F2FC453 /* XzCrc64Opt.c in Sources */ = {isa = PBXBuildFile; fileRef = 10EC661B53D05EBB876CE0F33DE02BF1 /* XzCrc64Opt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		22ED0609BED22B4FD72F8F974035318B /* Aes.c in Sources */ = {isa = PBXBuildFile; fileRef = DC5B00EC645F441B4CD2A68EB3CF0EAD /* Aes.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		231F819527FF4EDE94E127F66622FF79 /* MyInitGuid.h in Headers */ = {isa = PBXBuildFile; fileRef = D1F2DA689113C8A238E2BDD813399B83 /* MyInitGuid.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		24DA0E8CBE0BAD03995744B411971FE6 /* LimitedStreams.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D7A7D5F22FEF8AC6D37FFBE2826455B /* LimitedStreams.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		250B6FD9C3495521DD70F41EB2EA32E3 /* Aes.c in Sources */ = {isa = PBXBuildFile; fileRef = DC5B00EC645F441B4CD2A68EB3CF0EAD /* Aes.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		25A50C85B4542DAE774D752213CE9B15 /* 7zUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = F0DACACC98CB4F88D89B53A2B8F64974 /* 7zUpdate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		27887EC0C1BCDD6677EB4BA8F2BD363E /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A5CED807504863F63586C19FB539C /* Ppmd7.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		28DBF57E9B48CB659D3D41D0026F4D87 /* CWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000675696A65E1F061347CA185E1E86B /* CWrappers.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		29448DE390769BE3DB42D0B9FF004A62 /* CoderMixer2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1AC760A7FDB71E7A59C6F9937754E32 /* CoderMixer2.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		29BB0A9D012FBE3EA654A924ABE4A054 /* 7zItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 1680C9214704870B96EDC05B8CAA4571 /* 7zItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		29EABABDAEC3B0C5B32804D2D27025AB /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A03E823050C095C025108F8C2E07C60 /* 7zCrc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2AF35ABDD2695FEEC2BA620FFC824ECE /* 7zFolderInStream.h in Headers */ = {isa = PBXBuildFile; fileRef = FFA419BA62FBA66908E76787E7358C49 /* 7zFolderInStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2B4FEA0E9020E94F7F686E55ED1FAA2D /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A75DDAC984E196F10B4FA059DBE6B202 /* LzmaSDKObjCFileEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2B6017F5144747AFAFBB9D4EE626E102 /* ComTry.h in Headers */ = {isa = PBXBuildFile; fileRef = 33E57CB8C0DE5B722A6ABA0EDB662350 /* ComTry.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2B89836EE5CF499A5D5ABDD24C24D69B /* LzmaSDKObjCWriter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95A7BF9AE2EAA86F17362369232EFB89 /* LzmaSDKObjCWriter.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2B898D475A0B6A57AA3692CCCC7AF570 /* BranchMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 72053EA91301145DEF0B1B48C98DE0C4 /* BranchMisc.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2B8FF49AE6D8BBB35FC0826A138D5821 /* DllExports2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80C016C96141E644512D221013CB996B /* DllExports2.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2BBAA3D841877EF60D511DB71A09D3D4 /* CrcReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F7CEF509E85D7F1CEDB28C78E7129 /* CrcReg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2C286A6DB0099E19D14CBA16473E8B24 /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9986AEC7E8B821ED6FE48AA0DADB876 /* 7zDecode.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2C9B8C66C8CEB497444BB4CC9B8629ED /* 7zFile.h in Headers */ = {isa = PBXBuildFile; fileRef = E7236E8D7455A88B177AF430CDE603D7 /* 7zFile.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2CD2657F902B344F65568652E367DA05 /* LzFindMt.c in Sources */ = {isa = PBXBuildFile; fileRef = 29A1C01B94ACE201C10E55F3AAE441E4 /* LzFindMt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2D6D362353D8BFD770479E6FA55747F7 /* MyAesReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F97918B03D5703D5E6B8A35ABB672 /* MyAesReg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2EA80E0DE1ABD094A1B89614ED4F031D /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D86982A184533097067886FB68BB7C /* 7zEncode.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2F080A6285952B9886255D94AE725203 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E65AAE6C310B79E07B80129B6F740 /* 7zUpdate.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2F9BB1CC4B0B274828A683B480041A7C /* LzmaSDKObjCError.h in Headers */ = {isa = PBXBuildFile; fileRef = B4352515B9A4DE8B0C873240FBFCE748 /* LzmaSDKObjCError.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		307AD47985D6EA1A233DBE9E86A79C17 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7E5655802AE14A0CAFADFF61E32F8 /* BcjRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3018630E460238D632DEA866426016D1 /* OutBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6CA528613B3D9A9DA39512628727170 /* OutBuffer.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		332ACEB52179A2A3D021B4D7643F5050 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D469E9EFCDC9F53B9C7EBEBDA17844 /* Security.framework */; };
 		333EA9C94FC95F4697C83AEB0CCE4F28 /* LzmaLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 8828A2D3202B5062CD886B50E696E762 /* LzmaLib.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		33A0BDE311CE96C63CD71E1DD3EA58EA /* LzHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F6DEABC3F77BB37D25E01AD39D55A8D /* LzHash.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		34DEDB7344C5285E0FD40FF728F264E8 /* CopyRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0FEC33E3D5DED2BC4A15682C5A432 /* CopyRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3437FDF6C98AFDBD0FB7C32E22BFE100 /* 7zOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2332D82F82E72282B985B52801908B5A /* 7zOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		355DD5D1CB2F5015D07CAAEB934E3B59 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 1600669315B377F0C56A7C70BCFBBF1E /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		36239DA90E9D67529F924AB1FCDD3D40 /* MethodProps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE3F964AF44FD09D4DE0BA204B33A2F2 /* MethodProps.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		377E61B26D9A48CBD96CCEA004DB988B /* 7zIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD45FFF7F214D7F58FF9D0F84391BA1 /* 7zIn.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		38790BF393B344A4D2E0128F7FCCECB4 /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2616DE9B919A77D3D3ED3E6BC61414A4 /* LzmaSDKObjCExtern.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3657EDA5CB58511AEC471046A3F71E20 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A03E823050C095C025108F8C2E07C60 /* 7zCrc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		37F3BA5657393C579865E4C4E05DCB0B /* LzmaDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E12429E35F64769862633447E228C /* LzmaDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		390579F409B7725F24A86FF597EEB776 /* AHAuthorizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AE1FB13D2C12F15307D2D550FC780A3 /* AHAuthorizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3953CD45E707B55BC854B292F0331426 /* Sha256Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A9DF6B3605FC46548C189BD22D7D1 /* Sha256Reg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		39393F92A681253357E8B4A5099241BB /* 7zIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD45FFF7F214D7F58FF9D0F84391BA1 /* 7zIn.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		39FA3DD42AA590E5F8FB342B6EF03FFF /* Lzma86.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C5F06A8EF4B13DE67EEEA218AA307A /* Lzma86.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3AF27BEF6A8DDDD0CC7F733F20B560A1 /* InOutTempBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C5F87FA018F55DD89D17B35565A4D6D /* InOutTempBuffer.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3B78FAC03C14C7FDF103BEA300411700 /* CopyRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0FEC33E3D5DED2BC4A15682C5A432 /* CopyRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3D16E456F839615F3790BFD8CC12D28C /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D6C2F2FA1AD0F57D508BCA6975D4FAF /* PpmdDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3FCE2373C6465302ED637C64C7FC673B /* 7zTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 981B257C068A7973645428AC8290F242 /* 7zTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3FF5EBBD61E79D9A16B9F0DBC6331A01 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39ED852567AAF080B65CA63152EE5F33 /* CoderMixer2.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		401A6D5D4216EF0038D8C01C9018EF5E /* StreamUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A34A3D741FF51A9003A00689A9C3D23D /* StreamUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4096C59EB6EFA0B16C6E292FD950691B /* 7zIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF041FAB47F24397D21DD8021287057 /* 7zIn.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		41395A2575C9A3D3DBE22CC75B61BF8B /* LzmaSDKObjCBaseCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 298455BD10A252A87B5798A62FF1D85A /* LzmaSDKObjCBaseCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4317840F46D92EE6A859A12066958323 /* LzmaEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8634C7F1596282095035B8F30FAE4DE8 /* LzmaEnc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		443044E269669A461F57A97437052BA3 /* MyGuidDef.h in Headers */ = {isa = PBXBuildFile; fileRef = C1C1DC5EDBC48FE6A6C6299E858FDE87 /* MyGuidDef.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		456FE6AD9A4470F1137E50D232ADAB5C /* LzmaSDKObjCFileDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C167A4974F954EE8B7BB56C8FA10883 /* LzmaSDKObjCFileDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4584D71E245D6BE0A69D4B9DD7762792 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E65AAE6C310B79E07B80129B6F740 /* 7zUpdate.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		46F78A7D01847DDF2D1B86AC7327FAC3 /* CommandLineParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E62CEC86D34F52C37D64C9EDAFEF2F7 /* CommandLineParser.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4794D7F6900434C495D8CA1BDCB57973 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7C87D5050A43AF3F5562A0C4D44BB1 /* ServiceManagement.framework */; };
-		497016DDB6E81C23C52379477153C55B /* CreateCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AB93716CDA5D8E7109FD5706D5AF7B4 /* CreateCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4B568F5A36F142707C7FD92FF0BA691E /* LzmaSDK-ObjC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC205083E0A767F87889220FA6A0FCD7 /* LzmaSDK-ObjC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CA626DF60388C307ABA75DAC0691CC8 /* AesOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = D2B06D363B837EDEDAA298C0917BD883 /* AesOpt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4D0F328B9B6D1E100AAC1326A6D4A274 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6016E637B225E6DCDAFF2DBA3540214E /* 7zSpecStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4D85DF1FBB4BB2AFE68FC99146E30FA4 /* VirtThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEC3511C0582B377A20690287196B2D7 /* VirtThread.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4F7617E50CE1E852D7D63E134A8FE13B /* LimitedStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB4D7E419B48ABAC65F1E2E1D5B123 /* LimitedStreams.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		50373382B0A2210074A6864069CE1A5C /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = B3B31C88463A54EBCEEBA0C8FBFDDE9A /* Threads.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5037B099EEF2F8AF12E478E55D239BEE /* AHLaunchCtl.h in Headers */ = {isa = PBXBuildFile; fileRef = E0A1DBA555D22D59ADAC0C5C58B890E7 /* AHLaunchCtl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		508B7F2095E7F06B8F5598510F35FFB6 /* LzmaSDKObjCItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 9535A89C2DAC5152126AE343D50B6D73 /* LzmaSDKObjCItem+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		509DDB33D5AF666356CE525E76A15B6E /* PropVariant.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D58FD966515D836ABCBD5797DBACA20 /* PropVariant.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		515E69FAF251B112A35C2414AE66B387 /* MyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3544A25214B205AFD72523B092FBD046 /* MyString.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		50D0D589B19A5AB066ABA978AE2E072D /* LzmaSDKObjCWriter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95A7BF9AE2EAA86F17362369232EFB89 /* LzmaSDKObjCWriter.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		51C3BD47134B61B283D9F2B4E7DE88DE /* PropID.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E930272AA5154604625CFD96A3DCDCE /* PropID.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		521263A474D243513FD1449075282C72 /* Alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D6D0FD6C9FC7BBC147D781434DE8 /* Alloc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5223F4B5B1D156E8FFD0AD6DFCB8C68F /* CWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = 183B8C6A068C12E3E9F9A38EF1DDD7B5 /* CWrappers.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		52D018E28202458ED603BFD2196274A2 /* XzCrc64Opt.c in Sources */ = {isa = PBXBuildFile; fileRef = 10EC661B53D05EBB876CE0F33DE02BF1 /* XzCrc64Opt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		52298808420AEDCD5BA12B9D7404FEEB /* BranchRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7178B814E6875E629ED2F6B302568EC8 /* BranchRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		532D5C99EEF13A08A79AAA12DAB7CDD3 /* LzmaHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12519D3FF0F8C3033398CAB43AF3B9AB /* LzmaHandler.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		546EB2504A05FEC95323A276410A773A /* RotateDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = E06516F206D66F9CCC3ED8B31216DE96 /* RotateDefs.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		54B4986B5419434779990FD4F19C2AC5 /* AHAuthorizer.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DE25483610AC45A66762AC7F659641 /* AHAuthorizer.m */; };
-		5505F44E04FFC2B44404DB9D3E96C9C1 /* OutBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6CA528613B3D9A9DA39512628727170 /* OutBuffer.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5555169CF1C875A6448E96D078BD9AA3 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BD391C9F37747824F3BB00778136113 /* PropVariantConv.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		555A475AA626A98FAD5626D6F8049260 /* InBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9029C28A8ED3AD19A532D45CD2D41723 /* InBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		556669F6BE3F9A754E2114CAE631B81E /* PropVariantConv.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B2342CC03D5A9078E5470FAB9C7A6D1 /* PropVariantConv.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5659D1AD673790B1D3663EB4B82510C9 /* NewHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA85779E50ED56F6FB19C065E64AC4B /* NewHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		567A860AF8824E1BE091C84F38D3771C /* AHServiceManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = F373178DFCD545377EE44F75B99EC725 /* AHServiceManagement.m */; };
-		574FB1B040768F2CB077E5DBFC9D3AA2 /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C47B557D06C6FA7A0DAF443B392A40A /* 7zAes.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		57E3400BFCC868D9CED902D07B28D682 /* MyAesReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F97918B03D5703D5E6B8A35ABB672 /* MyAesReg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		58A0D500E2190932689213516905BFC1 /* 7zCrcOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E0252B7034A9BCCE2DDA9FA83742A756 /* 7zCrcOpt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		56A0AF44B6269D56B77B5555201DB2FC /* MyAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A87DC7A2D355BA3185C110520D878FDE /* MyAes.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		58D040F60D4E62D5656F54D4BC998DDE /* ParseProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CB471D6687A38E352E24574B753855E /* ParseProperties.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		595337BE78F4844E80401811820597A1 /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D2393631D9B9940E0DD9B3B82099BA0 /* LzmaSDKObjCBufferProcessor.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5AB0CD255D8426243E4C602C18991BD9 /* LockedStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E8E044E9183A9BBA8377615BE86213 /* LockedStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5B43BC29766C764C5944EB3885B165DB /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12C5EAEAA404AC32AC738B2BF4564AEF /* PpmdEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5B4B7E14F97A9375356F9F6FF552ECB0 /* BcjCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A7F96186D50D14F2C9A878B075F2B0 /* BcjCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5B98B7C9E6924F00ACC3AFEC0BBD2409 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 770E63E0FA2302BB890CDCD87923BA9B /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		5C608DA33A1B0B2CFCD1FE0F63633D2D /* BranchRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7178B814E6875E629ED2F6B302568EC8 /* BranchRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5CFADFDA4CDEBAB23CB8F07E8F3FC165 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39ED852567AAF080B65CA63152EE5F33 /* CoderMixer2.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5DB749A7A5F954C0851B88B55F5F294A /* LzmaDec.h in Headers */ = {isa = PBXBuildFile; fileRef = 66555D0A9C24DA199E8F868248CF78E0 /* LzmaDec.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5E27EDAB47A58100D88856D4EE28B66D /* 7zHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8387C8AE58518AA86ADE6E572076F9C /* 7zHandler.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5EAD434D55D83F266727027FEF1BC0DE /* ItemNameUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E891C40E77829C5EE863B38F6847D923 /* ItemNameUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5F2E84A02F52AB42A1390129BB038478 /* LzmaSDKObjCFileDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 85757E1C483520DA74B58854D20B9482 /* LzmaSDKObjCFileDecoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		60D9C79142ED9100E87DA2AD983AF9B5 /* Xz.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA52E6956DABDE486E43DCB7689079 /* Xz.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		61046C84FA10EF3C5DC43890F3203C7F /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC05A544F4017E4E8731EE659FE91ABA /* StringConvert.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		614389559B5DDD24267C565F5294BB1B /* 7zFolderInStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDCC5A42B9A24DFD01BC48A0823A663E /* 7zFolderInStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		634B6113632C63F92651910E311301BF /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB9E391AC66121F2F6B2EB17BE03DA2B /* 7zRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		601EFAA41BE2C064F4ECCD4616B36AEE /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 5220C73B1F3571133ABD6CD7457BAEEE /* Ppmd7Dec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		608AB9BB92F823D2EE98458CA4E07045 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 60646F4691EE4C61A79BE313008EB506 /* LzmaSDKObjCUpdateCallback.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		66DD18B1E483AFED0CBF6BA8AEDD8ED8 /* Threads.h in Headers */ = {isa = PBXBuildFile; fileRef = 229FF4B267A82ABDEBA883737C306E78 /* Threads.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6746E45A1ADC3F4D4ACA522C3B2AA06A /* UTFConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D2971518519E5F5C7A791DD392FAF3 /* UTFConvert.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		67ED194366D6E2A106166C7237B97887 /* LimitedStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB4D7E419B48ABAC65F1E2E1D5B123 /* LimitedStreams.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		67A2F208008F555E91CD918FEECFA962 /* Lzma2DecMt.c in Sources */ = {isa = PBXBuildFile; fileRef = F956C46C02E70F8007A2B4E45176254D /* Lzma2DecMt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		68907C6C6C8B9624BB0356E598C48902 /* Pods-Manage Conky-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C481540933A5047B90B57FD07972D0E /* Pods-Manage Conky-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69BE6D03CBE0B444180E003C4EB6131B /* LzmaSDKObjCFileEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2206199637E2EFB9F58C65883FE3B707 /* LzmaSDKObjCFileEncoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		69CBADC25E015E7198DAB89CF057DDA6 /* StreamUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A34A3D741FF51A9003A00689A9C3D23D /* StreamUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		69D054D05D46C5EC42CB5179F2A35BA8 /* MyException.h in Headers */ = {isa = PBXBuildFile; fileRef = 0821C91B7CF5F45607E90BC85C67A7B2 /* MyException.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6A264F3442AE3A73BE51EBCEC814BFCC /* LzmaSDKObjCUpdateCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = C308B603E64BE9876709E5715615128F /* LzmaSDKObjCUpdateCallback.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6B95A6BAFD0F02B0772B7C85DDC9C742 /* LzmaSDKObjCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B4B38E589004EED14D001D107DF7698A /* LzmaSDKObjCItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,12 +143,18 @@
 		6D7F4DCF2C22A6DC2983EAF2AD75EDE2 /* AutoPtr.h in Headers */ = {isa = PBXBuildFile; fileRef = EECCD3C2B64CE3C72E5E1AA4E7A8FE54 /* AutoPtr.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6E701D6B2C3ACF7D6C0D30778D56145F /* AHLaunchJobSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = CF443D5999AD7DBB55110ADB8C32F821 /* AHLaunchJobSchedule.m */; };
 		6F6524260B3E96FEDA8D83C58194821B /* MyBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5040733E7AAC380F9346A1CB61A653DA /* MyBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		70F66DF28B226D7FC9B4C0058FF72E1A /* XzEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = FB151DF8262E2D2FC690E01B77791CAC /* XzEnc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		71A6EED63E9513F9BED9186B0288E8C3 /* LzmaSDKObjCFileDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C167A4974F954EE8B7BB56C8FA10883 /* LzmaSDKObjCFileDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		71C44C44331A952724906295ECD30C0F /* BraIA64.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B9FA84FA81C46B95D90926EDC82B770 /* BraIA64.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		726DA96139FEC2E58A69854260D94F5C /* RegisterCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C5536B33E4CB61950C83BE6603D57B /* RegisterCodec.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		732C09D1245219A3D6946B1A067E0F01 /* 7zHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F489E8EAAB528C38289C5085CF2A0EB0 /* 7zHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		73539E559128EDD469A958AEEB75BEDC /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C22DD3E4903DC8E0AE22091D4B15E0 /* Bcj2Register.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		73B2A4E0039061571C1F290B15C8F83F /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DE620B83947225F5F2C231DFCB8BACE /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		746E5C7B7ED13228C34FF1B1342F53B3 /* FileStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E088B7D50C13B482022C22DDFD242 /* FileStreams.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		74B7B2CE6FEB480C45325FFBD1DAE542 /* AHLaunchCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7DE7CB8E43CD21FBE12C223A92203 /* AHLaunchCtl.m */; };
+		7692018809976A94894F189413753719 /* LzmaSDKObjCError.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F849B0CB5880B0C314F099DB8A45 /* LzmaSDKObjCError.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		77401FB5102DC101EDCB6D2AC54E3FEA /* LzmaSDKObjC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91AB93B08BB64BE5407AAEEA86ACD11A /* LzmaSDKObjC.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7773DB4BD2B24614A28FDA605456BC3B /* Sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DAEDB6BBDB21CC6DAA424B2C1C93EA9 /* Sha256.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		777CB7D563B8F9CBA5A2D2FE53962EF6 /* 7zCrcOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E0252B7034A9BCCE2DDA9FA83742A756 /* 7zCrcOpt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		77B18A38B04191963E402E548AA9F1E0 /* OffsetStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C31F8C95DBCA7D3D034A8E8FBC91AA47 /* OffsetStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		78C4C1CC630E88351DB872138623A410 /* CreateCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B3036FA446DBBE819A8F5C34FE1670D8 /* CreateCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		79C543905458B77AC0F8C2D41AD50219 /* AHLaunchCtl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 826DFB1F3BD3CCFD67ECFC23DC27B0A5 /* AHLaunchCtl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,169 +162,171 @@
 		79CAF8F681CE50C5E195C6D2ADF05B6D /* 7zAes.h in Headers */ = {isa = PBXBuildFile; fileRef = 50D1386D641B1F7A7342ABBB2E8B888D /* 7zAes.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7AA0E49178D5BBA0260A11F9FE45002F /* MyWindows.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1D18BF5679309B1D16FCADF1E587B /* MyWindows.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7AA115982111336C958DFDD21F8DB35B /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = E9CA8FAB5DCE10D3B097D43D9BDEAD64 /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7BCBD452B9DA44CAA1D374B02E938BE1 /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C22DD3E4903DC8E0AE22091D4B15E0 /* Bcj2Register.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		7C9A079834EA8D5D93465014A876D4E2 /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D54B42156316C4EDD15E00AD526A3FCA /* MyWindows.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7AEF1D4C845ACC8634C256A7DCDFED73 /* ItemNameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9E3EA6F10964F3DC8FC4BE115442D7C /* ItemNameUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7BB62EDC3B08515D4E6AEC501CD2CAFF /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC05A544F4017E4E8731EE659FE91ABA /* StringConvert.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7CCB79A060E3A2BE433EE8F94913AA2E /* 7zCompressionMode.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F3DA73B3C4D9D1AA5CBB189D1122D9 /* 7zCompressionMode.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7D54B2DD86599101DBA3B1E754530165 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DFD24E764660EF1C72749DD3155A3D /* BcjCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7EACA8C0EC299C781450F69A17EBADF4 /* MethodProps.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC08BBA3B2A3203563E883BD333CA00 /* MethodProps.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7F9D664DE94328B677A10E174EFE948D /* Lzma2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7596CCE7DFBE0B7CAE7577D9E24077 /* Lzma2Decoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		80AE1155A1E9A0743E8E6A799219927D /* LzmaEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF27293B29EED127914A95901341B2 /* LzmaEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		80B112A68136498E5147FC268AE54480 /* CreateCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AB93716CDA5D8E7109FD5706D5AF7B4 /* CreateCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		81CB17482C180102863017E4C2AC85AF /* Alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = F5055ECDE2B0FC1B06DF5C6DA6FF2456 /* Alloc.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		821A36D93D435ADA0EE29072B3AD332A /* LzmaDec.c in Sources */ = {isa = PBXBuildFile; fileRef = BC8A92246F79B872F8297BDD0EE9353B /* LzmaDec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		82A01989B2C43E66E6499FD8A0C8113E /* Wildcard.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0568995459485E7095396C7C2F3C42 /* Wildcard.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		82A43F09D3B2FE5485E6A83FDA96BAAB /* 7zVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A422CFC135082E278C1F90E2DAB95439 /* 7zVersion.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		82EB6DAD29F1C614264C46BB5342C057 /* Alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D6D0FD6C9FC7BBC147D781434DE8 /* Alloc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		82C1266486CCC136F2C3B7F823627D99 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B4C3BA0AADAF12F2EC8C8A97B697A69 /* ArchiveExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		83013A5F4C4AD339E8C2803CB1B22046 /* DllExports2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C738988C9F8A42509262082DBFDC70D /* DllExports2.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		83ED4D9BF5E157B442E820AE6BC35C92 /* LzmaSDKObjC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91AB93B08BB64BE5407AAEEA86ACD11A /* LzmaSDKObjC.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		840287175A25C9732F21E06EB97500D8 /* Compiler.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF4478A753811734F98A3B08909BCF0 /* Compiler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		854542D800EF1B299E35B7775088CBD1 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 807CA10CE692896D10E0B9C1F413E805 /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		85BF480A7C95B0E694DC87C4674B2EC1 /* RandGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E7E57D0656F4916E0B0FEBE53066FE /* RandGen.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		87475DE082A434671109B61962156A0C /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12C5EAEAA404AC32AC738B2BF4564AEF /* PpmdEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		8843B587792C5BE662850E88899DF21E /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FD8B7D6B3801102DC176B5904CE21 /* PropVariant.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		85DBE620AA1A86E40F87729BA953E9A7 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16D05FA7B85F278D9B408FB52C774100 /* BranchMisc.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		86B3EB0116A9F1978E1D02F63AF36D01 /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB651BBD1B555DDEBC0530E9735827 /* LzmaSDKObjCOpenCallback.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		882F3EEA7EC3DDF1DE55C176DB4A99CB /* FilterCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 664BE710FAB7F4702F5058905C045E0D /* FilterCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		88482C996DD4DF6D66B3A3489D01E06F /* ICoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A02A2B1160FFC1B59C60F7B07C849238 /* ICoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		88945F531C684E8DAA3ECDF9D8ACE8D6 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69CBD4D7726E19328F35056AFFDF7A3B /* XzCrc64Reg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		89219DEC2D47C0A77846F8009868ED22 /* MyAes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C44065997B7EF9366757C1B40BBB43A /* MyAes.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8A0C83229D1FA58AF98ACF8B9CABF4FC /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EEDF68A244DE6EB66DF6AC570A42E54 /* Wildcard.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8B163996E29F0095FB10143E5C9B54F3 /* MethodProps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE3F964AF44FD09D4DE0BA204B33A2F2 /* MethodProps.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8B6AF2E3B375CDE9B25440DCF841E40F /* LzmaEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FAF27293B29EED127914A95901341B2 /* LzmaEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8C203B194BBF0AB264BD440C5B611426 /* StringConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = 560F7ED4F77D052CE503325CDBF39403 /* StringConvert.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8C9552322C70E6B863088A26398F017C /* VirtThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEC3511C0582B377A20690287196B2D7 /* VirtThread.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8C2FA864CCAF6127FF6454EA1A1CBFC6 /* 7zHandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F94C88A5276585786BC99AA3E87FA3 /* 7zHandlerOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8CB44D2AC712034F9D60989231B0C1A5 /* UniqBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = DCCB91D1B753ADDF3B96C92C5D0E6FEF /* UniqBlocks.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8D0CA05B3847B80FDF89A1E64D6CD573 /* 7zBuf.h in Headers */ = {isa = PBXBuildFile; fileRef = E8AD86329BA1E6DB8D477369E817E334 /* 7zBuf.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8DF15664DA8D35F25E8B9AFD2887558F /* LzmaEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8634C7F1596282095035B8F30FAE4DE8 /* LzmaEnc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		8F8718EEF8FB53C7E7F1622E1CF06416 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A75DDAC984E196F10B4FA059DBE6B202 /* LzmaSDKObjCFileEncoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8F98F41A0F4A2F6E14B46B531BB5B7DE /* Ppmd.h in Headers */ = {isa = PBXBuildFile; fileRef = 80D5593A1198C48520E3466D6E2F56CB /* Ppmd.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8FA9877F2A3915E498F151F1C496BF40 /* LzmaSDKObjCExtern.h in Headers */ = {isa = PBXBuildFile; fileRef = D5773C58890BF59B603046CBE285B57A /* LzmaSDKObjCExtern.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		902D02A283BED30648E58A0737B9F399 /* Synchronization.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0EC6490C450EE5542631617C46F873 /* Synchronization.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		90521BBDCD7A459A4ABF7D4D6318DB56 /* LzmaDec.c in Sources */ = {isa = PBXBuildFile; fileRef = BC8A92246F79B872F8297BDD0EE9353B /* LzmaDec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		90BCF62B085E3631D3EAEAB027B8E889 /* MyVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = D279B2B3DC794D1C18BAAD997EDB88AE /* MyVersion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		91FB6CA95A393C01CDED89CB320B383C /* MyLinux.h in Headers */ = {isa = PBXBuildFile; fileRef = 058D1DA845E72E69D16D71A703849D0C /* MyLinux.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		933FF7B17393858A626B21D726B41E3D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DDE284B36E31984D839D5F8B464EBB /* Cocoa.framework */; };
 		93D74714EDBDDC2AFF8323E408553E10 /* LzmaSDKObjCOutFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 56120090ACA1286130FFE62B1749F2FB /* LzmaSDKObjCOutFile.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		93DCAE1D185EB62E9EA73B46DCB94F8D /* LzFind.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C83C8F5D4D4D30A52771C7D1901B278 /* LzFind.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		94022A07273EEF7FEFB7FCA9257CC5AE /* ProgressUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A43E5DA450A2C42CB6E341F744529F8 /* ProgressUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		948A38971C70E883D1417C569C3394BB /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 978AD06EB7C43D262C790FE4AA6F22DE /* StringToInt.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9568F53E7A46B5CAC6C44F0464EA43CB /* 7zHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DAD525AFAB2EC711E1986B37AB82DC5 /* 7zHeader.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		95DFC13118CD2BD45470BB3F26AE98F3 /* HandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B161AFA901626C34E43A0DD9FD27DE1 /* HandlerOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		95F0A49F04ACD48EFB332324D7ED72B5 /* IDecl.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E88B0A3244218BD6E441FE5A5F7EFF6 /* IDecl.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		964BDB526DAB1D23DF3365BEE4275969 /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB9E391AC66121F2F6B2EB17BE03DA2B /* 7zRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		96F18AE8A479FD106D82D3F496742438 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BD391C9F37747824F3BB00778136113 /* PropVariantConv.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		98D9A0C892431D36500C3B363856B89C /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB99970BD7E8FD4D6AAFDB7B019752 /* Bcj2.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		99165316199932DA1C2EF3A6DEC7230E /* LzFind.h in Headers */ = {isa = PBXBuildFile; fileRef = DA2CD914E1477A10CC20A1736CA1BE5C /* LzFind.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		99A1C928779D48C7744FE1BF318C08CA /* ProgressUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A146BE0F570E0698D2A7A253599A0EA /* ProgressUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9A6330BA8E6DDC4D1E7CF7B17144A370 /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D6C2F2FA1AD0F57D508BCA6975D4FAF /* PpmdDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9A6177087777D2C15941CFBE1DB2CC4A /* C_FileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5A530BE23F089910B2D97FAC48824D /* C_FileIO.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9A78F2DF29200395BBA474475A2B6AC7 /* Defs.h in Headers */ = {isa = PBXBuildFile; fileRef = C034B4AD549E5AA8A836CF61F035459C /* Defs.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9AC3A1F634896D3E0EC7F38BEABA9CC4 /* LockedStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A44D48B94482F1CCA673E03661B45E /* LockedStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9B27BC85B97F9DFE0DE5635A9A67A99B /* LzmaSDKObjCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AFF7DDAB3B4092C3CF883F88F3BA685 /* LzmaSDKObjCTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C80EE49D8A7202CA554BDA1CDB3B53E /* AesOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = D2B06D363B837EDEDAA298C0917BD883 /* AesOpt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9D5F579691D1C6C2BBFF9E8C5DD8C3ED /* CWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000675696A65E1F061347CA185E1E86B /* CWrappers.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9CD633F2794C6DF5A5889E0120EF08E7 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FD8B7D6B3801102DC176B5904CE21 /* PropVariant.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9DA44BB07FE8FEE85C057FF75B9C5758 /* LzmaSDKObjCCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A131410BF6E6EBD573CB2F13AE365767 /* LzmaSDKObjCCommon.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		9DC8FF76A58593262FAE301680CCDC72 /* Defs.h in Headers */ = {isa = PBXBuildFile; fileRef = 933CF08E7E76B6D07858B89EE5291DD2 /* Defs.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9DDA20095938D2DB47F43965B4C2DFC5 /* 7zProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 982C2A7E3118F82F14822647CD970845 /* 7zProperties.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9E75DE08A130908D6109240607C11E01 /* XzEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = FB151DF8262E2D2FC690E01B77791CAC /* XzEnc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A0B3853B1033FD5A49643AEE59D5791E /* RandGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB7027BE2696F0FC103B0465734E3D8 /* RandGen.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A321A7E2832A432BB36332C96E4251C4 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9E63F3D45D40CB599D4DCD85542BFC4 /* LzmaSDKObjCMutableItem.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A36FBC091C9652E18DF3A9C69C8A819B /* 7zOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2332D82F82E72282B985B52801908B5A /* 7zOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A4A853F5B3E18F0BB0142642D9342112 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6016E637B225E6DCDAFF2DBA3540214E /* 7zSpecStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A669FC25B059586A8914DC3735A45076 /* InOutTempBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C5F87FA018F55DD89D17B35565A4D6D /* InOutTempBuffer.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A74E35178EA9687F9907BED59FD6E0FB /* Lzma2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = DF8CFDD5F5872D923A8FAA38EFEF4806 /* Lzma2Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A24B78B1C237457253D4D00BF2ABF98D /* Bra.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D97DB532EE69B0C3C62E0A4935ACD28 /* Bra.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A30B4BDEDEA532647D38301270F76622 /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA36843F741143D9F79E5AD971BAA2 /* 7zAesRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A4E034C31A04998B9C69838CD5E6A1F9 /* Lzma2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7596CCE7DFBE0B7CAE7577D9E24077 /* Lzma2Decoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A71475D8B609B6DD3386479FB9DE45F7 /* MtCoder.c in Sources */ = {isa = PBXBuildFile; fileRef = AAE5562834F13677EB75CC900903F3C5 /* MtCoder.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A7596B606598F94A2B8F8CB89A4EA851 /* OutStreamWithCRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 64709806F8E51F75C79BD0FF475D094B /* OutStreamWithCRC.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A885880D4A30F826381C98376557F6A7 /* Lzma2Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 1127FC25CB8D034EC13795A09C30F1B3 /* Lzma2Dec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A933E569306216FB9F6F3E9BBE7C3AD4 /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBB88A9884BB19BBAA146029DF052F2F /* Bcj2Coder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A966A61FF5D9793DA749DF8429A7DB43 /* LzmaHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 12519D3FF0F8C3033398CAB43AF3B9AB /* LzmaHandler.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A75A19D2AF1498E201719F828A235989 /* Sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 5BB3AC3B2750A66879FEA2A6AB52364E /* Sha256.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A82080A4757E8BC1BEA41F6CBB363477 /* LzFind.c in Sources */ = {isa = PBXBuildFile; fileRef = 9C83C8F5D4D4D30A52771C7D1901B278 /* LzFind.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A9FE09489DB9AE79F561A5F12A7DFABB /* LzmaRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8942162F8AC3EA0C5B8AB80EC9B50D7 /* LzmaRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		AA29A911E3C8DE923DC6961217D179A1 /* LzmaSDKObjCOpenCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 7747114EE53A0E78FDB2159BF8167511 /* LzmaSDKObjCOpenCallback.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AA2CB2E971F24B845178DBC3F67FAA91 /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 978AD06EB7C43D262C790FE4AA6F22DE /* StringToInt.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AA6C67A9467ED2D4DD6369D05DBA8A45 /* LzFindMt.c in Sources */ = {isa = PBXBuildFile; fileRef = 29A1C01B94ACE201C10E55F3AAE441E4 /* LzFindMt.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		AC1251DC01F1BFB17EC146BE4E84736F /* Aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D9D944087505B8150758B7BE9FF4AED /* Aes.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AD2BB7326B9A08F661FC4C8F4CC389CB /* 7zSpecStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 295E9F09F8022F37013490460D8556EE /* 7zSpecStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AD386F005198CC88CC898559A7B5F969 /* C_FileIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ADD4A2E8FF4CC6F419872EE8F84E137 /* C_FileIO.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AE4B2AB3B929C0F251587334E2835118 /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 570E01BBEC7E58857294011C323836A0 /* Ppmd7Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		AF15BC474B3B4E6ED313C7FEAC5B8E7B /* Bra.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B16B008EB7F100A67BC121AEF68723 /* Bra.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AF3B16C5BD74B93D376E528E269E9C86 /* Xz.c in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA52E6956DABDE486E43DCB7689079 /* Xz.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B23C9D9A4E51B3CE1DBD911B9566C53B /* 7zHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A52149973F11ED0432C77C8DE9374B3 /* 7zHeader.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B267787EA8AD88F7CB6A7A93B8EAFF0C /* XzCrc64.h in Headers */ = {isa = PBXBuildFile; fileRef = 585BC2C41B445B1D36A5802B5EF409A7 /* XzCrc64.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B33892B03ED75DEABB318E701FA9A67C /* OutStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A55FD75F1373C4A087C16BFB25798BF2 /* OutStreamWithCRC.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B37A2E8AB44A563F399F2604CA6FC9C5 /* Lzma2Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F2BBB529D03554BEFC2CD8B24B08165 /* Lzma2Decoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B392CD19B14AC512475CADBD88426A0D /* DllExports2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80C016C96141E644512D221013CB996B /* DllExports2.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B4DF4C52F6E7483EBEFD1EDECEFFB1E0 /* AHServiceManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B808F1C25854CD9E67110EECB500954 /* AHServiceManagement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5147BA89ED82C3B679F2857432243BA /* LzmaSDKObjCBufferProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CCFB48D126F4C2D5AE30D98FC27F90 /* LzmaSDKObjCBufferProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B550394CBBD4694142B5CACE602FB1AF /* 7zAlloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDFA96D7EFBCD9DDC2E9D6D5386714A /* 7zAlloc.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B61306BFC41634C4C1F2AB74D3676160 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DDE284B36E31984D839D5F8B464EBB /* Cocoa.framework */; };
 		B6300994D7F8051C10B300BEDA485A29 /* LzmaSDKObjCCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = A23033368236992CAA59C0C883D6356D /* LzmaSDKObjCCommon.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B76AF846B7FE3F9E8C4877C8827E59CD /* LzmaSDKObjCExtractCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8704D31195820C059DA8FA3015F42AD1 /* LzmaSDKObjCExtractCallback.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B7A2B42B10B0A6DAC5692D917354F9EB /* Bra.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D97DB532EE69B0C3C62E0A4935ACD28 /* Bra.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B63F9F713A3DD436ACF1BE360E0B1FDA /* LzmaSDKObjCInFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19E913C7C756BADA1A23AEF5D61F548 /* LzmaSDKObjCInFile.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B6514D9414239D2F5CFB11AF3BA63F33 /* RandGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E7E57D0656F4916E0B0FEBE53066FE /* RandGen.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B79B541ED90EAB5B14979A7BB61E8542 /* IntToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0D177147A297DE569728FD3112E50F /* IntToString.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B968E20E7E6289C68D4DEA6D80AB4C74 /* MethodId.h in Headers */ = {isa = PBXBuildFile; fileRef = 706DC4ED84A8F06BB1BBE1977E3DA921 /* MethodId.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B9942635FCB03B8A172D106A7C9DEBCC /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = B9E63F3D45D40CB599D4DCD85542BFC4 /* LzmaSDKObjCMutableItem.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BA75BDBDDD0BD85C579C8AEDFCA6EE7E /* LzmaSDKObjCBaseCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05AE70638D45CF8EC9F95881D61B32F3 /* LzmaSDKObjCBaseCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BB57EEC04B7B1AEAD85AEB6BA3293EC3 /* 7zProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = FE25D0AB2856EF943DCBC3416E33F20E /* 7zProperties.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BB9A8213E85572B6EB978692A1C73F0E /* 7zCrc.h in Headers */ = {isa = PBXBuildFile; fileRef = F8AF26D4CF43DB40A051721675548F66 /* 7zCrc.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BD2A8509BD4D283538A1E11CA0539FD4 /* MultiStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F378E9E69DDE46C50612321E4087F868 /* MultiStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BDA30050C19706D9DED8329B02D47A30 /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB651BBD1B555DDEBC0530E9735827 /* LzmaSDKObjCOpenCallback.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BD4A7F472F68D94D241C4646C4A9F5CD /* Delta.c in Sources */ = {isa = PBXBuildFile; fileRef = 226E744944CEC7A218FC2AEF23749F8D /* Delta.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BDFE360546234FE4AE4BB0E0722E1984 /* FilterCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E6307DAB8530ABFFAEF3CAAC51CC45 /* FilterCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BE0B75C43C446DC9A3ECABE919F861CE /* Pods-Manage Conky-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BA22D39257F4987072158B2A5E3883 /* Pods-Manage Conky-dummy.m */; };
-		BEBB6431462CB10747912E5BDF87E35E /* Bra86.c in Sources */ = {isa = PBXBuildFile; fileRef = ABBA1D893F9A39C02243CEF84D86A9C7 /* Bra86.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BE18F36984BEAFF55BC110E79EDE26E7 /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 570E01BBEC7E58857294011C323836A0 /* Ppmd7Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BED1B74438D7E72D14FB3F59B1D8124E /* StdInStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CC0BA3132615E9FF985DE0AEADEC502 /* StdInStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BEDD59F786EA6134C1515CEA716A80C6 /* Lzma2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE9C5D7EB314EB2061A770AFB019837C /* Lzma2Encoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C00D525EE7B033A7DFCB9863606F27BF /* XzDec.c in Sources */ = {isa = PBXBuildFile; fileRef = A508E22B651A854F88A08CE183128DC9 /* XzDec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BFB708533B85AAD9C78A342D91BA67A5 /* ByteSwap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C511E3FFB428A2D0F19552ADDF0EE /* ByteSwap.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C02871017FC8C199C3C982AA6B3D5004 /* AHLaunchJobSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 9849C789DAF9341F9C5119F65C2C098B /* AHLaunchJobSchedule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C042751A3E981DCB7F3621155DF24EF6 /* 7zFolderInStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDCC5A42B9A24DFD01BC48A0823A663E /* 7zFolderInStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C05F21B74320DD20DF23D983E96B0101 /* LzmaDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = F3DE3DE8DDA00E251F43A6531FFFAA86 /* LzmaDecoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C1D3BDB34C3CD06E916B176147C2FB5C /* LzmaSDKObjCItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = D00AD4B4E1E3DE46F3615097CEEA4997 /* LzmaSDKObjCItem.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C329BBFEACE67F1C8918624AA1B5FB98 /* 7zHandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F94C88A5276585786BC99AA3E87FA3 /* 7zHandlerOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C257228DC8A28E5A6465195F7FE4BE77 /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 011FD8A662303C98C6230F13BE7CBA36 /* XzCrc64.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C3D2BD35D1CCEDD75A50EE73BFD26C8A /* PropId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66878C2F4779DA4984CD2914F1A673FD /* PropId.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C4BAE26486AF5F4735CD09E6C66A3290 /* IntToString.h in Headers */ = {isa = PBXBuildFile; fileRef = 146C6039168FB388B247E72DC03055B8 /* IntToString.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C6005A7DFD6B2B128EC181F284DEACAC /* LockedStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A44D48B94482F1CCA673E03661B45E /* LockedStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C5B988F3251A5C5E541D36397798A69A /* CodecExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4531BDE748FA1386976948A832CF894 /* CodecExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C65B7DCCF56B096EFBF03764F6CBFEF4 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EFD25A8910811EE78E3DF0D1768CB35 /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C739855FA8BFEB975F6218F0E40C36CA /* FileStreams.h in Headers */ = {isa = PBXBuildFile; fileRef = 1911C13A25EA74D259470B993FDD44E8 /* FileStreams.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C80583B5F79C00365CEDE4CB3BFCB631 /* ProgressUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A43E5DA450A2C42CB6E341F744529F8 /* ProgressUtils.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C7B46DE2EB56DAE7604EE66FA16A16DD /* CopyCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D3C3130542670D760930BDF1E9C64E8 /* CopyCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C826948D0A8B32C1BC5BF2606DE64F23 /* DynamicBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 77563D9F37E0BC0F6F83405B3A914488 /* DynamicBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C88E3BCA8A46A1EDCBA23C0329D88D97 /* FilePathAutoRename.h in Headers */ = {isa = PBXBuildFile; fileRef = 06BA89CE786E1A0B12FA311037E2F383 /* FilePathAutoRename.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C8ECF5ADB249E2B57A31EEFBB51F1B70 /* LzmaSDKObjCMutableItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B4BFF5B841D9AB62512E3DC8BAB2231E /* LzmaSDKObjCMutableItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB299A3C35340C11870CC22A04E6A4A3 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ECE17CF529E285B2E38D8FA48B46598 /* Thread.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB4F3488053D2461F9AA36EA05C0EEC7 /* Sort.h in Headers */ = {isa = PBXBuildFile; fileRef = 89ED5BD7D02A036D9A9A56C50301207B /* Sort.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CCCADFFB04902A3BDA69727D9E4B2DDB /* MtCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D3D27FC33E2100299A86561635A90E0 /* MtCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CD1FCA74A09BF492C933773156951AD6 /* LzmaSDKObjCInFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19E913C7C756BADA1A23AEF5D61F548 /* LzmaSDKObjCInFile.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CDE297B96CA6B8271E6D0CAE8C363861 /* LzmaSDKObjCReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBCB282616836B105B07725BC31D9A8E /* LzmaSDKObjCReader.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CD0FDC22EEA2A26ED3531800CB1208E3 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9DFD24E764660EF1C72749DD3155A3D /* BcjCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CDE533F2BACED3F614D378E619786C5F /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DF7E5655802AE14A0CAFADFF61E32F8 /* BcjRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CE5E88EFD8606B8FA7BF648568826CD2 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69CBD4D7726E19328F35056AFFDF7A3B /* XzCrc64Reg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CEC1CA6806E0E25E1063A8D2E3E2B7DB /* Lzma2Dec.h in Headers */ = {isa = PBXBuildFile; fileRef = C88D3D6A1BAA54F1A65E08A4E53578BF /* Lzma2Dec.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CF0ED82C8676D62BBC7AD97EEF8CA473 /* LzmaSDKObjCWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = F98CBF602E0BA93396DC4B1B18019146 /* LzmaSDKObjCWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CF16A64E850EECAB96EE43FBC63EE61E /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D86982A184533097067886FB68BB7C /* 7zEncode.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D0032DFA1D50009B997625C860199676 /* Lzma2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A885E6927868515212136E17EA01514 /* Lzma2Register.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D0407BB3D42DEDEA2D223EC65DE06858 /* VirtThread.h in Headers */ = {isa = PBXBuildFile; fileRef = CBE02B09068F3BF1B6F15EEF55297CC9 /* VirtThread.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D0FAA6196AD7902A7E802D1394550B64 /* MyString.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE76F345A036330FEF7603B788C9368 /* MyString.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D1084A00EB4D9B32805988B281950C80 /* PpmdEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 522B9B8AC66D04F7D83641E47A5C8D1C /* PpmdEncoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D14323FBC35EF048D6B21861745D5CB2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6DDE284B36E31984D839D5F8B464EBB /* Cocoa.framework */; };
-		D2FC69B6D8F1A8359517E2E5DFDDF1E4 /* CopyCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D3C3130542670D760930BDF1E9C64E8 /* CopyCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D340C8C29D99B0332E18FEDA66F584DC /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 683929BA852FD678C5FB50438E75DCA1 /* Common.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D3468240ECD80F609138B446AC7F04C7 /* LzmaSDKObjCInFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 853120517E00C289F68090CC6AF33074 /* LzmaSDKObjCInFile.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D3C128C4559340BE48B0020D295A81B4 /* 7zEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9406FA65B39590E1953D4C4B6933AF1C /* 7zEncode.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D467DF2C9674CE221236B6448271442F /* LzmaSDKObjCReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D585086F083098C4C39B8138D6A5C8 /* LzmaSDKObjCReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D473C23A1740CB9C6B847CF3758715C0 /* LzmaDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E12429E35F64769862633447E228C /* LzmaDecoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D478AD6D528F91AB4377B617380C48A0 /* DummyOutStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A25411F28ADF9D2D4FEEE1E0F3AA193 /* DummyOutStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D5D4D51DEDAB268091D215A515C67975 /* IArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE0962145395158FEA818D8DE5D8222 /* IArchive.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D64BCC6EACF92AE1E379537F290D7C74 /* MyCom.h in Headers */ = {isa = PBXBuildFile; fileRef = 7717845D04ABEAE8156E8F4E583C4748 /* MyCom.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D729A9340BF4C72FF2B4EF56F257BDCD /* Lzma2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE9C5D7EB314EB2061A770AFB019837C /* Lzma2Encoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D735A902AD41C1DE8369792667BE4F17 /* 7z.h in Headers */ = {isa = PBXBuildFile; fileRef = F98C208D81C349323EBD11AE0EFF4EBC /* 7z.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D79CCE6BCF835AF2BEFE4EFC253B12AE /* InStreamWithCRC.h in Headers */ = {isa = PBXBuildFile; fileRef = C806957FA7088F932BAFB29EE73CE8A0 /* InStreamWithCRC.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D7A8630F88232BD7BB3E37AE5C9B52C8 /* LzmaSDKObjCOutFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59458BA5DE338422F00D7CDBB3E23745 /* LzmaSDKObjCOutFile.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D873503712285D761243B57799D318FA /* CpuArch.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C7CC6D89D8CB02B25D3E88FEDC0C7CD /* CpuArch.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D9F011556ED57F07ECA4B8BF3DF2107B /* Lzma2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = DF8CFDD5F5872D923A8FAA38EFEF4806 /* Lzma2Enc.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DAF37E56EE8994FF195B0DE70D351E26 /* Lzma2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A885E6927868515212136E17EA01514 /* Lzma2Register.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DBF2661165329EA050BB1B6F61EFFE02 /* IProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = B5809926AD876B352D987793918A8A27 /* IProgress.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		DEA2929196EF880A488BAE0779004CDF /* LzmaSDKObjCBaseCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05AE70638D45CF8EC9F95881D61B32F3 /* LzmaSDKObjCBaseCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DC44AB116F92F6A772856446D5841DA9 /* XzDec.c in Sources */ = {isa = PBXBuildFile; fileRef = A508E22B651A854F88A08CE183128DC9 /* XzDec.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DD5DD98DF0B90023E213159EC09AB38D /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E750DF18B5F5A1CA05F5B7F22AB358 /* 7zExtract.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E0504A1753C6ACF3DE72FD2C9C18618E /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAB0A883679DA62ADFD2885E09B165F5 /* DummyOutStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E0AF25954FB3DCF345F37E849CBBEB28 /* Bcj2Coder.h in Headers */ = {isa = PBXBuildFile; fileRef = 01CA50C12B48518CFFEB80D0089D50E6 /* Bcj2Coder.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E1F9E56D56CD8B85CC27328640DB5A23 /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBB88A9884BB19BBAA146029DF052F2F /* Bcj2Coder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E2072A5F83E6E489B2A1A4D597AEF266 /* InOutTempBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = D09385FCAC0E2162323ECB14B9715470 /* InOutTempBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E2B6CFEDAFCA70BCED9FB8CD32FD5B19 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E073C96BCB7F42D5F22CD8FC3908E5FE /* SystemConfiguration.framework */; };
 		E3502A88F8CC62385C113FF437DC75C2 /* Delta.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9F90EBA0BCE390B186B8D42513A1AE /* Delta.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E416EC926975A5BF04F405CEB891D7E7 /* NSString+ah_versionCompare.h in Headers */ = {isa = PBXBuildFile; fileRef = 29032DCD7BF788619900E3AE3E352EE9 /* NSString+ah_versionCompare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E626020F4E377AEAEAA52F7B4CF83FC8 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 60646F4691EE4C61A79BE313008EB506 /* LzmaSDKObjCUpdateCallback.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E6757D4B0DE2133DE88F8E9FDAD70E3E /* StreamBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF503828E8A0A3B736D61176053DD13 /* StreamBinder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E6EE17E6BFC5CF70167EC4864D741B41 /* MyVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A8126C5BEB26EF3ACF6C98A50B3D553 /* MyVector.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E8275FD921D6C64F7103F62C50BF2D3E /* Bcj2.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B6D7771B8422158E8813F16FA44308 /* Bcj2.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E946C64C8C73AE5EA0D42F65A6BE8A0D /* LzmaSDKObjCError.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F849B0CB5880B0C314F099DB8A45 /* LzmaSDKObjCError.mm */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E97AEB02A238F7BA3FA84C23811E3B6B /* CodecExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4531BDE748FA1386976948A832CF894 /* CodecExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E9B98A7A18A5958C8FD1E3DE47EA2459 /* LzmaRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8942162F8AC3EA0C5B8AB80EC9B50D7 /* LzmaRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EC68798B86F84054E9B492964FEF9E03 /* CrcReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A24F7CEF509E85D7F1CEDB28C78E7129 /* CrcReg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		ED7247462CDEF6EDE3BBF00A979EAD5F /* 7zProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 982C2A7E3118F82F14822647CD970845 /* 7zProperties.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EE539F561DAAEE7935FBB2F76D356B2F /* FileStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E088B7D50C13B482022C22DDFD242 /* FileStreams.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EF3DE5A64EA2D94FE1675D8CE9E5F385 /* 7zStream.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE3AB1D98DE585BEDD75C8BFE365D /* 7zStream.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EF7427410E357184727247C5A889C5AD /* C_FileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5A530BE23F089910B2D97FAC48824D /* C_FileIO.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F04C4A3B4E35CE5BF0A2D8ED8A796946 /* LzmaSDKObjCCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A131410BF6E6EBD573CB2F13AE365767 /* LzmaSDKObjCCommon.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E91D97990D88DE3A188196CC5D642FFC /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D54B42156316C4EDD15E00AD526A3FCA /* MyWindows.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EB9C4B99E7F586C9CF6F080B6CDCC1EB /* 7zStream.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE3AB1D98DE585BEDD75C8BFE365D /* 7zStream.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EE173D738390AABE495A0533A16B0DCA /* LzmaSDKObjCOutFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59458BA5DE338422F00D7CDBB3E23745 /* LzmaSDKObjCOutFile.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EE2BFAFD2139B9DF8CA732D1BBD5916A /* OutStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A55FD75F1373C4A087C16BFB25798BF2 /* OutStreamWithCRC.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EFA1D7ACB9FD0050C739AA6CD872BA96 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EEDF68A244DE6EB66DF6AC570A42E54 /* Wildcard.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EFBE87E2930A970F385F17277E7A2021 /* Sha256Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A9DF6B3605FC46548C189BD22D7D1 /* Sha256Reg.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F06FF82986B137FF87A9767A7E69265A /* Lzma2DecMt.h in Headers */ = {isa = PBXBuildFile; fileRef = 43262F3118D4F787B2D6B474EF2F2C61 /* Lzma2DecMt.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F0984234D856DCB0CBE8A0BCDE699E37 /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C47B557D06C6FA7A0DAF443B392A40A /* 7zAes.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F0EC7E2EE1A1B0D5CCCA09E33DFC8D78 /* StringToInt.h in Headers */ = {isa = PBXBuildFile; fileRef = E26044DA1C0A1BAF4B2EC3CE0251DB8A /* StringToInt.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F2B70722C070BEA4213AE193A510F44F /* StdOutStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E79BF9F271C129C4F2C45B9C1372C522 /* StdOutStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F39D2F8170AC2111EE247FE078FF5768 /* StreamObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3BDAAEEC932E93FF844A32B4485870F /* StreamObjects.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F3D415A08161E405F6794BBF77A4C744 /* Xz.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D8D0906718F127AE334657ABD3E803 /* Xz.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F56DBE7E1F469D4E7D320685F626AECC /* MtDec.h in Headers */ = {isa = PBXBuildFile; fileRef = 057C4101DC6BA4D8825B9DC878997C8C /* MtDec.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F62708B44D5DE10389583180270090C4 /* MyUnknown.h in Headers */ = {isa = PBXBuildFile; fileRef = 23BBACDE4D82B1A1DD2D597380777324 /* MyUnknown.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F75293E846E8810C2B1ACDEAF8602A2C /* HandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B161AFA901626C34E43A0DD9FD27DE1 /* HandlerOut.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F7A0E61FE17BA55A46FDF13913D42CE1 /* Lzma2Enc.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EF7B0ED04039770A4732553AC1FD3ED /* Lzma2Enc.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F887890CC4B9CB37D2F3076213C668F2 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B4C3BA0AADAF12F2EC8C8A97B697A69 /* ArchiveExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F9409864F71F9CB659997C83C79F9C7B /* OutBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C0AF4ED76C48F7BB81E9F05383DC3FD /* OutBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FB3615E21935A3B295B0F1F1728A89C2 /* 7zDecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC17F9B9CE5381B6D48764363FFBACD /* 7zDecode.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FB5EB171AD05D6B8253261495914FA78 /* Bra86.c in Sources */ = {isa = PBXBuildFile; fileRef = ABBA1D893F9A39C02243CEF84D86A9C7 /* Bra86.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FB87DA2FD3FF4D13EED2D30C5BDD41D8 /* LzmaAppleCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 44DFF7CCBEB1EC8190C5FAC44CF4B217 /* LzmaAppleCommon.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FBDD26DFCE9A44B8069F3452A461C2AE /* TextConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 20117F1A22FDAB84520C43C2E46C4FFE /* TextConfig.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FD77DDD5AECF937FEF1DE801591F60F0 /* NSString+ah_versionCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA5D2427B994485EF9B335EEA2C0E8A /* NSString+ah_versionCompare.m */; };
-		FD9F1D89D21DD1A1A1C664BC6A4F3F7D /* ByteSwap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C511E3FFB428A2D0F19552ADDF0EE /* ByteSwap.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FDD206B3FDD3F1F80D5794FF5F08476E /* AHLaunchJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 7172ABB9D09C9E908D0FA82532776AB6 /* AHLaunchJob.m */; };
 		FDD2BD59D61BC63E85B9938789548F31 /* AHServiceManagement_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF23BF08B0649A6A96ADDE9AD549C10 /* AHServiceManagement_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEEB3DD640D9CB0BF494D736D5E21C46 /* CopyCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = AF31B9E9D413EB00C92FE73E5F9AD566 /* CopyCoder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FEF498591514A70C047176584CEF17E4 /* NSFileManger+Privileged.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BCA225F7932690F1886567174434656 /* NSFileManger+Privileged.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFE954F621E513AC1BDE6120C82C5248 /* FilterCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 664BE710FAB7F4702F5058905C045E0D /* FilterCoder.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1 -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1494,127 +1494,127 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				574FB1B040768F2CB077E5DBFC9D3AA2 /* 7zAes.cpp in Sources */,
-				11F4FFEC3881E7CDC059BFEDB628250E /* 7zAesRegister.cpp in Sources */,
-				29EABABDAEC3B0C5B32804D2D27025AB /* 7zCrc.c in Sources */,
-				58A0D500E2190932689213516905BFC1 /* 7zCrcOpt.c in Sources */,
-				1B93EF32B7066B83E5DF0F924C6EAA6C /* 7zDecode.cpp in Sources */,
-				CF16A64E850EECAB96EE43FBC63EE61E /* 7zEncode.cpp in Sources */,
-				15D0D90D5151DACF1EF595DB7F46ABD8 /* 7zExtract.cpp in Sources */,
-				614389559B5DDD24267C565F5294BB1B /* 7zFolderInStream.cpp in Sources */,
-				21117777EC813A9EB199A5B4683F9E0E /* 7zHandler.cpp in Sources */,
-				C329BBFEACE67F1C8918624AA1B5FB98 /* 7zHandlerOut.cpp in Sources */,
-				1259D386628D83FCEC7647FD540B08ED /* 7zHeader.cpp in Sources */,
-				377E61B26D9A48CBD96CCEA004DB988B /* 7zIn.cpp in Sources */,
-				A36FBC091C9652E18DF3A9C69C8A819B /* 7zOut.cpp in Sources */,
-				ED7247462CDEF6EDE3BBF00A979EAD5F /* 7zProperties.cpp in Sources */,
-				634B6113632C63F92651910E311301BF /* 7zRegister.cpp in Sources */,
-				A4A853F5B3E18F0BB0142642D9342112 /* 7zSpecStream.cpp in Sources */,
-				EF3DE5A64EA2D94FE1675D8CE9E5F385 /* 7zStream.c in Sources */,
-				4584D71E245D6BE0A69D4B9DD7762792 /* 7zUpdate.cpp in Sources */,
-				250B6FD9C3495521DD70F41EB2EA32E3 /* Aes.c in Sources */,
-				9C80EE49D8A7202CA554BDA1CDB3B53E /* AesOpt.c in Sources */,
-				82EB6DAD29F1C614264C46BB5342C057 /* Alloc.c in Sources */,
-				F887890CC4B9CB37D2F3076213C668F2 /* ArchiveExports.cpp in Sources */,
-				175CFF8BB52A1602499C4CCFB6F9E80F /* Bcj2.c in Sources */,
-				A933E569306216FB9F6F3E9BBE7C3AD4 /* Bcj2Coder.cpp in Sources */,
-				068409F2EDF05EA13158E640C027C432 /* Bcj2Enc.c in Sources */,
-				7BCBD452B9DA44CAA1D374B02E938BE1 /* Bcj2Register.cpp in Sources */,
-				7D54B2DD86599101DBA3B1E754530165 /* BcjCoder.cpp in Sources */,
-				307AD47985D6EA1A233DBE9E86A79C17 /* BcjRegister.cpp in Sources */,
-				B7A2B42B10B0A6DAC5692D917354F9EB /* Bra.c in Sources */,
-				BEBB6431462CB10747912E5BDF87E35E /* Bra86.c in Sources */,
-				1C503E4E98E418448CBEE576151F6724 /* BraIA64.c in Sources */,
-				201AD2E02650D5304DEF7D9AFBE0C5B0 /* BranchMisc.cpp in Sources */,
-				5C608DA33A1B0B2CFCD1FE0F63633D2D /* BranchRegister.cpp in Sources */,
-				FD9F1D89D21DD1A1A1C664BC6A4F3F7D /* ByteSwap.cpp in Sources */,
-				EF7427410E357184727247C5A889C5AD /* C_FileIO.cpp in Sources */,
-				E97AEB02A238F7BA3FA84C23811E3B6B /* CodecExports.cpp in Sources */,
-				5CFADFDA4CDEBAB23CB8F07E8F3FC165 /* CoderMixer2.cpp in Sources */,
-				D2FC69B6D8F1A8359517E2E5DFDDF1E4 /* CopyCoder.cpp in Sources */,
-				34DEDB7344C5285E0FD40FF728F264E8 /* CopyRegister.cpp in Sources */,
-				1CD4079A14B4BA962EFFA9769693A2A4 /* CpuArch.c in Sources */,
-				EC68798B86F84054E9B492964FEF9E03 /* CrcReg.cpp in Sources */,
-				497016DDB6E81C23C52379477153C55B /* CreateCoder.cpp in Sources */,
-				9D5F579691D1C6C2BBFF9E8C5DD8C3ED /* CWrappers.cpp in Sources */,
-				1732288F7EF9BF2CB9B6DE9FC67FE82A /* Delta.c in Sources */,
-				B392CD19B14AC512475CADBD88426A0D /* DllExports2.cpp in Sources */,
-				020A5BE1DBBD7BB9D6CBCEEC474EF38C /* DummyOutStream.cpp in Sources */,
-				EE539F561DAAEE7935FBB2F76D356B2F /* FileStreams.cpp in Sources */,
-				FFE954F621E513AC1BDE6120C82C5248 /* FilterCoder.cpp in Sources */,
-				95DFC13118CD2BD45470BB3F26AE98F3 /* HandlerOut.cpp in Sources */,
-				A669FC25B059586A8914DC3735A45076 /* InOutTempBuffer.cpp in Sources */,
-				0872107DE38033F38C4FEF5EFAB12476 /* IntToString.cpp in Sources */,
-				0571542994D045D1F77FC731C06AC553 /* ItemNameUtils.cpp in Sources */,
-				67ED194366D6E2A106166C7237B97887 /* LimitedStreams.cpp in Sources */,
-				C6005A7DFD6B2B128EC181F284DEACAC /* LockedStream.cpp in Sources */,
-				93DCAE1D185EB62E9EA73B46DCB94F8D /* LzFind.c in Sources */,
-				2CD2657F902B344F65568652E367DA05 /* LzFindMt.c in Sources */,
-				A885880D4A30F826381C98376557F6A7 /* Lzma2Dec.c in Sources */,
-				226462BFB5D2DDEAD7F800566B898532 /* Lzma2DecMt.c in Sources */,
-				7F9D664DE94328B677A10E174EFE948D /* Lzma2Decoder.cpp in Sources */,
-				A74E35178EA9687F9907BED59FD6E0FB /* Lzma2Enc.c in Sources */,
-				BEDD59F786EA6134C1515CEA716A80C6 /* Lzma2Encoder.cpp in Sources */,
-				D0032DFA1D50009B997625C860199676 /* Lzma2Register.cpp in Sources */,
-				90521BBDCD7A459A4ABF7D4D6318DB56 /* LzmaDec.c in Sources */,
-				D473C23A1740CB9C6B847CF3758715C0 /* LzmaDecoder.cpp in Sources */,
-				8DF15664DA8D35F25E8B9AFD2887558F /* LzmaEnc.c in Sources */,
-				80AE1155A1E9A0743E8E6A799219927D /* LzmaEncoder.cpp in Sources */,
-				A966A61FF5D9793DA749DF8429A7DB43 /* LzmaHandler.cpp in Sources */,
-				E9B98A7A18A5958C8FD1E3DE47EA2459 /* LzmaRegister.cpp in Sources */,
+				F0984234D856DCB0CBE8A0BCDE699E37 /* 7zAes.cpp in Sources */,
+				A30B4BDEDEA532647D38301270F76622 /* 7zAesRegister.cpp in Sources */,
+				3657EDA5CB58511AEC471046A3F71E20 /* 7zCrc.c in Sources */,
+				777CB7D563B8F9CBA5A2D2FE53962EF6 /* 7zCrcOpt.c in Sources */,
+				2C286A6DB0099E19D14CBA16473E8B24 /* 7zDecode.cpp in Sources */,
+				2EA80E0DE1ABD094A1B89614ED4F031D /* 7zEncode.cpp in Sources */,
+				DD5DD98DF0B90023E213159EC09AB38D /* 7zExtract.cpp in Sources */,
+				C042751A3E981DCB7F3621155DF24EF6 /* 7zFolderInStream.cpp in Sources */,
+				5E27EDAB47A58100D88856D4EE28B66D /* 7zHandler.cpp in Sources */,
+				8C2FA864CCAF6127FF6454EA1A1CBFC6 /* 7zHandlerOut.cpp in Sources */,
+				B23C9D9A4E51B3CE1DBD911B9566C53B /* 7zHeader.cpp in Sources */,
+				39393F92A681253357E8B4A5099241BB /* 7zIn.cpp in Sources */,
+				3437FDF6C98AFDBD0FB7C32E22BFE100 /* 7zOut.cpp in Sources */,
+				9DDA20095938D2DB47F43965B4C2DFC5 /* 7zProperties.cpp in Sources */,
+				964BDB526DAB1D23DF3365BEE4275969 /* 7zRegister.cpp in Sources */,
+				4D0F328B9B6D1E100AAC1326A6D4A274 /* 7zSpecStream.cpp in Sources */,
+				EB9C4B99E7F586C9CF6F080B6CDCC1EB /* 7zStream.c in Sources */,
+				2F080A6285952B9886255D94AE725203 /* 7zUpdate.cpp in Sources */,
+				22ED0609BED22B4FD72F8F974035318B /* Aes.c in Sources */,
+				4CA626DF60388C307ABA75DAC0691CC8 /* AesOpt.c in Sources */,
+				521263A474D243513FD1449075282C72 /* Alloc.c in Sources */,
+				82C1266486CCC136F2C3B7F823627D99 /* ArchiveExports.cpp in Sources */,
+				98D9A0C892431D36500C3B363856B89C /* Bcj2.c in Sources */,
+				E1F9E56D56CD8B85CC27328640DB5A23 /* Bcj2Coder.cpp in Sources */,
+				11924F4D2235D88565DEC41BC7EB627A /* Bcj2Enc.c in Sources */,
+				73539E559128EDD469A958AEEB75BEDC /* Bcj2Register.cpp in Sources */,
+				CD0FDC22EEA2A26ED3531800CB1208E3 /* BcjCoder.cpp in Sources */,
+				CDE533F2BACED3F614D378E619786C5F /* BcjRegister.cpp in Sources */,
+				A24B78B1C237457253D4D00BF2ABF98D /* Bra.c in Sources */,
+				FB5EB171AD05D6B8253261495914FA78 /* Bra86.c in Sources */,
+				71C44C44331A952724906295ECD30C0F /* BraIA64.c in Sources */,
+				85DBE620AA1A86E40F87729BA953E9A7 /* BranchMisc.cpp in Sources */,
+				52298808420AEDCD5BA12B9D7404FEEB /* BranchRegister.cpp in Sources */,
+				BFB708533B85AAD9C78A342D91BA67A5 /* ByteSwap.cpp in Sources */,
+				9A6177087777D2C15941CFBE1DB2CC4A /* C_FileIO.cpp in Sources */,
+				C5B988F3251A5C5E541D36397798A69A /* CodecExports.cpp in Sources */,
+				3FF5EBBD61E79D9A16B9F0DBC6331A01 /* CoderMixer2.cpp in Sources */,
+				C7B46DE2EB56DAE7604EE66FA16A16DD /* CopyCoder.cpp in Sources */,
+				3B78FAC03C14C7FDF103BEA300411700 /* CopyRegister.cpp in Sources */,
+				D873503712285D761243B57799D318FA /* CpuArch.c in Sources */,
+				2BBAA3D841877EF60D511DB71A09D3D4 /* CrcReg.cpp in Sources */,
+				80B112A68136498E5147FC268AE54480 /* CreateCoder.cpp in Sources */,
+				28DBF57E9B48CB659D3D41D0026F4D87 /* CWrappers.cpp in Sources */,
+				BD4A7F472F68D94D241C4646C4A9F5CD /* Delta.c in Sources */,
+				2B8FF49AE6D8BBB35FC0826A138D5821 /* DllExports2.cpp in Sources */,
+				E0504A1753C6ACF3DE72FD2C9C18618E /* DummyOutStream.cpp in Sources */,
+				746E5C7B7ED13228C34FF1B1342F53B3 /* FileStreams.cpp in Sources */,
+				882F3EEA7EC3DDF1DE55C176DB4A99CB /* FilterCoder.cpp in Sources */,
+				F75293E846E8810C2B1ACDEAF8602A2C /* HandlerOut.cpp in Sources */,
+				3AF27BEF6A8DDDD0CC7F733F20B560A1 /* InOutTempBuffer.cpp in Sources */,
+				B79B541ED90EAB5B14979A7BB61E8542 /* IntToString.cpp in Sources */,
+				7AEF1D4C845ACC8634C256A7DCDFED73 /* ItemNameUtils.cpp in Sources */,
+				4F7617E50CE1E852D7D63E134A8FE13B /* LimitedStreams.cpp in Sources */,
+				9AC3A1F634896D3E0EC7F38BEABA9CC4 /* LockedStream.cpp in Sources */,
+				A82080A4757E8BC1BEA41F6CBB363477 /* LzFind.c in Sources */,
+				AA6C67A9467ED2D4DD6369D05DBA8A45 /* LzFindMt.c in Sources */,
+				06987176084D52A78FBB6D3C1DE30B35 /* Lzma2Dec.c in Sources */,
+				67A2F208008F555E91CD918FEECFA962 /* Lzma2DecMt.c in Sources */,
+				A4E034C31A04998B9C69838CD5E6A1F9 /* Lzma2Decoder.cpp in Sources */,
+				D9F011556ED57F07ECA4B8BF3DF2107B /* Lzma2Enc.c in Sources */,
+				D729A9340BF4C72FF2B4EF56F257BDCD /* Lzma2Encoder.cpp in Sources */,
+				DAF37E56EE8994FF195B0DE70D351E26 /* Lzma2Register.cpp in Sources */,
+				821A36D93D435ADA0EE29072B3AD332A /* LzmaDec.c in Sources */,
+				37F3BA5657393C579865E4C4E05DCB0B /* LzmaDecoder.cpp in Sources */,
+				4317840F46D92EE6A859A12066958323 /* LzmaEnc.c in Sources */,
+				8B6AF2E3B375CDE9B25440DCF841E40F /* LzmaEncoder.cpp in Sources */,
+				532D5C99EEF13A08A79AAA12DAB7CDD3 /* LzmaHandler.cpp in Sources */,
+				A9FE09489DB9AE79F561A5F12A7DFABB /* LzmaRegister.cpp in Sources */,
 				152E5F08AEEB5F595EE3D856001F44D9 /* LzmaSDK-ObjC-dummy.m in Sources */,
-				83ED4D9BF5E157B442E820AE6BC35C92 /* LzmaSDKObjC.mm in Sources */,
-				DEA2929196EF880A488BAE0779004CDF /* LzmaSDKObjCBaseCoder.cpp in Sources */,
-				09DEDF385E25A286068D2A7BC635B2FE /* LzmaSDKObjCBufferProcessor.mm in Sources */,
-				F04C4A3B4E35CE5BF0A2D8ED8A796946 /* LzmaSDKObjCCommon.cpp in Sources */,
-				E946C64C8C73AE5EA0D42F65A6BE8A0D /* LzmaSDKObjCError.mm in Sources */,
-				38790BF393B344A4D2E0128F7FCCECB4 /* LzmaSDKObjCExtern.mm in Sources */,
-				B76AF846B7FE3F9E8C4877C8827E59CD /* LzmaSDKObjCExtractCallback.mm in Sources */,
-				456FE6AD9A4470F1137E50D232ADAB5C /* LzmaSDKObjCFileDecoder.cpp in Sources */,
-				8F8718EEF8FB53C7E7F1622E1CF06416 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
-				CD1FCA74A09BF492C933773156951AD6 /* LzmaSDKObjCInFile.cpp in Sources */,
-				C1D3BDB34C3CD06E916B176147C2FB5C /* LzmaSDKObjCItem.mm in Sources */,
-				A321A7E2832A432BB36332C96E4251C4 /* LzmaSDKObjCMutableItem.mm in Sources */,
-				BDA30050C19706D9DED8329B02D47A30 /* LzmaSDKObjCOpenCallback.cpp in Sources */,
-				D7A8630F88232BD7BB3E37AE5C9B52C8 /* LzmaSDKObjCOutFile.cpp in Sources */,
-				CDE297B96CA6B8271E6D0CAE8C363861 /* LzmaSDKObjCReader.mm in Sources */,
-				E626020F4E377AEAEAA52F7B4CF83FC8 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
-				2B89836EE5CF499A5D5ABDD24C24D69B /* LzmaSDKObjCWriter.mm in Sources */,
-				36239DA90E9D67529F924AB1FCDD3D40 /* MethodProps.cpp in Sources */,
-				1A0F13F5B79672203D3795FFE84C5109 /* MtCoder.c in Sources */,
-				1485FF177242669E9950AC74259F171B /* MyAes.cpp in Sources */,
-				57E3400BFCC868D9CED902D07B28D682 /* MyAesReg.cpp in Sources */,
-				515E69FAF251B112A35C2414AE66B387 /* MyString.cpp in Sources */,
-				7C9A079834EA8D5D93465014A876D4E2 /* MyWindows.cpp in Sources */,
-				5505F44E04FFC2B44404DB9D3E96C9C1 /* OutBuffer.cpp in Sources */,
-				B33892B03ED75DEABB318E701FA9A67C /* OutStreamWithCRC.cpp in Sources */,
-				27887EC0C1BCDD6677EB4BA8F2BD363E /* Ppmd7.c in Sources */,
-				115F4EBFA87D8EFEF0A9D486C0D910FF /* Ppmd7Dec.c in Sources */,
-				AE4B2AB3B929C0F251587334E2835118 /* Ppmd7Enc.c in Sources */,
-				9A6330BA8E6DDC4D1E7CF7B17144A370 /* PpmdDecoder.cpp in Sources */,
-				87475DE082A434671109B61962156A0C /* PpmdEncoder.cpp in Sources */,
-				00D0FBE969CB26171B0D4353AC64BD2D /* PpmdRegister.cpp in Sources */,
-				C80583B5F79C00365CEDE4CB3BFCB631 /* ProgressUtils.cpp in Sources */,
-				0E7A18731F538E58BB0138E4B4321238 /* PropId.cpp in Sources */,
-				8843B587792C5BE662850E88899DF21E /* PropVariant.cpp in Sources */,
-				5555169CF1C875A6448E96D078BD9AA3 /* PropVariantConv.cpp in Sources */,
-				85BF480A7C95B0E694DC87C4674B2EC1 /* RandGen.cpp in Sources */,
-				11F719D8AD9CF0E121630FD040949320 /* Sha256.c in Sources */,
-				3953CD45E707B55BC854B292F0331426 /* Sha256Reg.cpp in Sources */,
-				134EDB1948B2745888FD90A305634FA4 /* StreamObjects.cpp in Sources */,
-				69CBADC25E015E7198DAB89CF057DDA6 /* StreamUtils.cpp in Sources */,
-				61046C84FA10EF3C5DC43890F3203C7F /* StringConvert.cpp in Sources */,
-				AA2CB2E971F24B845178DBC3F67FAA91 /* StringToInt.cpp in Sources */,
-				20BA40BABEFD41658562861518C71F7D /* Threads.c in Sources */,
-				8C9552322C70E6B863088A26398F017C /* VirtThread.cpp in Sources */,
-				8A0C83229D1FA58AF98ACF8B9CABF4FC /* Wildcard.cpp in Sources */,
-				60D9C79142ED9100E87DA2AD983AF9B5 /* Xz.c in Sources */,
-				033F574DA3E151EA69FBFF3AEB9390BC /* XzCrc64.c in Sources */,
-				52D018E28202458ED603BFD2196274A2 /* XzCrc64Opt.c in Sources */,
-				88945F531C684E8DAA3ECDF9D8ACE8D6 /* XzCrc64Reg.cpp in Sources */,
-				C00D525EE7B033A7DFCB9863606F27BF /* XzDec.c in Sources */,
-				70F66DF28B226D7FC9B4C0058FF72E1A /* XzEnc.c in Sources */,
-				02ECB1B0125837DF2CB4CD4537E35DA2 /* XzIn.c in Sources */,
+				77401FB5102DC101EDCB6D2AC54E3FEA /* LzmaSDKObjC.mm in Sources */,
+				BA75BDBDDD0BD85C579C8AEDFCA6EE7E /* LzmaSDKObjCBaseCoder.cpp in Sources */,
+				595337BE78F4844E80401811820597A1 /* LzmaSDKObjCBufferProcessor.mm in Sources */,
+				9DA44BB07FE8FEE85C057FF75B9C5758 /* LzmaSDKObjCCommon.cpp in Sources */,
+				7692018809976A94894F189413753719 /* LzmaSDKObjCError.mm in Sources */,
+				10C29B6A430527DE67B1AF7B06DEAE47 /* LzmaSDKObjCExtern.mm in Sources */,
+				0CC7182F850C65AD383CB45F76F90CBE /* LzmaSDKObjCExtractCallback.mm in Sources */,
+				71A6EED63E9513F9BED9186B0288E8C3 /* LzmaSDKObjCFileDecoder.cpp in Sources */,
+				2B4FEA0E9020E94F7F686E55ED1FAA2D /* LzmaSDKObjCFileEncoder.cpp in Sources */,
+				B63F9F713A3DD436ACF1BE360E0B1FDA /* LzmaSDKObjCInFile.cpp in Sources */,
+				1FB2712A0814D69E1B95EAB2255E52C9 /* LzmaSDKObjCItem.mm in Sources */,
+				B9942635FCB03B8A172D106A7C9DEBCC /* LzmaSDKObjCMutableItem.mm in Sources */,
+				86B3EB0116A9F1978E1D02F63AF36D01 /* LzmaSDKObjCOpenCallback.cpp in Sources */,
+				EE173D738390AABE495A0533A16B0DCA /* LzmaSDKObjCOutFile.cpp in Sources */,
+				1B5AFCF9C0E7FBF99839FF294D1D9EBF /* LzmaSDKObjCReader.mm in Sources */,
+				608AB9BB92F823D2EE98458CA4E07045 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
+				50D0D589B19A5AB066ABA978AE2E072D /* LzmaSDKObjCWriter.mm in Sources */,
+				8B163996E29F0095FB10143E5C9B54F3 /* MethodProps.cpp in Sources */,
+				A71475D8B609B6DD3386479FB9DE45F7 /* MtCoder.c in Sources */,
+				56A0AF44B6269D56B77B5555201DB2FC /* MyAes.cpp in Sources */,
+				2D6D362353D8BFD770479E6FA55747F7 /* MyAesReg.cpp in Sources */,
+				1BB3FCB01128C2BB119E882DB3EB7356 /* MyString.cpp in Sources */,
+				E91D97990D88DE3A188196CC5D642FFC /* MyWindows.cpp in Sources */,
+				3018630E460238D632DEA866426016D1 /* OutBuffer.cpp in Sources */,
+				EE2BFAFD2139B9DF8CA732D1BBD5916A /* OutStreamWithCRC.cpp in Sources */,
+				162E8251975E526D8626092C38F58DAC /* Ppmd7.c in Sources */,
+				601EFAA41BE2C064F4ECCD4616B36AEE /* Ppmd7Dec.c in Sources */,
+				BE18F36984BEAFF55BC110E79EDE26E7 /* Ppmd7Enc.c in Sources */,
+				3D16E456F839615F3790BFD8CC12D28C /* PpmdDecoder.cpp in Sources */,
+				5B43BC29766C764C5944EB3885B165DB /* PpmdEncoder.cpp in Sources */,
+				11ACF19C3CF75C4B61E0D9706CAB5C19 /* PpmdRegister.cpp in Sources */,
+				94022A07273EEF7FEFB7FCA9257CC5AE /* ProgressUtils.cpp in Sources */,
+				C3D2BD35D1CCEDD75A50EE73BFD26C8A /* PropId.cpp in Sources */,
+				9CD633F2794C6DF5A5889E0120EF08E7 /* PropVariant.cpp in Sources */,
+				96F18AE8A479FD106D82D3F496742438 /* PropVariantConv.cpp in Sources */,
+				B6514D9414239D2F5CFB11AF3BA63F33 /* RandGen.cpp in Sources */,
+				A75A19D2AF1498E201719F828A235989 /* Sha256.c in Sources */,
+				EFBE87E2930A970F385F17277E7A2021 /* Sha256Reg.cpp in Sources */,
+				F39D2F8170AC2111EE247FE078FF5768 /* StreamObjects.cpp in Sources */,
+				401A6D5D4216EF0038D8C01C9018EF5E /* StreamUtils.cpp in Sources */,
+				7BB62EDC3B08515D4E6AEC501CD2CAFF /* StringConvert.cpp in Sources */,
+				948A38971C70E883D1417C569C3394BB /* StringToInt.cpp in Sources */,
+				50373382B0A2210074A6864069CE1A5C /* Threads.c in Sources */,
+				4D85DF1FBB4BB2AFE68FC99146E30FA4 /* VirtThread.cpp in Sources */,
+				EFA1D7ACB9FD0050C739AA6CD872BA96 /* Wildcard.cpp in Sources */,
+				AF3B16C5BD74B93D376E528E269E9C86 /* Xz.c in Sources */,
+				C257228DC8A28E5A6465195F7FE4BE77 /* XzCrc64.c in Sources */,
+				22952233A37DAF669E121B441F2FC453 /* XzCrc64Opt.c in Sources */,
+				CE5E88EFD8606B8FA7BF648568826CD2 /* XzCrc64Reg.cpp in Sources */,
+				DC44AB116F92F6A772856446D5841DA9 /* XzDec.c in Sources */,
+				9E75DE08A130908D6109240607C11E01 /* XzEnc.c in Sources */,
+				0A22756FC7B6E5DD5EABDD587FFEA210 /* XzIn.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1931,6 +1931,38 @@
 			};
 			name = "Homebrew-Cask";
 		};
+		778D4BFF24A0978250377114B7AA3FD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7B3AEAA4C2975028AC507BA165C5C0A /* LzmaSDK-ObjC.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
+				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
+				PRODUCT_NAME = LzmaSDK_ObjC;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		7E36C3060F709374304650A441F2CCC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABC1B7FA4CFDDF8213C05A9A3889454C /* AHLaunchCtl.xcconfig */;
@@ -1963,7 +1995,7 @@
 			};
 			name = Debug;
 		};
-		92672E6EE15F03905E2F5AF85E6CA19D /* Debug */ = {
+		B631EB37CEFD493A0D7941207DA1F1B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7B3AEAA4C2975028AC507BA165C5C0A /* LzmaSDK-ObjC.xcconfig */;
 			buildSettings = {
@@ -1983,7 +2015,7 @@
 				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
 				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
 				PRODUCT_NAME = LzmaSDK_ObjC;
@@ -1994,38 +2026,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		C296C3CD223544787688A53959ACE480 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7B3AEAA4C2975028AC507BA165C5C0A /* LzmaSDK-ObjC.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
-				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
-				PRODUCT_NAME = LzmaSDK_ObjC;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		E14A99E172481EB0789BCF1FC24528B4 /* Homebrew-Cask */ = {
 			isa = XCBuildConfiguration;
@@ -2123,7 +2123,7 @@
 			};
 			name = Debug;
 		};
-		F007C584DA17ED35F4EDF519BF858F98 /* Homebrew-Cask */ = {
+		EA8A17B8B0900D57BB264D74F93BD27B /* Homebrew-Cask */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7B3AEAA4C2975028AC507BA165C5C0A /* LzmaSDK-ObjC.xcconfig */;
 			buildSettings = {
@@ -2143,7 +2143,7 @@
 				INFOPLIST_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MODULEMAP_FILE = "Target Support Files/LzmaSDK-ObjC/LzmaSDK-ObjC.modulemap";
 				PRODUCT_MODULE_NAME = LzmaSDK_ObjC;
 				PRODUCT_NAME = LzmaSDK_ObjC;
@@ -2197,9 +2197,9 @@
 		2D5EAF79AD59DF2C1A6DE3A85F72DD2B /* Build configuration list for PBXNativeTarget "LzmaSDK-ObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				92672E6EE15F03905E2F5AF85E6CA19D /* Debug */,
-				F007C584DA17ED35F4EDF519BF858F98 /* Homebrew-Cask */,
-				C296C3CD223544787688A53959ACE480 /* Release */,
+				B631EB37CEFD493A0D7941207DA1F1B4 /* Debug */,
+				EA8A17B8B0900D57BB264D74F93BD27B /* Homebrew-Cask */,
+				778D4BFF24A0978250377114B7AA3FD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
