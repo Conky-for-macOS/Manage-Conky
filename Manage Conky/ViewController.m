@@ -12,7 +12,7 @@
 #import "MCConfigEditor.h"  // Editor View Controller
 #import "MCTabbedConfigEditor.h"
 #import "AboutSheetController.h"
-#import "../MCPluginAPI/MCPluginAPI.h"
+#import "MCPluginAPI/MCPluginAPI.h"
 #import "ConkyThemesSheetController.h"
 #import "ConkyPreferencesSheetController.h"
 #import "Extensions/StringScore/NSString+Score.h"
