@@ -16,9 +16,6 @@ FOUNDATION_EXPORT const unsigned char MCPluginAPIVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MCPluginAPI/PublicHeader.h>
 
-// MC-API v0.1
-NSViewController *getMainViewController(void);
-
 @interface MCPlugin : NSObject
 - (void)start;
 @end

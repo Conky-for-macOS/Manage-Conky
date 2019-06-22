@@ -19,10 +19,8 @@
 		0948AF5321B172390067A111 /* NPTask.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0949D85922BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
 		0949D86022BA7D48005ECEB0 /* MCPluginAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */; };
-		0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */ = {isa = PBXBuildFile; fileRef = 0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */; settings = {ATTRIBUTES = (Public, ); }; };
 		0949D86522BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; };
 		0949D86622BA7D48005ECEB0 /* MCPluginAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0949D87222BA7EB5005ECEB0 /* MCPluginAPI.framework in Copy Plugin API */ = {isa = PBXBuildFile; fileRef = 0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */; };
 		094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */; };
@@ -36,6 +34,10 @@
 		09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7421AC9DF500FB7258 /* SetupFilesystem.sh */; };
 		09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */ = {isa = PBXBuildFile; fileRef = 09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */; };
 		09AA970F21D3F41F00339061 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */; };
+		09B21A1722BE49E50006C82B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09B21A1222BE49E50006C82B /* Info.plist */; };
+		09B21A1922BE4A2D0006C82B /* MCPluginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B21A1122BE49E50006C82B /* MCPluginAPI.m */; };
+		09B21A1B22BE4A380006C82B /* MCPluginAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B21A1422BE49E50006C82B /* MCPluginAPI.h */; };
+		09B21A1C22BE4A880006C82B /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B21A1322BE49E50006C82B /* ZKSwizzle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		09B56B08211B574E00075BC8 /* MCFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B56B07211B574E00075BC8 /* MCFilesystem.m */; };
 		09D11C992104C66F005C9685 /* SaveThemeSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D11C982104C66F005C9685 /* SaveThemeSheetController.m */; };
 		09D1EC2221BCBB300049BE37 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D1EC2121BCBB300049BE37 /* Preferences.xib */; };
@@ -273,14 +275,10 @@
 		093BDFC220861C0E004E6354 /* MCConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCConfigEditor.m; sourceTree = "<group>"; };
 		093DC7F6214139F7005C782B /* createDefaultThemepack.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = createDefaultThemepack.command; path = Tools/createDefaultThemepack.command; sourceTree = "<group>"; };
 		09473739206AF28D009881EB /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
-		0949D84822BA7BB4005ECEB0 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
 		0949D85022BA7D48005ECEB0 /* MCPluginAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCPluginAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPluginAPI.m; sourceTree = "<group>"; };
-		0949D85322BA7D48005ECEB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0949D85822BA7D48005ECEB0 /* MCPluginAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCPluginAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0949D85F22BA7D48005ECEB0 /* MCPluginAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCPluginAPITests.m; sourceTree = "<group>"; };
 		0949D86122BA7D48005ECEB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
 		094ACAB522B1CCBA00B6F39E /* MCTabbedConfigEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCTabbedConfigEditor.h; sourceTree = "<group>"; };
 		094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabbedConfigEditor.m; sourceTree = "<group>"; };
 		094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCTabbedConfigEditor.xib; sourceTree = "<group>"; };
@@ -303,6 +301,11 @@
 		09A20B7521ACA11A00FB7258 /* UninstallFilesystem.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = UninstallFilesystem.sh; path = Resources/UninstallFilesystem.sh; sourceTree = "<group>"; };
 		09AA970D21D3F41F00339061 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMR_ANSIEscapeHelper.m; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		09AA970E21D3F41F00339061 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMR_ANSIEscapeHelper.h; path = ANSIEscapeHelper/AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
+		09B21A1122BE49E50006C82B /* MCPluginAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCPluginAPI.m; path = "Manage Conky/MCPluginAPI/MCPluginAPI.m"; sourceTree = SOURCE_ROOT; };
+		09B21A1222BE49E50006C82B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Manage Conky/MCPluginAPI/Info.plist"; sourceTree = SOURCE_ROOT; };
+		09B21A1322BE49E50006C82B /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKSwizzle.m; path = "Manage Conky/MCPluginAPI/ZKSwizzle.m"; sourceTree = SOURCE_ROOT; };
+		09B21A1422BE49E50006C82B /* MCPluginAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCPluginAPI.h; path = "Manage Conky/MCPluginAPI/MCPluginAPI.h"; sourceTree = SOURCE_ROOT; };
+		09B21A1522BE49E50006C82B /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKSwizzle.h; path = "Manage Conky/MCPluginAPI/ZKSwizzle.h"; sourceTree = SOURCE_ROOT; };
 		09B56B05211B565B00075BC8 /* MCFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFilesystem.h; sourceTree = "<group>"; };
 		09B56B07211B574E00075BC8 /* MCFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilesystem.m; sourceTree = "<group>"; };
 		09D11C972104C66F005C9685 /* SaveThemeSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetController.h; sourceTree = "<group>"; };
@@ -316,7 +319,6 @@
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
-		09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCPluginAPI.h; sourceTree = "<group>"; };
 		09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = Frameworks/Fragaria/Fragaria.xcodeproj; sourceTree = "<group>"; };
 		09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
@@ -440,11 +442,11 @@
 		0949D85122BA7D48005ECEB0 /* MCPluginAPI */ = {
 			isa = PBXGroup;
 			children = (
-				0949D84822BA7BB4005ECEB0 /* ZKSwizzle.h */,
-				0949D87022BA7DD0005ECEB0 /* ZKSwizzle.m */,
-				09F54D8221D5AFCC009D2C07 /* MCPluginAPI.h */,
-				0949D85222BA7D48005ECEB0 /* MCPluginAPI.m */,
-				0949D85322BA7D48005ECEB0 /* Info.plist */,
+				09B21A1222BE49E50006C82B /* Info.plist */,
+				09B21A1422BE49E50006C82B /* MCPluginAPI.h */,
+				09B21A1122BE49E50006C82B /* MCPluginAPI.m */,
+				09B21A1522BE49E50006C82B /* ZKSwizzle.h */,
+				09B21A1322BE49E50006C82B /* ZKSwizzle.m */,
 			);
 			path = MCPluginAPI;
 			sourceTree = "<group>";
@@ -673,7 +675,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0949D86222BA7D48005ECEB0 /* MCPluginAPI.m in Headers */,
+				09B21A1B22BE4A380006C82B /* MCPluginAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +946,7 @@
 			files = (
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
+				09B21A1722BE49E50006C82B /* Info.plist in Resources */,
 				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
 				094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */,
 				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
@@ -1014,7 +1017,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0949D87122BA7DD0005ECEB0 /* ZKSwizzle.m in Sources */,
+				09B21A1C22BE4A880006C82B /* ZKSwizzle.m in Sources */,
+				09B21A1922BE4A2D0006C82B /* MCPluginAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,7 +1138,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INFOPLIST_FILE = "Manage Conky/MCPluginAPI/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -1165,7 +1169,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INFOPLIST_FILE = "Manage Conky/MCPluginAPI/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -1195,7 +1199,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = MCPluginAPI/Info.plist;
+				INFOPLIST_FILE = "Manage Conky/MCPluginAPI/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
