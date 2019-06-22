@@ -7,7 +7,9 @@ xcode_scheme: Manage Conky
 xcode_destination: platform=macOS
 
 before_install:
-# install dependancies
+  - gem install cocoapods -v '0.32.1'
+  
+  # install dependancies
   - brew tap Conky-for-macOS/homebrew-formulae
   - brew install freetype gettext lua imlib2 libircclient libmicrohttpd libical mysql librsvg pulseaudio cairo-xlib
   - brew link gettext --force
