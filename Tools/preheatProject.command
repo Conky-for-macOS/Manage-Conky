@@ -47,6 +47,7 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
         -DBUILD_ICONV=ON                     \
         -DBUILD_RSS=ON                       \
         -DBUILD_IRC=ON                       \
+        -DBUILD_CURL=ON                      \
         -DBUILD_PULSEAUDIO=ON 				 \
         -DCMAKE_BUILD_TYPE=Release           \
  -G Xcode
