@@ -7,7 +7,7 @@
 
 typedef int HRes;
 
-struct CBoolPair final
+struct CBoolPair
 {
   bool Val;
   bool Def;

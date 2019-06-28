@@ -1465,24 +1465,21 @@ void CDbEx::FillLinks()
   }
 
   if (indexInFolder != 0)
-  {
     folderIndex++;
-    // 18.06
-    ThereIsHeaderError = true;
-    // ThrowIncorrect();
-  }
+  /*
+  if (indexInFolder != 0)
+    ThrowIncorrect();
+  */
   
   for (;;)
   {
     if (folderIndex >= NumFolders)
       return;
     FolderStartFileIndex[folderIndex] = i;
+    /*
     if (NumUnpackStreamsVector[folderIndex] != 0)
-    {
-      // 18.06
-      ThereIsHeaderError = true;
-      // ThrowIncorrect();
-    }
+      ThrowIncorrect();;
+    */
     folderIndex++;
   }
 }

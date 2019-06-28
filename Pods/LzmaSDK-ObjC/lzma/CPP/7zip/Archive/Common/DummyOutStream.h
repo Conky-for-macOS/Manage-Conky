@@ -7,7 +7,7 @@
 
 #include "../../IStream.h"
 
-class CDummyOutStream final:
+class CDummyOutStream:
   public ISequentialOutStream,
   public CMyUnknownImp
 {

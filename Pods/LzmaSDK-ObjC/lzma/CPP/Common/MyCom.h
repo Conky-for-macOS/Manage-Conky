@@ -10,7 +10,7 @@
 #endif
 
 template <class T>
-class CMyComPtr final
+class CMyComPtr
 {
   T* _p;
 public:
@@ -78,7 +78,7 @@ inline HRESULT StringToBstr(LPCOLESTR src, BSTR *bstr)
   return (*bstr) ? S_OK : E_OUTOFMEMORY;
 }
 
-class CMyComBSTR final
+class CMyComBSTR
 {
   BSTR m_str;
 

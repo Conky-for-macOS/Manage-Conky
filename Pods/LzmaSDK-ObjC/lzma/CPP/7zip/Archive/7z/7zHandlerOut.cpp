@@ -267,9 +267,6 @@ STDMETHODIMP CHandler::UpdateItems(ISequentialOutStream *outStream, UInt32 numIt
     db = &_db;
   #endif
 
-  if (db && !db->CanUpdate())
-    return E_NOTIMPL;
-
   /*
   CMyComPtr<IArchiveGetRawProps> getRawProps;
   updateCallback->QueryInterface(IID_IArchiveGetRawProps, (void **)&getRawProps);

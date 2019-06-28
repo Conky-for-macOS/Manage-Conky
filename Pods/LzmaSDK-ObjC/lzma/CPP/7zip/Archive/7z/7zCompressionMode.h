@@ -9,7 +9,7 @@
 namespace NArchive {
 namespace N7z {
 
-struct CMethodFull final: public CMethodProps
+struct CMethodFull: public CMethodProps
 {
   CMethodId Id;
   UInt32 NumStreams;
@@ -19,14 +19,14 @@ struct CMethodFull final: public CMethodProps
   bool IsSimpleCoder() const { return NumStreams == 1; }
 };
 
-struct CBond2 final
+struct CBond2
 {
   UInt32 OutCoder;
   UInt32 OutStream;
   UInt32 InCoder;
 };
 
-struct CCompressionMethodMode final
+struct CCompressionMethodMode
 {
   /*
     if (Bonds.Empty()), then default bonds must be created

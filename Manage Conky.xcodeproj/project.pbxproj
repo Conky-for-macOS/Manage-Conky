@@ -13,6 +13,7 @@
 		09287A5E2184BF58001AB18A /* NSApplication+mainWindowForSure.m in Sources */ = {isa = PBXBuildFile; fileRef = 09287A5D2184BF58001AB18A /* NSApplication+mainWindowForSure.m */; };
 		092C9CFA21C9B3E600E2DD02 /* MCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 092C9CF921C9B3E600E2DD02 /* MCTask.m */; };
 		092E12C22125BCC200491CDA /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 092E12C12125BCC200491CDA /* NSString+Score.m */; };
+		09335E5722C44934002A2744 /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = 09335E5422C44925002A2744 /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		09366F7B2166ADB300157ECA /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09366F7A2166ADB300157ECA /* PreferencesController.m */; };
 		093BDFC320861C0E004E6354 /* MCConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093BDFC220861C0E004E6354 /* MCConfigEditor.m */; };
 		0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A20B6821AC9CCE00FB7258 /* NPTask.framework */; };
@@ -25,6 +26,7 @@
 		094ACAB822B1CCBA00B6F39E /* MCTabbedConfigEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */; };
 		094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */; };
 		094D3AB021BC38D500321CB5 /* ToogleXQuartzVisibility.sh in Resources */ = {isa = PBXBuildFile; fileRef = 094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */; };
+		095013CA22C6939D0004CB17 /* preheatProject.command in Resources */ = {isa = PBXBuildFile; fileRef = 095013BF22C6939D0004CB17 /* preheatProject.command */; };
 		0953D7A321596AF60065BB4D /* SaveWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0953D7A221596AF60065BB4D /* SaveWidget.xib */; };
 		0953D7AD21596CFF0065BB4D /* SaveWidgetSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */; };
 		095F81912080D08A008DD286 /* MCObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 095F81902080D08A008DD286 /* MCObjects.m */; };
@@ -50,8 +52,6 @@
 		09F14C68211E1F0D00715664 /* ConkyThemes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C62211E1F0D00715664 /* ConkyThemes.xib */; };
 		09F54EAE21D6AAA1009D2C07 /* Fragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F54DD221D69DD0009D2C07 /* Fragaria.framework */; };
 		09F54EB921D6AB0E009D2C07 /* Fragaria.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 09F54DD221D69DD0009D2C07 /* Fragaria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		09F54EBA21D6AB13009D2C07 /* ConkyX.app in Copy ConkyX */ = {isa = PBXBuildFile; fileRef = 09F54EB521D6AADE009D2C07 /* ConkyX.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */; };
 		77B8473A1F62C2B600AF8BCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B847391F62C2B600AF8BCA /* AppDelegate.m */; };
 		77B8473D1F62C2B600AF8BCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473C1F62C2B600AF8BCA /* main.m */; };
 		77B847401F62C2B600AF8BCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B8473F1F62C2B600AF8BCA /* ViewController.m */; };
@@ -61,6 +61,7 @@
 		77B9EFF81F64293000C375FE /* ConkyPreferencesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFF71F64293000C375FE /* ConkyPreferencesSheetController.m */; };
 		77B9EFFB1F64295100C375FE /* ConkyThemesSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B9EFFA1F64295100C375FE /* ConkyThemesSheetController.m */; };
 		77E6DBCB1F648B92001DEBB1 /* AboutSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */; };
+		9EEBEB82ECF89666C90DF7E8 /* Pods_Manage_Conky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626F1934D481661B6E5CB648 /* Pods_Manage_Conky.framework */; };
 		EC9EFB91205555C900C6BAAF /* NSAlert+runModalSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */; };
 		ECAF6F652024ADC900715D72 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAF6F642024ADC900715D72 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ECB76D5D205D716C00A3BB22 /* default-themes-2.1.cmtp.7z in Resources */ = {isa = PBXBuildFile; fileRef = ECB76D5A205D716B00A3BB22 /* default-themes-2.1.cmtp.7z */; };
@@ -69,6 +70,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		09335E5322C44925002A2744 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09335E4E22C44925002A2744 /* ConkyX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC923C2320169A230019C772;
+			remoteInfo = ConkyX;
+		};
+		09335E5522C4492C002A2744 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09335E4E22C44925002A2744 /* ConkyX.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EC923C2220169A230019C772;
+			remoteInfo = ConkyX;
+		};
 		0948AF5021B1720E0067A111 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 09A20B5821AC9CCE00FB7258 /* NPTask.xcodeproj */;
@@ -82,13 +97,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0949D84F22BA7D48005ECEB0;
 			remoteInfo = MCPluginAPI;
-		};
-		0949D85C22BA7D48005ECEB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 77B8472D1F62C2B600AF8BCA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 77B847341F62C2B600AF8BCA;
-			remoteInfo = "Manage Conky";
 		};
 		0949D86322BA7D48005ECEB0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -188,20 +196,6 @@
 			remoteGlobalIDString = AB69B62A118B745700903D1D;
 			remoteInfo = Fragaria;
 		};
-		09F54EB421D6AADE009D2C07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EC923C2320169A230019C772;
-			remoteInfo = ConkyX;
-		};
-		09F54EB621D6AAEB009D2C07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EC923C2220169A230019C772;
-			remoteInfo = ConkyX;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -247,7 +241,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				09F54EBA21D6AB13009D2C07 /* ConkyX.app in Copy ConkyX */,
+				09335E5722C44934002A2744 /* ConkyX.app in Copy ConkyX */,
 			);
 			name = "Copy ConkyX";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +262,7 @@
 		092C9CF921C9B3E600E2DD02 /* MCTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MCTask.m; path = MCObjects/MCTask.m; sourceTree = "<group>"; };
 		092E12C02125BCC200491CDA /* NSString+Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Score.h"; path = "Extensions/StringScore/NSString+Score.h"; sourceTree = "<group>"; };
 		092E12C12125BCC200491CDA /* NSString+Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Score.m"; path = "Extensions/StringScore/NSString+Score.m"; sourceTree = "<group>"; };
+		09335E4E22C44925002A2744 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
 		09366F792166ADB300157ECA /* PreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		09366F7A2166ADB300157ECA /* PreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0936AA87217B92E800AA745F /* SaveThemeSheetCheckbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveThemeSheetCheckbox.h; sourceTree = "<group>"; };
@@ -283,6 +278,7 @@
 		094ACAB622B1CCBA00B6F39E /* MCTabbedConfigEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCTabbedConfigEditor.m; sourceTree = "<group>"; };
 		094ACAB722B1CCBA00B6F39E /* MCTabbedConfigEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCTabbedConfigEditor.xib; sourceTree = "<group>"; };
 		094D3AAF21BC38D400321CB5 /* ToogleXQuartzVisibility.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = ToogleXQuartzVisibility.sh; path = Resources/ToogleXQuartzVisibility.sh; sourceTree = "<group>"; };
+		095013BF22C6939D0004CB17 /* preheatProject.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = preheatProject.command; path = Tools/preheatProject.command; sourceTree = "<group>"; };
 		0953D7A221596AF60065BB4D /* SaveWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SaveWidget.xib; path = Sheets/SaveWidget.xib; sourceTree = "<group>"; };
 		0953D7AB21596CFF0065BB4D /* SaveWidgetSheetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveWidgetSheetController.h; sourceTree = "<group>"; };
 		0953D7AC21596CFF0065BB4D /* SaveWidgetSheetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveWidgetSheetController.m; sourceTree = "<group>"; };
@@ -320,9 +316,8 @@
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
 		09F14C62211E1F0D00715664 /* ConkyThemes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyThemes.xib; path = Sheets/ConkyThemes.xib; sourceTree = "<group>"; };
 		09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Fragaria.xcodeproj; path = Frameworks/Fragaria/Fragaria.xcodeproj; sourceTree = "<group>"; };
-		09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ConkyX.xcodeproj; path = ConkyX/ConkyX.xcodeproj; sourceTree = "<group>"; };
-		340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
-		4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
+		522949B5C92D6BE33975722E /* Pods-Manage Conky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.release.xcconfig"; path = "Target Support Files/Pods-Manage Conky/Pods-Manage Conky.release.xcconfig"; sourceTree = "<group>"; };
+		626F1934D481661B6E5CB648 /* Pods_Manage_Conky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manage_Conky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847351F62C2B600AF8BCA /* Manage Conky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Conky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B847381F62C2B600AF8BCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		77B847391F62C2B600AF8BCA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -341,8 +336,8 @@
 		77E6DBC91F648B92001DEBB1 /* AboutSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSheetController.h; sourceTree = "<group>"; };
 		77E6DBCA1F648B92001DEBB1 /* AboutSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSheetController.m; sourceTree = "<group>"; };
 		77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.homebrew-cask.xcconfig"; path = "Pods/Target Support Files/Pods-Manage Conky/Pods-Manage Conky.homebrew-cask.xcconfig"; sourceTree = "<group>"; };
-		EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manage_Conky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BE59F7E34C277AB68E6EE49 /* Pods-Manage Conky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.debug.xcconfig"; path = "Target Support Files/Pods-Manage Conky/Pods-Manage Conky.debug.xcconfig"; sourceTree = "<group>"; };
+		82745A7B3F214563F836DED7 /* Pods-Manage Conky.homebrew-cask.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manage Conky.homebrew-cask.xcconfig"; path = "Target Support Files/Pods-Manage Conky/Pods-Manage Conky.homebrew-cask.xcconfig"; sourceTree = "<group>"; };
 		EC9EFB8F205555B200C6BAAF /* NSAlert+runModalSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAlert+runModalSheet.h"; path = "Extensions/NSAlert+runModalSheet.h"; sourceTree = "<group>"; };
 		EC9EFB90205555C800C6BAAF /* NSAlert+runModalSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAlert+runModalSheet.m"; path = "Extensions/NSAlert+runModalSheet.m"; sourceTree = "<group>"; };
 		ECAF6F632024ADC900715D72 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -382,7 +377,7 @@
 				09F54EAE21D6AAA1009D2C07 /* Fragaria.framework in Frameworks */,
 				0948AF5221B1721B0067A111 /* NPTask.framework in Frameworks */,
 				0949D86522BA7D48005ECEB0 /* MCPluginAPI.framework in Frameworks */,
-				27F326D865D8A2AC31DFA4ED /* Pods_Manage_Conky.framework in Frameworks */,
+				9EEBEB82ECF89666C90DF7E8 /* Pods_Manage_Conky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,11 +427,20 @@
 		090DD045211BC2620061535E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				095013BF22C6939D0004CB17 /* preheatProject.command */,
 				093DC7F6214139F7005C782B /* createDefaultThemepack.command */,
 				090DD046211BC27B0061535E /* distributeManageConky.command */,
 			);
 			name = Tools;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		09335E4F22C44925002A2744 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09335E5422C44925002A2744 /* ConkyX.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0949D85122BA7D48005ECEB0 /* MCPluginAPI */ = {
@@ -523,18 +527,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		09F54EB021D6AADE009D2C07 /* Products */ = {
+		1B8AF2A579DFD0587DA619A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				09F54EB521D6AADE009D2C07 /* ConkyX.app */,
+				7BE59F7E34C277AB68E6EE49 /* Pods-Manage Conky.debug.xcconfig */,
+				522949B5C92D6BE33975722E /* Pods-Manage Conky.release.xcconfig */,
+				82745A7B3F214563F836DED7 /* Pods-Manage Conky.homebrew-cask.xcconfig */,
 			);
-			name = Products;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		77B8472C1F62C2B600AF8BCA = {
 			isa = PBXGroup;
 			children = (
-				09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */,
+				09335E4E22C44925002A2744 /* ConkyX.xcodeproj */,
 				09F54DBC21D69DD0009D2C07 /* Fragaria.xcodeproj */,
 				77B847371F62C2B600AF8BCA /* Manage Conky */,
 				098C76AD213C097600B1F05A /* Manage Conky Tests */,
@@ -542,7 +548,7 @@
 				0949D85E22BA7D48005ECEB0 /* MCPluginAPITests */,
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
-				84D8AFEE31EBA1C4C04E918A /* Pods */,
+				1B8AF2A579DFD0587DA619A7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -586,19 +592,9 @@
 				095F9B3E2077DD74003C60C1 /* Foundation.framework */,
 				095F9B3C2077DD6E003C60C1 /* Cocoa.framework */,
 				77F6D6D41F65EB2E00A61645 /* ServiceManagement.framework */,
-				EB4CD18A379F8DE15EBD610F /* Pods_Manage_Conky.framework */,
+				626F1934D481661B6E5CB648 /* Pods_Manage_Conky.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		84D8AFEE31EBA1C4C04E918A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */,
-				4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */,
-				EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		EC3DF95C205D6035000ACB95 /* Resources */ = {
@@ -712,7 +708,6 @@
 			);
 			dependencies = (
 				0949D85B22BA7D48005ECEB0 /* PBXTargetDependency */,
-				0949D85D22BA7D48005ECEB0 /* PBXTargetDependency */,
 			);
 			name = MCPluginAPITests;
 			productName = MCPluginAPITests;
@@ -741,20 +736,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B847491F62C2B600AF8BCA /* Build configuration list for PBXNativeTarget "Manage Conky" */;
 			buildPhases = (
-				06021C38407670CBC4B11E84 /* [CP] Check Pods Manifest.lock */,
+				A3698A46E7BD79A94B7E34C6 /* [CP] Check Pods Manifest.lock */,
 				77B847311F62C2B600AF8BCA /* Sources */,
 				77B847321F62C2B600AF8BCA /* Frameworks */,
 				77B847331F62C2B600AF8BCA /* Resources */,
-				025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */,
 				09ACA825212E1C65002B9754 /* Copy Licenses */,
 				09A1021821348DCB001FA2F3 /* Copy Frameworks */,
 				09F54EB821D6AAFF009D2C07 /* Copy ConkyX */,
 				0949D84A22BA7CEA005ECEB0 /* Copy Plugin API */,
+				FCBB241F460D1DF3938DD824 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				09F54EB721D6AAEB009D2C07 /* PBXTargetDependency */,
+				09335E5622C4492C002A2744 /* PBXTargetDependency */,
 				09F54DD921D69E07009D2C07 /* PBXTargetDependency */,
 				0948AF5121B1720E0067A111 /* PBXTargetDependency */,
 				0949D86422BA7D48005ECEB0 /* PBXTargetDependency */,
@@ -809,8 +804,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 09F54EB021D6AADE009D2C07 /* Products */;
-					ProjectRef = 09F54EAF21D6AADE009D2C07 /* ConkyX.xcodeproj */;
+					ProductGroup = 09335E4F22C44925002A2744 /* Products */;
+					ProjectRef = 09335E4E22C44925002A2744 /* ConkyX.xcodeproj */;
 				},
 				{
 					ProductGroup = 09F54DBD21D69DD0009D2C07 /* Products */;
@@ -832,6 +827,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		09335E5422C44925002A2744 /* ConkyX.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ConkyX.app;
+			remoteRef = 09335E5322C44925002A2744 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		09A20B6821AC9CCE00FB7258 /* NPTask.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -909,13 +911,6 @@
 			remoteRef = 09F54DD321D69DD0009D2C07 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		09F54EB521D6AADE009D2C07 /* ConkyX.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = ConkyX.app;
-			remoteRef = 09F54EB421D6AADE009D2C07 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -947,6 +942,7 @@
 				092114A52084BE9A0098AC5D /* Changelog.rtf in Resources */,
 				ECB76D61205D725100A3BB22 /* Credits.rtf in Resources */,
 				09B21A1722BE49E50006C82B /* Info.plist in Resources */,
+				095013CA22C6939D0004CB17 /* preheatProject.command in Resources */,
 				09A20B7621ACA14000FB7258 /* SetupFilesystem.sh in Resources */,
 				094ACAB922B1CCBA00B6F39E /* MCTabbedConfigEditor.xib in Resources */,
 				09A20B7721ACA14000FB7258 /* UninstallFilesystem.sh in Resources */,
@@ -968,9 +964,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		025BFADCE971A6B1614A06DF /* [CP] Embed Pods Frameworks */ = {
+		A3698A46E7BD79A94B7E34C6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Manage Conky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCBB241F460D1DF3938DD824 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -990,24 +1008,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Manage Conky/Pods-Manage Conky-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		06021C38407670CBC4B11E84 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Manage Conky-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1072,6 +1072,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		09335E5622C4492C002A2744 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ConkyX;
+			targetProxy = 09335E5522C4492C002A2744 /* PBXContainerItemProxy */;
+		};
 		0948AF5121B1720E0067A111 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NPTask;
@@ -1081,11 +1086,6 @@
 			isa = PBXTargetDependency;
 			target = 0949D84F22BA7D48005ECEB0 /* MCPluginAPI */;
 			targetProxy = 0949D85A22BA7D48005ECEB0 /* PBXContainerItemProxy */;
-		};
-		0949D85D22BA7D48005ECEB0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 77B847341F62C2B600AF8BCA /* Manage Conky */;
-			targetProxy = 0949D85C22BA7D48005ECEB0 /* PBXContainerItemProxy */;
 		};
 		0949D86422BA7D48005ECEB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1101,11 +1101,6 @@
 			isa = PBXTargetDependency;
 			name = Fragaria;
 			targetProxy = 09F54DD821D69E07009D2C07 /* PBXContainerItemProxy */;
-		};
-		09F54EB721D6AAEB009D2C07 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ConkyX;
-			targetProxy = 09F54EB621D6AAEB009D2C07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1386,7 +1381,7 @@
 		};
 		09CB721820FE28530049A136 /* Homebrew-Cask */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB12CE3AA8BAA2D87A412AC9 /* Pods-Manage Conky.homebrew-cask.xcconfig */;
+			baseConfigurationReference = 82745A7B3F214563F836DED7 /* Pods-Manage Conky.homebrew-cask.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1527,7 +1522,7 @@
 		};
 		77B8474A1F62C2B600AF8BCA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 340F98DF5E1D6ED230774514 /* Pods-Manage Conky.debug.xcconfig */;
+			baseConfigurationReference = 7BE59F7E34C277AB68E6EE49 /* Pods-Manage Conky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1553,7 +1548,7 @@
 		};
 		77B8474B1F62C2B600AF8BCA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FEED78FA609076B614B101F /* Pods-Manage Conky.release.xcconfig */;
+			baseConfigurationReference = 522949B5C92D6BE33975722E /* Pods-Manage Conky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";

@@ -1,5 +1,5 @@
 /* MtCoder.c -- Multi-thread Coder
-2018-07-04 : Igor Pavlov : Public domain */
+2018-02-21 : Igor Pavlov : Public domain */
 
 #include "Precomp.h"
 
@@ -119,7 +119,7 @@ static SRes ThreadFunc2(CMtCoderThread *t)
     unsigned bi;
     SRes res;
     SRes res2;
-    BoolInt finished;
+    Bool finished;
     unsigned bufIndex;
     size_t size;
     const Byte *inData;
@@ -294,7 +294,7 @@ static SRes ThreadFunc2(CMtCoderThread *t)
         if (++wi >= mtc->numBlocksMax)
           wi = 0;
         {
-          BoolInt isReady;
+          Bool isReady;
 
           CriticalSection_Enter(&mtc->cs);
           
@@ -547,7 +547,7 @@ SRes MtCoder_Code(CMtCoder *p)
       {
         const CMtCoderBlock *block = &p->blocks[bi];
         unsigned bufIndex = block->bufIndex;
-        BoolInt finished = block->finished;
+        Bool finished = block->finished;
         if (res == SZ_OK && block->res != SZ_OK)
           res = block->res;
 

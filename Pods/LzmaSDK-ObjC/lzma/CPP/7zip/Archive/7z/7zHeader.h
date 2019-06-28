@@ -21,7 +21,7 @@ extern Byte kSignature[kSignatureSize];
 extern Byte kFinishSignature[kSignatureSize];
 #endif
 
-struct CArchiveVersion final
+struct CArchiveVersion
 {
   Byte Major;
   Byte Minor;
@@ -29,7 +29,7 @@ struct CArchiveVersion final
 
 const Byte kMajorVersion = 0;
 
-struct CStartHeader final
+struct CStartHeader
 {
   UInt64 NextHeaderOffset;
   UInt64 NextHeaderSize;

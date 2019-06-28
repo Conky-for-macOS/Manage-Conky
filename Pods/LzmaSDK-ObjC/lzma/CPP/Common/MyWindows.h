@@ -10,15 +10,14 @@
 #include <windows.h>
 
 #ifdef UNDER_CE
-  #undef VARIANT_TRUE
-  #define VARIANT_TRUE ((VARIANT_BOOL)-1)
+#undef VARIANT_TRUE
+#define VARIANT_TRUE ((VARIANT_BOOL)-1)
 #endif
 
 #else
 
 #include <stddef.h> // for wchar_t
 #include <string.h>
-// #include <stdint.h> // for uintptr_t
 
 #include "MyGuidDef.h"
 
@@ -55,17 +54,16 @@ typedef uint32_t DWORD;
 typedef UINT32 DWORD;
 #endif
 
+
 //typedef long BOOL;
 
 #ifndef FALSE
-  #define FALSE 0
-  #define TRUE 1
+#define FALSE 0
+#define TRUE 1
 #endif
 
 // typedef size_t ULONG_PTR;
 typedef size_t DWORD_PTR;
-// typedef uintptr_t UINT_PTR;
-// typedef ptrdiff_t UINT_PTR;
 
 typedef Int64 LONGLONG;
 typedef UInt64 ULONGLONG;
@@ -94,14 +92,14 @@ typedef unsigned long ULONG_PTR;
 #endif
 #endif
 
-typedef struct _FILETIME final
+typedef struct _FILETIME
 {
-  DWORD dwLowDateTime;
-  DWORD dwHighDateTime;
+    DWORD dwLowDateTime;
+    DWORD dwHighDateTime;
 } FILETIME;
 
 #if defined(__APPLE__)
-typedef struct _BY_HANDLE_FILE_INFORMATION final {
+typedef struct _BY_HANDLE_FILE_INFORMATION {
     DWORD    dwFileAttributes;
     FILETIME ftCreationTime;
     FILETIME ftLastAccessTime;
@@ -154,14 +152,14 @@ typedef enum _MEDIA_TYPE {
     F3_240M_512     = 0x18,
     F3_32M_512      = 0x19
 } MEDIA_TYPE;
-typedef struct _DISK_GEOMETRY final {
+typedef struct _DISK_GEOMETRY {
     LARGE_INTEGER Cylinders;
     MEDIA_TYPE    MediaType;
     DWORD         TracksPerCylinder;
     DWORD         SectorsPerTrack;
     DWORD         BytesPerSector;
 } DISK_GEOMETRY;
-typedef struct _SYSTEMTIME final {
+typedef struct _SYSTEMTIME {
     WORD wYear;
     WORD wMonth;
     WORD wDayOfWeek;
@@ -248,8 +246,6 @@ typedef struct _SYSTEMTIME final {
 typedef ULONG PROPID;
 typedef LONG SCODE;
 
-#define ERROR_NEGATIVE_SEEK 131L
-
 #define S_OK    ((HRESULT)0x00000000L)
 #define S_FALSE ((HRESULT)0x00000001L)
 #define E_NOTIMPL ((HRESULT)0x80004001L)
@@ -297,15 +293,15 @@ inline HRESULT HRESULT_FROM_WIN32(unsigned long x) {
 #ifdef __cplusplus
 
 DEFINE_GUID(IID_IUnknown,
-0x00000000, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46);
+            0x00000000, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46);
 struct IUnknown
 {
-  STDMETHOD(QueryInterface) (REFIID iid, void **outObject) PURE;
-  STDMETHOD_(ULONG, AddRef)() PURE;
-  STDMETHOD_(ULONG, Release)() PURE;
-  #ifndef _WIN32
-  virtual ~IUnknown() {}
-  #endif
+    STDMETHOD(QueryInterface) (REFIID iid, void **outObject) PURE;
+    STDMETHOD_(ULONG, AddRef)() PURE;
+    STDMETHOD_(ULONG, Release)() PURE;
+#ifndef _WIN32
+    virtual ~IUnknown() {}
+#endif
 };
 
 typedef IUnknown *LPUNKNOWN;
@@ -317,32 +313,32 @@ typedef IUnknown *LPUNKNOWN;
 
 enum VARENUM
 {
-  VT_EMPTY = 0,
-  VT_NULL = 1,
-  VT_I2 = 2,
-  VT_I4 = 3,
-  VT_R4 = 4,
-  VT_R8 = 5,
-  VT_CY = 6,
-  VT_DATE = 7,
-  VT_BSTR = 8,
-  VT_DISPATCH = 9,
-  VT_ERROR = 10,
-  VT_BOOL = 11,
-  VT_VARIANT = 12,
-  VT_UNKNOWN = 13,
-  VT_DECIMAL = 14,
-  VT_I1 = 16,
-  VT_UI1 = 17,
-  VT_UI2 = 18,
-  VT_UI4 = 19,
-  VT_I8 = 20,
-  VT_UI8 = 21,
-  VT_INT = 22,
-  VT_UINT = 23,
-  VT_VOID = 24,
-  VT_HRESULT = 25,
-  VT_FILETIME = 64
+    VT_EMPTY = 0,
+    VT_NULL = 1,
+    VT_I2 = 2,
+    VT_I4 = 3,
+    VT_R4 = 4,
+    VT_R8 = 5,
+    VT_CY = 6,
+    VT_DATE = 7,
+    VT_BSTR = 8,
+    VT_DISPATCH = 9,
+    VT_ERROR = 10,
+    VT_BOOL = 11,
+    VT_VARIANT = 12,
+    VT_UNKNOWN = 13,
+    VT_DECIMAL = 14,
+    VT_I1 = 16,
+    VT_UI1 = 17,
+    VT_UI2 = 18,
+    VT_UI4 = 19,
+    VT_I8 = 20,
+    VT_UI8 = 21,
+    VT_INT = 22,
+    VT_UINT = 23,
+    VT_VOID = 24,
+    VT_HRESULT = 25,
+    VT_FILETIME = 64
 };
 
 typedef unsigned short VARTYPE;
@@ -352,27 +348,27 @@ typedef WORD PROPVAR_PAD3;
 
 typedef struct tagPROPVARIANT
 {
-  VARTYPE vt;
-  PROPVAR_PAD1 wReserved1;
-  PROPVAR_PAD2 wReserved2;
-  PROPVAR_PAD3 wReserved3;
-  union
-  {
-    CHAR cVal;
-    UCHAR bVal;
-    SHORT iVal;
-    USHORT uiVal;
-    LONG lVal;
-    ULONG ulVal;
-    INT intVal;
-    UINT uintVal;
-    LARGE_INTEGER hVal;
-    ULARGE_INTEGER uhVal;
-    VARIANT_BOOL boolVal;
-    SCODE scode;
-    FILETIME filetime;
-    BSTR bstrVal;
-  };
+    VARTYPE vt;
+    PROPVAR_PAD1 wReserved1;
+    PROPVAR_PAD2 wReserved2;
+    PROPVAR_PAD3 wReserved3;
+    union
+    {
+        CHAR cVal;
+        UCHAR bVal;
+        SHORT iVal;
+        USHORT uiVal;
+        LONG lVal;
+        ULONG ulVal;
+        INT intVal;
+        UINT uintVal;
+        LARGE_INTEGER hVal;
+        ULARGE_INTEGER uhVal;
+        VARIANT_BOOL boolVal;
+        SCODE scode;
+        FILETIME filetime;
+        BSTR bstrVal;
+    };
 } PROPVARIANT;
 
 typedef PROPVARIANT tagVARIANT;
@@ -382,11 +378,11 @@ typedef VARIANT VARIANTARG;
 MY_EXTERN_C HRESULT VariantClear(VARIANTARG *prop);
 MY_EXTERN_C HRESULT VariantCopy(VARIANTARG *dest, const VARIANTARG *src);
 
-typedef struct tagSTATPROPSTG final
+typedef struct tagSTATPROPSTG
 {
-  LPOLESTR lpwstrName;
-  PROPID propid;
-  VARTYPE vt;
+    LPOLESTR lpwstrName;
+    PROPID propid;
+    VARTYPE vt;
 } STATPROPSTG;
 
 MY_EXTERN_C BSTR SysAllocStringByteLen(LPCSTR psz, UINT len);
@@ -400,8 +396,8 @@ MY_EXTERN_C UINT SysStringLen(BSTR bstr);
 MY_EXTERN_C LONG CompareFileTime(const FILETIME* ft1, const FILETIME* ft2);
 
 #if defined(__APPLE__)
-DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, BoolInt wait_all, DWORD timeout);
-BoolInt WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds);
+DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wait_all, DWORD timeout);
+Bool WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds);
 DWORD WINAPI GetTickCount(void);
 const TCHAR kAnyStringWildcard = '*';
 #endif
@@ -412,10 +408,11 @@ const TCHAR kAnyStringWildcard = '*';
 
 typedef enum tagSTREAM_SEEK
 {
-  STREAM_SEEK_SET = 0,
-  STREAM_SEEK_CUR = 1,
-  STREAM_SEEK_END = 2
+    STREAM_SEEK_SET = 0,
+    STREAM_SEEK_CUR = 1,
+    STREAM_SEEK_END = 2
 } STREAM_SEEK;
 
 #endif
 #endif
+

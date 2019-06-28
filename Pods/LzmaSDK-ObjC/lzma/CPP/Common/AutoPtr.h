@@ -3,7 +3,7 @@
 #ifndef __COMMON_AUTOPTR_H
 #define __COMMON_AUTOPTR_H
 
-template<class T> class CMyAutoPtr final
+template<class T> class CMyAutoPtr
 {
   T *_p;
 public:

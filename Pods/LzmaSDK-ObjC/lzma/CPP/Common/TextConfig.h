@@ -5,7 +5,7 @@
 
 #include "MyString.h"
 
-struct CTextConfigPair final
+struct CTextConfigPair
 {
   UString ID;
   UString String;

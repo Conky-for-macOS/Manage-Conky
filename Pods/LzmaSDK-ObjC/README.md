@@ -5,14 +5,14 @@
 
 
 It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations.   
-Based on C++ [LZMA SDK] version 19.00 (1900 - latest for now) and patched for iOS & Mac OS platforms.   
+Based on C++ [LZMA SDK] version 18.05 (1805 - latest for now) and patched for iOS & Mac OS platforms.   
 Can be used with Swift and Objective-C.
 
 
 ### Description
 ----------------
 It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. 
-Based on C++ [LZMA SDK] version 19.00 (1900 - latest for now) and patched for iOS & Mac OS platforms.
+Based on C++ [LZMA SDK] version 18.05 (1805 - latest for now) and patched for iOS & Mac OS platforms.
 
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
@@ -34,7 +34,7 @@ The main advantages is:
 #### Podfile
 ```ruby
 use_frameworks!
-platform :ios, '9.0'
+platform :ios, '8.0'
 
 target '<REPLACE_WITH_YOUR_TARGET>' do
     pod 'LzmaSDK-ObjC', :inhibit_warnings => true
@@ -357,7 +357,7 @@ By using this all you are accepting original [LZMA SDK] and MIT license (*see be
 
 The MIT License (MIT)
 
-Copyright (c) 2015 - 2019 Kulykov Oleh <info@resident.name>
+Copyright (c) 2015 - 2017 Kulykov Oleh <info@resident.name>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
