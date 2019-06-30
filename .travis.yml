@@ -13,8 +13,9 @@ before_install:
   
   # install dependancies
   - brew tap Conky-for-macOS/homebrew-formulae
-  - brew install freetype gettext lua imlib2 libircclient libmicrohttpd libical mysql librsvg pulseaudio cairo cairo-xlib
+  - brew install freetype gettext lua imlib2-xlib libircclient libmicrohttpd libical mysql librsvg pulseaudio cairo cairo-xlib
   - brew link gettext --force
+  - brew link --overwrite imlib2-xlib --force
 
 # setup xcode project
   - Tools/preheatProject.command
