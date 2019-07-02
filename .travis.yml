@@ -1,6 +1,6 @@
 language: objective-c
 os: osx 
-osx_image: xcode10.1
+osx_image: xcode10.2
 
 xcode_workspace: Manage Conky.xcworkspace
 xcode_scheme: Manage Conky
