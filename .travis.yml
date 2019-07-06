@@ -13,7 +13,7 @@ before_install:
   
   # install dependancies
   - brew tap Conky-for-macOS/homebrew-formulae
-  - brew install freetype gettext lua imlib2-xlib libircclient libmicrohttpd libical mysql librsvg pulseaudio cairo cairo-xlib
+  - brew install --only-dependencies conky-all
   - brew link gettext --force
   - brew link --overwrite cairo-xlib --force
   - brew link --overwrite imlib2-xlib --force
