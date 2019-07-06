@@ -6,6 +6,8 @@
 # (this is for when you first clone ManageConky, etc...)
 #
 
+export MC_DISABLE_CODESIGN=$false
+
 # Get ManageConky directory location
 symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..
 
@@ -16,7 +18,24 @@ bold=$(tput bold)
 echo "${bold}preheat | version 2.0 | by npyl"
 echo "\n"
 
-echo "${bold}applying patches to conky..."
+# Scan for arguments
+for i in "$@"
+do
+    case $i in
+    -c)
+        echo "Disabling Codesigning..."
+        export MC_DISABLE_CODESIGN=$true
+        shift
+    ;;
+
+    *)
+        # unknown option
+    echo "Unknown option: $i; ignoring..."
+    ;;
+    esac
+done
+
+echo "${bold}Applying patches from our Github Repo...\n\n"
 
 # clone our repo of conky-patches
 git clone https://github.com/Conky-for-macOS/conky-patches /tmp/conky-patches
@@ -49,8 +68,8 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
 		-DBUILD_WLAN=ON 		     		 \
 		-DBUILD_MYSQL=ON 		     		 \
         -DBUILD_LUA_IMLIB2=ON                \
-        -DBUILD_LUA_RSVG=OFF                 \
-        -DBUILD_LUA_CAIRO=OFF                \
+        -DBUILD_LUA_RSVG=ON                  \
+        -DBUILD_LUA_CAIRO=ON                 \
         -DBUILD_ICAL=ON                      \
         -DBUILD_IRC=ON                       \
         -DBUILD_HTTP=ON                      \
@@ -66,6 +85,14 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
 # Return to project Root
 #
 cd "$symroot"
+
+#
+# Disable Codesigning Permanently if required
+#
+if [ $MC_DISABLE_CODESIGN ]; then
+    echo "FORCE DISABLING CODESIGN"
+    sed -ie 's/CODE_SIGN_IDENTITY = "Mac Developer"/CODE_SIGN_IDENTITY = "-"/g' "Manage Conky.xcodeproj/project.pbxproj"
+fi
 
 # Xcode fails to build toluapp for some unknown reason
 # Workaround this by installing (before compilation) a
