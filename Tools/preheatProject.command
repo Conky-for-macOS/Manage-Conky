@@ -42,7 +42,7 @@ rm -rf *
 # - libffi
 # - cairo-xlib (instead of cairo)
 # - x11
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/cairo-xlib/lib/pkgconfig:/usr/X11/lib/pkgconfig/:"
+export PKG_CONFIG_PATH="/usr/local/opt/imlib2-xlib/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/cairo-xlib/lib/pkgconfig:/usr/X11/lib/pkgconfig:/usr/local/lib/pkgconfig"
 
 # create an Xcode project using cmake
 MACOSX_DEPLOYMENT_TARGET=10.10 cmake ..      \
