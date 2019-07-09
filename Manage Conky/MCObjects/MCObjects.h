@@ -251,16 +251,18 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  */
 @interface MCTheme : MCWidgetOrTheme
 
+@property NSMutableArray<MCWidget *>* widgets;
 @property NSString *themeName;  /* theme name */
 @property NSString *themeRC;    /* resource file (.plist or .cmtheme) */
 @property NSInteger startupDelay;   /* startup delay */
-@property NSArray *conkyConfigs;    /* conky configs */
 @property NSArray *arguments;   /* arguments for conky */
 @property NSString *wallpaper;  /* wallpaper used by theme */
 @property MCWallpaperScaling scaling;   /* wallpaper scaling */
 
 @property BOOL isEnabled;    /* a LaunchAgent for it exists */
 
+- (NSArray *)conkyConfigs;
+    
 /**
  * Set properties of MCTheme object just by getting the values for the
  *  General ones.  Also, set the Not-General ones.

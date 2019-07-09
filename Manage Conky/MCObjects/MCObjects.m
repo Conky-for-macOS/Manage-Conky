@@ -680,6 +680,16 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 @end
 
 @implementation MCTheme
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        _widgets = [NSMutableArray array];
+    }
+    return self;
+}
+    
 + (instancetype)themeWithResourceFile:(NSString *)themeRC
                          conkyConfigs:(NSArray *)configs
                             arguments:(NSArray *)args
@@ -735,13 +745,19 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
          */
         [res setLocation:themeRC.stringByDeletingLastPathComponent];
         [res setThemeRC:themeRC];
-        [res setConkyConfigs:refinedConfigs];
         [res setArguments:args];
         [res setStartupDelay:startupDelay];
         [res setWallpaper:wallpaper];
         [res setCreator:creator];
         [res setSource:source];
-        [res setScaling:scaling];        
+        [res setScaling:scaling];
+        
+        for (NSString *configName in configs)
+        {
+            NSString *config = [themeRC.stringByDeletingLastPathComponent stringByAppendingPathComponent:configName];
+            NSLog(@"Config: %@", config);
+            [[res widgets] addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andRC:config]];
+        }
         
         /*
          * themeName
@@ -994,31 +1010,10 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     createMCDirectory();
     
     /*
-     * Create LaunchAgent foreach config
+     * Enable each widget
      */
-    for (NSString *config in _conkyConfigs)
-    {
-        NSString *correctedConfig = MCNormalise(config);
-        NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
-        NSString *workingDirectory = [config stringByDeletingLastPathComponent];
-        const BOOL keepAlive = YES;
-
-        NSError *error = nil;
-
-        createLaunchAgent(label,
-                          @[CONKY_SYMLINK, @"-c", correctedConfig],
-                          keepAlive,
-                          _startupDelay,
-                          workingDirectory,
-                          error);
-        
-        if (error)
-        {
-            MCError(&error, @"applyTheme: Error creating agent");
-            return;
-        }
-    }
+    for (MCWidget *widget in _widgets)
+        [widget enable];
 
     NSError *err = nil;
     
@@ -1060,11 +1055,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)disable
 {
-    for (NSString *config in _conkyConfigs)
+    for (MCWidget *widget in _widgets)
     {
-        NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
-        removeLaunchAgent(label);
+        [widget disable];
     }
     
     /*
@@ -1086,6 +1079,14 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     }
     
     _isEnabled = NO;
+}
+    
+- (NSArray *)conkyConfigs
+{
+    NSMutableArray *configs = [NSMutableArray array];
+    for (MCWidget *widget in _widgets)
+        [configs addObject:widget.widgetRC];
+    return configs;
 }
 
 @end
