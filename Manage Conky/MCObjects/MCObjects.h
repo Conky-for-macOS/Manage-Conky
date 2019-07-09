@@ -204,28 +204,29 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 //
 
 /**
- * MCWidgetOrTheme
+ * MCWidgetOrThemeBase
  *
- * Abstract object upon which MCWidget and MCTheme are based!
+ * Class from which MCWidget and MCTheme get their mutual methods
  */
-@interface MCWidgetOrTheme : NSObject
-{
-    MCSettings *MCSettingsHolder;
-}
-
-@property NSString *location;   /* its location */
-@property NSString *realName;   /* un-normalised name */
-
-@property NSString *creator;    /* creator */
-@property NSString *source;     /* source */
-
+@protocol MCWidgetOrThemeBase
 - (void)enable;
 - (void)reenable;
 - (void)kill;
 - (void)disable;
 - (BOOL)isEnabled;
 - (void)uninstall;
+@end
 
+/**
+ * MCWidgetOrTheme
+ *
+ * Class from which MCWidget and MCTheme get their mutual properties
+ */
+@interface MCWidgetOrTheme : NSObject<MCWidgetOrThemeBase>
+@property NSString *location;   /* its location */
+@property NSString *realName;   /* un-normalised name */
+@property NSString *creator;    /* creator */
+@property NSString *source;     /* source */
 @end
 
 /**

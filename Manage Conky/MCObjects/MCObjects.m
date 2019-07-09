@@ -19,6 +19,8 @@
 #import <NPTask/NSAuthenticatedTask.h>
 #import "../Extensions/NSString+Relative.h"
 
+#define MCObjectsCoreVersion    0.95
+
 /** `Helper function`
  * Check if Xquartz and conky are installed
  * and if not, show an alert and return NO.
@@ -480,28 +482,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 @implementation MCWidgetOrTheme
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-        MCSettingsHolder = [MCSettings sharedSettings];
-    }
-    return self;
-}
-
-- (void)enable {}
-- (void)reenable {}
-- (void)kill {}
-- (void)disable {}
-- (BOOL)isEnabled { return YES; }
-
 - (void)moveToTrash:(NSString *)path
 {
     NSURL *url = [NSURL fileURLWithPath:path];
-
+    
     NSLog(@"Moving (%@) to trash.", path);
-
+    
     [[NSWorkspace sharedWorkspace] recycleURLs:@[url] completionHandler:^(NSDictionary<NSURL *,NSURL *> * _Nonnull newURLs, NSError * _Nullable error) {
         if (error)
         {
@@ -572,10 +558,10 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
      */
-    if ([MCSettingsHolder conkyRunsAtStartup])
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
     {
-        NSInteger startupDelay = [MCSettingsHolder conkyStartupDelay];
-        BOOL keepAlive = [MCSettingsHolder keepAliveConky];
+        NSInteger startupDelay = [[MCSettings sharedSettings] conkyStartupDelay];
+        BOOL keepAlive = [[MCSettings sharedSettings] keepAliveConky];
 
         /*
          * setup the LaunchAgent
@@ -655,7 +641,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
      */
-    if ([MCSettingsHolder conkyRunsAtStartup])
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
     {
         removeLaunchAgent(_widgetLabel);
     }
@@ -670,13 +656,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /*
      * IF conky is set to run at startup we must do LaunchAgent housekeeping...
      */
-    if ([MCSettingsHolder conkyRunsAtStartup])
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
     {
         return isLaunchAgentEnabled(_widgetLabel);
     }
     else return (_pid != MC_PID_NOT_SET) ? YES : NO;
 }
-
 @end
 
 @implementation MCTheme
@@ -1038,13 +1023,13 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /*
      * Remember old wallpaper (but, ONLY if it is not one of the ones used by MCThemes)
      */
-    if ([MCSettingsHolder wallpaper] && [MCSettingsHolder wallpaperIsNotFromMCTheme:[MCSettingsHolder wallpaper]])
-        [MCSettingsHolder setOldWallpaper:[MCSettingsHolder wallpaper]];
+    if ([[MCSettings sharedSettings] wallpaper] && [[MCSettings sharedSettings] wallpaperIsNotFromMCTheme:[[MCSettings sharedSettings] wallpaper]])
+        [[MCSettings sharedSettings] setOldWallpaper:[[MCSettings sharedSettings] wallpaper]];
 
     /*
      * Apply new wallpaper
      */
-    [MCSettingsHolder setWallpaper:_wallpaper
+    [[MCSettings sharedSettings] setWallpaper:_wallpaper
                        withScaling:_scaling
                              error:&err];
     if (err)
@@ -1101,7 +1086,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
      * Revert to old wallpaper
      */
     NSError *error = nil;
-    [MCSettingsHolder setWallpaper:[MCSettingsHolder oldWallpaper]
+    [[MCSettings sharedSettings] setWallpaper:[[MCSettings sharedSettings] oldWallpaper]
                        withScaling:FillScreen
                              error:&error];
     if (error)
