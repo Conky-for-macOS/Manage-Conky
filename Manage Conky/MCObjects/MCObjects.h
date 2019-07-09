@@ -235,9 +235,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  */
 @interface MCWidget : MCWidgetOrTheme
 
-@property pid_t pid;            /* pid */
-@property NSString *widgetRC;   /* conky *.conf path */
-@property NSString *widgetName; /* widget's name */
+@property pid_t pid;                /* pid */
+@property NSString *widgetRC;       /* conky *.conf path */
+@property NSString *widgetName;     /* widget's name */
 @property NSString *widgetLabel;    /* label for LaunchAgent */
 
 + (instancetype)widgetWithPid:(pid_t)pid andRC:(NSString *)path;
@@ -251,17 +251,16 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  */
 @interface MCTheme : MCWidgetOrTheme
 
-@property NSMutableArray<MCWidget *>* widgets;
-@property NSString *themeName;  /* theme name */
-@property NSString *themeRC;    /* resource file (.plist or .cmtheme) */
-@property NSInteger startupDelay;   /* startup delay */
-@property NSArray *arguments;   /* arguments for conky */
-@property NSString *wallpaper;  /* wallpaper used by theme */
-@property MCWallpaperScaling scaling;   /* wallpaper scaling */
+@property NSString *themeName;                                      /* theme name */
+@property NSString *themeRC;                                        /* resource file (.plist or .cmtheme) */
+@property NSArray *arguments;                                       /* arguments for conky */
+@property NSString *wallpaper;                                      /* wallpaper used by theme */
+@property MCWallpaperScaling scaling;                               /* wallpaper scaling */
+@property NSInteger startupDelay;                                   /* startup delay */
+@property (nonatomic, getter=conkyConfigs) NSArray* conkyConfigs;   /* returns a list of the conky configs of this theme */
+@property NSMutableArray<MCWidget *>* widgets;                      /* widgets this theme is comprised of */
 
-@property BOOL isEnabled;    /* a LaunchAgent for it exists */
-
-- (NSArray *)conkyConfigs;  /* returns a list of the conky configs of this theme */
+@property (nonatomic, getter=isEnabled) BOOL isEnabled;             /* is theme currently enabled? */
     
 /**
  * Set properties of MCTheme object just by getting the values for the

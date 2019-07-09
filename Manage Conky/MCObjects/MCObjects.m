@@ -762,13 +762,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
          */
         [res setThemeName:[[themeRC stringByDeletingLastPathComponent] lastPathComponent]];
         [res setRealName:[res themeName]];  /* for themes they are the same; Why though? */
-        
-        /*
-         * isEnabled?
-         * Try accessing the Theme's lock
-         */
-        NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", [res themeName]];
-        [res setIsEnabled: (access([lock UTF8String], R_OK) == 0)];
     }
     
     return res;
@@ -1115,8 +1108,16 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     {
         MCError(&error);
     }
+}
     
-    _isEnabled = NO;
+- (BOOL)isEnabled
+{
+    /*
+     * isEnabled?
+     * Try accessing the Theme's lock
+     */
+    NSString *lock = [NSHomeDirectory() stringByAppendingFormat:@"/Library/ManageConky/%@.theme.lock", _themeName];
+    return (access([lock UTF8String], R_OK) == 0);
 }
     
 - (NSArray *)conkyConfigs
