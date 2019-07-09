@@ -1009,11 +1009,38 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     createUserLaunchAgentsDirectory();
     createMCDirectory();
     
-    /*
-     * Enable each widget
-     */
-    for (MCWidget *widget in _widgets)
-        [widget enable];
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
+    {
+        for (MCWidget *widget in _widgets)
+        {
+            NSString *config = widget.widgetRC;
+            NSString *correctedConfig = MCNormalise(config);
+            NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
+            NSString *workingDirectory = [config stringByDeletingLastPathComponent];
+            const BOOL keepAlive = YES;
+            
+            NSError *error = nil;
+            
+            createLaunchAgent(label,
+                              @[CONKY_SYMLINK, @"-c", correctedConfig],
+                              keepAlive,
+                              _startupDelay,
+                              workingDirectory,
+                              error);
+            
+            if (error)
+            {
+                MCError(&error, @"applyTheme: Error creating agent");
+                return;
+            }
+        }
+    }
+    else
+    {
+        for (MCWidget *widget in _widgets)
+            [widget enable];
+    }
     
     /*
      * Remember old wallpaper (but, ONLY if it is not one of the ones used by MCThemes)
@@ -1053,9 +1080,22 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)disable
 {
-    for (MCWidget *widget in _widgets)
+    if ([[MCSettings sharedSettings] conkyRunsAtStartup])
     {
-        [widget disable];
+        for (MCWidget *widget in _widgets)
+        {
+            NSString *config = widget.widgetRC;
+            NSString *configName = [[config lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+            NSString *label = [NSString stringWithFormat:@"org.npyl.ManageConky.Theme.%@", configName];
+            removeLaunchAgent(label);
+        }
+    }
+    else
+    {
+        for (MCWidget *widget in _widgets)
+        {
+            [widget disable];
+        }
     }
     
     /*
