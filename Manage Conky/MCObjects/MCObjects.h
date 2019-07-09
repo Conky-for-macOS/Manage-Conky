@@ -261,7 +261,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 
 @property BOOL isEnabled;    /* a LaunchAgent for it exists */
 
-- (NSArray *)conkyConfigs;
+- (NSArray *)conkyConfigs;  /* returns a list of the conky configs of this theme */
     
 /**
  * Set properties of MCTheme object just by getting the values for the

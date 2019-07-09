@@ -752,10 +752,8 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         [res setSource:source];
         [res setScaling:scaling];
         
-        for (NSString *configName in configs)
+        for (NSString *config in refinedConfigs)
         {
-            NSString *config = [themeRC.stringByDeletingLastPathComponent stringByAppendingPathComponent:configName];
-            NSLog(@"Config: %@", config);
             [[res widgets] addObject:[MCWidget widgetWithPid:MC_PID_NOT_SET andRC:config]];
         }
         
@@ -998,11 +996,13 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     if (!isXquartzAndConkyInstalled())
         return;
     
-    /**
-     * We create a LaunchAgent foreach conky-config of the Theme and
-     * a lock indicating that the theme is enabled on this user account.
+    /*
+     * We enable each Widget and create a lock indicating
+     * that the theme is enabled on this user account.
      */
 
+    NSError *err = nil;
+    
     /*
      * create required directories
      */
@@ -1014,8 +1014,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
      */
     for (MCWidget *widget in _widgets)
         [widget enable];
-
-    NSError *err = nil;
     
     /*
      * Remember old wallpaper (but, ONLY if it is not one of the ones used by MCThemes)
