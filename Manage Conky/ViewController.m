@@ -737,9 +737,7 @@
 
 - (IBAction)loadConkyPreferences:(id)sender
 {
-    ConkyPreferencesSheetController *pfctl = [[ConkyPreferencesSheetController alloc] initWithWindowNibName:@"ConkyPreferences"];
-    [pfctl loadOnWindow:[NSApp mainWindow]];
-    [pfctl initStuff];
+    [[[ConkyPreferencesSheetController alloc] initWithWindowNibName:@"ConkyPreferences"] loadOnWindow:[NSApp mainWindow]];
 }
 - (IBAction)loadConkyThemes:(id)sender
 {

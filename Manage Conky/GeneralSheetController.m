@@ -61,7 +61,7 @@
 
 - (IBAction)close:(id)sender
 {
-    [self.window close];
+    [self close];
     
     if (!_opensWindowed)
     {

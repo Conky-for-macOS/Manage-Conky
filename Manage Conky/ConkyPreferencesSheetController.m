@@ -58,7 +58,7 @@
 
 @implementation ConkyPreferencesSheetController
 
-- (void)initStuff
+- (void)windowDidLoad
 {
     /* Is Conky installed? */
     conkyXInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKYX];
@@ -85,7 +85,7 @@
         /*
          * first try to read already written information
          */
-
+        
         _searchLocationsTableContents = [MCSettings sharedSettings].additionalSearchPaths.mutableCopy;
         
         if (!_searchLocationsTableContents)
@@ -403,10 +403,8 @@
         /* uninstall old & install new */
         [[MCSettings sharedSettings] installManageConkyFilesystem];
         
-        [self close];
-        [[MCSettings sharedSettings] popWindow];    // XXX should be handled by [self close]
+        [self close:self];
         [self loadOnWindow:self.targetWindow];
-        [self initStuff];
         [self toggleControls:NSOnState];
     }
 }
@@ -523,8 +521,7 @@
         /*
          * Close the sheet
          */
-        [self close];
-        [[MCSettings sharedSettings] popWindow];    // XXX should be handled automatically by [self close]...
+        [self close:self];
     }
 }
 
