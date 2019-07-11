@@ -16,7 +16,6 @@
 #import <NPTask/NSAuthenticatedTask.h>
 #import <ServiceManagement/ServiceManagement.h>
 
-
 /* defines */
 #define kConkyAgentPlistName @"org.npyl.conky.plist"
 
@@ -36,6 +35,77 @@
 #define STARTUP_DELAY_MAX 100
 #define STARTUP_DELAY_MIN 0
 
+/*
+ * Check if user has installed a version of conky through Homebrew
+ */
+bool usesHomebrewConky(void)
+{
+    __block bool usesHomebrewConky = NO;
+    
+    NSLog(@"Quering Homebrew to know if conky is installed.");
+    
+    @try
+    {
+        NSTask *brew = [[NSTask alloc] init];
+        brew.launchPath = @"/bin/sh";
+        brew.arguments = @[@"-l",
+                           @"/usr/local/bin/brew",
+                           @"list"];
+
+        brew.environment = [NSProcessInfo processInfo].environment;
+        brew.standardOutput = [NSPipe pipe];
+
+        [[brew.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle * _Nonnull fh) {
+            MC_RUN_ONLY_ONCE({
+                /*
+                 * Homebrew spurs unneeded data, causes this block to be called many times with no reason...
+                 * Use MC_RUN_ONLY_ONCE to prevent this.
+                 */
+
+                NSData *data = [fh readDataToEndOfFile];
+                if (!data)
+                    return;
+                
+                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                if (!str)
+                    return;
+                
+                NSLog(@"Homebrew returned: \n%@", str);
+                
+                /* check if we got an empty str... */
+                if (str.length == 0)
+                    return;
+                
+                /* check if conky or conky-all is in the list */
+                if ([str containsString:@"conky"])
+                    usesHomebrewConky = YES;
+            })
+        }];
+
+        [brew launch];
+        [brew waitUntilExit];
+    }
+    @catch (NSException *ex)
+    {
+        NSLog(@"%@", ex);
+    }
+
+    return usesHomebrewConky;
+}
+
+/*
+ * Check if a version of Conky is already installed
+ */
+bool isConkyInstalled(void)
+{
+    return ([[NSFileManager defaultManager] fileExistsAtPath:CONKYX]        &&
+            [[NSFileManager defaultManager] fileExistsAtPath:CONKY_SYMLINK]);
+}
+
+NSString *conkyVersion(void)
+{
+    return @"conky-all_1.11.2";
+}
 
 @implementation OnlyIntegerValueFormatter
 
