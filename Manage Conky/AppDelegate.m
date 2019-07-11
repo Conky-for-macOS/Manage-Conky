@@ -60,8 +60,8 @@
      * (see: added cairo support)
      */
     NSLog(@"Refreshing MC filesystem after update...");
-    [[MCSettings sharedSettings] uninstallManageConkyFilesystem:usesHomebrewConky()];
-    [[MCSettings sharedSettings] installManageConkyFilesystem:usesHomebrewConky()];
+    [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
+    [[MCSettings sharedSettings] installManageConkyFilesystem];
     NSLog(@"Refreshing MC filesystem: DONE");
 }
 

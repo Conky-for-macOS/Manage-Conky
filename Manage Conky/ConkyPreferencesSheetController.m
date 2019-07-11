@@ -398,7 +398,7 @@ NSString *conkyVersion(void)
         [[[MCSettings sharedSettings] mainViewController] killall:self];
         
         /* Uninstall MC filesystem */
-        [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem:usesHomebrewConky()];
+        [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem];
 
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
@@ -415,26 +415,7 @@ NSString *conkyVersion(void)
          * Install Conky
          */
         
-        if (usesHomebrewConky())
-        {
-            NSLog(@"Homebrew-conky being used; configuring to using internal conky...");
-            
-            NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
-            NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
-            
-            if (!conkyPath)
-                return;
-            
-            [[MCSettings sharedSettings] setConkyPath:conkyPath];
-        }
-        else
-        {
-            NSLog(@"Homebrew-conky not used; installing MC filesystem...");
-            
-            /* uninstall old & install new */
-            [[MCSettings sharedSettings] installManageConkyFilesystem];
-            [[MCSettings sharedSettings] setConkyPath:CONKY_SYMLINK];
-        }
+        [[MCSettings sharedSettings] installManageConkyFilesystem];
         
         NSLog(@"conkyPath: %@", [MCSettings sharedSettings].conkyPath);
 

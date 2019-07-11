@@ -340,6 +340,28 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     {
         MCError(&error, @"Error creating symbolic link to %@", CAIRO_SYMLINK);
     }
+    
+    /*
+     * Finally setup where we find conky
+     */
+    if (usesHomebrewConky())
+    {
+        NSLog(@"Homebrew-conky being used; configuring to using internal conky...");
+        
+        NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
+        NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+        
+        if (!conkyPath)
+            return;
+        
+        [[MCSettings sharedSettings] setConkyPath:conkyPath];
+    }
+    else
+    {
+        NSLog(@"Homebrew-conky not used; installing MC filesystem...");
+        
+        [[MCSettings sharedSettings] setConkyPath:CONKY_SYMLINK];
+    }
 }
 
 - (void)setShouldLogToFile:(BOOL)a
@@ -449,12 +471,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 
 - (void)uninstallManageConkyFilesystem
 {
-    [self uninstallManageConkyFilesystem:NO];
+    [self uninstallManageConkyFilesystem:usesHomebrewConky()];
 }
 
-- (void)uninstallCompletelyManageConkyFilesystem:(BOOL)usesHomebrewConky
+- (void)uninstallCompletelyManageConkyFilesystem
 {
-    [self uninstallManageConkyFilesystem:usesHomebrewConky];
+    [self uninstallManageConkyFilesystem:usesHomebrewConky()];
     [self removeManageConky];
 }
 
