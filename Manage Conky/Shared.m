@@ -9,6 +9,9 @@
 #import "Shared.h"
 #import <AHLaunchCtl/AHLaunchCtl.h>
 
+#define CONKY_HOMEBREW_LOCATION     "/usr/local/Cellar/conky"
+#define CONKY_ALL_HOMEBREW_LOCATION "/usr/local/Cellar/conky-all"
+
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
 {
     dispatch_async(dispatch_get_main_queue(),
@@ -26,55 +29,8 @@ void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window)
  */
 bool usesHomebrewConky(void)
 {
-    __block bool usesHomebrewConky = NO;
-    
-    NSLog(@"Quering Homebrew to know if conky is installed.");
-    
-    @try
-    {
-        NSTask *brew = [[NSTask alloc] init];
-        brew.launchPath = @"/bin/sh";
-        brew.arguments = @[@"-l",
-                           @"/usr/local/bin/brew",
-                           @"list"];
-        
-        brew.environment = [NSProcessInfo processInfo].environment;
-        brew.standardOutput = [NSPipe pipe];
-        
-        [[brew.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle * _Nonnull fh) {
-            /*
-             * Homebrew spurs unneeded data, causes this block to be called many times with no reason...
-             * Use MC_RUN_ONLY_ONCE to prevent this.
-             */
-            
-            NSData *data = [fh readDataToEndOfFile];
-            if (!data)
-                return;
-            
-            NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            if (!str)
-                return;
-
-            /* check if we got an empty str... */
-            if (str.length == 0)
-                return;
-            
-            NSLog(@"Homebrew returned: \n%@", str);
-            
-            /* check if conky or conky-all is in the list */
-            if ([str containsString:@"conky"])
-                usesHomebrewConky = YES;
-        }];
-        
-        [brew launch];
-        [brew waitUntilExit];
-    }
-    @catch (NSException *ex)
-    {
-        NSLog(@"%@", ex);
-    }
-    
-    return usesHomebrewConky;
+    return ((access(CONKY_HOMEBREW_LOCATION, R_OK)      == 0) ||
+            (access(CONKY_ALL_HOMEBREW_LOCATION, R_OK)  == 0));
 }
 
 void createUserLaunchAgentsDirectory(void)

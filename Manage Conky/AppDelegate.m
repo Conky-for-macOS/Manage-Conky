@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "Shared.h"
 #import "PFMoveApplication.h"
 #import "MCObjects/MCObjects.h"
 #import "PreferencesController.h"
@@ -59,8 +60,8 @@
      * (see: added cairo support)
      */
     NSLog(@"Refreshing MC filesystem after update...");
-    [[MCSettings sharedSettings] uninstallManageConkyFilesystem];
-    [[MCSettings sharedSettings] installManageConkyFilesystem];
+    [[MCSettings sharedSettings] uninstallManageConkyFilesystem:usesHomebrewConky()];
+    [[MCSettings sharedSettings] installManageConkyFilesystem:usesHomebrewConky()];
     NSLog(@"Refreshing MC filesystem: DONE");
 }
 
