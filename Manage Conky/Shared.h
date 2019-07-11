@@ -35,6 +35,8 @@
 //
 void showErrorAlertWithMessageForWindow(NSString* msg, NSWindow* window);
 
+bool usesHomebrewConky(void);
+
 /**
  * Create LaunchAgents directory at ~/Library if it doesn't exist
  */
