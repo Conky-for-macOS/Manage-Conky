@@ -69,6 +69,4 @@
 @property (weak) IBOutlet NSButton *applyChangesButton;
 @property (weak) IBOutlet NSButton *doneButton;
 
-- (void)initStuff;
-
 @end
