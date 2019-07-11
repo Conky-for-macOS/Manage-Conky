@@ -152,6 +152,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  * installed but keep ManageConky.app at /Applications
  */
 - (void)uninstallManageConkyFilesystem;
+- (void)uninstallManageConkyFilesystem:(BOOL)usesHomebrewConky;
 
 /**
  * uninstallManageConkyFilesystem
@@ -159,7 +160,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  * Uninstall everything that `installManageConkyFilesystem`
  * including ManageConky.app.
  */
-- (void)uninstallCompletelyManageConkyFilesystem;
+- (void)uninstallCompletelyManageConkyFilesystem:(BOOL)usesHomebrewConky;
 
 /*
  * Vector of Windows -- Used for always knowing current window

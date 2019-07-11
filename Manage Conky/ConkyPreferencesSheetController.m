@@ -395,8 +395,9 @@ NSString *conkyVersion(void)
         /* Stops all Widgets and Themes */
         [[[MCSettings sharedSettings] mainViewController] killall:self];
         
-        [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem];
-        
+        /* Uninstall MC filesystem */
+        [[MCSettings sharedSettings] uninstallCompletelyManageConkyFilesystem:usesHomebrewConky()];
+
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
         [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
@@ -412,9 +413,27 @@ NSString *conkyVersion(void)
          * Install Conky
          */
         
-        /* uninstall old & install new */
-        [[MCSettings sharedSettings] installManageConkyFilesystem];
-        
+        if (usesHomebrewConky())
+        {
+            NSLog(@"Homebrew-conky being used; configuring to using internal conky...");
+            
+            NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
+            NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+            
+            if (!conkyPath)
+                return;
+            
+            [[MCSettings sharedSettings] setConkyPath:conkyPath];
+        }
+        else
+        {
+            NSLog(@"Homebrew-conky not used; installing MC filesystem...");
+            
+            /* uninstall old & install new */
+            [[MCSettings sharedSettings] installManageConkyFilesystem];
+            [[MCSettings sharedSettings] setConkyPath:CONKY_SYMLINK];
+        }
+
         [self close:self];
         [self loadOnWindow:self.targetWindow];
         [self toggleControls:NSOnState];
@@ -423,8 +442,6 @@ NSString *conkyVersion(void)
 
 - (IBAction)applyChanges:(id)sender
 {
-    MCSettings *MCSettingsHolder = [MCSettings sharedSettings];
-    
     BOOL changesApplied = YES;
     
     NSString *userLaunchAgentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents"];
@@ -436,7 +453,7 @@ NSString *conkyVersion(void)
         
         unlink([conkyAgentPlistPath UTF8String]);
         
-        [MCSettingsHolder setConkyRunsAtStartup:NO];
+        [[MCSettings sharedSettings] setConkyRunsAtStartup:NO];
     }
     else if (mustEnableConkyForStartup)
     {

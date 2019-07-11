@@ -370,22 +370,59 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kMCLogsWidgets] boolValue];
 }
 
-- (void)uninstallManageConkyFilesystem
+- (void)purgeConkySymlink
 {
     NSError *error = nil;
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
+    
+    [fm removeItemAtPath:CONKY_SYMLINK error:&error];
+    if (error) { MCError(&error, @"Error removing symlink"); }
+}
 
+- (void)purgeLibsSymlinks
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+
+    [fm removeItemAtPath:CAIRO_SYMLINK error:&error];
+    if (error) { MCError(&error, @"Error removing CAIRO symlink"); }
+}
+
+- (void)removeConkyX
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    [fm removeItemAtPath:CONKY_SYMLINK error:&error];
+    if (error) { MCError(&error, @"Error removing symlink"); }
+}
+
+- (void)removeManageConky
+{
+    NSError *error = nil;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    [fm removeItemAtPath:MANAGE_CONKY error:&error];
+    if (error) { MCError(&error, @"Error removing Manage Conky"); }
+}
+
+- (void)uninstallManageConkyFilesystemWithHomebrewConky
+{
+    NSLog(@"Uninstalling MC Filesystem (Homebrew conky: YES)");
+}
+- (void)uninstallManageConkyFilesystemWithoutHomebrewConky
+{
+    NSLog(@"Uninstalling MC Filesystem (Homebrew conky: NO)");
+    
     if (userIsAdmin())
     {
-        [fm removeItemAtPath:CONKYX error:&error];
-        if (error) { MCError(&error, @"Error removing ConkyX"); }
-
-        [fm removeItemAtPath:CONKY_SYMLINK error:&error];
-        if (error) { MCError(&error, @"Error removing symlink"); }
+        [self removeConkyX];
+        [self purgeConkySymlink];
     }
     else
     {
+        NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"UninstallFilesystem" ofType:@"sh"];
+        
         /*
          * Run script that setups basic paths as administrator
          */
@@ -397,19 +434,23 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         [script endSession];
     }
     
-    [fm removeItemAtPath:CAIRO_SYMLINK error:&error];
-    if (error) { MCError(&error, @"Error removing CAIRO symlink"); }
+    [self purgeLibsSymlinks];
 }
 
-- (void)uninstallCompletelyManageConkyFilesystem
+- (void)uninstallManageConkyFilesystem:(BOOL)usesHomebrewConky
 {
-    NSError *error = nil;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    [self uninstallManageConkyFilesystem];
-    
-    [fm removeItemAtPath:MANAGE_CONKY error:&error];
-    if (error) { MCError(&error, @"Error removing Manage Conky"); }
+    if (usesHomebrewConky)  [self uninstallManageConkyFilesystemWithHomebrewConky];
+    else                    [self uninstallManageConkyFilesystemWithoutHomebrewConky];
+}
+- (void)uninstallManageConkyFilesystem
+{
+    [self uninstallManageConkyFilesystem:NO];
+}
+
+- (void)uninstallCompletelyManageConkyFilesystem:(BOOL)usesHomebrewConky
+{
+    [self uninstallManageConkyFilesystem:usesHomebrewConky];
+    [self removeManageConky];
 }
 
 /* Windows Vector */
