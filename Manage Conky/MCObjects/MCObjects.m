@@ -19,7 +19,7 @@
 #import <NPTask/NSAuthenticatedTask.h>
 #import "../Extensions/NSString+Relative.h"
 
-#define MCObjectsCoreVersion    0.95
+#define MCObjectsCoreVersion    0.96
 
 /** `Helper function`
  * Check if Xquartz and conky are installed
@@ -223,6 +223,15 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 - (void)setAdditionalSearchPaths:(NSArray *)array
 {
     [[NSUserDefaults standardUserDefaults] setObject:array forKey:kMCConkyAdditionalSearchPathsKey];
+}
+
+- (void)setConkyPath:(NSString *)a
+{
+    [[NSUserDefaults standardUserDefaults] setObject:a forKey:kMCConkyExecutableLocationKey];
+}
+- (NSString *)conkyPath
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kMCConkyExecutableLocationKey];
 }
 
 - (void)setMainViewController:(ViewController *)vc

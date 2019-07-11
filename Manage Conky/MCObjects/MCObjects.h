@@ -23,6 +23,7 @@ static NSString *kMCKeepAliveConkyKey = @"keepAlive";
 static NSString *kMCConkyStartupDelayKey = @"startupDelay";
 static NSString *kMCConkyConfigsLocationKey = @"configsLocation";
 static NSString *kMCConkyAdditionalSearchPathsKey = @"additionalSearchPaths";
+static NSString *kMCConkyExecutableLocationKey = @"conkyExecutableLocation";
 static NSString *kMCConkyShouldLogToFileKey = @"ShouldLogToFile";
 static NSString *kMCConkyLogfileLocationKey = @"LogfileLocation";
 static NSString *kMCCanResizeWindow = @"CanResizeWindow";
@@ -112,6 +113,9 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
 - (NSArray *)additionalSearchPaths;
 - (void)addAdditionalSearchPath:(NSString *)path;
 - (void)setAdditionalSearchPaths:(NSArray *)array;
+
+- (void)setConkyPath:(NSString *)a;
+- (NSString *)conkyPath;
 
 - (void)setMainViewController:(ViewController *)vc;
 - (ViewController *)mainViewController;
