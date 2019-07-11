@@ -144,6 +144,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  * to operate.  (eg. ConkyX, symbolic link)
  */
 - (void)installManageConkyFilesystem;
+- (void)installManageConkyFilesystem:(BOOL)usesHomebrewConky;
 
 /**
  * uninstallManageConkyFilesystem

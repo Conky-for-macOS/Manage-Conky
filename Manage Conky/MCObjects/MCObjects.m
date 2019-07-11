@@ -409,7 +409,11 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
 - (void)uninstallManageConkyFilesystemWithHomebrewConky
 {
     NSLog(@"Uninstalling MC Filesystem (Homebrew conky: YES)");
+    
+    [self removeConkyX];
+    [self purgeLibsSymlinks];
 }
+
 - (void)uninstallManageConkyFilesystemWithoutHomebrewConky
 {
     NSLog(@"Uninstalling MC Filesystem (Homebrew conky: NO)");
@@ -442,6 +446,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     if (usesHomebrewConky)  [self uninstallManageConkyFilesystemWithHomebrewConky];
     else                    [self uninstallManageConkyFilesystemWithoutHomebrewConky];
 }
+
 - (void)uninstallManageConkyFilesystem
 {
     [self uninstallManageConkyFilesystem:NO];

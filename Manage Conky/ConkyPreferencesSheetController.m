@@ -75,9 +75,11 @@ NSString *conkyVersion(void)
     /* Is Conky installed? */
     conkyXInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKYX];
     conkyInstalled = [[NSFileManager defaultManager] fileExistsAtPath:CONKY_SYMLINK];
+    bool _usesHomebrewConky = usesHomebrewConky();
+    bool canEnablePanel = ((conkyXInstalled && conkyInstalled) || _usesHomebrewConky);
     
     // Install / Uninstall Button
-    [_un_in_stallConkyButton setTitle:(conkyXInstalled && conkyInstalled) ? @"Uninstall Conky" : @"Install Conky"];
+    [_un_in_stallConkyButton setTitle:canEnablePanel ? @"Uninstall ManageConky" : @"Install Conky"];
     [_un_in_stallConkyButton setEnabled:YES];
     
     // Startup Delay
@@ -91,8 +93,8 @@ NSString *conkyVersion(void)
     mustEnableConkyForStartup = NO;   /* default value */
     mustDisableConkyForStartup = NO;   /* default value */
     mustAddSearchPaths = NO;    /* default value */
-    
-    if (conkyXInstalled && conkyInstalled)
+
+    if (canEnablePanel)
     {
         /*
          * first try to read already written information
@@ -384,7 +386,7 @@ NSString *conkyVersion(void)
     /* disable the Install/Uninstall button */
     [_un_in_stallConkyButton setEnabled:NO];
     
-    if (conkyXInstalled && conkyInstalled)
+    if ([[(NSButton *)sender title] isEqualToString:@"Uninstall ManageConky"])
     {
         /*
          * Uninstall conky
@@ -401,7 +403,7 @@ NSString *conkyVersion(void)
         /* create Successfully Installed message */
         NSAlert *successfullyUninstalled = [[NSAlert alloc] init];
         [successfullyUninstalled setMessageText:@"Successfully uninstalled!"];
-        [successfullyUninstalled setInformativeText:@"conky (ConkyX and ManageConky) was successfully uninstalled from your computer. Manage Conky will now quit"];
+        [successfullyUninstalled setInformativeText:@"Manage Conky will now quit"];
         [successfullyUninstalled runModal];
         
         /* exit */
@@ -433,6 +435,8 @@ NSString *conkyVersion(void)
             [[MCSettings sharedSettings] installManageConkyFilesystem];
             [[MCSettings sharedSettings] setConkyPath:CONKY_SYMLINK];
         }
+        
+        NSLog(@"conkyPath: %@", [MCSettings sharedSettings].conkyPath);
 
         [self close:self];
         [self loadOnWindow:self.targetWindow];
