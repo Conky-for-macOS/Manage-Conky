@@ -42,30 +42,28 @@ bool usesHomebrewConky(void)
         brew.standardOutput = [NSPipe pipe];
         
         [[brew.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle * _Nonnull fh) {
-            MC_RUN_ONLY_ONCE({
-                /*
-                 * Homebrew spurs unneeded data, causes this block to be called many times with no reason...
-                 * Use MC_RUN_ONLY_ONCE to prevent this.
-                 */
-                
-                NSData *data = [fh readDataToEndOfFile];
-                if (!data)
-                    return;
-                
-                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                if (!str)
-                    return;
-                
-                NSLog(@"Homebrew returned: \n%@", str);
-                
-                /* check if we got an empty str... */
-                if (str.length == 0)
-                    return;
-                
-                /* check if conky or conky-all is in the list */
-                if ([str containsString:@"conky"])
-                    usesHomebrewConky = YES;
-            })
+            /*
+             * Homebrew spurs unneeded data, causes this block to be called many times with no reason...
+             * Use MC_RUN_ONLY_ONCE to prevent this.
+             */
+            
+            NSData *data = [fh readDataToEndOfFile];
+            if (!data)
+                return;
+            
+            NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (!str)
+                return;
+
+            /* check if we got an empty str... */
+            if (str.length == 0)
+                return;
+            
+            NSLog(@"Homebrew returned: \n%@", str);
+            
+            /* check if conky or conky-all is in the list */
+            if ([str containsString:@"conky"])
+                usesHomebrewConky = YES;
         }];
         
         [brew launch];
