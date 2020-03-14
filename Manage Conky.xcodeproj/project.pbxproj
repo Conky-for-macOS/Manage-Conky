@@ -46,6 +46,7 @@
 		09D8226D206F8FFC008BBFEB /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D8226C206F8FFC008BBFEB /* Shared.m */; };
 		09E036EA21C7218200C7EED1 /* Logger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E036E921C7218200C7EED1 /* Logger.xib */; };
 		09E036F821C7234400C7EED1 /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09E036F721C7234400C7EED1 /* Logger.mm */; };
+		09EE5377241D660B003FDD67 /* conky in Copy Conky to Resources */ = {isa = PBXBuildFile; fileRef = 09EE5376241D660A003FDD67 /* conky */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		09F14C63211E1F0D00715664 /* ConkyPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */; };
 		09F14C66211E1F0D00715664 /* SaveTheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C60211E1F0D00715664 /* SaveTheme.xib */; };
 		09F14C67211E1F0D00715664 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F14C61211E1F0D00715664 /* About.xib */; };
@@ -235,6 +236,17 @@
 			name = "Copy Licenses";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09EE5373241D659A003FDD67 /* Copy Conky to Resources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				09EE5377241D660B003FDD67 /* conky in Copy Conky to Resources */,
+			);
+			name = "Copy Conky to Resources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09F54EB821D6AAFF009D2C07 /* Copy ConkyX */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +323,7 @@
 		09E036E921C7218200C7EED1 /* Logger.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Logger.xib; path = Sheets/Logger.xib; sourceTree = "<group>"; };
 		09E036F621C7234400C7EED1 /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		09E036F721C7234400C7EED1 /* Logger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
+		09EE5376241D660A003FDD67 /* conky */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = conky; path = "conky-for-macOS/build/src/conky"; sourceTree = "<group>"; };
 		09F14C5D211E1F0D00715664 /* ConkyPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConkyPreferences.xib; path = Sheets/ConkyPreferences.xib; sourceTree = "<group>"; };
 		09F14C60211E1F0D00715664 /* SaveTheme.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SaveTheme.xib; path = Sheets/SaveTheme.xib; sourceTree = "<group>"; };
 		09F14C61211E1F0D00715664 /* About.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = About.xib; path = Sheets/About.xib; sourceTree = "<group>"; };
@@ -549,6 +562,7 @@
 				77B847361F62C2B600AF8BCA /* Products */,
 				77F6D6D31F65EB2E00A61645 /* Frameworks */,
 				1B8AF2A579DFD0587DA619A7 /* Pods */,
+				09EE5376241D660A003FDD67 /* conky */,
 			);
 			sourceTree = "<group>";
 		};
@@ -746,6 +760,7 @@
 				0949D84A22BA7CEA005ECEB0 /* Copy Plugin API */,
 				FCBB241F460D1DF3938DD824 /* [CP] Embed Pods Frameworks */,
 				09EE5344241D5BDF003FDD67 /* Build Conky Script */,
+				09EE5373241D659A003FDD67 /* Copy Conky to Resources */,
 			);
 			buildRules = (
 			);
@@ -978,6 +993,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/src/conky",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
