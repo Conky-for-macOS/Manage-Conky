@@ -10,3 +10,6 @@
 [submodule "Frameworks/Fragaria"]
 	path = Frameworks/Fragaria
 	url = https://github.com/Conky-for-macOS/Fragaria
+[submodule "conky-for-macOS"]
+	path = conky-for-macOS
+	url = https://github.com/Conky-for-macOS/conky-for-macOS
