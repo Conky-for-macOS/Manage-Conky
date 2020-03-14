@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Avoid Some STUPID Homebrew failures
+set -e;
+
 #
 # This script creates an Xcode project out of conky-for-macOS
 # in order for ManageConky to compile on a new development workspace.
