@@ -10,10 +10,12 @@ symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..
 # Get conky-for-macOS directory
 conky="$symroot/conky-for-macOS"
 
+export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/lua/lib/pkgconfig:/usr/local/opt/imlib2/lib/pkgconfig"
+
 cd "$conky"
 
 # Start Building
 mkdir build
 cd build
 cmake ..
-make
+make -j8
