@@ -745,6 +745,7 @@
 				09F54EB821D6AAFF009D2C07 /* Copy ConkyX */,
 				0949D84A22BA7CEA005ECEB0 /* Copy Plugin API */,
 				FCBB241F460D1DF3938DD824 /* [CP] Embed Pods Frameworks */,
+				09EE5344241D5BDF003FDD67 /* Build Conky Script */,
 			);
 			buildRules = (
 			);
@@ -964,6 +965,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		09EE5344241D5BDF003FDD67 /* Build Conky Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Conky Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nscripts/build_conky.sh\n";
+		};
 		A3698A46E7BD79A94B7E34C6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

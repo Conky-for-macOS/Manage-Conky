@@ -12,10 +12,10 @@ conky="$symroot/conky-for-macOS"
 
 export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/lua/lib/pkgconfig:/usr/local/opt/imlib2/lib/pkgconfig"
 
-cd "$conky"
+# Create Temporary Build Directory (avoid directory-already-exists errors)
+tmpdir="$(mktemp -d -t "MC")"
 
 # Start Building
-mkdir build
-cd build
-cmake ..
+cd "$tmpdir"
+cmake "$conky"
 make -j8
