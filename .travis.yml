@@ -9,6 +9,9 @@ xcode_destination: platform=macOS
 before_install:
   - brew update # force a brew update because for some reason TravisCI likes not to update it.
 
+  # fix failure in linking newer python versions with conflicting files
+  - brew unlink python@2
+
   - gem install cocoapods -v '1.7.2'
   
   # install dependancies
