@@ -10,12 +10,37 @@ symroot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/..
 # Get conky-for-macOS directory
 conky="$symroot/conky-for-macOS"
 
-export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/lua/lib/pkgconfig:/usr/local/opt/imlib2/lib/pkgconfig"
+# avoid system libraries such as libffi
+# and/or force use of custom made ones such as cairo-xlib.
+#
+# We export:
+# - default pkg-config path
+# - curl
+# - libffi
+# - cairo-xlib (instead of cairo)
+# - x11
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/opt/libical/lib/pkgconfig:/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/cairo-xlib/lib/pkgconfig:/usr/X11/lib/pkgconfig"
 
 # Create Temporary Build Directory (avoid directory-already-exists errors)
 tmpdir="$(mktemp -d -t "MC")"
 
 # Start Building
 cd "$tmpdir"
-cmake "$conky"
+
+MACOSX_DEPLOYMENT_TARGET=10.10 cmake "$conky"   \
+       -DBUILD_WLAN=ON                          \
+       -DBUILD_MYSQL=ON                         \
+       -DBUILD_LUA_IMLIB2=OFF                   \
+       -DBUILD_LUA_RSVG=ON                      \
+       -DBUILD_LUA_CAIRO=ON                     \
+       -DBUILD_ICAL=ON                          \
+       -DBUILD_IRC=ON                           \
+       -DBUILD_HTTP=ON                          \
+       -DBUILD_ICONV=ON                         \
+       -DBUILD_RSS=ON                           \
+       -DBUILD_IRC=ON                           \
+       -DBUILD_CURL=ON                          \
+       -DBUILD_PULSEAUDIO=ON                    \
+       -DCMAKE_BUILD_TYPE=Release
+
 make -j8
