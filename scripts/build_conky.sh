@@ -19,7 +19,7 @@ conky="$symroot/conky-for-macOS"
 # - libffi
 # - cairo-xlib (instead of cairo)
 # - x11
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/opt/libical/lib/pkgconfig:/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/cairo-xlib/lib/pkgconfig:/usr/X11/lib/pkgconfig"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/opt/libiconv/lib/pkgconfig:/usr/local/opt/libical/lib/pkgconfig:/usr/local/opt/curl/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/cairo-xlib/lib/pkgconfig:/usr/X11/lib/pkgconfig"
 
 # Create Temporary Build Directory (avoid directory-already-exists errors)
 tmpdir="$(mktemp -d -t "MC")"
@@ -36,7 +36,7 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake "$conky"   \
        -DBUILD_ICAL=ON                          \
        -DBUILD_IRC=ON                           \
        -DBUILD_HTTP=ON                          \
-       -DBUILD_ICONV=ON                         \
+       -DBUILD_ICONV=OFF                        \
        -DBUILD_RSS=ON                           \
        -DBUILD_IRC=ON                           \
        -DBUILD_CURL=ON                          \
