@@ -261,7 +261,7 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     NSFileManager *fm = [NSFileManager defaultManager];
     
     NSString *ConkyXPath = [[NSBundle mainBundle] pathForResource:@"ConkyX" ofType:@"app"];
-    NSString *conkyPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"conky" ofType:nil];
+    NSString *conkyPath = [[NSBundle mainBundle] pathForResource:@"conky" ofType:nil];
     NSString *cairoDylibPath = [[NSBundle bundleWithPath:ConkyXPath] pathForResource:@"lua/libcairo" ofType:@"dylib"];
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"SetupFilesystem" ofType:@"sh"];
     
@@ -271,13 +271,14 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
      * from the pain of looking for the problem themselves.
      */
     if (!conkyPath || !cairoDylibPath || !scriptPath)
-    {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Something is wrong with app's consistency!"];
-        [alert setInformativeText:@"Open an issue in project's repo: https://github.com/Conky-for-macOS/Manage-Conky"];
-        [alert runModal];
-        return;
-    }
+//    if (!conkyPath || !cairoDylibPath || !scriptPath)
+//    {
+//        NSAlert *alert = [[NSAlert alloc] init];
+//        [alert setMessageText:@"Something is wrong with app's consistency!"];
+//        [alert setInformativeText:@"Open an issue in project's repo: https://github.com/Conky-for-macOS/Manage-Conky"];
+//        [alert runModal];
+//        return;
+//    }
     
     if (userIsAdmin())
     {
@@ -324,13 +325,13 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         MCError(&error, @"Error creating symbolic link to /usr/local/bin");
     }
     
-    /*
-     * Create symbolink link to allow using libcairo.dylib
-     */
-    if (![fm createSymbolicLinkAtPath:CAIRO_SYMLINK withDestinationPath:cairoDylibPath error:&error])
-    {
-        MCError(&error, @"Error creating symbolic link to %@", CAIRO_SYMLINK);
-    }
+//    /*
+//     * Create symbolink link to allow using libcairo.dylib
+//     */
+//    if (![fm createSymbolicLinkAtPath:CAIRO_SYMLINK withDestinationPath:cairoDylibPath error:&error])
+//    {
+//        MCError(&error, @"Error creating symbolic link to %@", CAIRO_SYMLINK);
+//    }
 }
 
 - (void)setShouldLogToFile:(BOOL)a
