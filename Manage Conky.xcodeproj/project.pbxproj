@@ -997,7 +997,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#scripts/build_conky.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nscripts/build_conky.sh\n";
 		};
 		A3698A46E7BD79A94B7E34C6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

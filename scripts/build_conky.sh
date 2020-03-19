@@ -16,6 +16,8 @@ conky="$symroot/conky-for-macOS"
 # We export:
 # - default pkg-config path
 # - curl
+# - iconv
+# - ical
 # - libffi
 # - cairo-xlib (instead of cairo)
 # - x11
@@ -33,7 +35,7 @@ MACOSX_DEPLOYMENT_TARGET=10.10 cmake "$conky"   \
        -DBUILD_LUA_IMLIB2=OFF                   \
        -DBUILD_LUA_RSVG=ON                      \
        -DBUILD_LUA_CAIRO=ON                     \
-       -DBUILD_ICAL=ON                          \
+       -DBUILD_ICAL=OFF	                        \
        -DBUILD_IRC=ON                           \
        -DBUILD_HTTP=ON                          \
        -DBUILD_ICONV=OFF                        \
