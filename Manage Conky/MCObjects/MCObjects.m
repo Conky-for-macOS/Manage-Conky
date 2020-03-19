@@ -27,7 +27,7 @@
  */
 BOOL isXquartzAndConkyInstalled(void)
 {
-    BOOL res1 = (access(XQUARTZ, R_OK) == 0);
+    BOOL res1 = ((access(XQUARTZ_HOMEBREW, R_OK) == 0) || (access(XQUARTZ_MACPORTS, R_OK) == 0));
     BOOL res2 = (access(CONKY_SYMLINK.UTF8String, R_OK) == 0);
     
     NSAlert *alert = [[NSAlert alloc] init];
@@ -270,7 +270,6 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
      * and not get bundled into ConkyX.  Try to slightly relief users
      * from the pain of looking for the problem themselves.
      */
-    if (!conkyPath || !cairoDylibPath || !scriptPath)
 //    if (!conkyPath || !cairoDylibPath || !scriptPath)
 //    {
 //        NSAlert *alert = [[NSAlert alloc] init];

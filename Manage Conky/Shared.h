@@ -19,7 +19,8 @@
 #define CONKY_SYMLINK       @"/usr/local/bin/conky"
 #define CAIRO_SYMLINK       @"/usr/local/lib/conky/libcairo.so"
 #define LAUNCH_AGENT_PREFIX @"org.npyl.ManageConky.Widget"
-#define XQUARTZ             "/Applications/Utilities/XQuartz.app"
+#define XQUARTZ_HOMEBREW    "/Applications/Utilities/XQuartz.app"
+#define XQUARTZ_MACPORTS    "/opt/local/bin/Xquartz"
 
 //
 // Contains stuff used by more than one subprojects or files
