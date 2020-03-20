@@ -486,6 +486,45 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
     /* Ok, wallpaper passed is a wallpaper set by user himself */
     return YES;
 }
+
+/*
+ * Xquartz Control & Hacks
+ */
+- (BOOL)xquartzQuitAlertDisabled
+{
+    BOOL res = NO;
+    
+    NSUserDefaults *xquartzPreferences = nil;
+    
+    if (isXquartzInstalledWithMacports())
+    {
+        xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macports.X11"];
+    }
+    else if (isXquartzInstalledWithoutMacports())
+    {
+        xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
+    }
+    
+    res = [[xquartzPreferences objectForKey:@"no_quit_alert"] boolValue];
+    
+    return res;
+}
+- (void)setXquartzQuitAlertTo:(BOOL)onOrOff
+{
+    NSUserDefaults *xquartzPreferences = nil;
+    
+    if (isXquartzInstalledWithMacports())
+    {
+        xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macports.X11"];
+    }
+    else if (isXquartzInstalledWithoutMacports())
+    {
+        xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
+    }
+    
+    [xquartzPreferences setObject:[NSNumber numberWithBool:onOrOff] forKey:@"no_quit_alert"];
+}
+
 @end
 
 @implementation MCWidgetOrTheme

@@ -203,6 +203,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE;
  */
 - (BOOL)wallpaperIsNotFromMCTheme:(NSString *)wallpaper;
 
+/*
+ * Xquartz Control & Hacks
+ */
+- (BOOL)xquartzQuitAlertDisabled;
+- (void)setXquartzQuitAlertTo:(BOOL)onOrOff;
+
 @end
 
 //

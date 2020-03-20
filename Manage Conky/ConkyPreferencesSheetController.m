@@ -86,8 +86,10 @@
         /*
          * first try to read already written information
          */
+        
+        MCSettings *ss = [MCSettings sharedSettings];
 
-        _searchLocationsTableContents = [MCSettings sharedSettings].additionalSearchPaths.mutableCopy;
+        _searchLocationsTableContents = ss.additionalSearchPaths.mutableCopy;
         
         if (!_searchLocationsTableContents)
             _searchLocationsTableContents = [NSMutableArray array];
@@ -100,30 +102,27 @@
         /*
          * Conky configsLocation textfield
          */
-        [_conkyConfigLocationTextfield setStringValue:[MCSettings sharedSettings].configsLocation];
+        [_conkyConfigLocationTextfield setStringValue:ss.configsLocation];
         _oldConfigsLocation = _conkyConfigLocationTextfield.stringValue;
   
         /*
          * Conky is Set to run at startup?
          * set checkbox state accordingly
          */
-        [_runConkyAtStartupCheckbox setState:[MCSettings sharedSettings].conkyRunsAtStartup];
+        [_runConkyAtStartupCheckbox setState:ss.conkyRunsAtStartup];
         
         /*
-         *  Xquartz hacks are only available for the .app version (really old versions are just macOS executables)
-         *  The newer version comes either from the website or from Homebrew.
+         * xquartz quit warning
+         */
+        [_disableXQuartzWarningsCheckbox setState:[ss xquartzQuitAlertDisabled]];
+        
+        /*
+         *  Hack for Xquartz not showing on dock is available for the .app version
+         *  (really old versions are just macOS executables)
+         *  That's the case for Xquartz from macports, so disable the hack, if necessary.
          */
         if (isXquartzInstalledWithoutMacports())
         {
-            /*
-             * xquartz quit warning
-             */
-            NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
-            xquartzQuitAlertDisabled = [[xquartzPreferences objectForKey:@"no_quit_alert"] boolValue];
-            
-            if (xquartzQuitAlertDisabled)
-                [_disableXQuartzWarningsCheckbox setState:NSControlStateValueOn];
-            
             /*
              * xquartz icon shows up on dock?
              */
@@ -134,7 +133,6 @@
         }
         else
         {
-            _disableXQuartzWarningsCheckbox.controlView.hidden = YES;
             _toggleXQuartzIconVisibilityCheckbox.controlView.hidden = YES;
         }
     }
@@ -237,8 +235,7 @@
 - (IBAction)toggleXQuartzWarningsCheckboxAction:(id)sender
 {
     BOOL onOrOff = [sender state];
-    NSUserDefaults *xquartzPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"org.macosforge.xquartz.X11"];
-    [xquartzPreferences setObject:[NSNumber numberWithBool:onOrOff] forKey:@"no_quit_alert"];
+    [[MCSettings sharedSettings] setXquartzQuitAlertTo:onOrOff];
 }
 
 - (IBAction)toggleXQuartzVisibilityAction:(id)sender
