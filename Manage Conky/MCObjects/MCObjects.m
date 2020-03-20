@@ -21,13 +21,21 @@
 
 #define MCObjectsCoreVersion    0.95
 
+BOOL isXquartzInstalledWithMacports(void) {
+    return (access(XQUARTZ_MACPORTS, R_OK) == 0);
+}
+
+BOOL isXquartzInstalledWithoutMacports(void) {
+    return (access(XQUARTZ_HOMEBREW, R_OK) == 0);
+}
+
 /** `Helper function`
  * Check if Xquartz and conky are installed
  * and if not, show an alert and return NO.
  */
 BOOL isXquartzAndConkyInstalled(void)
 {
-    BOOL res1 = ((access(XQUARTZ_HOMEBREW, R_OK) == 0) || (access(XQUARTZ_MACPORTS, R_OK) == 0));
+    BOOL res1 = (isXquartzInstalledWithMacports() || isXquartzInstalledWithoutMacports());
     BOOL res2 = (access(CONKY_SYMLINK.UTF8String, R_OK) == 0);
     
     NSAlert *alert = [[NSAlert alloc] init];

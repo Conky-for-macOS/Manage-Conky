@@ -67,6 +67,12 @@ static const char *cMacScalingKeys[] = {
     "Tile",
 };
 
+/*
+ *  Public Helper Functions
+ */
+BOOL isXquartzInstalledWithMacports(void);
+BOOL isXquartzInstalledWithoutMacports(void);
+
 @class ViewController;
 
 /*
