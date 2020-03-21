@@ -1,24 +1,36 @@
 PODS:
   - AHLaunchCtl (0.5.4)
   - LzmaSDK-ObjC (2.0.19)
+  - SMJobKit (0.0.1)
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
   - AHLaunchCtl (~> 0.5.4)
   - LzmaSDK-ObjC (~> 2.0.19)
+  - SMJobKit (from `https://github.com/Conky-for-macOS/SMJobKit.git`)
   - Sparkle (~> 1.18.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AHLaunchCtl
     - LzmaSDK-ObjC
     - Sparkle
 
+EXTERNAL SOURCES:
+  SMJobKit:
+    :git: https://github.com/Conky-for-macOS/SMJobKit.git
+
+CHECKOUT OPTIONS:
+  SMJobKit:
+    :commit: bc04ea2a78e3cd734eb789538f64354d6024105e
+    :git: https://github.com/Conky-for-macOS/SMJobKit.git
+
 SPEC CHECKSUMS:
   AHLaunchCtl: 696233a41a9b968e0683ce2cc1b8686ff25ca5c7
   LzmaSDK-ObjC: 1dd68a10d1af6c127f9811d117bf41a90bac9234
+  SMJobKit: 168c9c93c6749e98c0748dcfb7c3f72e5ce92136
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: 5f307249206ec1ed8684bec3c0ca48713a891fdf
+PODFILE CHECKSUM: e7c375d736d0a3ce5a55298d0a5667762c0c7854
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.4

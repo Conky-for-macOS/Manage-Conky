@@ -14,9 +14,9 @@
 #import "MCTask.h"
 #import "../Logger.h"
 #import "../ViewController.h"
+#import <SMJobKit/SMJobKit.h>
 #import <Foundation/Foundation.h>
 #import <AHLaunchCtl/AHLaunchCtl.h>
-#import <NPTask/NSAuthenticatedTask.h>
 #import "../Extensions/NSString+Relative.h"
 
 #define MCObjectsCoreVersion    0.95
@@ -315,13 +315,15 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         /*
          * Run script that setups basic paths as administrator
          */
-        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
-        script.launchPath = @"/bin/bash";
-        script.arguments = @[scriptPath,
-                             ConkyXPath];
-        [script launchAuthorized];
-        [script waitUntilExit];
-        [script endSession];
+        
+        
+//        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
+//        script.launchPath = @"/bin/bash";
+//        script.arguments = @[scriptPath,
+//                             ConkyXPath];
+//        [script launchAuthorized];
+//        [script waitUntilExit];
+//        [script endSession];
     }
     
     /*
@@ -388,12 +390,12 @@ void MCError(NSError **error, NSString *format, ...) MC_OVERLOADABLE
         /*
          * Run script that setups basic paths as administrator
          */
-        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
-        script.launchPath = @"/bin/bash";
-        script.arguments = @[scriptPath];
-        [script launchAuthorized];
-        [script waitUntilExit];
-        [script endSession];
+//        NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
+//        script.launchPath = @"/bin/bash";
+//        script.arguments = @[scriptPath];
+//        [script launchAuthorized];
+//        [script waitUntilExit];
+//        [script endSession];
     }
     
     [fm removeItemAtPath:CAIRO_SYMLINK error:&error];

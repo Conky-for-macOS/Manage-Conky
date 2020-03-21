@@ -14,7 +14,6 @@
 #import "ViewController.h"
 #import "PFMoveApplication.h"
 #import "NSAlert+runModalSheet.h"
-#import <NPTask/NSAuthenticatedTask.h>
 #import <ServiceManagement/ServiceManagement.h>
 
 
@@ -276,17 +275,17 @@
     }
 
     /* Run the script */
-    NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
-    script.launchPath = scriptPath;
-    [script launchAuthorized];
-    [script waitUntilExit];
-    [script endSession];
-    
-    if (script.terminationStatus != 0)
-    {
-        [sender setState:![sender state]];
-        return;
-    }
+//    NSAuthenticatedTask *script = [[NSAuthenticatedTask alloc] init];
+//    script.launchPath = scriptPath;
+//    [script launchAuthorized];
+//    [script waitUntilExit];
+//    [script endSession];
+//    
+//    if (script.terminationStatus != 0)
+//    {
+//        [sender setState:![sender state]];
+//        return;
+//    }
 }
 
 - (IBAction)setConkyConfigsLocation:(id)sender

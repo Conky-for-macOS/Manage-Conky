@@ -1,0 +1,6 @@
+framework module SMJobKit {
+  umbrella header "SMJobKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

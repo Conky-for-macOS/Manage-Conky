@@ -4,9 +4,6 @@
 [submodule "default-themes"]
 	path = default-themes
 	url = https://github.com/Conky-for-macOS/default-themes
-[submodule "Frameworks/NPTask"]
-	path = Frameworks/NPTask
-	url = https://github.com/npyl/NPTask
 [submodule "Frameworks/Fragaria"]
 	path = Frameworks/Fragaria
 	url = https://github.com/Conky-for-macOS/Fragaria

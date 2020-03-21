@@ -10,4 +10,5 @@ target 'Manage Conky' do
   pod 'LzmaSDK-ObjC', '~> 2.0.19', :inhibit_warnings => true
   pod 'AHLaunchCtl', '~> 0.5.4'
   pod 'Sparkle', '~> 1.18.1'
+  pod 'SMJobKit', :git => 'https://github.com/Conky-for-macOS/SMJobKit.git'
 end

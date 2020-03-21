@@ -163,18 +163,21 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AHLaunchCtl/AHLaunchCtl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LzmaSDK-ObjC/LzmaSDK_ObjC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SMJobKit/SMJobKit.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AHLaunchCtl/AHLaunchCtl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LzmaSDK-ObjC/LzmaSDK_ObjC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SMJobKit/SMJobKit.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Homebrew-Cask" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AHLaunchCtl/AHLaunchCtl.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LzmaSDK-ObjC/LzmaSDK_ObjC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SMJobKit/SMJobKit.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi

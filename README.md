@@ -49,7 +49,7 @@ Take advice from the [WIKI](https://github.com/Conky-for-macOS/Manage-Conky/wiki
 - [conky-for-macOS](https://github.com/Conky-for-macOS/conky-for-macOS) - The port
 - [ConkyX](https://github.com/Conky-for-macOS/ConkyX) - Conky quick-launcher
 - [conky-manager](https://github.com/teejee2008/conky-manager) - The app that ManageConky mimics
-- [NPTask](https://github.com/npyl/NPTask) - NSTask with authentication capabilities
+- [SMJobKit](https://github.com/Conky-for-macOS/SMJobKit) - Framework for running privileged code
 - [LetsMove](https://github.com/potionfactory/LetsMove) - Move to Applications Library
 - [Fragaria](https://github.com/Conky-for-macOS/Fragaria) - Syntax Highlighting and more for our Config Editor
 - [default-themes](https://github.com/Conky-for-macOS/default-themes) - This is where we get the themes

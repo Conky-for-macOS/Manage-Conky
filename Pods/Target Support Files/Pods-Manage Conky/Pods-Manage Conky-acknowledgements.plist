@@ -74,6 +74,20 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>        DO WHATEVER THE FUCK YOU WANT, PUBLIC LICENSE
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+         0. You just DO WHATEVER THE FUCK YOU WANT.
+</string>
+			<key>License</key>
+			<string>Apache License</string>
+			<key>Title</key>
+			<string>SMJobKit</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>Copyright (c) 2006-2013 Andy Matuschak.
 Copyright (c) 2009-2013 Elgato Systems GmbH.
 Copyright (c) 2011-2014 Kornel Lesiński.
